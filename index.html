@@ -1,457 +1,595 @@
-# Full Working Website Code
-
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FixMyPC Perth | Computer Repair & PC Specialist</title>
-
-<!-- SEO -->
-<meta name="description" content="Perth's trusted PC repair specialist. Virus removal, SSD upgrades, Windows reinstall, gaming PC builds and more.">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://fixmypcperth.com/">
-<meta name="theme-color" content="#1D4ED8">
-
-<!-- GEO -->
-<meta name="geo.region" content="AU-WA">
-<meta name="geo.placename" content="Canning Vale, Perth, Western Australia">
-<meta name="geo.position" content="-32.0742;115.9239">
-<meta name="ICBM" content="-32.0742, 115.9239">
-
-<!-- OPEN GRAPH -->
-<meta property="og:type" content="website">
-<meta property="og:title" content="FixMyPC Perth">
-<meta property="og:description" content="Perth's trusted PC repair specialist.">
-<meta property="og:url" content="https://fixmypcperth.com/">
-<meta property="og:image" content="https://fixmypcperth.com/facebook-cover.png">
-
-<!-- TWITTER -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="FixMyPC Perth">
-<meta name="twitter:description" content="Perth's trusted PC repair specialist.">
-<meta name="twitter:image" content="https://fixmypcperth.com/facebook-cover.png">
-
-<!-- FONT -->
+<title>FixMyPC Perth | Computer Repair & Tech Services</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<meta name="description" content="Perth's most trusted PC repair service. Virus removal, SSD upgrades, Windows reinstall, gaming PC builds and more.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-<!-- LOCAL BUSINESS SCHEMA -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "FixMyPC Perth",
-  "url": "https://fixmypcperth.com",
-  "telephone": "+61452573701",
-  "priceRange": "$$",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Canning Vale",
-    "addressRegion": "WA",
-    "postalCode": "6155",
-    "addressCountry": "AU"
-  },
-  "sameAs": [
-    "https://www.facebook.com/profile.php?id=61588810785733"
-  ]
-}
+<script>
+/* ================================================================
+   ✏️  EDIT EVERYTHING HERE — your entire website lives in this block
+   ================================================================ */
+
+const CONFIG = {
+
+  /* ── YOUR DETAILS ─────────────────────────────── */
+  businessName:  "FixMyPC Perth",
+  yourName:      "Raja",
+  suburb:        "Canning Vale, Perth",              // e.g. "Joondalup"
+  state:         "Western Australia",
+  abn:           "67 645 153 359",    // add your ABN here
+
+  /* ── CONTACT ──────────────────────────────────── */
+  // WhatsApp: 61 + your number without leading 0
+  // e.g. 0412 345 678  →  61412345678
+  whatsappNumber: "61452573701",
+  whatsappMsg:    "Hi! I'd like a free quote for PC repair.",
+  facebookURL:    "https://www.facebook.com/profile.php?id=61588810785733",
+
+  /* ── HERO TEXT ────────────────────────────────── */
+  heroHeadline:  "Perth's trusted PC repair specialist.",
+  heroSub:       "Fast turnaround. Honest pricing. Unlimited Revisions.",
+  heroDesc:      "Home-based in Perth, meaning lower overheads means better prices for you. Drop off your PC or laptop and I'll have it sorted, usually next day.",
+
+  /* ── SERVICES ─────────────────────────────────── */
+  /* To ADD a service: copy one { block }, paste after last one, add comma  */
+  /* To REMOVE: delete the whole { block }                                  */
+  /* badge options: "POPULAR" "NEW" "SPECIALIST" or "" for none             */
+  services: [
+    {
+      icon: "🛡️",
+      name: "Virus & Malware Removal",
+      desc: "Full scan, removal, browser cleanup and security setup. Most infections cleared same day.",
+      price: "From $80",
+      badge: "MOST POPULAR",
+    },
+    {
+      icon: "⚡",
+      name: "SSD Upgrade & Tune-Up",
+      desc: "Replace your old hard drive with a fast SSD. Boot in under 10 seconds — all data transferred safely.",
+      price: "From $80",
+      badge: "",
+    },
+    {
+      icon: "🪟",
+      name: "Windows Reinstall & Data Backup",
+      desc: "Corrupt Windows, boot loops, forgotten passwords. Fresh install with your files kept safe.",
+      price: "From $90",
+      badge: "",
+    },
+    {
+      icon: "📶",
+      name: "WiFi & Printer Setup",
+      desc: "NBN router setup, dead spots, printer drivers. I come to you, no callout fee.",
+      price: "From $70",
+      badge: "",
+    },
+    {
+      icon: "🎮",
+      name: "Gaming PC Build & Upgrade",
+      desc: "Custom builds, GPU & RAM installs, PBO performance tuning. Fully benchmarked before pickup.",
+      price: "From $80",
+      badge: "SPECIALIST",
+    },
+    {
+      icon: "🔌",
+      name: "Cable Management",
+      desc: "Clean routing, velcro ties, airflow optimised. Before & after photos every time.",
+      price: "From $65",
+      badge: "",
+    },
+    {
+      icon: "🖥️",
+      name: "Remote Support",
+      desc: "AnyDesk session — software issues, settings, guidance. No need to leave home.",
+      price: "$50/hr",
+      badge: "",
+    },
+    {
+      icon: "💾",
+      name: "Data Recovery",
+      desc: "Recover photos, documents and files from failing or dead hard drives.",
+      price: "From $120",
+      badge: "NO FIX NO FEE",
+    },
+  ],
+
+  /* ── FEATURED PACKAGE ─────────────────────────── */
+  packageShow:    true,           // change to false to hide
+  packageName:    "Complete PC Overhaul Package",
+  packageItems: [
+    "Full Malware & Virus Removal",
+    "Windows 11 Reinstalled with Data Backup",
+    "Full cable management throughout",
+    "Thermal Paste Reapply on CPU", 
+    "All drivers updated: GPU, chipset, audio, NIC",
+    "PBO tuning: up to 15% more CPU performance free",
+    "Before & after benchmark (Cinebench / 3DMark)",
+    "3 Month Follow up check included",
+    "30 Day Labour Warranty on all work",
+    "Before & after benchmark (Cinebench / 3DMark / Furmark)",
+  ],
+  packagePrice:    "$299",
+  packageWasPrice: "Shop price $549+",
+  packageLabel:    "labour only · parts supplied by you",    
+
+  /* ── TRUST STATS ──────────────────────────────── */
+  stats: [
+    { val: "$59",  label: "Starting from" },
+    { val: "24hr", label: "Avg turnaround" },
+    { val: "30d",  label: "Labour Warranty" },
+    { val: "5/5",   label: "Rated local service" },
+  ],
+
+  /* ── WHY CHOOSE ───────────────────────────────── */
+  reasons: [
+    { icon: "✅", title: "Not Satisfied? No Worries",       desc: "You only pay when your satisfied No exceptions." },
+    { icon: "⏱️", title: "Same day turnaround",  desc: "Most jobs done same or next day. No week-long waits." },
+    { icon: "📍", title: "Local Perth tech",      desc: "Based in Canning Vale, fast drop-off and pickup." },
+    { icon: "🛡️", title: "30-day labour warranty",       desc: "All work guaranteed for 30 days after completion." },
+    { icon: "💬", title: "Honest advice",         desc: "No upsells. No jargon. I'll only fix what needs fixing." },
+    { icon: "💰", title: "Best value in Perth",   desc: "Home-based means lower overheads and better prices." },
+  ],
+
+};
+
+/* ================================================================
+   ✅  STOP — do not edit anything below this line
+   ================================================================ */
 </script>
 
 <style>
-:root {
-  --blue:#1D4ED8;
-  --dark:#0F172A;
-  --light:#F8FAFC;
-  --border:#E2E8F0;
-  --text:#334155;
-  --wa:#25D366;
-  --fb:#1877F2;
-}
-
-* {
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
-body {
-  font-family:'Inter',sans-serif;
-  background:white;
-  color:var(--dark);
-  line-height:1.6;
-}
-
-nav {
-  position:fixed;
-  top:0;
-  width:100%;
-  background:white;
-  border-bottom:1px solid var(--border);
-  padding:1rem 2rem;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  z-index:1000;
-}
-
-.logo {
-  font-size:1.2rem;
-  font-weight:800;
-}
-
-.logo span {
-  color:var(--blue);
-}
-
-.nav-buttons {
-  display:flex;
-  gap:0.7rem;
-}
-
-.btn {
-  text-decoration:none;
-  padding:0.8rem 1.2rem;
-  border-radius:8px;
-  font-weight:700;
-  transition:0.2s;
-}
-
-.btn:hover {
-  opacity:0.9;
-  transform:translateY(-1px);
-}
-
-.btn-wa {
-  background:var(--wa);
-  color:white;
-}
-
-.btn-fb {
-  background:var(--fb);
-  color:white;
-}
-
-.hero {
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:8rem 2rem 4rem;
-  background:var(--light);
-}
-
-.hero-inner {
-  max-width:1100px;
-  width:100%;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:4rem;
-  align-items:center;
-}
-
-.hero h1 {
-  font-size:3.5rem;
-  line-height:1.1;
-  margin-bottom:1rem;
-}
-
-.hero h1 span {
-  color:var(--blue);
-}
-
-.hero-sub {
-  font-size:1.2rem;
-  color:var(--blue);
-  font-weight:600;
-  margin-bottom:1rem;
-}
-
-.hero-desc {
-  color:var(--text);
-  margin-bottom:2rem;
-}
-
-.hero-buttons {
-  display:flex;
-  gap:1rem;
-  flex-wrap:wrap;
-}
-
-.card {
-  background:white;
-  border:1px solid var(--border);
-  border-radius:18px;
-  padding:2rem;
-  box-shadow:0 10px 30px rgba(0,0,0,0.05);
-}
-
-.stats {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:1rem;
-}
-
-.stat {
-  background:var(--light);
-  padding:1rem;
-  border-radius:12px;
-  text-align:center;
-}
-
-.stat h3 {
-  color:var(--blue);
-  font-size:2rem;
-}
-
-.section {
-  padding:6rem 2rem;
-}
-
-.container {
-  max-width:1100px;
-  margin:auto;
-}
-
-.section-title {
-  font-size:2.5rem;
-  margin-bottom:1rem;
-}
-
-.section-sub {
-  color:var(--text);
-  margin-bottom:3rem;
-}
-
-.services {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:1rem;
-}
-
-.service {
-  border:1px solid var(--border);
-  border-radius:14px;
-  padding:1.5rem;
-  background:white;
-  transition:0.2s;
-}
-
-.service:hover {
-  transform:translateY(-3px);
-  border-color:var(--blue);
-}
-
-.service-icon {
-  font-size:2rem;
-  margin-bottom:1rem;
-}
-
-.service h3 {
-  margin-bottom:0.5rem;
-}
-
-.service p {
-  color:var(--text);
-  margin-bottom:1rem;
-}
-
-.price {
-  color:var(--blue);
-  font-weight:800;
-  font-size:1.2rem;
-}
-
-.cta {
-  background:var(--dark);
-  color:white;
-  text-align:center;
-  padding:5rem 2rem;
-}
-
-.cta h2 {
-  font-size:2.5rem;
-  margin-bottom:1rem;
-}
-
-.cta p {
-  color:#CBD5E1;
-  margin-bottom:2rem;
-}
-
-footer {
-  padding:2rem;
-  text-align:center;
-  border-top:1px solid var(--border);
-  color:#64748B;
-}
-
-@media(max-width:900px) {
-  .hero-inner {
-    grid-template-columns:1fr;
+  :root {
+    --blue:     #1D4ED8;
+    --blue-lt:  #EFF6FF;
+    --blue-md:  #DBEAFE;
+    --blue-dk:  #1E3A8A;
+    --slate:    #1E293B;
+    --slate2:   #334155;
+    --muted:    #64748B;
+    --muted2:   #94A3B8;
+    --border:   #E2E8F0;
+    --bg:       #FFFFFF;
+    --bg2:      #F8FAFC;
+    --bg3:      #F1F5F9;
+    --wa:       #25D366;
+    --fb:       #1877F2;
+    --sans:     'Inter', system-ui, sans-serif;
   }
 
-  .hero h1 {
-    font-size:2.5rem;
-  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--slate); font-family: var(--sans); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
 
+  /* ── NAV ── */
   nav {
-    padding:1rem;
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0.9rem 2.5rem;
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
   }
-}
+  .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .logo-icon {
+    width: 36px; height: 36px; background: var(--blue); border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; font-weight: 800; color: #fff; letter-spacing: -1px;
+    font-family: var(--sans);
+  }
+  .logo-name { font-size: 17px; font-weight: 800; color: var(--slate); letter-spacing: -0.4px; }
+  .logo-name span { color: var(--blue); }
+  .nav-btns { display: flex; gap: 0.6rem; }
+  .nav-wa, .nav-fb {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13px; font-weight: 600; padding: 8px 16px;
+    border-radius: 6px; text-decoration: none; transition: opacity 0.2s, transform 0.15s;
+    border: none; cursor: pointer;
+  }
+  .nav-wa { background: var(--wa); color: #fff; }
+  .nav-fb { background: var(--fb); color: #fff; }
+  .nav-wa:hover, .nav-fb:hover { opacity: 0.88; transform: translateY(-1px); }
+
+  /* ── LAYOUT ── */
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 2rem; }
+  section { padding: 6rem 2rem; }
+
+  /* ── SECTION LABELS ── */
+  .s-label {
+    display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--blue); background: var(--blue-lt);
+    padding: 4px 12px; border-radius: 20px; margin-bottom: 1rem;
+  }
+  .s-title { font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 800; letter-spacing: -1px; line-height: 1.1; margin-bottom: 0.75rem; color: var(--slate); }
+  .s-sub { font-size: 16px; color: var(--muted); max-width: 520px; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh; display: flex; align-items: center;
+    padding: 8rem 2rem 5rem; background: var(--bg);
+    border-bottom: 1px solid var(--border);
+  }
+  .hero-inner {
+    max-width: 1080px; margin: 0 auto; width: 100%;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+  }
+  .hero-label {
+    font-size: 12px; font-weight: 600; color: var(--blue); letter-spacing: 0.08em;
+    text-transform: uppercase; margin-bottom: 1.25rem;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .hero-label::before { content: ''; width: 20px; height: 2px; background: var(--blue); border-radius: 1px; }
+  .hero h1 { font-size: clamp(2.2rem, 4vw, 3.6rem); font-weight: 800; letter-spacing: -1.5px; line-height: 1.08; color: var(--slate); margin-bottom: 0.5rem; }
+  .hero-sub { font-size: 18px; font-weight: 600; color: var(--blue); margin-bottom: 1rem; }
+  .hero-desc { font-size: 16px; color: var(--muted); line-height: 1.75; margin-bottom: 2rem; }
+  .hero-btns { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+  .btn-wa {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--wa); color: #fff; font-size: 14px; font-weight: 700;
+    padding: 13px 24px; border-radius: 7px; text-decoration: none;
+    transition: opacity 0.2s, transform 0.15s;
+  }
+  .btn-wa:hover { opacity: 0.88; transform: translateY(-1px); }
+  .btn-fb {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--fb); color: #fff; font-size: 14px; font-weight: 700;
+    padding: 13px 24px; border-radius: 7px; text-decoration: none;
+    transition: opacity 0.2s, transform 0.15s;
+  }
+  .btn-fb:hover { opacity: 0.88; transform: translateY(-1px); }
+
+  /* Hero card */
+  .hero-card {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 16px; overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+  }
+  .hero-card-header {
+    background: var(--blue); padding: 1rem 1.5rem;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .hch-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .hch-title { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.85); margin-left: 4px; }
+  .hero-card-body { padding: 1.5rem; }
+  .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1rem; }
+  .stat-box {
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: 10px; padding: 1rem; text-align: center;
+  }
+  .stat-val { font-size: 1.8rem; font-weight: 800; color: var(--blue); display: block; letter-spacing: -1px; }
+  .stat-lbl { font-size: 11px; color: var(--muted); font-weight: 500; }
+  .checklist { display: flex; flex-direction: column; gap: 8px; }
+  .check-item { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--slate2); font-weight: 500; }
+  .check-item::before { content: '✓'; color: var(--wa); font-weight: 800; font-size: 15px; flex-shrink: 0; }
+
+  /* ── TRUST BAR ── */
+  .trust-bar {
+    background: var(--blue); padding: 1rem 2rem;
+    position: relative; z-index: 1;
+  }
+  .trust-inner {
+    max-width: 1080px; margin: 0 auto;
+    display: flex; gap: 2.5rem; flex-wrap: wrap; align-items: center; justify-content: center;
+  }
+  .ti { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.9); }
+  .ti-dot { width: 5px; height: 5px; background: rgba(255,255,255,0.5); border-radius: 50%; flex-shrink: 0; }
+
+  /* ── SERVICES ── */
+  .services { background: var(--bg2); }
+  .services-header { margin-bottom: 3rem; }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 1rem; }
+  .svc-card {
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: 12px; padding: 1.5rem; position: relative;
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+  }
+  .svc-card:hover {
+    border-color: var(--blue); transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(29,78,216,0.08);
+  }
+  .svc-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 1rem; }
+  .svc-icon { font-size: 28px; line-height: 1; }
+  .svc-badge {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase;
+    background: var(--blue-lt); color: var(--blue); padding: 3px 8px;
+    border-radius: 20px; border: 1px solid var(--blue-md); white-space: nowrap;
+  }
+  .svc-name { font-size: 15px; font-weight: 700; color: var(--slate); margin-bottom: 0.5rem; letter-spacing: -0.2px; }
+  .svc-desc { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 1.1rem; }
+  .svc-price { font-size: 18px; font-weight: 800; color: var(--blue); letter-spacing: -0.5px; }
+
+  /* ── PACKAGE ── */
+  .package { background: var(--bg); }
+  .pkg-card {
+    background: var(--blue-lt); border: 1px solid var(--blue-md);
+    border-radius: 16px; padding: 2.5rem;
+    display: grid; grid-template-columns: 1fr auto; gap: 3rem; align-items: center;
+    position: relative; overflow: hidden;
+  }
+  .pkg-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: var(--blue);
+  }
+  .pkg-eyebrow {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--blue); margin-bottom: 0.6rem;
+  }
+  .pkg-title { font-size: clamp(1.3rem, 2.5vw, 2rem); font-weight: 800; color: var(--slate); letter-spacing: -0.8px; margin-bottom: 1.5rem; }
+  .pkg-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem 2rem; }
+  .pkg-list li { font-size: 14px; color: var(--slate2); display: flex; align-items: center; gap: 8px; font-weight: 500; }
+  .pkg-list li::before { content: ''; width: 6px; height: 6px; background: var(--blue); border-radius: 50%; flex-shrink: 0; }
+  .pkg-price-block { text-align: center; flex-shrink: 0; min-width: 170px; }
+  .pkg-was { font-size: 13px; color: var(--muted2); text-decoration: line-through; display: block; margin-bottom: 0.2rem; }
+  .pkg-price { font-size: 4rem; font-weight: 800; color: var(--blue); line-height: 1; display: block; letter-spacing: -2px; }
+  .pkg-lbl { font-size: 12px; color: var(--muted); display: block; margin-bottom: 1.5rem; }
+
+  /* ── WHY ── */
+  .why { background: var(--bg2); }
+  .why-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-top: 3rem; }
+  .why-card {
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: 12px; padding: 1.5rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .why-card:hover { border-color: var(--blue); box-shadow: 0 4px 16px rgba(29,78,216,0.07); }
+  .why-icon { font-size: 24px; margin-bottom: 0.75rem; }
+  .why-title { font-size: 15px; font-weight: 700; color: var(--slate); margin-bottom: 0.4rem; }
+  .why-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+  /* ── CTA ── */
+  .cta { background: var(--slate); padding: 5rem 2rem; }
+  .cta-inner { max-width: 1080px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto; gap: 3rem; align-items: center; }
+  .cta-title { font-size: clamp(1.6rem, 3vw, 2.5rem); font-weight: 800; color: #fff; letter-spacing: -1px; line-height: 1.1; margin-bottom: 0.75rem; }
+  .cta-desc { font-size: 15px; color: var(--muted2); }
+  .cta-btns { display: flex; flex-direction: column; gap: 0.75rem; flex-shrink: 0; }
+  .cta-wa, .cta-fb {
+    display: inline-flex; align-items: center; gap: 8px; justify-content: center;
+    font-size: 14px; font-weight: 700; padding: 14px 28px; border-radius: 7px;
+    text-decoration: none; white-space: nowrap; transition: opacity 0.2s;
+  }
+  .cta-wa { background: var(--wa); color: #fff; }
+  .cta-fb { background: var(--fb); color: #fff; }
+  .cta-wa:hover, .cta-fb:hover { opacity: 0.88; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--bg); border-top: 1px solid var(--border);
+    padding: 1.75rem 2rem;
+  }
+  .footer-inner {
+    max-width: 1080px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+  }
+  .footer-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+  .footer-copy { font-size: 12px; color: var(--muted2); }
+  .footer-note { font-size: 12px; color: var(--muted2); }
+
+  /* ── FADE ANIMATION ── */
+  .fade-up { opacity: 0; transform: translateY(20px); transition: opacity 0.55s, transform 0.55s; }
+  .fade-up.in { opacity: 1; transform: none; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 860px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .hero-card { display: none; }
+    .pkg-card { grid-template-columns: 1fr; gap: 2rem; }
+    .pkg-list { grid-template-columns: 1fr; }
+    .cta-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .cta-btns { flex-direction: row; flex-wrap: wrap; }
+    .nav-btns .nav-fb { display: none; }
+  }
+  @media (max-width: 520px) {
+    nav { padding: 0.9rem 1.25rem; }
+    section { padding: 4rem 1.25rem; }
+    .hero { padding: 7rem 1.25rem 4rem; }
+    .cta { padding: 4rem 1.25rem; }
+    footer { padding: 1.5rem 1.25rem; }
+    h1 { letter-spacing: -1px; }
+  }
 </style>
 </head>
 <body>
 
-<nav>
-  <div class="logo">FixMyPC <span>Perth</span></div>
+<!-- NAV -->
+<nav id="nav"></nav>
 
-  <div class="nav-buttons">
-    <a class="btn btn-wa" href="https://wa.me/61452573701?text=Hi%20I'd%20like%20a%20quote" target="_blank">
-      WhatsApp
-    </a>
-
-    <a class="btn btn-fb" href="https://www.facebook.com/profile.php?id=61588810785733" target="_blank">
-      Facebook
-    </a>
-  </div>
-</nav>
-
+<!-- HERO -->
 <section class="hero">
   <div class="hero-inner">
-
     <div>
-      <p class="hero-sub">Canning Vale, Perth WA</p>
-
-      <h1>
-        Perth's trusted <span>PC repair</span> specialist.
-      </h1>
-
-      <p class="hero-desc">
-        Fast turnaround. Honest pricing. Gaming PCs, virus removal,
-        Windows reinstall, SSD upgrades, data recovery and more.
-      </p>
-
-      <div class="hero-buttons">
-        <a class="btn btn-wa" href="https://wa.me/61452573701?text=Hi%20I'd%20like%20a%20quote" target="_blank">
-          Message on WhatsApp
-        </a>
-
-        <a class="btn btn-fb" href="https://www.facebook.com/profile.php?id=61588810785733" target="_blank">
-          Facebook Page
-        </a>
-      </div>
+      <div class="hero-label" id="hero-location"></div>
+      <h1 id="hero-h1"></h1>
+      <p class="hero-sub" id="hero-sub"></p>
+      <p class="hero-desc" id="hero-desc"></p>
+      <div class="hero-btns" id="hero-btns"></div>
     </div>
-
-    <div class="card">
-      <div class="stats">
-
-        <div class="stat">
-          <h3>$59</h3>
-          <p>Starting from</p>
-        </div>
-
-        <div class="stat">
-          <h3>24hr</h3>
-          <p>Avg turnaround</p>
-        </div>
-
-        <div class="stat">
-          <h3>30d</h3>
-          <p>Warranty</p>
-        </div>
-
-        <div class="stat">
-          <h3>5/5</h3>
-          <p>Local rated</p>
-        </div>
-
+    <div class="hero-card">
+      <div class="hero-card-header">
+        <div class="hch-dot" style="background:#FF5F57"></div>
+        <div class="hch-dot" style="background:#FEBC2E"></div>
+        <div class="hch-dot" style="background:#28C840"></div>
+        <span class="hch-title">FixMyPC Perth</span>
       </div>
-    </div>
-
-  </div>
-</section>
-
-<section class="section">
-  <div class="container">
-
-    <h2 class="section-title">Services</h2>
-    <p class="section-sub">
-      From broken laptops to gaming PCs, if it has a power button,
-      it can probably be fixed.
-    </p>
-
-    <div class="services">
-
-      <div class="service">
-        <div class="service-icon">🛡️</div>
-        <h3>Virus Removal</h3>
-        <p>Full malware cleanup and browser reset.</p>
-        <div class="price">From $80</div>
+      <div class="hero-card-body">
+        <div class="stat-grid" id="stat-grid"></div>
+        <div class="checklist" id="checklist"></div>
       </div>
-
-      <div class="service">
-        <div class="service-icon">⚡</div>
-        <h3>SSD Upgrades</h3>
-        <p>Faster boot times with full data transfer.</p>
-        <div class="price">From $80</div>
-      </div>
-
-      <div class="service">
-        <div class="service-icon">🪟</div>
-        <h3>Windows Reinstall</h3>
-        <p>Fresh install with files safely backed up.</p>
-        <div class="price">From $90</div>
-      </div>
-
-      <div class="service">
-        <div class="service-icon">🎮</div>
-        <h3>Gaming PC Builds</h3>
-        <p>Custom builds, upgrades and tuning.</p>
-        <div class="price">From $80</div>
-      </div>
-
-      <div class="service">
-        <div class="service-icon">💾</div>
-        <h3>Data Recovery</h3>
-        <p>Recover files from damaged drives.</p>
-        <div class="price">From $120</div>
-      </div>
-
-      <div class="service">
-        <div class="service-icon">🖥️</div>
-        <h3>Remote Support</h3>
-        <p>Fix software issues remotely via AnyDesk.</p>
-        <div class="price">$50/hr</div>
-      </div>
-
     </div>
   </div>
 </section>
 
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-inner">
+    <div class="ti"><span class="ti-dot"></span>Same or next day turnaround</div>
+    <div class="ti"><span class="ti-dot"></span>Local, drop off or callout</div>
+    <div class="ti"><span class="ti-dot"></span>30-day warranty on all work</div>
+    <div class="ti"><span class="ti-dot"></span>Upfront pricing, no surprises</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services">
+  <div class="wrap">
+    <div class="services-header fade-up">
+      <span class="s-label">Services</span>
+      <h2 class="s-title" style="display:inline-block;">Every tech problem, solved.</h2>
+       
+       <a href="pricing.html" class="btn-fb" style="margin-left:1rem;display:inline-flex">
+  View full price list →
+</a>
+       
+      <p class="s-sub">From virus-ridden laptops to custom gaming rigs, if it's got a power button, it's fixable</p>
+    </div>
+    <div class="services-grid" id="services-grid"></div>
+  </div>
+</section>
+
+<!-- PACKAGE -->
+<section class="package" id="pkg-section">
+  <div class="wrap">
+    <div class="pkg-card fade-up" id="pkg-card"></div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why">
+  <div class="wrap">
+    <div class="fade-up">
+      <span class="s-label">Why choose me</span>
+      <h2 class="s-title">Local. Fast. Honest.</h2>
+    </div>
+    <div class="why-grid" id="why-grid"></div>
+  </div>
+</section>
+
+<!-- CTA -->
 <section class="cta">
-  <h2>Need your PC fixed?</h2>
-
-  <p>
-    Message now for a free quote. Fast replies and honest pricing.
-  </p>
-
-  <div class="hero-buttons" style="justify-content:center;">
-    <a class="btn btn-wa" href="https://wa.me/61452573701?text=Hi%20I'd%20like%20a%20quote" target="_blank">
-      WhatsApp Now
-    </a>
-
-    <a class="btn btn-fb" href="https://www.facebook.com/profile.php?id=61588810785733" target="_blank">
-      Facebook Page
-    </a>
+  <div class="cta-inner">
+    <div>
+      <h2 class="cta-title" id="cta-title"></h2>
+      <p class="cta-desc" id="cta-desc"></p>
+    </div>
+    <div class="cta-btns" id="cta-btns"></div>
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
-  © 2026 FixMyPC Perth · Raja · ABN 67 645 153 359
+  <div class="footer-inner">
+    <a href="#" class="footer-logo" id="footer-logo"></a>
+    <div class="footer-copy" id="footer-copy"></div>
+    <div class="footer-note">30-day labour warranty on all services</div>
+  </div>
 </footer>
 
+<script>
+  const WA  = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(CONFIG.whatsappMsg)}`;
+  const FB  = CONFIG.facebookURL;
+
+  const waIcon = `<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>`;
+  const fbIcon = `<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>`;
+
+  // NAV
+  document.getElementById('nav').innerHTML = `
+    <a href="#" class="nav-logo">
+      <div class="logo-icon">FP</div>
+      <span class="logo-name">${CONFIG.businessName.replace('Perth','<span>Perth</span>')}</span>
+    </a>
+    <div class="nav-btns">
+      <a href="${WA}" target="_blank" class="nav-wa" rel="noopener">${waIcon} WhatsApp</a>
+      <a href="${FB}" target="_blank" class="nav-fb" rel="noopener">${fbIcon} Facebook</a>
+    </div>`;
+
+  // HERO
+  document.getElementById('hero-location').innerHTML = `${CONFIG.suburb}, ${CONFIG.state}`;
+  document.getElementById('hero-h1').textContent = CONFIG.heroHeadline;
+  document.getElementById('hero-sub').textContent = CONFIG.heroSub;
+  document.getElementById('hero-desc').textContent = CONFIG.heroDesc;
+  document.getElementById('hero-btns').innerHTML = `
+    <a href="${WA}" target="_blank" class="btn-wa" rel="noopener">${waIcon} Message on WhatsApp</a>
+    <a href="${FB}" target="_blank" class="btn-fb" rel="noopener">${fbIcon} Facebook Page</a>`;
+
+  // STATS
+  document.getElementById('stat-grid').innerHTML = CONFIG.stats.map(s=>`
+    <div class="stat-box">
+      <span class="stat-val">${s.val}</span>
+      <span class="stat-lbl">${s.label}</span>
+    </div>`).join('');
+
+  // CHECKLIST
+  document.getElementById('checklist').innerHTML = [
+    'Same or next day turnaround',
+    '30-day warranty on all work',
+    'Upfront pricing — no surprises',
+    'Local Perth tech — fast drop-off',
+  ].map(i=>`<div class="check-item">${i}</div>`).join('');
+
+  // SERVICES
+  document.getElementById('services-grid').innerHTML = CONFIG.services.map(s=>`
+    <div class="svc-card fade-up">
+      <div class="svc-top">
+        <span class="svc-icon">${s.icon}</span>
+        ${s.badge ? `<span class="svc-badge">${s.badge}</span>` : ''}
+      </div>
+      <div class="svc-name">${s.name}</div>
+      <div class="svc-desc">${s.desc}</div>
+      <div class="svc-price">${s.price}</div>
+    </div>`).join('');
+
+  // PACKAGE
+  if (CONFIG.packageShow) {
+    document.getElementById('pkg-card').innerHTML = `
+      <div>
+        <div class="pkg-eyebrow">★ Best value package</div>
+        <h3 class="pkg-title">${CONFIG.packageName}</h3>
+        <ul class="pkg-list">
+          ${CONFIG.packageItems.map(i=>`<li>${i}</li>`).join('')}
+        </ul>
+      </div>
+      <div class="pkg-price-block">
+        <span class="pkg-was">${CONFIG.packageWasPrice}</span>
+        <span class="pkg-price">${CONFIG.packagePrice}</span>
+        <span class="pkg-lbl">${CONFIG.packageLabel}</span>
+        <a href="${WA}" target="_blank" class="btn-wa" rel="noopener" style="white-space:nowrap">${waIcon} Book this now</a>
+      </div>`;
+  } else {
+    document.getElementById('pkg-section').style.display = 'none';
+  }
+
+  // WHY
+  document.getElementById('why-grid').innerHTML = CONFIG.reasons.map(r=>`
+    <div class="why-card fade-up">
+      <div class="why-icon">${r.icon}</div>
+      <div class="why-title">${r.title}</div>
+      <div class="why-desc">${r.desc}</div>
+    </div>`).join('');
+
+  // CTA
+  document.getElementById('cta-title').textContent = 'Ready? Message me now for a free quote, I reply in minutes.';
+  document.getElementById('cta-desc').textContent = `WhatsApp or Facebook — based in ${CONFIG.suburb}, ${CONFIG.state}. Fast replies, free quotes.`;
+  document.getElementById('cta-btns').innerHTML = `
+    <a href="${WA}" target="_blank" class="cta-wa" rel="noopener">${waIcon} WhatsApp me now</a>
+    <a href="${FB}" target="_blank" class="cta-fb" rel="noopener">${fbIcon} Facebook page</a>`;
+
+  // FOOTER
+  document.getElementById('footer-logo').innerHTML = `
+    <div class="logo-icon" style="width:28px;height:28px;font-size:12px">FP</div>
+    <span class="logo-name" style="font-size:14px">${CONFIG.businessName.replace('Perth','<span>Perth</span>')}</span>`;
+  document.getElementById('footer-copy').textContent =
+    `© ${new Date().getFullYear()} ${CONFIG.businessName} · ${CONFIG.yourName} · ABN ${CONFIG.abn}`;
+
+  // ANIMATIONS
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach((e,i) => {
+      if (e.isIntersecting) { setTimeout(()=>e.target.classList.add('in'), i*70); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+</script>
 </body>
 </html>
-```
