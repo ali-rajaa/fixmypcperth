@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reviews & FAQ | FixMyPC Perth</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<meta property="og:url" content="https://www.fixmypcperth.com/reviews.html">
+<meta name="description" content="Real customer reviews and frequently asked questions for FixMyPC Perth. 5-star rated local PC repair in Canning Vale. See what Perth locals say about our service.">
+<link rel="canonical" href="https://www.fixmypcperth.com/reviews.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --blue:       #1560FF;
+    --blue-lt:    #EEF3FF;
+    --blue-mid:   #C7D8FF;
+    --blue-dk:    #0A3ACC;
+    --teal:       #00CFFF;
+    --ink:        #0F172A;
+    --ink2:       #1E293B;
+    --muted:      #64748B;
+    --muted2:     #94A3B8;
+    --border:     #E2E8F0;
+    --border2:    #CBD5E1;
+    --bg:         #FFFFFF;
+    --bg2:        #F8FAFC;
+    --bg3:        #F1F5F9;
+    --green:      #16A34A;
+    --wa:         #22C55E;
+    --wa-dk:      #16A34A;
+    --fb:         #1877F2;
+    --yellow:     #FBBF24;
+    --display:    'Sora', sans-serif;
+    --body:       'DM Sans', sans-serif;
+    --radius:     14px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+  body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.6; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2rem; height: 64px;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(226,232,240,0.8);
+  }
+  .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .logo-mark {
+    width: 38px; height: 38px; background: var(--blue); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--display); font-size: 14px; font-weight: 800; color: #fff;
+    box-shadow: 0 2px 8px rgba(21,96,255,0.3);
+  }
+  .logo-name { font-family: var(--display); font-size: 16px; font-weight: 700; color: var(--ink); letter-spacing: -0.3px; }
+  .logo-name em { color: var(--blue); font-style: normal; }
+  .nav-right { display: flex; align-items: center; gap: 10px; }
+  .nav-pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: var(--body); font-size: 13px; font-weight: 600;
+    padding: 9px 18px; border-radius: 50px; text-decoration: none;
+    transition: transform 0.15s, box-shadow 0.15s, opacity 0.15s;
+  }
+  .nav-pill:hover { transform: translateY(-1px); opacity: 0.92; }
+  .pill-wa  { background: var(--wa); color: #fff; box-shadow: 0 2px 8px rgba(34,197,94,0.3); }
+  .pill-ghost {
+    background: transparent; color: var(--ink);
+    border: 1.5px solid var(--border2); padding: 8px 16px;
+  }
+  .pill-ghost:hover { border-color: var(--blue); color: var(--blue); transform: none; }
+
+  /* ── LAYOUT ── */
+  .wrap { max-width: 1000px; margin: 0 auto; padding: 0 2rem; }
+  .page { padding: 96px 2rem 5rem; }
+
+  /* ── PAGE HERO ── */
+  .page-hero {
+    text-align: center; padding: 3.5rem 2rem 3rem;
+    background: var(--bg); position: relative; overflow: hidden;
+  }
+  .page-hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 700px 400px at 50% 60%, rgba(21,96,255,0.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .s-eyebrow {
+    display: inline-block; font-size: 11px; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--blue); background: var(--blue-lt);
+    padding: 4px 14px; border-radius: 50px;
+    border: 1px solid var(--blue-mid); margin-bottom: 1rem;
+  }
+  .page-title {
+    font-family: var(--display);
+    font-size: clamp(2rem, 4.5vw, 3.2rem);
+    font-weight: 800; letter-spacing: -1.8px;
+    color: var(--ink); margin-bottom: 0.75rem; line-height: 1.08;
+  }
+  .page-title em { color: var(--blue); font-style: normal; }
+  .page-sub { font-size: 16px; color: var(--muted); max-width: 500px; margin: 0 auto; line-height: 1.7; }
+
+  /* ── TRUST TICKER ── */
+  .trust-strip { background: var(--ink); padding: 14px 0; overflow: hidden; }
+  .trust-track {
+    display: flex; gap: 0; white-space: nowrap;
+    animation: ticker 24s linear infinite;
+  }
+  .trust-track:hover { animation-play-state: paused; }
+  @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .trust-item {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 0 2.5rem; font-size: 13px; font-weight: 600;
+    color: rgba(255,255,255,0.85); white-space: nowrap;
+  }
+  .trust-dot { width: 4px; height: 4px; background: var(--blue); border-radius: 50%; }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    background: var(--ink2); border-radius: 20px;
+    padding: 2rem 2.5rem; margin: 2.5rem 0;
+    position: relative; overflow: hidden;
+  }
+  .stats-bar::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--blue), var(--teal), var(--wa));
+  }
+  .stats-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 0; divide-x: 1px solid rgba(255,255,255,0.08);
+  }
+  .stat-item {
+    text-align: center; padding: 0.75rem 1rem;
+    border-right: 1px solid rgba(255,255,255,0.08);
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-val {
+    font-family: var(--display); font-size: 2.5rem; font-weight: 800;
+    color: var(--teal); line-height: 1; letter-spacing: -2px; display: block;
+  }
+  .stat-lbl { font-size: 12px; color: rgba(255,255,255,0.45); font-weight: 500; margin-top: 6px; display: block; }
+
+  /* ── SECTION LABEL ── */
+  .sec-label {
+    font-family: var(--display); font-size: 1.6rem; font-weight: 800;
+    color: var(--ink); letter-spacing: -0.8px; margin-bottom: 0.4rem;
+  }
+  .sec-label em { color: var(--blue); font-style: normal; }
+  .sec-sublabel { font-size: 14px; color: var(--muted); margin-bottom: 1.75rem; }
+
+  /* ── REVIEW CARDS ── */
+  .reviews-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 1rem; margin-bottom: 3rem;
+  }
+  .review-card {
+    background: var(--bg2); border: 1.5px solid var(--border);
+    border-radius: 16px; padding: 1.4rem 1.5rem;
+    display: flex; flex-direction: column; gap: 0.9rem;
+    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    position: relative; overflow: hidden;
+  }
+  .review-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--blue), var(--teal));
+    opacity: 0; transition: opacity 0.2s;
+  }
+  .review-card:hover { border-color: var(--blue-mid); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(21,96,255,0.08); }
+  .review-card:hover::before { opacity: 1; }
+  .review-stars { display: flex; gap: 2px; }
+  .star { color: var(--yellow); font-size: 14px; }
+  .review-quote {
+    font-size: 13.5px; color: var(--ink2); line-height: 1.7;
+    font-style: italic; flex: 1;
+  }
+  .review-quote::before { content: '"'; font-size: 1.5rem; color: var(--blue-mid); line-height: 0; vertical-align: -8px; margin-right: 2px; font-style: normal; }
+  .review-footer { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
+  .review-author { font-family: var(--display); font-size: 13px; font-weight: 700; color: var(--ink); }
+  .review-suburb { font-size: 11px; color: var(--muted2); font-weight: 500; margin-top: 1px; }
+  .review-service {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.05em;
+    background: var(--blue-lt); color: var(--blue);
+    border: 1px solid var(--blue-mid); padding: 3px 9px; border-radius: 50px;
+    white-space: nowrap;
+  }
+
+  /* ── HOW IT WORKS ── */
+  .how-wrap {
+    background: var(--ink); border-radius: 20px;
+    padding: 2.5rem; margin-bottom: 3rem;
+    position: relative; overflow: hidden;
+  }
+  .how-wrap::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--blue), var(--teal), var(--wa));
+  }
+  .how-title {
+    font-family: var(--display); font-size: 1.4rem; font-weight: 800;
+    color: #fff; letter-spacing: -0.6px; margin-bottom: 0.25rem;
+  }
+  .how-sub { font-size: 13px; color: rgba(255,255,255,0.4); margin-bottom: 2rem; }
+  .how-grid {
+    display: grid; grid-template-columns: 1fr 40px 1fr 40px 1fr;
+    align-items: center; gap: 0;
+  }
+  .how-step { text-align: center; padding: 0 0.5rem; }
+  .how-num {
+    width: 48px; height: 48px; border-radius: 50%;
+    background: rgba(21,96,255,0.15); border: 1.5px solid rgba(21,96,255,0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--display); font-size: 18px; font-weight: 800; color: var(--blue);
+    margin: 0 auto 0.9rem;
+  }
+  .how-icon { font-size: 22px; display: block; margin-bottom: 0.6rem; }
+  .how-step-title { font-family: var(--display); font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 0.3rem; }
+  .how-step-desc { font-size: 12px; color: rgba(255,255,255,0.45); line-height: 1.6; }
+  .how-arrow { text-align: center; color: rgba(255,255,255,0.2); font-size: 20px; }
+
+  /* ── FAQ ── */
+  .faq-wrap { margin-bottom: 3rem; }
+  .faq-item { margin-bottom: 0.6rem; }
+  .faq-trigger {
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    padding: 1.1rem 1.4rem;
+    background: var(--bg2); border: 1.5px solid var(--border);
+    border-radius: 12px; cursor: pointer; list-style: none;
+    user-select: none; -webkit-user-select: none;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .faq-trigger::-webkit-details-marker { display: none; }
+  .faq-trigger:hover { background: var(--blue-lt); border-color: var(--blue-mid); }
+  details[open] .faq-trigger {
+    background: var(--ink); border-color: var(--ink);
+    border-radius: 12px 12px 0 0;
+  }
+  details[open] .faq-trigger .faq-q { color: #fff; }
+  details[open] .faq-chevron { transform: rotate(180deg); }
+  details[open] .faq-chevron svg path { stroke: rgba(255,255,255,0.5); }
+  .faq-q {
+    font-family: var(--display); font-size: 14px; font-weight: 700;
+    color: var(--ink); letter-spacing: -0.2px;
+  }
+  .faq-chevron {
+    width: 26px; height: 26px; border-radius: 50%;
+    background: rgba(0,0,0,0.06); flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.3s cubic-bezier(.22,.68,0,1.2), background 0.15s;
+  }
+  details[open] .faq-chevron { background: rgba(255,255,255,0.1); }
+  .faq-answer {
+    padding: 1.1rem 1.4rem 1.3rem;
+    background: var(--bg); border: 1.5px solid var(--border);
+    border-top: none; border-radius: 0 0 12px 12px;
+    font-size: 14px; color: var(--muted); line-height: 1.75;
+  }
+  .faq-answer strong { color: var(--ink); font-weight: 600; }
+
+  /* ── CTA BAR ── */
+  .cta-bar {
+    background: var(--bg2); border: 1.5px solid var(--border);
+    border-radius: 20px; padding: 2.75rem; text-align: center; margin: 2.5rem 0;
+  }
+  .cta-kicker {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--blue); margin-bottom: 0.75rem;
+  }
+  .cta-bar h3 {
+    font-family: var(--display); font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 800; color: var(--ink); letter-spacing: -1px; margin-bottom: 0.5rem;
+  }
+  .cta-bar p { font-size: 14px; color: var(--muted); margin-bottom: 1.75rem; }
+  .cta-btns { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
+  .btn-wa {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--wa); color: #fff;
+    font-family: var(--body); font-size: 15px; font-weight: 700;
+    padding: 14px 26px; border-radius: 50px; text-decoration: none;
+    box-shadow: 0 4px 16px rgba(34,197,94,0.35);
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .btn-wa:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(34,197,94,0.45); }
+  .btn-fb {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--fb); color: #fff;
+    font-family: var(--body); font-size: 15px; font-weight: 700;
+    padding: 14px 26px; border-radius: 50px; text-decoration: none;
+    box-shadow: 0 4px 16px rgba(24,119,242,0.3);
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .btn-fb:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(24,119,242,0.4); }
+  .btn-pricing {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: transparent; color: var(--ink);
+    font-family: var(--body); font-size: 15px; font-weight: 700;
+    padding: 13px 26px; border-radius: 50px; text-decoration: none;
+    border: 1.5px solid var(--border2);
+    transition: transform 0.15s, border-color 0.15s, color 0.15s;
+  }
+  .btn-pricing:hover { border-color: var(--blue); color: var(--blue); transform: translateY(-1px); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--bg); border-top: 1px solid var(--border); padding: 1.75rem 2rem;
+  }
+  .footer-inner {
+    max-width: 1000px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 1rem; flex-wrap: wrap;
+  }
+  .footer-copy { font-size: 12px; color: var(--muted2); }
+
+  /* ── FADE ANIMATIONS ── */
+  .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s cubic-bezier(.22,.68,0,1.2), transform 0.6s cubic-bezier(.22,.68,0,1.2); }
+  .fade-up.in { opacity: 1; transform: none; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 720px) {
+    nav { padding: 0 1rem; height: 56px; }
+    .logo-name { font-size: 14px; }
+    .nav-pill { font-size: 12px; padding: 7px 13px; }
+
+    .page { padding: 72px 1rem 4rem; }
+    .wrap { padding: 0 1rem; }
+
+    .page-hero { padding: 2rem 1rem 2rem; }
+    .page-title { font-size: clamp(1.6rem, 7vw, 2.4rem); letter-spacing: -1px; }
+    .page-sub { font-size: 14px; }
+
+    .stats-bar { padding: 1.5rem 1rem; border-radius: 14px; margin: 1.5rem 0; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 0; }
+    .stat-item:nth-child(2) { border-right: none; }
+    .stat-item:nth-child(3) { border-right: 1px solid rgba(255,255,255,0.08); border-top: 1px solid rgba(255,255,255,0.08); }
+    .stat-item:nth-child(4) { border-top: 1px solid rgba(255,255,255,0.08); border-right: none; }
+    .stat-val { font-size: 2rem; }
+
+    .reviews-grid { grid-template-columns: 1fr; }
+
+    .how-wrap { padding: 1.5rem; border-radius: 14px; }
+    .how-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+    .how-arrow { display: none; }
+    .how-step { text-align: left; display: flex; align-items: flex-start; gap: 1rem; padding: 0; }
+    .how-num { margin: 0; flex-shrink: 0; width: 40px; height: 40px; font-size: 15px; }
+    .how-step-content { flex: 1; }
+
+    .faq-q { font-size: 13px; }
+    .faq-trigger { padding: 1rem 1.1rem; }
+    .faq-answer { padding: 1rem 1.1rem 1.15rem; font-size: 13.5px; }
+
+    .cta-bar { padding: 1.75rem 1.25rem; border-radius: 14px; margin: 1.5rem 0; }
+    .cta-btns { flex-direction: column; }
+    .btn-wa, .btn-fb, .btn-pricing { justify-content: center; }
+
+    footer { padding: 1.25rem 1rem; }
+    .footer-inner { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+  }
+
+  @media (max-width: 440px) {
+    .logo-name { font-size: 13px; }
+    .nav-right { gap: 6px; }
+    .stat-val { font-size: 1.75rem; }
+  }
+
+  @media (max-width: 360px) {
+    .logo-name { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="logo-mark">FP</div>
+    <span class="logo-name">FixMyPC <em>Perth</em></span>
+  </a>
+  <div class="nav-right">
+    <a href="index.html" class="nav-pill pill-ghost">← Home</a>
+    <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" class="nav-pill pill-wa" rel="noopener">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>
+      WhatsApp me
+    </a>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero" style="margin-top:64px;">
+  <span class="s-eyebrow">Verified customer reviews</span>
+  <h1 class="page-title">Real customers, <em>real results.</em></h1>
+  <p class="page-sub">Perth locals trust FixMyPC Perth for fast, honest repairs. See what they have to say.</p>
+</div>
+
+<!-- TRUST TICKER -->
+<div class="trust-strip">
+  <div class="trust-track" id="trust-track"></div>
+</div>
+
+<div class="page" style="padding-top:3rem;">
+<div class="wrap">
+
+  <!-- STATS BAR -->
+  <div class="stats-bar fade-up">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <span class="stat-val">5.0</span>
+        <span class="stat-lbl">⭐ Average rating</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-val">200+</span>
+        <span class="stat-lbl">Repairs completed</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-val">&lt;2hr</span>
+        <span class="stat-lbl">Avg. response time</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-val">30d</span>
+        <span class="stat-lbl">Labour warranty</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- REVIEWS -->
+  <div class="fade-up" style="margin-bottom:0.5rem;">
+    <div class="sec-label">What Perth locals <em>are saying</em></div>
+    <p class="sec-sublabel">Replace these placeholders with your real Google reviews as they come in.</p>
+  </div>
+
+  <div class="reviews-grid fade-up">
+
+    <div class="review-card">
+      <div class="review-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+      <p class="review-quote">My laptop had been running like a snail for months. Dropped it off in the morning and had it back by afternoon running faster than the day I bought it. Couldn't believe it.</p>
+      <div class="review-footer">
+        <div>
+          <div class="review-author">Sarah M.</div>
+          <div class="review-suburb">Canning Vale</div>
+        </div>
+        <span class="review-service">SSD Upgrade</span>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+      <p class="review-quote">Got hit with ransomware and thought I'd lost everything. He recovered all my files and had Windows reinstalled same day. Absolute legend, will recommend to everyone.</p>
+      <div class="review-footer">
+        <div>
+          <div class="review-author">Dave T.</div>
+          <div class="review-suburb">Thornlie</div>
+        </div>
+        <span class="review-service">Virus Removal</span>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+      <p class="review-quote">Called about a blue screen issue, got a quote within 20 minutes on WhatsApp and the repair was done next morning. Pricing was exactly what was quoted. No surprises.</p>
+      <div class="review-footer">
+        <div>
+          <div class="review-author">Priya K.</div>
+          <div class="review-suburb">Willetton</div>
+        </div>
+        <span class="review-service">BSOD Fix</span>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+      <p class="review-quote">Built my first gaming PC and completely botched the cable management. He tidied the whole thing up, re-seated my RAM properly, and it actually posts now. Great service.</p>
+      <div class="review-footer">
+        <div>
+          <div class="review-author">Jake R.</div>
+          <div class="review-suburb">Armadale</div>
+        </div>
+        <span class="review-service">Gaming PC Build</span>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+      <p class="review-quote">Our home WiFi had dead spots all through the back of the house. He came out, repositioned the router and added a mesh node, now we have full signal everywhere. Worth every cent.</p>
+      <div class="review-footer">
+        <div>
+          <div class="review-author">Fiona &amp; Mark L.</div>
+          <div class="review-suburb">Rossmoyne</div>
+        </div>
+        <span class="review-service">Networking</span>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+      <p class="review-quote">PC completely died on me the night before a huge work deadline. He answered on WhatsApp at 8pm, came first thing next morning and had it running again by 10am. Lifesaver.</p>
+      <div class="review-footer">
+        <div>
+          <div class="review-author">Chris B.</div>
+          <div class="review-suburb">Gosnells</div>
+        </div>
+        <span class="review-service">PC Won't Boot</span>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+      <p class="review-quote">Mum's computer was covered in viruses, browser hijacked, the lot. He cleaned everything, set up proper antivirus and even showed her how to spot dodgy emails. Really patient and kind.</p>
+      <div class="review-footer">
+        <div>
+          <div class="review-author">Angela W.</div>
+          <div class="review-suburb">Beckenham</div>
+        </div>
+        <span class="review-service">Virus Removal</span>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+      <p class="review-quote">Transparent, fast, and actually explains what he did in plain English. Didn't feel like I was being upsold anything I didn't need. Already booked him again for a RAM upgrade.</p>
+      <div class="review-footer">
+        <div>
+          <div class="review-author">Tom S.</div>
+          <div class="review-suburb">Cannington</div>
+        </div>
+        <span class="review-service">Windows Reinstall</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div class="how-wrap fade-up">
+    <div class="how-title">How it works</div>
+    <p class="how-sub">Three simple steps from problem to fixed.</p>
+    <div class="how-grid">
+      <div class="how-step">
+        <div class="how-num">1</div>
+        <div class="how-step-content">
+          <span class="how-icon">💬</span>
+          <div class="how-step-title">Message me</div>
+          <p class="how-step-desc">WhatsApp or Facebook. Describe the issue, get a quote in minutes. No call centres, no hold music — just me.</p>
+        </div>
+      </div>
+      <div class="how-arrow">→</div>
+      <div class="how-step">
+        <div class="how-num">2</div>
+        <div class="how-step-content">
+          <span class="how-icon">🖥️</span>
+          <div class="how-step-title">Drop off or I come to you</div>
+          <p class="how-step-desc">Drop your PC to Canning Vale or I'll come to your suburb for networking and on-site jobs. Flexible to suit you.</p>
+        </div>
+      </div>
+      <div class="how-arrow">→</div>
+      <div class="how-step">
+        <div class="how-num">3</div>
+        <div class="how-step-content">
+          <span class="how-icon">✅</span>
+          <div class="how-step-title">Fixed and back same day</div>
+          <p class="how-step-desc">Most repairs done same or next day. You get a full rundown of what was done and a 30-day labour warranty.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq-wrap fade-up">
+    <div class="sec-label" style="margin-bottom:0.4rem;">Frequently asked <em>questions</em></div>
+    <p class="sec-sublabel">Everything you need to know before booking.</p>
+
+    <div class="faq-item">
+      <details>
+        <summary class="faq-trigger">
+          <span class="faq-q">Do you come to me, or do I drop my PC off?</span>
+          <span class="faq-chevron"><svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="#64748B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </summary>
+        <div class="faq-answer">Both options are available. For most PC repairs, upgrades and builds, you drop your machine off to me in <strong>Canning Vale</strong> — it's quicker and means I can work on it fully. For networking, printer setup, smart TV, and on-site jobs, I come to you anywhere in Perth. A <strong>$40 callout fee</strong> applies for on-site visits.</div>
+      </details>
+    </div>
+
+    <div class="faq-item">
+      <details>
+        <summary class="faq-trigger">
+          <span class="faq-q">How long does a repair take?</span>
+          <span class="faq-chevron"><svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="#64748B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </summary>
+        <div class="faq-answer">Most repairs are completed <strong>same day or next day</strong>. Simple jobs like virus removal, SSD upgrades and password resets are often done within a few hours. More complex repairs like data recovery or a full Windows reinstall may take a full day. I'll always give you an honest time estimate before you book.</div>
+      </details>
+    </div>
+
+    <div class="faq-item">
+      <details>
+        <summary class="faq-trigger">
+          <span class="faq-q">Will you wipe my files or data?</span>
+          <span class="faq-chevron"><svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="#64748B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </summary>
+        <div class="faq-answer"><strong>Never without your permission.</strong> I always back up your files before doing anything that could affect them — including Windows reinstalls. You'll be told exactly what will happen to your data before I proceed. Your files are treated with the same care I'd want for my own.</div>
+      </details>
+    </div>
+
+    <div class="faq-item">
+      <details>
+        <summary class="faq-trigger">
+          <span class="faq-q">What if you can't fix it?</span>
+          <span class="faq-chevron"><svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="#64748B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </summary>
+        <div class="faq-answer">For <strong>dead drive data recovery</strong>, it's a strict no fix, no fee policy — if I can't recover your data, you pay nothing. For other repairs, the $120 diagnostic fee covers my time to assess the problem. If a repair isn't possible or isn't worth the cost, I'll tell you honestly and not charge you more than the diagnostic.</div>
+      </details>
+    </div>
+
+    <div class="faq-item">
+      <details>
+        <summary class="faq-trigger">
+          <span class="faq-q">How does the $120 diagnostic fee work?</span>
+          <span class="faq-chevron"><svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="#64748B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </summary>
+        <div class="faq-answer">The $120 diagnostic covers a full check of your PC, a root cause report, and a written quote. <strong>If you proceed with the repair, the $120 is deducted from the total cost</strong> — so you're not paying on top of the repair price. If you decide not to proceed, you only pay the $120 for my time and report.</div>
+      </details>
+    </div>
+
+    <div class="faq-item">
+      <details>
+        <summary class="faq-trigger">
+          <span class="faq-q">Do you work on laptops as well as desktop PCs?</span>
+          <span class="faq-chevron"><svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="#64748B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </summary>
+        <div class="faq-answer">Yes — most software repairs, virus removal, Windows reinstalls, data recovery, and SSD upgrades can be done on laptops as well as desktops. Hardware upgrades like RAM and storage are possible on many laptops too, depending on the model. <strong>Message me with your laptop model</strong> and I'll let you know what's possible before you book.</div>
+      </details>
+    </div>
+
+    <div class="faq-item">
+      <details>
+        <summary class="faq-trigger">
+          <span class="faq-q">What areas in Perth do you service?</span>
+          <span class="faq-chevron"><svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="#64748B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </summary>
+        <div class="faq-answer">I'm based in <strong>Canning Vale</strong> and serve all Perth suburbs for drop-off repairs. For on-site visits (networking, printer setup, smart TV), I travel across the greater Perth metro area including the southern suburbs, eastern suburbs, and the CBD. Not sure if I cover your area? Just message me and I'll confirm.</div>
+      </details>
+    </div>
+
+    <div class="faq-item">
+      <details>
+        <summary class="faq-trigger">
+          <span class="faq-q">Is there a warranty on your work?</span>
+          <span class="faq-chevron"><svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="#64748B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </summary>
+        <div class="faq-answer">Yes — all services come with a <strong>30-day labour warranty</strong>. If the same issue comes back within 30 days of the repair, I'll look at it again at no extra labour cost. Hardware components (SSDs, RAM) also carry their manufacturer warranty. You can also add a 3-month follow-up health check as an optional add-on for ongoing peace of mind.</div>
+      </details>
+    </div>
+
+    <div class="faq-item">
+      <details>
+        <summary class="faq-trigger">
+          <span class="faq-q">How do I pay?</span>
+          <span class="faq-chevron"><svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="#64748B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </summary>
+        <div class="faq-answer">Payment is accepted via <strong>bank transfer or cash</strong> on collection. I'll send you a clear invoice when the job is done so you have a full record of what was completed. No payment is required upfront — you pay when you're happy with the work.</div>
+      </details>
+    </div>
+
+    <div class="faq-item">
+      <details>
+        <summary class="faq-trigger">
+          <span class="faq-q">Can you help me choose parts for a new PC build?</span>
+          <span class="faq-chevron"><svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="#64748B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </summary>
+        <div class="faq-answer">Absolutely. If you're building a gaming PC or upgrading and don't know where to start, message me with your <strong>budget and what you'll be using it for</strong> and I'll put together a parts list. I'll always recommend the best value for your budget — no inflated margins, just honest advice. Assembly is $150 with full benchmarking included.</div>
+      </details>
+    </div>
+
+    <div class="faq-item">
+      <details>
+        <summary class="faq-trigger">
+          <span class="faq-q">Do you offer remote support?</span>
+          <span class="faq-chevron"><svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="#64748B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </summary>
+        <div class="faq-answer">Yes — for software issues, settings, troubleshooting, and guidance, I offer <strong>remote support via AnyDesk at $50/hr</strong>. This is great for smaller issues that don't require a physical drop-off, or if you just need a quick second opinion on something. Message me and we'll set up a session at a time that suits you.</div>
+      </details>
+    </div>
+
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-bar fade-up">
+    <div class="cta-kicker">Free quote in minutes</div>
+    <h3>Ready to book? Message me now.</h3>
+    <p>WhatsApp or Facebook. Based in Canning Vale, Perth. Fast replies guaranteed.</p>
+    <div class="cta-btns">
+      <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" class="btn-wa" rel="noopener">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>
+        WhatsApp me now
+      </a>
+      <a href="https://www.facebook.com/profile.php?id=61588810785733" target="_blank" class="btn-fb" rel="noopener">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        Facebook page
+      </a>
+      <a href="pricing.html" class="btn-pricing">
+        View pricing →
+      </a>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="logo-mark" style="width:28px;height:28px;font-size:11px">FP</div>
+      <span class="logo-name" style="font-size:14px">FixMyPC <em>Perth</em></span>
+    </a>
+    <div class="footer-copy">© 2026 FixMyPC Perth · Perth WA</div>
+    <div class="footer-copy">30 day labour warranty on all services · All prices include GST</div>
+  </div>
+</footer>
+
+<script>
+  // TRUST TICKER
+  const items = [
+    'Same or next day turnaround',
+    'Local drop off in Canning Vale',
+    '30 day warranty on all work',
+    'Upfront pricing, no surprises',
+    'No fix? No fee on data recovery',
+    '5/5 rated local service',
+    'Free quote in minutes',
+    "Perth's trusted PC specialist",
+  ];
+  const doubled = [...items, ...items].map(t => `
+    <div class="trust-item">
+      <div class="trust-dot"></div>
+      ${t}
+    </div>`).join('');
+  document.getElementById('trust-track').innerHTML = doubled;
+
+  // SCROLL ANIMATIONS
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('in'), i * 60);
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.06 });
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+</script>
+
+</body>
+</html>
