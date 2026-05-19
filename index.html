@@ -330,6 +330,11 @@ const CONFIG = {
   .trust-track {
     display: flex; gap: 0; white-space: nowrap;
     animation: ticker 14s linear infinite;
+    @media (max-width: 768px) {
+  .trust-track {
+    animation-duration: 5s;
+  }
+}
   }
   .trust-track:hover { animation-play-state: paused; }
   @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
