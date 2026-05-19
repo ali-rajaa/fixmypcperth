@@ -515,6 +515,10 @@ const CONFIG = {
     .cta-actions { flex-direction: row; flex-wrap: wrap; }
     .pill-fb { display: none; }
   }
+ @media (max-width: 600px) {
+  .pill-ghost { display: none; }
+  .pill-ghost.pill-home { display: inline-flex; } /* keep just the back button */
+}
   @media (max-width: 540px) {
     nav { padding: 0 1.25rem; }
     .section, .cta-section { padding: 4rem 1.25rem; }
@@ -526,6 +530,7 @@ const CONFIG = {
 </style>
 </head>
 <body>
+ 
  
 <!-- NAV -->
 <nav id="nav"></nav>
