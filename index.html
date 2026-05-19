@@ -1,6 +1,3 @@
-Index · HTML
-Copy
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -91,7 +88,7 @@ const CONFIG = {
   facebookURL:    "https://www.facebook.com/profile.php?id=61588810785733",
   heroHeadline:  "Perth's trusted PC repair specialist.",
   heroSub:       "Fast turnaround. Honest pricing. Unlimited Revisions.",
-  heroDesc:      "Home-based in Perth, meaning lower overheads means better prices for you. Drop off your PC or laptop and I'll have it sorted, usually next day.",
+  heroDesc:      "Home based in Perth, meaning lower overheads means better prices for you. Drop off your PC or laptop and I'll have it sorted, usually next day.",
   services: [
     { icon: "🛡️", name: "Virus & Malware Removal", desc: "Full scan, removal, browser cleanup and security setup. Most infections cleared same day.", price: "From $80", badge: "MOST POPULAR" },
     { icon: "⚡", name: "SSD Upgrade & Tune-Up", desc: "Replace your old hard drive with a fast SSD. Boot in under 10 seconds — all data transferred safely.", price: "From $80", badge: "" },
@@ -576,7 +573,7 @@ const CONFIG = {
         <div>
           <span class="s-eyebrow">Services</span>
           <h2 class="s-title">Every tech problem, solved.</h2>
-          <p class="s-sub">From virus-ridden laptops to custom gaming rigs — if it's got a power button, it's fixable.</p>
+          <p class="s-sub">From virus ridden laptops to custom gaming rigs. If it's got a power button, it's fixable.</p>
         </div>
         <a href="pricing.html" class="btn-outline" style="flex-shrink:0">View full price list →</a>
       </div>
@@ -665,8 +662,8 @@ const CONFIG = {
   document.getElementById('check-list').innerHTML = [
     'Same or next day turnaround',
     '30-day warranty on all work',
-    'Upfront pricing — no surprises',
-    'Local Perth tech — fast drop-off',
+    'Upfront pricing, no surprises',
+    'Local Perth tech, fast drop-off',
   ].map(i=>`
     <div class="check-item">
       <div class="check-icon">✓</div>
@@ -676,9 +673,9 @@ const CONFIG = {
   // ── TRUST TICKER
   const trustItems = [
     'Same or next day turnaround',
-    'Local drop-off in Canning Vale',
+    'Local drop off in Canning Vale',
     '30-day warranty on all work',
-    'Upfront pricing — no surprises',
+    'Upfront pricing, no surprises',
     'No fix? No fee on data recovery',
     '5/5 rated local service',
     'Free quote in minutes',
@@ -741,8 +738,8 @@ const CONFIG = {
     </div>`).join('');
  
   // ── CTA
-  document.getElementById('cta-title').textContent = 'Ready? Message me now for a free quote — I reply in minutes.';
-  document.getElementById('cta-desc').textContent = `WhatsApp or Facebook — based in ${CONFIG.suburb}, ${CONFIG.state}. Fast replies, free quotes.`;
+  document.getElementById('cta-title').textContent = 'Ready? Message me now for a free quote. I reply in minutes.';
+  document.getElementById('cta-desc').textContent = `WhatsApp or Facebook, based in ${CONFIG.suburb}, ${CONFIG.state}. Fast replies, free quotes.`;
   document.getElementById('cta-actions').innerHTML = `
     <a href="${WA}" target="_blank" class="btn-wa" rel="noopener">${waIcon} WhatsApp me now</a>
     <a href="${FB}" target="_blank" class="btn-fb" rel="noopener">${fbIcon} Facebook page</a>`;
