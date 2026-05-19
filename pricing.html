@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pricing list | No hidden prices, ever</title>
+<title>Service Prices Perth | No hidden prices, ever</title>
 <link rel="icon" type="image/png" href="favicon.png">
 <meta property="og:url" content="https://www.fixmypcperth.com/pricing.html">
 <meta name="description" content="Full pricing list for FixMyPC Perth. PC repairs, upgrades, gaming builds, networking and more. Serving all Perth suburbs. $120 diagnostic, repair labour included.">
@@ -41,34 +41,37 @@
   body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.6; }
 
   /* ── NAV ── */
- <nav>
-  <a href="index.html" class="nav-logo">
-    <div class="logo-mark">FP</div>
-    <span class="logo-name">FixMyPC <em>Perth</em></span>
-  </a>
-  <div class="nav-right">
-    <div class="nav-links">
-      <a href="index.html" class="nav-pill pill-ghost">← Home</a>
-      <a href="pricing.html" class="nav-pill pill-ghost">Pricing</a>
-      <a href="reviews.html" class="nav-pill pill-ghost">Reviews & FAQ</a>
-    </div>
-    <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" class="nav-pill pill-wa" rel="noopener">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>
-      WhatsApp me
-    </a>
-    <button class="hamburger" id="hamburger" aria-label="Open menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-
-  <!-- Mobile dropdown -->
-  <div class="mob-menu" id="mob-menu">
-    <a href="index.html" class="mob-link">← Home</a>
-    <a href="pricing.html" class="mob-link">Pricing</a>
-    <a href="reviews.html" class="mob-link">Reviews & FAQ</a>
-    <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" class="mob-link mob-wa" rel="noopener">WhatsApp me now →</a>
-  </div>
-</nav>
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2rem; height: 64px;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(226,232,240,0.8);
+  }
+  .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .logo-mark {
+    width: 38px; height: 38px; background: var(--blue); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--display); font-size: 14px; font-weight: 800; color: #fff;
+    box-shadow: 0 2px 8px rgba(21,96,255,0.3);
+  }
+  .logo-name { font-family: var(--display); font-size: 16px; font-weight: 700; color: var(--ink); letter-spacing: -0.3px; }
+  .logo-name em { color: var(--blue); font-style: normal; }
+  .nav-right { display: flex; align-items: center; gap: 10px; }
+  .nav-pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: var(--body); font-size: 13px; font-weight: 600;
+    padding: 9px 18px; border-radius: 50px; text-decoration: none;
+    transition: transform 0.15s, box-shadow 0.15s, opacity 0.15s;
+  }
+  .nav-pill:hover { transform: translateY(-1px); opacity: 0.92; }
+  .pill-wa  { background: var(--wa);  color: #fff; box-shadow: 0 2px 8px rgba(34,197,94,0.3); }
+  .pill-ghost {
+    background: transparent; color: var(--ink);
+    border: 1.5px solid var(--border2); padding: 8px 16px;
+  }
+  .pill-ghost:hover { border-color: var(--blue); color: var(--blue); transform: none; }
 
   /* ── LAYOUT ── */
   .wrap { max-width: 1000px; margin: 0 auto; padding: 0 2rem; }
@@ -412,62 +415,6 @@
   @media (max-width: 360px) {
     .logo-name { display: none; }
   }
-/* ── HAMBURGER ── */
-.hamburger {
-  display: none;
-  flex-direction: column; justify-content: center; align-items: center;
-  gap: 5px; width: 38px; height: 38px;
-  background: var(--bg3); border: 1.5px solid var(--border2);
-  border-radius: 10px; cursor: pointer; flex-shrink: 0;
-  transition: background 0.15s, border-color 0.15s;
-}
-.hamburger:hover { background: var(--blue-lt); border-color: var(--blue-mid); }
-.hamburger span {
-  display: block; width: 16px; height: 2px;
-  background: var(--ink); border-radius: 2px;
-  transition: transform 0.3s, opacity 0.3s;
-}
-.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.hamburger.open span:nth-child(2) { opacity: 0; }
-.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-/* ── MOBILE DROPDOWN MENU ── */
-.mob-menu {
-  display: none;
-  position: absolute; top: 100%; left: 0; right: 0;
-  background: rgba(255,255,255,0.97);
-  backdrop-filter: blur(20px);
-  border-bottom: 1.5px solid var(--border);
-  padding: 0.75rem 1rem 1rem;
-  flex-direction: column; gap: 4px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-}
-.mob-menu.open { display: flex; }
-.mob-link {
-  font-family: var(--body); font-size: 15px; font-weight: 600;
-  color: var(--ink); text-decoration: none;
-  padding: 0.75rem 1rem; border-radius: 10px;
-  transition: background 0.15s, color 0.15s;
-}
-.mob-link:hover { background: var(--blue-lt); color: var(--blue); }
-.mob-wa {
-  background: var(--wa); color: #fff !important;
-  text-align: center; margin-top: 4px;
-  box-shadow: 0 2px 8px rgba(34,197,94,0.3);
-}
-.mob-wa:hover { background: var(--wa-dk) !important; }
-
-/* ── NAV RESPONSIVE ── */
-.nav-links { display: flex; align-items: center; gap: 8px; }
-
-@media (max-width: 720px) {
-  .nav-links { display: none; }
-  .hamburger { display: flex; }
-  .pill-wa span { display: none; } /* hide WhatsApp text, keep icon */
-}
-@media (max-width: 400px) {
-  .pill-wa svg { display: none; } /* very small screens — show just short text */
-}
 </style>
 </head>
 <body>
@@ -480,7 +427,6 @@
   </a>
   <div class="nav-right">
     <a href="index.html" class="nav-pill pill-ghost">← Back to home</a>
-    <a href="reviews.html" class="nav-pill pill-ghost">Reviews & FAQ</a>
     <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" class="nav-pill pill-wa" rel="noopener">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>
       WhatsApp me
@@ -491,7 +437,7 @@
 <!-- PAGE HERO -->
 <div class="page-hero" style="margin-top:64px;">
   <span class="s-eyebrow">Transparent pricing</span>
-  <h1 class="page-title">Full price list. <em>No hidden fees,</em> ever.</h1>
+  <h1 class="page-title">Full price list — <em>no hidden fees,</em> ever.</h1>
   <p class="page-sub">Every price listed upfront. You'll always know exactly what you're paying before I start.</p>
 </div>
 
@@ -517,7 +463,7 @@
       <div class="diag-pill-check">✓</div>
       <span class="diag-pill-main">Repair labour included</span>
       <div class="diag-pill-sep"></div>
-      <span class="diag-pill-sub">Fee includes free repair, exluding additonal parts</span>
+      <span class="diag-pill-sub">$120 deducted from your total if you proceed</span>
     </div>
   </div>
 
@@ -527,7 +473,7 @@
       <summary class="acc-trigger">
         <div class="sec-icon-wrap">🔧</div>
         <span class="sec-title">Repairs</span>
-        <span class="sec-note">Diagnostic $120 · Repair included</span>
+        <span class="sec-note">Diagnostic $120 · labour deducted from total below</span>
         <span class="acc-chevron">
           <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </span>
@@ -1015,22 +961,6 @@
       ${t}
     </div>`).join('');
   document.getElementById('trust-track').innerHTML = doubled;
-
-  <script>
-  const hamburger = document.getElementById('hamburger');
-  const mobMenu = document.getElementById('mob-menu');
-  hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('open');
-    mobMenu.classList.toggle('open');
-  });
-  // Close menu when a link is tapped
-  mobMenu.querySelectorAll('.mob-link').forEach(link => {
-    link.addEventListener('click', () => {
-      hamburger.classList.remove('open');
-      mobMenu.classList.remove('open');
-    });
-  });
-</script>
 
   // SCROLL ANIMATIONS
   const obs = new IntersectionObserver(entries => {
