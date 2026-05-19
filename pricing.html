@@ -125,40 +125,46 @@
   .diag-banner {
     background: var(--ink2); border-radius: 20px;
     padding: 2.25rem 2.5rem; margin: 2.5rem 0;
-    display: grid; grid-template-columns: auto 1px 1fr auto;
-    gap: 2.5rem; align-items: center;
     position: relative; overflow: hidden;
   }
   .diag-banner::before {
     content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
     background: linear-gradient(90deg, var(--blue), var(--teal), var(--wa));
   }
-  .diag-price-block { text-align: center; }
+  .diag-top {
+    display: flex; align-items: center; gap: 1.25rem; margin-bottom: 1rem;
+  }
   .diag-price {
-    font-family: var(--display); font-size: 3.8rem; font-weight: 800;
-    color: var(--teal); line-height: 1; letter-spacing: -3px; display: block;
+    font-family: var(--display); font-size: 3.5rem; font-weight: 800;
+    color: var(--teal); line-height: 1; letter-spacing: -3px; flex-shrink: 0;
   }
-  .diag-price-lbl { font-size: 10px; color: rgba(255,255,255,0.4); letter-spacing: 1px; font-weight: 700; text-transform: uppercase; margin-top: 4px; }
-  .diag-divider { width: 1px; background: rgba(255,255,255,0.1); align-self: stretch; }
-  .diag-info h3 {
-    font-family: var(--display); font-size: 18px; font-weight: 700;
-    color: #fff; margin-bottom: 0.4rem; letter-spacing: -0.4px;
+  .diag-top-text {}
+  .diag-price-lbl {
+    font-size: 10px; color: rgba(255,255,255,0.4);
+    letter-spacing: 0.1em; font-weight: 700; text-transform: uppercase; margin-bottom: 4px;
   }
-  .diag-info p { font-size: 13.5px; color: rgba(255,255,255,0.5); line-height: 1.65; }
-  .diag-included {
+  .diag-title {
+    font-family: var(--display); font-size: 19px; font-weight: 700;
+    color: #fff; letter-spacing: -0.4px; line-height: 1.2;
+  }
+  .diag-desc {
+    font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.7;
+    margin-bottom: 1.25rem; max-width: 640px;
+  }
+  .diag-pill {
+    display: inline-flex; align-items: center; gap: 10px;
     background: rgba(0,207,255,0.08); border: 1px solid rgba(0,207,255,0.2);
-    border-radius: 12px; padding: 1rem 1.25rem; flex-shrink: 0; min-width: 190px;
+    border-radius: 50px; padding: 10px 20px;
   }
-  .diag-included p {
-    font-size: 13px; font-weight: 700; color: var(--teal);
-    display: flex; align-items: center; gap: 7px; margin-bottom: 6px;
+  .diag-pill-check {
+    width: 20px; height: 20px; border-radius: 50%;
+    background: rgba(0,207,255,0.15); border: 1px solid rgba(0,207,255,0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; font-weight: 800; color: var(--teal); flex-shrink: 0;
   }
-  .diag-included p::before {
-    content: '✓'; font-size: 12px; width: 18px; height: 18px;
-    background: rgba(0,207,255,0.15); border-radius: 50%;
-    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-  }
-  .diag-included span { font-size: 11.5px; color: rgba(255,255,255,0.4); font-weight: 400; line-height: 1.5; }
+  .diag-pill-main { font-size: 13.5px; font-weight: 700; color: var(--teal); }
+  .diag-pill-sep { width: 1px; height: 14px; background: rgba(0,207,255,0.2); }
+  .diag-pill-sub { font-size: 13px; color: rgba(255,255,255,0.4); font-weight: 500; }
 
   /* ── PRICE SECTIONS ── */
   .price-section { margin-bottom: 2.25rem; }
@@ -362,35 +368,36 @@
   </div>
 </nav>
 
-<!-- TRUST TICKER -->
-<div class="trust-strip" style="margin-top:64px;">
-  <div class="trust-track" id="trust-track"></div>
-</div>
-
 <!-- PAGE HERO -->
-<div class="page-hero">
+<div class="page-hero" style="margin-top:64px;">
   <span class="s-eyebrow">Transparent pricing</span>
   <h1 class="page-title">Full price list — <em>no hidden fees,</em> ever.</h1>
   <p class="page-sub">Every price listed upfront. You'll always know exactly what you're paying before I start.</p>
 </div>
 
-<div class="page">
+<!-- TRUST TICKER -->
+<div class="trust-strip">
+  <div class="trust-track" id="trust-track"></div>
+</div>
+
+<div class="page" style="padding-top:3rem;">
 <div class="wrap">
 
   <!-- DIAGNOSTIC BANNER -->
   <div class="diag-banner fade-up">
-    <div class="diag-price-block">
+    <div class="diag-top">
       <span class="diag-price">$120</span>
-      <span class="diag-price-lbl">Diagnostic Fee</span>
+      <div class="diag-top-text">
+        <div class="diag-price-lbl">Diagnostic Fee</div>
+        <div class="diag-title">Every repair starts with a full diagnostic</div>
+      </div>
     </div>
-    <div class="diag-divider"></div>
-    <div class="diag-info">
-      <h3>Every repair starts with a full diagnostic</h3>
-      <p>I check everything, find the root cause, and give you a written report before touching anything. You'll know exactly what's wrong and what it costs to fix. Zero surprises.</p>
-    </div>
-    <div class="diag-included">
-      <p>Repair labour included</p>
-      <span>$120 deducted from your repair total if you choose to proceed</span>
+    <p class="diag-desc">I check everything, find the root cause, and give you a written report before touching anything. You'll know exactly what's wrong and what it costs to fix. Zero surprises.</p>
+    <div class="diag-pill">
+      <div class="diag-pill-check">✓</div>
+      <span class="diag-pill-main">Repair labour included</span>
+      <div class="diag-pill-sep"></div>
+      <span class="diag-pill-sub">$120 deducted from your total if you proceed</span>
     </div>
   </div>
 
