@@ -10,7 +10,26 @@
 <link rel="canonical" href="https://www.fixmypcperth.com/pricing.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+/* your current media queries */
 
+@media (max-width: 440px) {
+  .addons-grid { grid-template-columns: 1fr; }
+  .bundle-price { font-size: 3.5rem; }
+}
+
+/* PASTE NEW MOBILE FIX HERE */
+@media (max-width: 720px) {
+
+  nav {
+    height: auto;
+    padding: 12px 16px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  /* etc... */
+
+}
 <style>
   :root {
     --blue:       #1560FF;
