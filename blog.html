@@ -496,110 +496,114 @@ const BLOG_POSTS = [
 </footer>
 
 <script>
-  let activeFilter = 'All';
-  let isExpanded = false;
+  // Wait for the page to fully load
+  document.addEventListener('DOMContentLoaded', function() {
 
-  const hamburger = document.getElementById('hamburger');
-  const mobMenu = document.getElementById('mob-menu');
-  const showMoreBtn = document.getElementById('show-more-btn');
+    let activeFilter = 'All';
+    let isExpanded = false;
 
-  hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('open');
-    mobMenu.classList.toggle('open');
-  });
-
-  function fmtDate(d) {
-    return new Date(d).toLocaleDateString('en-AU', { 
-      day: 'numeric', 
-      month: 'short', 
-      year: 'numeric' 
-    });
-  }
-
-  const allCats = ['All', ...new Set(BLOG_POSTS.map(p => p.category))];
-  const filterBar = document.getElementById('filter-bar');
-  
-  filterBar.innerHTML = allCats.map(c => 
-    `<button class="filter-btn${c === 'All' ? ' active' : ''}" data-cat="${c}">${c}</button>`
-  ).join('');
-
-  filterBar.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      activeFilter = btn.dataset.cat;
-      filterBar.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      isExpanded = false;
-      renderPosts();
-    });
-  });
-
-  function renderPosts() {
+    const hamburger = document.getElementById('hamburger');
+    const mobMenu = document.getElementById('mob-menu');
+    const showMoreBtn = document.getElementById('show-more-btn');
     const grid = document.getElementById('blog-grid');
-    
-    let filtered = activeFilter === 'All' 
-      ? [...BLOG_POSTS] 
-      : BLOG_POSTS.filter(p => p.category === activeFilter);
 
-    filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-    let postsToShow = [];
-
-    if (activeFilter === 'All' && !isExpanded) {
-      const featured = filtered.find(p => p.featured);
-      const regulars = filtered.filter(p => !p.featured);
-      postsToShow = featured ? [featured, ...regulars.slice(0, 5)] : regulars.slice(0, 6);
-    } else {
-      postsToShow = isExpanded ? filtered : filtered.slice(0, 6);
+    if (!grid || !showMoreBtn) {
+      console.error("Blog grid or button not found!");
+      return;
     }
 
-    grid.innerHTML = postsToShow.map((post) => {
-      if (post.featured && activeFilter === 'All') {
-        return `
-          <a href="blog/${post.slug}.html" class="post-featured fade-up">
-            <div>
-              <div class="feat-eyebrow">Featured Post · ${post.category}</div>
-              <div class="feat-title">${post.title}</div>
-              <div class="feat-excerpt">${post.excerpt}</div>
-              <div class="feat-meta">
-                <span>${fmtDate(post.date)}</span>
-                <span>·</span>
-                <span>${post.readMin} min read</span>
-              </div>
-            </div>
-            <div class="feat-read-btn">Read article →</div>
-          </a>`;
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobMenu.classList.toggle('open');
+    });
+
+    function fmtDate(d) {
+      return new Date(d).toLocaleDateString('en-AU', { 
+        day: 'numeric', month: 'short', year: 'numeric' 
+      });
+    }
+
+    // Filter Buttons
+    const allCats = ['All', ...new Set(BLOG_POSTS.map(p => p.category))];
+    const filterBar = document.getElementById('filter-bar');
+    
+    filterBar.innerHTML = allCats.map(c => 
+      `<button class="filter-btn${c === 'All' ? ' active' : ''}" data-cat="${c}">${c}</button>`
+    ).join('');
+
+    filterBar.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        activeFilter = btn.dataset.cat;
+        filterBar.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        isExpanded = false;
+        renderPosts();
+      });
+    });
+
+    function renderPosts() {
+      let filtered = activeFilter === 'All' 
+        ? [...BLOG_POSTS] 
+        : BLOG_POSTS.filter(p => p.category === activeFilter);
+
+      filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+      let postsToShow = [];
+
+      if (activeFilter === 'All' && !isExpanded) {
+        const featured = filtered.find(p => p.featured);
+        const regulars = filtered.filter(p => !p.featured);
+        postsToShow = featured ? [featured, ...regulars.slice(0, 5)] : regulars.slice(0, 6);
+      } else {
+        postsToShow = isExpanded ? filtered : filtered.slice(0, 6);
       }
-      return `
-        <a href="blog/${post.slug}.html" class="post-card fade-up">
-          <span class="post-cat">${post.category}</span>
-          <div class="post-title">${post.title}</div>
-          <div class="post-excerpt">${post.excerpt}</div>
-          <div class="post-footer">
-            <span>${fmtDate(post.date)} · ${post.readMin} min read</span>
-            <span class="post-read-more">Read →</span>
-          </div>
-        </a>`;
-    }).join('');
 
-    showMoreBtn.style.display = filtered.length > 6 ? 'block' : 'none';
-    showMoreBtn.textContent = isExpanded ? "Show Less" : "Show More Posts";
-  }
+      if (postsToShow.length === 0) {
+        grid.innerHTML = `<div class="empty-state"><p>No posts found.</p></div>`;
+        return;
+      }
 
-  showMoreBtn.addEventListener('click', () => {
-    isExpanded = !isExpanded;
+      grid.innerHTML = postsToShow.map((post) => {
+        if (post.featured && activeFilter === 'All') {
+          return `
+            <a href="blog/${post.slug}.html" class="post-featured fade-up">
+              <div>
+                <div class="feat-eyebrow">Featured Post · ${post.category}</div>
+                <div class="feat-title">${post.title}</div>
+                <div class="feat-excerpt">${post.excerpt}</div>
+                <div class="feat-meta">
+                  <span>${fmtDate(post.date)}</span>
+                  <span>·</span>
+                  <span>${post.readMin} min read</span>
+                </div>
+              </div>
+              <div class="feat-read-btn">Read article →</div>
+            </a>`;
+        }
+        return `
+          <a href="blog/${post.slug}.html" class="post-card fade-up">
+            <span class="post-cat">${post.category}</span>
+            <div class="post-title">${post.title}</div>
+            <div class="post-excerpt">${post.excerpt}</div>
+            <div class="post-footer">
+              <span>${fmtDate(post.date)} · ${post.readMin} min read</span>
+              <span class="post-read-more">Read →</span>
+            </div>
+          </a>`;
+      }).join('');
+
+      showMoreBtn.style.display = filtered.length > 6 ? 'block' : 'none';
+      showMoreBtn.textContent = isExpanded ? "Show Less" : "Show More Posts";
+    }
+
+    showMoreBtn.addEventListener('click', () => {
+      isExpanded = !isExpanded;
+      renderPosts();
+    });
+
+    // Initial render
     renderPosts();
   });
-
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('in'), i * 60);
-        obs.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
-
-  renderPosts();
 </script>
 
 </body>
