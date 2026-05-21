@@ -430,17 +430,6 @@ const BLOG_POSTS = [
   </div>
 </nav>
 
-<!-- HERO -->
-<div class="page-hero">
-  <span class="s-eyebrow">Free tips & guides</span>
-  <h1 class="page-title">PC advice from <em>Perth's own</em> tech specialist.</h1>
-  <p class="page-sub">Real fixes, plain English. No jargon, no upsells — just the stuff that actually helps.</p>
-</div>
-
-<!-- TRUST TICKER -->
-<div class="trust-strip">
-  <div class="trust-track" id="trust-track"></div>
-</div>
 
 <!-- FILTER BAR -->
 <div class="filter-bar" id="filter-bar"></div>
@@ -479,9 +468,7 @@ const BLOG_POSTS = [
 </footer>
 
 <script>
-  // ── TRUST TICKER
-  const trustItems = ['Same or next day turnaround','Local drop off in Canning Vale','30 day warranty on all work','Upfront pricing, no surprises','No fix? No fee on data recovery','5/5 rated local service','Free quote in minutes',"Perth's trusted PC specialist"];
-  document.getElementById('trust-track').innerHTML = [...trustItems,...trustItems].map(t=>`<div class="trust-item"><div class="trust-dot"></div>${t}</div>`).join('');
+ 
 
   // ── HAMBURGER
   const hamburger = document.getElementById('hamburger');
