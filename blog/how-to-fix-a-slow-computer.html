@@ -3,133 +3,380 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
 <title>How to Fix a Slow Computer: 10 Instant Speed Boosts | FixMyPC Perth</title>
+<meta name="description" content="Speed up your Windows 10 or 11 PC instantly with these 10 easy, step-by-step troubleshooting tips to fix slow performance in Perth.">
+<link rel="canonical" href="https://www.fixmypcperth.com/blog/how-to-fix-a-slow-computer">
+<meta property="og:title" content="How to Fix a Slow Computer: 10 Instant Speed Boosts | FixMyPC Perth">
+<meta property="og:description" content="Speed up your Windows 10 or 11 PC instantly with these 10 easy, step-by-step troubleshooting tips to fix slow performance.">
+<meta property="og:url" content="https://www.fixmypcperth.com/blog/how-to-fix-a-slow-computer">
+<meta property="og:type" content="article">
+<meta name="robots" content="index, follow">
+<link rel="icon" type="image/png" href="../favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+ 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Fix a Slow Computer: 10 Instant Speed Boosts (Fixes Windows 10/11 speed)",
+  "description": "Speed up your Windows 10 or 11 PC instantly with these 10 easy, step-by-step troubleshooting tips to fix slow performance.",
+  "datePublished": "2026-05-21",
+  "author": { "@type": "Person", "name": "Ali Raja", "url": "https://www.fixmypcperth.com" },
+  "publisher": { "@type": "Organization", "name": "FixMyPC Perth", "url": "https://www.fixmypcperth.com" },
+  "url": "https://www.fixmypcperth.com/blog/how-to-fix-a-slow-computer"
+}
+</script>
+ 
 <style>
   :root {
-    --blue: #1560FF; --blue-lt: #EEF3FF; --ink: #0F172A; --muted: #64748B;
-    --wa: #22C55E; --border: #E2E8F0; --display: 'Sora', sans-serif; --body: 'DM Sans', sans-serif;
+    --blue:    #1560FF;
+    --blue-lt: #EEF3FF;
+    --blue-mid:#C7D8FF;
+    --teal:    #00CFFF;
+    --ink:     #0F172A;
+    --ink2:    #1E293B;
+    --muted:    #64748B;
+    --muted2:  #94A3B8;
+    --border:  #E2E8F0;
+    --border2: #CBD5E1;
+    --bg:      #FFFFFF;
+    --bg2:     #F8FAFC;
+    --bg3:     #F1F5F9;
+    --green:   #16A34A;
+    --wa:      #22C55E;
+    --wa-dk:   #16A34A;
+    --fb:      #1877F2;
+    --display: 'Sora', sans-serif;
+    --body:    'DM Sans', sans-serif;
   }
-
+ 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: var(--body); color: var(--ink); line-height: 1.8; background: #fff; }
-
-  /* NAV (Same as Home) */
-  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; height: 64px; background: rgba(255,255,255,0.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
-  .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; font-family: var(--display); font-weight: 700; color: var(--ink); }
-  .logo-mark { width: 32px; height: 32px; background: var(--blue); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 12px; }
-  .hamburger { display: none; flex-direction: column; gap: 4px; border: none; background: var(--blue-lt); padding: 10px; border-radius: 8px; cursor: pointer; }
-  .hamburger span { width: 20px; height: 2px; background: var(--blue); border-radius: 2px; }
-  .mob-menu { display: none; position: fixed; top: 64px; left: 0; right: 0; background: white; padding: 1.5rem; flex-direction: column; gap: 10px; border-bottom: 1px solid var(--border); box-shadow: 0 10px 20px rgba(0,0,0,0.05); z-index: 199; }
+  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+  body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.7; overflow-x: hidden; }
+ 
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;
+    padding: 0 2rem; height: 64px;
+    background: rgba(255,255,255,0.92); backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(226,232,240,0.8);
+  }
+  .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .logo-mark {
+    width: 38px; height: 38px; background: var(--blue); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--display); font-size: 14px; font-weight: 800; color: #fff;
+    box-shadow: 0 2px 8px rgba(21,96,255,0.3);
+  }
+  .logo-name { font-family: var(--display); font-size: 16px; font-weight: 700; color: var(--ink); letter-spacing: -0.3px; }
+  .logo-name em { color: var(--blue); font-style: normal; }
+  .nav-right { display: flex; align-items: center; gap: 10px; }
+  .nav-links { display: flex; align-items: center; gap: 8px; }
+  .nav-pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: var(--body); font-size: 13px; font-weight: 600;
+    padding: 9px 18px; border-radius: 50px; text-decoration: none;
+    transition: transform 0.15s, opacity 0.15s; white-space: nowrap;
+  }
+  .nav-pill:hover { transform: translateY(-1px); opacity: 0.92; }
+  .pill-wa { background: var(--wa); color: #fff; box-shadow: 0 2px 8px rgba(34,197,94,0.3); }
+  .pill-ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--border2); padding: 8px 16px; }
+  .pill-ghost:hover { border-color: var(--blue); color: var(--blue); transform: none; }
+  .hamburger {
+    display: none; flex-direction: column; justify-content: center; align-items: center;
+    gap: 5px; width: 38px; height: 38px;
+    background: var(--bg3); border: 1.5px solid var(--border2);
+    border-radius: 10px; cursor: pointer; flex-shrink: 0; transition: background 0.15s;
+  }
+  .hamburger span { display: block; width: 16px; height: 2px; background: var(--ink); border-radius: 2px; transition: transform 0.3s, opacity 0.3s; }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .mob-menu {
+    display: none; position: absolute; top: 64px; left: 0; right: 0;
+    background: rgba(255,255,255,0.97); backdrop-filter: blur(20px);
+    border-bottom: 1.5px solid var(--border); padding: 0.75rem 1rem 1rem;
+    flex-direction: column; gap: 4px; box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  }
   .mob-menu.open { display: flex; }
-
-  /* BLOG LAYOUT */
-  .blog-header { padding: 140px 2rem 80px; background: var(--blue-lt); text-align: center; }
-  .container { max-width: 850px; margin: 0 auto; padding: 0 1.5rem; }
-  .category-tag { background: var(--blue); color: #fff; padding: 4px 12px; border-radius: 50px; font-size: 12px; font-weight: 700; text-transform: uppercase; }
-  h1 { font-family: var(--display); font-size: clamp(2.2rem, 5vw, 3.5rem); line-height: 1.1; margin: 1.5rem 0; letter-spacing: -1px; }
-  .meta { color: var(--muted); font-size: 14px; font-weight: 600; display: flex; justify-content: center; gap: 20px; }
-
-  .content { padding: 60px 0; font-size: 18px; }
-  .content h2 { font-family: var(--display); margin: 3rem 0 1.2rem; font-size: 28px; color: var(--ink); border-left: 4px solid var(--blue); padding-left: 15px; }
-  .content p { margin-bottom: 1.8rem; color: #334155; }
-  .content strong { color: var(--ink); }
-  
-  /* CALL TO ACTION BOXES */
-  .cta-inline { background: var(--blue-lt); border: 1px solid var(--blue-mid); padding: 2rem; border-radius: 16px; margin: 3rem 0; }
-  .cta-dark { background: var(--ink); color: white; padding: 3rem; border-radius: 24px; margin: 4rem 0; text-align: center; }
-  .cta-dark h3 { font-family: var(--display); font-size: 26px; margin-bottom: 15px; color: #fff; }
-  .btn-primary { display: inline-block; background: var(--wa); color: white; padding: 16px 32px; border-radius: 50px; text-decoration: none; font-weight: 700; margin-top: 20px; box-shadow: 0 10px 20px rgba(34,197,94,0.3); }
-
-  @media (max-width: 720px) { .nav-links { display: none; } .hamburger { display: flex; } }
+  .mob-link {
+    font-family: var(--body); font-size: 15px; font-weight: 600; color: var(--ink);
+    text-decoration: none; padding: 0.75rem 1rem; border-radius: 10px; transition: background 0.15s;
+  }
+  .mob-link:hover { background: var(--blue-lt); color: var(--blue); }
+  .mob-wa { background: var(--wa); color: #fff !important; text-align: center; margin-top: 4px; }
+ 
+  /* ── ARTICLE LAYOUT ── */
+  .article-wrap { max-width: 720px; margin: 0 auto; padding: 100px 2rem 5rem; }
+ 
+  /* ── POST HEADER ── */
+  .post-header { margin-bottom: 2.5rem; }
+  .post-breadcrumb {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 12px; color: var(--muted2); margin-bottom: 1.25rem;
+  }
+  .post-breadcrumb a { color: var(--blue); text-decoration: none; font-weight: 600; }
+  .post-breadcrumb a:hover { text-decoration: underline; }
+  .post-cat {
+    display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--blue); background: var(--blue-lt);
+    border: 1px solid var(--blue-mid); padding: 4px 12px; border-radius: 50px; margin-bottom: 1rem;
+  }
+  .post-h1 {
+    font-family: var(--display); font-size: clamp(1.75rem, 4vw, 2.6rem);
+    font-weight: 800; letter-spacing: -1.5px; color: var(--ink);
+    line-height: 1.1; margin-bottom: 1rem;
+  }
+  .post-meta {
+    display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+    font-size: 13px; color: var(--muted2); font-weight: 500;
+    padding-bottom: 1.5rem; border-bottom: 1.5px solid var(--border);
+  }
+  .post-meta-author { color: var(--ink); font-weight: 600; }
+ 
+  /* ── POST BODY ── */
+  .post-body { font-size: 16px; color: var(--ink2); line-height: 1.8; }
+  .post-body p { margin-bottom: 1.25rem; }
+  .post-body h2 {
+    font-family: var(--display); font-size: 1.4rem; font-weight: 800;
+    color: var(--ink); letter-spacing: -0.5px; margin: 2.5rem 0 0.75rem;
+    padding-top: 0.5rem;
+  }
+  .post-body h3 {
+    font-family: var(--display); font-size: 1.1rem; font-weight: 700;
+    color: var(--ink); margin: 1.75rem 0 0.5rem;
+  }
+  .post-body ul, .post-body ol { padding-left: 1.5rem; margin-bottom: 1.25rem; }
+  .post-body li { margin-bottom: 0.5rem; color: var(--ink2); }
+  .post-body strong { color: var(--ink); font-weight: 700; }
+  .post-body a { color: var(--blue); text-decoration: underline; }
+  .post-body a:hover { color: var(--blue-dk); }
+ 
+  /* ── CALLOUT BOX ── */
+  .callout {
+    background: var(--blue-lt); border: 1.5px solid var(--blue-mid);
+    border-left: 4px solid var(--blue); border-radius: 12px;
+    padding: 1.25rem 1.5rem; margin: 1.75rem 0;
+    font-size: 14.5px; color: var(--ink2); line-height: 1.7;
+  }
+  .callout strong { color: var(--blue); }
+  .callout-warn {
+    background: #FFF7ED; border-color: #FED7AA; border-left-color: #F97316;
+  }
+  .callout-warn strong { color: #C2410C; }
+  .callout-green {
+    background: #F0FDF4; border-color: #BBF7D0; border-left-color: var(--wa);
+  }
+  .callout-green strong { color: var(--green); }
+ 
+  /* ── NUMBERED STEPS ── */
+  .step-list { list-style: none; padding: 0; margin: 1.5rem 0; }
+  .step-list li {
+    display: flex; gap: 1rem; align-items: flex-start;
+    margin-bottom: 1.25rem; font-size: 15px; color: var(--ink2);
+  }
+  .step-num {
+    width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0;
+    background: var(--blue); color: #fff;
+    font-family: var(--display); font-size: 14px; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+    margin-top: 2px;
+  }
+ 
+  /* ── IN-ARTICLE CTA ── */
+  .inline-cta {
+    background: var(--ink); border-radius: 16px; padding: 1.75rem 2rem;
+    margin: 2.5rem 0; position: relative; overflow: hidden;
+  }
+  .inline-cta::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--blue), var(--teal), var(--wa));
+  }
+  .inline-cta-title {
+    font-family: var(--display); font-size: 1.1rem; font-weight: 800;
+    color: #fff; margin-bottom: 0.4rem; letter-spacing: -0.3px;
+  }
+  .inline-cta-desc { font-size: 13.5px; color: rgba(255,255,255,0.5); margin-bottom: 1.25rem; line-height: 1.6; }
+  .inline-cta-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--wa); color: #fff; font-family: var(--body); font-size: 14px; font-weight: 700;
+    padding: 12px 22px; border-radius: 50px; text-decoration: none;
+    box-shadow: 0 4px 14px rgba(34,197,94,0.4); transition: transform 0.15s;
+  }
+  .inline-cta-btn:hover { transform: translateY(-2px); }
+ 
+  /* ── POST FOOTER ── */
+  .post-footer-nav {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 1rem; margin-top: 3rem; padding-top: 2rem; border-top: 1.5px solid var(--border);
+    flex-wrap: wrap;
+  }
+  .post-footer-link {
+    font-size: 13px; font-weight: 700; color: var(--blue); text-decoration: none;
+    display: flex; align-items: center; gap: 4px;
+  }
+  .post-footer-link:hover { text-decoration: underline; }
+ 
+  /* ── FOOTER ── */
+  footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.75rem 2rem; margin-top: 4rem; }
+  .footer-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+  }
+  .footer-copy { font-size: 12px; color: var(--muted2); }
+ 
+  /* ── RESPONSIVE ── */
+  @media (max-width: 720px) {
+    nav { padding: 0 1rem; height: 56px; }
+    .mob-menu { top: 56px; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .article-wrap { padding: 88px 1.25rem 4rem; }
+    .post-h1 { font-size: clamp(1.5rem, 6vw, 2rem); }
+    .inline-cta { padding: 1.5rem; }
+    footer { padding: 1.25rem 1rem; }
+    .footer-inner { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+  }
+  @media (max-width: 360px) { .logo-name { display: none; } }
 </style>
 </head>
 <body>
-
+ 
 <nav>
   <a href="../index.html" class="nav-logo">
     <div class="logo-mark">FP</div>
-    <span>FixMyPC <em>Perth</em></span>
+    <span class="logo-name">FixMyPC <em>Perth</em></span>
   </a>
-  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  <div class="nav-right">
+    <div class="nav-links">
+      <a href="../index.html" class="nav-pill pill-ghost">← Home</a>
+      <a href="../blog.html" class="nav-pill pill-ghost">Blog</a>
+      <a href="../pricing.html" class="nav-pill pill-ghost">Pricing</a>
+    </div>
+    <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20optimisation." target="_blank" class="nav-pill pill-wa" rel="noopener">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>
+      WhatsApp me
+    </a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
   <div class="mob-menu" id="mob-menu">
-    <a href="../pricing.html" style="text-decoration:none; color:var(--ink); font-weight:600; padding:10px;">Pricing</a>
-    <a href="https://wa.me/61452573701" style="text-decoration:none; color:white; background:var(--wa); padding:12px; border-radius:8px; text-align:center; font-weight:700;">Message Raja</a>
+    <a href="../index.html" class="mob-link">← Home</a>
+    <a href="../blog.html" class="mob-link">Blog</a>
+    <a href="../pricing.html" class="mob-link">Pricing</a>
+    <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20optimisation." target="_blank" class="mob-link mob-wa" rel="noopener">WhatsApp me now →</a>
   </div>
 </nav>
-
-<header class="blog-header">
-  <div class="container">
-    <span class="category-tag">Speed & Performance</span>
-    <h1>How to Fix a Slow Computer: 10 Instant Speed Boosts for 2026</h1>
-    <div class="meta">
-      <span>📅 May 21, 2026</span>
-      <span>⏱️ 8 min read</span>
-      <span>📍 Perth, WA</span>
+ 
+<div class="article-wrap">
+ 
+  <div class="post-header">
+    <div class="post-breadcrumb">
+      <a href="../blog.html">← Blog</a>
+      <span>/</span>
+      <span>Speed & Performance</span>
+    </div>
+    <span class="post-cat">Speed & Performance</span>
+    <h1 class="post-h1">How to Fix a Slow Computer: 10 Instant Speed Boosts</h1>
+    <div class="post-meta">
+      <span class="post-meta-author">Ali Raja · FixMyPC Perth</span>
+      <span>·</span>
+      <span>21 May 2026</span>
+      <span>·</span>
+      <span>8 min read</span>
+      <span>·</span>
+      <span>📍 Canning Vale, Perth</span>
     </div>
   </div>
-</header>
-
-<article class="content">
-  <div class="container">
-    <p>We’ve all been there. You sit down to start work in your <strong>Perth home office</strong>, you press the power button, and... you wait. And wait. A slow computer isn't just annoying; it’s a massive drain on your productivity. Whether you’re running <strong>Windows 10 or Windows 11</strong>, performance degradation is inevitable over time as software gets heavier and system clutter builds up.</p>
-    
-    <p>Before you consider spending $1,500+ on a new machine at JB Hi-Fi, try these professional-grade troubleshooting steps. These are the exact same things I check first when a client drops off a PC at my <strong>Canning Vale workshop</strong>.</p>
-
-    <h2>1. Audit Your Startup Impact</h2>
-    <p>When you boot your PC, dozens of invisible programs are fighting for your RAM. Apps like Microsoft Teams, Spotify, and Adobe Updater are notorious for this. 
-    <strong>The Fix:</strong> Right-click your Taskbar > <strong>Task Manager</strong> > <strong>Startup Apps</strong>. Look at the "Startup Impact" column. Disable anything marked "High" that you don't use every single day.</p>
-
-    <h2>2. Deep Clean Your "Temporary" Junk</h2>
-    <p>Windows stores "cache" files that are supposed to make things faster, but when they grow to 20GB or 30GB, they do the opposite.
-    <strong>The Pro Tip:</strong> Press <code>Win + R</code>, type <code>%temp%</code>, and hit enter. Select everything and delete it. Don't worry—Windows won't let you delete anything actually in use.</p>
-
-    <div class="cta-inline">
-      <strong>⚠️ Is your PC still crawling?</strong>
-      <p>Sometimes software fixes aren't enough. If your hardware is thermal throttling or your Registry is corrupted, manual clicking won't help. My <strong>Complete PC Overhaul</strong> fixes the root cause, not just the symptoms.</p>
-      <a href="https://wa.me/61452573701" style="color:var(--blue); font-weight:700; text-decoration:none;">Ask me a question on WhatsApp →</a>
+ 
+  <div class="post-body">
+ 
+    <p>Is your computer taking forever to boot? Are apps freezing while you're trying to work? You aren't alone. In Canning Vale and across Perth, <strong>slow computer performance</strong> is the #1 reason people call me for help. Windows 10 and 11 are powerful, but they accumulate clutter quickly.</p>
+ 
+    <p>Before you get frustrated and buy a new laptop at JB Hi-Fi, try these 10 troubleshooting steps to reclaim your speed instantly. These are the same professional-grade checks I perform at my workshop.</p>
+ 
+    <h2>1. Audit Your Startup Programs</h2>
+    <p>Many apps like Spotify, Steam, or Zoom force themselves to start the moment you turn on your PC. This eats up your RAM before you even open a browser.</p>
+    <div class="callout">
+        <strong>The Fix:</strong> Press <strong>Ctrl + Shift + Esc</strong> to open Task Manager, click the "Startup" tab, and disable anything you don't need immediately.
     </div>
-
-    <h2>3. Switch Your Power Plan to "Best Performance"</h2>
-    <p>By default, laptops and many desktops are set to "Balanced" mode to save power. This actively throttles your CPU speed. 
-    <strong>The Fix:</strong> Go to Settings > System > Power & Battery > <strong>Power Mode</strong>. Change this to "Best Performance." You'll notice windows and menus snappier immediately.</p>
-
-    <h2>4. The HDD vs. SSD "Wall"</h2>
-    <p>I cannot stress this enough: If your Windows 10/11 is running on a mechanical spinning hard drive (HDD), <strong>no software trick in the world will make it fast.</strong> 
-    Upgrading to a Solid State Drive (SSD) is like moving from a bicycle to a Ferrari. I perform SSD clones weekly for Perth customers—it's the best $80–$150 you can spend on your tech.</p>
-
-    <h2>5. Check for "Ghost" Chrome Extensions</h2>
-    <p>If your PC is fast but <strong>browsing the web is slow</strong>, your extensions are the culprit. Ad-blockers, VPN toggles, and "honey" coupons eat up CPU cycles. Disable every extension you haven't used in the last month.</p>
-
-    <h2>6. Reapply Thermal Paste (The "Perth Summer" Fix)</h2>
-    <p>In WA, our heat is brutal. If your PC fans are screaming, your CPU is likely "Thermal Throttling"—meaning it slows itself down so it doesn't melt. If your PC is 2+ years old, the factory thermal paste has likely dried up. Fresh high-quality paste can drop temps by 15°C and restore lost speed.</p>
-
-    <div class="cta-dark">
-      <h3>Get Your PC Feeling New Again</h3>
-      <p>Why spend hours troubleshooting when I can do a professional deep-clean, malware removal, and performance tune-up for you? I'll have it back to you in 24 hours.</p>
-      <a href="https://wa.me/61452573701" class="btn-primary">Book an Overhaul ($299)</a>
+ 
+    <h2>2. Switch to "Best Performance" Power Mode</h2>
+    <p>By default, laptops are set to "Balanced" mode to save battery, which actively throttles your CPU speed. If you're plugged into power, this is unnecessary.</p>
+    <p>Go to <strong>Settings > System > Power & Battery</strong> and change the Power Mode to "Best Performance." You'll notice windows and menus feel snappier immediately.</p>
+ 
+    <div class="callout callout-green">
+      <strong>Pro Tip:</strong> If your fans are screaming while you do this, your PC might be overheating. In the Perth summer, dust buildup can cause "thermal throttling" where your PC slows down to stay cool.
     </div>
-
+ 
+    <h2>3. Clean Up Temporary Files</h2>
+    <p>Windows stores "cache" files that are supposed to help, but when they grow to 20GB+, they do the opposite. Press <strong>Win + R</strong>, type <code>%temp%</code>, and delete everything in that folder. Don't worry—Windows won't let you delete anything actually in use.</p>
+ 
+    <h2>4. The HDD vs. SSD Factor</h2>
+    <p>If your PC is more than a few years old and still uses a mechanical Hard Drive (HDD), no software fix will truly make it "fast." Upgrading to a <strong>Solid State Drive (SSD)</strong> is like moving from a bicycle to a Ferrari. It is the single most effective way to fix a slow computer.</p>
+ 
+    <div class="inline-cta">
+      <div class="inline-cta-title">Is your PC still crawling?</div>
+      <div class="inline-cta-desc">Sometimes software fixes aren't enough. My <strong>Complete PC Overhaul</strong> ($299) includes deep system optimisation, malware removal, and a full physical clean to get your PC feeling brand new.</div>
+      <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20a%20PC%20Overhaul." target="_blank" class="inline-cta-btn" rel="noopener">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>
+        Book a Speed Boost
+      </a>
+    </div>
+ 
+    <h2>5. Scan for Malware and PUPs</h2>
+    <p>Potentially Unwanted Programs (PUPs) often bundle themselves with free downloads. They aren't always "viruses," but they sit in the background and track your data, hogging your internet and CPU.</p>
+ 
+    <h2>6. Check Disk Health</h2>
+    <p>If your PC freezes for 30 seconds and then recovers, your drive might be failing. You can check this by typing "cmd" in search, right-clicking it to run as Administrator, and typing <code>chkdsk</code>. If it finds errors, back up your data immediately.</p>
+ 
     <h2>7. Pause Windows Update Loops</h2>
-    <p>Often, a "Slow PC" is actually just Windows trying (and failing) to install an update in the background. Go to Windows Update settings. If you see a red "Retry" button, your PC is wasting 30% of its power trying to fix that loop. Clear the update cache to reset it.</p>
-
-    <h2>8. Scan for "PUPs" (Potentially Unwanted Programs)</h2>
-    <p>These aren't full viruses, but they are "parasite" apps that come bundled with free software. They track your data and slow your boot times. Using a tool like Malwarebytes (or booking a professional scan) is essential.</p>
-
-    <h2>Conclusion: When to Call a Pro?</h2>
-    <p>If you've tried the 10 steps above and your PC still feels "heavy," the issue is likely deeper—possibly failing hardware or a corrupted Windows Image. Don't risk your data by following random YouTube tutorials. Let a local <strong>Perth PC specialist</strong> take a look.</p>
+    <p>Sometimes Windows gets stuck trying to install an update in the background. If you see a red icon in your taskbar or "Update failed" in settings, your PC is wasting 20% of its power trying to fix that loop.</p>
+ 
+    <h2>8. Adjust Visual Effects</h2>
+    <p>Windows has a lot of fancy animations and transparency effects. On older hardware, these cause lag. Search for "Adjust the appearance and performance of Windows" and select <strong>"Adjust for best performance."</strong></p>
+ 
+    <h2>9. Re-Apply Thermal Paste</h2>
+    <p>If your PC is 3+ years old, the factory thermal paste on the processor has likely dried out. This leads to overheating, which forces the PC to slow down to prevent damage. Fresh paste is a cheap way to restore factory speeds.</p>
+ 
+    <h2>10. Fresh Windows Reinstall</h2>
+    <p>When all else fails, a "Clean Install" of Windows 11 is the nuclear option. It wipes away every piece of junk, every registry error, and every bit of malware. It makes the software side of your PC brand new.</p>
+ 
+    <div class="callout callout-warn">
+        <strong>Warning:</strong> Always ensure you have a full backup of your photos and documents before attempting a fresh install or any major disk repairs.
+    </div>
+ 
+    <p>Most speed issues are caused by software clutter or aging hardware. While these tips help, a professional deep-clean and hardware check is the only way to ensure your PC stays fast for years to come. If you're in the Canning Vale area, drop me a message and let's get it sorted.</p>
+ 
   </div>
-</article>
-
+ 
+  <div class="post-footer-nav">
+    <a href="../blog.html" class="post-footer-link">← Back to all posts</a>
+    <a href="../pricing.html" class="post-footer-link">View Overhaul Pricing →</a>
+  </div>
+ 
+</div>
+ 
+<footer>
+  <div class="footer-inner">
+    <a href="../index.html" class="nav-logo">
+      <div class="logo-mark" style="width:28px;height:28px;font-size:11px">FP</div>
+      <span class="logo-name" style="font-size:14px">FixMyPC <em>Perth</em></span>
+    </a>
+    <div class="footer-copy">© 2026 FixMyPC Perth · Perth WA</div>
+    <div class="footer-copy">30 day labour warranty on all services · All prices include GST</div>
+  </div>
+</footer>
+ 
 <script>
   const hamburger = document.getElementById('hamburger');
-  const mobMenu = document.getElementById('mob-menu');
-  hamburger.addEventListener('click', () => {
-    mobMenu.classList.toggle('open');
-  });
+  const mobMenu   = document.getElementById('mob-menu');
+  hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); mobMenu.classList.toggle('open'); });
+  mobMenu.querySelectorAll('.mob-link').forEach(l => l.addEventListener('click', () => { hamburger.classList.remove('open'); mobMenu.classList.remove('open'); }));
 </script>
-
 </body>
-</html>
+</html>```
