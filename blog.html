@@ -499,7 +499,6 @@ const BLOG_POSTS = [
   let activeFilter = 'All';
   let isExpanded = false;
 
-  // Hamburger
   const hamburger = document.getElementById('hamburger');
   const mobMenu = document.getElementById('mob-menu');
   const showMoreBtn = document.getElementById('show-more-btn');
@@ -517,7 +516,6 @@ const BLOG_POSTS = [
     });
   }
 
-  // Filter Buttons
   const allCats = ['All', ...new Set(BLOG_POSTS.map(p => p.category))];
   const filterBar = document.getElementById('filter-bar');
   
@@ -535,7 +533,6 @@ const BLOG_POSTS = [
     });
   });
 
-  // Render Posts
   function renderPosts() {
     const grid = document.getElementById('blog-grid');
     
@@ -548,17 +545,10 @@ const BLOG_POSTS = [
     let postsToShow = [];
 
     if (activeFilter === 'All' && !isExpanded) {
-      // Show Featured Post + 5 regular posts = Total 6
       const featured = filtered.find(p => p.featured);
       const regulars = filtered.filter(p => !p.featured);
-      
-      if (featured) {
-        postsToShow = [featured, ...regulars.slice(0, 5)];
-      } else {
-        postsToShow = regulars.slice(0, 6);
-      }
+      postsToShow = featured ? [featured, ...regulars.slice(0, 5)] : regulars.slice(0, 6);
     } else {
-      // When expanded or in other categories
       postsToShow = isExpanded ? filtered : filtered.slice(0, 6);
     }
 
@@ -591,18 +581,15 @@ const BLOG_POSTS = [
         </a>`;
     }).join('');
 
-    // Button Logic
     showMoreBtn.style.display = filtered.length > 6 ? 'block' : 'none';
     showMoreBtn.textContent = isExpanded ? "Show Less" : "Show More Posts";
   }
 
-  // Toggle Show More / Less
   showMoreBtn.addEventListener('click', () => {
     isExpanded = !isExpanded;
     renderPosts();
   });
 
-  // Fade-in Animation
   const obs = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
       if (entry.isIntersecting) {
@@ -614,5 +601,6 @@ const BLOG_POSTS = [
 
   renderPosts();
 </script>
+
 </body>
 </html>
