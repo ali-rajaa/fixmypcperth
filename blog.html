@@ -499,26 +499,33 @@ const BLOG_POSTS = [
   let activeFilter = 'All';
   let isExpanded = false;
 
+  // Hamburger Menu
   const hamburger = document.getElementById('hamburger');
-  const mobMenu   = document.getElementById('mob-menu');
+  const mobMenu = document.getElementById('mob-menu');
   const showMoreBtn = document.getElementById('show-more-btn');
 
-  hamburger.addEventListener('click', () => { 
-    hamburger.classList.toggle('open'); 
-    mobMenu.classList.toggle('open'); 
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobMenu.classList.toggle('open');
   });
 
   function fmtDate(d) {
-    return new Date(d).toLocaleDateString('en-AU', { day:'numeric', month:'short', year:'numeric' });
+    return new Date(d).toLocaleDateString('en-AU', { 
+      day: 'numeric', 
+      month: 'short', 
+      year: 'numeric' 
+    });
   }
 
+  // Create Filter Buttons
   const allCats = ['All', ...new Set(BLOG_POSTS.map(p => p.category))];
-
   const filterBar = document.getElementById('filter-bar');
-  filterBar.innerHTML = allCats.map(c =>
+  
+  filterBar.innerHTML = allCats.map(c => 
     `<button class="filter-btn${c === 'All' ? ' active' : ''}" data-cat="${c}">${c}</button>`
   ).join('');
 
+  // Filter Button Click
   filterBar.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       activeFilter = btn.dataset.cat;
@@ -529,6 +536,7 @@ const BLOG_POSTS = [
     });
   });
 
+  // Main Render Function
   function renderPosts() {
     const grid = document.getElementById('blog-grid');
     
@@ -539,7 +547,7 @@ const BLOG_POSTS = [
     // Sort newest first
     filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-    // Show only 6 posts initially
+    // Show only 6 posts by default
     const postsToShow = isExpanded ? filtered : filtered.slice(0, 6);
 
     grid.innerHTML = postsToShow.map((post) => {
@@ -571,29 +579,32 @@ const BLOG_POSTS = [
         </a>`;
     }).join('');
 
-    // Show/Hide button logic
+    // Button visibility & text
     showMoreBtn.style.display = filtered.length > 6 ? 'block' : 'none';
     showMoreBtn.textContent = isExpanded ? "Show Less" : "Show More Posts";
   }
 
-  // Button click
+  // Show More / Show Less Button
   showMoreBtn.addEventListener('click', () => {
     isExpanded = !isExpanded;
     renderPosts();
   });
 
-  // Fade-in animation
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('in'), i * 60);
-        obs.unobserve(e.target);
+  // Fade-in Animation
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('in'), i * 50);
+        obs.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.06 });
+  }, { threshold: 0.1 });
 
+  // Initial Render
   renderPosts();
- 
+
+  // Observe existing fade-up elements
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
 </script>
 </body>
 </html>
