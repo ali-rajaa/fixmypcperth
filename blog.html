@@ -499,7 +499,7 @@ const BLOG_POSTS = [
   let activeFilter = 'All';
   let isExpanded = false;
 
-  // Hamburger Menu
+  // Hamburger
   const hamburger = document.getElementById('hamburger');
   const mobMenu = document.getElementById('mob-menu');
   const showMoreBtn = document.getElementById('show-more-btn');
@@ -517,7 +517,7 @@ const BLOG_POSTS = [
     });
   }
 
-  // Create Filter Buttons
+  // Filter Buttons
   const allCats = ['All', ...new Set(BLOG_POSTS.map(p => p.category))];
   const filterBar = document.getElementById('filter-bar');
   
@@ -525,7 +525,6 @@ const BLOG_POSTS = [
     `<button class="filter-btn${c === 'All' ? ' active' : ''}" data-cat="${c}">${c}</button>`
   ).join('');
 
-  // Filter Button Click
   filterBar.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       activeFilter = btn.dataset.cat;
@@ -536,7 +535,7 @@ const BLOG_POSTS = [
     });
   });
 
-  // Main Render Function
+  // Render Posts
   function renderPosts() {
     const grid = document.getElementById('blog-grid');
     
@@ -544,14 +543,27 @@ const BLOG_POSTS = [
       ? [...BLOG_POSTS] 
       : BLOG_POSTS.filter(p => p.category === activeFilter);
 
-    // Sort newest first
     filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-    // Show only 6 posts by default
-    const postsToShow = isExpanded ? filtered : filtered.slice(0, 6);
+    let postsToShow = [];
+
+    if (activeFilter === 'All' && !isExpanded) {
+      // Show Featured Post + 5 regular posts = Total 6
+      const featured = filtered.find(p => p.featured);
+      const regulars = filtered.filter(p => !p.featured);
+      
+      if (featured) {
+        postsToShow = [featured, ...regulars.slice(0, 5)];
+      } else {
+        postsToShow = regulars.slice(0, 6);
+      }
+    } else {
+      // When expanded or in other categories
+      postsToShow = isExpanded ? filtered : filtered.slice(0, 6);
+    }
 
     grid.innerHTML = postsToShow.map((post) => {
-      if (post.featured && activeFilter === 'All' && postsToShow.indexOf(post) === 0) {
+      if (post.featured && activeFilter === 'All') {
         return `
           <a href="blog/${post.slug}.html" class="post-featured fade-up">
             <div>
@@ -579,12 +591,12 @@ const BLOG_POSTS = [
         </a>`;
     }).join('');
 
-    // Button visibility & text
+    // Button Logic
     showMoreBtn.style.display = filtered.length > 6 ? 'block' : 'none';
     showMoreBtn.textContent = isExpanded ? "Show Less" : "Show More Posts";
   }
 
-  // Show More / Show Less Button
+  // Toggle Show More / Less
   showMoreBtn.addEventListener('click', () => {
     isExpanded = !isExpanded;
     renderPosts();
@@ -594,17 +606,13 @@ const BLOG_POSTS = [
   const obs = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
       if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('in'), i * 50);
+        setTimeout(() => entry.target.classList.add('in'), i * 60);
         obs.unobserve(entry.target);
       }
     });
   }, { threshold: 0.1 });
 
-  // Initial Render
   renderPosts();
-
-  // Observe existing fade-up elements
-  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
 </script>
 </body>
 </html>
