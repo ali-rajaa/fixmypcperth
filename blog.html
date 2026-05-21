@@ -23,58 +23,58 @@
    ============================================================ */
 const BLOG_POSTS = [
   {
-    slug:     "why-is-my-pc-so-slow",
-    title:    "Why Is My PC So Slow? The 7 Most Common Causes (And Fixes)",
-    excerpt:  "A slow PC is the most common complaint I hear in Canning Vale. Here are the real reasons your PC has slowed down and what you can do about each one.",
-    category: "Speed & Performance",
-    date:     "2026-05-15",
-    readMin:  6,
-    featured: true,
+    slug:      "why-is-my-pc-so-slow",
+    title:     "Why Is My PC So Slow? The 7 Most Common Causes (And Fixes)",
+    excerpt:   "A slow PC is the most common complaint I hear in Canning Vale. Here are the real reasons your PC has slowed down and what you can do about each one.",
+    category:  "Speed & Performance",
+    date:      "2026-05-15",
+    readMin:   6,
+    featured:  true,
   },
   {
-    slug:     "how-to-tell-if-pc-has-virus",
-    title:    "How To Tell If Your PC Has a Virus: 9 Warning Signs",
-    excerpt:  "Pop-ups, sluggishness, weird browser behaviour. These are the signs most people miss every day. Here's exactly what to look for and what to do next.",
-    category: "Virus & Security",
-    date:     "2026-05-10",
-    readMin:  5,
-    featured: false,
+    slug:      "how-to-tell-if-pc-has-virus",
+    title:     "How To Tell If Your PC Has a Virus: 9 Warning Signs",
+    excerpt:   "Pop-ups, sluggishness, weird browser behaviour. These are the signs most people miss every day. Here's exactly what to look for and what to do next.",
+    category:  "Virus & Security",
+    date:      "2026-05-10",
+    readMin:   5,
+    featured:  false,
   },
   {
-    slug:     "ssd-upgrade-perth-guide",
-    title:    "SSD Upgrade Guide: How Much Faster Will Your PC Actually Get?",
-    excerpt:  "Swapping a hard drive for an SSD is the single best upgrade you can make. Boot times go from 3 minutes to under 10 seconds. Here's everything you need to know.",
-    category: "Upgrades",
-    date:     "2026-05-05",
-    readMin:  7,
-    featured: false,
+    slug:      "ssd-upgrade-perth-guide",
+    title:     "SSD Upgrade Guide: How Much Faster Will Your PC Actually Get?",
+    excerpt:   "Swapping a hard drive for an SSD is the single best upgrade you can make. Boot times go from 3 minutes to under 10 seconds. Here's everything you need to know.",
+    category:  "Upgrades",
+    date:      "2026-05-05",
+    readMin:   7,
+    featured:  false,
   },
   {
-    slug:     "data-recovery-perth-guide",
-    title:    "Data Recovery Perth: What to Do If Your Hard Drive Fails",
-    excerpt:  "Your drive is clicking. Your files are gone. Don't panic. Here's exactly what to do, and critically, what NOT to do — to give your data the best chance of recovery.",
-    category: "Data Recovery",
-    date:     "2026-04-28",
-    readMin:  8,
-    featured: false,
+    slug:      "data-recovery-perth-guide",
+    title:     "Data Recovery Perth: What to Do If Your Hard Drive Fails",
+    excerpt:   "Your drive is clicking. Your files are gone. Don't panic. Here's exactly what to do, and critically, what NOT to do — to give your data the best chance of recovery.",
+    category:  "Data Recovery",
+    date:      "2026-04-28",
+    readMin:   8,
+    featured:  false,
   },
   {
-    slug:     "how-much-does-pc-repair-cost-perth",
-    title:    "How Much Does PC Repair Cost in Perth? (2026 Guide)",
-    excerpt:  "Honest breakdown of what PC repair actually costs in Perth — from virus removal to full rebuilds. No fluff, no upsells, just real prices you can compare.",
-    category: "Pricing & Advice",
-    date:     "2026-04-20",
-    readMin:  5,
-    featured: false,
+    slug:      "how-much-does-pc-repair-cost-perth",
+    title:     "How Much Does PC Repair Cost in Perth? (2026 Guide)",
+    excerpt:   "Honest breakdown of what PC repair actually costs in Perth — from virus removal to full rebuilds. No fluff, no upsells, just real prices you can compare.",
+    category:  "Pricing & Advice",
+    date:      "2026-04-20",
+    readMin:   5,
+    featured:  false,
   },
   {
-    slug:     "signs-hard-drive-failing",
-    title:    "5 Signs Your Hard Drive Is About to Fail (Don't Ignore These)",
-    excerpt:  "Hard drives give warning signs before they die. If you catch them early, you can save your data. Here are the five signs Perth locals miss most often.",
-    category: "Data Recovery",
-    date:     "2026-04-12",
-    readMin:  4,
-    featured: false,
+    slug:      "signs-hard-drive-failing",
+    title:     "5 Signs Your Hard Drive Is About to Fail (Don't Ignore These)",
+    excerpt:   "Hard drives give warning signs before they die. If you catch them early, you can save your data. Here are the five signs Perth locals miss most often.",
+    category:  "Data Recovery",
+    date:      "2026-04-12",
+    readMin:   4,
+    featured:  false,
   },
 ];
 /* ============================================================
@@ -219,7 +219,8 @@ const BLOG_POSTS = [
   /* ── FILTER BAR ── */
   .filter-bar {
     display: flex; gap: 8px; flex-wrap: wrap;
-    padding: 2rem 2rem 0; max-width: 1100px; margin: 0 auto;
+    padding: 100px 2rem 0; max-width: 1100px; margin: 0 auto;
+    position: relative; z-index: 10;
   }
   .filter-btn {
     font-family: var(--body); font-size: 13px; font-weight: 600;
@@ -380,7 +381,7 @@ const BLOG_POSTS = [
     .page-title { font-size: clamp(1.7rem, 7vw, 2.4rem); letter-spacing: -1px; }
     .page-sub { font-size: 14px; }
 
-    .filter-bar { padding: 1.5rem 1rem 0; }
+    .filter-bar { padding: 80px 1rem 0; }
     .blog-section { padding: 1.5rem 1rem 4rem; }
 
     .post-featured { grid-template-columns: 1fr; gap: 1.5rem; padding: 1.75rem; }
@@ -402,7 +403,6 @@ const BLOG_POSTS = [
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <a href="index.html" class="nav-logo">
     <div class="logo-mark">FP</div>
@@ -429,15 +429,12 @@ const BLOG_POSTS = [
 </nav>
 
 
-<!-- FILTER BAR -->
 <div class="filter-bar" id="filter-bar"></div>
 
-<!-- BLOG GRID -->
 <div class="blog-section">
   <div class="blog-grid" id="blog-grid"></div>
 </div>
 
-<!-- CTA -->
 <div class="cta-bar">
   <div class="cta-bar-inner fade-up">
     <div class="cta-kicker">Need help right now?</div>
@@ -453,7 +450,6 @@ const BLOG_POSTS = [
   </div>
 </div>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <a href="index.html" class="nav-logo">
@@ -466,7 +462,7 @@ const BLOG_POSTS = [
 </footer>
 
 <script>
- 
+  
 
   // ── HAMBURGER
   const hamburger = document.getElementById('hamburger');
@@ -559,4 +555,4 @@ const BLOG_POSTS = [
   renderPosts();
 </script>
 </body>
-</html>
+</html>```
