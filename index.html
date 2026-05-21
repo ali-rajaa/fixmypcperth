@@ -1,4 +1,4 @@
-DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -330,11 +330,6 @@ const CONFIG = {
   .trust-track {
     display: flex; gap: 0; white-space: nowrap;
     animation: ticker 14s linear infinite;
-    @media (max-width: 768px) {
-  .trust-track {
-    animation-duration: 5s;
-  }
-}
   }
   .trust-track:hover { animation-play-state: paused; }
   @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
@@ -522,7 +517,7 @@ const CONFIG = {
     .cta-inner { grid-template-columns: 1fr; gap: 2rem; }
     .cta-actions { flex-direction: row; flex-wrap: wrap; }
     .pill-fb { display: none; }
-}
+  }
   @media (max-width: 540px) {
     nav { padding: 0 1.25rem; }
     .section, .cta-section { padding: 4rem 1.25rem; }
@@ -531,10 +526,67 @@ const CONFIG = {
     .svc-header-row { flex-direction: column; align-items: flex-start; }
     .pkg-card { padding: 2rem 1.5rem; }
   }
+
+  /* ── MOBILE BOTTOM NAV ── */
+  .mob-bottom-nav {
+    display: none;
+    position: fixed; bottom: 0; left: 0; right: 0; z-index: 300;
+    height: 60px;
+    background: rgba(255,255,255,0.97);
+    backdrop-filter: blur(20px);
+    border-top: 1.5px solid var(--border);
+    padding: 0 1.25rem;
+    align-items: center; justify-content: space-between;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
+  }
+  .mob-bottom-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+  .mob-bottom-hamburger {
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    gap: 5px; width: 40px; height: 40px;
+    background: var(--bg3); border: 1.5px solid var(--border2);
+    border-radius: 10px; cursor: pointer; flex-shrink: 0;
+  }
+  .mob-bottom-hamburger span { display: block; width: 16px; height: 2px; background: var(--ink); border-radius: 2px; transition: transform 0.3s, opacity 0.3s; }
+  .mob-bottom-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .mob-bottom-hamburger.open span:nth-child(2) { opacity: 0; }
+  .mob-bottom-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* ── MOBILE SLIDE UP MENU ── */
+  .mob-slide-menu {
+    display: none;
+    position: fixed; bottom: 60px; left: 0; right: 0; z-index: 299;
+    background: rgba(255,255,255,0.98);
+    backdrop-filter: blur(20px);
+    border-top: 1.5px solid var(--border);
+    padding: 1rem 1.25rem 1.25rem;
+    flex-direction: column; gap: 6px;
+    box-shadow: 0 -8px 30px rgba(0,0,0,0.1);
+    border-radius: 20px 20px 0 0;
+  }
+  .mob-slide-menu.open { display: flex; }
+  .mob-slide-link {
+    font-family: var(--body); font-size: 15px; font-weight: 600;
+    color: var(--ink); text-decoration: none;
+    padding: 0.85rem 1rem; border-radius: 10px;
+    border: 1.5px solid var(--border);
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+    text-align: center;
+  }
+  .mob-slide-link:hover { background: var(--blue-lt); color: var(--blue); border-color: var(--blue-mid); }
+  .mob-slide-wa {
+    background: var(--wa); color: #fff !important;
+    border-color: var(--wa); margin-top: 4px;
+    box-shadow: 0 4px 14px rgba(34,197,94,0.35);
+  }
+  .mob-slide-wa:hover { background: var(--wa-dk) !important; border-color: var(--wa-dk) !important; }
+
+  @media (max-width: 720px) {
+    .mob-bottom-nav { display: flex; }
+    body { padding-bottom: 60px; }
+  }
 </style>
 </head>
 <body>
- 
  
 <!-- NAV -->
 <nav id="nav"></nav>
@@ -631,6 +683,25 @@ const CONFIG = {
     <div class="footer-note">30-day labour warranty on all services</div>
   </div>
 </footer>
+
+<!-- MOBILE BOTTOM NAV -->
+<div class="mob-bottom-nav">
+  <a href="index.html" class="mob-bottom-logo">
+    <div class="logo-mark" style="width:32px;height:32px;font-size:12px">FP</div>
+    <span class="logo-name" style="font-size:14px">FixMyPC <em>Perth</em></span>
+  </a>
+  <button class="mob-bottom-hamburger" id="mob-bottom-hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</div>
+
+<!-- SLIDE UP MENU — no Home link since we're on index.html -->
+<div class="mob-slide-menu" id="mob-slide-menu">
+  <a href="pricing.html" class="mob-slide-link">Pricing</a>
+  <a href="blog.html" class="mob-slide-link">Blog</a>
+  <a href="reviews.html" class="mob-slide-link">Reviews & FAQ</a>
+  <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" class="mob-slide-link mob-slide-wa" rel="noopener">WhatsApp me now →</a>
+</div>
  
 <script>
   const WA = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(CONFIG.whatsappMsg)}`;
@@ -770,6 +841,20 @@ const CONFIG = {
     });
   }, { threshold: 0.08 });
   document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+  // ── MOBILE BOTTOM NAV
+  const mobBottomHamburger = document.getElementById('mob-bottom-hamburger');
+  const mobSlideMenu = document.getElementById('mob-slide-menu');
+  mobBottomHamburger.addEventListener('click', () => {
+    mobBottomHamburger.classList.toggle('open');
+    mobSlideMenu.classList.toggle('open');
+  });
+  mobSlideMenu.querySelectorAll('.mob-slide-link').forEach(link => {
+    link.addEventListener('click', () => {
+      mobBottomHamburger.classList.remove('open');
+      mobSlideMenu.classList.remove('open');
+    });
+  });
 </script>
 </body>
 </html>
