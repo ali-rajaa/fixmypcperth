@@ -417,25 +417,6 @@ const BLOG_POSTS = [
   }
 
   @media (max-width: 360px) { .logo-name { display: none; } }
-  
-    .show-more-btn {
-    display: block;
-    margin: 40px auto 30px;
-    padding: 14px 40px;
-    background: var(--blue);
-    color: white;
-    font-family: var(--body);
-    font-weight: 700;
-    font-size: 15px;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    box-shadow: 0 4px 16px rgba(21,96,255,0.3);
-  }
-  .show-more-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(21,96,255,0.45);
-  }
 </style>
 </head>
 <body>
@@ -466,7 +447,6 @@ const BLOG_POSTS = [
 
 <div class="blog-section">
   <div class="blog-grid" id="blog-grid"></div>
-  <button id="show-more-btn" class="show-more-btn">Show More Posts</button>
 </div>
 
 <div class="cta-bar">
@@ -496,115 +476,97 @@ const BLOG_POSTS = [
 </footer>
 
 <script>
-  // Wait for the page to fully load
-  document.addEventListener('DOMContentLoaded', function() {
+  
 
-    let activeFilter = 'All';
-    let isExpanded = false;
+  // ── HAMBURGER
+  const hamburger = document.getElementById('hamburger');
+  const mobMenu   = document.getElementById('mob-menu');
+  hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); mobMenu.classList.toggle('open'); });
+  mobMenu.querySelectorAll('.mob-link').forEach(l => l.addEventListener('click', () => { hamburger.classList.remove('open'); mobMenu.classList.remove('open'); }));
 
-    const hamburger = document.getElementById('hamburger');
-    const mobMenu = document.getElementById('mob-menu');
-    const showMoreBtn = document.getElementById('show-more-btn');
+  // ── FORMAT DATE
+  function fmtDate(d) {
+    return new Date(d).toLocaleDateString('en-AU', { day:'numeric', month:'short', year:'numeric' });
+  }
+
+  // ── GET ALL CATEGORIES
+  const allCats = ['All', ...new Set(BLOG_POSTS.map(p => p.category))];
+
+  // ── RENDER FILTER BUTTONS
+  let activeFilter = 'All';
+  const filterBar = document.getElementById('filter-bar');
+  filterBar.innerHTML = allCats.map(c =>
+    `<button class="filter-btn${c === 'All' ? ' active' : ''}" data-cat="${c}">${c}</button>`
+  ).join('');
+
+  filterBar.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      activeFilter = btn.dataset.cat;
+      filterBar.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderPosts();
+    });
+  });
+
+  // ── RENDER POSTS
+  function renderPosts() {
     const grid = document.getElementById('blog-grid');
+    const filtered = activeFilter === 'All'
+      ? BLOG_POSTS
+      : BLOG_POSTS.filter(p => p.category === activeFilter);
 
-    if (!grid || !showMoreBtn) {
-      console.error("Blog grid or button not found!");
+    if (!filtered.length) {
+      grid.innerHTML = `<div class="empty-state"><p>No posts in this category yet — check back soon.</p></div>`;
       return;
     }
 
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('open');
-      mobMenu.classList.toggle('open');
-    });
+    const waIcon = `<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>`;
 
-    function fmtDate(d) {
-      return new Date(d).toLocaleDateString('en-AU', { 
-        day: 'numeric', month: 'short', year: 'numeric' 
-      });
-    }
-
-    // Filter Buttons
-    const allCats = ['All', ...new Set(BLOG_POSTS.map(p => p.category))];
-    const filterBar = document.getElementById('filter-bar');
-    
-    filterBar.innerHTML = allCats.map(c => 
-      `<button class="filter-btn${c === 'All' ? ' active' : ''}" data-cat="${c}">${c}</button>`
-    ).join('');
-
-    filterBar.querySelectorAll('.filter-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        activeFilter = btn.dataset.cat;
-        filterBar.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        isExpanded = false;
-        renderPosts();
-      });
-    });
-
-    function renderPosts() {
-      let filtered = activeFilter === 'All' 
-        ? [...BLOG_POSTS] 
-        : BLOG_POSTS.filter(p => p.category === activeFilter);
-
-      filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-      let postsToShow = [];
-
-      if (activeFilter === 'All' && !isExpanded) {
-        const featured = filtered.find(p => p.featured);
-        const regulars = filtered.filter(p => !p.featured);
-        postsToShow = featured ? [featured, ...regulars.slice(0, 5)] : regulars.slice(0, 6);
-      } else {
-        postsToShow = isExpanded ? filtered : filtered.slice(0, 6);
-      }
-
-      if (postsToShow.length === 0) {
-        grid.innerHTML = `<div class="empty-state"><p>No posts found.</p></div>`;
-        return;
-      }
-
-      grid.innerHTML = postsToShow.map((post) => {
-        if (post.featured && activeFilter === 'All') {
-          return `
-            <a href="blog/${post.slug}.html" class="post-featured fade-up">
-              <div>
-                <div class="feat-eyebrow">Featured Post · ${post.category}</div>
-                <div class="feat-title">${post.title}</div>
-                <div class="feat-excerpt">${post.excerpt}</div>
-                <div class="feat-meta">
-                  <span>${fmtDate(post.date)}</span>
-                  <span>·</span>
-                  <span>${post.readMin} min read</span>
-                </div>
-              </div>
-              <div class="feat-read-btn">Read article →</div>
-            </a>`;
-        }
+    grid.innerHTML = filtered.map((post, i) => {
+      if (post.featured && i === 0 && activeFilter === 'All') {
         return `
-          <a href="blog/${post.slug}.html" class="post-card fade-up">
-            <span class="post-cat">${post.category}</span>
-            <div class="post-title">${post.title}</div>
-            <div class="post-excerpt">${post.excerpt}</div>
-            <div class="post-footer">
-              <span>${fmtDate(post.date)} · ${post.readMin} min read</span>
-              <span class="post-read-more">Read →</span>
+          <a href="blog/${post.slug}.html" class="post-featured fade-up">
+            <div>
+              <div class="feat-eyebrow">Featured Post · ${post.category}</div>
+              <div class="feat-title">${post.title}</div>
+              <div class="feat-excerpt">${post.excerpt}</div>
+              <div class="feat-meta">
+                <span>${fmtDate(post.date)}</span>
+                <span>·</span>
+                <span>${post.readMin} min read</span>
+              </div>
             </div>
+            <div class="feat-read-btn">Read article →</div>
           </a>`;
-      }).join('');
+      }
+      return `
+        <a href="blog/${post.slug}.html" class="post-card fade-up">
+          <span class="post-cat">${post.category}</span>
+          <div class="post-title">${post.title}</div>
+          <div class="post-excerpt">${post.excerpt}</div>
+          <div class="post-footer">
+            <span>${fmtDate(post.date)} · ${post.readMin} min read</span>
+            <span class="post-read-more">Read →</span>
+          </div>
+        </a>`;
+    }).join('');
 
-      showMoreBtn.style.display = filtered.length > 6 ? 'block' : 'none';
-      showMoreBtn.textContent = isExpanded ? "Show Less" : "Show More Posts";
-    }
+    // re-observe new fade-up elements
+    document.querySelectorAll('.fade-up:not(.in)').forEach(el => obs.observe(el));
+  }
 
-    showMoreBtn.addEventListener('click', () => {
-      isExpanded = !isExpanded;
-      renderPosts();
+  // ── SCROLL ANIMATIONS
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('in'), i * 60);
+        obs.unobserve(e.target);
+      }
     });
+  }, { threshold: 0.06 });
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
 
-    // Initial render
-    renderPosts();
-  });
+  renderPosts();
 </script>
-
 </body>
 </html>
