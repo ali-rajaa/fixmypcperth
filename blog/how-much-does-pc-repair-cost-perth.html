@@ -89,7 +89,10 @@
     background: var(--bg3); border: 1.5px solid var(--border2);
     border-radius: 10px; cursor: pointer; flex-shrink: 0;
   }
-  .hamburger span { display: block; width: 16px; height: 2px; background: var(--ink); border-radius: 2px; }
+  .hamburger span { display: block; width: 16px; height: 2px; background: var(--ink); border-radius: 2px; transition: transform 0.3s, opacity 0.3s; }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
   .mob-menu {
     display: none; position: absolute; top: 64px; left: 0; right: 0;
     background: rgba(255,255,255,0.97); backdrop-filter: blur(20px);
@@ -112,9 +115,9 @@
   .post-body p { margin-bottom: 1.5rem; }
   .post-body h2 { font-family: var(--display); font-size: 1.5rem; font-weight: 800; color: var(--ink); letter-spacing: -0.5px; margin: 2.5rem 0 1rem; border-left: 4px solid var(--blue); padding-left: 15px; }
   .post-body h3 { font-family: var(--display); font-size: 1.2rem; font-weight: 700; color: var(--ink); margin: 1.75rem 0 0.75rem; }
-  .post-body ul { padding-left: 1.5rem; margin-bottom: 1.5rem; list-style-type: none; }
-  .post-body li { margin-bottom: 0.75rem; position: relative; }
-  .post-body li::before { content: "→"; color: var(--blue); position: absolute; left: -1.5rem; font-weight: bold; }
+  .post-body ul { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+  .post-body li { margin-bottom: 0.75rem; color: var(--ink2); }
+  .post-body strong { color: var(--ink); font-weight: 700; }
  
   .price-table { width: 100%; border-collapse: collapse; margin: 2rem 0; font-size: 15px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
   .price-table th { background: var(--ink); color: #fff; text-align: left; padding: 12px 16px; font-family: var(--display); }
@@ -122,19 +125,43 @@
   .price-table tr:last-child td { border-bottom: none; }
   .price-table tr:nth-child(even) td { background: var(--bg2); }
  
-  .callout { background: var(--blue-lt); border: 1.5px solid var(--blue-mid); border-left: 4px solid var(--blue); border-radius: 12px; padding: 1.5rem; margin: 2rem 0; }
-  .inline-cta { background: var(--ink); border-radius: 16px; padding: 2rem; margin: 3rem 0; position: relative; overflow: hidden; color: #fff; }
-  .inline-cta::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--blue), var(--teal), var(--wa)); }
-  .inline-cta-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--wa); color: #fff; font-weight: 700; padding: 14px 28px; border-radius: 50px; text-decoration: none; margin-top: 1rem; }
+  .callout { background: var(--blue-lt); border: 1.5px solid var(--blue-mid); border-left: 4px solid var(--blue); border-radius: 12px; padding: 1.5rem; margin: 2rem 0; font-size: 14.5px; }
+  
+  .inline-cta {
+    background: var(--ink); border-radius: 16px; padding: 2rem;
+    margin: 3rem 0; position: relative; overflow: hidden;
+  }
+  .inline-cta::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    background: linear-gradient(90deg, var(--blue), var(--teal), var(--wa));
+  }
+  .inline-cta-title {
+    font-family: var(--display); font-size: 1.3rem; font-weight: 800;
+    color: #fff; margin-bottom: 0.6rem; letter-spacing: -0.4px;
+  }
+  .inline-cta-desc { font-size: 14px; color: rgba(255,255,255,0.7); margin-bottom: 1.5rem; line-height: 1.6; }
+  .inline-cta-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--wa); color: #fff; font-family: var(--body); font-size: 15px; font-weight: 700;
+    padding: 14px 28px; border-radius: 50px; text-decoration: none;
+    box-shadow: 0 4px 14px rgba(34,197,94,0.4); transition: transform 0.15s;
+  }
+  .inline-cta-btn:hover { transform: translateY(-2px); }
  
-  footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 2rem; margin-top: 5rem; }
-  .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+  footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.75rem 2rem; margin-top: 4rem; }
+  .footer-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+  }
+  .footer-copy { font-size: 12px; color: var(--muted2); }
  
   @media (max-width: 720px) {
-    nav { padding: 0 1rem; }
+    nav { padding: 0 1rem; height: 56px; }
     .nav-links { display: none; }
     .hamburger { display: flex; }
-    .article-wrap { padding: 90px 1.25rem 4rem; }
+    .article-wrap { padding: 88px 1.25rem 4rem; }
+    .inline-cta { padding: 1.5rem; }
+    .footer-inner { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
   }
 </style>
 </head>
@@ -151,14 +178,16 @@
       <a href="../blog.html" class="nav-pill pill-ghost">Blog</a>
       <a href="../pricing.html" class="nav-pill pill-ghost">Pricing</a>
     </div>
-    <a href="https://wa.me/61452573701" class="nav-pill pill-wa">WhatsApp Quote</a>
-    <button class="hamburger" id="hamburger"><span></span><span style="margin: 4px 0;"></span><span></span></button>
+    <a href="https://wa.me/61452573701" target="_blank" class="nav-pill pill-wa" rel="noopener">WhatsApp Quote</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span style="margin: 4px 0;"></span><span></span>
+    </button>
   </div>
   <div class="mob-menu" id="mob-menu">
     <a href="../index.html" class="mob-link">Home</a>
     <a href="../blog.html" class="mob-link">Blog</a>
     <a href="../pricing.html" class="mob-link">Pricing</a>
-    <a href="https://wa.me/61452573701" class="mob-link mob-wa">WhatsApp Now</a>
+    <a href="https://wa.me/61452573701" target="_blank" class="mob-link mob-wa" rel="noopener">WhatsApp Now</a>
   </div>
 </nav>
  
@@ -211,7 +240,7 @@
         </tr>
         <tr>
           <td>Laptop Screen Replacement</td>
-          <td>$100 – $140*</td>
+          <td>$100 – $140</td>
           <td>1 - 3 Days</td>
         </tr>
         <tr>
@@ -226,14 +255,13 @@
         </tr>
       </tbody>
     </table>
-    <small>*Does not include the cost of the replacement screen panel.</small>
  
     <h2>Factors That Influence Laptop Repair Costs</h2>
     <p>While software fixes are usually fixed-price, hardware repairs like <strong>laptop screen repair in Perth</strong> are influenced by several factors:</p>
     <ul>
       <li><strong>Part Availability:</strong> Common models like Dell Inspiron or HP Pavilion have cheaper, readily available parts. MacBooks or Microsoft Surface devices require premium components.</li>
       <li><strong>Complexity:</strong> Replacing a keyboard on an old Dell takes 10 minutes. On a modern MacBook, it requires removing every single internal component.</li>
-      <li><strong>Urgency:</strong> Some shops charge a "Priority Fee" of $50-$100 for same-day service. (We try to avoid this at FixMyPC Perth!).</li>
+      <li><strong>Urgency:</strong> Some shops charge a "Priority Fee" for same-day service. We try to avoid this at FixMyPC Perth.</li>
     </ul>
  
     <div class="callout">
@@ -242,30 +270,33 @@
  
     <h2>Onsite vs. Workshop Repairs</h2>
     <p>Many Perth services offer <strong>onsite computer repair</strong> where they come to your home or office. While convenient, this is often the most expensive way to fix a PC because you are paying for the technician's travel time.</p>
-    <p>Bringing your device to a dedicated workshop (like ours in Canning Vale) is usually <strong>30-40% cheaper</strong> because we can work on multiple machines simultaneously while scans are running, passing those savings on to you.</p>
+    <p>Bringing your device to a dedicated workshop in Canning Vale is usually <strong>30-40% cheaper</strong> because we can work on multiple machines simultaneously while scans are running, passing those savings on to you.</p>
  
     <div class="inline-cta">
-      <h3>Need an Exact Quote for Your Model?</h3>
-      <p>Don't guess the price. Send a photo of your laptop model or a description of the error to our WhatsApp. We provide instant, no-obligation quotes for Perth locals.</p>
-      <a href="https://wa.me/61452573701" class="inline-cta-btn">Get My Fixed-Price Quote</a>
+      <div class="inline-cta-title">Want a specific price for your model?</div>
+      <div class="inline-cta-desc">Don't guess the price. Send a photo of your laptop model or a description of the error to our WhatsApp. We provide instant, no-obligation quotes for Perth locals.</div>
+      <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20price%20quote%20for%20my%20PC%20repair." target="_blank" class="inline-cta-btn" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>
+        Get My Fixed-Price Quote
+      </a>
     </div>
  
     <h2>Frequently Asked Questions (FAQ)</h2>
     
     <h3>Is it worth fixing a 5-year-old laptop?</h3>
-    <p>In most cases, yes. A 5-year-old laptop with a slow hard drive can be made "better than new" with an SSD upgrade for around $180 (parts and labour included). This is much cheaper than spending $1,200 on a new machine.</p>
+    <p>In most cases, yes. A 5-year-old laptop with a slow hard drive can be made better than new with an SSD upgrade for around $180 (parts and labour included). This is much cheaper than spending $1,200 on a new machine.</p>
  
     <h3>Do you charge a diagnostic fee?</h3>
-    <p>Many Perth shops charge $50-$80 just to look at the computer. At FixMyPC Perth, we offer <strong>free basic assessments</strong>. If we can see the problem immediately, we won't charge you to tell you what it is.</p>
+    <p>Many Perth shops charge $50-$80 just to look at the computer. At FixMyPC Perth, we offer free basic assessments. If we can see the problem immediately, we won't charge you to tell you what it is.</p>
  
     <h3>How long does a typical repair take?</h3>
-    <p>80% of our repairs in Canning Vale are completed within 24 hours. Hardware parts that need to be ordered from over East (Melbourne/Sydney) can add 2-3 days to the wait time.</p>
+    <p>80% of our repairs in Canning Vale are completed within 24 hours. Hardware parts that need to be ordered from over East can add 2-3 days to the wait time.</p>
  
     <h2>Conclusion: Choosing the Right Local Repairer</h2>
-    <p>Price isn't everything—reliability matters. When comparing <strong>Perth computer repair</strong> services, look for someone with local reviews, a clear warranty policy (we offer a 30-day labour warranty), and a fixed-price approach. Stop paying hourly for tech support and start paying for results.</p>
+    <p>Price isn't everything reliability matters. When comparing <strong>Perth computer repair</strong> services, look for someone with local reviews, a clear warranty policy, and a fixed-price approach. Stop paying hourly for tech support and start paying for results.</p>
   </article>
  
-  <div class="post-footer-nav" style="display:flex; justify-content: space-between; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+  <div class="post-footer-nav" style="display:flex; justify-content: space-between; margin-top: 3rem; padding-top: 2rem; border-top: 1.5px solid var(--border);">
     <a href="../blog.html" style="color: var(--blue); font-weight: 700; text-decoration: none;">← Back to Blog</a>
     <a href="../pricing.html" style="color: var(--blue); font-weight: 700; text-decoration: none;">Full Pricing List →</a>
   </div>
@@ -274,18 +305,19 @@
  
 <footer>
   <div class="footer-inner">
-    <div class="nav-logo">
-      <div class="logo-mark" style="width:30px; height:30px; font-size:12px;">FP</div>
-      <span class="logo-name" style="font-size:14px;">FixMyPC <em>Perth</em></span>
-    </div>
-    <div style="font-size:12px; color: var(--muted);">© 2026 FixMyPC Perth · Serving Canning Vale & Surrounds</div>
+    <a href="../index.html" class="nav-logo">
+      <div class="logo-mark" style="width:28px;height:28px;font-size:11px">FP</div>
+      <span class="logo-name" style="font-size:14px">FixMyPC <em>Perth</em></span>
+    </a>
+    <div class="footer-copy">© 2026 FixMyPC Perth · Perth WA</div>
+    <div class="footer-copy">30 day labour warranty on all services · All prices include GST</div>
   </div>
 </footer>
  
 <script>
-  const hb = document.getElementById('hamburger');
-  const mm = document.getElementById('mob-menu');
-  hb.addEventListener('click', () => { mm.classList.toggle('open'); });
+  const hamburger = document.getElementById('hamburger');
+  const mobMenu = document.getElementById('mob-menu');
+  hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); mobMenu.classList.toggle('open'); });
 </script>
 </body>
 </html>
