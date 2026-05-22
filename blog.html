@@ -348,6 +348,36 @@ const BLOG_POSTS = [
   }
   .empty-state p { font-size: 15px; }
 
+  /* ── SHOW MORE / LESS BUTTON ── */
+  .show-more-wrap {
+    max-width: 1100px; margin: 1.75rem auto 0;
+    display: flex; justify-content: center;
+  }
+  .show-more-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: var(--body); font-size: 14px; font-weight: 700;
+    color: var(--blue); background: var(--blue-lt);
+    border: 1.5px solid var(--blue-mid);
+    padding: 12px 28px; border-radius: 50px; cursor: pointer;
+    transition: background 0.15s, border-color 0.15s, transform 0.15s, box-shadow 0.15s;
+  }
+  .show-more-btn:hover {
+    background: var(--blue); color: #fff;
+    border-color: var(--blue);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(21,96,255,0.25);
+  }
+  .show-more-btn .btn-chevron {
+    width: 18px; height: 18px; border-radius: 50%;
+    background: rgba(21,96,255,0.15);
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.3s cubic-bezier(.22,.68,0,1.2), background 0.15s;
+    flex-shrink: 0;
+  }
+  .show-more-btn:hover .btn-chevron { background: rgba(255,255,255,0.2); }
+  .show-more-btn.expanded .btn-chevron { transform: rotate(180deg); }
+  .show-more-btn svg { display: block; }
+
   /* ── CTA BAR ── */
   .cta-bar {
     background: var(--bg2); border-top: 1px solid var(--border);
@@ -408,6 +438,9 @@ const BLOG_POSTS = [
 
     .blog-grid { grid-template-columns: 1fr; gap: 1rem; }
 
+    .show-more-wrap { padding: 0 1rem; }
+    .show-more-btn { width: 100%; justify-content: center; }
+
     .cta-bar { padding: 3rem 1.25rem; }
     .cta-btns { flex-direction: column; }
     .btn-wa, .btn-outline { justify-content: center; }
@@ -442,11 +475,21 @@ const BLOG_POSTS = [
   </div>
 </nav>
 
-
 <div class="filter-bar" id="filter-bar"></div>
 
 <div class="blog-section">
   <div class="blog-grid" id="blog-grid"></div>
+</div>
+
+<div class="show-more-wrap" id="show-more-wrap" style="display:none;">
+  <button class="show-more-btn" id="show-more-btn">
+    <span id="show-more-label">Show more posts</span>
+    <span class="btn-chevron">
+      <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
+        <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </span>
+  </button>
 </div>
 
 <div class="cta-bar">
@@ -476,8 +519,6 @@ const BLOG_POSTS = [
 </footer>
 
 <script>
-  
-
   // ── HAMBURGER
   const hamburger = document.getElementById('hamburger');
   const mobMenu   = document.getElementById('mob-menu');
@@ -492,6 +533,11 @@ const BLOG_POSTS = [
   // ── GET ALL CATEGORIES
   const allCats = ['All', ...new Set(BLOG_POSTS.map(p => p.category))];
 
+  // ── SHOW MORE STATE
+  const INITIAL_LIMIT = 3; // max non-featured cards shown initially
+  let showAll = false;
+  let currentFiltered = [];
+
   // ── RENDER FILTER BUTTONS
   let activeFilter = 'All';
   const filterBar = document.getElementById('filter-bar');
@@ -502,44 +548,74 @@ const BLOG_POSTS = [
   filterBar.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       activeFilter = btn.dataset.cat;
+      showAll = false; // reset when filter changes
       filterBar.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       renderPosts();
     });
   });
 
+  // ── SHOW MORE BUTTON
+  const showMoreWrap = document.getElementById('show-more-wrap');
+  const showMoreBtn  = document.getElementById('show-more-btn');
+  const showMoreLabel = document.getElementById('show-more-label');
+
+  showMoreBtn.addEventListener('click', () => {
+    showAll = !showAll;
+    renderPosts();
+    // if collapsing, scroll back up to grid
+    if (!showAll) {
+      document.getElementById('blog-grid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+
   // ── RENDER POSTS
   function renderPosts() {
     const grid = document.getElementById('blog-grid');
-    const filtered = activeFilter === 'All'
+
+    currentFiltered = activeFilter === 'All'
       ? BLOG_POSTS
       : BLOG_POSTS.filter(p => p.category === activeFilter);
 
-    if (!filtered.length) {
+    if (!currentFiltered.length) {
       grid.innerHTML = `<div class="empty-state"><p>No posts in this category yet — check back soon.</p></div>`;
+      showMoreWrap.style.display = 'none';
       return;
     }
 
-    const waIcon = `<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>`;
+    // Separate featured from regular
+    const hasFeatured = currentFiltered[0].featured && activeFilter === 'All';
+    const featuredPost = hasFeatured ? currentFiltered[0] : null;
+    const regularPosts = hasFeatured ? currentFiltered.slice(1) : currentFiltered;
 
-    grid.innerHTML = filtered.map((post, i) => {
-      if (post.featured && i === 0 && activeFilter === 'All') {
-        return `
-          <a href="blog/${post.slug}.html" class="post-featured fade-up">
-            <div>
-              <div class="feat-eyebrow">Featured Post · ${post.category}</div>
-              <div class="feat-title">${post.title}</div>
-              <div class="feat-excerpt">${post.excerpt}</div>
-              <div class="feat-meta">
-                <span>${fmtDate(post.date)}</span>
-                <span>·</span>
-                <span>${post.readMin} min read</span>
-              </div>
+    // Decide which regular posts to show
+    const visibleRegular = showAll ? regularPosts : regularPosts.slice(0, INITIAL_LIMIT);
+    const hasMore = regularPosts.length > INITIAL_LIMIT;
+
+    // Build HTML
+    let html = '';
+
+    // Featured card
+    if (featuredPost) {
+      html += `
+        <a href="blog/${featuredPost.slug}.html" class="post-featured fade-up">
+          <div>
+            <div class="feat-eyebrow">Featured Post · ${featuredPost.category}</div>
+            <div class="feat-title">${featuredPost.title}</div>
+            <div class="feat-excerpt">${featuredPost.excerpt}</div>
+            <div class="feat-meta">
+              <span>${fmtDate(featuredPost.date)}</span>
+              <span>·</span>
+              <span>${featuredPost.readMin} min read</span>
             </div>
-            <div class="feat-read-btn">Read article →</div>
-          </a>`;
-      }
-      return `
+          </div>
+          <div class="feat-read-btn">Read article →</div>
+        </a>`;
+    }
+
+    // Regular cards
+    visibleRegular.forEach(post => {
+      html += `
         <a href="blog/${post.slug}.html" class="post-card fade-up">
           <span class="post-cat">${post.category}</span>
           <div class="post-title">${post.title}</div>
@@ -549,7 +625,23 @@ const BLOG_POSTS = [
             <span class="post-read-more">Read →</span>
           </div>
         </a>`;
-    }).join('');
+    });
+
+    grid.innerHTML = html;
+
+    // Show/hide the button
+    if (hasMore) {
+      showMoreWrap.style.display = 'flex';
+      if (showAll) {
+        showMoreLabel.textContent = 'Show less';
+        showMoreBtn.classList.add('expanded');
+      } else {
+        showMoreLabel.textContent = `Show ${regularPosts.length - INITIAL_LIMIT} more post${regularPosts.length - INITIAL_LIMIT !== 1 ? 's' : ''}`;
+        showMoreBtn.classList.remove('expanded');
+      }
+    } else {
+      showMoreWrap.style.display = 'none';
+    }
 
     // re-observe new fade-up elements
     document.querySelectorAll('.fade-up:not(.in)').forEach(el => obs.observe(el));
