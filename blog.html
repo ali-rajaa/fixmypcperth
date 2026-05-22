@@ -250,7 +250,7 @@ const BLOG_POSTS = [
   .filter-btn.active { background: var(--blue); color: #fff; border-color: var(--blue); }
 
   /* ── BLOG GRID ── */
-  .blog-section { padding: 2rem 2rem 5rem; }
+  .blog-section { padding: 2rem 2rem 1.5rem; }
   .blog-grid {
     max-width: 1100px; margin: 0 auto;
     display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -350,9 +350,10 @@ const BLOG_POSTS = [
 
   /* ── SHOW MORE / LESS BUTTON ── */
   .show-more-wrap {
-    margin: 0.75rem auto 0.5rem;
-    display: flex; justify-content: center;
-  }
+  max-width: 1100px; margin: -2rem auto 0;
+  display: flex; justify-content: center;
+  padding: 0 2rem 3rem;
+}
   .show-more-btn {
     display: inline-flex; align-items: center; gap: 10px;
     font-family: var(--body); font-size: 14px; font-weight: 700;
