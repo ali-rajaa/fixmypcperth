@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free PC Health Check Quiz — What's Wrong With My Computer?</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<meta name="description" content="Answer 5 quick questions and find out exactly what's wrong with your PC. Free instant diagnosis — no sign up needed. Find out if your computer needs a repair, upgrade or tune-up.">
+<link rel="canonical" href="https://www.fixmypcperth.com/quiz.html">
+<meta name="robots" content="index, follow">
+ 
+<meta property="og:type" content="website">
+<meta property="og:title" content="Free PC Health Check Quiz — What's Wrong With My Computer?">
+<meta property="og:description" content="Answer 5 quick questions and find out exactly what's wrong with your PC. Free instant diagnosis — no sign up needed.">
+<meta property="og:url" content="https://www.fixmypcperth.com/quiz.html">
+<meta property="og:image" content="https://fixmypcperth.com/facebook-cover.png">
+ 
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free PC Health Check Quiz — What's Wrong With My Computer?">
+<meta name="twitter:description" content="Answer 5 quick questions and find out exactly what's wrong with your PC.">
+ 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I know what's wrong with my computer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Take our free 5-question PC health check quiz to get an instant diagnosis of what's likely wrong with your computer, from viruses to hardware failure."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why is my PC so slow?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A slow PC is usually caused by a failing hard drive, too many startup programs, malware, or not enough RAM. Our free quiz can help identify the root cause."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does my PC have a virus?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Common signs of a virus include pop-ups, browser redirects, slow performance and unusual CPU usage. Take our free quiz to find out if your PC may be infected."
+      }
+    }
+  ]
+}
+</script>
+ 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+ 
+<style>
+  :root {
+    --blue:    #1560FF;
+    --blue-lt: #EEF3FF;
+    --blue-mid:#C7D8FF;
+    --blue-dk: #0A3ACC;
+    --teal:    #00CFFF;
+    --ink:     #0F172A;
+    --ink2:    #1E293B;
+    --muted:   #64748B;
+    --muted2:  #94A3B8;
+    --border:  #E2E8F0;
+    --border2: #CBD5E1;
+    --bg:      #FFFFFF;
+    --bg2:     #F8FAFC;
+    --bg3:     #F1F5F9;
+    --green:   #16A34A;
+    --wa:      #22C55E;
+    --wa-dk:   #16A34A;
+    --red:     #EF4444;
+    --orange:  #F97316;
+    --yellow:  #EAB308;
+    --display: 'Sora', sans-serif;
+    --body:    'DM Sans', sans-serif;
+  }
+ 
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+  body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.6; overflow-x: hidden; min-height: 100vh; }
+ 
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2rem; height: 64px;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(226,232,240,0.8);
+  }
+  .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .logo-mark { width: 38px; height: 38px; background: var(--blue); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-family: var(--display); font-size: 14px; font-weight: 800; color: #fff; box-shadow: 0 2px 8px rgba(21,96,255,0.3); }
+  .logo-name { font-family: var(--display); font-size: 16px; font-weight: 700; color: var(--ink); letter-spacing: -0.3px; }
+  .logo-name em { color: var(--blue); font-style: normal; }
+  .nav-right { display: flex; align-items: center; gap: 10px; }
+  .nav-pill { display: inline-flex; align-items: center; gap: 6px; font-family: var(--body); font-size: 13px; font-weight: 600; padding: 9px 18px; border-radius: 50px; text-decoration: none; transition: transform 0.15s, opacity 0.15s; white-space: nowrap; }
+  .nav-pill:hover { transform: translateY(-1px); opacity: 0.92; }
+  .pill-wa { background: var(--wa); color: #fff; box-shadow: 0 2px 8px rgba(34,197,94,0.3); }
+  .pill-ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--border2); padding: 8px 16px; }
+  .pill-ghost:hover { border-color: var(--blue); color: var(--blue); transform: none; }
+ 
+  /* ── MOBILE TOP NAV ── */
+  .mob-top-nav {
+    display: none; position: fixed; top: 0; left: 0; right: 0; z-index: 300;
+    height: 60px; background: rgba(255,255,255,0.97); backdrop-filter: blur(20px);
+    border-bottom: 1.5px solid var(--border); padding: 0 1.25rem;
+    align-items: center; justify-content: space-between;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  }
+  .mob-top-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+  .mob-top-hamburger { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 5px; width: 40px; height: 40px; background: var(--bg3); border: 1.5px solid var(--border2); border-radius: 10px; cursor: pointer; flex-shrink: 0; }
+  .mob-top-hamburger span { display: block; width: 16px; height: 2px; background: var(--ink); border-radius: 2px; transition: transform 0.3s, opacity 0.3s; }
+  .mob-top-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .mob-top-hamburger.open span:nth-child(2) { opacity: 0; }
+  .mob-top-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .mob-drop-menu { display: none; position: fixed; top: 60px; left: 0; right: 0; z-index: 299; background: rgba(255,255,255,0.98); backdrop-filter: blur(20px); border-bottom: 1.5px solid var(--border); padding: 0.75rem 1.25rem 1.25rem; flex-direction: column; gap: 6px; box-shadow: 0 8px 30px rgba(0,0,0,0.1); border-radius: 0 0 20px 20px; }
+  .mob-drop-menu.open { display: flex; }
+  .mob-drop-link { font-family: var(--body); font-size: 15px; font-weight: 600; color: var(--ink); text-decoration: none; padding: 0.85rem 1rem; border-radius: 10px; border: 1.5px solid var(--border); transition: background 0.15s, color 0.15s; text-align: center; }
+  .mob-drop-link:hover { background: var(--blue-lt); color: var(--blue); }
+  .mob-drop-wa { background: var(--wa); color: #fff !important; border-color: var(--wa); margin-top: 4px; }
+ 
+  /* ── PAGE SHELL ── */
+  .page-shell {
+    min-height: 100vh; padding: 88px 1.5rem 4rem;
+    background: var(--bg);
+    position: relative; overflow: hidden;
+  }
+  .page-shell::before {
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    background:
+      radial-gradient(ellipse 700px 500px at 70% 20%, rgba(21,96,255,0.05) 0%, transparent 65%),
+      radial-gradient(ellipse 500px 400px at 10% 80%, rgba(34,197,94,0.04) 0%, transparent 60%);
+  }
+ 
+  /* ── QUIZ CONTAINER ── */
+  .quiz-container { max-width: 640px; margin: 0 auto; position: relative; z-index: 1; }
+ 
+  /* ── INTRO ── */
+  .quiz-intro { text-align: center; margin-bottom: 2.5rem; }
+  .intro-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--blue); background: var(--blue-lt); border: 1px solid var(--blue-mid);
+    padding: 5px 14px; border-radius: 50px; margin-bottom: 1.25rem;
+  }
+  .intro-eyebrow::before { content: ''; width: 6px; height: 6px; background: var(--blue); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;}50%{opacity:0.3;} }
+  .quiz-intro h1 { font-family: var(--display); font-size: clamp(1.75rem, 4vw, 2.6rem); font-weight: 800; letter-spacing: -1.5px; color: var(--ink); line-height: 1.1; margin-bottom: 0.75rem; }
+  .quiz-intro h1 em { color: var(--blue); font-style: normal; }
+  .quiz-intro p { font-size: 16px; color: var(--muted); line-height: 1.7; max-width: 480px; margin: 0 auto 1.5rem; }
+  .intro-trust { display: flex; align-items: center; justify-content: center; gap: 1.25rem; flex-wrap: wrap; }
+  .trust-pill { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: var(--muted); background: var(--bg2); border: 1px solid var(--border); padding: 5px 12px; border-radius: 50px; }
+  .trust-pill span { font-size: 13px; }
+ 
+  /* ── PROGRESS BAR ── */
+  .progress-wrap { margin-bottom: 2rem; }
+  .progress-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+  .progress-label { font-size: 12px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+  .progress-count { font-size: 12px; font-weight: 700; color: var(--blue); }
+  .progress-track { height: 6px; background: var(--border); border-radius: 50px; overflow: hidden; }
+  .progress-fill { height: 100%; background: linear-gradient(90deg, var(--blue), var(--teal)); border-radius: 50px; transition: width 0.5s cubic-bezier(.22,.68,0,1.2); }
+ 
+  /* ── QUESTION CARD ── */
+  .question-card {
+    background: var(--bg); border: 1.5px solid var(--border);
+    border-radius: 20px; padding: 2rem;
+    box-shadow: 0 4px 24px rgba(15,23,42,0.06);
+    animation: slideIn 0.4s cubic-bezier(.22,.68,0,1.2);
+  }
+  @keyframes slideIn { from { opacity:0; transform: translateY(16px); } to { opacity:1; transform: none; } }
+  .question-num { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.6rem; }
+  .question-text { font-family: var(--display); font-size: clamp(1.1rem, 2.5vw, 1.35rem); font-weight: 800; color: var(--ink); letter-spacing: -0.4px; line-height: 1.3; margin-bottom: 0.4rem; }
+  .question-hint { font-size: 13px; color: var(--muted); margin-bottom: 1.5rem; }
+ 
+  /* ── OPTIONS ── */
+  .options-grid { display: flex; flex-direction: column; gap: 10px; }
+  .options-grid.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .option-btn {
+    display: flex; align-items: center; gap: 12px;
+    background: var(--bg2); border: 1.5px solid var(--border);
+    border-radius: 12px; padding: 1rem 1.1rem;
+    cursor: pointer; text-align: left; width: 100%;
+    transition: border-color 0.15s, background 0.15s, transform 0.15s, box-shadow 0.15s;
+    font-family: var(--body);
+  }
+  .option-btn:hover { border-color: var(--blue); background: var(--blue-lt); transform: translateY(-1px); box-shadow: 0 4px 14px rgba(21,96,255,0.1); }
+  .option-btn.selected { border-color: var(--blue); background: var(--blue-lt); box-shadow: 0 0 0 3px rgba(21,96,255,0.12); }
+  .option-icon { font-size: 22px; flex-shrink: 0; width: 36px; text-align: center; }
+  .option-text { flex: 1; }
+  .option-label { font-size: 14px; font-weight: 700; color: var(--ink); display: block; line-height: 1.3; }
+  .option-sub { font-size: 12px; color: var(--muted); display: block; margin-top: 2px; }
+  .option-check { width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--border2); flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: background 0.15s, border-color 0.15s; }
+  .option-btn.selected .option-check { background: var(--blue); border-color: var(--blue); }
+  .option-btn.selected .option-check::after { content: ''; width: 7px; height: 7px; background: #fff; border-radius: 50%; display: block; }
+ 
+  /* ── MULTI SELECT ── */
+  .option-btn.multi .option-check { border-radius: 6px; }
+  .option-btn.multi.selected .option-check { background: var(--blue); border-color: var(--blue); }
+  .option-btn.multi.selected .option-check::after { content: '✓'; color: #fff; font-size: 11px; font-weight: 800; width: auto; height: auto; background: none; border-radius: 0; }
+ 
+  /* ── NEXT BUTTON ── */
+  .next-wrap { margin-top: 1.5rem; }
+  .btn-next {
+    width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px;
+    background: var(--blue); color: #fff;
+    font-family: var(--body); font-size: 16px; font-weight: 700;
+    padding: 15px 28px; border-radius: 50px; border: none; cursor: pointer;
+    box-shadow: 0 4px 20px rgba(21,96,255,0.35);
+    transition: transform 0.15s, box-shadow 0.15s, opacity 0.15s;
+  }
+  .btn-next:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(21,96,255,0.45); }
+  .btn-next:disabled { opacity: 0.4; cursor: not-allowed; transform: none; box-shadow: none; }
+  .btn-next svg { transition: transform 0.2s; }
+  .btn-next:not(:disabled):hover svg { transform: translateX(3px); }
+  .btn-skip { display: block; text-align: center; margin-top: 0.75rem; font-size: 13px; color: var(--muted2); cursor: pointer; text-decoration: none; background: none; border: none; font-family: var(--body); width: 100%; }
+  .btn-skip:hover { color: var(--muted); }
+ 
+  /* ── RESULT CARD ── */
+  .result-card {
+    background: var(--ink); border-radius: 20px; padding: 2.5rem;
+    position: relative; overflow: hidden;
+    animation: slideIn 0.5s cubic-bezier(.22,.68,0,1.2);
+  }
+  .result-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; }
+  .result-card.severity-low::before { background: linear-gradient(90deg, var(--green), var(--teal)); }
+  .result-card.severity-medium::before { background: linear-gradient(90deg, var(--yellow), var(--orange)); }
+  .result-card.severity-high::before { background: linear-gradient(90deg, var(--orange), var(--red)); }
+  .result-card::after { content: ''; position: absolute; bottom: -80px; right: -80px; width: 240px; height: 240px; background: radial-gradient(circle, rgba(21,96,255,0.12) 0%, transparent 70%); pointer-events: none; }
+ 
+  .result-top { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem; }
+  .result-icon-wrap { width: 56px; height: 56px; border-radius: 14px; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; font-size: 26px; flex-shrink: 0; }
+  .result-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); margin-bottom: 4px; }
+  .result-title { font-family: var(--display); font-size: clamp(1.2rem, 3vw, 1.6rem); font-weight: 800; color: #fff; letter-spacing: -0.5px; line-height: 1.2; }
+ 
+  .severity-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 4px 12px; border-radius: 50px; margin-bottom: 1.25rem; }
+  .severity-badge.low { background: rgba(22,163,74,0.15); color: #4ADE80; border: 1px solid rgba(22,163,74,0.3); }
+  .severity-badge.medium { background: rgba(234,179,8,0.15); color: #FDE047; border: 1px solid rgba(234,179,8,0.3); }
+  .severity-badge.high { background: rgba(239,68,68,0.15); color: #FCA5A5; border: 1px solid rgba(239,68,68,0.3); }
+  .severity-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; animation: pulse 1.5s infinite; }
+ 
+  .result-desc { font-size: 15px; color: rgba(255,255,255,0.65); line-height: 1.75; margin-bottom: 1.5rem; }
+ 
+  .result-items { display: flex; flex-direction: column; gap: 8px; margin-bottom: 2rem; }
+  .result-item { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: rgba(255,255,255,0.8); font-weight: 500; }
+  .result-item::before { content: ''; width: 6px; height: 6px; background: linear-gradient(135deg, var(--blue), var(--teal)); border-radius: 50%; flex-shrink: 0; margin-top: 7px; }
+ 
+  .result-urgency { background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.25); border-radius: 12px; padding: 1rem 1.25rem; margin-bottom: 1.75rem; display: flex; align-items: flex-start; gap: 10px; }
+  .result-urgency-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+  .result-urgency-text { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.6; }
+  .result-urgency-text strong { color: #FCA5A5; font-weight: 700; }
+ 
+  /* ── CTA BUTTONS ── */
+  .result-ctas { display: flex; flex-direction: column; gap: 10px; }
+  .btn-wa-result {
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    background: var(--wa); color: #fff;
+    font-family: var(--body); font-size: 15px; font-weight: 700;
+    padding: 16px 28px; border-radius: 50px; text-decoration: none;
+    box-shadow: 0 4px 20px rgba(34,197,94,0.4);
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .btn-wa-result:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(34,197,94,0.5); }
+  .btn-retake {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.6);
+    font-family: var(--body); font-size: 14px; font-weight: 600;
+    padding: 13px 28px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.12);
+    cursor: pointer; transition: background 0.15s, color 0.15s;
+  }
+  .btn-retake:hover { background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.85); }
+ 
+  /* ── SOCIAL PROOF BELOW RESULT ── */
+  .result-trust { display: flex; align-items: center; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-top: 1.5rem; padding: 1.25rem; background: var(--bg2); border-radius: 14px; border: 1px solid var(--border); }
+  .result-trust-item { display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: var(--muted); }
+  .result-trust-item span { font-size: 15px; }
+ 
+  /* ── FOOTER ── */
+  footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.75rem 2rem; margin-top: 4rem; }
+  .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  .footer-copy { font-size: 12px; color: var(--muted2); }
+ 
+  /* ── RESPONSIVE ── */
+  @media (max-width: 720px) {
+    nav { display: none; }
+    .mob-top-nav { display: flex; }
+    body { padding-top: 0; }
+    .page-shell { padding: 76px 1rem 3rem; }
+    .question-card { padding: 1.5rem; }
+    .result-card { padding: 1.75rem; }
+    .options-grid.two-col { grid-template-columns: 1fr; }
+    .result-top { flex-direction: column; gap: 0.75rem; }
+    footer { padding: 1.25rem 1rem; }
+    .footer-inner { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+    .intro-trust { gap: 0.75rem; }
+  }
+  @media (max-width: 360px) { .logo-name { display: none; } }
+</style>
+</head>
+<body>
+ 
+<!-- DESKTOP NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="logo-mark">FP</div>
+    <span class="logo-name">FixMyPC <em>Perth</em></span>
+  </a>
+  <div class="nav-right">
+    <a href="pricing.html" class="nav-pill pill-ghost">Pricing</a>
+    <a href="blog.html" class="nav-pill pill-ghost">Blog</a>
+    <a href="reviews.html" class="nav-pill pill-ghost">Reviews & FAQ</a>
+    <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" class="nav-pill pill-wa" rel="noopener">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>
+      WhatsApp me
+    </a>
+  </div>
+</nav>
+ 
+<!-- MOBILE TOP NAV -->
+<div class="mob-top-nav">
+  <a href="index.html" class="mob-top-logo">
+    <div class="logo-mark" style="width:32px;height:32px;font-size:12px">FP</div>
+    <span class="logo-name" style="font-size:14px">FixMyPC <em>Perth</em></span>
+  </a>
+  <button class="mob-top-hamburger" id="mob-top-hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</div>
+<div class="mob-drop-menu" id="mob-drop-menu">
+  <a href="index.html" class="mob-drop-link">← Home</a>
+  <a href="pricing.html" class="mob-drop-link">Pricing</a>
+  <a href="blog.html" class="mob-drop-link">Blog</a>
+  <a href="reviews.html" class="mob-drop-link">Reviews & FAQ</a>
+  <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" class="mob-drop-link mob-drop-wa" rel="noopener">WhatsApp me now →</a>
+</div>
+ 
+<!-- QUIZ PAGE -->
+<div class="page-shell">
+  <div class="quiz-container">
+ 
+    <!-- INTRO -->
+    <div class="quiz-intro" id="quiz-intro">
+      <div class="intro-eyebrow">Free · Takes 60 seconds</div>
+      <h1>What's actually <em>wrong</em> with your PC?</h1>
+      <p>Answer 5 quick questions and get an instant diagnosis — no sign up, no email, completely free.</p>
+      <div class="intro-trust">
+        <div class="trust-pill"><span>⚡</span> Instant results</div>
+        <div class="trust-pill"><span>🔒</span> No sign up needed</div>
+        <div class="trust-pill"><span>✅</span> 100% free</div>
+      </div>
+    </div>
+ 
+    <!-- PROGRESS BAR -->
+    <div class="progress-wrap" id="progress-wrap" style="display:none;">
+      <div class="progress-header">
+        <span class="progress-label">Your PC Health Check</span>
+        <span class="progress-count" id="progress-count">Question 1 of 5</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progress-fill" style="width:20%"></div>
+      </div>
+    </div>
+ 
+    <!-- QUESTION AREA -->
+    <div id="question-area"></div>
+ 
+    <!-- RESULT AREA -->
+    <div id="result-area"></div>
+ 
+  </div>
+</div>
+ 
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="logo-mark" style="width:28px;height:28px;font-size:11px">FP</div>
+      <span class="logo-name" style="font-size:14px">FixMyPC <em>Perth</em></span>
+    </a>
+    <div class="footer-copy">© 2026 FixMyPC Perth · Perth WA</div>
+    <div class="footer-copy">30 day labour warranty on all services · All prices include GST</div>
+  </div>
+</footer>
+ 
+<script>
+  /* ── MOBILE NAV ── */
+  const mobHamburger = document.getElementById('mob-top-hamburger');
+  const mobDropMenu  = document.getElementById('mob-drop-menu');
+  mobHamburger.addEventListener('click', () => {
+    mobHamburger.classList.toggle('open');
+    mobDropMenu.classList.toggle('open');
+  });
+  mobDropMenu.querySelectorAll('.mob-drop-link').forEach(link => {
+    link.addEventListener('click', () => {
+      mobHamburger.classList.remove('open');
+      mobDropMenu.classList.remove('open');
+    });
+  });
+ 
+  /* ══════════════════════════════════════════
+     QUIZ DATA
+  ══════════════════════════════════════════ */
+  const QUESTIONS = [
+    {
+      id: 1,
+      num: "Question 1 of 5",
+      text: "What's the main thing making you take this quiz?",
+      hint: "Pick the one that bothers you most right now.",
+      type: "single",
+      layout: "list",
+      options: [
+        { icon: "🐌", label: "My PC is painfully slow", sub: "Takes forever to do anything", value: "slow" },
+        { icon: "💀", label: "It won't turn on at all", sub: "Dead, no power or stuck on a logo", value: "dead" },
+        { icon: "💥", label: "It keeps crashing or freezing", sub: "Blue screens, random restarts, lockups", value: "crash" },
+        { icon: "🦠", label: "I think it has a virus", sub: "Pop-ups, strange behaviour, redirects", value: "virus" },
+        { icon: "🌡️", label: "It gets extremely hot", sub: "Fan is loud, feels hot to touch", value: "heat" },
+        { icon: "❓", label: "Something else is wrong", sub: "None of the above quite fits", value: "other" },
+      ]
+    },
+    {
+      id: 2,
+      num: "Question 2 of 5",
+      text: "How long has this been going on?",
+      hint: "When did you first notice the problem?",
+      type: "single",
+      layout: "list",
+      options: [
+        { icon: "⚡", label: "It happened suddenly", sub: "Fine one day, broken the next", value: "sudden" },
+        { icon: "📉", label: "Gradually got worse over weeks", sub: "Slow decline over time", value: "gradual" },
+        { icon: "🕰️", label: "It's been like this for months", sub: "I've put up with it for a while", value: "months" },
+        { icon: "🆕", label: "It's always been this way", sub: "Never really worked properly", value: "always" },
+      ]
+    },
+    {
+      id: 3,
+      num: "Question 3 of 5",
+      text: "Which of these are you also experiencing?",
+      hint: "Select everything that applies — pick as many as you like.",
+      type: "multi",
+      layout: "list",
+      options: [
+        { icon: "🔵", label: "Blue screen errors (BSOD)", sub: "Sudden blue screen with error text", value: "bsod" },
+        { icon: "📢", label: "Loud fan or unusual noises", sub: "Grinding, clicking or constant fan", value: "noise" },
+        { icon: "🌐", label: "Browser pop-ups or redirects", sub: "Random ads, new toolbars, changed homepage", value: "popups" },
+        { icon: "⏱️", label: "Very slow startup", sub: "Takes 3+ minutes to reach desktop", value: "slowboot" },
+        { icon: "💾", label: "Files missing or corrupted", sub: "Can't open files or they've disappeared", value: "files" },
+        { icon: "🔋", label: "None of the above", sub: "Just the main issue I mentioned", value: "none" },
+      ]
+    },
+    {
+      id: 4,
+      num: "Question 4 of 5",
+      text: "How old is your computer?",
+      hint: "An estimate is fine — this helps narrow down the diagnosis.",
+      type: "single",
+      layout: "two-col",
+      options: [
+        { icon: "✨", label: "Under 2 years", sub: "Fairly new", value: "new" },
+        { icon: "👍", label: "2–4 years", sub: "Getting on a bit", value: "mid" },
+        { icon: "📅", label: "5–8 years", sub: "Starting to age", value: "old" },
+        { icon: "🦕", label: "8+ years", sub: "Veteran machine", value: "ancient" },
+      ]
+    },
+    {
+      id: 5,
+      num: "Question 5 of 5",
+      text: "What do you mainly use your PC for?",
+      hint: "This helps us understand how critical the fix is for you.",
+      type: "single",
+      layout: "two-col",
+      options: [
+        { icon: "🌐", label: "Browsing & emails", sub: "Casual everyday use", value: "casual" },
+        { icon: "💼", label: "Work & business", sub: "I rely on it for income", value: "work" },
+        { icon: "🎮", label: "Gaming", sub: "Performance matters a lot", value: "gaming" },
+        { icon: "🎓", label: "School or uni", sub: "Assignments and research", value: "study" },
+      ]
+    },
+  ];
+ 
+  /* ══════════════════════════════════════════
+     DIAGNOSIS ENGINE
+  ══════════════════════════════════════════ */
+  const DIAGNOSES = {
+    virus: {
+      icon: "🦠",
+      severity: "high",
+      title: "Your PC most likely has a virus or malware infection",
+      desc: "Based on your answers, the symptoms you're describing — pop-ups, strange behaviour, slowness — are consistent with a malware infection. This is one of the most common PC problems and one of the most important to fix quickly. Left untreated, malware can steal passwords, damage files and spread to other devices on your network.",
+      items: [
+        "Browser hijacking, pop-ups and redirects are classic malware signs",
+        "Malware runs silently in the background, draining performance",
+        "Some infections can access your banking and personal accounts",
+        "A professional removal gets rid of everything, not just symptoms",
+      ],
+      urgency: "This needs attention soon. Malware can get worse over time and put your personal data at risk.",
+      waMsg: "Hi! I just took the PC health quiz and it looks like my computer may have a virus or malware. Can I get a free quote for a removal?",
+    },
+    hardware: {
+      icon: "🔧",
+      severity: "high",
+      title: "Your PC may have a hardware failure",
+      desc: "The combination of symptoms you described — sudden failure, strange noises or complete shutdown — points to a hardware issue. This could be a failing hard drive, power supply problem or a fault with another internal component. Hardware issues don't get better on their own and often get worse quickly.",
+      items: [
+        "Clicking or grinding noises usually mean a failing hard drive",
+        "Sudden shutdowns can indicate power supply or motherboard issues",
+        "Data loss is a serious risk if the hard drive is failing",
+        "Most hardware faults are fixable with the right diagnosis",
+      ],
+      urgency: "Act quickly. If your hard drive is failing, every day increases the risk of losing your files permanently.",
+      waMsg: "Hi! I just took the PC health quiz and it flagged a possible hardware failure. Can I get a free diagnosis and quote?",
+    },
+    ssd: {
+      icon: "⚡",
+      severity: "medium",
+      title: "Your PC almost certainly needs an SSD upgrade",
+      desc: "Your symptoms — slow boot times, sluggish performance over time, gradual decline — are the textbook signs of an ageing hard drive crying out to be replaced with a solid state drive. An SSD upgrade is the single most impactful thing you can do for an older PC. Boot times typically drop from 3–5 minutes to under 15 seconds.",
+      items: [
+        "Old spinning hard drives are 5–10x slower than modern SSDs",
+        "All your data gets transferred safely — nothing is lost",
+        "Most PCs feel like new machines after an SSD upgrade",
+        "It's the best value upgrade available for an ageing computer",
+      ],
+      urgency: "Worth doing soon — ageing hard drives can also fail without warning, risking your files.",
+      waMsg: "Hi! I just took the PC health quiz and it suggests I need an SSD upgrade. Can I get a free quote?",
+    },
+    windows: {
+      icon: "🪟",
+      severity: "medium",
+      title: "Your PC likely needs a Windows reinstall",
+      desc: "Based on your answers, Windows has probably accumulated years of junk, broken files and software conflicts that are dragging everything down. A clean Windows reinstall is like giving your PC a full reset — everything runs faster, crashes stop and errors disappear. All your files are backed up safely before anything is touched.",
+      items: [
+        "Years of software installs leave behind broken registry entries",
+        "A clean install removes every trace of bloatware and conflict",
+        "Your personal files are backed up before the reinstall begins",
+        "Most PCs see a dramatic speed improvement after a reinstall",
+      ],
+      urgency: "Not urgent but worth doing — the longer you wait, the worse the performance gets.",
+      waMsg: "Hi! I just took the PC health quiz and it suggests I may need a Windows reinstall. Can I get a free quote?",
+    },
+    heat: {
+      icon: "🌡️",
+      severity: "medium",
+      title: "Your PC is overheating — this needs fixing",
+      desc: "Your symptoms point clearly to an overheating issue. When a CPU or GPU gets too hot, it automatically throttles itself to prevent damage — which explains the slowdown and crashes. Overheating is usually caused by dust buildup blocking airflow, dried-out thermal paste on the CPU, or a failing cooling fan.",
+      items: [
+        "Dust buildup inside the case is the most common cause",
+        "Thermal paste on the CPU dries out every 3–5 years",
+        "A full clean and repaste dramatically reduces temperatures",
+        "Ignoring overheating can permanently damage components",
+      ],
+      urgency: "Fix this before it causes permanent damage to your CPU or GPU.",
+      waMsg: "Hi! I just took the PC health quiz and it flagged an overheating issue with my PC. Can I get a free quote to fix it?",
+    },
+    general: {
+      icon: "🔍",
+      severity: "low",
+      title: "Your PC needs a full diagnostic and tune-up",
+      desc: "Based on your answers, there's no single obvious culprit — but something clearly isn't right. A full professional diagnostic will find the exact root cause, whether it's software, drivers, settings or early hardware wear. A tune-up can also significantly speed up a PC that's just become sluggish over time without any clear cause.",
+      items: [
+        "A diagnostic checks every component for faults or stress",
+        "Driver and software conflicts are a common hidden cause",
+        "Startup optimisation alone can cut boot times significantly",
+        "You'll get a full written report of what was found",
+      ],
+      urgency: "Worth getting checked — small issues are always cheaper to fix early than after they get worse.",
+      waMsg: "Hi! I just took the PC health quiz and it suggests I need a diagnostic and tune-up. Can I get a free quote?",
+    },
+  };
+ 
+  /* ══════════════════════════════════════════
+     SCORING LOGIC
+  ══════════════════════════════════════════ */
+  function getDiagnosis(answers) {
+    const a = answers;
+    const main    = a[0] ? a[0][0] : '';
+    const timing  = a[1] ? a[1][0] : '';
+    const extras  = a[2] ? a[2] : [];
+    const age     = a[3] ? a[3][0] : '';
+ 
+    const hasBsod    = extras.includes('bsod');
+    const hasNoise   = extras.includes('noise');
+    const hasPopups  = extras.includes('popups');
+    const hasSlowBoot= extras.includes('slowboot');
+    const hasFiles   = extras.includes('files');
+ 
+    // Virus path
+    if (main === 'virus') return 'virus';
+    if (hasPopups && main !== 'dead') return 'virus';
+ 
+    // Hardware failure path
+    if (main === 'dead') return 'hardware';
+    if (hasNoise && timing === 'sudden') return 'hardware';
+    if (hasBsod && hasFiles) return 'hardware';
+    if (hasNoise && hasFiles) return 'hardware';
+ 
+    // Overheating path
+    if (main === 'heat') return 'heat';
+    if (hasBsod && main === 'crash') return 'heat';
+ 
+    // SSD upgrade path
+    if ((age === 'old' || age === 'ancient') && (main === 'slow' || hasSlowBoot)) return 'ssd';
+    if (hasSlowBoot && timing === 'gradual') return 'ssd';
+    if (main === 'slow' && (age === 'old' || age === 'ancient')) return 'ssd';
+ 
+    // Windows reinstall path
+    if (main === 'crash' && timing === 'gradual') return 'windows';
+    if (main === 'slow' && timing === 'months') return 'windows';
+    if (main === 'slow' && timing === 'always') return 'windows';
+ 
+    // Default
+    return 'general';
+  }
+ 
+  /* ══════════════════════════════════════════
+     QUIZ STATE
+  ══════════════════════════════════════════ */
+  let currentQ   = 0;
+  let answers    = {};
+  let quizActive = false;
+ 
+  const introEl    = document.getElementById('quiz-intro');
+  const progressEl = document.getElementById('progress-wrap');
+  const questionEl = document.getElementById('question-area');
+  const resultEl   = document.getElementById('result-area');
+ 
+  /* ── START QUIZ ── */
+  function startQuiz() {
+    quizActive = true;
+    introEl.style.display = 'none';
+    progressEl.style.display = 'block';
+    renderQuestion(0);
+  }
+ 
+  /* ── RENDER QUESTION ── */
+  function renderQuestion(index) {
+    const q = QUESTIONS[index];
+    const pct = ((index + 1) / QUESTIONS.length) * 100;
+    document.getElementById('progress-fill').style.width = pct + '%';
+    document.getElementById('progress-count').textContent = q.num;
+ 
+    const isMulti = q.type === 'multi';
+    const gridClass = q.layout === 'two-col' ? 'options-grid two-col' : 'options-grid';
+    const multiClass = isMulti ? ' multi' : '';
+ 
+    const optionsHtml = q.options.map((opt, i) => `
+      <button class="option-btn${multiClass}" data-value="${opt.value}" onclick="selectOption(this, ${isMulti})">
+        <span class="option-icon">${opt.icon}</span>
+        <span class="option-text">
+          <span class="option-label">${opt.label}</span>
+          <span class="option-sub">${opt.sub}</span>
+        </span>
+        <span class="option-check"></span>
+      </button>`).join('');
+ 
+    questionEl.innerHTML = `
+      <div class="question-card">
+        <div class="question-num">${q.num}</div>
+        <div class="question-text">${q.text}</div>
+        <div class="question-hint">${q.hint}</div>
+        <div class="${gridClass}" id="options-grid">
+          ${optionsHtml}
+        </div>
+        <div class="next-wrap">
+          <button class="btn-next" id="btn-next" disabled onclick="nextQuestion()">
+            ${index < QUESTIONS.length - 1 ? 'Next question' : 'Get my diagnosis'}
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          ${isMulti ? `<button class="btn-skip" onclick="skipMulti()">Skip this question →</button>` : ''}
+        </div>
+      </div>`;
+ 
+    // scroll to top of quiz
+    document.querySelector('.quiz-container').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+ 
+  /* ── SELECT OPTION ── */
+  function selectOption(btn, isMulti) {
+    const grid = document.getElementById('options-grid');
+    const allBtns = grid.querySelectorAll('.option-btn');
+ 
+    if (isMulti) {
+      // multi select — toggle, but if "none" selected deselect others
+      if (btn.dataset.value === 'none') {
+        allBtns.forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+      } else {
+        // deselect "none" if it was selected
+        allBtns.forEach(b => { if (b.dataset.value === 'none') b.classList.remove('selected'); });
+        btn.classList.toggle('selected');
+      }
+    } else {
+      allBtns.forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+    }
+ 
+    const hasSelection = grid.querySelectorAll('.option-btn.selected').length > 0;
+    document.getElementById('btn-next').disabled = !hasSelection;
+  }
+ 
+  /* ── SKIP MULTI ── */
+  function skipMulti() {
+    answers[currentQ] = [];
+    currentQ++;
+    if (currentQ >= QUESTIONS.length) {
+      showResult();
+    } else {
+      renderQuestion(currentQ);
+    }
+  }
+ 
+  /* ── NEXT QUESTION ── */
+  function nextQuestion() {
+    const grid = document.getElementById('options-grid');
+    const selected = grid.querySelectorAll('.option-btn.selected');
+    answers[currentQ] = Array.from(selected).map(b => b.dataset.value);
+    currentQ++;
+    if (currentQ >= QUESTIONS.length) {
+      showResult();
+    } else {
+      renderQuestion(currentQ);
+    }
+  }
+ 
+  /* ── SHOW RESULT ── */
+  function showResult() {
+    questionEl.innerHTML = '';
+    progressEl.style.display = 'none';
+ 
+    const diagKey = getDiagnosis(answers);
+    const d = DIAGNOSES[diagKey];
+    const waLink = `https://wa.me/61452573701?text=${encodeURIComponent(d.waMsg)}`;
+ 
+    const severityLabel = d.severity === 'high' ? 'Needs urgent attention' : d.severity === 'medium' ? 'Needs attention soon' : 'Worth getting checked';
+ 
+    resultEl.innerHTML = `
+      <div class="result-card severity-${d.severity}">
+        <div class="result-top">
+          <div class="result-icon-wrap">${d.icon}</div>
+          <div>
+            <div class="result-eyebrow">Your PC Diagnosis</div>
+            <div class="result-title">${d.title}</div>
+          </div>
+        </div>
+ 
+        <div class="severity-badge ${d.severity}">${severityLabel}</div>
+ 
+        <p class="result-desc">${d.desc}</p>
+ 
+        <div class="result-items">
+          ${d.items.map(item => `<div class="result-item">${item}</div>`).join('')}
+        </div>
+ 
+        <div class="result-urgency">
+          <span class="result-urgency-icon">⚠️</span>
+          <span class="result-urgency-text"><strong>Heads up:</strong> ${d.urgency}</span>
+        </div>
+ 
+        <div class="result-ctas">
+          <a href="${waLink}" target="_blank" class="btn-wa-result" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>
+            Get a free quote, message us now
+          </a>
+          <button class="btn-retake" onclick="retakeQuiz()">
+            ↩ Retake the quiz
+          </button>
+        </div>
+      </div>
+ 
+      <div class="result-trust">
+        <div class="result-trust-item"><span>⚡</span> Same or next day turnaround</div>
+        <div class="result-trust-item"><span>💬</span> Free quote, no obligation</div>
+        <div class="result-trust-item"><span>🛡️</span> 30-day labour warranty</div>
+        <div class="result-trust-item"><span>✅</span> No fix, no fee on data recovery</div>
+      </div>`;
+ 
+    document.querySelector('.quiz-container').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+ 
+  /* ── RETAKE ── */
+  function retakeQuiz() {
+    currentQ = 0;
+    answers  = {};
+    resultEl.innerHTML = '';
+    introEl.style.display = 'block';
+    progressEl.style.display = 'none';
+    quizActive = false;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+ 
+  /* ── START BUTTON — inject into intro ── */
+  const startBtn = document.createElement('button');
+  startBtn.className = 'btn-next';
+  startBtn.style.cssText = 'max-width:380px;margin:1.75rem auto 0;display:flex;';
+  startBtn.innerHTML = `Start the free quiz <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+  startBtn.onclick = startQuiz;
+  document.getElementById('quiz-intro').appendChild(startBtn);
+</script>
+</body>
+</html>
