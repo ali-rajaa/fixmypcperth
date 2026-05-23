@@ -406,27 +406,15 @@ const CONFIG = {
 </head>
 <body>
 
-<!-- DESKTOP NAV -->
-<nav id="nav"></nav>
-
-<!-- MOBILE TOP NAV -->
-<div class="mob-top-nav">
-  <a href="index.html" class="mob-top-logo">
-    <div class="logo-mark" style="width:32px;height:32px"><img src="logo.png" alt="FixMyPC Perth"></div>
-    <span class="logo-name" style="font-size:14px">FixMyPC <em>Perth</em></span>
-  </a>
-  <button class="mob-top-hamburger" id="mob-top-hamburger" aria-label="Open menu">
-    <span></span><span></span><span></span>
-  </button>
-</div>
-
-<!-- MOBILE DROPDOWN MENU -->
-<div class="mob-drop-menu" id="mob-drop-menu">
-  <a href="pricing.html" class="mob-link">Pricing</a>
-  <a href="quiz.html" class="mob-link">Free PC Diagnostic</a>
-  <a href="blog.html" class="mob-link">Blog</a>
-  <a href="reviews.html" class="mob-link">Reviews &amp; FAQ</a>
-</div>
+<script>
+  fetch('header.html')
+    .then(r => r.text())
+    .then(html => {
+      const div = document.createElement('div');
+      div.innerHTML = html;
+      document.body.insertBefore(div, document.body.firstChild);
+    });
+</script>
 
 <!-- HERO -->
 <section class="hero">
