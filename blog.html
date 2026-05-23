@@ -125,7 +125,17 @@ const BLOG_POSTS = [
     --radius:  14px;
     --radius-sm: 8px;
   }
- 
+ .mob-link {
+  font-family: var(--body);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+  padding: 0.85rem 1rem;
+  border-radius: 10px;
+  display: block;
+  transition: background 0.15s, color 0.15s;
+}
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
   body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.6; overflow-x: hidden; }
@@ -496,11 +506,10 @@ const BLOG_POSTS = [
  
 <!-- MOBILE DROPDOWN MENU -->
 <div class="mob-drop-menu" id="mob-drop-menu">
-  <a href="pricing.html" class="mob-drop-link">Pricing</a>
-  <a href="quiz.html" class="mob-drop-link">Free PC Diagnostic</a>
-  <a href="blog.html" class="mob-drop-link">Blog</a>
-  <a href="reviews.html" class="mob-drop-link">Reviews &amp; FAQ</a>
-  <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="mob-drop-link mob-drop-wa">WhatsApp me now</a>
+  <a href="pricing.html" class="mob-link">Pricing</a>
+  <a href="quiz.html" class="mob-link">Free PC Diagnostic</a>
+  <a href="blog.html" class="mob-link">Blog</a>
+  <a href="reviews.html" class="mob-link">Reviews &amp; FAQ</a>
 </div>
  
 
@@ -558,17 +567,17 @@ const BLOG_POSTS = [
  
   // ── MOBILE TOP NAV HAMBURGER
   const hamburger = document.getElementById('mob-top-hamburger');
-  const mobMenu   = document.getElementById('mob-drop-menu');
+  const mobMenu = document.getElementById('mob-drop-menu');
   hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('open');
     mobMenu.classList.toggle('open');
   });
-  mobMenu.querySelectorAll('.mob-drop-link').forEach(l =>
-    l.addEventListener('click', () => {
+  mobMenu.querySelectorAll('.mob-link').forEach(link => {
+    link.addEventListener('click', () => {
       hamburger.classList.remove('open');
       mobMenu.classList.remove('open');
-    })
-  );
+    });
+  });
  
   // ── FORMAT DATE
   function fmtDate(d) {
