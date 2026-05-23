@@ -164,11 +164,13 @@ const CONFIG = {
   }
   .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
   .logo-mark {
-    width: 38px; height: 38px; background: var(--blue); border-radius: 10px;
-    display: flex; align-items: center; justify-content: center;
-    font-family: var(--display); font-size: 14px; font-weight: 800;
-    color: #fff; letter-spacing: -0.5px; box-shadow: 0 2px 8px rgba(21,96,255,0.3);
-  }
+  width: 38px; height: 38px; background: transparent; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: none;
+}
+.logo-mark img {
+  width: 100%; height: 100%; object-fit: contain;
+}}
   .logo-name { font-family: var(--display); font-size: 16px; font-weight: 700; color: var(--ink); letter-spacing: -0.3px; }
   .logo-name em { color: var(--blue); font-style: normal; }
   .nav-right { display: flex; align-items: center; gap: 10px; }
@@ -410,7 +412,7 @@ const CONFIG = {
 <!-- MOBILE TOP NAV -->
 <div class="mob-top-nav">
   <a href="index.html" class="mob-top-logo">
-    <div class="logo-mark" style="width:32px;height:32px;font-size:12px">FP</div>
+    <div class="logo-mark" style="width:32px;height:32px"><img src="logo.png" alt="FixMyPC Perth"></div>
     <span class="logo-name" style="font-size:14px">FixMyPC <em>Perth</em></span>
   </a>
   <button class="mob-top-hamburger" id="mob-top-hamburger" aria-label="Open menu">
@@ -529,7 +531,7 @@ const CONFIG = {
   // NAV
   document.getElementById('nav').innerHTML = `
     <a href="#" class="nav-logo">
-      <div class="logo-mark">FP</div>
+      <div class="logo-mark"><img src="logo.png" alt="FixMyPC Perth"></div>
       <span class="logo-name">FixMyPC <em>Perth</em></span>
     </a>
     <div class="nav-right">
@@ -635,7 +637,7 @@ const CONFIG = {
 
   // FOOTER
   document.getElementById('footer-logo').innerHTML = `
-    <div class="logo-mark" style="width:28px;height:28px;font-size:11px">FP</div>
+    <div class="logo-mark" style="width:28px;height:28px"><img src="logo.png" alt="FixMyPC Perth"></div>
     <span class="logo-name" style="font-size:14px">FixMyPC <em>Perth</em></span>`;
   document.getElementById('footer-copy').textContent =
     `© ${new Date().getFullYear()} ${CONFIG.businessName} · ${CONFIG.yourName} · ABN ${CONFIG.abn}`;
