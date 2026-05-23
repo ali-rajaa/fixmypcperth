@@ -640,13 +640,13 @@
 
   // MOBILE HAMBURGER
   // MOBILE HAMBURGER
-  const hamburger = document.getElementById('hamburger');
-  const mobMenu = document.getElementById('mob-menu');
+  const hamburger = document.getElementById('mob-top-hamburger');
+  const mobMenu = document.getElementById('mob-drop-menu');
   hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('open');
     mobMenu.classList.toggle('open');
   });
-  mobMenu.querySelectorAll('.mob-link').forEach(link => {
+  mobMenu.querySelectorAll('.mob-drop-link').forEach(link => {
     link.addEventListener('click', () => {
       hamburger.classList.remove('open');
       mobMenu.classList.remove('open');
