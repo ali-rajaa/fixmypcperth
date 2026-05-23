@@ -148,16 +148,7 @@ const CONFIG = {
   transition: background 0.15s, color 0.15s;
 }
 .mob-link:hover { background: var(--blue-lt); color: var(--blue); }
-  
-nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 2rem; height: 64px;
-    background: rgba(255,255,255,0.92);
-    backdrop-filter: blur(20px) saturate(180%);
-    border-bottom: 1px solid rgba(226,232,240,0.8);
-  }
-  
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
   body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
@@ -173,13 +164,11 @@ nav {
   }
   .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
   .logo-mark {
-  width: 38px; height: 38px; background: transparent; border-radius: 10px;
-  display: flex; align-items: center; justify-content: center;
-  box-shadow: none;
-}
-.logo-mark img {
-  width: 100%; height: 100%; object-fit: contain;
-}
+    width: 38px; height: 38px; background: var(--blue); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--display); font-size: 14px; font-weight: 800;
+    color: #fff; letter-spacing: -0.5px; box-shadow: 0 2px 8px rgba(21,96,255,0.3);
+  }
   .logo-name { font-family: var(--display); font-size: 16px; font-weight: 700; color: var(--ink); letter-spacing: -0.3px; }
   .logo-name em { color: var(--blue); font-style: normal; }
   .nav-right { display: flex; align-items: center; gap: 10px; }
@@ -415,6 +404,27 @@ nav {
 </head>
 <body>
 
+<!-- DESKTOP NAV -->
+<nav id="nav"></nav>
+
+<!-- MOBILE TOP NAV -->
+<div class="mob-top-nav">
+  <a href="index.html" class="mob-top-logo">
+    <div class="logo-mark" style="width:32px;height:32px;font-size:12px">FP</div>
+    <span class="logo-name" style="font-size:14px">FixMyPC <em>Perth</em></span>
+  </a>
+  <button class="mob-top-hamburger" id="mob-top-hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</div>
+
+<!-- MOBILE DROPDOWN MENU -->
+<div class="mob-drop-menu" id="mob-drop-menu">
+  <a href="pricing.html" class="mob-link">Pricing</a>
+  <a href="quiz.html" class="mob-link">Free PC Diagnostic</a>
+  <a href="blog.html" class="mob-link">Blog</a>
+  <a href="reviews.html" class="mob-link">Reviews &amp; FAQ</a>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -516,7 +526,18 @@ nav {
   const waIcon = `<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>`;
   const fbIcon = `<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>`;
 
-
+  // NAV
+  document.getElementById('nav').innerHTML = `
+    <a href="#" class="nav-logo">
+      <div class="logo-mark">FP</div>
+      <span class="logo-name">FixMyPC <em>Perth</em></span>
+    </a>
+    <div class="nav-right">
+      <a href="pricing.html" class="nav-pill pill-ghost">Pricing</a>
+      <a href="quiz.html" class="nav-pill pill-ghost">Free PC Diagnostic</a>
+      <a href="blog.html" class="nav-pill pill-ghost">Blog</a>
+      <a href="reviews.html" class="nav-pill pill-ghost">Reviews & FAQ</a>
+    </div>`;
 
   // HERO
   document.getElementById('hero-eyebrow').innerHTML = `📍 ${CONFIG.suburb}, ${CONFIG.state}`;
@@ -614,7 +635,7 @@ nav {
 
   // FOOTER
   document.getElementById('footer-logo').innerHTML = `
-    <div class="logo-mark" style="width:28px;height:28px"><img src="logo.png" alt="FixMyPC Perth"></div>
+    <div class="logo-mark" style="width:28px;height:28px;font-size:11px">FP</div>
     <span class="logo-name" style="font-size:14px">FixMyPC <em>Perth</em></span>`;
   document.getElementById('footer-copy').textContent =
     `© ${new Date().getFullYear()} ${CONFIG.businessName} · ${CONFIG.yourName} · ABN ${CONFIG.abn}`;
@@ -671,16 +692,5 @@ nav {
     <path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/>
   </svg>
 </a>
-<script>
-  fetch('header.html')
-    .then(r => r.text())
-    .then(html => {
-      const div = document.createElement('div');
-      div.innerHTML = html;
-      document.body.insertBefore(div, document.body.firstChild);
-    });
-</script>
-
 </body>
 </html>
-
