@@ -457,27 +457,28 @@ const BLOG_POSTS = [
 </head>
 <body>
 
-<nav>
-  <a href="index.html" class="nav-logo">
+<!-- DESKTOP NAV -->
+<nav id="nav"></nav>
+
+<!-- MOBILE TOP NAV -->
+<div class="mob-top-nav">
+  <a href="index.html" class="mob-top-logo">
     <div class="logo-mark"><img src="logo.png" alt="FixMyPC Perth"></div>
-    <span class="logo-name">FixMyPC <em>Perth</em></span>
+    <span class="logo-name" style="font-size:14px">FixMyPC <em>Perth</em></span>
   </a>
-  <div class="nav-right">
-    <div class="nav-links">
-      <a href="pricing.html" class="nav-pill pill-ghost">Pricing</a>
-      <a href="quiz.html" class="nav-pill pill-ghost">Free PC Diagnostic</a>
-      <a href="reviews.html" class="nav-pill pill-ghost">Reviews & FAQ</a>
-    </div>
-    <button class="hamburger" id="hamburger" aria-label="Open menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-  <div class="mob-menu" id="mob-menu">
-    <a href="pricing.html" class="mob-link">Pricing</a>
-    <a href="quiz.html" class="mob-link">Free PC Diagnostic</a>
-    <a href="reviews.html" class="mob-link">Reviews & FAQ</a>
-  </div>
-</nav>
+  <button class="mob-top-hamburger" id="mob-top-hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</div>
+
+<!-- MOBILE DROPDOWN MENU -->
+<div class="mob-drop-menu" id="mob-drop-menu">
+  <a href="pricing.html" class="mob-link">Pricing</a>
+  <a href="quiz.html" class="mob-link">Free PC Diagnostic</a>
+  <a href="blog.html" class="mob-link">Blog</a>
+  <a href="reviews.html" class="mob-link">Reviews &amp; FAQ</a>
+</div>
+
 
 <div class="filter-bar" id="filter-bar"></div>
 
