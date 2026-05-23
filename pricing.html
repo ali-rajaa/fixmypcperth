@@ -35,6 +35,18 @@
     --body:       'DM Sans', sans-serif;
     --radius:     14px;
   }
+  .mob-link {
+  font-family: var(--body);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+  padding: 0.85rem 1rem;
+  border-radius: 10px;
+  display: block;
+  transition: background 0.15s, color 0.15s;
+}
+.mob-link:hover { background: var(--blue-lt); color: var(--blue); }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
