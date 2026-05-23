@@ -14,7 +14,7 @@
 <meta property="og:url" content="https://www.fixmypcperth.com/blog.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-
+ 
 <script>
 /* ============================================================
    BLOG CONFIG — ADD NEW POSTS HERE
@@ -57,7 +57,7 @@ const BLOG_POSTS = [
     date:      "2026-05-21",
     readMin:   6,
     featured:  false,
-  },   
+  },
   {
     slug:      "ssd-upgrade-perth-guide",
     title:     "SSD Upgrade Guide: How Much Faster Will Your PC Actually Get?",
@@ -99,7 +99,7 @@ const BLOG_POSTS = [
    END CONFIG — don't edit below this line
    ============================================================ */
 </script>
-
+ 
 <style>
   :root {
     --blue:    #1560FF;
@@ -122,17 +122,18 @@ const BLOG_POSTS = [
     --fb:      #1877F2;
     --display: 'Sora', sans-serif;
     --body:    'DM Sans', sans-serif;
+    --radius:  14px;
+    --radius-sm: 8px;
   }
-
+ 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
   body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.6; overflow-x: hidden; }
-
-  /* ── NAV ── */
+ 
+  /* ── DESKTOP NAV ── */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 200;
     display: flex; align-items: center; justify-content: space-between;
-    flex-wrap: wrap;
     padding: 0 2rem; height: 64px;
     background: rgba(255,255,255,0.92);
     backdrop-filter: blur(20px) saturate(180%);
@@ -140,17 +141,14 @@ const BLOG_POSTS = [
   }
   .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
   .logo-mark {
-  width: 38px; height: 38px; background: transparent; border-radius: 10px;
-  display: flex; align-items: center; justify-content: center;
-  box-shadow: none;
-}
-.logo-mark img {
-  width: 100%; height: 100%; object-fit: contain;
-}
+    width: 38px; height: 38px; background: transparent; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: none;
+  }
+  .logo-mark img { width: 100%; height: 100%; object-fit: contain; }
   .logo-name { font-family: var(--display); font-size: 16px; font-weight: 700; color: var(--ink); letter-spacing: -0.3px; }
   .logo-name em { color: var(--blue); font-style: normal; }
   .nav-right { display: flex; align-items: center; gap: 10px; }
-  .nav-links { display: flex; align-items: center; gap: 8px; }
   .nav-pill {
     display: inline-flex; align-items: center; gap: 6px;
     font-family: var(--body); font-size: 13px; font-weight: 600;
@@ -159,46 +157,67 @@ const BLOG_POSTS = [
     white-space: nowrap;
   }
   .nav-pill:hover { transform: translateY(-1px); opacity: 0.92; }
-  .pill-wa { background: var(--wa); color: #fff; box-shadow: 0 2px 8px rgba(34,197,94,0.3); }
   .pill-ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--border2); padding: 8px 16px; }
   .pill-ghost:hover { border-color: var(--blue); color: var(--blue); transform: none; }
-
-  /* ── HAMBURGER ── */
-  .hamburger {
-    display: none; flex-direction: column; justify-content: center; align-items: center;
-    gap: 5px; width: 38px; height: 38px;
+ 
+  /* ── MOBILE TOP NAV ── */
+  .mob-top-nav {
+    display: none;
+    position: fixed; top: 0; left: 0; right: 0; z-index: 300;
+    height: 60px;
+    background: rgba(255,255,255,0.97);
+    backdrop-filter: blur(20px);
+    border-bottom: 1.5px solid var(--border);
+    padding: 0 1.25rem;
+    align-items: center; justify-content: space-between;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  }
+  .mob-top-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+  .mob-top-hamburger {
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    gap: 5px; width: 40px; height: 40px;
     background: var(--bg3); border: 1.5px solid var(--border2);
     border-radius: 10px; cursor: pointer; flex-shrink: 0;
     transition: background 0.15s, border-color 0.15s;
   }
-  .hamburger:hover { background: var(--blue-lt); border-color: var(--blue-mid); }
-  .hamburger span { display: block; width: 16px; height: 2px; background: var(--ink); border-radius: 2px; transition: transform 0.3s, opacity 0.3s; }
-  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-  .hamburger.open span:nth-child(2) { opacity: 0; }
-  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-  /* ── MOBILE MENU ── */
-  .mob-menu {
-    display: none; position: absolute; top: 64px; left: 0; right: 0;
-    background: rgba(255,255,255,0.97); backdrop-filter: blur(20px);
+  .mob-top-hamburger:hover { background: var(--blue-lt); border-color: var(--blue-mid); }
+  .mob-top-hamburger span { display: block; width: 16px; height: 2px; background: var(--ink); border-radius: 2px; transition: transform 0.3s, opacity 0.3s; }
+  .mob-top-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .mob-top-hamburger.open span:nth-child(2) { opacity: 0; }
+  .mob-top-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+ 
+  /* ── MOBILE DROPDOWN MENU ── */
+  .mob-drop-menu {
+    display: none;
+    position: fixed; top: 60px; left: 0; right: 0; z-index: 299;
+    background: rgba(255,255,255,0.98);
+    backdrop-filter: blur(20px);
     border-bottom: 1.5px solid var(--border);
-    padding: 0.75rem 1rem 1rem; flex-direction: column; gap: 4px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    padding: 0.75rem 1.25rem 1.25rem;
+    flex-direction: column; gap: 6px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    border-radius: 0 0 20px 20px;
   }
-  .mob-menu.open { display: flex; }
-  .mob-link {
+  .mob-drop-menu.open { display: flex; }
+  .mob-drop-link {
     font-family: var(--body); font-size: 15px; font-weight: 600;
     color: var(--ink); text-decoration: none;
-    padding: 0.75rem 1rem; border-radius: 10px;
-    transition: background 0.15s, color 0.15s;
+    padding: 0.85rem 1rem; border-radius: 10px;
+    border: 1.5px solid var(--border);
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+    text-align: center;
   }
-  .mob-link:hover { background: var(--blue-lt); color: var(--blue); }
-  .mob-wa { background: var(--wa); color: #fff !important; text-align: center; margin-top: 4px; box-shadow: 0 2px 8px rgba(34,197,94,0.3); }
-  .mob-wa:hover { background: var(--wa-dk) !important; }
-
+  .mob-drop-link:hover { background: var(--blue-lt); color: var(--blue); border-color: var(--blue-mid); }
+  .mob-drop-wa {
+    background: var(--wa); color: #fff !important;
+    border-color: var(--wa); margin-top: 4px;
+    box-shadow: 0 4px 14px rgba(34,197,94,0.35);
+  }
+  .mob-drop-wa:hover { background: var(--wa-dk) !important; border-color: var(--wa-dk) !important; }
+ 
   /* ── LAYOUT ── */
   .wrap { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
-
+ 
   /* ── PAGE HERO ── */
   .page-hero {
     padding: 120px 2rem 4rem; text-align: center;
@@ -223,7 +242,7 @@ const BLOG_POSTS = [
   }
   .page-title em { color: var(--blue); font-style: normal; }
   .page-sub { font-size: 16px; color: var(--muted); max-width: 520px; margin: 0 auto; line-height: 1.7; }
-
+ 
   /* ── TRUST TICKER ── */
   .trust-strip { background: var(--ink); padding: 14px 0; overflow: hidden; }
   .trust-track { display: flex; white-space: nowrap; animation: ticker 24s linear infinite; }
@@ -235,11 +254,11 @@ const BLOG_POSTS = [
     color: rgba(255,255,255,0.85); white-space: nowrap;
   }
   .trust-dot { width: 4px; height: 4px; background: var(--blue); border-radius: 50%; }
-
+ 
   /* ── FILTER BAR ── */
   .filter-bar {
     display: flex; gap: 8px; flex-wrap: wrap;
-    padding: 100px 2rem 0; max-width: 1100px; margin: 0 auto;
+    padding: 2rem 2rem 0; max-width: 1100px; margin: 0 auto;
     position: relative; z-index: 10;
   }
   .filter-btn {
@@ -250,7 +269,7 @@ const BLOG_POSTS = [
   }
   .filter-btn:hover { border-color: var(--blue); color: var(--blue); }
   .filter-btn.active { background: var(--blue); color: #fff; border-color: var(--blue); }
-
+ 
   /* ── BLOG GRID ── */
   .blog-section { padding: 2rem 2rem 1.5rem; }
   .blog-grid {
@@ -258,7 +277,7 @@ const BLOG_POSTS = [
     display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 1.25rem;
   }
-
+ 
   /* ── FEATURED POST ── */
   .post-featured {
     grid-column: 1 / -1;
@@ -307,11 +326,11 @@ const BLOG_POSTS = [
     white-space: nowrap; z-index: 1;
     box-shadow: 0 4px 16px rgba(21,96,255,0.4);
   }
-
+ 
   /* ── REGULAR POST CARD ── */
   .post-card {
     background: var(--bg); border: 1.5px solid var(--border);
-    border-radius: 16px; padding: 1.5rem;
+    border-radius: var(--radius); padding: 1.5rem;
     display: flex; flex-direction: column; gap: 0.75rem;
     text-decoration: none; position: relative; overflow: hidden;
     transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
@@ -342,20 +361,20 @@ const BLOG_POSTS = [
     font-size: 12px; font-weight: 700; color: var(--blue);
     display: flex; align-items: center; gap: 3px;
   }
-
+ 
   /* ── EMPTY STATE ── */
   .empty-state {
     grid-column: 1 / -1; text-align: center;
     padding: 4rem 2rem; color: var(--muted);
   }
   .empty-state p { font-size: 15px; }
-
+ 
   /* ── SHOW MORE / LESS BUTTON ── */
   .show-more-wrap {
-  max-width: 1100px; margin: 0 auto 0;
-  display: flex; justify-content: center;
-  padding: 0 2rem 3rem;
-}
+    max-width: 1100px; margin: 0 auto;
+    display: flex; justify-content: center;
+    padding: 1.5rem 2rem 3rem;
+  }
   .show-more-btn {
     display: inline-flex; align-items: center; gap: 10px;
     font-family: var(--body); font-size: 14px; font-weight: 700;
@@ -380,7 +399,7 @@ const BLOG_POSTS = [
   .show-more-btn:hover .btn-chevron { background: rgba(255,255,255,0.2); }
   .show-more-btn.expanded .btn-chevron { transform: rotate(180deg); }
   .show-more-btn svg { display: block; }
-
+ 
   /* ── CTA BAR ── */
   .cta-bar {
     background: var(--bg2); border-top: 1px solid var(--border);
@@ -408,7 +427,7 @@ const BLOG_POSTS = [
     transition: border-color 0.15s, color 0.15s;
   }
   .btn-outline:hover { border-color: var(--blue); color: var(--blue); }
-
+ 
   /* ── FOOTER ── */
   footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.75rem 2rem; }
   .footer-inner {
@@ -416,77 +435,106 @@ const BLOG_POSTS = [
     display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
   }
   .footer-copy { font-size: 12px; color: var(--muted2); }
-
+  .footer-note { font-size: 12px; color: var(--muted2); }
+ 
   /* ── FADE ── */
   .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s cubic-bezier(.22,.68,0,1.2), transform 0.6s cubic-bezier(.22,.68,0,1.2); }
   .fade-up.in { opacity: 1; transform: none; }
-
+ 
   /* ── RESPONSIVE ── */
   @media (max-width: 720px) {
-    nav { padding: 0 1rem; height: 56px; }
-    .mob-menu { top: 56px; }
-    .nav-links { display: none; }
-    .hamburger { display: flex; }
-
-    .page-hero { padding: 88px 1rem 3rem; }
+    nav { display: none; }
+    .mob-top-nav { display: flex; }
+    body { padding-top: 60px; }
+ 
+    .page-hero { padding: 40px 1rem 3rem; }
     .page-title { font-size: clamp(1.7rem, 7vw, 2.4rem); letter-spacing: -1px; }
     .page-sub { font-size: 14px; }
-
-    .filter-bar { padding: 80px 1rem 0; }
-    .blog-section { padding: 1.5rem 1rem 4rem; }
-
+ 
+    .filter-bar { padding: 1.5rem 1rem 0; }
+    .blog-section { padding: 1.5rem 1rem 1.5rem; }
+ 
     .post-featured { grid-template-columns: 1fr; gap: 1.5rem; padding: 1.75rem; }
     .feat-read-btn { align-self: flex-start; }
     .feat-title { font-size: 1.2rem; }
-
+ 
     .blog-grid { grid-template-columns: 1fr; gap: 1rem; }
-
-    .show-more-wrap { padding: 0 1rem; }
+ 
+    .show-more-wrap { padding: 1rem 1rem 2.5rem; }
     .show-more-btn { width: 100%; justify-content: center; }
-
+ 
     .cta-bar { padding: 3rem 1.25rem; }
     .cta-btns { flex-direction: column; }
     .btn-wa, .btn-outline { justify-content: center; }
-
+ 
     footer { padding: 1.25rem 1rem; }
     .footer-inner { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
   }
-
+ 
+  @media (max-width: 540px) {
+    .cta-bar { padding: 2.5rem 1rem; }
+  }
+ 
   @media (max-width: 360px) { .logo-name { display: none; } }
 </style>
 </head>
 <body>
-
+ 
+<!-- DESKTOP NAV -->
 <nav>
   <a href="index.html" class="nav-logo">
     <div class="logo-mark"><img src="logo.png" alt="FixMyPC Perth"></div>
     <span class="logo-name">FixMyPC <em>Perth</em></span>
   </a>
   <div class="nav-right">
-    <div class="nav-links">
-      <a href="pricing.html" class="nav-pill pill-ghost">Pricing</a>
-      <a href="quiz.html" class="nav-pill pill-ghost">Free PC Diagnostic</a>
-      <a href="blog.html" class="nav-pill pill-ghost">Blog</a>
-      <a href="reviews.html" class="nav-pill pill-ghost">Reviews & FAQ</a>
-    </div>
-    <button class="hamburger" id="hamburger" aria-label="Open menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-  <div class="mob-menu" id="mob-menu">
-    <a href="pricing.html" class="mob-link">Pricing</a>
-    <a href="quiz.html" class="mob-link">Free PC Diagnostic</a>
-    <a href="blog.html" class="mob-link">Blog</a>
-    <a href="reviews.html" class="mob-link">Reviews & FAQ</a>
+    <a href="pricing.html" class="nav-pill pill-ghost">Pricing</a>
+    <a href="quiz.html" class="nav-pill pill-ghost">Free PC Diagnostic</a>
+    <a href="blog.html" class="nav-pill pill-ghost">Blog</a>
+    <a href="reviews.html" class="nav-pill pill-ghost">Reviews & FAQ</a>
   </div>
 </nav>
-
+ 
+<!-- MOBILE TOP NAV -->
+<div class="mob-top-nav">
+  <a href="index.html" class="mob-top-logo">
+    <div class="logo-mark"><img src="logo.png" alt="FixMyPC Perth"></div>
+    <span class="logo-name" style="font-size:14px">FixMyPC <em>Perth</em></span>
+  </a>
+  <button class="mob-top-hamburger" id="mob-top-hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</div>
+ 
+<!-- MOBILE DROPDOWN MENU -->
+<div class="mob-drop-menu" id="mob-drop-menu">
+  <a href="pricing.html" class="mob-drop-link">Pricing</a>
+  <a href="quiz.html" class="mob-drop-link">Free PC Diagnostic</a>
+  <a href="blog.html" class="mob-drop-link">Blog</a>
+  <a href="reviews.html" class="mob-drop-link">Reviews &amp; FAQ</a>
+  <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="mob-drop-link mob-drop-wa">WhatsApp me now</a>
+</div>
+ 
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <span class="s-eyebrow">Free guides & tips</span>
+  <h1 class="page-title">PC Repair <em>Tips & Guides</em></h1>
+  <p class="page-sub">Straight-talking advice from a local Perth tech. Fix it yourself or know when to call someone.</p>
+</div>
+ 
+<!-- TRUST TICKER -->
+<div class="trust-strip">
+  <div class="trust-track" id="trust-track"></div>
+</div>
+ 
+<!-- FILTER BAR -->
 <div class="filter-bar" id="filter-bar"></div>
-
+ 
+<!-- BLOG GRID -->
 <div class="blog-section">
   <div class="blog-grid" id="blog-grid"></div>
 </div>
-
+ 
+<!-- SHOW MORE -->
 <div class="show-more-wrap" id="show-more-wrap" style="display:none;">
   <button class="show-more-btn" id="show-more-btn">
     <span id="show-more-label">Show more posts</span>
@@ -497,7 +545,8 @@ const BLOG_POSTS = [
     </span>
   </button>
 </div>
-
+ 
+<!-- CTA BAR -->
 <div class="cta-bar">
   <div class="cta-bar-inner fade-up">
     <div class="cta-kicker">Need help right now?</div>
@@ -512,7 +561,8 @@ const BLOG_POSTS = [
     </div>
   </div>
 </div>
-
+ 
+<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <a href="index.html" class="nav-logo">
@@ -520,88 +570,102 @@ const BLOG_POSTS = [
       <span class="logo-name" style="font-size:14px">FixMyPC <em>Perth</em></span>
     </a>
     <div class="footer-copy">© 2026 FixMyPC Perth · Perth WA</div>
-    <div class="footer-copy">30 day labour warranty on all services · All prices include GST</div>
+    <div class="footer-note">30-day labour warranty on all services · All prices include GST</div>
   </div>
 </footer>
-
+ 
 <script>
-  // ── HAMBURGER
-  const hamburger = document.getElementById('hamburger');
-  const mobMenu   = document.getElementById('mob-menu');
-  hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); mobMenu.classList.toggle('open'); });
-  mobMenu.querySelectorAll('.mob-link').forEach(l => l.addEventListener('click', () => { hamburger.classList.remove('open'); mobMenu.classList.remove('open'); }));
-
+  // ── TRUST TICKER
+  const trustItems = [
+    'Same or next day turnaround', 'Local drop off in Canning Vale',
+    '30-day warranty on all work', 'Upfront pricing, no surprises',
+    'No fix? No fee on data recovery', '5/5 rated local service',
+    'Free quote in minutes', "Perth's trusted PC specialist",
+  ];
+  document.getElementById('trust-track').innerHTML =
+    [...trustItems, ...trustItems].map(t =>
+      `<div class="trust-item"><div class="trust-dot"></div>${t}</div>`
+    ).join('');
+ 
+  // ── MOBILE TOP NAV HAMBURGER
+  const hamburger = document.getElementById('mob-top-hamburger');
+  const mobMenu   = document.getElementById('mob-drop-menu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobMenu.classList.toggle('open');
+  });
+  mobMenu.querySelectorAll('.mob-drop-link').forEach(l =>
+    l.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobMenu.classList.remove('open');
+    })
+  );
+ 
   // ── FORMAT DATE
   function fmtDate(d) {
-    return new Date(d).toLocaleDateString('en-AU', { day:'numeric', month:'short', year:'numeric' });
+    return new Date(d).toLocaleDateString('en-AU', { day: 'numeric', month: 'short', year: 'numeric' });
   }
-
+ 
   // ── GET ALL CATEGORIES
   const allCats = ['All', ...new Set(BLOG_POSTS.map(p => p.category))];
-
+ 
   // ── SHOW MORE STATE
-  const INITIAL_LIMIT = 3; // max non-featured cards shown initially
+  const INITIAL_LIMIT = 3;
   let showAll = false;
   let currentFiltered = [];
-
+ 
   // ── RENDER FILTER BUTTONS
   let activeFilter = 'All';
   const filterBar = document.getElementById('filter-bar');
   filterBar.innerHTML = allCats.map(c =>
     `<button class="filter-btn${c === 'All' ? ' active' : ''}" data-cat="${c}">${c}</button>`
   ).join('');
-
+ 
   filterBar.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       activeFilter = btn.dataset.cat;
-      showAll = false; // reset when filter changes
+      showAll = false;
       filterBar.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       renderPosts();
     });
   });
-
+ 
   // ── SHOW MORE BUTTON
-  const showMoreWrap = document.getElementById('show-more-wrap');
-  const showMoreBtn  = document.getElementById('show-more-btn');
+  const showMoreWrap  = document.getElementById('show-more-wrap');
+  const showMoreBtn   = document.getElementById('show-more-btn');
   const showMoreLabel = document.getElementById('show-more-label');
-
+ 
   showMoreBtn.addEventListener('click', () => {
     showAll = !showAll;
     renderPosts();
-    // if collapsing, scroll back up to grid
     if (!showAll) {
       document.getElementById('blog-grid').scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   });
-
+ 
   // ── RENDER POSTS
   function renderPosts() {
     const grid = document.getElementById('blog-grid');
-
+ 
     currentFiltered = activeFilter === 'All'
       ? BLOG_POSTS
       : BLOG_POSTS.filter(p => p.category === activeFilter);
-
+ 
     if (!currentFiltered.length) {
       grid.innerHTML = `<div class="empty-state"><p>No posts in this category yet — check back soon.</p></div>`;
       showMoreWrap.style.display = 'none';
       return;
     }
-
-    // Separate featured from regular
+ 
     const hasFeatured = currentFiltered[0].featured && activeFilter === 'All';
     const featuredPost = hasFeatured ? currentFiltered[0] : null;
     const regularPosts = hasFeatured ? currentFiltered.slice(1) : currentFiltered;
-
-    // Decide which regular posts to show
     const visibleRegular = showAll ? regularPosts : regularPosts.slice(0, INITIAL_LIMIT);
     const hasMore = regularPosts.length > INITIAL_LIMIT;
-
-    // Build HTML
+ 
     let html = '';
-
-    // Featured card
+ 
     if (featuredPost) {
       html += `
         <a href="blog/${featuredPost.slug}.html" class="post-featured fade-up">
@@ -618,8 +682,7 @@ const BLOG_POSTS = [
           <div class="feat-read-btn">Read article →</div>
         </a>`;
     }
-
-    // Regular cards
+ 
     visibleRegular.forEach(post => {
       html += `
         <a href="blog/${post.slug}.html" class="post-card fade-up">
@@ -632,27 +695,26 @@ const BLOG_POSTS = [
           </div>
         </a>`;
     });
-
+ 
     grid.innerHTML = html;
-
-    // Show/hide the button
+ 
     if (hasMore) {
       showMoreWrap.style.display = 'flex';
       if (showAll) {
         showMoreLabel.textContent = 'Show less';
         showMoreBtn.classList.add('expanded');
       } else {
-        showMoreLabel.textContent = `Show ${regularPosts.length - INITIAL_LIMIT} more post${regularPosts.length - INITIAL_LIMIT !== 1 ? 's' : ''}`;
+        const remaining = regularPosts.length - INITIAL_LIMIT;
+        showMoreLabel.textContent = `Show ${remaining} more post${remaining !== 1 ? 's' : ''}`;
         showMoreBtn.classList.remove('expanded');
       }
     } else {
       showMoreWrap.style.display = 'none';
     }
-
-    // re-observe new fade-up elements
+ 
     document.querySelectorAll('.fade-up:not(.in)').forEach(el => obs.observe(el));
   }
-
+ 
   // ── SCROLL ANIMATIONS
   const obs = new IntersectionObserver(entries => {
     entries.forEach((e, i) => {
@@ -663,12 +725,12 @@ const BLOG_POSTS = [
     });
   }, { threshold: 0.06 });
   document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
-
+ 
   renderPosts();
 </script>
-
-   <!-- WhatsApp Bubble -->
-<a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." 
+ 
+<!-- WhatsApp Bubble -->
+<a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair."
    target="_blank" rel="noopener"
    style="
      position: fixed;
@@ -694,6 +756,6 @@ const BLOG_POSTS = [
     <path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/>
   </svg>
 </a>
-
+ 
 </body>
 </html>
