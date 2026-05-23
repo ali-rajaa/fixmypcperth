@@ -80,7 +80,18 @@
     --display: 'Sora', sans-serif;
     --body:    'DM Sans', sans-serif;
   }
- 
+ .mob-link {
+  font-family: var(--body);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+  padding: 0.85rem 1rem;
+  border-radius: 10px;
+  display: block;
+  transition: background 0.15s, color 0.15s;
+}
+.mob-link:hover { background: var(--blue-lt); color: var(--blue); }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
   body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.6; overflow-x: hidden; min-height: 100vh; }
@@ -327,10 +338,10 @@
     <span></span><span></span><span></span>
   </button>
 </div>
-<div class="mob-drop-menu" id="mob-drop-menu">
-  <a href="pricing.html" class="mob-drop-link">Pricing</a>
-  <a href="blog.html" class="mob-drop-link">Blog</a>
-  <a href="reviews.html" class="mob-drop-link">Reviews & FAQ</a>
+<div class="mob-drop-menu" id="mob-menu">
+  <a href="pricing.html" class="mob-link">Pricing</a>
+  <a href="blog.html" class="mob-link">Blog</a>
+  <a href="reviews.html" class="mob-link">Reviews & FAQ</a>
 </div>
  
 <!-- QUIZ PAGE -->
@@ -383,19 +394,19 @@
  
 <script>
   /* ── MOBILE NAV ── */
-  const mobHamburger = document.getElementById('mob-top-hamburger');
-  const mobDropMenu  = document.getElementById('mob-drop-menu');
-  mobHamburger.addEventListener('click', () => {
-    mobHamburger.classList.toggle('open');
-    mobDropMenu.classList.toggle('open');
-  });
-  mobDropMenu.querySelectorAll('.mob-drop-link').forEach(link => {
-    link.addEventListener('click', () => {
-      mobHamburger.classList.remove('open');
-      mobDropMenu.classList.remove('open');
+    const hamburger = document.getElementById('mob-top-hamburger');
+    const mobMenu = document.getElementById('mob-drop-menu');
+    hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobMenu.classList.toggle('open');
     });
-  });
- 
+    mobMenu.querySelectorAll('.mob-link').forEach(link => {
+    link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobMenu.classList.remove('open');
+    });
+    });
+    
   /* ══════════════════════════════════════════
      QUIZ DATA
   ══════════════════════════════════════════ */
