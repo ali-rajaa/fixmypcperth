@@ -406,15 +406,6 @@ const CONFIG = {
 </head>
 <body>
 
-<script>
-  fetch('header.html')
-    .then(r => r.text())
-    .then(html => {
-      const div = document.createElement('div');
-      div.innerHTML = html;
-      document.body.insertBefore(div, document.body.firstChild);
-    });
-</script>
 
 <!-- HERO -->
 <section class="hero">
@@ -682,6 +673,16 @@ const CONFIG = {
     <path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/>
   </svg>
 </a>
+<script>
+  fetch('header.html')
+    .then(r => r.text())
+    .then(html => {
+      const div = document.createElement('div');
+      div.innerHTML = html;
+      document.body.insertBefore(div, document.body.firstChild);
+    });
+</script>
+
 </body>
 </html>
 
