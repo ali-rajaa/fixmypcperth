@@ -372,9 +372,9 @@
 
 <!-- MOBILE DROPDOWN MENU -->
 <div class="mob-drop-menu" id="mob-drop-menu">
-  <a href="quiz.html" class="mob-drop-link">Free PC Diagnostic</a>
-  <a href="blog.html" class="mob-drop-link">Blog</a>
-  <a href="reviews.html" class="mob-drop-link">Reviews &amp; FAQ</a>
+  <a href="quiz.html" class="mob-link">Free PC Diagnostic</a>
+  <a href="blog.html" class="mob-link">Blog</a>
+  <a href="reviews.html" class="mob-link">Reviews &amp; FAQ</a>
 </div>
 
 <!-- PAGE HERO -->
@@ -639,11 +639,11 @@
   document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
 
   // MOBILE HAMBURGER
-  const mobHamburger = document.getElementById('mob-top-hamburger');
-  const mobDropMenu  = document.getElementById('mob-drop-menu');
-  mobHamburger.addEventListener('click', () => {
-    mobHamburger.classList.toggle('open');
-    mobDropMenu.classList.toggle('open');
+  const hamburger = document.getElementById('hamburger');
+  const mobMenu = document.getElementById('mob-menu');
+  hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mobMenu.classList.toggle('open');
   });
   mobDropMenu.querySelectorAll('.mob-drop-link').forEach(link => {
     link.addEventListener('click', () => {
