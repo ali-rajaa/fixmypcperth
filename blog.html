@@ -245,8 +245,10 @@ const BLOG_POSTS = [
  
  
   /* ── FILTER BAR ── */
-  .filter-bar {
-    padding: 5rem 2rem 0;
+ .filter-bar {
+    display: flex; gap: 8px; flex-wrap: wrap;
+    padding: 5rem 2rem 0; max-width: 1100px; margin: 0 auto;
+    position: relative; z-index: 10;
 }
   .filter-btn {
     font-family: var(--body); font-size: 13px; font-weight: 600;
