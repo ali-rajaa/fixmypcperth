@@ -243,17 +243,6 @@ const BLOG_POSTS = [
   .page-title em { color: var(--blue); font-style: normal; }
   .page-sub { font-size: 16px; color: var(--muted); max-width: 520px; margin: 0 auto; line-height: 1.7; }
  
-  /* ── TRUST TICKER ── */
-  .trust-strip { background: var(--ink); padding: 14px 0; overflow: hidden; }
-  .trust-track { display: flex; white-space: nowrap; animation: ticker 24s linear infinite; }
-  .trust-track:hover { animation-play-state: paused; }
-  @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-  .trust-item {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 0 2.5rem; font-size: 13px; font-weight: 600;
-    color: rgba(255,255,255,0.85); white-space: nowrap;
-  }
-  .trust-dot { width: 4px; height: 4px; background: var(--blue); border-radius: 50%; }
  
   /* ── FILTER BAR ── */
   .filter-bar {
@@ -565,17 +554,7 @@ const BLOG_POSTS = [
 </footer>
  
 <script>
-  // ── TRUST TICKER
-  const trustItems = [
-    'Same or next day turnaround', 'Local drop off in Canning Vale',
-    '30-day warranty on all work', 'Upfront pricing, no surprises',
-    'No fix? No fee on data recovery', '5/5 rated local service',
-    'Free quote in minutes', "Perth's trusted PC specialist",
-  ];
-  document.getElementById('trust-track').innerHTML =
-    [...trustItems, ...trustItems].map(t =>
-      `<div class="trust-item"><div class="trust-dot"></div>${t}</div>`
-    ).join('');
+
  
   // ── MOBILE TOP NAV HAMBURGER
   const hamburger = document.getElementById('mob-top-hamburger');
