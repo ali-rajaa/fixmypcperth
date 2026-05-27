@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms and Conditions | FixMyPC Perth</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<meta name="description" content="Terms and conditions for FixMyPC Perth. Read our service terms, diagnostic fee policy, warranty, payment and privacy information before booking.">
+<link rel="canonical" href="https://www.fixmypcperth.com/terms.html">
+<meta name="robots" content="index, follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+ 
+<style>
+  :root {
+    --blue:       #1560FF;
+    --blue-lt:    #EEF3FF;
+    --blue-mid:   #C7D8FF;
+    --blue-dk:    #0A3ACC;
+    --teal:       #00CFFF;
+    --ink:        #0F172A;
+    --ink2:       #1E293B;
+    --muted:      #64748B;
+    --muted2:     #94A3B8;
+    --border:     #E2E8F0;
+    --border2:    #CBD5E1;
+    --bg:         #FFFFFF;
+    --bg2:        #F8FAFC;
+    --bg3:        #F1F5F9;
+    --green:      #16A34A;
+    --wa:         #22C55E;
+    --wa-dk:      #16A34A;
+    --display:    'Sora', sans-serif;
+    --body:       'DM Sans', sans-serif;
+    --radius:     14px;
+  }
+ 
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+  body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.6; }
+ 
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2rem; height: 64px;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(226,232,240,0.8);
+  }
+  .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .logo-mark {
+    width: 38px; height: 38px; background: transparent; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center; box-shadow: none;
+  }
+  .logo-mark img { width: 100%; height: 100%; object-fit: contain; }
+  .logo-name { font-family: var(--display); font-size: 16px; font-weight: 700; color: var(--ink); letter-spacing: -0.3px; }
+  .logo-name em { color: var(--blue); font-style: normal; }
+  .nav-right { display: flex; align-items: center; gap: 10px; }
+  .nav-pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: var(--body); font-size: 13px; font-weight: 600;
+    padding: 9px 18px; border-radius: 50px;
+    text-decoration: none; border: none; cursor: pointer;
+    transition: transform 0.15s, opacity 0.15s;
+    white-space: nowrap;
+  }
+  .nav-pill:hover { transform: translateY(-1px); opacity: 0.92; }
+  .pill-ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--border2); padding: 8px 16px; }
+  .pill-ghost:hover { border-color: var(--blue); color: var(--blue); transform: none; }
+ 
+  /* MOBILE TOP NAV */
+  .mob-top-nav {
+    display: none;
+    position: fixed; top: 0; left: 0; right: 0; z-index: 300;
+    height: 60px;
+    background: rgba(255,255,255,0.97);
+    backdrop-filter: blur(20px);
+    border-bottom: 1.5px solid var(--border);
+    padding: 0 1.25rem;
+    align-items: center; justify-content: space-between;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  }
+  .mob-top-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+  .mob-top-hamburger {
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    gap: 5px; width: 40px; height: 40px;
+    background: var(--bg3); border: 1.5px solid var(--border2);
+    border-radius: 10px; cursor: pointer; flex-shrink: 0;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .mob-top-hamburger span { display: block; width: 16px; height: 2px; background: var(--ink); border-radius: 2px; transition: transform 0.3s, opacity 0.3s; }
+  .mob-top-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .mob-top-hamburger.open span:nth-child(2) { opacity: 0; }
+  .mob-top-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .mob-drop-menu {
+    display: none;
+    position: fixed; top: 60px; left: 0; right: 0; z-index: 299;
+    background: rgba(255,255,255,0.98);
+    backdrop-filter: blur(20px);
+    border-bottom: 1.5px solid var(--border);
+    padding: 0.75rem 1.25rem 1.25rem;
+    flex-direction: column; gap: 6px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    border-radius: 0 0 20px 20px;
+  }
+  .mob-drop-menu.open { display: flex; }
+  .mob-link {
+    font-family: var(--body); font-size: 14px; font-weight: 600;
+    color: var(--ink); text-decoration: none;
+    padding: 0.85rem 1rem; border-radius: 10px;
+    display: block; transition: background 0.15s, color 0.15s;
+  }
+  .mob-link:hover { background: var(--blue-lt); color: var(--blue); }
+ 
+  /* PAGE LAYOUT */
+  .page-hero {
+    text-align: center; padding: 5rem 2rem 3rem;
+    background: var(--bg); position: relative; overflow: hidden;
+  }
+  .page-hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 700px 400px at 50% 60%, rgba(21,96,255,0.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .s-eyebrow {
+    display: inline-block; font-size: 11px; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--blue); background: var(--blue-lt);
+    padding: 4px 14px; border-radius: 50px;
+    border: 1px solid var(--blue-mid); margin-bottom: 1rem;
+  }
+  .page-title {
+    font-family: var(--display);
+    font-size: clamp(2rem, 4.5vw, 3rem);
+    font-weight: 800; letter-spacing: -1.8px;
+    color: var(--ink); margin-bottom: 0.75rem; line-height: 1.08;
+  }
+  .page-title em { color: var(--blue); font-style: normal; }
+  .page-sub { font-size: 15px; color: var(--muted); max-width: 480px; margin: 0 auto; line-height: 1.7; }
+ 
+  .wrap { max-width: 820px; margin: 0 auto; padding: 3rem 2rem 5rem; }
+ 
+  /* SECTION CARDS */
+  .tc-section {
+    background: var(--bg2); border: 1.5px solid var(--border);
+    border-radius: 16px; padding: 2rem 2.25rem;
+    margin-bottom: 1.25rem; position: relative; overflow: hidden;
+  }
+  .tc-section::before {
+    content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 3px;
+    background: linear-gradient(180deg, var(--blue), var(--teal));
+  }
+  .tc-num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--blue); color: #fff;
+    font-family: var(--display); font-size: 12px; font-weight: 800;
+    margin-bottom: 0.75rem; flex-shrink: 0;
+  }
+  .tc-title {
+    font-family: var(--display); font-size: 1.1rem; font-weight: 800;
+    color: var(--ink); letter-spacing: -0.3px; margin-bottom: 0.75rem;
+  }
+  .tc-body { font-size: 14.5px; color: var(--muted); line-height: 1.8; }
+  .tc-body p { margin-bottom: 0.75rem; }
+  .tc-body p:last-child { margin-bottom: 0; }
+  .tc-body strong { color: var(--ink); font-weight: 600; }
+  .tc-body ul { padding-left: 1.25rem; margin-top: 0.5rem; margin-bottom: 0.75rem; }
+  .tc-body ul li { margin-bottom: 0.4rem; }
+ 
+  /* HIGHLIGHT BOX */
+  .highlight {
+    background: var(--blue-lt); border: 1.5px solid var(--blue-mid);
+    border-radius: 10px; padding: 1rem 1.25rem;
+    font-size: 14px; color: var(--ink2); line-height: 1.7;
+    margin-top: 0.75rem;
+  }
+  .highlight strong { color: var(--blue); }
+ 
+  /* LAST UPDATED */
+  .last-updated {
+    font-size: 12px; color: var(--muted2); text-align: center;
+    margin-bottom: 2rem;
+  }
+ 
+  /* CTA */
+  .cta-bar {
+    background: var(--ink); border-radius: 20px; padding: 2.5rem;
+    text-align: center; margin-top: 2.5rem;
+    position: relative; overflow: hidden;
+  }
+  .cta-bar::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--blue), var(--teal), var(--wa));
+  }
+  .cta-bar h3 {
+    font-family: var(--display); font-size: 1.4rem; font-weight: 800;
+    color: #fff; letter-spacing: -0.6px; margin-bottom: 0.4rem;
+  }
+  .cta-bar p { font-size: 14px; color: rgba(255,255,255,0.5); margin-bottom: 1.5rem; line-height: 1.6; }
+  .btn-wa {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--wa); color: #fff;
+    font-family: var(--body); font-size: 15px; font-weight: 700;
+    padding: 14px 26px; border-radius: 50px; text-decoration: none;
+    box-shadow: 0 4px 16px rgba(34,197,94,0.35);
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .btn-wa:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(34,197,94,0.45); }
+ 
+  /* FOOTER */
+  footer {
+    background: var(--bg); border-top: 1px solid var(--border); padding: 1.75rem 2rem;
+  }
+  .footer-inner {
+    max-width: 820px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 1rem; flex-wrap: wrap;
+  }
+  .footer-copy { font-size: 12px; color: var(--muted2); }
+  .footer-links { display: flex; gap: 1.25rem; }
+  .footer-links a { font-size: 12px; color: var(--muted2); text-decoration: none; }
+  .footer-links a:hover { color: var(--blue); }
+ 
+  /* RESPONSIVE */
+  @media (max-width: 720px) {
+    nav { display: none; }
+    .mob-top-nav { display: flex; }
+    body { padding-top: 60px; }
+ 
+    .page-hero { padding: 3rem 1.25rem 2rem; }
+    .page-title { font-size: clamp(1.7rem, 7vw, 2.4rem); letter-spacing: -1px; }
+    .page-sub { font-size: 14px; }
+ 
+    .wrap { padding: 2rem 1.25rem 4rem; }
+    .tc-section { padding: 1.5rem 1.25rem 1.5rem 1.6rem; }
+ 
+    .cta-bar { padding: 1.75rem 1.25rem; border-radius: 14px; }
+ 
+    footer { padding: 1.25rem 1rem; }
+    .footer-inner { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+  }
+ 
+  @media (max-width: 361px) { .logo-name { display: none; } }
+</style>
+</head>
+<body>
+ 
+<!-- DESKTOP NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="logo-mark"><img src="logo.png" alt="FixMyPC Perth"></div>
+    <span class="logo-name">FixMyPC <em>Perth</em></span>
+  </a>
+  <div class="nav-right">
+    <a href="pricing.html" class="nav-pill pill-ghost">Pricing</a>
+    <a href="quiz.html" class="nav-pill pill-ghost">Free PC Diagnostic</a>
+    <a href="blog.html" class="nav-pill pill-ghost">Tech Tips</a>
+    <a href="reviews.html" class="nav-pill pill-ghost">Reviews and FAQ</a>
+  </div>
+</nav>
+ 
+<!-- MOBILE TOP NAV -->
+<div class="mob-top-nav">
+  <a href="index.html" class="mob-top-logo">
+    <div class="logo-mark"><img src="logo.png" alt="FixMyPC Perth"></div>
+    <span class="logo-name" style="font-size:14px">FixMyPC <em>Perth</em></span>
+  </a>
+  <button class="mob-top-hamburger" id="mob-top-hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</div>
+ 
+<!-- MOBILE DROPDOWN -->
+<div class="mob-drop-menu" id="mob-drop-menu">
+  <a href="pricing.html" class="mob-link">Pricing</a>
+  <a href="quiz.html" class="mob-link">Free PC Diagnostic</a>
+  <a href="blog.html" class="mob-link">Tech Tips</a>
+  <a href="reviews.html" class="mob-link">Reviews and FAQ</a>
+</div>
+ 
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <span class="s-eyebrow">Last updated May 2026</span>
+  <h1 class="page-title">Terms and <em>Conditions</em></h1>
+  <p class="page-sub">Plain English. No legal jargon. Just clear, honest terms so you know exactly what to expect.</p>
+</div>
+ 
+<div class="wrap">
+ 
+  <p class="last-updated">These terms apply to all services provided by FixMyPC Perth (ABN pending), operated by Ali Raja, based in Canning Vale, Western Australia. By booking a service you agree to the terms below.</p>
+ 
+  <!-- 1. SERVICES -->
+  <div class="tc-section">
+    <div class="tc-num">1</div>
+    <div class="tc-title">Services</div>
+    <div class="tc-body">
+      <p>FixMyPC Perth provides computer repair, diagnostics, hardware upgrades, virus removal, data recovery, networking, and related technology services to residential and small business customers across Perth, Western Australia.</p>
+      <p>All services are carried out by Ali Raja personally. We do not subcontract your device to a third party.</p>
+      <p>We reserve the right to decline a job if the repair is beyond our scope or if we determine the cost of repair is not in the customer's best interest. In that case we will tell you honestly and not charge you beyond the diagnostic fee.</p>
+    </div>
+  </div>
+ 
+  <!-- 2. DIAGNOSTIC FEE -->
+  <div class="tc-section">
+    <div class="tc-num">2</div>
+    <div class="tc-title">Diagnostic Fee and Pricing</div>
+    <div class="tc-body">
+      <p>A <strong>flat diagnostic fee</strong> applies to all drop off repair jobs. This fee covers a full assessment of your device, identification of the root cause, and the repair itself where possible.</p>
+      <p>The diagnostic fee is quoted to you before any work begins. You will always know the cost upfront and no additional labour charges are added without your approval.</p>
+      <p>If parts are required (such as an SSD, RAM, or screen), these are quoted separately. Parts costs are confirmed with you before anything is ordered or installed.</p>
+      <div class="highlight">
+        <strong>No surprises policy:</strong> If the repair turns out to be more complex than initially assessed, we will stop, explain the situation, and give you a revised quote before continuing. You are never committed to proceeding.
+      </div>
+    </div>
+  </div>
+ 
+  <!-- 3. PAYMENT -->
+  <div class="tc-section">
+    <div class="tc-num">3</div>
+    <div class="tc-title">Payment</div>
+    <div class="tc-body">
+      <p>Payment is due <strong>on collection of your device</strong>, once the repair is complete and you are satisfied with the work. No upfront payment is required.</p>
+      <p>We accept the following payment methods:</p>
+      <ul>
+        <li>Cash (exact change appreciated)</li>
+        <li>Bank transfer (BSB and account number provided on your invoice)</li>
+      </ul>
+      <p>An invoice is provided for every job with a full breakdown of what was completed. Please allow up to 24 hours for bank transfers to clear before collecting your device if paying remotely in advance.</p>
+      <p>We do not currently accept card payments, PayPal, or buy now pay later services.</p>
+    </div>
+  </div>
+ 
+  <!-- 4. WARRANTY -->
+  <div class="tc-section">
+    <div class="tc-num">4</div>
+    <div class="tc-title">Warranty</div>
+    <div class="tc-body">
+      <p>All labour carried out by FixMyPC Perth comes with a <strong>30 day labour warranty</strong>. If the same issue returns within 30 days of your repair being completed, we will reassess and remedy it at no additional labour cost.</p>
+      <p>The warranty covers the specific fault that was repaired. It does not cover:</p>
+      <ul>
+        <li>New or unrelated faults that develop after the repair</li>
+        <li>Physical damage caused after collection (drops, spills, etc.)</li>
+        <li>Issues caused by software the customer installs after the repair</li>
+        <li>Faults caused by power surges or external events</li>
+      </ul>
+      <p>Hardware components such as SSDs and RAM carry their own manufacturer warranty in addition to our labour warranty.</p>
+      <div class="highlight">
+        <strong>To claim the warranty</strong> simply message us on WhatsApp within 30 days describing the issue. We will arrange a time to reassess at no cost to you.
+      </div>
+    </div>
+  </div>
+ 
+  <!-- 5. DATA AND PRIVACY -->
+  <div class="tc-section">
+    <div class="tc-num">5</div>
+    <div class="tc-title">Your Data and Privacy</div>
+    <div class="tc-body">
+      <p>We understand that your device contains personal information. We take your privacy seriously and operate with the following principles:</p>
+      <ul>
+        <li>We only access files, folders, or accounts that are necessary to complete the repair</li>
+        <li>For certain repairs (such as software issues, virus removal, or Windows reinstalls), we may require your device password or login credentials to carry out the work. This information is used solely for the repair and is never stored or shared</li>
+        <li>We do not browse, copy, or retain any personal files, photos, documents, or emails beyond what is necessary for the job</li>
+        <li>We do not sell or share your personal information with any third party</li>
+        <li>Contact details you provide (name, phone, email) are used only to communicate with you about your repair</li>
+      </ul>
+      <p>We strongly recommend backing up your important data before handing in your device. While we take every precaution to protect your files, FixMyPC Perth cannot be held liable for pre-existing data loss or corruption discovered during the repair process.</p>
+      <div class="highlight">
+        <strong>Windows reinstalls:</strong> Before any reinstall, we back up your personal files and confirm with you exactly what will be retained. Nothing is wiped without your explicit approval.
+      </div>
+    </div>
+  </div>
+ 
+  <!-- 6. DATA BACKUP AND LIABILITY -->
+  <div class="tc-section">
+    <div class="tc-num">6</div>
+    <div class="tc-title">Data Backup and Liability</div>
+    <div class="tc-body">
+      <p>FixMyPC Perth takes all reasonable care when handling your device. However, computer repair inherently carries some risk, particularly when a device is already in a failed or failing state.</p>
+      <p>We strongly advise all customers to back up their data before dropping off a device. If you are unsure how to do this, please let us know and we can assist.</p>
+      <p>FixMyPC Perth is not liable for:</p>
+      <ul>
+        <li>Data loss resulting from a pre-existing failed or failing drive</li>
+        <li>Data loss where the customer was advised to back up before the repair</li>
+        <li>Damage to devices that were already structurally compromised at drop off</li>
+        <li>Loss of data on devices left uncollected beyond the 60 day collection period</li>
+      </ul>
+      <p>In the unlikely event that our work causes unintended damage, we will discuss fair resolution with you directly and honestly.</p>
+    </div>
+  </div>
+ 
+  <!-- 7. UNCOLLECTED DEVICES -->
+  <div class="tc-section">
+    <div class="tc-num">7</div>
+    <div class="tc-title">Uncollected Devices</div>
+    <div class="tc-body">
+      <p>Once your repair is complete, we will notify you via WhatsApp or phone. We ask that you collect your device within a reasonable timeframe.</p>
+      <p>If a device has not been collected within <strong>60 days</strong> of the repair completion notice, and we have been unable to reach you after reasonable attempts, FixMyPC Perth reserves the right to dispose of the device responsibly. This may include recycling, donation, or other lawful disposal.</p>
+      <p>We will always make multiple contact attempts before taking any action on an uncollected device.</p>
+      <div class="highlight">
+        <strong>Need more time?</strong> No problem at all. Just send us a message and we will hold your device for as long as needed. We just ask that you keep in touch.
+      </div>
+    </div>
+  </div>
+ 
+  <!-- 8. ON SITE VISITS -->
+  <div class="tc-section">
+    <div class="tc-num">8</div>
+    <div class="tc-title">On Site Visits</div>
+    <div class="tc-body">
+      <p>For networking, printer setup, smart TV, and other on site jobs, a <strong>callout fee of $40</strong> applies in addition to the service cost. This covers travel to your location within the Perth metro area.</p>
+      <p>Please ensure someone is present at the address for the duration of the visit. If we arrive and cannot access the premises, the callout fee may still apply.</p>
+      <p>We ask that a safe and accessible workspace is available for on site repairs.</p>
+    </div>
+  </div>
+ 
+  <!-- 9. REMOTE SUPPORT -->
+  <div class="tc-section">
+    <div class="tc-num">9</div>
+    <div class="tc-title">Remote Support</div>
+    <div class="tc-body">
+      <p>Remote support sessions are conducted via AnyDesk at <strong>$50 per hour</strong>, billed in 30 minute increments. You will be told the estimated duration before the session begins.</p>
+      <p>During a remote session, you grant temporary access to your screen and device solely for the purpose of the repair or troubleshooting task agreed upon. Access is terminated at the end of the session.</p>
+      <p>Remote sessions are only conducted with the customer present and in control of ending the connection at any time.</p>
+    </div>
+  </div>
+ 
+  <!-- 10. GENERAL -->
+  <div class="tc-section">
+    <div class="tc-num">10</div>
+    <div class="tc-title">General</div>
+    <div class="tc-body">
+      <p>These terms are governed by the laws of Western Australia, Australia.</p>
+      <p>FixMyPC Perth reserves the right to update these terms at any time. The current version will always be available at fixmypcperth.com/terms.html.</p>
+      <p>If you have any questions about these terms, please reach out before booking. We are happy to clarify anything in plain English.</p>
+      <p>By dropping off your device or booking a service with FixMyPC Perth, you confirm that you have read and agree to these terms.</p>
+    </div>
+  </div>
+ 
+  <!-- CTA -->
+  <div class="cta-bar">
+    <h3>Any questions? Just ask.</h3>
+    <p>We are happy to clarify anything before you book. Message us on WhatsApp for a fast, friendly reply.</p>
+    <a href="https://wa.me/61452573701?text=Hi%21%20I%20have%20a%20question%20about%20your%20terms%20before%20booking." target="_blank" class="btn-wa" rel="noopener">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>
+      Message me on WhatsApp
+    </a>
+  </div>
+ 
+</div>
+ 
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="logo-mark"><img src="logo.png" alt="FixMyPC Perth"></div>
+      <span class="logo-name" style="font-size:14px">FixMyPC <em>Perth</em></span>
+    </a>
+    <div class="footer-copy">© 2026 FixMyPC Perth · Perth WA</div>
+    <div class="footer-links">
+      <a href="terms.html">Terms and Conditions</a>
+    </div>
+  </div>
+</footer>
+ 
+<script>
+  const hamburger = document.getElementById('mob-top-hamburger');
+  const mobMenu = document.getElementById('mob-drop-menu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobMenu.classList.toggle('open');
+  });
+  mobMenu.querySelectorAll('.mob-link').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobMenu.classList.remove('open');
+    });
+  });
+</script>
+ 
+<!-- WhatsApp Bubble -->
+<a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair."
+   target="_blank" rel="noopener"
+   style="
+     position: fixed; bottom: 24px; right: 24px; z-index: 9999;
+     width: 58px; height: 58px; background: #22C55E; border-radius: 50%;
+     display: flex; align-items: center; justify-content: center;
+     box-shadow: 0 4px 20px rgba(34,197,94,0.45);
+     transition: transform 0.2s, box-shadow 0.2s; text-decoration: none;
+   "
+   onmouseover="this.style.transform='scale(1.1)';this.style.boxShadow='0 6px 28px rgba(34,197,94,0.55)'"
+   onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 4px 20px rgba(34,197,94,0.45)'"
+   aria-label="Chat with us on WhatsApp">
+  <svg width="30" height="30" viewBox="0 0 24 24" fill="white">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/>
+  </svg>
+</a>
+ 
+</body>
+</html>
