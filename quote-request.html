@@ -334,6 +334,7 @@ window.addEventListener('DOMContentLoaded', () => {
   if (params.get('success') === 'true') {
     document.getElementById('pageHero').style.display = 'none';
     document.getElementById('formOuter').style.display = 'none';
+    document.querySelector('.trust-bar').style.display = 'none'; // Add this line
     document.getElementById('successWrap').classList.add('show');
     window.scrollTo({ top: 0, behavior: 'auto' });
   }
