@@ -8,6 +8,7 @@
 <meta name="description" content="Request a free quote from FixMyPC Perth. Fast response, transparent pricing, no obligation.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="canonical" href="https://www.fixmypcperth.com/quote-request.html>
 
 <style>
 :root {
@@ -202,7 +203,9 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
   </div>
 
   <div class="form-outer" id="formOuter">
-    <form action="https://formsubmit.co/aly.imran.raja@gmail.com" method="POST" id="quoteForm">
+    <form action="https://formsubmit.co/aly.imran.raja@gmail.com" method="POST" id="quoteForm" onsubmit="return handleFormSubmit(event)">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_next" value="https://www.fixmypcperth.com/quote-request.html?success=true">
     <div class="card">
 
       <div class="card-block">
@@ -326,6 +329,17 @@ let selectedSvcs = [];
 let urgency = 'No rush';
 let contactPref = 'WhatsApp';
 
+// Check for success redirect
+window.addEventListener('DOMContentLoaded', () => {
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('success') === 'true') {
+    document.getElementById('pageHero').style.display = 'none';
+    document.getElementById('formOuter').style.display = 'none';
+    document.getElementById('successWrap').classList.add('show');
+    window.scrollTo({ top: 0, behavior: 'auto' });
+  }
+});
+
 function toggleSvc(el) {
   const val = el.dataset.val;
   el.classList.toggle('active');
@@ -368,6 +382,7 @@ document.getElementById('quoteForm').addEventListener('submit', function(e) {
     const first = document.querySelector('.svc-error.show, .field-err.show');
     if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
+  // If ok is true, form submits normally to FormSubmit
 });
 
 // NAV
