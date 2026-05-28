@@ -552,10 +552,11 @@ const CONFIG = {
   document.getElementById('hero-sub').textContent = CONFIG.heroSub;
   document.getElementById('hero-desc').textContent = CONFIG.heroDesc;
   document.getElementById('hero-actions').innerHTML = `
-    <a href="quote-request.html" class="btn-wa" style="background:var(--blue);color:#fff;box-shadow:0 4px 16px rgba(21,96,255,0.35)">Get a free quote →</a>
-    <a href="${FB}" target="_blank" class="nav-pill" style="width:44px;height:44px;padding:0;display:flex;align-items:center;justify-content:center;background:var(--fb);color:#fff;box-shadow:0 4px 16px rgba(24,119,242,0.3)" rel="noopener">${fbIcon}</a>
-    <a href="${WA}" target="_blank" class="nav-pill" style="width:44px;height:44px;padding:0;display:flex;align-items:center;justify-content:center;background:var(--wa);color:#fff;box-shadow:0 4px 16px rgba(34,197,94,0.35)" rel="noopener">${waIcon}</a>`;
-
+      <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+        <a href="quote-request.html" class="btn-wa" style="background:var(--blue);color:#fff;box-shadow:0 4px 16px rgba(21,96,255,0.35);flex:1;min-width:200px">Get a free quote →</a>
+        <a href="${FB}" target="_blank" style="width:50px;height:50px;background:var(--fb);border-radius:50px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(24,119,242,0.3);transition:transform 0.15s;text-decoration:none" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'" rel="noopener">${fbIcon}</a>
+        <a href="${WA}" target="_blank" style="width:50px;height:50px;background:var(--wa);border-radius:50px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(34,197,94,0.35);transition:transform 0.15s;text-decoration:none" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'" rel="noopener">${waIcon}</a>
+      </div>`;
   // STATS
   document.getElementById('stat-row').innerHTML = CONFIG.stats.map(s=>`
     <div class="stat-box">
