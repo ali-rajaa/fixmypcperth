@@ -3,398 +3,695 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Request a Quote | FixMyPC Perth</title>
+<title>FixMyPC Perth | Computer Repair & Tech Services</title>
 <link rel="icon" type="image/png" href="favicon.png">
-<meta name="description" content="Request a free quote from FixMyPC Perth. Fast response, transparent pricing, no obligation.">
+<meta name="description" content="Perth's most trusted computer repair service. Virus removal, data recovery, display issues, ssd upgrades, windows reinstall, gaming pc builds and more.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  
+<!-- GEO TARGETING -->
+<meta name="geo.region" content="AU-WA">
+<meta name="geo.placename" content="Canning Vale, Perth, Western Australia">
+<meta name="geo.position" content="-32.0742;115.9239">
+<meta name="ICBM" content="-32.0742, 115.9239">
+<link rel="canonical" href="https://www.fixmypcperth.com/">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="author" content="Ali Raja: FixMyPC Perth">
+<link rel="apple-touch-icon" href="favicon.png">
+<meta name="theme-color" content="#0D1117">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_AU">
+<meta property="og:site_name" content="FixMyPC Perth">
+<meta property="og:title" content="PC Repair Canning Vale Perth | FixMyPC Perth">
+<meta property="og:description" content="Perth's trusted PC repair specialist. Virus removal, SSD upgrades, gaming PC builds, Windows reinstall and more.">
+<meta property="og:url" content="https://fixmypcperth.com/">
+<meta property="og:image" content="https://fixmypcperth.com/facebook-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="PC Repair Canning Vale Perth | FixMyPC Perth">
+<meta name="twitter:description" content="Perth's trusted PC repair specialist.">
+<meta name="twitter:image" content="https://fixmypcperth.com/facebook-cover.png">
+<meta name="google-site-verification" content="YOUR_CODE_HERE">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "FixMyPC Perth",
+  "url": "https://fixmypcperth.com",
+  "telephone": "+61452573701",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Canning Vale",
+    "addressRegion": "WA",
+    "postalCode": "6155",
+    "addressCountry": "AU"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": -32.0742,
+    "longitude": 115.9239
+  },
+  "sameAs": [
+    "https://www.facebook.com/profile.php?id=61588810785733"
+  ]
+}
+</script>
+
+<script>
+const CONFIG = {
+  businessName:  "FixMyPC Perth",
+  yourName:      "Raja",
+  suburb:        "Canning Vale, Perth",
+  state:         "Western Australia",
+  abn:           "67 645 153 359",
+  whatsappNumber: "61452573701",
+  whatsappMsg:    "Hi! I'd like a free quote for PC repair.",
+  facebookURL:    "https://www.facebook.com/profile.php?id=61588810785733",
+  heroHeadline:  "Perth's trusted PC repair specialist.",
+  heroSub:       "Fast turnaround. Transparent Pricing. Unlimited Revisions.",
+  heroDesc:      "Home based in Perth, meaning lower overheads means better prices for you. Drop off your PC or laptop and I'll have it sorted, usually next day.",
+  services: [
+    { icon: "🛡️", name: "Virus & Malware Removal", desc: "Full scan, removal, browser cleanup and security setup. Most infections cleared same day.", price: "From $80", badge: "MOST POPULAR" },
+    { icon: "⚡", name: "SSD Upgrade & Tune-Up", desc: "Replace your old hard drive with a fast SSD. Boot in under 10 seconds — all data transferred safely.", price: "From $80", badge: "" },
+    { icon: "🪟", name: "Windows Reinstall & Data Backup", desc: "Corrupt Windows, boot loops, forgotten passwords. Fresh install with your files kept safe.", price: "From $90", badge: "" },
+    { icon: "📶", name: "WiFi & Printer Setup", desc: "NBN router setup, dead spots, printer drivers. I come to you, no callout fee.", price: "From $70", badge: "" },
+    { icon: "🎮", name: "Gaming PC Build & Upgrade", desc: "Custom builds, GPU & RAM installs, PBO performance tuning. Fully benchmarked before pickup.", price: "From $80", badge: "SPECIALIST" },
+    { icon: "🔌", name: "Cable Management", desc: "Clean routing, velcro ties, airflow optimised. Before & after photos every time.", price: "From $65", badge: "" },
+    { icon: "🖥️", name: "Remote Support", desc: "AnyDesk session — software issues, settings, guidance. No need to leave home.", price: "$50/hr", badge: "" },
+    { icon: "💾", name: "Data Recovery", desc: "Recover photos, documents and files from failing or dead hard drives.", price: "From $120", badge: "NO FIX NO FEE" },
+  ],
+  packageShow:    true,
+  packageName:    "Complete PC Overhaul Package",
+  packageItems: [
+    "Full Malware & Virus Removal",
+    "Windows 11 Reinstalled with Data Backup",
+    "Full cable management throughout",
+    "Thermal Paste Reapply on CPU",
+    "All drivers updated: GPU, chipset, audio, NIC",
+    "PBO tuning: up to 15% more CPU performance free",
+    "Before & after benchmark (Cinebench / 3DMark)",
+    "3 Month Follow up check included",
+    "30 Day Labour Warranty on all work",
+    "Before & after benchmark (Cinebench / 3DMark / Furmark)",
+  ],
+  packagePrice:    "$299",
+  packageWasPrice: "Shop price $549+",
+  packageLabel:    "labour only · parts supplied by you",
+  stats: [
+    { val: "$59",  label: "Starting from" },
+    { val: "500+", label: "Devices Repaired" },
+    { val: "30d",  label: "Labour Warranty" },
+    { val: "5/5",  label: "Rated local service" },
+  ],
+  reasons: [
+    { icon: "✅", title: "Not Satisfied? No Worries",  desc: "You only pay when your satisfied No exceptions." },
+    { icon: "⏱️", title: "Same day turnaround",        desc: "Most jobs done same or next day. No week-long waits." },
+    { icon: "🛡️", title: "30-day labour warranty",     desc: "All work guaranteed for 30 days after completion." },
+  ],
+};
+</script>
 
 <style>
-:root {
-  --blue: #1560FF;
-  --blue-lt: #EEF3FF;
-  --blue-mid: #C7D8FF;
-  --blue-dk: #0A3ACC;
-  --ink: #0F172A;
-  --ink2: #1E293B;
-  --muted: #64748B;
-  --muted2: #94A3B8;
-  --border: #E2E8F0;
-  --border2: #CBD5E1;
-  --bg: #FFFFFF;
-  --bg2: #F8FAFC;
-  --bg3: #F1F5F9;
-  --wa: #22C55E;
-  --red: #EF4444;
-  --display: 'Sora', sans-serif;
-  --body: 'DM Sans', sans-serif;
-  --radius: 14px;
+  :root {
+    --blue:    #1560FF;
+    --blue-lt: #EEF3FF;
+    --blue-mid:#C7D8FF;
+    --blue-dk: #0A3ACC;
+    --ink:     #0F172A;
+    --ink2:    #1E293B;
+    --muted:   #64748B;
+    --muted2:  #94A3B8;
+    --border:  #E2E8F0;
+    --border2: #CBD5E1;
+    --bg:      #FFFFFF;
+    --bg2:     #F8FAFC;
+    --bg3:     #F1F5F9;
+    --wa:      #22C55E;
+    --wa-dk:   #16A34A;
+    --fb:      #1877F2;
+    --fb-dk:   #1565D8;
+    --display: 'Sora', sans-serif;
+    --body:    'DM Sans', sans-serif;
+    --radius:  14px;
+    --radius-sm: 8px;
+  }
+  .mob-link {
+  font-family: var(--body);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+  padding: 0.85rem 1rem;
+  border-radius: 10px;
+  display: block;
+  transition: background 0.15s, color 0.15s;
 }
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
-body { background: var(--bg2); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.6; overflow-x: hidden; }
-
-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; height: 64px; background: rgba(255,255,255,0.92); backdrop-filter: blur(20px) saturate(180%); border-bottom: 1px solid rgba(226,232,240,0.8); }
-.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-.logo-mark { width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; }
-.logo-mark img { width: 100%; height: 100%; object-fit: contain; }
-.logo-name { font-family: var(--display); font-size: 16px; font-weight: 700; color: var(--ink); letter-spacing: -0.3px; }
-.logo-name em { color: var(--blue); font-style: normal; }
-.nav-right { display: flex; align-items: center; gap: 10px; }
-.nav-pill { display: inline-flex; align-items: center; gap: 6px; font-family: var(--body); font-size: 13px; font-weight: 600; padding: 9px 18px; border-radius: 50px; text-decoration: none; border: none; cursor: pointer; transition: transform 0.15s, opacity 0.15s; white-space: nowrap; }
-.nav-pill:hover { transform: translateY(-1px); opacity: 0.92; }
-.pill-ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--border2); padding: 8px 16px; }
-.pill-ghost:hover { border-color: var(--blue); color: var(--blue); transform: none; }
-
-.mob-top-nav { display: none; position: fixed; top: 0; left: 0; right: 0; z-index: 300; height: 60px; background: rgba(255,255,255,0.97); backdrop-filter: blur(20px); border-bottom: 1.5px solid var(--border); padding: 0 1.25rem; align-items: center; justify-content: space-between; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
-.mob-top-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
-.mob-top-hamburger { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 5px; width: 40px; height: 40px; background: var(--bg3); border: 1.5px solid var(--border2); border-radius: 10px; cursor: pointer; flex-shrink: 0; }
-.mob-top-hamburger span { display: block; width: 16px; height: 2px; background: var(--ink); border-radius: 2px; transition: transform 0.3s, opacity 0.3s; }
-.mob-top-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.mob-top-hamburger.open span:nth-child(2) { opacity: 0; }
-.mob-top-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-.mob-drop-menu { display: none; position: fixed; top: 60px; left: 0; right: 0; z-index: 299; background: rgba(255,255,255,0.98); backdrop-filter: blur(20px); border-bottom: 1.5px solid var(--border); padding: 0.75rem 1.25rem 1.25rem; flex-direction: column; gap: 6px; box-shadow: 0 8px 30px rgba(0,0,0,0.1); border-radius: 0 0 20px 20px; }
-.mob-drop-menu.open { display: flex; }
-.mob-link { font-family: var(--body); font-size: 14px; font-weight: 600; color: var(--ink); text-decoration: none; padding: 0.85rem 1rem; border-radius: 10px; display: block; transition: background 0.15s, color 0.15s; }
 .mob-link:hover { background: var(--blue-lt); color: var(--blue); }
 
-.page-wrap { padding-top: 64px; min-height: 100vh; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+  body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
 
-.page-hero { background: var(--bg); border-bottom: 1px solid var(--border); padding: 3.5rem 2rem 3rem; text-align: center; position: relative; overflow: hidden; }
-.page-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 800px 400px at 50% 120%, rgba(21,96,255,0.05) 0%, transparent 70%); pointer-events: none; }
-.eyebrow { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); background: var(--blue-lt); padding: 4px 14px; border-radius: 50px; border: 1px solid var(--blue-mid); margin-bottom: 1.1rem; }
-.page-title { font-family: var(--display); font-size: clamp(2rem, 4.5vw, 3rem); font-weight: 800; letter-spacing: -1.8px; color: var(--ink); margin-bottom: 0.7rem; line-height: 1.06; }
-.page-title em { color: var(--blue); font-style: normal; }
-.page-sub { font-size: 15px; color: var(--muted); max-width: 420px; margin: 0 auto; line-height: 1.75; }
-
-.trust-bar { background: var(--bg); border-bottom: 1px solid var(--border); padding: 0.9rem 2rem; display: flex; align-items: center; justify-content: center; gap: 0; flex-wrap: wrap; }
-.trust-item { display: flex; align-items: center; gap: 7px; font-size: 12.5px; font-weight: 600; color: var(--muted); padding: 4px 20px; }
-.trust-item svg { color: var(--blue); flex-shrink: 0; }
-.trust-sep { width: 1px; height: 16px; background: var(--border2); }
-
-.form-outer { max-width: 740px; margin: 0 auto; padding: 2.5rem 2rem 4rem; }
-.card { background: var(--bg); border: 1.5px solid var(--border); border-radius: 20px; overflow: hidden; box-shadow: 0 2px 24px rgba(15,23,42,0.06); }
-.card-block { padding: 2rem 2.25rem; }
-.card-block + .card-block { border-top: 1px solid var(--border); }
-.block-heading { font-family: var(--display); font-size: 13px; font-weight: 700; color: var(--ink); margin-bottom: 1.25rem; letter-spacing: -0.2px; display: flex; align-items: center; gap: 10px; }
-.block-num { width: 22px; height: 22px; border-radius: 50%; background: var(--blue); color: #fff; font-size: 11px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-
-.service-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 6px; }
-.svc-card { padding: 14px 10px 12px; background: var(--bg2); border: 1.5px solid var(--border); border-radius: 12px; cursor: pointer; text-align: center; transition: border-color 0.18s, background 0.18s, transform 0.15s, box-shadow 0.15s; position: relative; user-select: none; }
-.svc-card:hover { border-color: var(--blue-mid); background: var(--blue-lt); transform: translateY(-1px); }
-.svc-card.active { border-color: var(--blue); background: var(--blue-lt); box-shadow: 0 0 0 3px rgba(21,96,255,0.08); }
-.svc-card.active::after { content: ''; position: absolute; top: 7px; right: 7px; width: 8px; height: 8px; border-radius: 50%; background: var(--blue); }
-.svc-label { font-size: 11.5px; font-weight: 600; color: var(--ink2); line-height: 1.35; }
-.svc-card.active .svc-label { color: var(--blue); }
-
-.svc-error { font-size: 12px; color: var(--red); margin-top: 8px; display: none; }
-.svc-error.show { display: block; }
-
-.other-reveal { display: none; margin-top: 10px; }
-.other-reveal.show { display: block; }
-.other-reveal input { width: 100%; padding: 10px 14px; background: var(--bg2); border: 1.5px solid var(--border); border-radius: 10px; font-family: var(--body); font-size: 13px; color: var(--ink); outline: none; transition: border-color 0.15s; }
-.other-reveal input:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(21,96,255,0.1); background: var(--bg); }
-
-.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
-.field-col { display: flex; flex-direction: column; gap: 5px; }
-.field-single { margin-bottom: 14px; display: flex; flex-direction: column; gap: 5px; }
-
-label { font-size: 12px; font-weight: 600; color: var(--ink2); }
-label .opt { font-weight: 400; color: var(--muted2); }
-label .req { color: var(--red); margin-left: 2px; }
-
-input[type="text"], input[type="email"], input[type="tel"], input[type="hidden"], select, textarea { width: 100%; padding: 10px 14px; background: var(--bg2); border: 1.5px solid var(--border); border-radius: 10px; font-family: var(--body); font-size: 13px; color: var(--ink); outline: none; transition: border-color 0.15s, box-shadow 0.15s, background 0.15s; -webkit-appearance: none; appearance: none; }
-input[type="hidden"] { display: none; }
-input:focus, select:focus, textarea:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(21,96,255,0.1); background: var(--bg); }
-input::placeholder, textarea::placeholder { color: var(--muted2); }
-input.err, select.err, textarea.err { border-color: var(--red) !important; }
-
-select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2364748B' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 13px center; padding-right: 36px; cursor: pointer; }
-
-textarea { resize: vertical; min-height: 96px; line-height: 1.65; }
-
-.field-err { font-size: 11px; color: var(--red); margin-top: 4px; display: none; }
-.field-err.show { display: block; }
-
-.pill-row { display: flex; gap: 8px; flex-wrap: wrap; }
-.sel-pill { padding: 7px 18px; border: 1.5px solid var(--border2); border-radius: 50px; font-family: var(--body); font-size: 13px; font-weight: 600; color: var(--muted); background: var(--bg2); cursor: pointer; transition: all 0.15s; user-select: none; }
-.sel-pill:hover { border-color: var(--blue-mid); color: var(--blue); background: var(--blue-lt); }
-.sel-pill.active { border-color: var(--blue); color: var(--blue); background: var(--blue-lt); }
-
-.submit-block { padding: 1.75rem 2.25rem 2rem; background: var(--bg2); border-top: 1px solid var(--border); }
-.privacy-note { font-size: 12px; color: var(--muted2); text-align: center; margin-bottom: 1.1rem; display: flex; align-items: center; justify-content: center; gap: 6px; }
-.btn-submit { width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px; background: var(--blue); color: #fff; font-family: var(--display); font-size: 16px; font-weight: 700; padding: 17px 28px; border-radius: 50px; border: none; cursor: pointer; letter-spacing: -0.3px; box-shadow: 0 4px 24px rgba(21,96,255,0.28); transition: background 0.15s, transform 0.15s, box-shadow 0.15s; }
-.btn-submit:hover { background: var(--blue-dk); transform: translateY(-2px); box-shadow: 0 6px 32px rgba(21,96,255,0.38); }
-.btn-submit:active { transform: none; }
-
-.success-wrap { display: none; max-width: 560px; margin: 0 auto; padding: 3rem 2rem 5rem; text-align: center; }
-.success-wrap.show { display: block; }
-.success-badge { width: 68px; height: 68px; border-radius: 50%; background: linear-gradient(135deg, var(--blue) 0%, #00CFFF 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.75rem; box-shadow: 0 8px 32px rgba(21,96,255,0.28); animation: popIn 0.45s cubic-bezier(.22,.68,0,1.4) both; }
-@keyframes popIn { from { opacity: 0; transform: scale(0.5); } to { opacity: 1; transform: scale(1); } }
-.success-badge svg { color: #fff; }
-.success-title { font-family: var(--display); font-size: clamp(1.7rem, 4vw, 2.4rem); font-weight: 800; letter-spacing: -1.2px; color: var(--ink); margin-bottom: 0.6rem; line-height: 1.1; }
-.success-body { font-size: 15px; color: var(--muted); line-height: 1.8; margin-bottom: 2rem; }
-.success-body strong { color: var(--ink); font-weight: 600; }
-
-footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.75rem 2rem; }
-.footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
-.footer-copy { font-size: 12px; color: var(--muted2); }
-.footer-links { display: flex; gap: 1.25rem; }
-.footer-links a { font-size: 12px; color: var(--muted2); text-decoration: none; transition: color 0.15s; }
-.footer-links a:hover { color: var(--blue); }
-
-@media (max-width: 720px) {
-  nav { display: none; }
-  .mob-top-nav { display: flex; }
-  .page-wrap { padding-top: 60px; }
-  .page-hero { padding: 2.5rem 1.25rem 2rem; }
-  .trust-bar { padding: 0.75rem 1rem; gap: 0; }
-  .trust-sep { display: none; }
-  .trust-item { padding: 4px 12px; font-size: 12px; }
-  .form-outer { padding: 1.5rem 1rem 3rem; }
-  .card-block { padding: 1.5rem 1.25rem; }
-  .submit-block { padding: 1.25rem 1.25rem 1.5rem; }
-  .service-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
-  .field-row { grid-template-columns: 1fr; gap: 12px; }
-  footer { padding: 1.25rem 1rem; }
-  .footer-inner { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+  /* ─── NAV (desktop only) ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2rem; height: 64px;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(226,232,240,0.8);
+  }
+  .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .logo-mark {
+  width: 38px; height: 38px; background: transparent; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: none;
 }
+.logo-mark img {
+  width: 100%; height: 100%; object-fit: contain;
+}
+  .logo-name { font-family: var(--display); font-size: 16px; font-weight: 700; color: var(--ink); letter-spacing: -0.3px; }
+  .logo-name em { color: var(--blue); font-style: normal; }
+  .nav-right { display: flex; align-items: center; gap: 10px; }
+  .nav-pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: var(--body); font-size: 13px; font-weight: 600;
+    padding: 9px 18px; border-radius: 50px;
+    text-decoration: none; border: none; cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s, opacity 0.15s;
+    white-space: nowrap;
+  }
+  .nav-pill:hover { transform: translateY(-1px); opacity: 0.92; }
+  .pill-wa  { background: var(--wa);  color: #fff; box-shadow: 0 2px 8px rgba(34,197,94,0.3); }
+  .pill-fb  { background: var(--fb);  color: #fff; box-shadow: 0 2px 8px rgba(24,119,242,0.25); }
+  .pill-ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--border2); padding: 8px 16px; }
+  .pill-ghost:hover { border-color: var(--blue); color: var(--blue); transform: none; }
+
+  /* ─── MOBILE TOP NAV ── */
+  .mob-top-nav {
+    display: none;
+    position: fixed; top: 0; left: 0; right: 0; z-index: 300;
+    height: 60px;
+    background: rgba(255,255,255,0.97);
+    backdrop-filter: blur(20px);
+    border-bottom: 1.5px solid var(--border);
+    padding: 0 1.25rem;
+    align-items: center; justify-content: space-between;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  }
+  .mob-top-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+  .mob-top-hamburger {
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    gap: 5px; width: 40px; height: 40px;
+    background: var(--bg3); border: 1.5px solid var(--border2);
+    border-radius: 10px; cursor: pointer; flex-shrink: 0;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .mob-top-hamburger:hover { background: var(--blue-lt); border-color: var(--blue-mid); }
+  .mob-top-hamburger span { display: block; width: 16px; height: 2px; background: var(--ink); border-radius: 2px; transition: transform 0.3s, opacity 0.3s; }
+  .mob-top-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .mob-top-hamburger.open span:nth-child(2) { opacity: 0; }
+  .mob-top-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* ─── MOBILE DROPDOWN MENU ── */
+  .mob-drop-menu {
+    display: none;
+    position: fixed; top: 60px; left: 0; right: 0; z-index: 299;
+    background: rgba(255,255,255,0.98);
+    backdrop-filter: blur(20px);
+    border-bottom: 1.5px solid var(--border);
+    padding: 0.75rem 1.25rem 1.25rem;
+    flex-direction: column; gap: 6px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    border-radius: 0 0 20px 20px;
+  }
+  .mob-drop-menu.open { display: flex; }
+  .mob-drop-link {
+    font-family: var(--body); font-size: 15px; font-weight: 600;
+    color: var(--ink); text-decoration: none;
+    padding: 0.85rem 1rem; border-radius: 10px;
+    border: 1.5px solid var(--border);
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+    text-align: center;
+  }
+  .mob-drop-link:hover { background: var(--blue-lt); color: var(--blue); border-color: var(--blue-mid); }
+  .mob-drop-wa {
+    background: var(--wa); color: #fff !important;
+    border-color: var(--wa); margin-top: 4px;
+    box-shadow: 0 4px 14px rgba(34,197,94,0.35);
+  }
+  .mob-drop-wa:hover { background: var(--wa-dk) !important; border-color: var(--wa-dk) !important; }
+
+  /* ─── LAYOUT ── */
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+
+  /* ─── HERO ── */
+  .hero { padding: 130px 2rem 80px; background: var(--bg); position: relative; overflow: hidden; }
+  .hero::before {
+    content: ''; position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 800px 500px at 70% 40%, rgba(21,96,255,0.06) 0%, transparent 70%),
+      radial-gradient(ellipse 400px 300px at 10% 80%, rgba(34,197,94,0.05) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 420px; gap: 4rem; align-items: center; }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 12px; font-weight: 600; color: var(--blue);
+    background: var(--blue-lt); border: 1px solid var(--blue-mid);
+    padding: 5px 14px; border-radius: 50px; margin-bottom: 1.5rem;
+    letter-spacing: 0.04em; text-transform: uppercase;
+  }
+  .hero-eyebrow::before { content: ''; width: 6px; height: 6px; background: var(--blue); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.3; } }
+  .hero h1 { font-family: var(--display); font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 800; letter-spacing: -2px; line-height: 1.05; color: var(--ink); margin-bottom: 0.6rem; }
+  .hero h1 .accent { color: var(--blue); }
+  .hero-sub { font-family: var(--display); font-size: 18px; font-weight: 600; color: var(--blue); margin-bottom: 1rem; }
+  .hero-desc { font-size: 16px; color: var(--muted); line-height: 1.8; margin-bottom: 2rem; max-width: 480px; }
+  .hero-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+  .btn-wa { display: inline-flex; align-items: center; gap: 8px; background: var(--wa); color: #fff; font-family: var(--body); font-size: 15px; font-weight: 700; padding: 14px 26px; border-radius: 50px; text-decoration: none; box-shadow: 0 4px 16px rgba(34,197,94,0.35); transition: transform 0.15s, box-shadow 0.15s; }
+  .btn-wa:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(34,197,94,0.45); }
+  .btn-fb { display: inline-flex; align-items: center; gap: 8px; background: var(--fb); color: #fff; font-family: var(--body); font-size: 15px; font-weight: 700; padding: 14px 26px; border-radius: 50px; text-decoration: none; box-shadow: 0 4px 16px rgba(24,119,242,0.3); transition: transform 0.15s, box-shadow 0.15s; }
+  .btn-fb:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(24,119,242,0.4); }
+  .btn-outline { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: var(--ink); font-family: var(--body); font-size: 15px; font-weight: 600; padding: 13px 24px; border-radius: 50px; text-decoration: none; border: 1.5px solid var(--border2); transition: border-color 0.15s, color 0.15s; }
+  .btn-outline:hover { border-color: var(--blue); color: var(--blue); }
+
+  /* Hero card */
+  .hero-card { background: var(--bg); border: 1px solid var(--border); border-radius: 20px; box-shadow: 0 8px 40px rgba(15,23,42,0.1); overflow: hidden; }
+  .hc-header { background: var(--ink2); padding: 14px 18px; display: flex; align-items: center; gap: 6px; }
+  .hc-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .hc-title { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.6); margin-left: 6px; }
+  .hc-body { padding: 1.5rem; }
+  .stat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px; }
+  .stat-box { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 14px; text-align: center; }
+  .stat-val { font-family: var(--display); font-size: 1.9rem; font-weight: 800; color: var(--blue); display: block; letter-spacing: -1px; }
+  .stat-lbl { font-size: 11px; color: var(--muted); font-weight: 500; margin-top: 2px; }
+  .hc-divider { height: 1px; background: var(--border); margin: 14px 0; }
+  .check-list { display: flex; flex-direction: column; gap: 9px; }
+  .check-item { display: flex; align-items: center; gap: 10px; font-size: 13.5px; color: var(--ink2); font-weight: 500; }
+  .check-icon { width: 20px; height: 20px; border-radius: 50%; background: rgba(34,197,94,0.12); border: 1px solid rgba(34,197,94,0.3); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 10px; color: var(--wa-dk); font-weight: 800; }
+  .hc-footer { padding: 14px 18px; background: var(--bg2); border-top: 1px solid var(--border); display: flex; align-items: center; gap: 6px; }
+  .hc-rating { display: flex; gap: 2px; }
+  .hc-rating span { font-size: 12px; color: #F59E0B; }
+  .hc-rating-text { font-size: 12px; font-weight: 600; color: var(--muted); }
+
+  /* ─── TRUST TICKER ── */
+  .trust-strip { background: var(--ink); padding: 14px 0; overflow: hidden; position: relative; }
+  .trust-track { display: flex; gap: 0; white-space: nowrap; animation: ticker 14s linear infinite; }
+  .trust-track:hover { animation-play-state: paused; }
+  @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .trust-item { display: inline-flex; align-items: center; gap: 8px; padding: 0 2.5rem; font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.85); white-space: nowrap; }
+  .trust-dot { width: 4px; height: 4px; background: var(--blue); border-radius: 50%; }
+
+  /* ─── SECTIONS ── */
+  .section { padding: 6rem 2rem; }
+  .section-alt { background: var(--bg2); }
+  .s-eyebrow { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); background: var(--blue-lt); padding: 4px 12px; border-radius: 50px; border: 1px solid var(--blue-mid); margin-bottom: 1rem; }
+  .s-title { font-family: var(--display); font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 800; letter-spacing: -1.2px; line-height: 1.1; color: var(--ink); margin-bottom: 0.75rem; }
+  .s-sub { font-size: 16px; color: var(--muted); max-width: 500px; line-height: 1.7; }
+
+  /* ─── SERVICES ── */
+  .svc-header { margin-bottom: 2.5rem; }
+  .svc-header-row { display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
+  .svc-card { background: var(--bg); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 1.5rem; position: relative; display: flex; flex-direction: column; transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s; cursor: default; }
+  .svc-card:hover { border-color: var(--blue); box-shadow: 0 8px 30px rgba(21,96,255,0.1); transform: translateY(-3px); }
+  .svc-card.popular { border-color: var(--blue); background: var(--blue-lt); }
+  .svc-card.popular:hover { box-shadow: 0 8px 30px rgba(21,96,255,0.18); }
+  .svc-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 1rem; }
+  .svc-icon-wrap { width: 48px; height: 48px; border-radius: 12px; background: var(--bg2); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 22px; }
+  .svc-card.popular .svc-icon-wrap { background: rgba(255,255,255,0.7); }
+  .svc-badge { font-size: 9.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 4px 10px; border-radius: 50px; background: var(--blue); color: #fff; white-space: nowrap; align-self: flex-start; }
+  .svc-badge.nofee { background: var(--wa); }
+  .svc-badge.spec { background: var(--ink2); }
+  .svc-name { font-family: var(--display); font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 0.4rem; letter-spacing: -0.2px; }
+  .svc-desc { font-size: 13px; color: var(--muted); line-height: 1.65; flex: 1; margin-bottom: 1rem; }
+  .svc-price-row { display: flex; align-items: center; justify-content: space-between; }
+  .svc-price { font-family: var(--display); font-size: 1.3rem; font-weight: 800; color: var(--blue); letter-spacing: -0.5px; }
+  .svc-cta { font-size: 12px; font-weight: 600; color: var(--blue); display: flex; align-items: center; gap: 4px; text-decoration: none; opacity: 0; transition: opacity 0.2s; }
+  .svc-card:hover .svc-cta { opacity: 1; }
+
+  /* ─── PACKAGE ── */
+  .pkg-wrap { position: relative; }
+  .pkg-card { background: var(--ink); border-radius: 24px; padding: 3rem; display: grid; grid-template-columns: 1fr 220px; gap: 4rem; align-items: center; position: relative; overflow: hidden; }
+  .pkg-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--blue), #00CFFF, var(--wa)); }
+  .pkg-card::after { content: ''; position: absolute; bottom: -100px; right: -100px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(21,96,255,0.15) 0%, transparent 70%); pointer-events: none; }
+  .pkg-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #00CFFF; margin-bottom: 0.6rem; display: flex; align-items: center; gap: 6px; }
+  .pkg-eyebrow::before { content: '★'; font-size: 10px; }
+  .pkg-title { font-family: var(--display); font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 800; color: #fff; letter-spacing: -0.8px; margin-bottom: 1.75rem; }
+  .pkg-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.55rem 2rem; }
+  .pkg-item { font-size: 13.5px; color: rgba(255,255,255,0.8); display: flex; align-items: center; gap: 8px; font-weight: 500; }
+  .pkg-item::before { content: ''; width: 5px; height: 5px; background: linear-gradient(135deg, var(--blue), #00CFFF); border-radius: 50%; flex-shrink: 0; }
+  .pkg-price-col { text-align: center; }
+  .pkg-was { font-size: 13px; color: rgba(255,255,255,0.4); text-decoration: line-through; display: block; margin-bottom: 4px; }
+  .pkg-price { font-family: var(--display); font-size: 4.5rem; font-weight: 800; color: #fff; line-height: 1; display: block; letter-spacing: -3px; }
+  .pkg-lbl { font-size: 11px; color: rgba(255,255,255,0.5); display: block; margin: 6px 0 1.5rem; }
+  .pkg-btn { display: flex; align-items: center; justify-content: center; gap: 8px; background: var(--wa); color: #fff; font-family: var(--body); font-size: 14px; font-weight: 700; padding: 14px 20px; border-radius: 50px; text-decoration: none; box-shadow: 0 4px 20px rgba(34,197,94,0.4); transition: transform 0.15s, box-shadow 0.15s; white-space: nowrap; }
+  .pkg-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(34,197,94,0.5); }
+
+  /* ─── WHY ── */
+  .why-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 14px; margin-top: 2.5rem; }
+  .why-card { background: var(--bg); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 1.5rem; transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s; }
+  .why-card:hover { border-color: var(--blue); transform: translateY(-3px); box-shadow: 0 8px 24px rgba(21,96,255,0.08); }
+  .why-icon-wrap { width: 44px; height: 44px; border-radius: 12px; background: var(--blue-lt); border: 1px solid var(--blue-mid); display: flex; align-items: center; justify-content: center; font-size: 20px; margin-bottom: 1rem; }
+  .why-title { font-family: var(--display); font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 0.4rem; }
+  .why-desc { font-size: 13px; color: var(--muted); line-height: 1.65; }
+
+  /* ─── CTA ── */
+  .cta-section { background: var(--bg2); padding: 5rem 2rem; border-top: 1px solid var(--border); }
+  .cta-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto; gap: 3rem; align-items: center; }
+  .cta-kicker { font-size: 12px; font-weight: 600; color: var(--blue); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.75rem; }
+  .cta-title { font-family: var(--display); font-size: clamp(1.7rem, 3vw, 2.6rem); font-weight: 800; color: var(--ink); letter-spacing: -1px; line-height: 1.1; margin-bottom: 0.6rem; }
+  .cta-desc { font-size: 15px; color: var(--muted); }
+  .cta-actions { display: flex; flex-direction: column; gap: 10px; flex-shrink: 0; }
+
+  /* ─── FOOTER ── */
+  footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.75rem 2rem; }
+  .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  .footer-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+  .footer-copy { font-size: 12px; color: var(--muted2); }
+  .footer-note { font-size: 12px; color: var(--muted2); }
+
+  /* ─── ANIMATIONS ── */
+  .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s cubic-bezier(.22,.68,0,1.2), transform 0.6s cubic-bezier(.22,.68,0,1.2); }
+  .fade-up.in { opacity: 1; transform: none; }
+
+  /* ─── DESKTOP RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .hero-card { display: none; }
+    .pkg-card { grid-template-columns: 1fr; gap: 2.5rem; text-align: center; }
+    .pkg-grid { grid-template-columns: 1fr; }
+    .pkg-item { justify-content: flex-start; text-align: left; }
+    .cta-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .cta-actions { flex-direction: row; flex-wrap: wrap; }
+    .pill-fb { display: none; }
+  }
+  @media (max-width: 540px) {
+    .section, .cta-section { padding: 4rem 1.25rem; }
+    footer { padding: 1.5rem 1.25rem; }
+    .svc-header-row { flex-direction: column; align-items: flex-start; }
+    .pkg-card { padding: 2rem 1.5rem; }
+  }
+
+  /* ─── MOBILE: hide desktop nav, show mobile top bar ── */
+  @media (max-width: 720px) {
+    nav { display: none; }
+    .mob-top-nav { display: flex; }
+    body { padding-top: 60px; }
+    .hero { padding-top: 40px; }
+  }
 </style>
 </head>
 <body>
 
+<!-- DESKTOP NAV -->
 <nav id="nav"></nav>
 
+<!-- MOBILE TOP NAV -->
 <div class="mob-top-nav">
   <a href="index.html" class="mob-top-logo">
     <div class="logo-mark"><img src="logo.png" alt="FixMyPC Perth"></div>
     <span class="logo-name" style="font-size:14px">FixMyPC <em>Perth</em></span>
   </a>
-  <button class="mob-top-hamburger" id="mobHamburger" aria-label="Open menu">
+  <button class="mob-top-hamburger" id="mob-top-hamburger" aria-label="Open menu">
     <span></span><span></span><span></span>
   </button>
 </div>
-<div class="mob-drop-menu" id="mobMenu">
+
+<!-- MOBILE DROPDOWN MENU -->
+<div class="mob-drop-menu" id="mob-drop-menu">
   <a href="pricing.html" class="mob-link">Pricing</a>
   <a href="quiz.html" class="mob-link">Free PC Diagnostic</a>
-  <a href="blog.html" class="mob-link">Tech Tips</a>
+  <a href="blog.html" class="mob-link">Tech Tips
+  </a>
   <a href="reviews.html" class="mob-link">Reviews &amp; FAQ</a>
-  <a href="quote-request.html" class="mob-link">Get a Quote</a>
 </div>
 
-<div class="page-wrap">
-
-  <div class="page-hero" id="pageHero">
-    <span class="eyebrow">Free Quote · No Obligation</span>
-    <h1 class="page-title">Request a <em>Free Quote</em></h1>
-    <p class="page-sub">Fill in the form below and I will get back to you as fast as possible, usually within the hour.</p>
-  </div>
-
-  <div class="trust-bar">
-    <div class="trust-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> Same or next day turnaround</div>
-    <div class="trust-sep"></div>
-    <div class="trust-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> 30 day labour warranty</div>
-    <div class="trust-sep"></div>
-    <div class="trust-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> Upfront pricing, no surprises</div>
-    <div class="trust-sep"></div>
-    <div class="trust-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> No fix, no fee on data recovery</div>
-  </div>
-
-  <div class="form-outer" id="formOuter">
-    <form action="https://formsubmit.co/aly.imran.raja@gmail.com" method="POST" id="quoteForm">
-    <div class="card">
-
-      <div class="card-block">
-        <div class="block-heading"><div class="block-num">1</div> What do you need help with?</div>
-        <div class="service-grid" id="serviceGrid">
-          <input type="hidden" name="Services" id="servicesInput" value="">
-          <div class="svc-card" data-val="Virus and Malware Removal" onclick="toggleSvc(this)"><div class="svc-label">Virus Removal</div></div>
-          <div class="svc-card" data-val="SSD Upgrade" onclick="toggleSvc(this)"><div class="svc-label">SSD Upgrade</div></div>
-          <div class="svc-card" data-val="Windows Reinstall" onclick="toggleSvc(this)"><div class="svc-label">Windows Reinstall</div></div>
-          <div class="svc-card" data-val="WiFi and Printer Setup" onclick="toggleSvc(this)"><div class="svc-label">WiFi and Printer</div></div>
-          <div class="svc-card" data-val="Gaming PC Build or Upgrade" onclick="toggleSvc(this)"><div class="svc-label">Gaming PC</div></div>
-          <div class="svc-card" data-val="Cable Management" onclick="toggleSvc(this)"><div class="svc-label">Cable Management</div></div>
-          <div class="svc-card" data-val="Remote Support" onclick="toggleSvc(this)"><div class="svc-label">Remote Support</div></div>
-          <div class="svc-card" data-val="Data Recovery" onclick="toggleSvc(this)"><div class="svc-label">Data Recovery</div></div>
-          <div class="svc-card" data-val="Other" onclick="toggleSvc(this)" id="otherCard"><div class="svc-label">Other</div></div>
-        </div>
-        <div class="svc-error" id="svcErr">Please select at least one service.</div>
-        <div class="other-reveal" id="otherReveal"><input type="text" name="Other Details" id="otherText" placeholder="Please describe what you need help with"></div>
-      </div>
-
-      <div class="card-block">
-        <div class="block-heading"><div class="block-num">2</div> About your device</div>
-        <div class="field-row">
-          <div class="field-col">
-            <label for="deviceType">Device Type <span class="req">*</span></label>
-            <select id="deviceType" name="Device Type" required>
-              <option value="">Select device type</option>
-              <option>Desktop PC</option>
-              <option>Laptop</option>
-              <option>All in One</option>
-              <option>Mac</option>
-              <option>Other</option>
-            </select>
-            <div class="field-err" id="deviceErr">Please select a device type.</div>
-          </div>
-          <div class="field-col">
-            <label>How urgent is this?</label>
-            <div class="pill-row" style="margin-top:2px">
-              <div class="sel-pill active" data-val="No rush" onclick="pickUrgency(this)">No Rush</div>
-              <div class="sel-pill" data-val="This week" onclick="pickUrgency(this)">This Week</div>
-              <div class="sel-pill" data-val="ASAP" onclick="pickUrgency(this)">ASAP</div>
-            </div>
-            <input type="hidden" name="Urgency" id="urgencyInput" value="No rush">
-          </div>
-        </div>
-        <div class="field-single">
-          <label for="description">What is happening with your device? <span class="req">*</span></label>
-          <textarea id="description" name="Description" placeholder="For example: My PC takes a long time to start, keeps freezing and I think it may have a virus. Running Windows 11." required></textarea>
-          <div class="field-err" id="descErr">Please describe what is happening.</div>
-        </div>
-      </div>
-
-      <div class="card-block">
-        <div class="block-heading"><div class="block-num">3</div> Your contact details</div>
-        <div class="field-row">
-          <div class="field-col">
-            <label for="custName">Full Name <span class="req">*</span></label>
-            <input type="text" id="custName" name="Name" placeholder="John Smith" required>
-            <div class="field-err" id="nameErr">Please enter your name.</div>
-          </div>
-          <div class="field-col">
-            <label for="custPhone">Phone Number <span class="req">*</span></label>
-            <input type="tel" id="custPhone" name="Phone" placeholder="04XX XXX XXX" required>
-            <div class="field-err" id="phoneErr">Please enter your phone number.</div>
-          </div>
-        </div>
-        <div class="field-row">
-          <div class="field-col">
-            <label for="custEmail">Email Address <span class="opt">(optional)</span></label>
-            <input type="email" id="custEmail" name="Email" placeholder="john@example.com">
-          </div>
-          <div class="field-col">
-            <label for="custSuburb">Your Suburb <span class="opt">(optional)</span></label>
-            <input type="text" id="custSuburb" name="Suburb" placeholder="e.g. Canning Vale">
-          </div>
-        </div>
-        <div>
-          <label style="margin-bottom: 8px; display:block;">Preferred contact method</label>
-          <div class="pill-row">
-            <div class="sel-pill active" data-val="WhatsApp" onclick="pickContact(this)">WhatsApp</div>
-            <div class="sel-pill" data-val="Phone Call" onclick="pickContact(this)">Phone Call</div>
-            <div class="sel-pill" data-val="Email" onclick="pickContact(this)">Email</div>
-          </div>
-          <input type="hidden" name="Preferred Contact" id="contactInput" value="WhatsApp">
-        </div>
-      </div>
-
-      <div class="submit-block">
-        <div class="privacy-note"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Your information is only used to respond to your quote request and is never shared.</div>
-        <button type="submit" class="btn-submit">Send Quote Request <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
-      </div>
-
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow" id="hero-eyebrow"></div>
+      <h1 id="hero-h1"></h1>
+      <p class="hero-sub" id="hero-sub"></p>
+      <p class="hero-desc" id="hero-desc"></p>
+      <div class="hero-actions" id="hero-actions"></div>
     </div>
-    </form>
+    <div class="hero-card">
+      <div class="hc-header">
+        <div class="hc-dot" style="background:#FF5F57"></div>
+        <div class="hc-dot" style="background:#FEBC2E"></div>
+        <div class="hc-dot" style="background:#28C840"></div>
+        <span class="hc-title">fixmypcperth.com</span>
+      </div>
+      <div class="hc-body">
+        <div class="stat-row" id="stat-row"></div>
+        <div class="hc-divider"></div>
+        <div class="check-list" id="check-list"></div>
+      </div>
+      <div class="hc-footer">
+        <div class="hc-rating"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <span class="hc-rating-text">5/5 rated · Canning Vale, Perth</span>
+      </div>
+    </div>
   </div>
+</section>
 
-  <div class="success-wrap" id="successWrap">
-    <div class="success-badge"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-    <h2 class="success-title">Request received.</h2>
-    <p class="success-body">Our tech team will get back to you as fast as possible, typically within the hour. We will reach out via your preferred contact method.</p>
-    <a href="index.html" class="back-home" style="text-align:center;display:block;font-size:13px;color:var(--muted2);text-decoration:none;margin-top:2rem">Back to homepage</a>
-  </div>
-
+<!-- TRUST TICKER -->
+<div class="trust-strip">
+  <div class="trust-track" id="trust-track"></div>
 </div>
 
+<!-- SERVICES -->
+<section class="section section-alt">
+  <div class="wrap">
+    <div class="svc-header fade-up">
+      <div class="svc-header-row">
+        <div>
+          <span class="s-eyebrow">Services</span>
+          <h2 class="s-title">Every tech problem, solved.</h2>
+          <p class="s-sub">From virus ridden laptops to custom gaming rigs. If it's got a power button, it's fixable.</p>
+        </div>
+        <a href="pricing.html" class="btn-outline" style="flex-shrink:0">View full price list →</a>
+      </div>
+    </div>
+    <div class="services-grid" id="services-grid"></div>
+  </div>
+</section>
+
+<!-- PACKAGE -->
+<section class="section" id="pkg-section">
+  <div class="wrap">
+    <div class="pkg-wrap fade-up">
+      <div class="pkg-card" id="pkg-card"></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="section section-alt">
+  <div class="wrap">
+    <div class="fade-up">
+      <span class="s-eyebrow">Why choose me</span>
+      <h2 class="s-title">Local. Fast. Honest.</h2>
+    </div>
+    <div class="why-grid" id="why-grid"></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <div class="fade-up">
+      <div class="cta-kicker">Get a free quote</div>
+      <h2 class="cta-title" id="cta-title"></h2>
+      <p class="cta-desc" id="cta-desc"></p>
+    </div>
+    <div class="cta-actions fade-up" id="cta-actions"></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <a href="index.html" class="nav-logo">
       <div class="logo-mark"><img src="logo.png" alt="FixMyPC Perth"></div>
       <span class="logo-name" style="font-size:14px">FixMyPC <em>Perth</em></span>
     </a>
-    <div class="footer-copy">© 2026 FixMyPC Perth · Perth WA · All Prices Include GST</div>
-    <div class="footer-links"><a href="terms.html">Terms and Conditions</a></div>
-  </div>
+    <div class="footer-copy">© 2026 FixMyPC Perth · All Prices Include GST</div>
+    <div class="footer-links" style="display:flex; gap:1.25rem;">
+  <a href="terms.html" style="font-size:12px; color:var(--muted2); text-decoration:none;">Terms and Conditions</a>
+</div>
 </footer>
 
-<a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" style="position:fixed;bottom:24px;right:24px;z-index:9999;width:58px;height:58px;background:#22C55E;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(34,197,94,0.45);transition:transform 0.2s;text-decoration:none" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg></a>
-
 <script>
-let selectedSvcs = [];
-let urgency = 'No rush';
-let contactPref = 'WhatsApp';
+  const WA = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(CONFIG.whatsappMsg)}`;
+  const FB = CONFIG.facebookURL;
 
-function toggleSvc(el) {
-  const val = el.dataset.val;
-  el.classList.toggle('active');
-  if (el.classList.contains('active')) {
-    selectedSvcs.push(val);
+  const waIcon = `<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>`;
+  const fbIcon = `<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>`;
+
+  // NAV
+  document.getElementById('nav').innerHTML = `
+    <a href="#" class="nav-logo">
+      <div class="logo-mark"><img src="logo.png" alt="FixMyPC Perth"></div>
+      <span class="logo-name">FixMyPC <em>Perth</em></span>
+    </a>
+    <div class="nav-right">
+      <a href="pricing.html" class="nav-pill pill-ghost">Pricing</a>
+      <a href="quiz.html" class="nav-pill pill-ghost">Free PC Diagnostic</a>
+      <a href="blog.html" class="nav-pill pill-ghost">Tech Tips</a>
+      <a href="reviews.html" class="nav-pill pill-ghost">Reviews & FAQ</a>
+    </div>`;
+
+  // HERO
+  document.getElementById('hero-eyebrow').innerHTML = `📍 ${CONFIG.suburb}, ${CONFIG.state}`;
+  document.getElementById('hero-h1').innerHTML = CONFIG.heroHeadline.replace('Perth', '<span class="accent">Perth</span>');
+  document.getElementById('hero-sub').textContent = CONFIG.heroSub;
+  document.getElementById('hero-desc').textContent = CONFIG.heroDesc;
+  document.getElementById('hero-actions').innerHTML = `
+    <a href="${WA}" target="_blank" class="btn-wa" rel="noopener">${waIcon} Get a free quote</a>
+    <a href="${FB}" target="_blank" class="btn-fb" rel="noopener">${fbIcon} Facebook Page</a>`;
+
+  // STATS
+  document.getElementById('stat-row').innerHTML = CONFIG.stats.map(s=>`
+    <div class="stat-box">
+      <span class="stat-val">${s.val}</span>
+      <span class="stat-lbl">${s.label}</span>
+    </div>`).join('');
+
+  // CHECKLIST
+  document.getElementById('check-list').innerHTML = [
+    'Same or next day turnaround',
+    '30-day warranty on all work',
+    'Upfront pricing, no surprises',
+    'Local Perth tech, fast drop-off',
+  ].map(i=>`
+    <div class="check-item">
+      <div class="check-icon">✓</div>
+      ${i}
+    </div>`).join('');
+
+  // TRUST TICKER
+  const trustItems = [
+    'Same or next day turnaround','Local drop off in Canning Vale',
+    '30-day warranty on all work','Upfront pricing, no surprises',
+    'No fix? No fee on data recovery','5/5 rated local service',
+    'Free quote in minutes',"Perth's trusted PC specialist",
+  ];
+  document.getElementById('trust-track').innerHTML = [...trustItems,...trustItems].map(t=>`
+    <div class="trust-item"><div class="trust-dot"></div>${t}</div>`).join('');
+
+  // SERVICES
+  function badgeClass(b) {
+    if (!b) return '';
+    if (b.includes('NO FIX')) return 'nofee';
+    if (b === 'SPECIALIST') return 'spec';
+    return '';
+  }
+  document.getElementById('services-grid').innerHTML = CONFIG.services.map(s=>`
+    <div class="svc-card fade-up ${s.badge === 'MOST POPULAR' ? 'popular' : ''}">
+      <div class="svc-top">
+        <div class="svc-icon-wrap">${s.icon}</div>
+        ${s.badge ? `<span class="svc-badge ${badgeClass(s.badge)}">${s.badge}</span>` : ''}
+      </div>
+      <div class="svc-name">${s.name}</div>
+      <div class="svc-desc">${s.desc}</div>
+      <div class="svc-price-row">
+        <span class="svc-price">${s.price}</span>
+        <a href="${WA}" target="_blank" class="svc-cta" rel="noopener">Book now →</a>
+      </div>
+    </div>`).join('');
+
+  // PACKAGE
+  if (CONFIG.packageShow) {
+    document.getElementById('pkg-card').innerHTML = `
+      <div>
+        <div class="pkg-eyebrow">Best value package</div>
+        <h3 class="pkg-title">${CONFIG.packageName}</h3>
+        <div class="pkg-grid">
+          ${CONFIG.packageItems.map(i=>`<div class="pkg-item">${i}</div>`).join('')}
+        </div>
+      </div>
+      <div class="pkg-price-col">
+        <span class="pkg-was">${CONFIG.packageWasPrice}</span>
+        <span class="pkg-price">${CONFIG.packagePrice}</span>
+        <span class="pkg-lbl">${CONFIG.packageLabel}</span>
+        <a href="${WA}" target="_blank" class="pkg-btn" rel="noopener">${waIcon} Book this now</a>
+      </div>`;
   } else {
-    selectedSvcs = selectedSvcs.filter(s => s !== val);
+    document.getElementById('pkg-section').style.display = 'none';
   }
-  document.getElementById('servicesInput').value = selectedSvcs.join(', ');
-  document.getElementById('otherReveal').classList.toggle('show', selectedSvcs.includes('Other'));
-  if (selectedSvcs.length) document.getElementById('svcErr').classList.remove('show');
-}
 
-function pickUrgency(el) {
-  el.parentElement.querySelectorAll('.sel-pill').forEach(p => p.classList.remove('active'));
-  el.classList.add('active');
-  urgency = el.dataset.val;
-  document.getElementById('urgencyInput').value = urgency;
-}
+  // WHY
+  document.getElementById('why-grid').innerHTML = CONFIG.reasons.map(r=>`
+    <div class="why-card fade-up">
+      <div class="why-icon-wrap">${r.icon}</div>
+      <div class="why-title">${r.title}</div>
+      <div class="why-desc">${r.desc}</div>
+    </div>`).join('');
 
-function pickContact(el) {
-  el.parentElement.querySelectorAll('.sel-pill').forEach(p => p.classList.remove('active'));
-  el.classList.add('active');
-  contactPref = el.dataset.val;
-  document.getElementById('contactInput').value = contactPref;
-}
+  // CTA
+  document.getElementById('cta-title').textContent = 'Ready? Message me now for a free quote. I reply in minutes.';
+  document.getElementById('cta-desc').textContent = `WhatsApp or Facebook, based in ${CONFIG.suburb}, ${CONFIG.state}. Fast replies, free quotes.`;
+  document.getElementById('cta-actions').innerHTML = `
+    <a href="${WA}" target="_blank" class="btn-wa" rel="noopener">${waIcon} WhatsApp me now</a>
+    <a href="${FB}" target="_blank" class="btn-fb" rel="noopener">${fbIcon} Facebook page</a>`;
 
-document.getElementById('quoteForm').addEventListener('submit', function(e) {
-  let ok = true;
-  
-  if (!selectedSvcs.length) {
-    document.getElementById('svcErr').classList.add('show');
-    ok = false;
-  } else {
-    document.getElementById('svcErr').classList.remove('show');
-  }
-  
-  if (!ok) {
-    e.preventDefault();
-    const first = document.querySelector('.svc-error.show, .field-err.show');
-    if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  }
-});
 
-// NAV
-document.getElementById('nav').innerHTML = `
-  <a href="index.html" class="nav-logo">
-    <div class="logo-mark"><img src="logo.png" alt="FixMyPC Perth"></div>
-    <span class="logo-name">FixMyPC <em>Perth</em></span>
-  </a>
-  <div class="nav-right">
-    <a href="pricing.html" class="nav-pill pill-ghost">Pricing</a>
-    <a href="quiz.html" class="nav-pill pill-ghost">Free PC Diagnostic</a>
-    <a href="blog.html" class="nav-pill pill-ghost">Tech Tips</a>
-    <a href="reviews.html" class="nav-pill pill-ghost">Reviews &amp; FAQ</a>
-    <a href="quote-request.html" class="nav-pill pill-ghost">Get a Quote</a>
-  </div>`;
+  // SCROLL ANIMATIONS
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('in'), i * 60);
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
 
-const ham = document.getElementById('mobHamburger');
-const menu = document.getElementById('mobMenu');
-ham.addEventListener('click', () => {
-  ham.classList.toggle('open');
-  menu.classList.toggle('open');
-});
-menu.querySelectorAll('.mob-link').forEach(l => l.addEventListener('click', () => {
-  ham.classList.remove('open');
-  menu.classList.remove('open');
-}));
+  // MOBILE TOP NAV HAMBURGER
+  const hamburger = document.getElementById('mob-top-hamburger');
+  const mobMenu = document.getElementById('mob-drop-menu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobMenu.classList.toggle('open');
+  });
+  mobMenu.querySelectorAll('.mob-link').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobMenu.classList.remove('open');
+    });
+  });
 </script>
-
+  <!-- WhatsApp Bubble -->
+<a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." 
+   target="_blank" rel="noopener"
+   style="
+     position: fixed;
+     bottom: 24px;
+     right: 24px;
+     z-index: 9999;
+     width: 58px;
+     height: 58px;
+     background: #22C55E;
+     border-radius: 50%;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     box-shadow: 0 4px 20px rgba(34,197,94,0.45);
+     transition: transform 0.2s, box-shadow 0.2s;
+     text-decoration: none;
+   "
+   onmouseover="this.style.transform='scale(1.1)';this.style.boxShadow='0 6px 28px rgba(34,197,94,0.55)'"
+   onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 4px 20px rgba(34,197,94,0.45)'"
+   aria-label="Chat with us on WhatsApp">
+  <svg width="30" height="30" viewBox="0 0 24 24" fill="white">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/>
+  </svg>
+</a>
 </body>
 </html>
