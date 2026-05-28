@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Service Prices Perth | No hidden prices, ever</title>
+<title>Full service list. No hidden fees, ever | FixMyPC Perth</title>
 <link rel="icon" type="image/png" href="favicon.png">
 <meta property="og:url" content="https://www.fixmypcperth.com/pricing.html">
 <meta name="description" content="Full pricing list for FixMyPC Perth. PC repairs, upgrades, gaming builds, networking and more. Serving all Perth suburbs. $120 diagnostic, repair labour included.">
 <link rel="canonical" href="https://www.fixmypcperth.com/pricing.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-
+ 
 <style>
   :root {
     --blue:       #1560FF;
@@ -47,12 +47,12 @@
   transition: background 0.15s, color 0.15s;
 }
 .mob-link:hover { background: var(--blue-lt); color: var(--blue); }
-
+ 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
   body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.6; }
-
-  /* ── DESKTOP NAV ── */
+ 
+  /* DESKTOP NAV */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 200;
     display: flex; align-items: center; justify-content: space-between;
@@ -88,8 +88,8 @@
     border: 1.5px solid var(--border2); padding: 8px 16px;
   }
   .pill-ghost:hover { border-color: var(--blue); color: var(--blue); transform: none; }
-
-  /* ── MOBILE TOP NAV ── */
+ 
+  /* MOBILE TOP NAV */
   .mob-top-nav {
     display: none;
     position: fixed; top: 0; left: 0; right: 0; z-index: 300;
@@ -118,8 +118,8 @@
   .mob-top-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
   .mob-top-hamburger.open span:nth-child(2) { opacity: 0; }
   .mob-top-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-  /* ── MOBILE DROPDOWN MENU ── */
+ 
+  /* MOBILE DROPDOWN MENU */
   .mob-drop-menu {
     display: none;
     position: fixed; top: 60px; left: 0; right: 0; z-index: 299;
@@ -147,14 +147,14 @@
     box-shadow: 0 4px 14px rgba(34,197,94,0.35);
   }
   .mob-drop-wa:hover { background: var(--wa-dk) !important; border-color: var(--wa-dk) !important; }
-
-  /* ── LAYOUT ── */
+ 
+  /* LAYOUT */
   .wrap { max-width: 1000px; margin: 0 auto; padding: 0 2rem; }
   .page { padding: 96px 2rem 5rem; }
-
-  /* ── PAGE HERO ── */
+ 
+  /* PAGE HERO */
   .page-hero {
-    text-align: center; padding: 3.5rem 2rem 3rem;
+    text-align: center; padding: 5.5rem 2rem 3rem;
     background: var(--bg); position: relative; overflow: hidden;
   }
   .page-hero::before {
@@ -178,16 +178,16 @@
   }
   .page-title em { color: var(--blue); font-style: normal; }
   .page-sub { font-size: 16px; color: var(--muted); max-width: 500px; margin: 0 auto; line-height: 1.7; }
-
-  /* ── TRUST TICKER ── */
+ 
+  /* TRUST TICKER */
   .trust-strip { background: var(--ink); padding: 14px 0; overflow: hidden; }
   .trust-track { display: flex; gap: 0; white-space: nowrap; animation: ticker 14s linear infinite; }
   .trust-track:hover { animation-play-state: paused; }
   @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
   .trust-item { display: inline-flex; align-items: center; gap: 8px; padding: 0 2.5rem; font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.85); white-space: nowrap; }
   .trust-dot { width: 4px; height: 4px; background: var(--blue); border-radius: 50%; }
-
-  /* ── DIAGNOSTIC BANNER ── */
+ 
+  /* DIAGNOSTIC BANNER */
   .diag-banner {
     background: var(--ink2); border-radius: 20px;
     padding: 2.25rem 2.5rem; margin: 2.5rem 0;
@@ -202,13 +202,12 @@
   .diag-price-lbl { font-size: 10px; color: rgba(255,255,255,0.4); letter-spacing: 0.1em; font-weight: 700; text-transform: uppercase; margin-bottom: 4px; }
   .diag-title { font-family: var(--display); font-size: 19px; font-weight: 700; color: #fff; letter-spacing: -0.4px; line-height: 1.2; }
   .diag-desc { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.7; margin-bottom: 1.25rem; max-width: 640px; }
+  .diag-pills { display: flex; flex-wrap: wrap; gap: 10px; }
   .diag-pill { display: inline-flex; align-items: center; gap: 10px; background: rgba(0,207,255,0.08); border: 1px solid rgba(0,207,255,0.2); border-radius: 50px; padding: 10px 20px; }
   .diag-pill-check { width: 20px; height: 20px; border-radius: 50%; background: rgba(0,207,255,0.15); border: 1px solid rgba(0,207,255,0.3); display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 800; color: var(--teal); flex-shrink: 0; }
   .diag-pill-main { font-size: 13.5px; font-weight: 700; color: var(--teal); }
-  .diag-pill-sep { width: 1px; height: 14px; background: rgba(0,207,255,0.2); }
-  .diag-pill-sub { font-size: 13px; color: rgba(255,255,255,0.4); font-weight: 500; }
-
-  /* ── ACCORDION ── */
+ 
+  /* ACCORDION */
   .price-section { margin-bottom: 0.75rem; }
   .acc-trigger {
     display: flex; align-items: center; gap: 10px;
@@ -228,8 +227,8 @@
   .acc-chevron svg { display: block; }
   details[open] .acc-chevron { transform: rotate(180deg); }
   .acc-body { border: 1.5px solid var(--border); border-top: none; border-radius: 0 0 12px 12px; overflow: hidden; }
-
-  /* ── TABLE ── */
+ 
+  /* TABLE */
   .price-table { width: 100%; border-collapse: collapse; }
   .price-table tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
   .price-table tbody tr:last-child { border-bottom: none; }
@@ -240,26 +239,24 @@
   .td-name { font-family: var(--display); font-size: 14px; font-weight: 600; color: var(--ink); }
   .td-desc { font-size: 12px; color: var(--muted); margin-top: 3px; font-family: var(--body); }
   .td-price { font-family: var(--display); font-size: 17px; font-weight: 800; color: var(--blue); white-space: nowrap; text-align: right; letter-spacing: -0.5px; }
-  .td-total { text-align: right; white-space: nowrap; padding-left: 0; }
-  .td-total .total-label { font-size: 10px; color: var(--muted2); display: block; font-weight: 500; }
-  .td-total .total-val { font-size: 13px; color: var(--muted); font-weight: 600; }
-
-  /* ── BADGES ── */
+  .td-price-wrap { text-align: right; white-space: nowrap; }
+ 
+  /* BADGES */
   .badge { font-size: 9px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 8px; border-radius: 50px; margin-left: 8px; vertical-align: middle; display: inline-block; }
   .badge-pop  { background: var(--blue-lt); color: var(--blue); border: 1px solid var(--blue-mid); }
   .badge-new  { background: #FEF3C7; color: #92400E; border: 1px solid #FDE68A; }
   .badge-spec { background: #F0FDF4; color: var(--green); border: 1px solid #BBF7D0; }
   .badge-nofee { background: rgba(34,197,94,0.1); color: var(--green); border: 1px solid rgba(34,197,94,0.3); }
-
-  /* ── ADD-ONS ── */
+ 
+  /* ADD-ONS */
   .addons-wrap { padding: 1.25rem; background: var(--bg); }
   .addons-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(195px, 1fr)); gap: 10px; }
   .addon-card { background: var(--bg2); border: 1.5px solid var(--border); border-radius: 10px; padding: 0.9rem 1rem; display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; transition: border-color 0.2s, transform 0.15s; }
   .addon-card:hover { border-color: var(--blue); transform: translateY(-1px); }
   .addon-name { font-size: 13px; font-weight: 600; color: var(--ink); font-family: var(--display); }
   .addon-price { font-family: var(--display); font-size: 14px; font-weight: 800; color: var(--blue); white-space: nowrap; }
-
-  /* ── BUNDLE ── */
+ 
+  /* BUNDLE */
   .bundle { background: var(--ink); border-radius: 20px; padding: 2.75rem; margin: 2.5rem 0; position: relative; overflow: hidden; }
   .bundle::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--blue), var(--teal), var(--wa)); }
   .bundle::after { content: ''; position: absolute; bottom: -80px; right: -80px; width: 260px; height: 260px; background: radial-gradient(circle, rgba(21,96,255,0.12) 0%, transparent 70%); pointer-events: none; }
@@ -276,8 +273,8 @@
   .bundle-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.55rem 2rem; list-style: none; }
   .bundle-item { font-size: 13.5px; color: rgba(255,255,255,0.75); display: flex; align-items: center; gap: 8px; font-weight: 500; padding: 0.3rem 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
   .bundle-item::before { content: ''; width: 5px; height: 5px; background: linear-gradient(135deg, var(--blue), var(--teal)); border-radius: 50%; flex-shrink: 0; }
-
-  /* ── CTA BAR ── */
+ 
+  /* CTA BAR */
   .cta-bar { background: var(--bg2); border: 1.5px solid var(--border); border-radius: 20px; padding: 2.75rem; text-align: center; margin: 2.5rem 0; }
   .cta-kicker { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.75rem; }
   .cta-bar h3 { font-family: var(--display); font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 800; color: var(--ink); letter-spacing: -1px; margin-bottom: 0.5rem; }
@@ -287,17 +284,16 @@
   .btn-wa:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(34,197,94,0.45); }
   .btn-fb { display: inline-flex; align-items: center; gap: 8px; background: var(--fb); color: #fff; font-family: var(--body); font-size: 15px; font-weight: 700; padding: 14px 26px; border-radius: 50px; text-decoration: none; box-shadow: 0 4px 16px rgba(24,119,242,0.3); transition: transform 0.15s, box-shadow 0.15s; }
   .btn-fb:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(24,119,242,0.4); }
-
-  /* ── FOOTER ── */
+ 
+  /* FOOTER */
   footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.75rem 2rem; }
   .footer-inner { max-width: 1000px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
   .footer-copy { font-size: 12px; color: var(--muted2); }
-
-  /* ── ANIMATIONS ── */
+ 
+  /* ANIMATIONS */
   .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s cubic-bezier(.22,.68,0,1.2), transform 0.6s cubic-bezier(.22,.68,0,1.2); }
   .fade-up.in { opacity: 1; transform: none; }
-
-  /* ── DESKTOP RESPONSIVE ── */
+ 
   @media (max-width: 720px) {
     nav { padding: 0 1rem; height: 56px; }
     .logo-name { font-size: 14px; }
@@ -313,9 +309,8 @@
     .diag-price { font-size: 2.75rem; letter-spacing: -2px; }
     .diag-title { font-size: 16px; }
     .diag-desc { font-size: 13px; }
-    .diag-pill { flex-wrap: wrap; gap: 8px; padding: 10px 14px; border-radius: 12px; }
-    .diag-pill-sep { display: none; }
-    .diag-pill-sub { font-size: 12px; }
+    .diag-pills { flex-direction: column; }
+    .diag-pill { border-radius: 12px; padding: 10px 14px; }
     .acc-trigger { padding: 0.85rem 1rem; border-radius: 10px; }
     details[open] .acc-trigger { border-radius: 10px 10px 0 0; }
     .sec-note { display: none; }
@@ -323,7 +318,6 @@
     .price-table td { padding: 0.85rem 0.85rem; }
     .td-name { font-size: 13px; }
     .td-price { font-size: 15px; }
-    .td-total { display: none; }
     .addons-grid { grid-template-columns: 1fr 1fr; }
     .bundle { padding: 1.5rem; border-radius: 14px; margin: 1.5rem 0; }
     .bundle-top { grid-template-columns: 1fr; gap: 1.25rem; }
@@ -336,30 +330,27 @@
     footer { padding: 1.25rem 1rem; }
     .footer-inner { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
   }
-
+ 
   @media (max-width: 440px) {
     .addons-grid { grid-template-columns: 1fr; }
     .bundle-price { font-size: 3rem; }
-    .diag-pill { display: block; }
-    .diag-pill-check { display: inline-flex; margin-bottom: 4px; }
     .nav-right { gap: 6px; }
   }
-
+ 
   @media (max-width: 360px) {
     .logo-name { display: none; }
   }
-
-  /* ── MOBILE: hide desktop nav, show mobile top bar ── */
+ 
   @media (max-width: 720px) {
     nav { display: none; }
     .mob-top-nav { display: flex; }
     body { padding-top: 0; }
-    .page-hero { margin-top: 60px; }
+    .page-hero { margin-top: 0; padding-top: 5rem; }
   }
 </style>
 </head>
 <body>
-
+ 
 <!-- DESKTOP NAV -->
 <nav>
   <a href="index.html" class="nav-logo">
@@ -373,7 +364,7 @@
     <a href="reviews.html" class="nav-pill pill-ghost">Reviews &amp; FAQ</a>
   </div>
 </nav>
-
+ 
 <!-- MOBILE TOP NAV -->
 <div class="mob-top-nav">
   <a href="index.html" class="mob-top-logo">
@@ -384,7 +375,7 @@
     <span></span><span></span><span></span>
   </button>
 </div>
-
+ 
 <!-- MOBILE DROPDOWN MENU -->
 <div class="mob-drop-menu" id="mob-drop-menu">
   <a href="pricing.html" class="mob-link">Pricing</a>
@@ -392,89 +383,97 @@
   <a href="blog.html" class="mob-link">Tech Tips</a>
   <a href="reviews.html" class="mob-link">Reviews &amp; FAQ</a>
 </div>
-
+ 
 <!-- PAGE HERO -->
 <div class="page-hero">
   <span class="s-eyebrow">Transparent pricing</span>
   <h1 class="page-title">Full price list. <em>No hidden fees,</em> ever.</h1>
   <p class="page-sub">Every price listed upfront. You'll always know exactly what you're paying for.</p>
 </div>
-
+ 
 <!-- TRUST TICKER -->
 <div class="trust-strip">
   <div class="trust-track" id="trust-track"></div>
 </div>
-
+ 
 <div class="page" style="padding-top:3rem;">
 <div class="wrap">
-
+ 
   <!-- DIAGNOSTIC BANNER -->
   <div class="diag-banner fade-up">
     <div class="diag-top">
       <span class="diag-price">$120</span>
       <div class="diag-top-text">
-        <div class="diag-price-lbl">Diagnostic Fee</div>
-        <div class="diag-title">Every repair starts with a full diagnostic</div>
+        <div class="diag-price-lbl">All In Repair Fee</div>
+        <div class="diag-title">Diagnostic, repair labour and 30 day warranty included</div>
       </div>
     </div>
-    <p class="diag-desc">I check everything, find the root cause, and give you a written report before touching anything. You'll know exactly what's wrong and what it costs to fix. Zero surprises.</p>
-    <div class="diag-pill">
-      <div class="diag-pill-check">✓</div>
-      <span class="diag-pill-main">Repair labour included</span>
-      <div class="diag-pill-sep"></div>
-      <span class="diag-pill-sub">$120 deducted from your total if you proceed</span>
+    <p class="diag-desc">The $120 covers everything. I run a full diagnostic, find the root cause, fix it, and back the work with a 30 day labour warranty. You get a written report before I touch anything and pay one flat fee. Parts are quoted separately only if needed.</p>
+    <div class="diag-pills">
+      <div class="diag-pill">
+        <div class="diag-pill-check">✓</div>
+        <span class="diag-pill-main">Full diagnostic included</span>
+      </div>
+      <div class="diag-pill">
+        <div class="diag-pill-check">✓</div>
+        <span class="diag-pill-main">Repair labour included</span>
+      </div>
+      <div class="diag-pill">
+        <div class="diag-pill-check">✓</div>
+        <span class="diag-pill-main">30 day labour warranty included</span>
+      </div>
     </div>
   </div>
-
+ 
   <!-- REPAIRS -->
   <div class="price-section fade-up">
     <details open>
       <summary class="acc-trigger">
         <div class="sec-icon-wrap">🔧</div>
         <span class="sec-title">Repairs</span>
-        <span class="sec-note">Diagnostic $120 · labour deducted from total below</span>
+        <span class="sec-note">$120 flat fee covers diagnostic, repair and 30 day warranty</span>
         <span class="acc-chevron"><svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </summary>
       <div class="acc-body">
         <table class="price-table"><tbody>
-          <tr><td><div class="td-name">Virus and malware removal <span class="badge badge-pop">POPULAR</span></div><div class="td-desc">Full scan, removal, browser cleanup, security setup</div></td><td class="td-price">$80</td><td class="td-total"><span class="total-label">Total with diag.</span><span class="total-val">$200</span></td></tr>
-          <tr><td><div class="td-name">Windows reinstall and data backup</div><div class="td-desc">Fresh install, all files backed up and transferred safely</div></td><td class="td-price">$100</td><td class="td-total"><span class="total-label">Total with diag.</span><span class="total-val">$220</span></td></tr>
-          <tr><td><div class="td-name">Blue screen and crash fix</div><div class="td-desc">Diagnose and resolve BSOD, system crashes, freezing</div></td><td class="td-price">$90</td><td class="td-total"><span class="total-label">Total with diag.</span><span class="total-val">$210</span></td></tr>
-          <tr><td><div class="td-name">PC won't boot repair</div><div class="td-desc">Full diagnosis and fix of no POST, boot loop, stuck on logo</div></td><td class="td-price">$90</td><td class="td-total"><span class="total-label">Total with diag.</span><span class="total-val">$210</span></td></tr>
-          <tr><td><div class="td-name">Overheating fix</div><div class="td-desc">Full dust clean, thermal paste reapply, airflow optimisation</div></td><td class="td-price">$85</td><td class="td-total"><span class="total-label">Total with diag.</span><span class="total-val">$205</span></td></tr>
-          <tr><td><div class="td-name">Password reset and account recovery</div><div class="td-desc">Windows login, Microsoft account, local account recovery</div></td><td class="td-price">$65</td><td class="td-total"><span class="total-label">Total with diag.</span><span class="total-val">$185</span></td></tr>
-          <tr><td><div class="td-name">Driver and software conflict repair</div><div class="td-desc">Resolve conflicts causing crashes, errors or missing devices</div></td><td class="td-price">$75</td><td class="td-total"><span class="total-label">Total with diag.</span><span class="total-val">$195</span></td></tr>
-          <tr><td><div class="td-name">Data recovery, failing drive</div><div class="td-desc">Recover files from slow, clicking or partially working drives</div></td><td class="td-price">$150</td><td class="td-total"><span class="total-label">Total with diag.</span><span class="total-val">$270</span></td></tr>
-          <tr><td><div class="td-name">Data recovery, dead drive <span class="badge badge-nofee">NO FIX NO FEE</span></div><div class="td-desc">Advanced recovery from drives that won't spin or mount</div></td><td class="td-price">$200</td><td class="td-total"><span class="total-label">Total with diag.</span><span class="total-val">$320</span></td></tr>
+          <tr><td><div class="td-name">Virus and malware removal <span class="badge badge-pop">POPULAR</span></div><div class="td-desc">Full scan, removal, browser cleanup, security setup</div></td><td class="td-price">$99</td></tr>
+          <tr><td><div class="td-name">Windows reinstall and data backup</div><div class="td-desc">Fresh install, all files backed up and transferred safely</div></td><td class="td-price">$120</td></tr>
+          <tr><td><div class="td-name">Blue screen and crash fix</div><div class="td-desc">Diagnose and resolve BSOD, system crashes, freezing</div></td><td class="td-price">$99</td></tr>
+          <tr><td><div class="td-name">PC won't boot repair</div><div class="td-desc">Full diagnosis and fix of no POST, boot loop, stuck on logo</div></td><td class="td-price">$99</td></tr>
+          <tr><td><div class="td-name">Overheating fix</div><div class="td-desc">Full dust clean, thermal paste reapply, airflow optimisation</div></td><td class="td-price">$89</td></tr>
+          <tr><td><div class="td-name">Password reset and account recovery</div><div class="td-desc">Windows login, Microsoft account, local account recovery</div></td><td class="td-price">$79</td></tr>
+          <tr><td><div class="td-name">Driver and software conflict repair</div><div class="td-desc">Resolve conflicts causing crashes, errors or missing devices</div></td><td class="td-price">$85</td></tr>
+          <tr><td><div class="td-name">Data recovery, failing drive</div><div class="td-desc">Recover files from slow, clicking or partially working drives</div></td><td class="td-price">$149</td></tr>
+          <tr><td><div class="td-name">Data recovery, dead drive <span class="badge badge-nofee">NO FIX NO FEE</span></div><div class="td-desc">Advanced recovery from drives that won't spin or mount</div></td><td class="td-price">$199</td></tr>
         </tbody></table>
       </div>
     </details>
   </div>
-
+ 
   <!-- UPGRADES -->
   <div class="price-section fade-up">
     <details>
       <summary class="acc-trigger">
         <div class="sec-icon-wrap">⚡</div>
         <span class="sec-title">Upgrades</span>
-        <span class="sec-note">No diagnostic needed · quoted upfront</span>
+        <span class="sec-note">No diagnostic needed, quoted upfront</span>
         <span class="acc-chevron"><svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </summary>
       <div class="acc-body">
         <table class="price-table"><tbody>
-          <tr><td><div class="td-name">SSD upgrade, labour only</div><div class="td-desc">You supply the SSD, I fit it and transfer all data</div></td><td class="td-price" colspan="2">$80</td></tr>
-          <tr><td><div class="td-name">SSD upgrade, 500GB supplied <span class="badge badge-pop">POPULAR</span></div><div class="td-desc">Samsung/Crucial 500GB SSD supplied, fitted and data transferred</div></td><td class="td-price" colspan="2">$150</td></tr>
-          <tr><td><div class="td-name">SSD upgrade, 1TB supplied</div><div class="td-desc">Samsung/Crucial 1TB SSD supplied, fitted and data transferred</div></td><td class="td-price" colspan="2">$185</td></tr>
-          <tr><td><div class="td-name">RAM upgrade, labour only</div><div class="td-desc">You supply the RAM, I install and enable XMP/EXPO profile</div></td><td class="td-price" colspan="2">$70</td></tr>
-          <tr><td><div class="td-name">RAM upgrade, 16GB supplied</div><div class="td-desc">16GB DDR4/DDR5 supplied, installed and configured</div></td><td class="td-price" colspan="2">From $160</td></tr>
-          <tr><td><div class="td-name">RAM upgrade, 32GB supplied</div><div class="td-desc">32GB DDR4/DDR5 supplied, installed and configured</div></td><td class="td-price" colspan="2">From $240</td></tr>
-          <tr><td><div class="td-name">CPU thermal paste reapply</div><div class="td-desc">Remove cooler, clean surfaces, apply premium thermal paste</div></td><td class="td-price" colspan="2">$75</td></tr>
-          <tr><td><div class="td-name">Case fan install (per fan)</div><div class="td-desc">Labour only, you supply fans</div></td><td class="td-price" colspan="2">$40</td></tr>
+          <tr><td><div class="td-name">SSD upgrade, labour only</div><div class="td-desc">You supply the SSD, I fit it and transfer all data</div></td><td class="td-price">$80</td></tr>
+          <tr><td><div class="td-name">SSD upgrade, 500GB supplied <span class="badge badge-pop">POPULAR</span></div><div class="td-desc">Samsung/Crucial 500GB SSD supplied, fitted and data transferred</div></td><td class="td-price">$150</td></tr>
+          <tr><td><div class="td-name">SSD upgrade, 1TB supplied</div><div class="td-desc">Samsung/Crucial 1TB SSD supplied, fitted and data transferred</div></td><td class="td-price">$185</td></tr>
+          <tr><td><div class="td-name">RAM upgrade, labour only</div><div class="td-desc">You supply the RAM, I install and enable XMP/EXPO profile</div></td><td class="td-price">$70</td></tr>
+          <tr><td><div class="td-name">RAM upgrade, 16GB supplied</div><div class="td-desc">16GB DDR4/DDR5 supplied, installed and configured</div></td><td class="td-price">From $160</td></tr>
+          <tr><td><div class="td-name">RAM upgrade, 32GB supplied</div><div class="td-desc">32GB DDR4/DDR5 supplied, installed and configured</div></td><td class="td-price">From $240</td></tr>
+          <tr><td><div class="td-name">CPU thermal paste reapply</div><div class="td-desc">Remove cooler, clean surfaces, apply premium thermal paste</div></td><td class="td-price">$75</td></tr>
+          <tr><td><div class="td-name">Case fan install (per fan)</div><div class="td-desc">Labour only, you supply fans</div></td><td class="td-price">$40</td></tr>
         </tbody></table>
       </div>
     </details>
   </div>
-
+ 
   <!-- GAMING PC -->
   <div class="price-section fade-up">
     <details>
@@ -486,43 +485,43 @@
       </summary>
       <div class="acc-body">
         <table class="price-table"><tbody>
-          <tr><td><div class="td-name">Full custom PC assembly <span class="badge badge-spec">SPECIALIST</span></div><div class="td-desc">Your parts, fully assembled, cabled and benchmarked</div></td><td class="td-price" colspan="2">$150</td></tr>
-          <tr><td><div class="td-name">GPU installation</div><div class="td-desc">Seated in PCIe, power connected, drivers installed</div></td><td class="td-price" colspan="2">$75</td></tr>
-          <tr><td><div class="td-name">CPU cooler install</div><div class="td-desc">Remove stock cooler, mount aftermarket, thermal paste applied</div></td><td class="td-price" colspan="2">$80</td></tr>
-          <tr><td><div class="td-name">Cable management, basic tidy</div><div class="td-desc">Bundle and route cables, before and after photos</div></td><td class="td-price" colspan="2">$90</td></tr>
-          <tr><td><div class="td-name">Cable management, full professional</div><div class="td-desc">Behind tray routing, velcro ties, airflow optimised</div></td><td class="td-price" colspan="2">$130</td></tr>
-          <tr><td><div class="td-name">PBO and BIOS performance tuning</div><div class="td-desc">Precision Boost Overdrive, XMP/EXPO, BIOS optimisation</div></td><td class="td-price" colspan="2">$75</td></tr>
-          <tr><td><div class="td-name">RGB software setup and sync</div><div class="td-desc">iCUE, Armory Crate, ARGB sync across all components</div></td><td class="td-price" colspan="2">$89</td></tr>
-          <tr><td><div class="td-name">Benchmark testing and written report</div><div class="td-desc">Cinebench, 3DMark, temps. Full performance report</div></td><td class="td-price" colspan="2">$99</td></tr>
+          <tr><td><div class="td-name">Full custom PC assembly <span class="badge badge-spec">SPECIALIST</span></div><div class="td-desc">Your parts, fully assembled, cabled and benchmarked</div></td><td class="td-price">$150</td></tr>
+          <tr><td><div class="td-name">GPU installation</div><div class="td-desc">Seated in PCIe, power connected, drivers installed</div></td><td class="td-price">$75</td></tr>
+          <tr><td><div class="td-name">CPU cooler install</div><div class="td-desc">Remove stock cooler, mount aftermarket, thermal paste applied</div></td><td class="td-price">$80</td></tr>
+          <tr><td><div class="td-name">Cable management, basic tidy</div><div class="td-desc">Bundle and route cables, before and after photos</div></td><td class="td-price">$90</td></tr>
+          <tr><td><div class="td-name">Cable management, full professional</div><div class="td-desc">Behind tray routing, velcro ties, airflow optimised</div></td><td class="td-price">$130</td></tr>
+          <tr><td><div class="td-name">PBO and BIOS performance tuning</div><div class="td-desc">Precision Boost Overdrive, XMP/EXPO, BIOS optimisation</div></td><td class="td-price">$75</td></tr>
+          <tr><td><div class="td-name">RGB software setup and sync</div><div class="td-desc">iCUE, Armory Crate, ARGB sync across all components</div></td><td class="td-price">$89</td></tr>
+          <tr><td><div class="td-name">Benchmark testing and written report</div><div class="td-desc">Cinebench, 3DMark, temps. Full performance report</div></td><td class="td-price">$99</td></tr>
         </tbody></table>
       </div>
     </details>
   </div>
-
+ 
   <!-- NETWORKING -->
   <div class="price-section fade-up">
     <details>
       <summary class="acc-trigger">
         <div class="sec-icon-wrap">📶</div>
         <span class="sec-title">Networking and Setup</span>
-        <span class="sec-note">I come to you · callout fee applies</span>
+        <span class="sec-note">I come to you, callout fee applies</span>
         <span class="acc-chevron"><svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </summary>
       <div class="acc-body">
         <table class="price-table"><tbody>
-          <tr><td><div class="td-name">NBN router setup and optimisation</div><div class="td-desc">Configure router, WiFi channels, QoS and security</div></td><td class="td-price" colspan="2">$100</td></tr>
-          <tr><td><div class="td-name">WiFi dead spot diagnosis and fix</div><div class="td-desc">Find signal issues, reposition or recommend solution</div></td><td class="td-price" colspan="2">$110</td></tr>
-          <tr><td><div class="td-name">Mesh WiFi system setup (per node)</div><div class="td-desc">Configure and position mesh nodes for full coverage</div></td><td class="td-price" colspan="2">$65</td></tr>
-          <tr><td><div class="td-name">Printer setup, wireless</div><div class="td-desc">Connect to network, install drivers on all devices</div></td><td class="td-price" colspan="2">$85</td></tr>
-          <tr><td><div class="td-name">Printer setup, USB</div><div class="td-desc">Driver install, test print, troubleshoot errors</div></td><td class="td-price" colspan="2">$70</td></tr>
-          <tr><td><div class="td-name">Smart TV and streaming device setup</div><div class="td-desc">WiFi connection, app setup, account login, remote config</div></td><td class="td-price" colspan="2">$75</td></tr>
-          <tr><td><div class="td-name">Home network security audit</div><div class="td-desc">Check router security, connected devices, firewall, passwords</div></td><td class="td-price" colspan="2">$100</td></tr>
-          <tr><td><div class="td-name">Full home network setup <span class="badge badge-pop">POPULAR</span></div><div class="td-desc">Router and printer and all devices connected and secured</div></td><td class="td-price" colspan="2">$180</td></tr>
+          <tr><td><div class="td-name">NBN router setup and optimisation</div><div class="td-desc">Configure router, WiFi channels, QoS and security</div></td><td class="td-price">$100</td></tr>
+          <tr><td><div class="td-name">WiFi dead spot diagnosis and fix</div><div class="td-desc">Find signal issues, reposition or recommend solution</div></td><td class="td-price">$110</td></tr>
+          <tr><td><div class="td-name">Mesh WiFi system setup (per node)</div><div class="td-desc">Configure and position mesh nodes for full coverage</div></td><td class="td-price">$65</td></tr>
+          <tr><td><div class="td-name">Printer setup, wireless</div><div class="td-desc">Connect to network, install drivers on all devices</div></td><td class="td-price">$85</td></tr>
+          <tr><td><div class="td-name">Printer setup, USB</div><div class="td-desc">Driver install, test print, troubleshoot errors</div></td><td class="td-price">$70</td></tr>
+          <tr><td><div class="td-name">Smart TV and streaming device setup</div><div class="td-desc">WiFi connection, app setup, account login, remote config</div></td><td class="td-price">$75</td></tr>
+          <tr><td><div class="td-name">Home network security audit</div><div class="td-desc">Check router security, connected devices, firewall, passwords</div></td><td class="td-price">$100</td></tr>
+          <tr><td><div class="td-name">Full home network setup <span class="badge badge-pop">POPULAR</span></div><div class="td-desc">Router and printer and all devices connected and secured</div></td><td class="td-price">$180</td></tr>
         </tbody></table>
       </div>
     </details>
   </div>
-
+ 
   <!-- SOFTWARE & REMOTE -->
   <div class="price-section fade-up">
     <details>
@@ -534,18 +533,18 @@
       </summary>
       <div class="acc-body">
         <table class="price-table"><tbody>
-          <tr><td><div class="td-name">Remote support session</div><div class="td-desc">AnyDesk: software issues, settings, guidance, troubleshooting</div></td><td class="td-price" colspan="2">$50/hr</td></tr>
-          <tr><td><div class="td-name">Software installation and setup</div><div class="td-desc">Any application installed, configured and tested</div></td><td class="td-price" colspan="2">$65</td></tr>
-          <tr><td><div class="td-name">Microsoft Office setup and activation</div><div class="td-desc">Install, activate and configure Word, Excel, Outlook</div></td><td class="td-price" colspan="2">$75</td></tr>
-          <tr><td><div class="td-name">Email setup (Outlook and Gmail)</div><div class="td-desc">Configure email accounts, signatures, sync across devices</div></td><td class="td-price" colspan="2">$65</td></tr>
-          <tr><td><div class="td-name">PC to PC data transfer</div><div class="td-desc">Full transfer of files, photos and documents between PCs</div></td><td class="td-price" colspan="2">$80</td></tr>
-          <tr><td><div class="td-name">Cloud backup setup</div><div class="td-desc">Configure Google Drive or OneDrive auto backup</div></td><td class="td-price" colspan="2">$70</td></tr>
-          <tr><td><div class="td-name">Driver update and Windows optimisation</div><div class="td-desc">All drivers updated, startup optimised, junk cleaned</div></td><td class="td-price" colspan="2">$75</td></tr>
+          <tr><td><div class="td-name">Remote support session</div><div class="td-desc">AnyDesk: software issues, settings, guidance, troubleshooting</div></td><td class="td-price">$50/hr</td></tr>
+          <tr><td><div class="td-name">Software installation and setup</div><div class="td-desc">Any application installed, configured and tested</div></td><td class="td-price">$65</td></tr>
+          <tr><td><div class="td-name">Microsoft Office setup and activation</div><div class="td-desc">Install, activate and configure Word, Excel, Outlook</div></td><td class="td-price">$75</td></tr>
+          <tr><td><div class="td-name">Email setup (Outlook and Gmail)</div><div class="td-desc">Configure email accounts, signatures, sync across devices</div></td><td class="td-price">$65</td></tr>
+          <tr><td><div class="td-name">PC to PC data transfer</div><div class="td-desc">Full transfer of files, photos and documents between PCs</div></td><td class="td-price">$80</td></tr>
+          <tr><td><div class="td-name">Cloud backup setup</div><div class="td-desc">Configure Google Drive or OneDrive auto backup</div></td><td class="td-price">$70</td></tr>
+          <tr><td><div class="td-name">Driver update and Windows optimisation</div><div class="td-desc">All drivers updated, startup optimised, junk cleaned</div></td><td class="td-price">$75</td></tr>
         </tbody></table>
       </div>
     </details>
   </div>
-
+ 
   <!-- ADD-ONS -->
   <div class="price-section fade-up">
     <details>
@@ -567,7 +566,7 @@
       </div>
     </details>
   </div>
-
+ 
   <!-- BUNDLE -->
   <div class="bundle fade-up">
     <div class="bundle-top">
@@ -598,7 +597,7 @@
       <div class="bundle-item">30 day labour warranty</div>
     </div>
   </div>
-
+ 
   <!-- CTA -->
   <div class="cta-bar fade-up">
     <div class="cta-kicker">Free quote in minutes</div>
@@ -615,10 +614,10 @@
       </a>
     </div>
   </div>
-
+ 
 </div>
 </div>
-
+ 
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
@@ -628,10 +627,11 @@
     </a>
     <div class="footer-copy">© 2026 FixMyPC Perth · All Prices Include GST</div>
     <div class="footer-links" style="display:flex; gap:1.25rem;">
-  <a href="terms.html" style="font-size:12px; color:var(--muted2); text-decoration:none;">Terms and Conditions</a>
-</div>
+      <a href="terms.html" style="font-size:12px; color:var(--muted2); text-decoration:none;">Terms and Conditions</a>
+    </div>
+  </div>
 </footer>
-
+ 
 <script>
   // TRUST TICKER
   const items = [
@@ -646,7 +646,7 @@
   ];
   document.getElementById('trust-track').innerHTML = [...items,...items].map(t=>`
     <div class="trust-item"><div class="trust-dot"></div>${t}</div>`).join('');
-
+ 
   // SCROLL ANIMATIONS
   const obs = new IntersectionObserver(entries => {
     entries.forEach((e, i) => {
@@ -654,8 +654,7 @@
     });
   }, { threshold: 0.06 });
   document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
-
-  // MOBILE HAMBURGER
+ 
   // MOBILE HAMBURGER
   const hamburger = document.getElementById('mob-top-hamburger');
   const mobMenu = document.getElementById('mob-drop-menu');
@@ -670,9 +669,9 @@
     });
   });
 </script>
-
-   <!-- WhatsApp Bubble -->
-<a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." 
+ 
+<!-- WhatsApp Bubble -->
+<a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair."
    target="_blank" rel="noopener"
    style="
      position: fixed;
@@ -698,6 +697,6 @@
     <path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/>
   </svg>
 </a>
-
+ 
 </body>
 </html>
