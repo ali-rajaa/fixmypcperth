@@ -70,7 +70,7 @@ const CONFIG = {
   facebookURL:    "https://www.facebook.com/profile.php?id=61588810785733",
   heroHeadline:  "Perth's trusted PC repair specialist.",
   heroSub:       "Fast turnaround. Transparent Pricing. Unlimited Revisions.",
-  heroDesc:      "Home based in Perth, meaning lower overheads means better prices for you. Drop off your PC or laptop and I'll have it sorted, usually next day.",
+  heroDesc:      "Home based in Perth, meaning lower overheads means better prices for you. Drop off your PC or laptop and we'll have it sorted, usually next day.",
   services: [
     { icon: "🛡️", name: "Virus & Malware Removal", desc: "Full scan, removal, browser cleanup and security setup. Most infections cleared same day.", price: "From $80", badge: "MOST POPULAR" },
     { icon: "⚡", name: "SSD Upgrade & Tune-Up", desc: "Replace your old hard drive with a fast SSD. Boot in under 10 seconds — all data transferred safely.", price: "From $80", badge: "" },
@@ -552,7 +552,7 @@ const CONFIG = {
   document.getElementById('hero-sub').textContent = CONFIG.heroSub;
   document.getElementById('hero-desc').textContent = CONFIG.heroDesc;
   document.getElementById('hero-actions').innerHTML = `
-    <a href="${WA}" target="_blank" class="btn-wa" rel="noopener">${waIcon} Get a free quote</a>
+    <a href="quote-request.html" class="btn-outline" style="border-color:var(--blue);color:var(--blue)">Get a free quote →</a>
     <a href="${FB}" target="_blank" class="btn-fb" rel="noopener">${fbIcon} Facebook Page</a>`;
 
   // STATS
