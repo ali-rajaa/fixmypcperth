@@ -6,7 +6,7 @@
 <title>Business IT Support Perth | We Manage IT Services for Your Business | FixMyPC Perth</title>
 <link rel="icon" type="image/png" href="favicon.png">
 <meta name="description" content="Perth's leading managed IT support for small business. Proactive monitoring, 24/7 remote support, onsite visits, managed antivirus and cloud backup from $199 per month. Serving all Perth suburbs including Canning Vale, Cockburn, Cannington, Willetton and beyond. No lock-in contracts.">
-<meta name="keywords" content="business IT support Perth, managed IT services Perth, IT support small business Perth, IT support Canning Vale, business computer support Perth, managed IT Cockburn, IT helpdesk Perth, remote IT support Perth, onsite IT support Perth, IT support Cannington, IT support Willetton, IT support Harrisdale, IT support Jandakot, IT support Thornlie, IT support Fremantle, IT support Subiaco, IT support Osborne Park, IT support Belmont, IT support Victoria Park, IT support Midland, IT support Scarborough, managed antivirus Perth, cloud backup Perth small business, network management Perth, IT support cafe Perth, IT support medical clinic Perth, IT support real estate Perth, IT support dental Perth, business cybersecurity Perth, small business IT Perth, IT maintenance Perth, computer support Perth business, proactive IT monitoring Perth, managed services provider Perth, MSP Perth, IT contract Perth, monthly IT support Perth, business IT Canning Vale, affordable IT support Perth, professional IT services Perth WA, IT support northern suburbs Perth, IT support eastern suburbs Perth">
+<meta name="keywords" content="business IT support Perth, managed IT services Perth, IT support small business Perth, IT support Canning Vale, business computer support Perth, managed IT Cockburn, IT helpdesk Perth, remote IT support Perth, onsite IT support Perth, IT support Cannington, IT support Willetton, IT support Harrisdale, IT support Jandakot, IT support Thornlie, IT support Fremantle, IT support Subiaco, IT support Osborne Park, IT support Belmont, IT support Victoria Park, IT support Midland, IT support Scarborough, managed antivirus Perth, cloud backup Perth small business, network management Perth, IT support cafe Perth, IT support medical clinic Perth, IT support real estate Perth, IT support dental Perth, business cybersecurity Perth, small business IT Perth, IT maintenance Perth, computer support Perth business, proactive IT monitoring Perth, managed services provider Perth, MSP Perth, IT contract Perth, monthly IT support Perth, business IT Canning Vale, affordable IT support Perth, professional IT services Perth WA, IT support northern suburbs Perth, IT support eastern suburbs Perth, outsourced IT support Perth, managed service provider Perth, IT helpdesk Perth small business">
 
 <!-- GEO TARGETING -->
 <meta name="geo.region" content="AU-WA">
@@ -120,7 +120,65 @@
       "opens": "00:00",
       "closes": "23:59"
     }
+  ]
+}
+</script>
+
+<!-- SERVICE SCHEMA -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Managed IT Support",
+  "name": "Managed IT Support Perth",
+  "description": "Monthly managed IT support and outsourced IT helpdesk services for Perth small businesses. Plans include 24/7 remote support, scheduled onsite visits, proactive monitoring, managed antivirus and cloud backup. FixMyPC Perth acts as your dedicated managed service provider with no lock-in contracts.",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "FixMyPC Perth",
+    "telephone": "+61452573701",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Canning Vale",
+      "addressRegion": "WA",
+      "postalCode": "6155",
+      "addressCountry": "AU"
+    }
+  },
+  "areaServed": [
+    { "@type": "City", "name": "Perth, Western Australia" },
+    { "@type": "Suburb", "name": "Canning Vale" },
+    { "@type": "Suburb", "name": "Fremantle" },
+    { "@type": "Suburb", "name": "Subiaco" },
+    { "@type": "Suburb", "name": "Cockburn Central" },
+    { "@type": "Suburb", "name": "Cannington" },
+    { "@type": "Suburb", "name": "Osborne Park" },
+    { "@type": "Suburb", "name": "Belmont" },
+    { "@type": "Suburb", "name": "Midland" }
   ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Business IT Support Plans",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "name": "Starter IT Support Plan Perth",
+        "price": "199",
+        "priceCurrency": "AUD"
+      },
+      {
+        "@type": "Offer",
+        "name": "Business IT Support Plan Perth",
+        "price": "399",
+        "priceCurrency": "AUD"
+      },
+      {
+        "@type": "Offer",
+        "name": "Premium IT Support Plan Perth",
+        "price": "699",
+        "priceCurrency": "AUD"
+      }
+    ]
+  }
 }
 </script>
 
@@ -169,6 +227,22 @@
         "@type": "Answer",
         "text": "Premium plan clients receive a guaranteed same day onsite response within 4 hours. Business and Starter plan clients receive priority remote support with most issues resolved within the hour."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a managed service provider and does FixMyPC Perth offer this in Perth?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A managed service provider, or MSP, is a company that takes full responsibility for managing a business's IT infrastructure and technology on a monthly subscription basis. FixMyPC Perth operates as a local managed service provider in Perth, Western Australia, handling everything from 24/7 remote support and proactive monitoring to onsite visits and cloud backup. Our plans replace the need for an in-house IT team at a fraction of the cost."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is outsourced IT support and is it right for my Perth business?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Outsourced IT support means partnering with an external IT team rather than employing someone in-house. For most Perth small businesses with fewer than 20 staff, outsourced IT support through FixMyPC Perth is significantly more cost-effective than a full-time hire. You get a dedicated IT helpdesk, proactive monitoring, onsite visits and managed security for a fixed monthly fee, with no recruitment costs, no sick leave and no gaps in coverage."
+      }
     }
   ]
 }
@@ -201,9 +275,6 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
 body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
-
-/* SEO HIDDEN LINKS */
-.seo-region-links { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; }
 
 /* DESKTOP NAV */
 nav {
@@ -315,9 +386,7 @@ nav {
 .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s cubic-bezier(.22,.68,0,1.2), transform 0.6s cubic-bezier(.22,.68,0,1.2); }
 .fade-up.in { opacity: 1; transform: none; }
 
-/* ==============================
-   HERO — leaner, faster to plans
-================================ */
+/* HERO */
 .hero {
   padding: 100px 2rem 60px;
   background: var(--bg); position: relative; overflow: hidden;
@@ -391,9 +460,7 @@ nav {
 .metric-val { font-family: var(--display); font-size: 2.8rem; font-weight: 800; letter-spacing: -2px; color: var(--blue); display: block; margin-bottom: 4px; }
 .metric-lbl { font-size: 13px; color: var(--muted); font-weight: 500; line-height: 1.4; }
 
-/* ==============================
-   PLANS — PREMIUM CARDS
-================================ */
+/* PLANS */
 .plans-section { padding: 6rem 2rem; background: var(--bg); }
 .plans-header { text-align: center; margin-bottom: 3.5rem; }
 .plans-header .s-sub { margin: 0 auto; }
@@ -412,7 +479,6 @@ nav {
 .plan-card.premium-tier .plan-bar { background: linear-gradient(90deg, #F59E0B, #FF6B6B, #A855F7); }
 
 .plan-inner { padding: 1.75rem; }
-
 .plan-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 12px; border-radius: 50px; margin-bottom: 1.1rem; }
 .badge-popular { background: var(--blue); color: #fff; }
 .badge-premium { background: linear-gradient(135deg, #F59E0B, #FF6B6B); color: #fff; }
@@ -487,9 +553,7 @@ nav {
 .plan-card:not(.premium-tier) .plan-best-text { color: var(--muted); }
 .plan-card.premium-tier .plan-best-text { color: rgba(255,255,255,0.45); }
 
-/* ==============================
-   ADD-ONS — NO EMOJIS, CLEAN TABLE-STYLE
-================================ */
+/* ADD-ONS */
 .addons-section { padding: 5.5rem 2rem; background: var(--bg2); }
 .addons-table { margin-top: 2.5rem; border: 1.5px solid var(--border); border-radius: 18px; overflow: hidden; background: var(--bg); }
 .addon-row { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 2rem; padding: 1.25rem 1.75rem; border-bottom: 1px solid var(--border); transition: background 0.15s; }
@@ -497,16 +561,13 @@ nav {
 .addon-row:hover { background: var(--bg2); }
 .addon-left { display: flex; align-items: center; gap: 1.25rem; }
 .addon-dot { width: 8px; height: 8px; background: var(--blue-mid); border-radius: 50%; border: 2px solid var(--blue); flex-shrink: 0; }
-.addon-info {}
 .addon-name { font-family: var(--display); font-size: 14.5px; font-weight: 700; color: var(--ink); margin-bottom: 2px; }
 .addon-desc { font-size: 12.5px; color: var(--muted); line-height: 1.5; }
 .addon-right { text-align: right; flex-shrink: 0; }
 .addon-price { font-family: var(--display); font-size: 1.3rem; font-weight: 800; color: var(--blue); display: block; letter-spacing: -0.5px; }
 .addon-freq { font-size: 11px; color: var(--muted); font-weight: 500; margin-top: 1px; }
 
-/* ==============================
-   WHO WE SERVE — KEEP VISUAL ELEMENTS
-================================ */
+/* WHO WE SERVE */
 .who-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(175px, 1fr)); gap: 12px; margin-top: 2.5rem; }
 .who-card { background: var(--bg); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 1.5rem 1.25rem; text-align: center; transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s; }
 .who-card:hover { border-color: var(--blue); box-shadow: 0 6px 20px rgba(21,96,255,0.08); transform: translateY(-3px); }
@@ -514,9 +575,7 @@ nav {
 .who-name { font-family: var(--display); font-size: 13.5px; font-weight: 700; color: var(--ink); margin-bottom: 3px; }
 .who-sub { font-size: 11.5px; color: var(--muted); line-height: 1.4; }
 
-/* ==============================
-   RESULTS — WHAT WE DELIVER
-================================ */
+/* RESULTS */
 .results-section { padding: 5.5rem 2rem; background: var(--bg); }
 .results-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.25rem; margin-top: 2.5rem; }
 .result-card { background: var(--bg); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 1.75rem; transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s; position: relative; overflow: hidden; }
@@ -527,9 +586,7 @@ nav {
 .result-title { font-family: var(--display); font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 0.4rem; }
 .result-desc { font-size: 13px; color: var(--muted); line-height: 1.65; }
 
-/* ==============================
-   HOW IT WORKS
-================================ */
+/* HOW IT WORKS */
 .how-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px; margin-top: 2.5rem; }
 .how-card { background: var(--bg); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 1.75rem 1.5rem; transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s; }
 .how-card:hover { border-color: var(--blue); transform: translateY(-3px); box-shadow: 0 8px 24px rgba(21,96,255,0.08); }
@@ -537,9 +594,7 @@ nav {
 .how-title { font-family: var(--display); font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 0.4rem; margin-top: 0.75rem; }
 .how-desc { font-size: 13px; color: var(--muted); line-height: 1.65; }
 
-/* ==============================
-   WHY FIXMYPC PERTH — NO EMOJIS
-================================ */
+/* WHY FIXMYPC */
 .why-section { padding: 5.5rem 2rem; background: var(--bg2); }
 .why-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 14px; margin-top: 2.5rem; }
 .why-card { background: var(--bg); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 1.75rem 1.5rem; transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s; }
@@ -548,9 +603,7 @@ nav {
 .why-title { font-family: var(--display); font-size: 16px; font-weight: 700; color: var(--ink); margin-bottom: 0.5rem; }
 .why-desc { font-size: 13px; color: var(--muted); line-height: 1.7; }
 
-/* ==============================
-   FREE AUDIT DARK SECTION
-================================ */
+/* FREE AUDIT DARK SECTION */
 .audit-section { padding: 5.5rem 2rem; background: var(--ink); }
 .audit-content { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
 .audit-checklist { display: flex; flex-direction: column; gap: 10px; margin-top: 2rem; }
@@ -572,6 +625,15 @@ nav {
 .audit-submit { width: 100%; padding: 14px; background: var(--blue); color: #fff; border: none; border-radius: 50px; font-family: var(--body); font-size: 15px; font-weight: 700; cursor: pointer; transition: transform 0.15s, box-shadow 0.15s; box-shadow: 0 4px 16px rgba(21,96,255,0.35); }
 .audit-submit:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(21,96,255,0.45); }
 .audit-note { font-size: 11.5px; color: var(--muted); text-align: center; margin-top: 0.7rem; }
+
+/* SERVICE AREAS */
+.service-areas-section { background: var(--bg2); padding: 3rem 2rem; border-top: 1px solid var(--border); }
+.service-areas-inner { max-width: 1100px; margin: 0 auto; }
+.service-areas-title { font-family: var(--display); font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 1rem; }
+.service-areas-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+.service-area-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: var(--muted); background: var(--bg); border: 1.5px solid var(--border); border-radius: 50px; padding: 6px 14px; text-decoration: none; transition: border-color 0.15s, color 0.15s, background 0.15s; }
+.service-area-link:hover { border-color: var(--blue); color: var(--blue); background: var(--blue-lt); }
+.service-area-link::before { content: ''; width: 5px; height: 5px; background: var(--blue-mid); border-radius: 50%; }
 
 /* FINAL CTA */
 .cta-final { background: linear-gradient(135deg, var(--ink) 0%, var(--ink2) 100%); padding: 5.5rem 2rem; position: relative; overflow: hidden; }
@@ -614,6 +676,7 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
   .audit-inner { flex-direction: column; }
   .addon-row { grid-template-columns: 1fr; gap: 0.5rem; }
   .addon-right { text-align: left; }
+  .service-areas-section { padding: 2rem 1.25rem; }
 }
 @media (max-width: 480px) {
   .metrics-inner { grid-template-columns: 1fr 1fr; gap: 1.25rem; }
@@ -623,25 +686,6 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
 </style>
 </head>
 <body>
-
-<!-- SEO SUBURB LINKS -->
-<nav class="seo-region-links" aria-label="Business IT support service areas Perth">
-  <h2>Business IT Support Across All Perth Suburbs</h2>
-  <ul>
-    <li><a href="/business-it-support-canning-vale">Business IT Support Canning Vale</a></li>
-    <li><a href="/business-it-support-cockburn">Business IT Support Cockburn Central</a></li>
-    <li><a href="/business-it-support-cannington">Business IT Support Cannington</a></li>
-    <li><a href="/business-it-support-willetton">Business IT Support Willetton</a></li>
-    <li><a href="/business-it-support-jandakot">Business IT Support Jandakot</a></li>
-    <li><a href="/business-it-support-fremantle">Business IT Support Fremantle</a></li>
-    <li><a href="/business-it-support-subiaco">Business IT Support Subiaco</a></li>
-    <li><a href="/business-it-support-osborne-park">Business IT Support Osborne Park</a></li>
-    <li><a href="/business-it-support-belmont">Business IT Support Belmont</a></li>
-    <li><a href="/business-it-support-midland">Business IT Support Midland</a></li>
-    <li><a href="/managed-it-services-perth">Managed IT Services Perth</a></li>
-    <li><a href="/it-support-small-business-perth">IT Support Small Business Perth</a></li>
-  </ul>
-</nav>
 
 <!-- DESKTOP NAV -->
 <nav id="site-nav" aria-label="Main navigation"></nav>
@@ -668,16 +712,14 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
   <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20business%20IT%20audit." target="_blank" class="mob-link mob-drop-wa" rel="noopener">Get Free IT Audit on WhatsApp</a>
 </div>
 
-<!-- ======================
-  HERO
-====================== -->
+<!-- HERO -->
 <section class="hero" aria-label="Business IT Support Perth Managed IT Services">
   <div class="hero-inner">
     <div>
       <div class="hero-eyebrow">Serving All Perth Businesses</div>
-      <h1>We Manage IT Support<br>for <span class="accent">Perth Businesses.</span></h1>
+      <h1>Managed IT Support<br>for <span class="accent">Perth Businesses.</span></h1>
       <p class="hero-sub">Proactive. Reliable. Available around the clock.</p>
-      <p class="hero-desc">A dedicated IT team for your business, without the cost of hiring one. We monitor, manage and protect your technology so your team can focus on running the business.</p>
+      <p class="hero-desc">A dedicated outsourced IT team and managed service provider for Perth businesses, without the cost of hiring in-house. We run your IT helpdesk, monitor every device and protect your data so your team stays focused on running the business.</p>
       <div class="hero-actions">
         <a href="#plans" class="btn-primary" aria-label="View managed IT support plans Perth">View Plans and Pricing</a>
         <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20business%20IT%20health%20check." target="_blank" class="btn-wa" rel="noopener" aria-label="Book free IT health check Perth WhatsApp">
@@ -755,9 +797,7 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
   </div>
 </div>
 
-<!-- ======================
-  PLANS
-====================== -->
+<!-- PLANS -->
 <section class="plans-section" id="plans" aria-label="Managed IT support plans Perth pricing">
   <div class="plans-header fade-up">
     <span class="s-eyebrow">Transparent Pricing</span>
@@ -879,15 +919,13 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
   </div>
 </section>
 
-<!-- ======================
-  RESULTS — WHAT WE DELIVER
-====================== -->
+<!-- RESULTS -->
 <section class="results-section section-alt" aria-label="What FixMyPC Perth delivers for business clients">
   <div class="wrap">
     <div class="fade-up">
       <span class="s-eyebrow">What We Deliver</span>
       <h2 class="s-title">A full IT team.<br><span class="accent">A fraction of the cost.</span></h2>
-      <p class="s-sub">Hiring an in-house IT person costs over $70,000 per year in Perth. Our plans give your business dedicated IT expertise, proactive monitoring and guaranteed response times — for a fixed monthly fee that is a fraction of that.</p>
+      <p class="s-sub">Hiring an in-house IT person costs over $70,000 per year in Perth. Our outsourced IT support plans give your business dedicated IT expertise, a fully managed helpdesk, proactive monitoring and guaranteed response times for a fixed monthly fee that is a fraction of that.</p>
     </div>
     <div class="results-grid">
       <div class="result-card fade-up">
@@ -898,7 +936,7 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
       <div class="result-card fade-up">
         <span class="result-stat">Zero</span>
         <div class="result-title">Unexpected IT costs</div>
-        <div class="result-desc">One predictable monthly fee covers your team and your hardware. No surprise callout charges, no emergency repair bills. Businesses on our plans know exactly what IT costs every month.</div>
+        <div class="result-desc">One predictable monthly fee covers your team and your hardware. No surprise callout charges, no emergency repair bills. Businesses on our managed service provider plans know exactly what IT costs every month.</div>
       </div>
       <div class="result-card fade-up">
         <span class="result-stat">100%</span>
@@ -924,9 +962,7 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
   </div>
 </section>
 
-<!-- ======================
-  ADD-ONS — CLEAN TABLE FORMAT
-====================== -->
+<!-- ADD-ONS -->
 <section class="addons-section" aria-label="Business IT support optional add-ons Perth">
   <div class="wrap">
     <div class="fade-up">
@@ -1017,15 +1053,13 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
   </div>
 </section>
 
-<!-- ======================
-  WHO WE SERVE — KEEP ICONS
-====================== -->
+<!-- WHO WE SERVE -->
 <section class="section" aria-label="Which Perth businesses we support">
   <div class="wrap">
     <div class="fade-up">
       <span class="s-eyebrow">Who We Work With</span>
       <h2 class="s-title">Built for the businesses<br>that keep <span class="accent">Perth running.</span></h2>
-      <p class="s-sub">From a single-chair salon to a multi-room medical practice. If your business relies on computers, our team is built for you.</p>
+      <p class="s-sub">We currently provide outsourced IT support and managed service provider solutions to cafes, real estate offices, dental clinics and retail stores across Canning Vale, Fremantle, Cockburn and Cannington. From a single-chair salon to a multi-room medical practice, if your business relies on computers, our IT helpdesk team is built for you.</p>
     </div>
     <div class="who-grid">
       <div class="who-card fade-up"><span class="who-icon">☕</span><div class="who-name">Cafes and Restaurants</div><div class="who-sub">POS systems, EFTPOS and wifi kept running during service</div></div>
@@ -1041,9 +1075,7 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
   </div>
 </section>
 
-<!-- ======================
-  HOW IT WORKS
-====================== -->
+<!-- HOW IT WORKS -->
 <section class="section section-alt" aria-label="How our business IT support onboarding works">
   <div class="wrap">
     <div class="fade-up">
@@ -1076,9 +1108,7 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
   </div>
 </section>
 
-<!-- ======================
-  FREE AUDIT — DARK
-====================== -->
+<!-- FREE AUDIT DARK -->
 <section class="audit-section" aria-label="Free business IT audit Perth">
   <div class="audit-content">
     <div>
@@ -1146,15 +1176,13 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
   </div>
 </section>
 
-<!-- ======================
-  WHY FIXMYPC PERTH — NO EMOJIS
-====================== -->
+<!-- WHY FIXMYPC PERTH -->
 <section class="why-section" aria-label="Why choose FixMyPC Perth for business IT support">
   <div class="wrap">
     <div class="fade-up">
       <span class="s-eyebrow">Why FixMyPC Perth</span>
       <h2 class="s-title">IT support that actually<br><span class="accent">works for your business.</span></h2>
-      <p class="s-sub">Here is what sets us apart when your business operations depend on technology working reliably.</p>
+      <p class="s-sub">Here is what sets us apart as a managed service provider when your business operations depend on technology working reliably every single day.</p>
     </div>
     <div class="why-grid">
       <div class="why-card fade-up">
@@ -1191,9 +1219,7 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
   </div>
 </section>
 
-<!-- ======================
-  FINAL CTA
-====================== -->
+<!-- FINAL CTA -->
 <section class="cta-final" aria-label="Get business IT support Perth contact">
   <div class="cta-final-inner">
     <div class="fade-up">
@@ -1211,6 +1237,33 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
     </div>
   </div>
 </section>
+
+<!-- SERVICE AREAS — VISIBLE AND CRAWLABLE -->
+<div class="service-areas-section" aria-label="Business IT support service areas Perth">
+  <div class="service-areas-inner">
+    <div class="service-areas-title">Business IT Support Across All Perth Suburbs</div>
+    <p style="font-size:13px; color:var(--muted); margin-bottom:1.25rem; line-height:1.7;">Providing managed IT support, outsourced IT helpdesk and managed service provider solutions to businesses across Perth. Onsite visits to all suburbs listed below, remote support available Australia-wide.</p>
+    <div class="service-areas-grid">
+      <a href="/business-it-support-canning-vale" class="service-area-link">Business IT Support Canning Vale</a>
+      <a href="/business-it-support-cockburn" class="service-area-link">Business IT Support Cockburn</a>
+      <a href="/business-it-support-cannington" class="service-area-link">Business IT Support Cannington</a>
+      <a href="/business-it-support-willetton" class="service-area-link">Business IT Support Willetton</a>
+      <a href="/business-it-support-jandakot" class="service-area-link">Business IT Support Jandakot</a>
+      <a href="/business-it-support-fremantle" class="service-area-link">Business IT Support Fremantle</a>
+      <a href="/business-it-support-subiaco" class="service-area-link">Business IT Support Subiaco</a>
+      <a href="/business-it-support-osborne-park" class="service-area-link">Business IT Support Osborne Park</a>
+      <a href="/business-it-support-belmont" class="service-area-link">Business IT Support Belmont</a>
+      <a href="/business-it-support-midland" class="service-area-link">Business IT Support Midland</a>
+      <a href="/business-it-support-scarborough" class="service-area-link">Business IT Support Scarborough</a>
+      <a href="/business-it-support-thornlie" class="service-area-link">Business IT Support Thornlie</a>
+      <a href="/managed-it-services-perth" class="service-area-link">Managed IT Services Perth</a>
+      <a href="/it-support-small-business-perth" class="service-area-link">IT Support Small Business Perth</a>
+      <a href="/outsourced-it-support-perth" class="service-area-link">Outsourced IT Support Perth</a>
+      <a href="/managed-service-provider-perth" class="service-area-link">Managed Service Provider Perth</a>
+      <a href="/it-helpdesk-perth" class="service-area-link">IT Helpdesk Perth</a>
+    </div>
+  </div>
+</div>
 
 <!-- FOOTER -->
 <footer>
@@ -1242,8 +1295,8 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
 </a>
 
 <script>
-  const WA_NUM  = '61452573701';
-  const WA_BASE = 'https://wa.me/' + WA_NUM + '?text=';
+  var WA_NUM  = '61452573701';
+  var WA_BASE = 'https://wa.me/' + WA_NUM + '?text=';
 
   /* DESKTOP NAV */
   document.getElementById('site-nav').innerHTML =
@@ -1275,7 +1328,7 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
       return '<div class="trust-item"><div class="trust-dot"></div>' + t + '</div>';
     }).join('');
 
-  /* AUDIT FORM → WHATSAPP */
+  /* AUDIT FORM TO WHATSAPP */
   document.getElementById('audit-submit-btn').addEventListener('click', function() {
     var biz    = document.getElementById('audit-business').value.trim() || 'my business';
     var suburb = document.getElementById('audit-suburb').value.trim()   || 'Perth';
