@@ -626,8 +626,58 @@ nav {
 .audit-submit:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(21,96,255,0.45); }
 .audit-note { font-size: 11.5px; color: var(--muted); text-align: center; margin-top: 0.7rem; }
 
+/* SERVICE AREAS */
+.service-areas-section { background: var(--bg2); padding: 3rem 2rem; border-top: 1px solid var(--border); }
+.service-areas-inner { max-width: 1100px; margin: 0 auto; }
+.service-areas-title { font-family: var(--display); font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 1rem; }
+.service-areas-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+.service-area-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: var(--muted); background: var(--bg); border: 1.5px solid var(--border); border-radius: 50px; padding: 6px 14px; text-decoration: none; transition: border-color 0.15s, color 0.15s, background 0.15s; }
+.service-area-link:hover { border-color: var(--blue); color: var(--blue); background: var(--blue-lt); }
+.service-area-link::before { content: ''; width: 5px; height: 5px; background: var(--blue-mid); border-radius: 50%; }
 
-/* FINAL CTA */
+/* FIRST MONTH OFFER */
+.first-month-banner {
+  background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+  border: 1.5px solid rgba(245,158,11,0.35);
+  border-radius: 18px;
+  padding: 1.75rem 2rem;
+  margin: 0 auto 2.5rem;
+  max-width: 1100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  position: relative;
+  overflow: hidden;
+}
+.first-month-banner::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, #F59E0B, #FF6B6B);
+}
+.first-month-left { display: flex; align-items: center; gap: 1.25rem; }
+.first-month-badge {
+  background: linear-gradient(135deg, #F59E0B, #FF6B6B);
+  color: #fff; font-family: var(--display); font-size: 1.6rem;
+  font-weight: 800; letter-spacing: -1px; padding: 0.6rem 1.1rem;
+  border-radius: 12px; flex-shrink: 0; white-space: nowrap;
+}
+.first-month-text h4 { font-family: var(--display); font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 3px; }
+.first-month-text p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.5; }
+.first-month-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: linear-gradient(135deg, #F59E0B, #FF6B6B);
+  color: #fff; font-family: var(--body); font-size: 14px; font-weight: 700;
+  padding: 12px 22px; border-radius: 50px; text-decoration: none;
+  box-shadow: 0 4px 16px rgba(245,158,11,0.4);
+  transition: transform 0.15s, box-shadow 0.15s; flex-shrink: 0; white-space: nowrap;
+}
+.first-month-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(245,158,11,0.5); }
+@media (max-width: 720px) {
+  .first-month-banner { flex-direction: column; align-items: flex-start; padding: 1.25rem; }
+  .first-month-btn { width: 100%; justify-content: center; }
+}
 .cta-final { background: linear-gradient(135deg, var(--ink) 0%, var(--ink2) 100%); padding: 5.5rem 2rem; position: relative; overflow: hidden; }
 .cta-final::before { content: ''; position: absolute; top: -100px; right: -100px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(21,96,255,0.13) 0%, transparent 70%); pointer-events: none; }
 .cta-final-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto; gap: 4rem; align-items: center; }
@@ -642,6 +692,52 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
 .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
 .footer-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
 .footer-copy { font-size: 12px; color: var(--muted2); }
+
+/* CASE STUDY */
+.case-study-section { padding: 5.5rem 2rem; background: var(--bg); }
+.case-study-card {
+  background: var(--bg); border: 1.5px solid var(--border);
+  border-radius: 22px; overflow: hidden;
+  box-shadow: 0 8px 40px rgba(15,23,42,0.07);
+  max-width: 1100px; margin: 2.5rem auto 0;
+}
+.case-study-top {
+  background: var(--ink); padding: 2.5rem 3rem;
+  display: grid; grid-template-columns: 1fr auto; gap: 3rem; align-items: center;
+  position: relative; overflow: hidden;
+}
+.case-study-top::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--blue), #00CFFF, var(--wa));
+}
+.case-study-top::after {
+  content: ''; position: absolute; bottom: -60px; right: -60px;
+  width: 220px; height: 220px;
+  background: radial-gradient(circle, rgba(21,96,255,0.14) 0%, transparent 70%);
+  pointer-events: none;
+}
+.case-study-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #60A5FA; margin-bottom: 0.6rem; }
+.case-study-company { font-family: var(--display); font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 800; color: #fff; letter-spacing: -0.8px; margin-bottom: 0.35rem; }
+.case-study-desc { font-size: 14px; color: rgba(255,255,255,0.55); }
+.case-study-url { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 600; color: #60A5FA; text-decoration: none; margin-top: 0.6rem; opacity: 0.8; transition: opacity 0.15s; }
+.case-study-url:hover { opacity: 1; }
+.case-study-stats { display: flex; gap: 1.5rem; flex-shrink: 0; }
+.cs-stat { text-align: center; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 1rem 1.25rem; min-width: 100px; }
+.cs-stat-val { font-family: var(--display); font-size: 1.8rem; font-weight: 800; color: #fff; display: block; letter-spacing: -1px; line-height: 1; }
+.cs-stat-lbl { font-size: 10.5px; color: rgba(255,255,255,0.45); font-weight: 600; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.05em; }
+.case-study-body { padding: 2.5rem 3rem; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+.cs-block-title { font-family: var(--display); font-size: 13px; font-weight: 700; color: var(--blue); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.75rem; }
+.cs-block-text { font-size: 14px; color: var(--muted); line-height: 1.75; }
+.cs-quote { background: var(--bg2); border: 1.5px solid var(--border); border-left: 4px solid var(--blue); border-radius: 0 14px 14px 0; padding: 1.5rem 1.75rem; margin-top: 2rem; }
+.cs-quote-text { font-size: 15px; color: var(--ink); line-height: 1.7; font-style: italic; margin-bottom: 0.75rem; }
+.cs-quote-author { font-size: 13px; font-weight: 700; color: var(--blue); }
+.cs-quote-role { font-size: 12px; color: var(--muted); font-weight: 500; }
+@media (max-width: 900px) {
+  .case-study-top { grid-template-columns: 1fr; gap: 1.5rem; }
+  .case-study-stats { justify-content: flex-start; }
+  .case-study-body { grid-template-columns: 1fr; gap: 1.75rem; }
+  .case-study-top, .case-study-body { padding: 1.75rem; }
+}
 
 /* RESPONSIVE */
 @media (max-width: 1000px) {
@@ -695,13 +791,11 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
 
 <!-- MOBILE DROPDOWN -->
 <div class="mob-drop-menu" id="mob-menu">
-  <a href="index.html" class="mob-link">Home</a>
   <a href="pricing.html" class="mob-link">Pricing</a>
   <a href="business-it-support.html" class="mob-link" style="color:var(--blue);background:var(--blue-lt)">Business IT Support</a>
   <a href="quiz.html" class="mob-link">Free PC Diagnostic</a>
   <a href="blog.html" class="mob-link">Tech Tips</a>
   <a href="reviews.html" class="mob-link">Reviews and FAQ</a>
-  <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20business%20IT%20audit." target="_blank" class="mob-link mob-drop-wa" rel="noopener">Get Free IT Audit on WhatsApp</a>
 </div>
 
 <!-- HERO -->
@@ -714,16 +808,15 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
       <p class="hero-desc">A dedicated outsourced IT team and managed service provider for Perth businesses, without the cost of hiring in-house. We run your IT helpdesk, monitor every device and protect your data so your team stays focused on running the business.</p>
       <div class="hero-actions">
         <a href="#plans" class="btn-primary" aria-label="View managed IT support plans Perth">View Plans and Pricing</a>
-        <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20business%20IT%20health%20check." target="_blank" class="btn-wa" rel="noopener" aria-label="Book free IT health check Perth WhatsApp">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>
-          Free IT Health Check
+        <a href="quote-request.html" class="btn-wa" style="background:var(--blue);box-shadow:0 4px 16px rgba(21,96,255,0.35);" aria-label="Request a free IT support quote Perth">
+          Request a Free Quote
         </a>
       </div>
       <div class="hero-trust">
         <div class="hero-trust-item"><div class="hero-trust-dot">✓</div>No lock-in contracts</div>
         <div class="hero-trust-item"><div class="hero-trust-dot">✓</div>24/7 remote support</div>
         <div class="hero-trust-item"><div class="hero-trust-dot">✓</div>5/5 rated service</div>
-        <div class="hero-trust-item"><div class="hero-trust-dot">✓</div>All Perth suburbs</div>
+        <div class="hero-trust-item"><div class="hero-trust-dot">✓</div>Same day remote support</div>
       </div>
     </div>
 
@@ -752,7 +845,7 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
       </div>
       <div class="hc-footer">
         <div class="hc-rating"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-        <span class="hc-rating-text">5/5 rated · Perth, Western Australia</span>
+        <span class="hc-rating-text">5/5 rated · Canning Vale, Perth WA</span>
       </div>
     </div>
   </div>
@@ -775,7 +868,7 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
         <p>Our team visits your business, assesses every security gap and backup risk, and provides a written report. Complimentary, no strings attached.</p>
       </div>
     </div>
-    <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20to%20book%20a%20free%20business%20IT%20health%20check." target="_blank" class="audit-btn" rel="noopener">Book Free Audit</a>
+    <a href="#audit-section" class="audit-btn" onclick="event.preventDefault();document.querySelector('.audit-section').scrollIntoView({behavior:'smooth',block:'start'})">Book Free IT Audit</a>
   </div>
 </div>
 
@@ -784,7 +877,7 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
   <div class="metrics-inner">
     <div class="metric-item fade-up"><span class="metric-val">24/7</span><span class="metric-lbl">Remote Support Coverage</span></div>
     <div class="metric-item fade-up"><span class="metric-val">4hr</span><span class="metric-lbl">Maximum Emergency Response</span></div>
-    <div class="metric-item fade-up"><span class="metric-val">500+</span><span class="metric-lbl">Devices Managed and Repaired</span></div>
+    <div class="metric-item fade-up"><span class="metric-val">$99</span><span class="metric-lbl">First Month Offer. Any Plan.</span></div>
     <div class="metric-item fade-up"><span class="metric-val">0</span><span class="metric-lbl">Lock-In Contracts. Cancel Anytime.</span></div>
   </div>
 </div>
@@ -795,6 +888,17 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
     <span class="s-eyebrow">Transparent Pricing</span>
     <h2 class="s-title">One monthly fee.<br><span class="accent">Full IT coverage.</span></h2>
     <p class="s-sub">No hidden costs. No surprise invoices. A single fixed investment that covers everything your business needs to stay protected, productive and online.</p>
+  </div>
+
+  <div class="first-month-banner fade-up">
+    <div class="first-month-left">
+      <div class="first-month-badge">$99</div>
+      <div class="first-month-text">
+        <h4>First Month Offer — Any Plan for $99</h4>
+        <p>Limited to new business clients only. Try any plan for your first month at $99, then move to standard pricing. No lock-in, no risk.</p>
+      </div>
+    </div>
+    <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20to%20claim%20the%20first%20month%20%2499%20offer%20for%20business%20IT%20support." target="_blank" class="first-month-btn" rel="noopener">Claim This Offer</a>
   </div>
 
   <div class="plans-grid">
@@ -1104,9 +1208,9 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
 <section class="audit-section" aria-label="Free business IT audit Perth">
   <div class="audit-content">
     <div>
-      <span class="s-eyebrow-light">Free Business IT Audit</span>
-      <h2 class="s-title-light">Most Perth businesses have<br><span class="accent-light">IT risks they are unaware of.</span></h2>
-      <p class="s-sub-light" style="margin-bottom:2rem;">Our team checks every critical area during the free audit. No obligation, no sales pressure. Just an honest, documented picture of where your business stands.</p>
+      <span class="s-eyebrow-light">Free Online IT Consultation</span>
+      <h2 class="s-title-light">Book a free 30-minute<br><span class="accent-light">meeting.</span></h2>
+      <p class="s-sub-light" style="margin-bottom:2rem;">Our team checks every critical area during the free audit. We document a picture of where your business stands, and how we can help you save time and resources.</p>
       <div class="audit-checklist">
         <div class="audit-check-item">
           <div class="audit-icon-box warn">
@@ -1148,22 +1252,43 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
     </div>
 
     <div class="audit-card">
-      <div class="audit-card-title">Book Your Free IT Audit</div>
-      <div class="audit-card-sub">30 minutes, no obligation. We come to your business anywhere in Perth.</div>
-      <div class="audit-input-group">
-        <label class="audit-label" for="audit-business">Business name</label>
-        <input class="audit-input" id="audit-business" type="text" placeholder="The Corner Cafe" autocomplete="organization">
-      </div>
-      <div class="audit-input-group">
-        <label class="audit-label" for="audit-suburb">Your suburb</label>
-        <input class="audit-input" id="audit-suburb" type="text" placeholder="e.g. Fremantle, Midland, Subiaco" autocomplete="address-level2">
-      </div>
-      <div class="audit-input-group">
-        <label class="audit-label" for="audit-pcs">Approximately how many PCs?</label>
-        <input class="audit-input" id="audit-pcs" type="text" placeholder="e.g. 3 to 5">
-      </div>
-      <button class="audit-submit" id="audit-submit-btn" type="button">Book Free Audit via WhatsApp</button>
-      <div class="audit-note">We respond within the hour during business hours. No unsolicited contact.</div>
+  <div class="audit-card-title">Book Your Free IT Call</div>
+  <div class="audit-card-sub">30 minutes Online Meeting. Lets get you onboard.</div>
+  <div class="audit-input-group">
+    <label class="audit-label" for="audit-business">Business name</label>
+    <input class="audit-input" id="audit-business" type="text" placeholder="The Corner Cafe" autocomplete="organization">
+  </div>
+  <div class="audit-input-group">
+    <label class="audit-label" for="audit-suburb">Your suburb</label>
+    <input class="audit-input" id="audit-suburb" type="text" placeholder="e.g. Fremantle, Midland, Subiaco" autocomplete="address-level2">
+  </div>
+  <div class="audit-input-group">
+    <label class="audit-label" for="audit-pcs">Approximately how many PCs?</label>
+    <input class="audit-input" id="audit-pcs" type="text" placeholder="e.g. 3 to 5">
+  </div>
+  <div class="audit-input-group">
+    <label class="audit-label" for="audit-email">Your email</label>
+    <input class="audit-input" id="audit-email" type="email" placeholder="you@yourbusiness.com.au" autocomplete="email">
+  </div>
+  <div class="audit-input-group">
+    <label class="audit-label" for="audit-phone">Your phone number</label>
+    <input class="audit-input" id="audit-phone" type="tel" placeholder="e.g. 0412 345 678" autocomplete="tel">
+  </div>
+  <button class="audit-submit" id="audit-submit-btn" type="button">Submit</button>
+  <div class="audit-note">Our team will respond as fast as possible.</div>
+  <div style="margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:8px;">
+    <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:2px;">Prefer to reach us directly?</div>
+    <a href="mailto:aly.imran.raja@gmail.com" style="display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--blue);text-decoration:none;">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      aly.imran.raja@gmail.com
+    </a>
+    <a href="tel:+61452573701" style="display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--blue);text-decoration:none;">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.69 9.25a19.79 19.79 0 01-3.07-8.67A2 2 0 013.6.58h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.91 8.1a16 16 0 006 6l.92-.92a2 2 0 012.1１-.45c.907.339 １.85.573 ２.8１.7A２ ２ ０ ０１２２ １６v．０８z"/></svg>
+      0452 573 701
+    </a>
+  </div>
+</div>
+</div>
     </div>
   </div>
 </section>
@@ -1185,7 +1310,7 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
       <div class="why-card fade-up">
         <div class="why-label">Coverage</div>
         <div class="why-title">All Perth Suburbs Covered</div>
-        <div class="why-desc">Our team services businesses across all Perth suburbs, from Fremantle to Midland and everywhere in between. Remote support is available nationwide.</div>
+        <div class="why-desc">Based in Canning Vale, we cover all southern Perth suburbs for onsite visits including Cockburn, Cannington, Willetton, Jandakot, Harrisdale and Thornlie. Remote support is available Australia-wide for any business.</div>
       </div>
       <div class="why-card fade-up">
         <div class="why-label">Contracts</div>
@@ -1211,6 +1336,56 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
   </div>
 </section>
 
+<!-- CASE STUDY -->
+<section class="case-study-section" aria-label="Client case study Hyperlink Solutions Perth">
+  <div class="wrap">
+    <div class="fade-up">
+      <span class="s-eyebrow">Client Case Study</span>
+      <h2 class="s-title">Real results<br><span class="accent">We provided</span></h2>
+      <p class="s-sub">Here is what happened when Hyperlink Solutions, a Perth IT outsourcing and development firm, switched to our Business plan.</p>
+    </div>
+    <div class="case-study-card fade-up">
+      <div class="case-study-top">
+        <div>
+          <div class="case-study-label">Business Plan Client · Canning Vale, Perth</div>
+          <div class="case-study-company">Hyperlink Solutions</div>
+          <div class="case-study-desc">IT Outsourcing and Custom Development · Perth, Western Australia</div>
+          <a href="https://hyperlinksolutions.com.au" target="_blank" rel="noopener" class="case-study-url">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            hyperlinksolutions.com.au
+          </a>
+        </div>
+        <div class="case-study-stats">
+          <div class="cs-stat">
+            <span class="cs-stat-val">30+</span>
+            <span class="cs-stat-lbl">Hours saved monthly</span>
+          </div>
+          <div class="cs-stat">
+            <span class="cs-stat-val">Zero</span>
+            <span class="cs-stat-lbl">Unexpected costs</span>
+          </div>
+          <div class="cs-stat">
+            <span class="cs-stat-val">70%</span>
+            <span class="cs-stat-lbl">Less than hiring in-house</span>
+          </div>
+        </div>
+      </div>
+      <div class="case-study-body" style="grid-template-columns:1fr;">
+        <div>
+          <div class="cs-block-title">What Happened</div>
+          <div class="cs-block-text">Hyperlink Solutions deliver full stack development and DevOps services to Perth businesses — but their own internal IT was a liability. Unmanaged workstations, no centralised antivirus, inconsistent updates and zero backup meant avoidable PC issues were quietly burning billable developer hours every week. Their approach was purely reactive: something broke, someone fixed it, work stopped in the meantime.</div>
+          <div class="cs-block-text" style="margin-top:0.9rem;">We moved them onto the Business plan at $399 per month. Within the first week, managed antivirus was live across every workstation, daily cloud backup was protecting all client project files, and a full network security audit was complete. Proactive monitoring caught two failing drives before either caused data loss. Windows updates, driver conflicts and software issues that had been quietly slowing their developers down were handled in the background with no disruption to their team. The result was more than 8 staff hours recovered per month, zero unexpected IT bills, and a development team that could focus entirely on client delivery instead of internal problems.</div>
+        </div>
+        <div class="cs-quote">
+          <div class="cs-quote-text">"Before FixMyPC Perth, small IT issues were adding up to real lost time every week. Since we handled their IT needs, everything just works. Our developers focus on client work, not troubleshooting. The fixed monthly cost means no more surprise bills and budgeting is finally predictable. Having a local Perth business who knows our setup and responds fast has been genuinely valuable."</div>
+          <div class="cs-quote-author">Hyperlink Solutions</div>
+          <div class="cs-quote-role">IT Outsourcing and Development · Perth WA · <a href="https://hyperlinksolutions.com.au" target="_blank" rel="noopener" style="color:var(--blue);text-decoration:none;">hyperlinksolutions.com.au</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- FINAL CTA -->
 <section class="cta-final" aria-label="Get business IT support Perth contact">
   <div class="cta-final-inner">
@@ -1220,15 +1395,15 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
       <p class="cta-desc">Book a complimentary 30-minute IT health check. Our team visits your business, assesses your setup and provides a written report with no obligation or commitment required.</p>
     </div>
     <div class="cta-actions fade-up">
-      <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20to%20book%20a%20free%20business%20IT%20health%20check." target="_blank" class="btn-wa" rel="noopener" aria-label="Book free IT audit WhatsApp Perth">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>
-        Free IT Health Check
+      <a href="quote-request.html" class="btn-wa" style="background:var(--blue);box-shadow:0 4px 16px rgba(21,96,255,0.35);" aria-label="Request a free IT support quote Perth">
+        Request a Free Quote
       </a>
-      <a href="#plans" class="btn-outline-light">View Pricing Plans</a>
+      <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20to%20book%20a%20free%20business%20IT%20health%20check." target="_blank" class="btn-outline-light" rel="noopener">WhatsApp Us</a>
       <a href="https://www.facebook.com/profile.php?id=61588810785733" target="_blank" class="btn-outline-light" rel="noopener">Facebook Page</a>
     </div>
   </div>
 </section>
+
 
 
 <!-- FOOTER -->
@@ -1240,8 +1415,6 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
     </a>
     <div class="footer-copy">© 2026 FixMyPC Perth · ABN 67 645 153 359 · All Prices Include GST · Canning Vale WA 6155</div>
     <div style="display:flex; gap:1.25rem;">
-      <a href="index.html" style="font-size:12px; color:var(--muted2); text-decoration:none;">Home</a>
-      <a href="pricing.html" style="font-size:12px; color:var(--muted2); text-decoration:none;">Pricing</a>
       <a href="terms.html" style="font-size:12px; color:var(--muted2); text-decoration:none;">Terms and Conditions</a>
     </div>
   </div>
@@ -1265,22 +1438,26 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
   var WA_BASE = 'https://wa.me/' + WA_NUM + '?text=';
 
   /* DESKTOP NAV */
-  document.getElementById('site-nav').innerHTML =
-    '<a href="index.html" class="nav-logo" aria-label="FixMyPC Perth Home">' +
-      '<div class="logo-mark"><img src="logo.png" alt="FixMyPC Perth"></div>' +
-      '<span class="logo-name">FixMyPC <em>Perth</em></span>' +
-    '</a>' +
-    '<div class="nav-right">' +
-      '<a href="pricing.html" class="nav-pill pill-ghost">Pricing</a>' +
-      '<a href="business-it-support.html" class="nav-pill pill-active">Business IT Support</a>' +
-      '<a href="quiz.html" class="nav-pill pill-ghost">Free PC Diagnostic</a>' +
-      '<a href="reviews.html" class="nav-pill pill-ghost">Reviews and FAQ</a>' +
-      '<a href="' + WA_BASE + encodeURIComponent("Hi! I'd like a free business IT health check.") + '" target="_blank" class="nav-pill pill-wa" rel="noopener" aria-label="WhatsApp FixMyPC Perth">' +
-        '<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>' +
-        'Free IT Audit' +
-      '</a>' +
-    '</div>';
+document.getElementById('site-nav').innerHTML =
+  '<a href="index.html" class="nav-logo" aria-label="FixMyPC Perth Home">' +
+    '<div class="logo-mark"><img src="logo.png" alt="FixMyPC Perth"></div>' +
+    '<span class="logo-name">FixMyPC <em>Perth</em></span>' +
+  '</a>' +
+  '<div class="nav-right">' +
+    '<a href="pricing.html" class="nav-pill pill-ghost">Pricing</a>' +
+    '<a href="business-it-support.html" class="nav-pill pill-active">Business IT Support</a>' +
+    '<a href="quiz.html" class="nav-pill pill-ghost">Free PC Diagnostic</a>' +
+    '<a href="reviews.html" class="nav-pill pill-ghost">Reviews and FAQ</a>' +
+    '<a href="#audit-section" id="nav-audit-btn" class="nav-pill pill-wa" aria-label="Book free IT audit">Book Free IT Audit</a>' +
+  '</div>';
 
+document.getElementById('site-nav').addEventListener('click', function(e) {
+  var btn = e.target.closest('#nav-audit-btn');
+  if (btn) {
+    e.preventDefault();
+    document.querySelector('.audit-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+});
   /* TRUST TICKER */
   var trustItems = [
     '24/7 remote support team','No lock-in contracts','All Perth suburbs covered',
@@ -1295,12 +1472,31 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
 
   /* AUDIT FORM TO WHATSAPP */
   document.getElementById('audit-submit-btn').addEventListener('click', function() {
-    var biz    = document.getElementById('audit-business').value.trim() || 'my business';
-    var suburb = document.getElementById('audit-suburb').value.trim()   || 'Perth';
-    var pcs    = document.getElementById('audit-pcs').value.trim()      || 'a number of';
-    var msg    = "Hi! I'd like to book a free IT health check for " + biz + " in " + suburb + ". We have around " + pcs + " PCs. Can we arrange a visit?";
-    window.open(WA_BASE + encodeURIComponent(msg), '_blank', 'noopener');
+    var biz    = document.getElementById('audit-business').value.trim();
+    var suburb = document.getElementById('audit-suburb').value.trim();
+    var pcs    = document.getElementById('audit-pcs').value.trim();
+
+    if (!biz) {
+      document.getElementById('audit-business').focus();
+      document.getElementById('audit-business').style.borderColor = '#EF4444';
+      document.getElementById('audit-business').placeholder = 'Please enter your business name';
+      return;
+    }
+    if (!suburb) {
+      document.getElementById('audit-suburb').focus();
+      document.getElementById('audit-suburb').style.borderColor = '#EF4444';
+      document.getElementById('audit-suburb').placeholder = 'Please enter your suburb';
+      return;
+    }
+
+    document.getElementById('audit-business').style.borderColor = '';
+    document.getElementById('audit-suburb').style.borderColor = '';
+
+    window.location.href = 'quote-request.html';
   });
+
+  document.getElementById('audit-business').addEventListener('input', function() { this.style.borderColor = ''; });
+  document.getElementById('audit-suburb').addEventListener('input', function() { this.style.borderColor = ''; });
 
   /* MOBILE HAMBURGER */
   var hamburger = document.getElementById('mob-hamburger');
