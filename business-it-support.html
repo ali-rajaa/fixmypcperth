@@ -361,14 +361,15 @@ nav {
 .section { padding: 5.5rem 2rem; }
 .section-alt { background: var(--bg2); }
 .section-dark { background: var(--ink); }
+.audit-strip { padding: 1.6rem 2rem !important; }
 
 /* TYPOGRAPHY */
 .s-eyebrow { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); background: var(--blue-lt); padding: 4px 12px; border-radius: 50px; border: 1px solid var(--blue-mid); margin-bottom: 1rem; }
 .s-eyebrow-light { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #60A5FA; background: rgba(96,165,250,0.1); padding: 4px 12px; border-radius: 50px; border: 1px solid rgba(96,165,250,0.2); margin-bottom: 1rem; }
 .s-title { font-family: var(--display); font-size: clamp(1.8rem, 3vw, 2.75rem); font-weight: 800; letter-spacing: -1.2px; line-height: 1.1; color: var(--ink); margin-bottom: 0.75rem; }
 .s-title-light { font-family: var(--display); font-size: clamp(1.8rem, 3vw, 2.75rem); font-weight: 800; letter-spacing: -1.2px; line-height: 1.1; color: #fff; margin-bottom: 0.75rem; }
-.s-sub { font-size: 16px; color: var(--muted); max-width: 540px; line-height: 1.75; }
 .s-sub-light { font-size: 16px; color: rgba(255,255,255,0.65); max-width: 540px; line-height: 1.75; }
+.s-sub { font-size: 16px; color: var(--muted); max-width: 100%; line-height: 1.75; }
 .accent { color: var(--blue); }
 .accent-light { color: #60A5FA; }
 
@@ -858,17 +859,23 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
 
 <!-- FREE AUDIT BANNER -->
 <div class="audit-strip" aria-label="Free IT health check offer Perth businesses">
-  <div class="audit-inner">
-    <div class="audit-left">
-      <div class="audit-badge-icon">
+  <div class="audit-inner" style="max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;">
+    <div style="display:flex;align-items:center;gap:1rem;flex:1;">
+      <div class="audit-badge-icon" style="flex-shrink:0;">
         <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
       </div>
-      <div class="audit-text">
-        <h3>Book a free 30-minute meeting.</h3>
-        <p>We check every critical area during the meeting. We document a picture of where your business stands, and how we can help you save time and resources.</p>
+      <div>
+        <h3 style="font-family:var(--display);font-size:15px;font-weight:700;color:#fff;margin:0 0 2px;">Book a free 30-minute meeting.</h3>
+        <p style="font-size:12.5px;color:rgba(255,255,255,0.75);margin:0;line-height:1.5;">We check every critical area, document where your business stands, and show you how we can help.</p>
       </div>
     </div>
-    <a href="#audit-section" class="audit-btn" onclick="event.preventDefault();document.querySelector('.audit-section').scrollIntoView({behavior:'smooth',block:'start'})">Book Free IT Audit</a>
+    <a href="#audit-section"
+       onclick="event.preventDefault();document.querySelector('.audit-section').scrollIntoView({behavior:'smooth',block:'start'})"
+       style="display:inline-flex;align-items:center;justify-content:center;background:#fff;color:var(--blue);font-family:var(--body);font-size:13.5px;font-weight:700;padding:10px 22px;border-radius:50px;text-decoration:none;white-space:nowrap;box-shadow:0 4px 16px rgba(0,0,0,0.15);transition:transform 0.15s,box-shadow 0.15s;flex-shrink:0;"
+       onmouseover="this.style.transform='translateY(-2px)'"
+       onmouseout="this.style.transform='translateY(0)'">
+      Book Free IT Audit
+    </a>
   </div>
 </div>
 
@@ -887,13 +894,13 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
   <div class="plans-header fade-up">
     <span class="s-eyebrow">Transparent Pricing</span>
     <h2 class="s-title" style="white-space:nowrap;">One monthly fee. <span class="accent">Full IT coverage.</span></h2>
-    <p class="s-sub" style="margin-top:0.75rem;">No hidden costs. No surprise invoices. A single fixed monthly investment covering everything your business needs to stay protected, productive and online.</p>
+    <p class="s-sub" style="margin-top:0.75rem;">No hidden costs. No surprise invoices. A single fixed monthly investment covering everything<br>your business needs to stay protected, productive and online.</p>
   </div>
 
   <div class="first-month-banner fade-up">
   <div class="first-month-badge">$99</div>
   <div class="first-month-text" style="flex:1;">
-    <h4>First Month Offer — Any Plan for $99</h4>
+    <h4>First Month Offer! Any Plan for $99</h4>
     <p>Limited to new business clients only. Try any plan for your first month at $99, then move to standard pricing. No lock-in, no risk.</p>
   </div>
 </div>
@@ -1006,10 +1013,10 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
 
   </div>
 
-  <div style="text-align:center; margin-top:2.5rem; max-width:520px; margin-left:auto; margin-right:auto;" class="fade-up">
-    <p style="font-size:14px; color:var(--muted); line-height:1.75;">Not sure which plan fits your business? Let's assess your setup and recommend only what you actually need</p>
-    <a href="https://wa.me/61452573701?text=Hi%21%20Can%20you%20help%20me%20choose%20the%20right%20IT%20support%20plan%3F" target="_blank" class="btn-outline" style="margin-top:1.25rem;display:inline-flex;" rel="noopener">Speak with our team</a>
-  </div>
+  <div style="text-align:center;margin-top:2.5rem;width:100%;display:flex;flex-direction:column;align-items:center;gap:1.25rem;" class="fade-up">
+  <p style="font-size:14px;color:var(--muted);line-height:1.75;white-space:nowrap;">Not sure which plan fits your business? Let's assess your setup and recommend only what you actually need</p>
+  <a href="https://wa.me/61452573701?text=Hi%21%20Can%20you%20help%20me%20choose%20the%20right%20IT%20support%20plan%3F" target="_blank" class="btn-outline" rel="noopener">Speak with our team</a>
+</div>
 </section>
 
 <!-- RESULTS -->
@@ -1064,6 +1071,8 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
       <p class="s-sub">Available on any tier. Add only what your business needs. Remove what it does not. No bundled services you did not request.</p>
     </div>
     <div class="addons-table fade-up">
+
+      <!-- ALWAYS VISIBLE: first 3 -->
       <div class="addon-row">
         <div class="addon-left">
           <div class="addon-dot"></div>
@@ -1077,6 +1086,7 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
           <span class="addon-freq">per PC per month</span>
         </div>
       </div>
+
       <div class="addon-row">
         <div class="addon-left">
           <div class="addon-dot"></div>
@@ -1090,6 +1100,7 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
           <span class="addon-freq">flat fee per callout</span>
         </div>
       </div>
+
       <div class="addon-row">
         <div class="addon-left">
           <div class="addon-dot"></div>
@@ -1103,99 +1114,175 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
           <span class="addon-freq">one-off per device</span>
         </div>
       </div>
-      <div class="addon-row">
-        <div class="addon-left">
-          <div class="addon-dot"></div>
-          <div class="addon-info">
-            <div class="addon-name">Staff Cyber Security Training</div>
-            <div class="addon-desc">A practical session for your whole team covering phishing, password hygiene and safe workplace practices.</div>
+
+      <!-- HIDDEN: rows 4-6 -->
+      <div id="addon-extra" style="display:none;">
+        <div class="addon-row">
+          <div class="addon-left">
+            <div class="addon-dot"></div>
+            <div class="addon-info">
+              <div class="addon-name">Staff Cyber Security Training</div>
+              <div class="addon-desc">A practical session for your whole team covering phishing, password hygiene and safe workplace practices.</div>
+            </div>
+          </div>
+          <div class="addon-right">
+            <span class="addon-price">$299</span>
+            <span class="addon-freq">one-off per session</span>
           </div>
         </div>
-        <div class="addon-right">
-          <span class="addon-price">$299</span>
-          <span class="addon-freq">one-off per session</span>
-        </div>
-      </div>
-      <div class="addon-row">
-        <div class="addon-left">
-          <div class="addon-dot"></div>
-          <div class="addon-info">
-            <div class="addon-name">Annual Data Backup Audit</div>
-            <div class="addon-desc">A full test and review of your backup systems to confirm your data is genuinely recoverable, not just theoretically saved.</div>
+
+        <div class="addon-row">
+          <div class="addon-left">
+            <div class="addon-dot"></div>
+            <div class="addon-info">
+              <div class="addon-name">Annual Data Backup Audit</div>
+              <div class="addon-desc">A full test and review of your backup systems to confirm your data is genuinely recoverable, not just theoretically saved.</div>
+            </div>
+          </div>
+          <div class="addon-right">
+            <span class="addon-price">$99</span>
+            <span class="addon-freq">one-off per year</span>
           </div>
         </div>
-        <div class="addon-right">
-          <span class="addon-price">$99</span>
-          <span class="addon-freq">one-off per year</span>
-        </div>
-      </div>
-      <div class="addon-row">
-        <div class="addon-left">
-          <div class="addon-dot"></div>
-          <div class="addon-info">
-            <div class="addon-name">Extra Onsite Visit</div>
-            <div class="addon-desc">Additional site attendance beyond what your plan includes, booked on demand at short notice.</div>
+
+        <div class="addon-row">
+          <div class="addon-left">
+            <div class="addon-dot"></div>
+            <div class="addon-info">
+              <div class="addon-name">Extra Onsite Visit</div>
+              <div class="addon-desc">Additional site attendance beyond what your plan includes, booked on demand at short notice.</div>
+            </div>
+          </div>
+          <div class="addon-right">
+            <span class="addon-price">$89</span>
+            <span class="addon-freq">per visit</span>
           </div>
         </div>
-        <div class="addon-right">
-          <span class="addon-price">$89</span>
-          <span class="addon-freq">per visit</span>
-        </div>
       </div>
+
     </div>
+
+    <!-- SHOW MORE / LESS BUTTON -->
+    <div style="text-align:center;margin-top:1.25rem;">
+      <button id="addon-toggle"
+        onclick="
+          var el = document.getElementById('addon-extra');
+          var btn = document.getElementById('addon-toggle');
+          var icon = document.getElementById('addon-icon');
+          if(el.style.display === 'none'){
+            el.style.display = 'block';
+            btn.innerHTML = '<span id=\'addon-icon\' style=\'display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;background:var(--blue);border-radius:50%;margin-right:8px;\'><svg width=\'8\' height=\'8\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'white\' stroke-width=\'3\' stroke-linecap=\'round\'><polyline points=\'18 15 12 9 6 15\'/></svg></span>Show Less';
+          } else {
+            el.style.display = 'none';
+            btn.innerHTML = '<span id=\'addon-icon\' style=\'display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;background:var(--blue);border-radius:50%;margin-right:8px;\'><svg width=\'8\' height=\'8\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'white\' stroke-width=\'3\' stroke-linecap=\'round\'><polyline points=\'6 9 12 15 18 9\'/></svg></span>Show All Add-Ons';
+          }
+        "
+        style="display:inline-flex;align-items:center;background:transparent;border:1.5px solid var(--border2);color:var(--ink);font-family:var(--body);font-size:13.5px;font-weight:600;padding:10px 22px;border-radius:50px;cursor:pointer;transition:border-color 0.15s,color 0.15s;"
+        onmouseover="this.style.borderColor='var(--blue)';this.style.color='var(--blue)'"
+        onmouseout="this.style.borderColor='var(--border2)';this.style.color='var(--ink)'">
+        <span id="addon-icon" style="display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;background:var(--blue);border-radius:50%;margin-right:8px;">
+          <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </span>
+        Show All Add-Ons
+      </button>
+    </div>
+
   </div>
 </section>
 
 <!-- WHO WE SERVE -->
 <section class="section" aria-label="Which Perth businesses we support">
   <div class="wrap">
-    <div class="fade-up">
-      <span class="s-eyebrow">Who We Work With</span>
-      <h2 class="s-title">Built for the businesses<br>that keep <span class="accent">Perth running.</span></h2>
-      <p class="s-sub">We currently provide outsourced IT support and managed service provider solutions to cafes, real estate offices, dental clinics and retail stores across Canning Vale, Fremantle, Cockburn and Cannington. From a single-chair salon to a multi-room medical practice, if your business relies on computers, our IT helpdesk team is built for you.</p>
-    </div>
-    <div class="who-grid">
-      <div class="who-card fade-up"><span class="who-icon">☕</span><div class="who-name">Cafes and Restaurants</div><div class="who-sub">POS systems, EFTPOS and wifi kept running during service</div></div>
-      <div class="who-card fade-up"><span class="who-icon">✂️</span><div class="who-name">Hair and Beauty Salons</div><div class="who-sub">Booking software and payment terminals, always online</div></div>
-      <div class="who-card fade-up"><span class="who-icon">🏠</span><div class="who-name">Real Estate Offices</div><div class="who-sub">Document management, printing and email support</div></div>
-      <div class="who-card fade-up"><span class="who-icon">🦷</span><div class="who-name">Dental Clinics</div><div class="who-sub">Patient records, imaging software and practice management</div></div>
-      <div class="who-card fade-up"><span class="who-icon">🏥</span><div class="who-name">Medical Practices</div><div class="who-sub">Clinical software, secure data and compliance support</div></div>
-      <div class="who-card fade-up"><span class="who-icon">🛒</span><div class="who-name">Retail Shops</div><div class="who-sub">Inventory systems, EFTPOS and multi-PC environments</div></div>
-      <div class="who-card fade-up"><span class="who-icon">🏗️</span><div class="who-name">Tradies and Contractors</div><div class="who-sub">Quoting software, job management and cloud access</div></div>
-      <div class="who-card fade-up"><span class="who-icon">⚖️</span><div class="who-name">Law and Accounting Firms</div><div class="who-sub">Document security, compliance and reliable infrastructure</div></div>
-      <div class="who-card fade-up"><span class="who-icon">🏋️</span><div class="who-name">Gyms and Studios</div><div class="who-sub">Membership software, access control and kiosk systems</div></div>
-    </div>
-  </div>
-</section>
+    <div class="fade-up" style="display:grid;grid-template-columns:1fr 1.4fr;gap:4rem;align-items:start;">
+      
+      <!-- LEFT: INFO -->
+      <div style="position:sticky;top:84px;">
+        <span class="s-eyebrow">Who We Work With</span>
+        <h2 class="s-title">Built for the businesses that <span class="accent">focus on growth</span></h2>
+        <p class="s-sub" style="font-size:14px;margin-top:0.75rem;">We provide outsourced IT support to cafes, real estate offices, dental clinics and retail stores across Canning Vale, Fremantle, Cockburn and Cannington. If your business relies on computers, we are built for you.</p>
+        <a href="#audit-form"
+   onclick="event.preventDefault();document.querySelector('.audit-section').scrollIntoView({behavior:'smooth',block:'start'});"
+   class="btn-primary"
+   style="margin-top:1.5rem;display:inline-flex;">
+  Talk to us about your business
+</a>
+      </div>
 
-<!-- HOW IT WORKS -->
-<section class="section section-alt" aria-label="How our business IT support onboarding works">
-  <div class="wrap">
-    <div class="fade-up">
-      <span class="s-eyebrow">Simple Onboarding</span>
-      <h2 class="s-title">Operational in<br><span class="accent">under a week.</span></h2>
-      <p class="s-sub">Getting proper IT support in place should not disrupt your business. Our onboarding process is fast, structured and causes zero downtime.</p>
-    </div>
-    <div class="how-grid">
-      <div class="how-card fade-up">
-        <div class="how-num">01</div>
-        <div class="how-title">Free IT Health Check</div>
-        <div class="how-desc">Our team visits your premises for a complimentary 30-minute audit. We document your current setup, identify security gaps and provide a clear written report.</div>
-      </div>
-      <div class="how-card fade-up">
-        <div class="how-num">02</div>
-        <div class="how-title">We Recommend a Plan</div>
-        <div class="how-desc">Based on your PC count, business type and requirements, we recommend the plan that fits. No upselling. We recommend only what you actually need.</div>
-      </div>
-      <div class="how-card fade-up">
-        <div class="how-num">03</div>
-        <div class="how-title">Onboarding Visit</div>
-        <div class="how-desc">We come in and configure everything. Antivirus deployed, monitoring installed, backup configured. Completed in a single visit with no disruption to your team.</div>
-      </div>
-      <div class="how-card fade-up">
-        <div class="how-num">04</div>
-        <div class="how-title">Ongoing Support Begins</div>
-        <div class="how-desc">From day one your business has 24/7 remote support, scheduled onsite visits and proactive monitoring. IT is handled. Your team stays focused on the business.</div>
+      <!-- RIGHT: GRID -->
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;">
+
+        <div class="fade-up" style="background:var(--bg2);border:1.5px solid var(--border);border-radius:14px;padding:1.1rem 1rem;transition:border-color 0.2s,transform 0.2s;cursor:default;"
+             onmouseover="this.style.borderColor='var(--blue)';this.style.transform='translateY(-3px)'"
+             onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
+          <span style="font-size:1.6rem;display:block;margin-bottom:0.5rem;">☕</span>
+          <div style="font-family:var(--display);font-size:13px;font-weight:700;color:var(--ink);margin-bottom:3px;">Cafes and Restaurants</div>
+          <div style="font-size:11.5px;color:var(--muted);line-height:1.5;">POS, EFTPOS and wifi kept running during service</div>
+        </div>
+
+        <div class="fade-up" style="background:var(--bg);border:1.5px solid var(--border);border-radius:14px;padding:1.1rem 1rem;transition:border-color 0.2s,transform 0.2s;cursor:default;"
+             onmouseover="this.style.borderColor='var(--blue)';this.style.transform='translateY(-3px)'"
+             onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
+          <span style="font-size:1.6rem;display:block;margin-bottom:0.5rem;">✂️</span>
+          <div style="font-family:var(--display);font-size:13px;font-weight:700;color:var(--ink);margin-bottom:3px;">Hair and Beauty Salons</div>
+          <div style="font-size:11.5px;color:var(--muted);line-height:1.5;">Booking software and payment terminals, always online</div>
+        </div>
+
+        <div class="fade-up" style="background:var(--bg2);border:1.5px solid var(--border);border-radius:14px;padding:1.1rem 1rem;transition:border-color 0.2s,transform 0.2s;cursor:default;"
+             onmouseover="this.style.borderColor='var(--blue)';this.style.transform='translateY(-3px)'"
+             onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
+          <span style="font-size:1.6rem;display:block;margin-bottom:0.5rem;">🏠</span>
+          <div style="font-family:var(--display);font-size:13px;font-weight:700;color:var(--ink);margin-bottom:3px;">Real Estate Offices</div>
+          <div style="font-size:11.5px;color:var(--muted);line-height:1.5;">Document management, printing and email support</div>
+        </div>
+
+        <div class="fade-up" style="background:var(--bg);border:1.5px solid var(--border);border-radius:14px;padding:1.1rem 1rem;transition:border-color 0.2s,transform 0.2s;cursor:default;"
+             onmouseover="this.style.borderColor='var(--blue)';this.style.transform='translateY(-3px)'"
+             onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
+          <span style="font-size:1.6rem;display:block;margin-bottom:0.5rem;">🦷</span>
+          <div style="font-family:var(--display);font-size:13px;font-weight:700;color:var(--ink);margin-bottom:3px;">Dental Clinics</div>
+          <div style="font-size:11.5px;color:var(--muted);line-height:1.5;">Patient records, imaging software and practice management</div>
+        </div>
+
+        <div class="fade-up" style="background:var(--bg2);border:1.5px solid var(--border);border-radius:14px;padding:1.1rem 1rem;transition:border-color 0.2s,transform 0.2s;cursor:default;"
+             onmouseover="this.style.borderColor='var(--blue)';this.style.transform='translateY(-3px)'"
+             onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
+          <span style="font-size:1.6rem;display:block;margin-bottom:0.5rem;">🏥</span>
+          <div style="font-family:var(--display);font-size:13px;font-weight:700;color:var(--ink);margin-bottom:3px;">Medical Practices</div>
+          <div style="font-size:11.5px;color:var(--muted);line-height:1.5;">Clinical software, secure data and compliance support</div>
+        </div>
+
+        <div class="fade-up" style="background:var(--bg);border:1.5px solid var(--border);border-radius:14px;padding:1.1rem 1rem;transition:border-color 0.2s,transform 0.2s;cursor:default;"
+             onmouseover="this.style.borderColor='var(--blue)';this.style.transform='translateY(-3px)'"
+             onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
+          <span style="font-size:1.6rem;display:block;margin-bottom:0.5rem;">🛒</span>
+          <div style="font-family:var(--display);font-size:13px;font-weight:700;color:var(--ink);margin-bottom:3px;">Retail Shops</div>
+          <div style="font-size:11.5px;color:var(--muted);line-height:1.5;">Inventory systems, EFTPOS and multi-PC environments</div>
+        </div>
+
+        <div class="fade-up" style="background:var(--bg2);border:1.5px solid var(--border);border-radius:14px;padding:1.1rem 1rem;transition:border-color 0.2s,transform 0.2s;cursor:default;"
+             onmouseover="this.style.borderColor='var(--blue)';this.style.transform='translateY(-3px)'"
+             onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
+          <span style="font-size:1.6rem;display:block;margin-bottom:0.5rem;">🏗️</span>
+          <div style="font-family:var(--display);font-size:13px;font-weight:700;color:var(--ink);margin-bottom:3px;">Tradies and Contractors</div>
+          <div style="font-size:11.5px;color:var(--muted);line-height:1.5;">Quoting software, job management and cloud access</div>
+        </div>
+
+        <div class="fade-up" style="background:var(--bg);border:1.5px solid var(--border);border-radius:14px;padding:1.1rem 1rem;transition:border-color 0.2s,transform 0.2s;cursor:default;"
+             onmouseover="this.style.borderColor='var(--blue)';this.style.transform='translateY(-3px)'"
+             onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
+          <span style="font-size:1.6rem;display:block;margin-bottom:0.5rem;">⚖️</span>
+          <div style="font-family:var(--display);font-size:13px;font-weight:700;color:var(--ink);margin-bottom:3px;">Law and Accounting Firms</div>
+          <div style="font-size:11.5px;color:var(--muted);line-height:1.5;">Document security, compliance and reliable infrastructure</div>
+        </div>
+
+        <div class="fade-up" style="background:var(--bg2);border:1.5px solid var(--border);border-radius:14px;padding:1.1rem 1rem;transition:border-color 0.2s,transform 0.2s;cursor:default;"
+             onmouseover="this.style.borderColor='var(--blue)';this.style.transform='translateY(-3px)'"
+             onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
+          <span style="font-size:1.6rem;display:block;margin-bottom:0.5rem;">🏋️</span>
+          <div style="font-family:var(--display);font-size:13px;font-weight:700;color:var(--ink);margin-bottom:3px;">Gyms and Studios</div>
+          <div style="font-size:11.5px;color:var(--muted);line-height:1.5;">Membership software, access control and kiosk systems</div>
+        </div>
+
       </div>
     </div>
   </div>
@@ -1248,31 +1335,40 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
       </div>
     </div>
 
-    <div class="audit-card">
+<div class="audit-card">
   <div class="audit-card-title">Book Your Free IT Call</div>
   <div class="audit-card-sub">30 minutes Online Meeting. Lets get you onboard.</div>
-  <div class="audit-input-group">
-    <label class="audit-label" for="audit-business">Business name</label>
-    <input class="audit-input" id="audit-business" type="text" placeholder="The Corner Cafe" autocomplete="organization">
-  </div>
-  <div class="audit-input-group">
-    <label class="audit-label" for="audit-suburb">Your suburb</label>
-    <input class="audit-input" id="audit-suburb" type="text" placeholder="e.g. Fremantle, Midland, Subiaco" autocomplete="address-level2">
-  </div>
-  <div class="audit-input-group">
-    <label class="audit-label" for="audit-pcs">Approximately how many PCs?</label>
-    <input class="audit-input" id="audit-pcs" type="text" placeholder="e.g. 3 to 5">
-  </div>
-  <div class="audit-input-group">
-    <label class="audit-label" for="audit-email">Your email</label>
-    <input class="audit-input" id="audit-email" type="email" placeholder="you@yourbusiness.com.au" autocomplete="email">
-  </div>
-  <div class="audit-input-group">
-    <label class="audit-label" for="audit-phone">Your phone number</label>
-    <input class="audit-input" id="audit-phone" type="tel" placeholder="e.g. 0412 345 678" autocomplete="tel">
-  </div>
-  <button class="audit-submit" id="audit-submit-btn" type="button">Submit</button>
-  <div class="audit-note">Our team will respond as fast as possible.</div>
+  <form id="audit-form" action="https://api.web3forms.com/submit" method="POST">
+    <input type="hidden" name="access_key" value="b00c2b06-22d4-4924-af92-5143e83ab186">
+    <input type="hidden" name="subject" value="New Free IT Audit Request — FixMyPC Perth">
+    <input type="hidden" name="redirect" value="false">
+    <input type="hidden" name="botcheck" value="">
+
+    <div class="audit-input-group">
+      <label class="audit-label" for="audit-business">Business name</label>
+      <input class="audit-input" id="audit-business" name="business_name" type="text" placeholder="The Corner Cafe" autocomplete="organization" required>
+    </div>
+    <div class="audit-input-group">
+      <label class="audit-label" for="audit-suburb">Your suburb</label>
+      <input class="audit-input" id="audit-suburb" name="suburb" type="text" placeholder="e.g. Fremantle, Midland, Subiaco" autocomplete="address-level2" required>
+    </div>
+    <div class="audit-input-group">
+      <label class="audit-label" for="audit-pcs">Approximately how many PCs?</label>
+      <input class="audit-input" id="audit-pcs" name="pc_count" type="text" placeholder="e.g. 3 to 5">
+    </div>
+    <div class="audit-input-group">
+      <label class="audit-label" for="audit-email">Your email</label>
+      <input class="audit-input" id="audit-email" name="email" type="email" placeholder="you@yourbusiness.com.au" autocomplete="email" required>
+    </div>
+    <div class="audit-input-group">
+      <label class="audit-label" for="audit-phone">Your phone number</label>
+      <input class="audit-input" id="audit-phone" name="phone" type="tel" placeholder="e.g. 0412 345 678" autocomplete="tel">
+    </div>
+
+    <button class="audit-submit" type="submit" id="audit-submit-btn">Submit</button>
+    <div class="audit-note" id="audit-note">Our team will respond as fast as possible.</div>
+  </form>
+
   <div style="margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:8px;">
     <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:2px;">Prefer to reach us directly?</div>
     <a href="mailto:aly.imran.raja@gmail.com" style="display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--blue);text-decoration:none;">
@@ -1280,14 +1376,11 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
       aly.imran.raja@gmail.com
     </a>
     <a href="tel:+61452573701" style="display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--blue);text-decoration:none;">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.69 9.25a19.79 19.79 0 01-3.07-8.67A2 2 0 013.6.58h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.91 8.1a16 16 0 006 6l.92-.92a2 2 0 012.1１-.45c.907.339 １.85.573 ２.8１.7A２ ２ ０ ０１２２ １６v．０８z"/></svg>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.69 9.25a19.79 19.79 0 01-3.07-8.67A2 2 0 013.6.58h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.91 8.1a16 16 0 006 6l.92-.92a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16v.08z"/></svg>
       0452 573 701
     </a>
   </div>
 </div>
-</div>
-    </div>
-  </div>
 </section>
 
 <!-- WHY FIXMYPC PERTH -->
@@ -1298,36 +1391,95 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
       <h2 class="s-title">IT support that actually<br><span class="accent">works for your business.</span></h2>
       <p class="s-sub">Here is what sets us apart as a managed service provider when your business operations depend on technology working reliably every single day.</p>
     </div>
-    <div class="why-grid">
-      <div class="why-card fade-up">
-        <div class="why-label">Monitoring</div>
-        <div class="why-title">Proactive, Not Reactive</div>
-        <div class="why-desc">Our monitoring tools identify problems before they become outages. We resolve issues in the background before your team is ever aware of them.</div>
-      </div>
-      <div class="why-card fade-up">
-        <div class="why-label">Coverage</div>
-        <div class="why-title">All Perth Suburbs Covered</div>
-        <div class="why-desc">Based in Canning Vale, we cover all southern Perth suburbs for onsite visits including Cockburn, Cannington, Willetton, Jandakot, Harrisdale and Thornlie. Remote support is available Australia-wide for any business.</div>
-      </div>
-      <div class="why-card fade-up">
-        <div class="why-label">Contracts</div>
-        <div class="why-title">No Lock-In. Cancel Anytime.</div>
-        <div class="why-desc">Every plan is month-to-month. We earn your business through results, not contracts. Cancel or adjust your plan at any time with 30 days notice.</div>
-      </div>
-      <div class="why-card fade-up">
-        <div class="why-label">Pricing</div>
-        <div class="why-title">One Fixed Monthly Fee</div>
-        <div class="why-desc">No surprise invoices. No callout fees on covered plans. One predictable cost that makes IT a known business expense rather than an unexpected liability.</div>
-      </div>
-      <div class="why-card fade-up">
-        <div class="why-label">Availability</div>
-        <div class="why-title">24/7 Support Team</div>
-        <div class="why-desc">Business operations do not stop at 5pm. Our remote support team is available around the clock on all plans for issues that cannot wait until the next business day.</div>
-      </div>
-      <div class="why-card fade-up">
-        <div class="why-label">Track Record</div>
-        <div class="why-title">Premium Service</div>
-        <div class="why-desc"> We take quality of service seriously and prioritise communication, speed and clear explanations over technical jargon.</div>
+
+    <!-- SCROLL HINT -->
+    <div style="display:flex;align-items:center;justify-content:flex-end;gap:6px;margin-top:1.75rem;margin-bottom:0.75rem;">
+      <span style="font-size:11.5px;font-weight:600;color:var(--muted);">Scroll to see more</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </div>
+
+    <!-- HORIZONTAL SCROLL TRACK -->
+    <div style="overflow-x:auto;padding-bottom:1rem;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:var(--border2) transparent;">
+      <div style="display:flex;gap:14px;width:max-content;padding:4px 2px 8px;">
+
+        <!-- CARD 1 -->
+        <div class="fade-up" style="width:280px;flex-shrink:0;background:var(--bg);border:1.5px solid var(--border);border-radius:18px;padding:1.5rem;position:relative;overflow:hidden;transition:transform 0.2s,box-shadow 0.2s,border-color 0.2s;"
+             onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(21,96,255,0.1)';this.style.borderColor='var(--blue)'"
+             onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none';this.style.borderColor='var(--border)'">
+          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),#00CFFF);"></div>
+          <div style="width:38px;height:38px;background:var(--blue-lt);border:1.5px solid var(--blue-mid);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+          </div>
+          <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--blue);background:var(--blue-lt);border:1px solid var(--blue-mid);padding:3px 10px;border-radius:50px;display:inline-block;margin-bottom:0.7rem;">Monitoring</div>
+          <div style="font-family:var(--display);font-size:15px;font-weight:700;color:var(--ink);margin-bottom:0.5rem;">Proactive, Not Reactive</div>
+          <div style="font-size:13px;color:var(--muted);line-height:1.7;">Our monitoring tools identify problems before they become outages. We resolve issues in the background before your team is ever aware of them.</div>
+        </div>
+
+        <!-- CARD 2 -->
+        <div class="fade-up" style="width:280px;flex-shrink:0;background:var(--bg);border:1.5px solid var(--border);border-radius:18px;padding:1.5rem;position:relative;overflow:hidden;transition:transform 0.2s,box-shadow 0.2s,border-color 0.2s;"
+             onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(21,96,255,0.1)';this.style.borderColor='var(--blue)'"
+             onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none';this.style.borderColor='var(--border)'">
+          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#22C55E,#00CFFF);"></div>
+          <div style="width:38px;height:38px;background:rgba(34,197,94,0.1);border:1.5px solid rgba(34,197,94,0.25);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#16A34A;background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.25);padding:3px 10px;border-radius:50px;display:inline-block;margin-bottom:0.7rem;">Coverage</div>
+          <div style="font-family:var(--display);font-size:15px;font-weight:700;color:var(--ink);margin-bottom:0.5rem;">All Perth Suburbs Covered</div>
+          <div style="font-size:13px;color:var(--muted);line-height:1.7;">Based in Canning Vale, we cover all southern Perth suburbs for onsite visits including Cockburn, Cannington, Willetton, Jandakot, Harrisdale and Thornlie.</div>
+        </div>
+
+        <!-- CARD 3 -->
+        <div class="fade-up" style="width:280px;flex-shrink:0;background:var(--bg);border:1.5px solid var(--border);border-radius:18px;padding:1.5rem;position:relative;overflow:hidden;transition:transform 0.2s,box-shadow 0.2s,border-color 0.2s;"
+             onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(21,96,255,0.1)';this.style.borderColor='var(--blue)'"
+             onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none';this.style.borderColor='var(--border)'">
+          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#F59E0B,#FF6B6B);"></div>
+          <div style="width:38px;height:38px;background:rgba(245,158,11,0.1);border:1.5px solid rgba(245,158,11,0.25);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+          </div>
+          <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#D97706;background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.25);padding:3px 10px;border-radius:50px;display:inline-block;margin-bottom:0.7rem;">Contracts</div>
+          <div style="font-family:var(--display);font-size:15px;font-weight:700;color:var(--ink);margin-bottom:0.5rem;">No Lock-In. Cancel Anytime.</div>
+          <div style="font-size:13px;color:var(--muted);line-height:1.7;">Every plan is month-to-month. We earn your business through results, not contracts. Cancel or adjust your plan at any time with 30 days notice.</div>
+        </div>
+
+        <!-- CARD 4 -->
+        <div class="fade-up" style="width:280px;flex-shrink:0;background:var(--bg);border:1.5px solid var(--border);border-radius:18px;padding:1.5rem;position:relative;overflow:hidden;transition:transform 0.2s,box-shadow 0.2s,border-color 0.2s;"
+             onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(21,96,255,0.1)';this.style.borderColor='var(--blue)'"
+             onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none';this.style.borderColor='var(--border)'">
+          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#A855F7,#1560FF);"></div>
+          <div style="width:38px;height:38px;background:rgba(168,85,247,0.1);border:1.5px solid rgba(168,85,247,0.25);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9333EA" stroke-width="2" stroke-linecap="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 100 7h5a3.5 3.5 0 110 7H6"/></svg>
+          </div>
+          <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#9333EA;background:rgba(168,85,247,0.1);border:1px solid rgba(168,85,247,0.25);padding:3px 10px;border-radius:50px;display:inline-block;margin-bottom:0.7rem;">Pricing</div>
+          <div style="font-family:var(--display);font-size:15px;font-weight:700;color:var(--ink);margin-bottom:0.5rem;">One Fixed Monthly Fee</div>
+          <div style="font-size:13px;color:var(--muted);line-height:1.7;">No surprise invoices. No callout fees on covered plans. One predictable cost that makes IT a known business expense rather than an unexpected liability.</div>
+        </div>
+
+        <!-- CARD 5 -->
+        <div class="fade-up" style="width:280px;flex-shrink:0;background:var(--bg);border:1.5px solid var(--border);border-radius:18px;padding:1.5rem;position:relative;overflow:hidden;transition:transform 0.2s,box-shadow 0.2s,border-color 0.2s;"
+             onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(21,96,255,0.1)';this.style.borderColor='var(--blue)'"
+             onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none';this.style.borderColor='var(--border)'">
+          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#00CFFF,#22C55E);"></div>
+          <div style="width:38px;height:38px;background:rgba(0,207,255,0.1);border:1.5px solid rgba(0,207,255,0.25);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0891B2" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#0891B2;background:rgba(0,207,255,0.1);border:1px solid rgba(0,207,255,0.25);padding:3px 10px;border-radius:50px;display:inline-block;margin-bottom:0.7rem;">Availability</div>
+          <div style="font-family:var(--display);font-size:15px;font-weight:700;color:var(--ink);margin-bottom:0.5rem;">24/7 Support Team</div>
+          <div style="font-size:13px;color:var(--muted);line-height:1.7;">Business operations do not stop at 5pm. Our remote support team is available around the clock on all plans for issues that cannot wait until the next business day.</div>
+        </div>
+
+        <!-- CARD 6 -->
+        <div class="fade-up" style="width:280px;flex-shrink:0;background:var(--bg);border:1.5px solid var(--border);border-radius:18px;padding:1.5rem;position:relative;overflow:hidden;transition:transform 0.2s,box-shadow 0.2s,border-color 0.2s;"
+             onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(21,96,255,0.1)';this.style.borderColor='var(--blue)'"
+             onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none';this.style.borderColor='var(--border)'">
+          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#F59E0B,#22C55E);"></div>
+          <div style="width:38px;height:38px;background:rgba(245,158,11,0.1);border:1.5px solid rgba(245,158,11,0.25);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#D97706;background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.25);padding:3px 10px;border-radius:50px;display:inline-block;margin-bottom:0.7rem;">Track Record</div>
+          <div style="font-family:var(--display);font-size:15px;font-weight:700;color:var(--ink);margin-bottom:0.5rem;">Premium Service</div>
+          <div style="font-size:13px;color:var(--muted);line-height:1.7;">We take quality of service seriously and prioritise communication, speed and clear explanations over technical jargon.</div>
+        </div>
+
       </div>
     </div>
   </div>
@@ -1338,45 +1490,92 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
   <div class="wrap">
     <div class="fade-up">
       <span class="s-eyebrow">Client Case Study</span>
-      <h2 class="s-title">Real results<br><span class="accent">We provided</span></h2>
+      <h2 class="s-title">Real results. Real business impact.</span></h2>
       <p class="s-sub">Here is what happened when Hyperlink Solutions, a Perth IT outsourcing and development firm, switched to our Business plan.</p>
     </div>
-    <div class="case-study-card fade-up">
-      <div class="case-study-top">
-        <div>
-          <div class="case-study-label">Business Plan Client · Canning Vale, Perth</div>
-          <div class="case-study-company">Hyperlink Solutions</div>
-          <div class="case-study-desc">IT Outsourcing and Custom Development · Perth, Western Australia</div>
-          <a href="https://hyperlinksolutions.com.au" target="_blank" rel="noopener" class="case-study-url">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            hyperlinksolutions.com.au
-          </a>
-        </div>
-        <div class="case-study-stats">
-          <div class="cs-stat">
-            <span class="cs-stat-val">30+</span>
-            <span class="cs-stat-lbl">Hours saved monthly</span>
+
+    <div class="fade-up" style="margin-top:2.5rem;background:var(--ink);border-radius:24px;overflow:hidden;box-shadow:0 8px 40px rgba(15,23,42,0.18);border:1.5px solid rgba(255,255,255,0.06);position:relative;">
+
+      <!-- TOP GRADIENT BAR -->
+      <div style="height:3px;background:linear-gradient(90deg,var(--blue),#00CFFF,var(--wa));"></div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
+
+        <!-- LEFT: COMPANY INFO + STATS -->
+        <div style="padding:2.25rem 2.5rem;border-right:1px solid rgba(255,255,255,0.07);display:flex;flex-direction:column;justify-content:space-between;gap:1.75rem;">
+
+          <!-- Company header -->
+          <div>
+            <div style="font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#60A5FA;margin-bottom:0.6rem;">Business Plan Client · Canning Vale, Perth</div>
+            <div style="font-family:var(--display);font-size:2rem;font-weight:800;color:#fff;letter-spacing:-1px;line-height:1.1;margin-bottom:0.4rem;">Hyperlink Solutions</div>
+            <div style="font-size:13px;color:rgba(255,255,255,0.45);margin-bottom:0.5rem;">IT Outsourcing and Custom Development · Perth WA</div>
+            <a href="https://hyperlinksolutions.com.au" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:#60A5FA;text-decoration:none;opacity:0.85;transition:opacity 0.15s;"
+               onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.85'">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              hyperlinksolutions.com.au
+            </a>
           </div>
-          <div class="cs-stat">
-            <span class="cs-stat-val">Zero</span>
-            <span class="cs-stat-lbl">Unexpected costs</span>
+
+          <!-- Stats -->
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;">
+            <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:1rem 0.75rem;text-align:center;">
+              <div style="font-family:var(--display);font-size:1.65rem;font-weight:800;color:#fff;letter-spacing:-1px;line-height:1;">30+</div>
+              <div style="font-size:9.5px;color:rgba(255,255,255,0.4);font-weight:600;margin-top:4px;text-transform:uppercase;letter-spacing:0.05em;">Hours saved monthly</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:1rem 0.75rem;text-align:center;">
+              <div style="font-family:var(--display);font-size:1.65rem;font-weight:800;color:#fff;letter-spacing:-1px;line-height:1;">Zero</div>
+              <div style="font-size:9.5px;color:rgba(255,255,255,0.4);font-weight:600;margin-top:4px;text-transform:uppercase;letter-spacing:0.05em;">Unexpected costs</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:1rem 0.75rem;text-align:center;">
+              <div style="font-family:var(--display);font-size:1.65rem;font-weight:800;color:#fff;letter-spacing:-1px;line-height:1;">70%</div>
+              <div style="font-size:9.5px;color:rgba(255,255,255,0.4);font-weight:600;margin-top:4px;text-transform:uppercase;letter-spacing:0.05em;">Less than in-house</div>
+            </div>
           </div>
-          <div class="cs-stat">
-            <span class="cs-stat-val">70%</span>
-            <span class="cs-stat-lbl">Less than hiring in-house</span>
+
+          <!-- What happened -->
+          <div>
+            <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--blue);margin-bottom:0.6rem;">What Happened</div>
+            <div style="font-size:13px;color:rgba(255,255,255,0.55);line-height:1.75;">Hyperlink Solutions had unmanaged workstations, no antivirus, no backup and zero visibility into their IT. Avoidable issues were quietly burning billable developer hours every week. We moved them onto the Business plan. Within the first week, managed antivirus was live, cloud backup was protecting all client project files and a full network audit was complete. Two failing drives were caught before data loss. The result was 8+ staff hours recovered per month and zero unexpected IT bills.</div>
           </div>
+
         </div>
-      </div>
-      <div class="case-study-body" style="grid-template-columns:1fr;">
-        <div>
-          <div class="cs-block-title">What Happened</div>
-          <div class="cs-block-text">Hyperlink Solutions deliver full stack development and DevOps services to Perth businesses — but their own internal IT was a liability. Unmanaged workstations, no centralised antivirus, inconsistent updates and zero backup meant avoidable PC issues were quietly burning billable developer hours every week. Their approach was purely reactive: something broke, someone fixed it, work stopped in the meantime.</div>
-          <div class="cs-block-text" style="margin-top:0.9rem;">We moved them onto the Business plan at $399 per month. Within the first week, managed antivirus was live across every workstation, daily cloud backup was protecting all client project files, and a full network security audit was complete. Proactive monitoring caught two failing drives before either caused data loss. Windows updates, driver conflicts and software issues that had been quietly slowing their developers down were handled in the background with no disruption to their team. The result was more than 8 staff hours recovered per month, zero unexpected IT bills, and a development team that could focus entirely on client delivery instead of internal problems.</div>
-        </div>
-        <div class="cs-quote">
-          <div class="cs-quote-text">"Before FixMyPC Perth, small IT issues were adding up to real lost time every week. Since we handled their IT needs, everything just works. Our developers focus on client work, not troubleshooting. The fixed monthly cost means no more surprise bills and budgeting is finally predictable. Having a local Perth business who knows our setup and responds fast has been genuinely valuable."</div>
-          <div class="cs-quote-author">Hyperlink Solutions</div>
-          <div class="cs-quote-role">IT Outsourcing and Development · Perth WA · <a href="https://hyperlinksolutions.com.au" target="_blank" rel="noopener" style="color:var(--blue);text-decoration:none;">hyperlinksolutions.com.au</a></div>
+
+        <!-- RIGHT: TESTIMONY + GLOW -->
+        <div style="padding:2.25rem 2.5rem;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;">
+
+          <!-- Background glow -->
+          <div style="position:absolute;top:-60px;right:-60px;width:260px;height:260px;background:radial-gradient(circle,rgba(21,96,255,0.12) 0%,transparent 70%);pointer-events:none;"></div>
+
+          <!-- Stars -->
+          <div style="display:flex;gap:3px;margin-bottom:1.25rem;">
+            <span style="color:#F59E0B;font-size:18px;">★</span>
+            <span style="color:#F59E0B;font-size:18px;">★</span>
+            <span style="color:#F59E0B;font-size:18px;">★</span>
+            <span style="color:#F59E0B;font-size:18px;">★</span>
+            <span style="color:#F59E0B;font-size:18px;">★</span>
+          </div>
+
+          <!-- Quote -->
+          <div style="font-size:15px;color:rgba(255,255,255,0.88);line-height:1.8;font-style:italic;margin-bottom:1.75rem;position:relative;">
+            <span style="position:absolute;top:-10px;left:-8px;font-size:3.5rem;color:rgba(21,96,255,0.25);font-family:Georgia,serif;line-height:1;">"</span>
+            <span style="position:relative;z-index:1;">Before FixMyPC Perth, small IT issues were adding up to real lost time every week. Since we handled their IT needs, everything just works. Our developers focus on client work, not troubleshooting. The fixed monthly cost means no more surprise bills and budgeting is finally predictable. Having a local Perth business who knows our setup and responds fast has been genuinely valuable.</span>
+          </div>
+
+          <!-- Author -->
+          <div style="display:flex;align-items:center;gap:12px;">
+            <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--blue),#00CFFF);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:15px;font-weight:800;color:#fff;flex-shrink:0;">H</div>
+            <div>
+              <div style="font-family:var(--display);font-size:13.5px;font-weight:700;color:#fff;">Hyperlink Solutions</div>
+              <div style="font-size:11.5px;color:rgba(255,255,255,0.4);">IT Outsourcing and Development · Perth WA</div>
+            </div>
+          </div>
+
+          <!-- Plan badge -->
+          <div style="margin-top:1.5rem;padding:0.85rem 1.1rem;background:rgba(21,96,255,0.1);border:1px solid rgba(21,96,255,0.22);border-radius:12px;display:flex;align-items:center;justify-content:space-between;">
+            <div style="font-size:11.5px;font-weight:600;color:rgba(255,255,255,0.6);">Currently on</div>
+            <div style="font-family:var(--display);font-size:13px;font-weight:700;color:#60A5FA;">Business Plan · $399/mo</div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -1389,14 +1588,43 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
     <div class="fade-up">
       <div class="cta-kicker">Start today</div>
       <h2 class="cta-title">Stop letting IT problems<br>cost your business.</h2>
-      <p class="cta-desc">Book a complimentary 30-minute IT health check. Our team visits your business, assesses your setup and provides a written report with no obligation or commitment required.</p>
+      <p class="cta-desc">We check every critical area during the meeting. We document a picture of where your business stands, and how we can help you save time and resources.</p>
     </div>
-    <div class="cta-actions fade-up">
-      <a href="quote-request.html" class="btn-wa" style="background:var(--blue);box-shadow:0 4px 16px rgba(21,96,255,0.35);" aria-label="Request a free IT support quote Perth">
-        Request a Free Quote
+    <div class="cta-actions fade-up" style="display:flex;flex-direction:column;gap:10px;flex-shrink:0;">
+
+      
+    <a href="#audit-form"
+   onclick="event.preventDefault();document.querySelector('.audit-section').scrollIntoView({behavior:'smooth',block:'start'});"
+   style="display:inline-flex;align-items:center;justify-content:center;width:280px;padding:14px 24px;border-radius:50px;background:var(--blue);color:#fff;font-family:var(--body);font-size:16px;font-weight:700;text-decoration:none;white-space:nowrap;box-shadow:0 4px 16px rgba(21,96,255,0.35);transition:transform 0.15s,box-shadow 0.15s;"
+   onmouseover="this.style.transform='translateY(-2px)'"
+   onmouseout="this.style.transform='translateY(0)'">
+  Book My Free Session
+</a>  
+  
+
+      <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20to%20book%20a%20free%20business%20IT%20health%20check."
+         target="_blank" rel="noopener"
+         style="display:inline-flex;align-items:center;justify-content:center;gap:9px;width:280px;padding:14px 24px;border-radius:50px;background:#25D366;color:#fff;font-family:var(--body);font-size:15px;font-weight:700;text-decoration:none;box-shadow:0 4px 16px rgba(37,211,102,0.35);transition:transform 0.15s,box-shadow 0.15s;"
+         onmouseover="this.style.transform='translateY(-2px)'"
+         onmouseout="this.style.transform='translateY(0)'">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="white" style="flex-shrink:0;">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+          <path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/>
+        </svg>
+        WhatsApp Us
       </a>
-      <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20to%20book%20a%20free%20business%20IT%20health%20check." target="_blank" class="btn-outline-light" rel="noopener">WhatsApp Us</a>
-      <a href="https://www.facebook.com/profile.php?id=61588810785733" target="_blank" class="btn-outline-light" rel="noopener">Facebook Page</a>
+
+      <a href="https://www.facebook.com/profile.php?id=61588810785733"
+         target="_blank" rel="noopener"
+         style="display:inline-flex;align-items:center;justify-content:center;gap:9px;width:280px;padding:14px 24px;border-radius:50px;background:#1877F2;color:#fff;font-family:var(--body);font-size:15px;font-weight:700;text-decoration:none;box-shadow:0 4px 16px rgba(24,119,242,0.35);transition:transform 0.15s,box-shadow 0.15s;"
+         onmouseover="this.style.transform='translateY(-2px)'"
+         onmouseout="this.style.transform='translateY(0)'">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="white" style="flex-shrink:0;">
+          <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.886v2.268h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/>
+        </svg>
+        Facebook Page
+      </a>
+
     </div>
   </div>
 </section>
@@ -1445,9 +1673,7 @@ document.getElementById('site-nav').innerHTML =
     '<a href="business-it-support.html" class="nav-pill pill-active">Business IT Support</a>' +
     '<a href="quiz.html" class="nav-pill pill-ghost">Free PC Diagnostic</a>' +
     '<a href="reviews.html" class="nav-pill pill-ghost">Reviews and FAQ</a>' +
-    '<a href="#audit-section" id="nav-audit-btn" class="nav-pill pill-wa" aria-label="Book free IT audit">Book Free IT Audit</a>' +
-  '</div>';
-
+    '<a href="#audit-section" id="nav-audit-btn" class="nav-pill" style="background:var(--blue);color:#fff;box-shadow:0 2px 8px rgba(21,96,255,0.3);" aria-label="Book free IT audit">Book Free IT Audit</a>'
 document.getElementById('site-nav').addEventListener('click', function(e) {
   var btn = e.target.closest('#nav-audit-btn');
   if (btn) {
@@ -1467,47 +1693,40 @@ document.getElementById('site-nav').addEventListener('click', function(e) {
       return '<div class="trust-item"><div class="trust-dot"></div>' + t + '</div>';
     }).join('');
 
-  /* AUDIT FORM TO WHATSAPP */
-  document.getElementById('audit-submit-btn').addEventListener('click', function() {
-    var biz    = document.getElementById('audit-business').value.trim();
-    var suburb = document.getElementById('audit-suburb').value.trim();
-    var pcs    = document.getElementById('audit-pcs').value.trim();
+  /* AUDIT FORM TO //api.web3forms.com/submit */
+  document.getElementById('audit-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  var btn = document.getElementById('audit-submit-btn');
+  var form = document.getElementById('audit-form');
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
 
-    if (!biz) {
-      document.getElementById('audit-business').focus();
-      document.getElementById('audit-business').style.borderColor = '#EF4444';
-      document.getElementById('audit-business').placeholder = 'Please enter your business name';
-      return;
+  fetch('https://api.web3forms.com/submit', {
+    method: 'POST',
+    body: new FormData(form)
+  })
+  .then(function(res) { return res.json(); })
+  .then(function(data) {
+    if (data.success) {
+      btn.textContent = 'Submitted!';
+      btn.style.background = '#16A34A';
+      btn.style.boxShadow = '0 4px 16px rgba(22,163,74,0.35)';
+      document.getElementById('audit-note').textContent = 'Thanks! We will be in touch shortly.';
+      form.querySelectorAll('input:not([type=hidden])').forEach(function(i) { i.value = ''; });
+    } else {
+      btn.disabled = false;
+      btn.textContent = 'Submit';
+      document.getElementById('audit-note').textContent = 'Something went wrong. Please try again or contact us directly.';
+      document.getElementById('audit-note').style.color = '#EF4444';
     }
-    if (!suburb) {
-      document.getElementById('audit-suburb').focus();
-      document.getElementById('audit-suburb').style.borderColor = '#EF4444';
-      document.getElementById('audit-suburb').placeholder = 'Please enter your suburb';
-      return;
-    }
-
-    document.getElementById('audit-business').style.borderColor = '';
-    document.getElementById('audit-suburb').style.borderColor = '';
-
-    window.location.href = 'quote-request.html';
+  })
+  .catch(function() {
+    btn.disabled = false;
+    btn.textContent = 'Submit';
+    document.getElementById('audit-note').textContent = 'Something went wrong. Please try again or contact us directly.';
+    document.getElementById('audit-note').style.color = '#EF4444';
   });
-
-  document.getElementById('audit-business').addEventListener('input', function() { this.style.borderColor = ''; });
-  document.getElementById('audit-suburb').addEventListener('input', function() { this.style.borderColor = ''; });
-
-  /* MOBILE HAMBURGER */
-  var hamburger = document.getElementById('mob-hamburger');
-  var mobMenu   = document.getElementById('mob-menu');
-  hamburger.addEventListener('click', function() {
-    hamburger.classList.toggle('open');
-    mobMenu.classList.toggle('open');
-  });
-  mobMenu.querySelectorAll('.mob-link').forEach(function(link) {
-    link.addEventListener('click', function() {
-      hamburger.classList.remove('open');
-      mobMenu.classList.remove('open');
-    });
-  });
+});
 
   /* SCROLL ANIMATIONS */
   var observer = new IntersectionObserver(function(entries) {
