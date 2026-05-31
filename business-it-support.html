@@ -626,14 +626,6 @@ nav {
 .audit-submit:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(21,96,255,0.45); }
 .audit-note { font-size: 11.5px; color: var(--muted); text-align: center; margin-top: 0.7rem; }
 
-/* SERVICE AREAS */
-.service-areas-section { background: var(--bg2); padding: 3rem 2rem; border-top: 1px solid var(--border); }
-.service-areas-inner { max-width: 1100px; margin: 0 auto; }
-.service-areas-title { font-family: var(--display); font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 1rem; }
-.service-areas-grid { display: flex; flex-wrap: wrap; gap: 10px; }
-.service-area-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: var(--muted); background: var(--bg); border: 1.5px solid var(--border); border-radius: 50px; padding: 6px 14px; text-decoration: none; transition: border-color 0.15s, color 0.15s, background 0.15s; }
-.service-area-link:hover { border-color: var(--blue); color: var(--blue); background: var(--blue-lt); }
-.service-area-link::before { content: ''; width: 5px; height: 5px; background: var(--blue-mid); border-radius: 50%; }
 
 /* FINAL CTA */
 .cta-final { background: linear-gradient(135deg, var(--ink) 0%, var(--ink2) 100%); padding: 5.5rem 2rem; position: relative; overflow: hidden; }
@@ -1238,32 +1230,6 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
   </div>
 </section>
 
-<!-- SERVICE AREAS — VISIBLE AND CRAWLABLE -->
-<div class="service-areas-section" aria-label="Business IT support service areas Perth">
-  <div class="service-areas-inner">
-    <div class="service-areas-title">Business IT Support Across All Perth Suburbs</div>
-    <p style="font-size:13px; color:var(--muted); margin-bottom:1.25rem; line-height:1.7;">Providing managed IT support, outsourced IT helpdesk and managed service provider solutions to businesses across Perth. Onsite visits to all suburbs listed below, remote support available Australia-wide.</p>
-    <div class="service-areas-grid">
-      <a href="/business-it-support-canning-vale" class="service-area-link">Business IT Support Canning Vale</a>
-      <a href="/business-it-support-cockburn" class="service-area-link">Business IT Support Cockburn</a>
-      <a href="/business-it-support-cannington" class="service-area-link">Business IT Support Cannington</a>
-      <a href="/business-it-support-willetton" class="service-area-link">Business IT Support Willetton</a>
-      <a href="/business-it-support-jandakot" class="service-area-link">Business IT Support Jandakot</a>
-      <a href="/business-it-support-fremantle" class="service-area-link">Business IT Support Fremantle</a>
-      <a href="/business-it-support-subiaco" class="service-area-link">Business IT Support Subiaco</a>
-      <a href="/business-it-support-osborne-park" class="service-area-link">Business IT Support Osborne Park</a>
-      <a href="/business-it-support-belmont" class="service-area-link">Business IT Support Belmont</a>
-      <a href="/business-it-support-midland" class="service-area-link">Business IT Support Midland</a>
-      <a href="/business-it-support-scarborough" class="service-area-link">Business IT Support Scarborough</a>
-      <a href="/business-it-support-thornlie" class="service-area-link">Business IT Support Thornlie</a>
-      <a href="/managed-it-services-perth" class="service-area-link">Managed IT Services Perth</a>
-      <a href="/it-support-small-business-perth" class="service-area-link">IT Support Small Business Perth</a>
-      <a href="/outsourced-it-support-perth" class="service-area-link">Outsourced IT Support Perth</a>
-      <a href="/managed-service-provider-perth" class="service-area-link">Managed Service Provider Perth</a>
-      <a href="/it-helpdesk-perth" class="service-area-link">IT Helpdesk Perth</a>
-    </div>
-  </div>
-</div>
 
 <!-- FOOTER -->
 <footer>
@@ -1305,7 +1271,6 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
       '<span class="logo-name">FixMyPC <em>Perth</em></span>' +
     '</a>' +
     '<div class="nav-right">' +
-      '<a href="index.html" class="nav-pill pill-ghost">Home</a>' +
       '<a href="pricing.html" class="nav-pill pill-ghost">Pricing</a>' +
       '<a href="business-it-support.html" class="nav-pill pill-active">Business IT Support</a>' +
       '<a href="quiz.html" class="nav-pill pill-ghost">Free PC Diagnostic</a>' +
