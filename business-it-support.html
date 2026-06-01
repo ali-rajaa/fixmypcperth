@@ -1755,30 +1755,36 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
 </a>
 
 <script>
-  var WA_NUM  = '61452573701';
-  var WA_BASE = 'https://wa.me/' + WA_NUM + '?text=';
+  var WA_NUM = '61452573701';
 
   /* DESKTOP NAV */
-document.getElementById('site-nav').innerHTML =
-  '<a href="index.html" class="nav-logo" aria-label="FixMyPC Perth Home">' +
-    '<div class="logo-mark"><img src="logo.png" alt="FixMyPC Perth"></div>' +
-    '<span class="logo-name">FixMyPC <em>Perth</em></span>' +
-  '</a>' +
-  '<div class="nav-right">' +
-    '<a href="pricing.html" class="nav-pill pill-ghost">Pricing</a>' +
-    '<a href="business-it-support.html" class="nav-pill pill-active">Business IT Support</a>' +
-    '<a href="quiz.html" class="nav-pill pill-ghost">Free PC Diagnostic</a>' +
-    '<a href="blog.html" class="nav-pill pill-ghost">Tech Tips</a>' +
-    '<a href="reviews.html" class="nav-pill pill-ghost">Reviews and FAQ</a>' +
-    '<a href="reviews.html" class="nav-pill pill-ghost">Reviews and FAQ</a>' +
-    '<a href="#audit-section" id="nav-audit-btn" class="nav-pill" style="background:var(--blue);color:#fff;box-shadow:0 2px 8px rgba(21,96,255,0.3);" aria-label="Book free IT audit">Book Free IT Audit</a>' +
-  '</div>';
-document.getElementById('site-nav').addEventListener
-  var btn = e.target.closest('#nav-audit-btn');
-  if (btn) {
-    e.preventDefault();
-    document.querySelector('.audit-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
+  document.getElementById('site-nav').innerHTML =
+    '<a href="index.html" class="nav-logo" aria-label="FixMyPC Perth Home">' +
+      '<div class="logo-mark"><img src="logo.png" alt="FixMyPC Perth"></div>' +
+      '<span class="logo-name">FixMyPC <em>Perth</em></span>' +
+    '</a>' +
+    '<div class="nav-right">' +
+      '<a href="pricing.html" class="nav-pill pill-ghost">Pricing</a>' +
+      '<a href="business-it-support.html" class="nav-pill pill-active">Business IT Support</a>' +
+      '<a href="quiz.html" class="nav-pill pill-ghost">Free PC Diagnostic</a>' +
+      '<a href="blog.html" class="nav-pill pill-ghost">Tech Tips</a>' +
+      '<a href="reviews.html" class="nav-pill pill-ghost">Reviews and FAQ</a>' +
+      '<a href="#audit-section" id="nav-audit-btn" class="nav-pill" style="background:var(--blue);color:#fff;box-shadow:0 2px 8px rgba(21,96,255,0.3);" aria-label="Book free IT audit">Book Free IT Audit</a>' +
+    '</div>';
+
+  document.getElementById('site-nav').addEventListener('click', function(e) {
+    var btn = e.target.closest('#nav-audit-btn');
+    if (btn) {
+      e.preventDefault();
+      document.querySelector('.audit-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+
+  /* MOBILE HAMBURGER */
+  document.getElementById('mob-hamburger').addEventListener('click', function() {
+    this.classList.toggle('open');
+    document.getElementById('mob-menu').classList.toggle('open');
+  });
 
   /* TRUST TICKER */
   var trustItems = [
@@ -1792,40 +1798,41 @@ document.getElementById('site-nav').addEventListener
       return '<div class="trust-item"><div class="trust-dot"></div>' + t + '</div>';
     }).join('');
 
-  /* AUDIT FORM TO //api.web3forms.com/submit */
+  /* AUDIT FORM */
   document.getElementById('audit-form').addEventListener('submit', function(e) {
-  e.preventDefault();
-  var btn = document.getElementById('audit-submit-btn');
-  var form = document.getElementById('audit-form');
-  btn.disabled = true;
-  btn.textContent = 'Sending...';
-
-  fetch('https://api.web3forms.com/submit', {
-    method: 'POST',
-    body: new FormData(form)
-  })
-  .then(function(res) { return res.json(); })
-  .then(function(data) {
-    if (data.success) {
-      btn.textContent = 'Submitted!';
-      btn.style.background = '#16A34A';
-      btn.style.boxShadow = '0 4px 16px rgba(22,163,74,0.35)';
-      document.getElementById('audit-note').textContent = 'Thanks! We will be in touch shortly.';
-      form.querySelectorAll('input:not([type=hidden])').forEach(function(i) { i.value = ''; });
-    } else {
+    e.preventDefault();
+    var btn = document.getElementById('audit-submit-btn');
+    var note = document.getElementById('audit-note');
+    var form = document.getElementById('audit-form');
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: new FormData(form)
+    })
+    .then(function(res) { return res.json(); })
+    .then(function(data) {
+      if (data.success) {
+        btn.textContent = 'Submitted! Our Team will reach out';
+        btn.style.background = '#16A34A';
+        btn.style.boxShadow = '0 4px 16px rgba(22,163,74,0.35)';
+        note.textContent = 'Thanks! We will be in touch shortly.';
+        note.style.color = '#16A34A';
+        form.querySelectorAll('input:not([type=hidden])').forEach(function(i) { i.value = ''; });
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Submit';
+        note.textContent = 'Something went wrong. Please try again or contact us directly.';
+        note.style.color = '#EF4444';
+      }
+    })
+    .catch(function() {
       btn.disabled = false;
       btn.textContent = 'Submit';
-      document.getElementById('audit-note').textContent = 'Something went wrong. Please try again or contact us directly.';
-      document.getElementById('audit-note').style.color = '#EF4444';
-    }
-  })
-  .catch(function() {
-    btn.disabled = false;
-    btn.textContent = 'Submit';
-    document.getElementById('audit-note').textContent = 'Something went wrong. Please try again or contact us directly.';
-    document.getElementById('audit-note').style.color = '#EF4444';
+      note.textContent = 'Something went wrong. Please try again or contact us directly.';
+      note.style.color = '#EF4444';
+    });
   });
-});
 
   /* SCROLL ANIMATIONS */
   var observer = new IntersectionObserver(function(entries) {
@@ -1838,7 +1845,7 @@ document.getElementById('site-nav').addEventListener
   }, { threshold: 0.07 });
   document.querySelectorAll('.fade-up').forEach(function(el) { observer.observe(el); });
 
-  /* SMOOTH SCROLL */
+  /* SMOOTH SCROLL TO PLANS */
   document.querySelectorAll('a[href="#plans"]').forEach(function(link) {
     link.addEventListener('click', function(e) {
       e.preventDefault();
