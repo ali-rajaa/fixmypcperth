@@ -777,6 +777,96 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
   .hero-trust { gap: 0.9rem; }
   .who-grid { grid-template-columns: repeat(2, 1fr); }
 }
+/* MOBILE GLOBAL FIXES */
+@media (max-width: 720px) {
+  /* Who we serve — stack left/right */
+  .section .wrap > .fade-up[style*="grid-template-columns:1fr 1.4fr"] {
+    display: block !important;
+  }
+  .section .wrap > .fade-up > div:first-child {
+    position: static !important;
+    margin-bottom: 2rem;
+  }
+  .section .wrap > .fade-up > div:last-child {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  /* Case study — stack columns */
+  .case-study-section div[style*="grid-template-columns:1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+  .case-study-section div[style*="border-right"] {
+    border-right: none !important;
+    border-bottom: 1px solid rgba(255,255,255,0.07) !important;
+  }
+
+  /* CTA final — stack */
+  .cta-final-inner {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+  .cta-actions {
+    flex-direction: column !important;
+  }
+  .cta-actions a {
+    width: 100% !important;
+  }
+
+  /* Why section scroll cards */
+  .why-section div[style*="width:max-content"] {
+    width: 100% !important;
+    flex-direction: column !important;
+  }
+  .why-section div[style*="width:280px"] {
+    width: 100% !important;
+  }
+
+  /* Audit section form */
+  .audit-content {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+
+  /* First month banner */
+  .first-month-banner {
+    flex-direction: column !important;
+  }
+
+  /* Metrics */
+  .metrics-inner {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 1rem !important;
+  }
+
+  /* Hero trust badges wrap */
+  .hero-trust {
+    gap: 0.6rem !important;
+  }
+
+  /* Plans header nowrap fix */
+  .s-title[style*="white-space:nowrap"] {
+    white-space: normal !important;
+    font-size: 1.6rem !important;
+  }
+
+  /* Audit form two-column grids collapse */
+  .audit-card div[style*="grid-template-columns:1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Who we serve single column on small phones */
+  .section .wrap > .fade-up > div:last-child {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Case study stats */
+  div[style*="grid-template-columns:1fr 1fr 1fr"] {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -802,6 +892,10 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
   <a href="quiz.html" class="mob-link">Free PC Diagnostic</a>
   <a href="blog.html" class="mob-link">Tech Tips</a>
   <a href="reviews.html" class="mob-link">Reviews and FAQ</a>
+  <a href="#audit-section" class="mob-link mob-drop-wa"
+   onclick="document.getElementById('mob-hamburger').classList.remove('open');document.getElementById('mob-menu').classList.remove('open');setTimeout(()=>document.querySelector('.audit-section').scrollIntoView({behavior:'smooth',block:'start'}),100);">
+  Book Free IT Audit
+</a>
 </div>
 
 <!-- HERO -->
