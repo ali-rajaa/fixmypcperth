@@ -1771,11 +1771,11 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
       grid.style.gridTemplateColumns = 'repeat(9, ' + cardW + 'px)';
       grid.style.gridTemplateRows = 'auto auto';
     } else {
-      /* Desktop: 3 cols × 3 rows, fixed layout */
-      grid.style.gridTemplateColumns = 'repeat(3, 1fr)';
-      grid.style.gridTemplateRows = 'auto';
-      grid.style.width = '';
-    }
+  /* Desktop: single row, horizontal scroll like other sections */
+  grid.style.gridTemplateColumns = 'repeat(9, 280px)';
+  grid.style.gridTemplateRows = 'auto';
+  grid.style.width = 'max-content';
+}
   }
   setWhoGridCols();
   window.addEventListener('resize', setWhoGridCols);
