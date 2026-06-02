@@ -638,10 +638,13 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
   .cta-final-inner { grid-template-columns: 1fr; gap: 2rem; }
   .cta-actions { flex-direction: row; flex-wrap: wrap; }
   .case-study-grid { grid-template-columns: 1fr; }
-  .case-study-grid > div { border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.07); padding: 1.75rem !important; }
-  .case-study-grid > div:last-child { border-bottom: none; }
+  .case-study-grid > div { 
+  border-right: none !important; 
+  border-bottom: 1px solid rgba(255,255,255,0.07); 
+  padding: 1.25rem !important; 
 }
-
+.case-study-grid > div:last-child { border-bottom: none; }
+}
 @media (max-width: 720px) {
   /* ── Core layout ── */
   nav { display: none; }
@@ -726,6 +729,64 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
   .s-title-light { font-size: 1.65rem; }
   .metrics-inner { gap: 1rem; }
   .metric-val { font-size: 2rem; letter-spacing: -1px; }
+}
+/* ─── CASE STUDY MOBILE FIX ──────────────────────────────────── */
+@media (max-width: 720px) {
+  /* Company name + stats panel */
+  .case-study-grid > div:first-child {
+    gap: 1.25rem !important;
+  }
+
+  /* Company name size */
+  .case-study-grid > div:first-child > div:nth-child(1) > div:nth-child(2) {
+    font-size: 1.4rem !important;
+  }
+
+  /* 3-col stats → 3-col but compact */
+  .case-study-grid > div:first-child > div:nth-child(2) {
+    grid-template-columns: 1fr 1fr 1fr !important;
+    gap: 6px !important;
+  }
+  .case-study-grid > div:first-child > div:nth-child(2) > div {
+    padding: 0.75rem 0.5rem !important;
+  }
+  .case-study-grid > div:first-child > div:nth-child(2) > div > div:first-child {
+    font-size: 1.2rem !important;
+  }
+  .case-study-grid > div:first-child > div:nth-child(2) > div > div:last-child {
+    font-size: 8.5px !important;
+  }
+
+  /* "What Happened" body text */
+  .case-study-grid > div:first-child > div:nth-child(3) > div:last-child {
+    font-size: 12.5px !important;
+    line-height: 1.65 !important;
+  }
+
+  /* Testimonial quote text */
+  .case-study-grid > div:last-child > div:nth-child(3) {
+    font-size: 13.5px !important;
+    line-height: 1.7 !important;
+  }
+
+  /* Opening quote mark — pull back on mobile */
+  .case-study-grid > div:last-child > div:nth-child(3) > span:first-child {
+    font-size: 2.5rem !important;
+    top: -6px !important;
+    left: -4px !important;
+  }
+
+  /* Avatar row */
+  .case-study-grid > div:last-child > div:nth-child(4) {
+    gap: 8px !important;
+  }
+
+  /* "Currently on" pill */
+  .case-study-grid > div:last-child > div:last-child {
+    flex-direction: column !important;
+    gap: 2px !important;
+    align-items: flex-start !important;
+  }
 }
 </style>
 </head>
