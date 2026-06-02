@@ -777,6 +777,7 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
   .plan-card.featured { transform: none; }
   .plan-card.featured:hover { transform: translateY(-5px); }
 }
+
 @media (max-width: 900px) {
   .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
   .hero-card { display: none; }
@@ -784,7 +785,10 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
   .cta-final-inner { grid-template-columns: 1fr; gap: 2rem; }
   .cta-actions { flex-direction: row; flex-wrap: wrap; }
   .metrics-inner { grid-template-columns: repeat(2, 1fr); }
+  .who-outer { grid-template-columns: 1fr !important; gap: 2rem !important; }
+  .who-outer > .fade-up:first-child { position: static !important; }
 }
+
 @media (max-width: 720px) {
   nav { display: none; }
   .mob-top-nav { display: flex; }
@@ -797,25 +801,20 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
   .addon-row { grid-template-columns: 1fr; gap: 0.5rem; }
   .addon-right { text-align: left; }
   .service-areas-section { padding: 2rem 1.25rem; }
+  .who-grid {
+    grid-template-columns: repeat(5, minmax(150px, 1fr)) !important;
+    grid-template-rows: auto auto !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding-bottom: 0.5rem;
+  }
 }
+
 @media (max-width: 480px) {
   .metrics-inner { grid-template-columns: 1fr 1fr; gap: 1.25rem; }
   .hero-trust { gap: 0.9rem; }
-  .who-grid { grid-template-columns: repeat(2, 1fr); }
+  .who-grid { grid-template-columns: repeat(5, minmax(140px, 1fr)) !important; overflow-x: auto !important; }
 }
-/* MOBILE GLOBAL FIXES */
-@media (max-width: 720px) {
-  /* Who we serve — stack left/right */
-  .section .wrap > .fade-up[style*="grid-template-columns:1fr 1.4fr"] {
-    display: block !important;
-  }
-  .section .wrap > .fade-up > div:first-child {
-    position: static !important;
-    margin-bottom: 2rem;
-  }
-  .section .wrap > .fade-up > div:last-child {
-    grid-template-columns: 1fr 1fr !important;
-  }
 
   /* Case study — stack columns */
   .case-study-section div[style*="grid-template-columns:1fr 1fr"] {
@@ -874,7 +873,7 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
   .audit-card div[style*="grid-template-columns:1fr 1fr"] {
     grid-template-columns: 1fr !important;
   }
-}
+
 
 @media (max-width: 480px) {
   /* Who we serve single column on small phones */
@@ -1364,101 +1363,100 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
 <!-- WHO WE SERVE -->
 <section class="section" aria-label="Which Perth businesses we support">
   <div class="wrap">
-    <div class="fade-up" style="display:grid;grid-template-columns:1fr 1.4fr;gap:4rem;align-items:start;">
-      
+    <div style="display:grid;grid-template-columns:320px 1fr;gap:4rem;align-items:start;">
+
       <!-- LEFT: INFO -->
-      <div style="position:sticky;top:84px;">
+      <div class="fade-up" style="position:sticky;top:84px;">
         <span class="s-eyebrow">Who We Work With</span>
-        <h2 class="s-title">Built for the businesses that <span class="accent">focus on growth</span></h2>
-        <p class="s-sub" style="font-size:14px;margin-top:0.75rem;">We provide outsourced IT support to cafes, real estate offices, dental clinics and retail stores across Canning Vale, Fremantle, Cockburn and Cannington. If your business relies on computers, we are built for you.</p>
+        <h2 class="s-title" style="font-size:clamp(1.6rem,2.2vw,2.2rem);">Built for businesses that <span class="accent">focus on growth</span></h2>
+        <p class="s-sub" style="font-size:14px;margin-top:0.75rem;line-height:1.75;">We support cafes, real estate offices, dental clinics and retail stores across Canning Vale, Fremantle, Cockburn and Cannington. If your business relies on computers, we are built for you.</p>
         <a href="#audit-form"
-   onclick="event.preventDefault();document.querySelector('.audit-section').scrollIntoView({behavior:'smooth',block:'start'});"
-   class="btn-primary"
-   style="margin-top:1.5rem;display:inline-flex;">
-  Talk to us about your business
-</a>
+           onclick="event.preventDefault();document.querySelector('.audit-section').scrollIntoView({behavior:'smooth',block:'start'});"
+           class="btn-primary"
+           style="margin-top:1.5rem;display:inline-flex;">
+          Talk to us about your business
+        </a>
       </div>
 
-      <!-- RIGHT: GRID -->
-      <div style="display:flex;align-items:center;justify-content:flex-end;gap:6px;margin-bottom:0.75rem;">
-      <span style="font-size:11.5px;font-weight:600;color:var(--muted);">Scroll to see more</span>
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+      <!-- RIGHT: 3x3 GRID -->
+      <div class="fade-up">
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
+
+          <div style="background:var(--bg2);border:1.5px solid var(--border);border-radius:14px;padding:1.25rem 1.1rem;transition:border-color 0.2s,transform 0.2s;cursor:default;"
+               onmouseover="this.style.borderColor='var(--blue)';this.style.transform='translateY(-3px)'"
+               onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
+            <span style="font-size:1.5rem;display:block;margin-bottom:0.6rem;">☕</span>
+            <div style="font-family:var(--display);font-size:13.5px;font-weight:700;color:var(--ink);margin-bottom:4px;line-height:1.3;">Cafes and Restaurants</div>
+            <div style="font-size:12px;color:var(--muted);line-height:1.55;">POS, EFTPOS and wifi kept running during service</div>
+          </div>
+
+          <div style="background:var(--bg);border:1.5px solid var(--border);border-radius:14px;padding:1.25rem 1.1rem;transition:border-color 0.2s,transform 0.2s;cursor:default;"
+               onmouseover="this.style.borderColor='var(--blue)';this.style.transform='translateY(-3px)'"
+               onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
+            <span style="font-size:1.5rem;display:block;margin-bottom:0.6rem;">✂️</span>
+            <div style="font-family:var(--display);font-size:13.5px;font-weight:700;color:var(--ink);margin-bottom:4px;line-height:1.3;">Hair and Beauty Salons</div>
+            <div style="font-size:12px;color:var(--muted);line-height:1.55;">Booking software and payment terminals, always online</div>
+          </div>
+
+          <div style="background:var(--bg2);border:1.5px solid var(--border);border-radius:14px;padding:1.25rem 1.1rem;transition:border-color 0.2s,transform 0.2s;cursor:default;"
+               onmouseover="this.style.borderColor='var(--blue)';this.style.transform='translateY(-3px)'"
+               onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
+            <span style="font-size:1.5rem;display:block;margin-bottom:0.6rem;">🏠</span>
+            <div style="font-family:var(--display);font-size:13.5px;font-weight:700;color:var(--ink);margin-bottom:4px;line-height:1.3;">Real Estate Offices</div>
+            <div style="font-size:12px;color:var(--muted);line-height:1.55;">Document management, printing and email support</div>
+          </div>
+
+          <div style="background:var(--bg);border:1.5px solid var(--border);border-radius:14px;padding:1.25rem 1.1rem;transition:border-color 0.2s,transform 0.2s;cursor:default;"
+               onmouseover="this.style.borderColor='var(--blue)';this.style.transform='translateY(-3px)'"
+               onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
+            <span style="font-size:1.5rem;display:block;margin-bottom:0.6rem;">🦷</span>
+            <div style="font-family:var(--display);font-size:13.5px;font-weight:700;color:var(--ink);margin-bottom:4px;line-height:1.3;">Dental Clinics</div>
+            <div style="font-size:12px;color:var(--muted);line-height:1.55;">Patient records, imaging software and practice management</div>
+          </div>
+
+          <div style="background:var(--bg2);border:1.5px solid var(--border);border-radius:14px;padding:1.25rem 1.1rem;transition:border-color 0.2s,transform 0.2s;cursor:default;"
+               onmouseover="this.style.borderColor='var(--blue)';this.style.transform='translateY(-3px)'"
+               onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
+            <span style="font-size:1.5rem;display:block;margin-bottom:0.6rem;">🏥</span>
+            <div style="font-family:var(--display);font-size:13.5px;font-weight:700;color:var(--ink);margin-bottom:4px;line-height:1.3;">Medical Practices</div>
+            <div style="font-size:12px;color:var(--muted);line-height:1.55;">Clinical software, secure data and compliance support</div>
+          </div>
+
+          <div style="background:var(--bg);border:1.5px solid var(--border);border-radius:14px;padding:1.25rem 1.1rem;transition:border-color 0.2s,transform 0.2s;cursor:default;"
+               onmouseover="this.style.borderColor='var(--blue)';this.style.transform='translateY(-3px)'"
+               onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
+            <span style="font-size:1.5rem;display:block;margin-bottom:0.6rem;">🛒</span>
+            <div style="font-family:var(--display);font-size:13.5px;font-weight:700;color:var(--ink);margin-bottom:4px;line-height:1.3;">Retail Shops</div>
+            <div style="font-size:12px;color:var(--muted);line-height:1.55;">Inventory systems, EFTPOS and multi-PC environments</div>
+          </div>
+
+          <div style="background:var(--bg2);border:1.5px solid var(--border);border-radius:14px;padding:1.25rem 1.1rem;transition:border-color 0.2s,transform 0.2s;cursor:default;"
+               onmouseover="this.style.borderColor='var(--blue)';this.style.transform='translateY(-3px)'"
+               onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
+            <span style="font-size:1.5rem;display:block;margin-bottom:0.6rem;">🏗️</span>
+            <div style="font-family:var(--display);font-size:13.5px;font-weight:700;color:var(--ink);margin-bottom:4px;line-height:1.3;">Tradies and Contractors</div>
+            <div style="font-size:12px;color:var(--muted);line-height:1.55;">Quoting software, job management and cloud access</div>
+          </div>
+
+          <div style="background:var(--bg);border:1.5px solid var(--border);border-radius:14px;padding:1.25rem 1.1rem;transition:border-color 0.2s,transform 0.2s;cursor:default;"
+               onmouseover="this.style.borderColor='var(--blue)';this.style.transform='translateY(-3px)'"
+               onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
+            <span style="font-size:1.5rem;display:block;margin-bottom:0.6rem;">⚖️</span>
+            <div style="font-family:var(--display);font-size:13.5px;font-weight:700;color:var(--ink);margin-bottom:4px;line-height:1.3;">Law and Accounting Firms</div>
+            <div style="font-size:12px;color:var(--muted);line-height:1.55;">Document security, compliance and reliable infrastructure</div>
+          </div>
+
+          <div style="background:var(--bg2);border:1.5px solid var(--border);border-radius:14px;padding:1.25rem 1.1rem;transition:border-color 0.2s,transform 0.2s;cursor:default;"
+               onmouseover="this.style.borderColor='var(--blue)';this.style.transform='translateY(-3px)'"
+               onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
+            <span style="font-size:1.5rem;display:block;margin-bottom:0.6rem;">🏋️</span>
+            <div style="font-family:var(--display);font-size:13.5px;font-weight:700;color:var(--ink);margin-bottom:4px;line-height:1.3;">Gyms and Studios</div>
+            <div style="font-size:12px;color:var(--muted);line-height:1.55;">Membership software, access control and kiosk systems</div>
+          </div>
+
+        </div>
       </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;" class="who-grid-wrap"></div>
 
-        <div class="fade-up" style="background:var(--bg2);border:1.5px solid var(--border);border-radius:14px;padding:1.1rem 1rem;transition:border-color 0.2s,transform 0.2s;cursor:default;"
-             onmouseover="this.style.borderColor='var(--blue)';this.style.transform='translateY(-3px)'"
-             onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
-          <span style="font-size:1.6rem;display:block;margin-bottom:0.5rem;">☕</span>
-          <div style="font-family:var(--display);font-size:13px;font-weight:700;color:var(--ink);margin-bottom:3px;">Cafes and Restaurants</div>
-          <div style="font-size:11.5px;color:var(--muted);line-height:1.5;">POS, EFTPOS and wifi kept running during service</div>
-        </div>
-
-        <div class="fade-up" style="background:var(--bg);border:1.5px solid var(--border);border-radius:14px;padding:1.1rem 1rem;transition:border-color 0.2s,transform 0.2s;cursor:default;"
-             onmouseover="this.style.borderColor='var(--blue)';this.style.transform='translateY(-3px)'"
-             onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
-          <span style="font-size:1.6rem;display:block;margin-bottom:0.5rem;">✂️</span>
-          <div style="font-family:var(--display);font-size:13px;font-weight:700;color:var(--ink);margin-bottom:3px;">Hair and Beauty Salons</div>
-          <div style="font-size:11.5px;color:var(--muted);line-height:1.5;">Booking software and payment terminals, always online</div>
-        </div>
-
-        <div class="fade-up" style="background:var(--bg2);border:1.5px solid var(--border);border-radius:14px;padding:1.1rem 1rem;transition:border-color 0.2s,transform 0.2s;cursor:default;"
-             onmouseover="this.style.borderColor='var(--blue)';this.style.transform='translateY(-3px)'"
-             onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
-          <span style="font-size:1.6rem;display:block;margin-bottom:0.5rem;">🏠</span>
-          <div style="font-family:var(--display);font-size:13px;font-weight:700;color:var(--ink);margin-bottom:3px;">Real Estate Offices</div>
-          <div style="font-size:11.5px;color:var(--muted);line-height:1.5;">Document management, printing and email support</div>
-        </div>
-
-        <div class="fade-up" style="background:var(--bg);border:1.5px solid var(--border);border-radius:14px;padding:1.1rem 1rem;transition:border-color 0.2s,transform 0.2s;cursor:default;"
-             onmouseover="this.style.borderColor='var(--blue)';this.style.transform='translateY(-3px)'"
-             onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
-          <span style="font-size:1.6rem;display:block;margin-bottom:0.5rem;">🦷</span>
-          <div style="font-family:var(--display);font-size:13px;font-weight:700;color:var(--ink);margin-bottom:3px;">Dental Clinics</div>
-          <div style="font-size:11.5px;color:var(--muted);line-height:1.5;">Patient records, imaging software and practice management</div>
-        </div>
-
-        <div class="fade-up" style="background:var(--bg2);border:1.5px solid var(--border);border-radius:14px;padding:1.1rem 1rem;transition:border-color 0.2s,transform 0.2s;cursor:default;"
-             onmouseover="this.style.borderColor='var(--blue)';this.style.transform='translateY(-3px)'"
-             onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
-          <span style="font-size:1.6rem;display:block;margin-bottom:0.5rem;">🏥</span>
-          <div style="font-family:var(--display);font-size:13px;font-weight:700;color:var(--ink);margin-bottom:3px;">Medical Practices</div>
-          <div style="font-size:11.5px;color:var(--muted);line-height:1.5;">Clinical software, secure data and compliance support</div>
-        </div>
-
-        <div class="fade-up" style="background:var(--bg);border:1.5px solid var(--border);border-radius:14px;padding:1.1rem 1rem;transition:border-color 0.2s,transform 0.2s;cursor:default;"
-             onmouseover="this.style.borderColor='var(--blue)';this.style.transform='translateY(-3px)'"
-             onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
-          <span style="font-size:1.6rem;display:block;margin-bottom:0.5rem;">🛒</span>
-          <div style="font-family:var(--display);font-size:13px;font-weight:700;color:var(--ink);margin-bottom:3px;">Retail Shops</div>
-          <div style="font-size:11.5px;color:var(--muted);line-height:1.5;">Inventory systems, EFTPOS and multi-PC environments</div>
-        </div>
-
-        <div class="fade-up" style="background:var(--bg2);border:1.5px solid var(--border);border-radius:14px;padding:1.1rem 1rem;transition:border-color 0.2s,transform 0.2s;cursor:default;"
-             onmouseover="this.style.borderColor='var(--blue)';this.style.transform='translateY(-3px)'"
-             onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
-          <span style="font-size:1.6rem;display:block;margin-bottom:0.5rem;">🏗️</span>
-          <div style="font-family:var(--display);font-size:13px;font-weight:700;color:var(--ink);margin-bottom:3px;">Tradies and Contractors</div>
-          <div style="font-size:11.5px;color:var(--muted);line-height:1.5;">Quoting software, job management and cloud access</div>
-        </div>
-
-        <div class="fade-up" style="background:var(--bg);border:1.5px solid var(--border);border-radius:14px;padding:1.1rem 1rem;transition:border-color 0.2s,transform 0.2s;cursor:default;"
-             onmouseover="this.style.borderColor='var(--blue)';this.style.transform='translateY(-3px)'"
-             onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
-          <span style="font-size:1.6rem;display:block;margin-bottom:0.5rem;">⚖️</span>
-          <div style="font-family:var(--display);font-size:13px;font-weight:700;color:var(--ink);margin-bottom:3px;">Law and Accounting Firms</div>
-          <div style="font-size:11.5px;color:var(--muted);line-height:1.5;">Document security, compliance and reliable infrastructure</div>
-        </div>
-
-        <div class="fade-up" style="background:var(--bg2);border:1.5px solid var(--border);border-radius:14px;padding:1.1rem 1rem;transition:border-color 0.2s,transform 0.2s;cursor:default;"
-             onmouseover="this.style.borderColor='var(--blue)';this.style.transform='translateY(-3px)'"
-             onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
-          <span style="font-size:1.6rem;display:block;margin-bottom:0.5rem;">🏋️</span>
-          <div style="font-family:var(--display);font-size:13px;font-weight:700;color:var(--ink);margin-bottom:3px;">Gyms and Studios</div>
-          <div style="font-size:11.5px;color:var(--muted);line-height:1.5;">Membership software, access control and kiosk systems</div>
-        </div>
-
-      </div>
     </div>
   </div>
 </section>
