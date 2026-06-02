@@ -808,6 +808,7 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
     -webkit-overflow-scrolling: touch !important;
     padding-bottom: 0.5rem;
   }
+  .audit-content { grid-template-columns: 1fr !important; gap: 2rem !important; }
 }
 
 @media (max-width: 480px) {
@@ -816,76 +817,6 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
   .who-grid { grid-template-columns: repeat(5, minmax(140px, 1fr)) !important; overflow-x: auto !important; }
 }
 
-  /* Case study — stack columns */
-  .case-study-section div[style*="grid-template-columns:1fr 1fr"] {
-    grid-template-columns: 1fr !important;
-  }
-  .case-study-section div[style*="border-right"] {
-    border-right: none !important;
-    border-bottom: 1px solid rgba(255,255,255,0.07) !important;
-  }
-
-  /* CTA final — stack */
-  .cta-final-inner {
-    grid-template-columns: 1fr !important;
-    gap: 2rem !important;
-  }
-  .cta-actions {
-    flex-direction: column !important;
-  }
-  .cta-actions a {
-    width: 100% !important;
-  }
-
-  /* Why section scroll cards */
-.why-section div[style*="width:max-content"] {
-  width: max-content !important;
-  flex-direction: row !important;
-}
-.why-section div[style*="width:280px"] {
-  width: 280px !important;
-}
-
-  /* Audit section form */
-  .audit-content {
-    grid-template-columns: 1fr !important;
-    gap: 2rem !important;
-  }
-
-  /* First month banner */
-  .first-month-banner {
-    flex-direction: column !important;
-  }
-
-  /* Metrics */
-  .metrics-inner {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 1rem !important;
-  }
-
-  /* Hero trust badges wrap */
-  .hero-trust {
-    gap: 0.6rem !important;
-  }
-
-
-  /* Audit form two-column grids collapse */
-  .audit-card div[style*="grid-template-columns:1fr 1fr"] {
-    grid-template-columns: 1fr !important;
-  }
-
-
-@media (max-width: 480px) {
-  /* Who we serve single column on small phones */
-  .section .wrap > .fade-up > div:last-child {
-    grid-template-columns: 1fr !important;
-  }
-
-  /* Case study stats */
-  div[style*="grid-template-columns:1fr 1fr 1fr"] {
-    grid-template-columns: 1fr 1fr !important;
-  }
-}
 
 </style>
 </head>
@@ -1363,7 +1294,7 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
 <!-- WHO WE SERVE -->
 <section class="section" aria-label="Which Perth businesses we support">
   <div class="wrap">
-    <div style="display:grid;grid-template-columns:320px 1fr;gap:4rem;align-items:start;">
+      <div class="who-outer" style="display:grid;grid-template-columns:320px 1fr;gap:4rem;align-items:start;">
 
       <!-- LEFT: INFO -->
       <div class="fade-up" style="position:sticky;top:84px;">
@@ -1380,7 +1311,7 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
 
       <!-- RIGHT: 3x3 GRID -->
       <div class="fade-up">
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
+        <div class="who-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
 
           <div style="background:var(--bg2);border:1.5px solid var(--border);border-radius:14px;padding:1.25rem 1.1rem;transition:border-color 0.2s,transform 0.2s;cursor:default;"
                onmouseover="this.style.borderColor='var(--blue)';this.style.transform='translateY(-3px)'"
