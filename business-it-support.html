@@ -564,6 +564,11 @@ nav {
 
 /* ─── WHO WE SERVE ───────────────────────────────────────────── */
 .who-outer { display: grid; grid-template-columns: 320px 1fr; gap: 4rem; align-items: start; }
+.who-card {
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+}
 
 /* ─── WHY FIXMYPC ────────────────────────────────────────────── */
 .why-section { padding: 5.5rem 2rem; background: var(--bg2); }
@@ -1767,11 +1772,12 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
       /* 9 items in a row = all visible as 2-up pages */
       grid.style.gridTemplateColumns = 'repeat(9, ' + cardW + 'px)';
       grid.style.gridTemplateRows = 'auto auto';
-    } else {
+      } else {
   /* Desktop: single row, horizontal scroll like other sections */
-  grid.style.gridTemplateColumns = 'repeat(9, 280px)';
+  grid.style.gridTemplateColumns = 'repeat(9, 260px)';
   grid.style.gridTemplateRows = 'auto';
   grid.style.width = 'max-content';
+  grid.style.gridTemplateRows = 'auto';
 }
   }
   setWhoGridCols();
