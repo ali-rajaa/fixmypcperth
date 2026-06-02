@@ -1259,113 +1259,127 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
   </div>
 </section>
 
-<!-- WHO WE SERVE — full-bleed horizontal scroll on mobile -->
-<section class="section who-section" aria-label="Which Perth businesses we support" style="padding:5.5rem 0;">
 
-  <!-- Header: padded -->
-  <div class="who-section-header" style="padding:0 2rem 1.75rem;">
+<!-- WHO WE SERVE -->
+<section class="why-section" aria-label="Which Perth businesses we support">
+  <div class="wrap">
     <div class="fade-up">
       <span class="s-eyebrow">Who We Work With</span>
-      <h2 class="s-title">Built for businesses that <span class="accent">focus on growth</span></h2>
+      <h2 class="s-title">Built for businesses that<br><span class="accent">focus on growth</span></h2>
       <p class="s-sub">We support cafes, real estate offices, dental clinics and retail stores across Canning Vale, Fremantle, Cockburn and Cannington. If your business relies on computers, we are built for you.</p>
     </div>
-  </div>
 
-  <!-- Scroll hint -->
-  <div style="display:flex;align-items:center;justify-content:flex-end;gap:6px;margin-bottom:0.75rem;padding:0 2rem;">
-    <span style="font-size:11.5px;font-weight:600;color:var(--muted);">Scroll to see more</span>
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
-  </div>
-
-  <!-- Horizontal scroll track — 2 columns wide per "page" on mobile, flowing in rows -->
-  <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:var(--border2) transparent;padding-bottom:1rem;">
-    <div id="who-grid" style="display:grid;grid-template-columns:repeat(9,calc((100vw - 2.5rem) / 2));grid-template-rows:auto auto;gap:10px;padding:4px 2rem 8px;width:max-content;">
-
-      <div class="who-card" style="background:var(--bg2);border:1.5px solid var(--border);border-radius:14px;padding:1.25rem 1.1rem;transition:border-color 0.2s,transform 0.2s;cursor:default;"
-           onmouseover="this.style.borderColor='var(--blue)';this.style.transform='translateY(-3px)'"
-           onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
-        <span style="font-size:1.5rem;display:block;margin-bottom:0.6rem;">☕</span>
-        <div style="font-family:var(--display);font-size:13.5px;font-weight:700;color:var(--ink);margin-bottom:4px;line-height:1.3;">Cafes and Restaurants</div>
-        <div style="font-size:12px;color:var(--muted);line-height:1.55;">POS, EFTPOS and wifi kept running during service</div>
-      </div>
-
-      <div class="who-card" style="background:var(--bg);border:1.5px solid var(--border);border-radius:14px;padding:1.25rem 1.1rem;transition:border-color 0.2s,transform 0.2s;cursor:default;"
-           onmouseover="this.style.borderColor='var(--blue)';this.style.transform='translateY(-3px)'"
-           onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
-        <span style="font-size:1.5rem;display:block;margin-bottom:0.6rem;">✂️</span>
-        <div style="font-family:var(--display);font-size:13.5px;font-weight:700;color:var(--ink);margin-bottom:4px;line-height:1.3;">Hair and Beauty Salons</div>
-        <div style="font-size:12px;color:var(--muted);line-height:1.55;">Booking software and payment terminals, always online</div>
-      </div>
-
-      <div class="who-card" style="background:var(--bg2);border:1.5px solid var(--border);border-radius:14px;padding:1.25rem 1.1rem;transition:border-color 0.2s,transform 0.2s;cursor:default;"
-           onmouseover="this.style.borderColor='var(--blue)';this.style.transform='translateY(-3px)'"
-           onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
-        <span style="font-size:1.5rem;display:block;margin-bottom:0.6rem;">🏠</span>
-        <div style="font-family:var(--display);font-size:13.5px;font-weight:700;color:var(--ink);margin-bottom:4px;line-height:1.3;">Real Estate Offices</div>
-        <div style="font-size:12px;color:var(--muted);line-height:1.55;">Document management, printing and email support</div>
-      </div>
-
-      <div class="who-card" style="background:var(--bg);border:1.5px solid var(--border);border-radius:14px;padding:1.25rem 1.1rem;transition:border-color 0.2s,transform 0.2s;cursor:default;"
-           onmouseover="this.style.borderColor='var(--blue)';this.style.transform='translateY(-3px)'"
-           onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
-        <span style="font-size:1.5rem;display:block;margin-bottom:0.6rem;">🦷</span>
-        <div style="font-family:var(--display);font-size:13.5px;font-weight:700;color:var(--ink);margin-bottom:4px;line-height:1.3;">Dental Clinics</div>
-        <div style="font-size:12px;color:var(--muted);line-height:1.55;">Patient records, imaging software and practice management</div>
-      </div>
-
-      <div class="who-card" style="background:var(--bg2);border:1.5px solid var(--border);border-radius:14px;padding:1.25rem 1.1rem;transition:border-color 0.2s,transform 0.2s;cursor:default;"
-           onmouseover="this.style.borderColor='var(--blue)';this.style.transform='translateY(-3px)'"
-           onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
-        <span style="font-size:1.5rem;display:block;margin-bottom:0.6rem;">🏥</span>
-        <div style="font-family:var(--display);font-size:13.5px;font-weight:700;color:var(--ink);margin-bottom:4px;line-height:1.3;">Medical Practices</div>
-        <div style="font-size:12px;color:var(--muted);line-height:1.55;">Clinical software, secure data and compliance support</div>
-      </div>
-
-      <div class="who-card" style="background:var(--bg);border:1.5px solid var(--border);border-radius:14px;padding:1.25rem 1.1rem;transition:border-color 0.2s,transform 0.2s;cursor:default;"
-           onmouseover="this.style.borderColor='var(--blue)';this.style.transform='translateY(-3px)'"
-           onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
-        <span style="font-size:1.5rem;display:block;margin-bottom:0.6rem;">🛒</span>
-        <div style="font-family:var(--display);font-size:13.5px;font-weight:700;color:var(--ink);margin-bottom:4px;line-height:1.3;">Retail Shops</div>
-        <div style="font-size:12px;color:var(--muted);line-height:1.55;">Inventory systems, EFTPOS and multi-PC environments</div>
-      </div>
-
-      <div class="who-card" style="background:var(--bg2);border:1.5px solid var(--border);border-radius:14px;padding:1.25rem 1.1rem;transition:border-color 0.2s,transform 0.2s;cursor:default;"
-           onmouseover="this.style.borderColor='var(--blue)';this.style.transform='translateY(-3px)'"
-           onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
-        <span style="font-size:1.5rem;display:block;margin-bottom:0.6rem;">🏗️</span>
-        <div style="font-family:var(--display);font-size:13.5px;font-weight:700;color:var(--ink);margin-bottom:4px;line-height:1.3;">Tradies and Contractors</div>
-        <div style="font-size:12px;color:var(--muted);line-height:1.55;">Quoting software, job management and cloud access</div>
-      </div>
-
-      <div class="who-card" style="background:var(--bg);border:1.5px solid var(--border);border-radius:14px;padding:1.25rem 1.1rem;transition:border-color 0.2s,transform 0.2s;cursor:default;"
-           onmouseover="this.style.borderColor='var(--blue)';this.style.transform='translateY(-3px)'"
-           onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
-        <span style="font-size:1.5rem;display:block;margin-bottom:0.6rem;">⚖️</span>
-        <div style="font-family:var(--display);font-size:13.5px;font-weight:700;color:var(--ink);margin-bottom:4px;line-height:1.3;">Law and Accounting Firms</div>
-        <div style="font-size:12px;color:var(--muted);line-height:1.55;">Document security, compliance and reliable infrastructure</div>
-      </div>
-
-      <div class="who-card" style="background:var(--bg2);border:1.5px solid var(--border);border-radius:14px;padding:1.25rem 1.1rem;transition:border-color 0.2s,transform 0.2s;cursor:default;"
-           onmouseover="this.style.borderColor='var(--blue)';this.style.transform='translateY(-3px)'"
-           onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
-        <span style="font-size:1.5rem;display:block;margin-bottom:0.6rem;">🏋️</span>
-        <div style="font-family:var(--display);font-size:13.5px;font-weight:700;color:var(--ink);margin-bottom:4px;line-height:1.3;">Gyms and Studios</div>
-        <div style="font-size:12px;color:var(--muted);line-height:1.55;">Membership software, access control and kiosk systems</div>
-      </div>
-
+    <div style="display:flex;align-items:center;justify-content:flex-end;gap:6px;margin-top:1.75rem;margin-bottom:0.75rem;">
+      <span style="font-size:11.5px;font-weight:600;color:var(--muted);">Scroll to see more</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
     </div>
-  </div>
 
-  <!-- CTA: padded -->
-  <div class="who-section-cta fade-up" style="padding:1.5rem 2rem 0;">
-    <a href="#audit-form"
-       onclick="event.preventDefault();document.querySelector('.audit-section').scrollIntoView({behavior:'smooth',block:'start'});"
-       class="btn-primary"
-       style="display:inline-flex;">
-      Talk to us about your business
-    </a>
-  </div>
+    <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:var(--border2) transparent;padding-bottom:1rem;">
+      <div id="who-grid" style="display:grid;grid-template-columns:repeat(9,calc((100vw - 2.5rem) / 2));grid-template-rows:auto auto;gap:14px;padding:4px 0 8px;width:max-content;">
 
+        <!-- Card 1 -->
+        <div style="background:var(--bg);border:1.5px solid var(--border);border-radius:18px;padding:1.5rem 1.4rem;transition:border-color 0.2s,transform 0.2s,box-shadow 0.2s;cursor:default;position:relative;overflow:hidden;"
+             onmouseover="this.style.borderColor='var(--blue)';this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(21,96,255,0.1)'"
+             onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)';this.style.boxShadow='none'">
+          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),#00CFFF);"></div>
+          <div style="width:48px;height:48px;background:var(--blue-lt);border:1.5px solid var(--blue-mid);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin-bottom:1rem;">☕</div>
+          <div style="font-family:var(--display);font-size:15px;font-weight:700;color:var(--ink);margin-bottom:6px;line-height:1.3;">Cafes and Restaurants</div>
+          <div style="font-size:12.5px;color:var(--muted);line-height:1.6;">POS, EFTPOS and wifi kept running during service</div>
+        </div>
+
+        <!-- Card 2 -->
+        <div style="background:var(--bg);border:1.5px solid var(--border);border-radius:18px;padding:1.5rem 1.4rem;transition:border-color 0.2s,transform 0.2s,box-shadow 0.2s;cursor:default;position:relative;overflow:hidden;"
+             onmouseover="this.style.borderColor='#A855F7';this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(168,85,247,0.1)'"
+             onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)';this.style.boxShadow='none'">
+          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#A855F7,#EC4899);"></div>
+          <div style="width:48px;height:48px;background:rgba(168,85,247,0.08);border:1.5px solid rgba(168,85,247,0.2);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin-bottom:1rem;">✂️</div>
+          <div style="font-family:var(--display);font-size:15px;font-weight:700;color:var(--ink);margin-bottom:6px;line-height:1.3;">Hair and Beauty Salons</div>
+          <div style="font-size:12.5px;color:var(--muted);line-height:1.6;">Booking software and payment terminals, always online</div>
+        </div>
+
+        <!-- Card 3 -->
+        <div style="background:var(--bg);border:1.5px solid var(--border);border-radius:18px;padding:1.5rem 1.4rem;transition:border-color 0.2s,transform 0.2s,box-shadow 0.2s;cursor:default;position:relative;overflow:hidden;"
+             onmouseover="this.style.borderColor='#F59E0B';this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(245,158,11,0.1)'"
+             onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)';this.style.boxShadow='none'">
+          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#F59E0B,#FF6B6B);"></div>
+          <div style="width:48px;height:48px;background:rgba(245,158,11,0.08);border:1.5px solid rgba(245,158,11,0.2);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin-bottom:1rem;">🏠</div>
+          <div style="font-family:var(--display);font-size:15px;font-weight:700;color:var(--ink);margin-bottom:6px;line-height:1.3;">Real Estate Offices</div>
+          <div style="font-size:12.5px;color:var(--muted);line-height:1.6;">Document management, printing and email support</div>
+        </div>
+
+        <!-- Card 4 -->
+        <div style="background:var(--bg);border:1.5px solid var(--border);border-radius:18px;padding:1.5rem 1.4rem;transition:border-color 0.2s,transform 0.2s,box-shadow 0.2s;cursor:default;position:relative;overflow:hidden;"
+             onmouseover="this.style.borderColor='#22C55E';this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(34,197,94,0.1)'"
+             onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)';this.style.boxShadow='none'">
+          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#22C55E,#00CFFF);"></div>
+          <div style="width:48px;height:48px;background:rgba(34,197,94,0.08);border:1.5px solid rgba(34,197,94,0.2);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin-bottom:1rem;">🦷</div>
+          <div style="font-family:var(--display);font-size:15px;font-weight:700;color:var(--ink);margin-bottom:6px;line-height:1.3;">Dental Clinics</div>
+          <div style="font-size:12.5px;color:var(--muted);line-height:1.6;">Patient records, imaging software and practice management</div>
+        </div>
+
+        <!-- Card 5 -->
+        <div style="background:var(--bg);border:1.5px solid var(--border);border-radius:18px;padding:1.5rem 1.4rem;transition:border-color 0.2s,transform 0.2s,box-shadow 0.2s;cursor:default;position:relative;overflow:hidden;"
+             onmouseover="this.style.borderColor='#EF4444';this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(239,68,68,0.1)'"
+             onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)';this.style.boxShadow='none'">
+          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#EF4444,#F59E0B);"></div>
+          <div style="width:48px;height:48px;background:rgba(239,68,68,0.08);border:1.5px solid rgba(239,68,68,0.2);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin-bottom:1rem;">🏥</div>
+          <div style="font-family:var(--display);font-size:15px;font-weight:700;color:var(--ink);margin-bottom:6px;line-height:1.3;">Medical Practices</div>
+          <div style="font-size:12.5px;color:var(--muted);line-height:1.6;">Clinical software, secure data and compliance support</div>
+        </div>
+
+        <!-- Card 6 -->
+        <div style="background:var(--bg);border:1.5px solid var(--border);border-radius:18px;padding:1.5rem 1.4rem;transition:border-color 0.2s,transform 0.2s,box-shadow 0.2s;cursor:default;position:relative;overflow:hidden;"
+             onmouseover="this.style.borderColor='#00CFFF';this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(0,207,255,0.1)'"
+             onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)';this.style.boxShadow='none'">
+          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#00CFFF,#A855F7);"></div>
+          <div style="width:48px;height:48px;background:rgba(0,207,255,0.08);border:1.5px solid rgba(0,207,255,0.2);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin-bottom:1rem;">🛒</div>
+          <div style="font-family:var(--display);font-size:15px;font-weight:700;color:var(--ink);margin-bottom:6px;line-height:1.3;">Retail Shops</div>
+          <div style="font-size:12.5px;color:var(--muted);line-height:1.6;">Inventory systems, EFTPOS and multi-PC environments</div>
+        </div>
+
+        <!-- Card 7 -->
+        <div style="background:var(--bg);border:1.5px solid var(--border);border-radius:18px;padding:1.5rem 1.4rem;transition:border-color 0.2s,transform 0.2s,box-shadow 0.2s;cursor:default;position:relative;overflow:hidden;"
+             onmouseover="this.style.borderColor='#F59E0B';this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(245,158,11,0.1)'"
+             onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)';this.style.boxShadow='none'">
+          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#F59E0B,#22C55E);"></div>
+          <div style="width:48px;height:48px;background:rgba(245,158,11,0.08);border:1.5px solid rgba(245,158,11,0.2);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin-bottom:1rem;">🏗️</div>
+          <div style="font-family:var(--display);font-size:15px;font-weight:700;color:var(--ink);margin-bottom:6px;line-height:1.3;">Tradies and Contractors</div>
+          <div style="font-size:12.5px;color:var(--muted);line-height:1.6;">Quoting software, job management and cloud access</div>
+        </div>
+
+        <!-- Card 8 -->
+        <div style="background:var(--bg);border:1.5px solid var(--border);border-radius:18px;padding:1.5rem 1.4rem;transition:border-color 0.2s,transform 0.2s,box-shadow 0.2s;cursor:default;position:relative;overflow:hidden;"
+             onmouseover="this.style.borderColor='#A855F7';this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(168,85,247,0.1)'"
+             onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)';this.style.boxShadow='none'">
+          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#A855F7,var(--blue));"></div>
+          <div style="width:48px;height:48px;background:rgba(168,85,247,0.08);border:1.5px solid rgba(168,85,247,0.2);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin-bottom:1rem;">⚖️</div>
+          <div style="font-family:var(--display);font-size:15px;font-weight:700;color:var(--ink);margin-bottom:6px;line-height:1.3;">Law and Accounting Firms</div>
+          <div style="font-size:12.5px;color:var(--muted);line-height:1.6;">Document security, compliance and reliable infrastructure</div>
+        </div>
+
+        <!-- Card 9 -->
+        <div style="background:var(--bg);border:1.5px solid var(--border);border-radius:18px;padding:1.5rem 1.4rem;transition:border-color 0.2s,transform 0.2s,box-shadow 0.2s;cursor:default;position:relative;overflow:hidden;"
+             onmouseover="this.style.borderColor='#22C55E';this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(34,197,94,0.1)'"
+             onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)';this.style.boxShadow='none'">
+          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#22C55E,#00CFFF);"></div>
+          <div style="width:48px;height:48px;background:rgba(34,197,94,0.08);border:1.5px solid rgba(34,197,94,0.2);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin-bottom:1rem;">🏋️</div>
+          <div style="font-family:var(--display);font-size:15px;font-weight:700;color:var(--ink);margin-bottom:6px;line-height:1.3;">Gyms and Studios</div>
+          <div style="font-size:12.5px;color:var(--muted);line-height:1.6;">Membership software, access control and kiosk systems</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="fade-up" style="margin-top:1.5rem;">
+      <a href="#audit-form"
+         onclick="event.preventDefault();document.querySelector('.audit-section').scrollIntoView({behavior:'smooth',block:'start'});"
+         class="btn-primary"
+         style="display:inline-flex;">
+        Talk to us about your business
+      </a>
+    </div>
+
+  </div>
 </section>
 
 <!-- FREE AUDIT DARK -->
@@ -1393,18 +1407,6 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
             <svg viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2.5" stroke-linecap="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
           </div>
           <span class="audit-check-text">Does your business have a verified, tested backup of critical data?</span>
-        </div>
-        <div class="audit-check-item">
-          <div class="audit-icon-box warn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2.5" stroke-linecap="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-          </div>
-          <span class="audit-check-text">Is your router secured with a strong, unique password?</span>
-        </div>
-        <div class="audit-check-item">
-          <div class="audit-icon-box warn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2.5" stroke-linecap="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-          </div>
-          <span class="audit-check-text">How old are your PCs and when will they require replacement?</span>
         </div>
         <div class="audit-check-item">
           <div class="audit-icon-box good">
@@ -1774,7 +1776,7 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
       grid.style.gridTemplateRows = 'auto auto';
       } else {
   /* Desktop: single row, horizontal scroll like other sections */
-  grid.style.gridTemplateColumns = 'repeat(9, 320px)';
+  grid.style.gridTemplateColumns = 'repeat(9, 340px)';
   grid.style.gridTemplateRows = 'auto';
   grid.style.width = 'max-content';
   grid.style.gridTemplateRows = 'auto';
