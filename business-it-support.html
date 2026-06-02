@@ -666,6 +666,17 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
     -webkit-overflow-scrolling: touch;
     padding-bottom: 0.5rem;
   }
+  .who-outer {
+  grid-template-columns: 1fr !important;
+  }
+  .who-outer > div:first-child {
+  position: static !important;
+  }
+  .who-grid {
+  grid-template-columns: repeat(2, 1fr) !important;
+  overflow-x: unset !important;
+  width: 100% !important;
+}
   .audit-content { grid-template-columns: 1fr; gap: 2rem; }
   .cta-final-inner { grid-template-columns: 1fr; gap: 2rem; }
   .cta-actions { flex-direction: column; }
@@ -678,7 +689,6 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
 @media (max-width: 480px) {
   .metrics-inner { grid-template-columns: 1fr 1fr; gap: 1.25rem; }
   .hero-trust { gap: 0.9rem; }
-  .who-grid { grid-template-columns: repeat(5, minmax(140px, 1fr)); }
 }
 </style>
 </head>
