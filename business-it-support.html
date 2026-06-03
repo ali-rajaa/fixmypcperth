@@ -685,6 +685,25 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
   .audit-inner a { text-align: center; width: 100%; justify-content: center; }
   .audit-checklist { display: none; }
 
+  .plan-tabs {
+  display: none;
+  gap: 0;
+  background: var(--bg3);
+  border: 1.5px solid var(--border);
+  border-radius: 50px;
+  padding: 4px;
+  margin: 0 auto 1.5rem;
+  max-width: 320px;
+}
+.plan-tab {
+  flex: 1; padding: 8px 12px; border-radius: 50px;
+  border: none; background: transparent;
+  font-family: var(--body); font-size: 13px; font-weight: 600;
+  color: var(--muted); cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.plan-tab.active { background: var(--blue); color: #fff; }
+
   /* ── Metrics ── */
   .metrics-strip { padding: 2.5rem 1.25rem; }
   .metrics-inner { grid-template-columns: 1fr 1fr; gap: 1.25rem; }
@@ -795,6 +814,25 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
     align-items: flex-start !important;
   }
 }
+.plan-tabs {
+  display: none;
+  gap: 0;
+  background: var(--bg3);
+  border: 1.5px solid var(--border);
+  border-radius: 50px;
+  padding: 4px;
+  margin: 0 auto 1.5rem;
+  max-width: 320px;
+}
+.plan-tab {
+  flex: 1; padding: 8px 12px; border-radius: 50px;
+  border: none; background: transparent;
+  font-family: var(--body); font-size: 13px; font-weight: 600;
+  color: var(--muted); cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.plan-tab.active { background: var(--blue); color: #fff; }
+
 </style>
 </head>
 <body>
@@ -928,6 +966,12 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
       <p>Limited to new business clients only. Try any plan for your first month at $99, then move to standard pricing. No lock-in, no risk.</p>
     </div>
   </div>
+
+  <div class="plan-tabs" id="plan-tabs">
+  <button class="plan-tab active" onclick="scrollToPlan(0,this)">Starter</button>
+  <button class="plan-tab" onclick="scrollToPlan(1,this)">Business</button>
+  <button class="plan-tab" onclick="scrollToPlan(2,this)">Premium</button>
+</div>
 
   <div class="plans-grid">
 
@@ -1749,6 +1793,33 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
       document.querySelector('.audit-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   });
+
+  function scrollToPlan(index, tab) {
+  const grid = document.querySelector('.plans-grid');
+  const cards = grid.querySelectorAll('.plan-card');
+  cards[index].scrollIntoView({ behavior:'smooth', block:'nearest', inline:'center' });
+  document.querySelectorAll('.plan-tab').forEach(t => t.classList.remove('active'));
+  tab.classList.add('active');
+}
+
+// Update tab when user manually scrolls
+const plansGrid = document.querySelector('.plans-grid');
+if (plansGrid) {
+  plansGrid.addEventListener('scroll', () => {
+    const cards = plansGrid.querySelectorAll('.plan-card');
+    const gridCenter = plansGrid.scrollLeft + plansGrid.offsetWidth / 2;
+    let closest = 0;
+    let closestDist = Infinity;
+    cards.forEach((card, i) => {
+      const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+      const dist = Math.abs(gridCenter - cardCenter);
+      if (dist < closestDist) { closestDist = dist; closest = i; }
+    });
+    document.querySelectorAll('.plan-tab').forEach((t, i) => {
+      t.classList.toggle('active', i === closest);
+    });
+  });
+}
 
   /* ── MOBILE HAMBURGER ── */
   document.getElementById('mob-hamburger').addEventListener('click', function() {
