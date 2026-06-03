@@ -700,6 +700,12 @@ a {
   flex-wrap: wrap;
 }
 
+.hero-action-icons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
 .hero-icon-btn {
   width: 50px;
   height: 50px;
@@ -1668,13 +1674,11 @@ footer {
    RESPONSIVE — MOBILE (≤ 720px)
    ============================================================ */
 @media (max-width: 720px) {
-  /* Switch nav */
   .desk-nav { display: none; }
   .mob-nav { display: flex; }
 
   body { padding-top: var(--mob-nav-h); }
 
-  /* Hero */
   .hero {
     padding: 2rem 1.25rem 3rem;
   }
@@ -1700,18 +1704,26 @@ footer {
 
   .hero-action-icons {
     display: flex;
-    gap: 10px;
+    gap: 0;
+    width: 100%;
   }
 
   .hero-action-icons .hero-icon-btn {
     flex: 1;
-    border-radius: 50px;
-    width: auto;
     height: 50px;
-    padding: 0 1rem;
+    width: auto;
+    border-radius: 0;
+    padding: 0;
   }
 
-  /* Sections */
+  .hero-action-icons .hero-icon-btn.wa {
+    border-radius: 50px 0 0 50px;
+  }
+
+  .hero-action-icons .hero-icon-btn.fb {
+    border-radius: 0 50px 50px 0;
+  }
+
   .section,
   .section-alt,
   .cta-section {
@@ -1720,11 +1732,9 @@ footer {
 
   footer { padding: 1.5rem 1.25rem; }
 
-  /* Typography */
   .s-title { font-size: clamp(1.55rem, 6vw, 2rem); letter-spacing: -0.8px; }
   .s-sub { font-size: 14.5px; max-width: 100%; }
 
-  /* Services */
   .services-grid { grid-template-columns: 1fr; gap: 12px; }
   .svc-card { padding: 1.4rem; }
   .svc-name { font-size: 15px; }
@@ -1742,14 +1752,12 @@ footer {
     justify-content: center;
   }
 
-  /* How it works */
   .how-grid { grid-template-columns: 1fr; gap: 10px; }
   .how-card { padding: 1.4rem 1.25rem; }
   .how-num { font-size: 2.4rem; }
   .how-title { font-size: 14.5px; }
   .how-desc { font-size: 13px; }
 
-  /* Package */
   .pkg-card {
     padding: 1.75rem 1.25rem;
     grid-template-columns: 1fr;
@@ -1765,25 +1773,21 @@ footer {
   .pkg-was { font-size: 12px; }
   .pkg-lbl { font-size: 11px; }
 
-  /* Business IT */
   .its-grid { grid-template-columns: 1fr; gap: 12px; }
   .its-card { padding: 1.4rem; }
   .its-title { font-size: 15px; }
   .its-desc { font-size: 13px; }
   .its-price { font-size: 1.15rem; }
 
-  /* Why */
   .why-grid { grid-template-columns: 1fr; gap: 10px; }
   .why-card { padding: 1.4rem 1.25rem; }
   .why-title { font-size: 14.5px; }
   .why-desc { font-size: 13px; }
 
-  /* Areas */
   .areas-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
   .area-pill { padding: 0.75rem 0.85rem; }
   .area-name { font-size: 12.5px; }
 
-  /* CTA */
   .cta-inner { grid-template-columns: 1fr; }
   .cta-title { font-size: clamp(1.5rem, 6vw, 2rem); letter-spacing: -0.8px; }
   .cta-desc { font-size: 14px; }
@@ -1809,7 +1813,6 @@ footer {
     width: auto;
   }
 
-  /* Footer */
   .footer-inner {
     flex-direction: column;
     align-items: flex-start;
@@ -1819,10 +1822,8 @@ footer {
   .footer-copy { font-size: 11px; }
   .footer-links { gap: 0.75rem; }
 
-  /* Trust ticker */
   .trust-item { font-size: 12px; padding: 0 1.75rem; }
 
-  /* Mobile WA bubble — move up a touch on small screens */
   .wa-bubble { bottom: 20px; right: 16px; width: 52px; height: 52px; }
 }
 
@@ -1858,7 +1859,6 @@ footer {
   .areas-grid { grid-template-columns: 1fr 1fr; gap: 6px; }
   .area-pill { padding: 0.65rem 0.75rem; }
   .area-name { font-size: 12px; }
-  .hero-actions .hero-action-icons { flex-direction: row; }
 }
 </style>
 </head>
@@ -1962,36 +1962,27 @@ footer {
         Drop off your PC or laptop and we'll have it sorted, usually next day.
       </p>
 
-      <!-- Desktop / tablet buttons -->
-      <div class="hero-actions" id="hero-actions-desktop">
-        <a href="quote-request.html" class="btn-blue" aria-label="Get a free computer repair quote in Perth">
-          Get a free quote &nbsp;→
-        </a>
-        <a
-          href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair."
-          target="_blank"
-          rel="noopener noreferrer"
-          class="hero-icon-btn wa"
-          aria-label="WhatsApp FixMyPC Perth"
-        >
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="white" aria-hidden="true">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/>
-          </svg>
-        </a>
-        <a
-          href="https://www.facebook.com/profile.php?id=61588810785733"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="hero-icon-btn fb"
-          aria-label="Facebook FixMyPC Perth"
-        >
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="white" aria-hidden="true">
-            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-          </svg>
-        </a>
-      </div>
-    </div>
+     
+<!-- HERO ACTIONS -->
+<div class="hero-actions" id="hero-actions-desktop">
+  <a href="quote-request.html" class="btn-blue" aria-label="Get a free computer repair quote in Perth">
+    Get a free quote &nbsp;→
+  </a>
+  <div class="hero-action-icons">
+    <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener noreferrer" class="hero-icon-btn wa" aria-label="WhatsApp FixMyPC Perth">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+        <path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/>
+      </svg>
+    </a>
+    <a href="https://www.facebook.com/profile.php?id=61588810785733" target="_blank" rel="noopener noreferrer" class="hero-icon-btn fb" aria-label="Facebook FixMyPC Perth">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+      </svg>
+    </a>
+  </div>
+</div>
+</div>
 
     <!-- Right: info card (desktop only) -->
     <div class="hero-card" role="complementary" aria-label="FixMyPC Perth service summary">
