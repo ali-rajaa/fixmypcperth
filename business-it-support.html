@@ -273,6 +273,11 @@
   --radius:  14px;
 }
 
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--bg2); }
+::-webkit-scrollbar-thumb { background: linear-gradient(180deg, var(--blue) 0%, var(--blue-dk) 100%); border-radius: 10px; border: 2px solid var(--bg2); }
+::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, var(--blue-dk) 0%, var(--blue) 100%); }
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
 body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
@@ -1822,6 +1827,17 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
   });
 
   /* ── SCROLL ANIMATIONS ── */
+  /* ── SCROLL PROGRESS BAR ── */
+const progressBar = document.createElement('div');
+progressBar.style.cssText = 'position:fixed;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#1560FF,#00CFFF,#22C55E);transform:scaleX(0);transform-origin:left;z-index:9999;';
+document.body.appendChild(progressBar);
+
+window.addEventListener('scroll', () => {
+  const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const scrolled = window.scrollY / scrollHeight;
+  progressBar.style.transform = `scaleX(${scrolled})`;
+});
+
   var observer = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry, i) {
       if (entry.isIntersecting) {
