@@ -587,7 +587,16 @@ const BLOG_POSTS = [
 </footer>
  
 <script>
+/* ── SCROLL PROGRESS BAR ── */
+const progressBar = document.createElement('div');
+progressBar.style.cssText = 'position:fixed;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#1560FF,#00CFFF,#22C55E);transform:scaleX(0);transform-origin:left;z-index:9999;';
+document.body.appendChild(progressBar);
 
+window.addEventListener('scroll', () => {
+  const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const scrolled = window.scrollY / scrollHeight;
+  progressBar.style.transform = `scaleX(${scrolled})`;
+});
  
   // ── MOBILE TOP NAV HAMBURGER
   const hamburger = document.getElementById('mob-top-hamburger');
