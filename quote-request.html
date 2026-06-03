@@ -6,7 +6,12 @@
 <title>Request a Quote | FixMyPC Perth</title>
 <link rel="icon" type="image/png" href="favicon.png">
 <meta name="description" content="Request a free quote from FixMyPC Perth. Fast response, transparent pricing, no obligation.">
+
+<!-- SEO & Performance Enhancements -->
+<meta name="keywords" content="PC repair Perth, laptop repair Perth, computer repair Perth, free quote, FixMyPC Perth">
+<link rel="canonical" href="https://www.fixmypcperth.com/quote-request.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
@@ -35,6 +40,7 @@
 html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
 body { background: var(--bg2); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.6; overflow-x: hidden; }
 
+/* NAV - EXACTLY AS ORIGINAL */
 nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; height: 64px; background: rgba(255,255,255,0.92); backdrop-filter: blur(20px) saturate(180%); border-bottom: 1px solid rgba(226,232,240,0.8); }
 .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
 .logo-mark { width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; }
@@ -127,7 +133,9 @@ textarea { resize: vertical; min-height: 96px; line-height: 1.65; }
 .btn-submit { width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px; background: var(--blue); color: #fff; font-family: var(--display); font-size: 16px; font-weight: 700; padding: 17px 28px; border-radius: 50px; border: none; cursor: pointer; letter-spacing: -0.3px; box-shadow: 0 4px 24px rgba(21,96,255,0.28); transition: background 0.15s, transform 0.15s, box-shadow 0.15s; }
 .btn-submit:hover { background: var(--blue-dk); transform: translateY(-2px); box-shadow: 0 6px 32px rgba(21,96,255,0.38); }
 .btn-submit:active { transform: none; }
+.btn-submit:disabled { opacity: 0.7; cursor: not-allowed; }
 
+/* Success State Styles */
 .success-wrap { display: none; max-width: 560px; margin: 0 auto; padding: 3rem 2rem 5rem; text-align: center; }
 .success-wrap.show { display: block; }
 .success-badge { width: 68px; height: 68px; border-radius: 50%; background: linear-gradient(135deg, var(--blue) 0%, #00CFFF 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.75rem; box-shadow: 0 8px 32px rgba(21,96,255,0.28); animation: popIn 0.45s cubic-bezier(.22,.68,0,1.4) both; }
@@ -143,6 +151,10 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
 .footer-links { display: flex; gap: 1.25rem; }
 .footer-links a { font-size: 12px; color: var(--muted2); text-decoration: none; transition: color 0.15s; }
 .footer-links a:hover { color: var(--blue); }
+
+/* Auto-save Indicator */
+.autosave-msg { font-size: 11px; color: var(--wa); text-align: center; margin-bottom: 8px; font-weight: 600; display: none; }
+.autosave-msg.show { display: block; }
 
 @media (max-width: 720px) {
   nav { display: none; }
@@ -175,7 +187,7 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
     <span></span><span></span><span></span>
   </button>
 </div>
-  <div class="mob-drop-menu" id="mob-drop-menu">
+<div class="mob-drop-menu" id="mob-drop-menu">
   <a href="pricing.html" class="mob-link">Pricing</a>
   <a href="business-it-support.html" class="mob-link">Business IT Support</a>
   <a href="quiz.html" class="mob-link">Free PC Diagnostic</a>
@@ -191,119 +203,123 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
     <p class="page-sub">Fill in the form below and we will get back to you as fast as possible, usually within the hour.</p>
   </div>
 
-  <div class="trust-bar">
+  <div class="trust-bar" id="trustBar">
     <div class="trust-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> Same or next day turnaround</div>
     <div class="trust-sep"></div>
     <div class="trust-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> 30 day labour warranty</div>
     <div class="trust-sep"></div>
     <div class="trust-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> Upfront pricing, no surprises</div>
     <div class="trust-sep"></div>
-    <div class="trust-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> No fix, no fee on data recovery</div>
+    <div class="trust-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> Perth-based, local technicians</div>
   </div>
 
   <div class="form-outer" id="formOuter">
-    <form action="https://formsubmit.co/aly.imran.raja@gmail.com" method="POST" id="quoteForm" onsubmit="return handleFormSubmit(event)">
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_next" value="https://www.fixmypcperth.com/quote-request.html?success=true">
-    <div class="card">
+    <form id="quoteForm" novalidate>
+      <input type="hidden" name="access_key" value="b00c2b06-22d4-4924-af92-5143e83ab186">
+      <input type="hidden" name="subject" value="New Quote Request - FixMyPC Perth">
+      <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
 
-      <div class="card-block">
-        <div class="block-heading"><div class="block-num">1</div> What do you need help with?</div>
-        <div class="service-grid" id="serviceGrid">
-          <input type="hidden" name="Services" id="servicesInput" value="">
-          <div class="svc-card" data-val="Virus and Malware Removal" onclick="toggleSvc(this)"><div class="svc-label">Virus Removal</div></div>
-          <div class="svc-card" data-val="SSD Upgrade" onclick="toggleSvc(this)"><div class="svc-label">SSD Upgrade</div></div>
-          <div class="svc-card" data-val="Windows Reinstall" onclick="toggleSvc(this)"><div class="svc-label">Windows Reinstall</div></div>
-          <div class="svc-card" data-val="WiFi and Printer Setup" onclick="toggleSvc(this)"><div class="svc-label">WiFi and Printer</div></div>
-          <div class="svc-card" data-val="Gaming PC Build or Upgrade" onclick="toggleSvc(this)"><div class="svc-label">Gaming PC</div></div>
-          <div class="svc-card" data-val="Cable Management" onclick="toggleSvc(this)"><div class="svc-label">Cable Management</div></div>
-          <div class="svc-card" data-val="Remote Support" onclick="toggleSvc(this)"><div class="svc-label">Remote Support</div></div>
-          <div class="svc-card" data-val="Data Recovery" onclick="toggleSvc(this)"><div class="svc-label">Data Recovery</div></div>
-          <div class="svc-card" data-val="Other" onclick="toggleSvc(this)" id="otherCard"><div class="svc-label">Other</div></div>
-        </div>
-        <div class="svc-error" id="svcErr">Please select at least one service.</div>
-        <div class="other-reveal" id="otherReveal"><input type="text" name="Other Details" id="otherText" placeholder="Please describe what you need help with"></div>
-      </div>
+      <div class="card">
 
-      <div class="card-block">
-        <div class="block-heading"><div class="block-num">2</div> About your device</div>
-        <div class="field-row">
-          <div class="field-col">
-            <label for="deviceType">Device Type <span class="req">*</span></label>
-            <select id="deviceType" name="Device Type" required>
-              <option value="">Select device type</option>
-              <option>Desktop PC</option>
-              <option>Laptop</option>
-              <option>All in One</option>
-              <option>Mac</option>
-              <option>Other</option>
-            </select>
-            <div class="field-err" id="deviceErr">Please select a device type.</div>
+        <div class="card-block">
+          <div class="block-heading"><div class="block-num">1</div> What do you need help with?</div>
+          <div class="service-grid" id="serviceGrid">
+            <input type="hidden" name="Services" id="servicesInput" value="">
+            <div class="svc-card" data-val="Virus and Malware Removal" onclick="toggleSvc(this)"><div class="svc-label">Virus Removal</div></div>
+            <div class="svc-card" data-val="SSD Upgrade" onclick="toggleSvc(this)"><div class="svc-label">SSD Upgrade</div></div>
+            <div class="svc-card" data-val="Windows Reinstall" onclick="toggleSvc(this)"><div class="svc-label">Windows Reinstall</div></div>
+            <div class="svc-card" data-val="WiFi and Printer Setup" onclick="toggleSvc(this)"><div class="svc-label">WiFi and Printer</div></div>
+            <div class="svc-card" data-val="Gaming PC Build or Upgrade" onclick="toggleSvc(this)"><div class="svc-label">Gaming PC</div></div>
+            <div class="svc-card" data-val="Cable Management" onclick="toggleSvc(this)"><div class="svc-label">Cable Management</div></div>
+            <div class="svc-card" data-val="Remote Support" onclick="toggleSvc(this)"><div class="svc-label">Remote Support</div></div>
+            <div class="svc-card" data-val="Data Recovery" onclick="toggleSvc(this)"><div class="svc-label">Data Recovery</div></div>
+            <div class="svc-card" data-val="Other" onclick="toggleSvc(this)" id="otherCard"><div class="svc-label">Other</div></div>
           </div>
-          <div class="field-col">
-            <label>How urgent is this?</label>
-            <div class="pill-row" style="margin-top:2px">
-              <div class="sel-pill active" data-val="No rush" onclick="pickUrgency(this)">No Rush</div>
-              <div class="sel-pill" data-val="This week" onclick="pickUrgency(this)">This Week</div>
-              <div class="sel-pill" data-val="ASAP" onclick="pickUrgency(this)">ASAP</div>
+          <div class="svc-error" id="svcErr">Please select at least one service.</div>
+          <div class="other-reveal" id="otherReveal"><input type="text" id="otherText" name="Other Details" placeholder="Please describe what you need help with"></div>
+          <div class="field-err" id="otherErr">Please describe what you need help with.</div>
+        </div>
+
+        <div class="card-block">
+          <div class="block-heading"><div class="block-num">2</div> About your device</div>
+          <div class="field-row">
+            <div class="field-col">
+              <label for="deviceType">Device Type <span class="req">*</span></label>
+              <select id="deviceType" name="Device Type" required>
+                <option value="">Select device type</option>
+                <option>Desktop PC</option>
+                <option>Laptop</option>
+                <option>All in One</option>
+                <option>Mac</option>
+                <option>Other</option>
+              </select>
+              <div class="field-err" id="deviceErr">Please select a device type.</div>
             </div>
-            <input type="hidden" name="Urgency" id="urgencyInput" value="No rush">
+            <div class="field-col">
+              <label>How urgent is this?</label>
+              <div class="pill-row" style="margin-top:2px">
+                <div class="sel-pill active" data-val="No rush" onclick="pickUrgency(this)">No Rush</div>
+                <div class="sel-pill" data-val="This week" onclick="pickUrgency(this)">This Week</div>
+                <div class="sel-pill" data-val="ASAP" onclick="pickUrgency(this)">ASAP</div>
+              </div>
+              <input type="hidden" name="Urgency" id="urgencyInput" value="No rush">
+            </div>
+          </div>
+          <div class="field-single">
+            <label for="description">What is happening with your device? <span class="req">*</span></label>
+            <textarea id="description" name="Description" placeholder="For example: My PC takes a long time to start, keeps freezing and I think it may have a virus. Running Windows 11." required></textarea>
+            <div class="field-err" id="descErr">Please describe what is happening.</div>
           </div>
         </div>
-        <div class="field-single">
-          <label for="description">What is happening with your device? <span class="req">*</span></label>
-          <textarea id="description" name="Description" placeholder="For example: My PC takes a long time to start, keeps freezing and I think it may have a virus. Running Windows 11." required></textarea>
-          <div class="field-err" id="descErr">Please describe what is happening.</div>
-        </div>
-      </div>
 
-      <div class="card-block">
-        <div class="block-heading"><div class="block-num">3</div> Your contact details</div>
-        <div class="field-row">
-          <div class="field-col">
-            <label for="custName">Full Name <span class="req">*</span></label>
-            <input type="text" id="custName" name="Name" placeholder="John Smith" required>
-            <div class="field-err" id="nameErr">Please enter your name.</div>
+        <div class="card-block">
+          <div class="block-heading"><div class="block-num">3</div> Your contact details</div>
+          <div class="field-row">
+            <div class="field-col">
+              <label for="custName">Full Name <span class="req">*</span></label>
+              <input type="text" id="custName" name="Name" placeholder="John Smith" required>
+              <div class="field-err" id="nameErr">Please enter your name.</div>
+            </div>
+            <div class="field-col">
+              <label for="custPhone">Phone Number <span class="req">*</span></label>
+              <input type="tel" id="custPhone" name="Phone" placeholder="04XX XXX XXX" required>
+              <div class="field-err" id="phoneErr">Please enter a valid Australian phone number.</div>
+            </div>
           </div>
-          <div class="field-col">
-            <label for="custPhone">Phone Number <span class="req">*</span></label>
-            <input type="tel" id="custPhone" name="Phone" placeholder="04XX XXX XXX" required>
-            <div class="field-err" id="phoneErr">Please enter your phone number.</div>
+          <div class="field-row">
+            <div class="field-col">
+              <label for="custEmail">Email Address <span class="opt">(optional)</span></label>
+              <input type="email" id="custEmail" name="Email" placeholder="john@example.com">
+            </div>
+            <div class="field-col">
+              <label for="custSuburb">Your Suburb <span class="opt">(optional)</span></label>
+              <input type="text" id="custSuburb" name="Suburb" placeholder="e.g. Canning Vale">
+            </div>
+          </div>
+          <div>
+            <label style="margin-bottom: 8px; display:block;">Preferred contact method</label>
+            <div class="pill-row">
+              <div class="sel-pill active" data-val="WhatsApp" onclick="pickContact(this)">WhatsApp</div>
+              <div class="sel-pill" data-val="Email" onclick="pickContact(this)">Email</div>
+            </div>
+            <input type="hidden" name="Preferred Contact" id="contactInput" value="WhatsApp">
           </div>
         </div>
-        <div class="field-row">
-          <div class="field-col">
-            <label for="custEmail">Email Address <span class="opt">(optional)</span></label>
-            <input type="email" id="custEmail" name="Email" placeholder="john@example.com">
-          </div>
-          <div class="field-col">
-            <label for="custSuburb">Your Suburb <span class="opt">(optional)</span></label>
-            <input type="text" id="custSuburb" name="Suburb" placeholder="e.g. Canning Vale">
-          </div>
-        </div>
-        <div>
-          <label style="margin-bottom: 8px; display:block;">Preferred contact method</label>
-          <div class="pill-row">
-            <div class="sel-pill active" data-val="WhatsApp" onclick="pickContact(this)">WhatsApp</div>
-            <div class="sel-pill" data-val="Email" onclick="pickContact(this)">Email</div>
-          </div>
-          <input type="hidden" name="Preferred Contact" id="contactInput" value="WhatsApp">
-        </div>
-      </div>
 
-      <div class="submit-block">
-        <div class="privacy-note"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Your information is only used to respond to your quote request and is never shared.</div>
-        <button type="submit" class="btn-submit">Send Quote Request <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
-      </div>
+        <div class="submit-block">
+          <div class="autosave-msg" id="autosaveMsg">Progress auto-saved</div>
+          <div class="privacy-note"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Your information is only used to respond to your quote request and is never shared.</div>
+          <button type="submit" class="btn-submit" id="submitBtn">Send Quote Request <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+        </div>
 
-    </div>
+      </div>
     </form>
   </div>
 
   <div class="success-wrap" id="successWrap">
     <div class="success-badge"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
     <h2 class="success-title">Request received.</h2>
-    <p class="success-body">Our tech team will get back to you as fast as possible, typically within the hour. We will reach out via your preferred contact method.</p>
+    <p class="success-body">Our tech team will get back to you as fast as possible, typically <strong>within the hour</strong>. We will reach out via your preferred contact method.</p>
     <a href="index.html" class="back-home" style="text-align:center;display:block;font-size:13px;color:var(--muted2);text-decoration:none;margin-top:2rem">Back to homepage</a>
   </div>
 
@@ -323,91 +339,220 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
 <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" style="position:fixed;bottom:24px;right:24px;z-index:9999;width:58px;height:58px;background:#22C55E;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(34,197,94,0.45);transition:transform 0.2s;text-decoration:none" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg></a>
 
 <script>
-let selectedSvcs = [];
-let urgency = 'No rush';
-let contactPref = 'WhatsApp';
+(function() {
+  let selectedSvcs = [];
+  let urgency = 'No rush';
+  let contactPref = 'WhatsApp';
+  let saveTimer = null;
+  const LS_KEY = 'fmpp_quote_draft';
 
-// Check for success redirect
-window.addEventListener('DOMContentLoaded', () => {
-  const params = new URLSearchParams(window.location.search);
-  if (params.get('success') === 'true') {
-    document.getElementById('pageHero').style.display = 'none';
-    document.getElementById('formOuter').style.display = 'none';
-    document.querySelector('.trust-bar').style.display = 'none'; // Add this line
-    document.getElementById('successWrap').classList.add('show');
-    window.scrollTo({ top: 0, behavior: 'auto' });
+  // NAV SETUP
+  document.getElementById('nav').innerHTML = `
+    <a href="index.html" class="nav-logo">
+      <div class="logo-mark"><img src="logo.png" alt="FixMyPC Perth"></div>
+      <span class="logo-name">FixMyPC <em>Perth</em></span>
+    </a>
+    <div class="nav-right">
+      <a href="pricing.html" class="nav-pill pill-ghost">Pricing</a>
+      <a href="business-it-support.html" class="nav-pill pill-ghost">Business IT Support</a>
+      <a href="quiz.html" class="nav-pill pill-ghost">Free PC Diagnostic</a>
+      <a href="blog.html" class="nav-pill pill-ghost">Tech Tips</a>
+      <a href="reviews.html" class="nav-pill pill-ghost">Reviews &amp; FAQ</a>
+    </div>`;
+
+  // MOBILE MENU FIX
+  const ham = document.getElementById('mobHamburger');
+  const menu = document.getElementById('mob-drop-menu');
+  ham.addEventListener('click', () => {
+    ham.classList.toggle('open');
+    menu.classList.toggle('open');
+  });
+  menu.querySelectorAll('.mob-link').forEach(l => l.addEventListener('click', () => {
+    ham.classList.remove('open');
+    menu.classList.remove('open');
+  }));
+
+  // AUTO-SAVE LOGIC
+  function saveDraft() {
+    const data = {
+      services: selectedSvcs,
+      other: document.getElementById('otherText').value,
+      device: document.getElementById('deviceType').value,
+      urgency: urgency,
+      description: document.getElementById('description').value,
+      name: document.getElementById('custName').value,
+      phone: document.getElementById('custPhone').value,
+      email: document.getElementById('custEmail').value,
+      suburb: document.getElementById('custSuburb').value,
+      contact: contactPref
+    };
+    localStorage.setItem(LS_KEY, JSON.stringify(data));
+    const msg = document.getElementById('autosaveMsg');
+    msg.classList.add('show');
+    setTimeout(() => msg.classList.remove('show'), 2000);
   }
-});
 
-function toggleSvc(el) {
-  const val = el.dataset.val;
-  el.classList.toggle('active');
-  if (el.classList.contains('active')) {
-    selectedSvcs.push(val);
-  } else {
-    selectedSvcs = selectedSvcs.filter(s => s !== val);
+  function scheduleSave() {
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(saveDraft, 1000);
   }
-  document.getElementById('servicesInput').value = selectedSvcs.join(', ');
-  document.getElementById('otherReveal').classList.toggle('show', selectedSvcs.includes('Other'));
-  if (selectedSvcs.length) document.getElementById('svcErr').classList.remove('show');
-}
 
-function pickUrgency(el) {
-  el.parentElement.querySelectorAll('.sel-pill').forEach(p => p.classList.remove('active'));
-  el.classList.add('active');
-  urgency = el.dataset.val;
-  document.getElementById('urgencyInput').value = urgency;
-}
-
-function pickContact(el) {
-  el.parentElement.querySelectorAll('.sel-pill').forEach(p => p.classList.remove('active'));
-  el.classList.add('active');
-  contactPref = el.dataset.val;
-  document.getElementById('contactInput').value = contactPref;
-}
-
-document.getElementById('quoteForm').addEventListener('submit', function(e) {
-  let ok = true;
-  
-  if (!selectedSvcs.length) {
-    document.getElementById('svcErr').classList.add('show');
-    ok = false;
-  } else {
-    document.getElementById('svcErr').classList.remove('show');
+  function restoreDraft() {
+    const saved = localStorage.getItem(LS_KEY);
+    if (!saved) return;
+    try {
+      const data = JSON.parse(saved);
+      if (data.services) {
+        data.services.forEach(s => {
+          const el = Array.from(document.querySelectorAll('.svc-card')).find(c => c.dataset.val === s);
+          if (el) toggleSvc(el, false);
+        });
+      }
+      if (data.other) document.getElementById('otherText').value = data.other;
+      if (data.device) document.getElementById('deviceType').value = data.device;
+      if (data.urgency) {
+        const el = Array.from(document.querySelectorAll('.sel-pill')).find(p => p.dataset.val === data.urgency && p.onclick.toString().includes('pickUrgency'));
+        if (el) pickUrgency(el, false);
+      }
+      if (data.description) document.getElementById('description').value = data.description;
+      if (data.name) document.getElementById('custName').value = data.name;
+      if (data.phone) document.getElementById('custPhone').value = data.phone;
+      if (data.email) document.getElementById('custEmail').value = data.email;
+      if (data.suburb) document.getElementById('custSuburb').value = data.suburb;
+      if (data.contact) {
+        const el = Array.from(document.querySelectorAll('.sel-pill')).find(p => p.dataset.val === data.contact && p.onclick.toString().includes('pickContact'));
+        if (el) pickContact(el, false);
+      }
+    } catch (e) { console.error("Restore failed", e); }
   }
-  
-  if (!ok) {
+
+  // FORM HANDLERS
+  window.toggleSvc = function(el, autoSave = true) {
+    const val = el.dataset.val;
+    el.classList.toggle('active');
+    if (el.classList.contains('active')) {
+      selectedSvcs.push(val);
+    } else {
+      selectedSvcs = selectedSvcs.filter(s => s !== val);
+    }
+    document.getElementById('servicesInput').value = selectedSvcs.join(', ');
+    document.getElementById('otherReveal').classList.toggle('show', selectedSvcs.includes('Other'));
+    if (selectedSvcs.length) document.getElementById('svcErr').classList.remove('show');
+    
+    // Logic: Other is required if it's the only service
+    document.getElementById('otherText').required = (selectedSvcs.includes('Other') && selectedSvcs.length === 1);
+    
+    if (autoSave) scheduleSave();
+  };
+
+  window.pickUrgency = function(el, autoSave = true) {
+    el.parentElement.querySelectorAll('.sel-pill').forEach(p => p.classList.remove('active'));
+    el.classList.add('active');
+    urgency = el.dataset.val;
+    document.getElementById('urgencyInput').value = urgency;
+    if (autoSave) scheduleSave();
+  };
+
+  window.pickContact = function(el, autoSave = true) {
+    el.parentElement.querySelectorAll('.sel-pill').forEach(p => p.classList.remove('active'));
+    el.classList.add('active');
+    contactPref = el.dataset.val;
+    document.getElementById('contactInput').value = contactPref;
+    if (autoSave) scheduleSave();
+  };
+
+  // Add listeners for text fields
+  ['otherText', 'deviceType', 'description', 'custName', 'custPhone', 'custEmail', 'custSuburb'].forEach(id => {
+    document.getElementById(id).addEventListener('input', scheduleSave);
+  });
+
+  // SUBMIT HANDLER
+  document.getElementById('quoteForm').addEventListener('submit', async function(e) {
     e.preventDefault();
-    const first = document.querySelector('.svc-error.show, .field-err.show');
-    if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  }
-  // If ok is true, form submits normally to FormSubmit
-});
+    let ok = true;
 
-// NAV
-document.getElementById('nav').innerHTML = `
-  <a href="index.html" class="nav-logo">
-    <div class="logo-mark"><img src="logo.png" alt="FixMyPC Perth"></div>
-    <span class="logo-name">FixMyPC <em>Perth</em></span>
-  </a>
-  <div class="nav-right">
-    <a href="pricing.html" class="nav-pill pill-ghost">Pricing</a>
-    <a href="business-it-support.html" class="nav-pill pill-ghost">Business IT Support</a>
-    <a href="quiz.html" class="nav-pill pill-ghost">Free PC Diagnostic</a>
-    <a href="blog.html" class="nav-pill pill-ghost">Tech Tips</a>
-    <a href="reviews.html" class="nav-pill pill-ghost">Reviews &amp; FAQ</a>
-  </div>`;
+    // Reset errors
+    document.querySelectorAll('.field-err, .svc-error').forEach(e => e.classList.remove('show'));
+    document.querySelectorAll('.err').forEach(e => e.classList.remove('err'));
 
-const ham = document.getElementById('mobHamburger');
-const menu = document.getElementById('mobMenu');
-ham.addEventListener('click', () => {
-  ham.classList.toggle('open');
-  menu.classList.toggle('open');
-});
-menu.querySelectorAll('.mob-link').forEach(l => l.addEventListener('click', () => {
-  ham.classList.remove('open');
-  menu.classList.remove('open');
-}));
+    if (!selectedSvcs.length) {
+      document.getElementById('svcErr').classList.add('show');
+      ok = false;
+    }
+    
+    if (selectedSvcs.includes('Other') && selectedSvcs.length === 1 && !document.getElementById('otherText').value.trim()) {
+      document.getElementById('otherErr').classList.add('show');
+      document.getElementById('otherText').classList.add('err');
+      ok = false;
+    }
+
+    if (!document.getElementById('deviceType').value) {
+      document.getElementById('deviceErr').classList.add('show');
+      document.getElementById('deviceType').classList.add('err');
+      ok = false;
+    }
+
+    if (!document.getElementById('description').value.trim()) {
+      document.getElementById('descErr').classList.add('show');
+      document.getElementById('description').classList.add('err');
+      ok = false;
+    }
+
+    if (!document.getElementById('custName').value.trim()) {
+      document.getElementById('nameErr').classList.add('show');
+      document.getElementById('custName').classList.add('err');
+      ok = false;
+    }
+
+    // Fixed Phone Regex: Accepts 04XX mobiles and AU landlines
+    const phoneVal = document.getElementById('custPhone').value.replace(/[\s\-()]/g, '');
+    const phoneRe = /^(\+?61\s?|0)[2-9](\s?\d){8}$/;
+    if (!phoneRe.test(phoneVal)) {
+      document.getElementById('phoneErr').classList.add('show');
+      document.getElementById('custPhone').classList.add('err');
+      ok = false;
+    }
+
+    if (!ok) {
+      const first = document.querySelector('.svc-error.show, .field-err.show');
+      if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    // Submit via Web3Forms
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.innerText = "Sending...";
+
+    try {
+      const formData = new FormData(this);
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
+      });
+      const result = await response.json();
+      if (result.success) {
+        localStorage.removeItem(LS_KEY);
+        document.getElementById('pageHero').style.display = 'none';
+        document.getElementById('formOuter').style.display = 'none';
+        document.getElementById('trustBar').style.display = 'none';
+        document.getElementById('successWrap').classList.add('show');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        alert("Submission failed. Please try again or contact us on WhatsApp.");
+        btn.disabled = false;
+        btn.innerText = "Send Quote Request";
+      }
+    } catch (err) {
+      alert("An error occurred. Please try again.");
+      btn.disabled = false;
+      btn.innerText = "Send Quote Request";
+    }
+  });
+
+  // Init
+  restoreDraft();
+})();
 </script>
 
 </body>
