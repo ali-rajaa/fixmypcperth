@@ -627,6 +627,128 @@ details[open] .faq-chev { transform: rotate(180deg); background: var(--blue-lt);
   .hero-h1 { font-size: 1.7rem; }
   .prow-price { font-size: 1rem; min-width: 54px; }
 }
+
+/* =============================================
+   PRICE SEARCH BAR
+   ============================================= */
+.price-search-wrap {
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  padding: 1.1rem 2rem;
+  position: sticky;
+  top: var(--nav-h);
+  z-index: 150;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: rgba(255,255,255,0.96);
+}
+
+.price-search-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.price-search-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg2);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  padding: 0 14px;
+  height: 46px;
+  transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+}
+.price-search-box:focus-within {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(21,96,255,0.1);
+  background: var(--bg);
+}
+.price-search-box svg { color: var(--muted2); flex-shrink: 0; transition: color 0.15s; }
+.price-search-box:focus-within svg { color: var(--blue); }
+
+.price-search-box input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-family: var(--body);
+  font-size: 14px;
+  color: var(--ink);
+  outline: none;
+  min-width: 0;
+}
+.price-search-box input::placeholder { color: var(--muted2); }
+
+.psearch-clear {
+  width: 26px; height: 26px; border-radius: 50%;
+  background: var(--bg3); border: 1.5px solid var(--border);
+  display: none; align-items: center; justify-content: center;
+  cursor: pointer; flex-shrink: 0; color: var(--muted);
+  transition: background 0.15s, color 0.15s;
+}
+.psearch-clear:hover { background: #FEE2E2; color: #EF4444; border-color: #FECACA; }
+.price-search-box.has-value .psearch-clear { display: flex; }
+
+/* Results dropdown */
+.psearch-results {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0; right: 0;
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 8px 32px rgba(15,23,42,0.1);
+  overflow: hidden;
+  display: none;
+  z-index: 200;
+  max-height: 360px;
+  overflow-y: auto;
+}
+.psearch-results.open { display: block; }
+
+.psearch-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 11px 16px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.12s;
+}
+.psearch-item:last-child { border-bottom: none; }
+.psearch-item:hover { background: var(--blue-lt); }
+
+.psearch-item-cat {
+  font-size: 9px; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--blue);
+  background: var(--blue-lt); border: 1px solid var(--blue-mid);
+  padding: 2px 8px; border-radius: 50px; flex-shrink: 0; white-space: nowrap;
+}
+.psearch-item-name {
+  flex: 1; font-family: var(--display); font-size: 13.5px;
+  font-weight: 700; color: var(--ink); min-width: 0;
+}
+.psearch-item-name mark {
+  background: rgba(21,96,255,0.12); color: var(--blue);
+  border-radius: 3px; padding: 0 2px; font-weight: 800;
+}
+.psearch-item-price {
+  font-family: var(--display); font-size: 13px;
+  font-weight: 800; color: var(--blue); flex-shrink: 0;
+}
+.psearch-no-results {
+  padding: 24px 16px; text-align: center;
+  font-size: 14px; color: var(--muted);
+}
+
+/* Mobile adjustments */
+@media (max-width: 720px) {
+  .price-search-wrap {
+    top: var(--mob-nav-h);
+    padding: 0.85rem 1.25rem;
+  }
+  .price-search-box { height: 42px; font-size: 13px; }
+}
+
 </style>
 </head>
 <body>
@@ -730,7 +852,19 @@ details[open] .faq-chev { transform: rotate(180deg); background: var(--blue-lt);
 
   </div>
 </section>
-
+<!-- SEARCH BAR -->
+<div class="price-search-wrap" id="price-search-wrap">
+  <div class="price-search-inner">
+    <div class="price-search-box">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" id="priceSearch" placeholder="Search services, e.g. virus removal, SSD, gaming PC..." autocomplete="off" aria-label="Search pricing">
+      <button class="psearch-clear" id="psearchClear" aria-label="Clear search">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="psearch-results" id="psearchResults" role="listbox" aria-label="Search results"></div>
+  </div>
+</div>
 <!-- MOBILE CATEGORY TABS -->
 <div class="mob-tabs" role="tablist" aria-label="Pricing categories" id="mob-tabs">
   <button class="mtab active" data-target="sec-repairs">Repairs</button>
@@ -1226,6 +1360,10 @@ details[open] .faq-chev { transform: rotate(180deg); background: var(--blue-lt);
 </a>
 
 <script>
+
+
+
+
 (function(){
   'use strict';
 
@@ -1302,6 +1440,130 @@ details[open] .faq-chev { transform: rotate(180deg); background: var(--blue-lt);
   onScroll();
 
 })();
+/* ---- Price Search ---- */
+const allRows = [
+  { name:'Virus and Malware Removal', cat:'Repairs', price:'$99', section:'sec-repairs' },
+  { name:'Windows Reinstall and Data Backup', cat:'Repairs', price:'$120', section:'sec-repairs' },
+  { name:'Blue Screen and Crash Fix', cat:'Repairs', price:'$99', section:'sec-repairs' },
+  { name:'PC or Laptop Won\'t Turn On', cat:'Repairs', price:'$99', section:'sec-repairs' },
+  { name:'Overheating Fix and Deep Clean', cat:'Repairs', price:'$89', section:'sec-repairs' },
+  { name:'Password Reset and Account Recovery', cat:'Repairs', price:'$79', section:'sec-repairs' },
+  { name:'Driver and Software Conflict Repair', cat:'Repairs', price:'$85', section:'sec-repairs' },
+  { name:'Laptop Screen Replacement', cat:'Repairs', price:'$120', section:'sec-repairs' },
+  { name:'Laptop Battery Replacement', cat:'Repairs', price:'$89', section:'sec-repairs' },
+  { name:'Laptop Keyboard Replacement', cat:'Repairs', price:'$89', section:'sec-repairs' },
+  { name:'Data Recovery Failing Drive', cat:'Repairs', price:'$149', section:'sec-repairs' },
+  { name:'Data Recovery Dead Drive', cat:'Repairs', price:'$249', section:'sec-repairs' },
+  { name:'SSD Upgrade Labour Only', cat:'Upgrades', price:'$65', section:'sec-upgrades' },
+  { name:'SSD Upgrade 500GB Supplied', cat:'Upgrades', price:'$150', section:'sec-upgrades' },
+  { name:'SSD Upgrade 1TB Supplied', cat:'Upgrades', price:'$185', section:'sec-upgrades' },
+  { name:'RAM Upgrade Labour Only', cat:'Upgrades', price:'$55', section:'sec-upgrades' },
+  { name:'RAM Upgrade 16GB Supplied', cat:'Upgrades', price:'From $160', section:'sec-upgrades' },
+  { name:'RAM Upgrade 32GB Supplied', cat:'Upgrades', price:'From $240', section:'sec-upgrades' },
+  { name:'CPU Thermal Paste Replacement', cat:'Upgrades', price:'$60', section:'sec-upgrades' },
+  { name:'Case Fan Installation', cat:'Upgrades', price:'$40', section:'sec-upgrades' },
+  { name:'Full Custom PC Assembly', cat:'Gaming PC', price:'$120', section:'sec-gaming' },
+  { name:'GPU Installation and Driver Setup', cat:'Gaming PC', price:'$60', section:'sec-gaming' },
+  { name:'CPU Cooler Installation', cat:'Gaming PC', price:'$80', section:'sec-gaming' },
+  { name:'Cable Management Basic Tidy', cat:'Gaming PC', price:'$70', section:'sec-gaming' },
+  { name:'Cable Management Full Professional', cat:'Gaming PC', price:'$110', section:'sec-gaming' },
+  { name:'PBO and BIOS Performance Tuning', cat:'Gaming PC', price:'$60', section:'sec-gaming' },
+  { name:'RGB Software Setup and Sync', cat:'Gaming PC', price:'$69', section:'sec-gaming' },
+  { name:'Benchmark Testing and Written Report', cat:'Gaming PC', price:'$99', section:'sec-gaming' },
+  { name:'NBN Router Setup and Optimisation', cat:'Networking', price:'$79', section:'sec-network' },
+  { name:'WiFi Dead Spot Diagnosis and Fix', cat:'Networking', price:'$89', section:'sec-network' },
+  { name:'Mesh WiFi System Setup', cat:'Networking', price:'$65', section:'sec-network' },
+  { name:'Wireless Printer Setup', cat:'Networking', price:'$69', section:'sec-network' },
+  { name:'USB Printer Setup', cat:'Networking', price:'$55', section:'sec-network' },
+  { name:'Smart TV and Streaming Device Setup', cat:'Networking', price:'$59', section:'sec-network' },
+  { name:'Home Network Security Audit', cat:'Networking', price:'$79', section:'sec-network' },
+  { name:'Full Home Network Setup', cat:'Networking', price:'$149', section:'sec-network' },
+  { name:'Remote Support Session', cat:'Software', price:'$45/hr', section:'sec-software' },
+  { name:'Software Installation and Configuration', cat:'Software', price:'$55', section:'sec-software' },
+  { name:'Microsoft Office Setup and Activation', cat:'Software', price:'$65', section:'sec-software' },
+  { name:'Email Setup Outlook and Gmail', cat:'Software', price:'$55', section:'sec-software' },
+  { name:'PC to PC Data Transfer', cat:'Software', price:'$65', section:'sec-software' },
+  { name:'Cloud Backup Setup', cat:'Software', price:'$55', section:'sec-software' },
+  { name:'Driver Updates and Windows Optimisation', cat:'Software', price:'$60', section:'sec-software' },
+  { name:'Complete PC Overhaul Package', cat:'Package', price:'$299', section:'sec-package' },
+];
+
+const searchInput   = document.getElementById('priceSearch');
+const searchResults = document.getElementById('psearchResults');
+const searchClear   = document.getElementById('psearchClear');
+const searchBox     = searchInput ? searchInput.closest('.price-search-box') : null;
+
+if (searchInput) {
+  searchInput.addEventListener('input', function() {
+    const q = this.value.trim().toLowerCase();
+
+    if (searchBox) searchBox.classList.toggle('has-value', q.length > 0);
+
+    if (!q) {
+      searchResults.classList.remove('open');
+      searchResults.innerHTML = '';
+      return;
+    }
+
+    const matches = allRows.filter(r =>
+      r.name.toLowerCase().includes(q)
+    );
+
+    if (matches.length === 0) {
+      searchResults.innerHTML = '<div class="psearch-no-results">No services found for "<strong>' + q + '</strong>"</div>';
+      searchResults.classList.add('open');
+      return;
+    }
+
+    searchResults.innerHTML = matches.map(r => {
+      const regex = new RegExp('(' + q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
+      const highlighted = r.name.replace(regex, '<mark>$1</mark>');
+      return '<div class="psearch-item" data-section="' + r.section + '">' +
+        '<span class="psearch-item-name">' + highlighted + '</span>' +
+        '<span class="psearch-item-cat">' + r.cat + '</span>' +
+        '<span class="psearch-item-price">' + r.price + '</span>' +
+        '</div>';
+    }).join('');
+
+    searchResults.classList.add('open');
+
+    searchResults.querySelectorAll('.psearch-item').forEach(item => {
+      item.addEventListener('click', function() {
+        const sectionId = this.dataset.section;
+        searchResults.classList.remove('open');
+        searchInput.value = '';
+        if (searchBox) searchBox.classList.remove('has-value');
+        setActive(sectionId);
+        scrollToSection(sectionId);
+      });
+    });
+  });
+
+  if (searchClear) {
+    searchClear.addEventListener('click', function() {
+      searchInput.value = '';
+      if (searchBox) searchBox.classList.remove('has-value');
+      searchResults.classList.remove('open');
+      searchResults.innerHTML = '';
+      searchInput.focus();
+    });
+  }
+
+  document.addEventListener('click', function(e) {
+    const wrap = document.getElementById('price-search-wrap');
+    if (wrap && !wrap.contains(e.target)) {
+      searchResults.classList.remove('open');
+    }
+  });
+
+  searchInput.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      searchResults.classList.remove('open');
+      searchInput.blur();
+    }
+  });
+}
+
 </script>
 </body>
 </html>
