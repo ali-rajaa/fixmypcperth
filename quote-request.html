@@ -7,344 +7,136 @@
 <link rel="icon" type="image/png" href="favicon.png">
 <meta name="description" content="Request a free quote from FixMyPC Perth. Fast response, transparent pricing, no obligation.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --blue:      #1560FF;
-  --blue-lt:   #EEF3FF;
-  --blue-mid:  #C7D8FF;
-  --blue-dk:   #0A3ACC;
-  --ink:       #0F172A;
-  --ink2:      #1E293B;
-  --muted:     #64748B;
-  --muted2:    #94A3B8;
-  --border:    #E2E8F0;
-  --border2:   #CBD5E1;
-  --bg:        #FFFFFF;
-  --bg2:       #F8FAFC;
-  --bg3:       #F1F5F9;
-  --red:       #EF4444;
-  --red-lt:    #FEF2F2;
-  --green:     #22C55E;
-  --green-lt:  #F0FDF4;
-  --display:   'Sora', sans-serif;
-  --body:      'DM Sans', sans-serif;
+  --blue: #1560FF;
+  --blue-lt: #EEF3FF;
+  --blue-mid: #C7D8FF;
+  --blue-dk: #0A3ACC;
+  --ink: #0F172A;
+  --ink2: #1E293B;
+  --muted: #64748B;
+  --muted2: #94A3B8;
+  --border: #E2E8F0;
+  --border2: #CBD5E1;
+  --bg: #FFFFFF;
+  --bg2: #F8FAFC;
+  --bg3: #F1F5F9;
+  --wa: #22C55E;
+  --red: #EF4444;
+  --display: 'Sora', sans-serif;
+  --body: 'DM Sans', sans-serif;
+  --radius: 14px;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
-body {
-  background: var(--bg2);
-  color: var(--ink);
-  font-family: var(--body);
-  font-size: 15px;
-  line-height: 1.6;
-  overflow-x: hidden;
-}
+body { background: var(--bg2); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.6; overflow-x: hidden; }
 
-/* ── NAV ── */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0 2rem; height: 64px;
-  background: rgba(255,255,255,0.92);
-  backdrop-filter: blur(20px) saturate(180%);
-  border-bottom: 1px solid rgba(226,232,240,0.8);
-}
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; height: 64px; background: rgba(255,255,255,0.92); backdrop-filter: blur(20px) saturate(180%); border-bottom: 1px solid rgba(226,232,240,0.8); }
 .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
 .logo-mark { width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; }
 .logo-mark img { width: 100%; height: 100%; object-fit: contain; }
 .logo-name { font-family: var(--display); font-size: 16px; font-weight: 700; color: var(--ink); letter-spacing: -0.3px; }
 .logo-name em { color: var(--blue); font-style: normal; }
-.nav-right { display: flex; align-items: center; gap: 8px; }
-.nav-pill { display: inline-flex; align-items: center; font-family: var(--body); font-size: 13px; font-weight: 600; padding: 8px 16px; border-radius: 50px; text-decoration: none; border: 1.5px solid var(--border2); color: var(--ink); background: transparent; transition: border-color 0.15s, color 0.15s; white-space: nowrap; }
-.nav-pill:hover { border-color: var(--blue); color: var(--blue); }
+.nav-right { display: flex; align-items: center; gap: 10px; }
+.nav-pill { display: inline-flex; align-items: center; gap: 6px; font-family: var(--body); font-size: 13px; font-weight: 600; padding: 9px 18px; border-radius: 50px; text-decoration: none; border: none; cursor: pointer; transition: transform 0.15s, opacity 0.15s; white-space: nowrap; }
+.nav-pill:hover { transform: translateY(-1px); opacity: 0.92; }
+.pill-ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--border2); padding: 8px 16px; }
+.pill-ghost:hover { border-color: var(--blue); color: var(--blue); transform: none; }
 
-/* ── MOBILE NAV ── */
-.mob-nav {
-  display: none; position: fixed; top: 0; left: 0; right: 0; z-index: 300;
-  height: 60px; background: rgba(255,255,255,0.97);
-  backdrop-filter: blur(20px); border-bottom: 1.5px solid var(--border);
-  padding: 0 1.25rem; align-items: center; justify-content: space-between;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.07);
-}
-.mob-hamburger {
-  display: flex; flex-direction: column; justify-content: center; align-items: center;
-  gap: 5px; width: 42px; height: 42px; background: var(--bg3);
-  border: 1.5px solid var(--border2); border-radius: 10px; cursor: pointer;
-  transition: background 0.15s, border-color 0.15s;
-}
-.mob-hamburger span { display: block; width: 16px; height: 2px; background: var(--ink); border-radius: 2px; transition: transform 0.3s, opacity 0.3s; }
-.mob-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.mob-hamburger.open span:nth-child(2) { opacity: 0; }
-.mob-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-.mob-menu {
-  display: none; position: fixed; top: 60px; left: 0; right: 0; z-index: 299;
-  background: rgba(255,255,255,0.98); backdrop-filter: blur(20px);
-  border-bottom: 1.5px solid var(--border); padding: 0.75rem 1.25rem 1.5rem;
-  flex-direction: column; gap: 4px; box-shadow: 0 8px 30px rgba(0,0,0,0.1);
-  border-radius: 0 0 20px 20px;
-}
-.mob-menu.open { display: flex; }
-.mob-link { font-family: var(--body); font-size: 15px; font-weight: 600; color: var(--ink); text-decoration: none; padding: 0.9rem 1rem; border-radius: 10px; display: block; transition: background 0.15s, color 0.15s; }
+.mob-top-nav { display: none; position: fixed; top: 0; left: 0; right: 0; z-index: 300; height: 60px; background: rgba(255,255,255,0.97); backdrop-filter: blur(20px); border-bottom: 1.5px solid var(--border); padding: 0 1.25rem; align-items: center; justify-content: space-between; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+.mob-top-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+.mob-top-hamburger { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 5px; width: 40px; height: 40px; background: var(--bg3); border: 1.5px solid var(--border2); border-radius: 10px; cursor: pointer; flex-shrink: 0; }
+.mob-top-hamburger span { display: block; width: 16px; height: 2px; background: var(--ink); border-radius: 2px; transition: transform 0.3s, opacity 0.3s; }
+.mob-top-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.mob-top-hamburger.open span:nth-child(2) { opacity: 0; }
+.mob-top-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.mob-drop-menu { display: none; position: fixed; top: 60px; left: 0; right: 0; z-index: 299; background: rgba(255,255,255,0.98); backdrop-filter: blur(20px); border-bottom: 1.5px solid var(--border); padding: 0.75rem 1.25rem 1.25rem; flex-direction: column; gap: 6px; box-shadow: 0 8px 30px rgba(0,0,0,0.1); border-radius: 0 0 20px 20px; }
+.mob-drop-menu.open { display: flex; }
+.mob-link { font-family: var(--body); font-size: 14px; font-weight: 600; color: var(--ink); text-decoration: none; padding: 0.85rem 1rem; border-radius: 10px; display: block; transition: background 0.15s, color 0.15s; }
 .mob-link:hover { background: var(--blue-lt); color: var(--blue); }
 
-/* ── PAGE WRAP ── */
 .page-wrap { padding-top: 64px; min-height: 100vh; }
 
-/* ── HERO ── */
-.page-hero {
-  background: var(--bg);
-  border-bottom: 1px solid var(--border);
-  padding: 3.5rem 2rem 3rem;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-.page-hero::before {
-  content: '';
-  position: absolute; inset: 0;
-  background:
-    radial-gradient(ellipse 700px 400px at 50% 100%, rgba(21,96,255,0.06) 0%, transparent 70%),
-    radial-gradient(ellipse 400px 200px at 20% 50%, rgba(34,197,94,0.04) 0%, transparent 60%);
-  pointer-events: none;
-}
-
-.eyebrow {
-  display: inline-flex; align-items: center; gap: 7px;
-  font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
-  text-transform: uppercase; color: var(--blue);
-  background: var(--blue-lt); padding: 5px 14px;
-  border-radius: 50px; border: 1px solid var(--blue-mid);
-  margin-bottom: 1.25rem;
-  animation: fadeDown 0.5s ease both;
-}
-.eyebrow-dot { width: 6px; height: 6px; background: var(--blue); border-radius: 50%; animation: pulse 2s infinite; }
-
-@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
-@keyframes fadeDown { from{opacity:0;transform:translateY(-12px)} to{opacity:1;transform:none} }
-@keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:none} }
-@keyframes slideIn { from{opacity:0;transform:translateX(-16px)} to{opacity:1;transform:none} }
-@keyframes popIn { from{opacity:0;transform:scale(0.6)} to{opacity:1;transform:scale(1)} }
-@keyframes shimmer { 0%{background-position:-200% 0} 100%{background-position:200% 0} }
-
-.page-title {
-  font-family: var(--display);
-  font-size: clamp(2.2rem, 5vw, 3.2rem);
-  font-weight: 800; letter-spacing: -2px; color: var(--ink);
-  margin-bottom: 0.75rem; line-height: 1.05;
-  animation: fadeUp 0.55s 0.1s ease both;
-}
+.page-hero { background: var(--bg); border-bottom: 1px solid var(--border); padding: 3.5rem 2rem 3rem; text-align: center; position: relative; overflow: hidden; }
+.page-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 800px 400px at 50% 120%, rgba(21,96,255,0.05) 0%, transparent 70%); pointer-events: none; }
+.eyebrow { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); background: var(--blue-lt); padding: 4px 14px; border-radius: 50px; border: 1px solid var(--blue-mid); margin-bottom: 1.1rem; }
+.page-title { font-family: var(--display); font-size: clamp(2rem, 4.5vw, 3rem); font-weight: 800; letter-spacing: -1.8px; color: var(--ink); margin-bottom: 0.7rem; line-height: 1.06; }
 .page-title em { color: var(--blue); font-style: normal; }
+.page-sub { font-size: 15px; color: var(--muted); max-width: 420px; margin: 0 auto; line-height: 1.75; }
 
-.page-sub {
-  font-size: 15.5px; color: var(--muted);
-  max-width: 400px; margin: 0 auto; line-height: 1.75;
-  animation: fadeUp 0.55s 0.2s ease both;
-}
-
-/* ── TRUST BAR ── */
-.trust-bar {
-  background: var(--bg); border-bottom: 1px solid var(--border);
-  padding: 0.85rem 2rem;
-  display: flex; align-items: center; justify-content: center;
-  gap: 0; flex-wrap: wrap;
-  animation: fadeUp 0.55s 0.25s ease both;
-}
-.trust-item { display: flex; align-items: center; gap: 7px; font-size: 12.5px; font-weight: 600; color: var(--muted); padding: 4px 18px; }
+.trust-bar { background: var(--bg); border-bottom: 1px solid var(--border); padding: 0.9rem 2rem; display: flex; align-items: center; justify-content: center; gap: 0; flex-wrap: wrap; }
+.trust-item { display: flex; align-items: center; gap: 7px; font-size: 12.5px; font-weight: 600; color: var(--muted); padding: 4px 20px; }
 .trust-item svg { color: var(--blue); flex-shrink: 0; }
 .trust-sep { width: 1px; height: 16px; background: var(--border2); }
 
-/* ── FORM OUTER ── */
-.form-outer {
-  max-width: 720px; margin: 0 auto;
-  padding: 2.5rem 2rem 5rem;
-  animation: fadeUp 0.6s 0.3s ease both;
-}
-
-/* ── CARD ── */
-.card {
-  background: var(--bg);
-  border: 1.5px solid var(--border);
-  border-radius: 24px;
-  overflow: hidden;
-  box-shadow: 0 4px 32px rgba(15,23,42,0.07);
-}
-
-.card-block { padding: 2.25rem 2.25rem 2rem; }
+.form-outer { max-width: 740px; margin: 0 auto; padding: 2.5rem 2rem 4rem; }
+.card { background: var(--bg); border: 1.5px solid var(--border); border-radius: 20px; overflow: hidden; box-shadow: 0 2px 24px rgba(15,23,42,0.06); }
+.card-block { padding: 2rem 2.25rem; }
 .card-block + .card-block { border-top: 1px solid var(--border); }
+.block-heading { font-family: var(--display); font-size: 13px; font-weight: 700; color: var(--ink); margin-bottom: 1.25rem; letter-spacing: -0.2px; display: flex; align-items: center; gap: 10px; }
+.block-num { width: 22px; height: 22px; border-radius: 50%; background: var(--blue); color: #fff; font-size: 11px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 
-.block-heading {
-  font-family: var(--display); font-size: 17px; font-weight: 700;
-  color: var(--ink); margin-bottom: 0.4rem; letter-spacing: -0.4px;
-  display: flex; align-items: center; gap: 10px;
-}
-.block-sub { font-size: 13.5px; color: var(--muted); margin-bottom: 1.5rem; }
-
-.block-num {
-  width: 26px; height: 26px; border-radius: 50%;
-  background: var(--blue); color: #fff;
-  font-size: 12px; font-weight: 800;
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-}
-
-/* ── SERVICE GRID ── */
-.service-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
-  margin-bottom: 8px;
-}
-.svc-card {
-  padding: 16px 12px 14px; background: var(--bg2);
-  border: 1.5px solid var(--border); border-radius: 14px;
-  cursor: pointer; text-align: center;
-  transition: all 0.2s ease;
-  position: relative; user-select: none;
-}
-.svc-card:hover { border-color: var(--blue-mid); background: var(--blue-lt); transform: translateY(-2px); box-shadow: 0 4px 16px rgba(21,96,255,0.08); }
-.svc-card.active { border-color: var(--blue); background: var(--blue-lt); box-shadow: 0 0 0 3px rgba(21,96,255,0.1); }
-.svc-card.active::after {
-  content: '✓'; position: absolute; top: 8px; right: 8px;
-  width: 18px; height: 18px; border-radius: 50%;
-  background: var(--blue); color: #fff;
-  font-size: 9px; font-weight: 800;
-  display: flex; align-items: center; justify-content: center;
-}
-.svc-icon { font-size: 22px; margin-bottom: 6px; display: block; }
-.svc-label { font-size: 12px; font-weight: 600; color: var(--ink2); line-height: 1.35; }
+.service-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 6px; }
+.svc-card { padding: 14px 10px 12px; background: var(--bg2); border: 1.5px solid var(--border); border-radius: 12px; cursor: pointer; text-align: center; transition: border-color 0.18s, background 0.18s, transform 0.15s, box-shadow 0.15s; position: relative; user-select: none; }
+.svc-card:hover { border-color: var(--blue-mid); background: var(--blue-lt); transform: translateY(-1px); }
+.svc-card.active { border-color: var(--blue); background: var(--blue-lt); box-shadow: 0 0 0 3px rgba(21,96,255,0.08); }
+.svc-card.active::after { content: ''; position: absolute; top: 7px; right: 7px; width: 8px; height: 8px; border-radius: 50%; background: var(--blue); }
+.svc-label { font-size: 11.5px; font-weight: 600; color: var(--ink2); line-height: 1.35; }
 .svc-card.active .svc-label { color: var(--blue); }
 
-/* ── FORM FIELDS ── */
-.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
-.field-col { display: flex; flex-direction: column; gap: 6px; }
-.field-single { margin-bottom: 14px; display: flex; flex-direction: column; gap: 6px; }
+.svc-error { font-size: 12px; color: var(--red); margin-top: 8px; display: none; }
+.svc-error.show { display: block; }
 
-label { font-size: 12.5px; font-weight: 600; color: var(--ink2); }
+.other-reveal { display: none; margin-top: 10px; }
+.other-reveal.show { display: block; }
+.other-reveal input { width: 100%; padding: 10px 14px; background: var(--bg2); border: 1.5px solid var(--border); border-radius: 10px; font-family: var(--body); font-size: 13px; color: var(--ink); outline: none; transition: border-color 0.15s; }
+.other-reveal input:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(21,96,255,0.1); background: var(--bg); }
+
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+.field-col { display: flex; flex-direction: column; gap: 5px; }
+.field-single { margin-bottom: 14px; display: flex; flex-direction: column; gap: 5px; }
+
+label { font-size: 12px; font-weight: 600; color: var(--ink2); }
 label .opt { font-weight: 400; color: var(--muted2); }
 label .req { color: var(--red); margin-left: 2px; }
 
-.input-wrap { position: relative; }
-.input-wrap svg.input-icon {
-  position: absolute; left: 13px; top: 50%; transform: translateY(-50%);
-  color: var(--muted2); pointer-events: none; transition: color 0.15s;
-}
-.input-wrap input, .input-wrap textarea { padding-left: 38px; }
-
-input[type="text"], input[type="email"], input[type="tel"], select, textarea {
-  width: 100%; padding: 11px 14px;
-  background: var(--bg2); border: 1.5px solid var(--border);
-  border-radius: 12px; font-family: var(--body); font-size: 13.5px;
-  color: var(--ink); outline: none;
-  transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
-  -webkit-appearance: none; appearance: none;
-}
-input:focus, select:focus, textarea:focus {
-  border-color: var(--blue); box-shadow: 0 0 0 3px rgba(21,96,255,0.1);
-  background: var(--bg);
-}
+input[type="text"], input[type="email"], input[type="tel"], input[type="hidden"], select, textarea { width: 100%; padding: 10px 14px; background: var(--bg2); border: 1.5px solid var(--border); border-radius: 10px; font-family: var(--body); font-size: 13px; color: var(--ink); outline: none; transition: border-color 0.15s, box-shadow 0.15s, background 0.15s; -webkit-appearance: none; appearance: none; }
+input[type="hidden"] { display: none; }
+input:focus, select:focus, textarea:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(21,96,255,0.1); background: var(--bg); }
 input::placeholder, textarea::placeholder { color: var(--muted2); }
+input.err, select.err, textarea.err { border-color: var(--red) !important; }
 
-input.valid { border-color: var(--green) !important; }
-input.valid ~ .valid-tick, textarea.valid ~ .valid-tick { opacity: 1; }
-.valid-tick {
-  position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
-  color: var(--green); opacity: 0; transition: opacity 0.2s;
-  pointer-events: none;
-}
+select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2364748B' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 13px center; padding-right: 36px; cursor: pointer; }
 
-input.err, select.err, textarea.err { border-color: var(--red) !important; box-shadow: 0 0 0 3px rgba(239,68,68,0.08) !important; }
+textarea { resize: vertical; min-height: 96px; line-height: 1.65; }
 
-select {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2364748B' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E");
-  background-repeat: no-repeat; background-position: right 13px center; padding-right: 36px; cursor: pointer;
-}
-textarea { resize: vertical; min-height: 100px; line-height: 1.65; }
+.field-err { font-size: 11px; color: var(--red); margin-top: 4px; display: none; }
+.field-err.show { display: block; }
 
-.field-err {
-  font-size: 12px; color: var(--red); display: none;
-  align-items: center; gap: 5px; margin-top: 2px;
-  animation: slideIn 0.2s ease both;
-}
-.field-err.show { display: flex; }
-
-.svc-error {
-  font-size: 12px; color: var(--red); margin-top: 8px; display: none;
-  align-items: center; gap: 5px;
-  animation: slideIn 0.2s ease both;
-}
-.svc-error.show { display: flex; }
-
-.other-reveal { display: none; margin-top: 10px; }
-.other-reveal.show { display: block; animation: fadeUp 0.25s ease both; }
-
-/* ── PILLS ── */
 .pill-row { display: flex; gap: 8px; flex-wrap: wrap; }
-.sel-pill {
-  padding: 8px 18px; border: 1.5px solid var(--border2);
-  border-radius: 50px; font-family: var(--body); font-size: 13px;
-  font-weight: 600; color: var(--muted); background: var(--bg2);
-  cursor: pointer; transition: all 0.15s; user-select: none;
-}
+.sel-pill { padding: 7px 18px; border: 1.5px solid var(--border2); border-radius: 50px; font-family: var(--body); font-size: 13px; font-weight: 600; color: var(--muted); background: var(--bg2); cursor: pointer; transition: all 0.15s; user-select: none; }
 .sel-pill:hover { border-color: var(--blue-mid); color: var(--blue); background: var(--blue-lt); }
-.sel-pill.active { border-color: var(--blue); color: var(--blue); background: var(--blue-lt); box-shadow: 0 0 0 3px rgba(21,96,255,0.08); }
+.sel-pill.active { border-color: var(--blue); color: var(--blue); background: var(--blue-lt); }
 
-/* ── SUBMIT BLOCK ── */
 .submit-block { padding: 1.75rem 2.25rem 2rem; background: var(--bg2); border-top: 1px solid var(--border); }
+.privacy-note { font-size: 12px; color: var(--muted2); text-align: center; margin-bottom: 1.1rem; display: flex; align-items: center; justify-content: center; gap: 6px; }
+.btn-submit { width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px; background: var(--blue); color: #fff; font-family: var(--display); font-size: 16px; font-weight: 700; padding: 17px 28px; border-radius: 50px; border: none; cursor: pointer; letter-spacing: -0.3px; box-shadow: 0 4px 24px rgba(21,96,255,0.28); transition: background 0.15s, transform 0.15s, box-shadow 0.15s; }
+.btn-submit:hover { background: var(--blue-dk); transform: translateY(-2px); box-shadow: 0 6px 32px rgba(21,96,255,0.38); }
+.btn-submit:active { transform: none; }
 
-.btn-submit {
-  width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px;
-  background: var(--blue); color: #fff;
-  font-family: var(--display); font-size: 16px; font-weight: 700;
-  padding: 17px 28px; border-radius: 50px; border: none; cursor: pointer;
-  letter-spacing: -0.3px; box-shadow: 0 4px 24px rgba(21,96,255,0.28);
-  transition: all 0.15s; position: relative; overflow: hidden;
-}
-.btn-submit::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
-  background-size: 200% 100%;
-  animation: shimmer 2.5s infinite;
-}
-.btn-submit:hover { background: var(--blue-dk); transform: translateY(-2px); box-shadow: 0 6px 32px rgba(21,96,255,0.4); }
-.btn-submit:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
-
-.privacy-note {
-  font-size: 12px; color: var(--muted2); text-align: center;
-  margin-bottom: 1.1rem; display: flex; align-items: center;
-  justify-content: center; gap: 6px;
-}
-
-/* ── SUCCESS ── */
-.success-wrap { display: none; max-width: 520px; margin: 0 auto; padding: 4rem 2rem 6rem; text-align: center; }
-.success-wrap.show { display: block; animation: fadeUp 0.6s ease both; }
-.success-badge {
-  width: 80px; height: 80px; border-radius: 50%;
-  background: linear-gradient(135deg, var(--blue), #00CFFF);
-  display: flex; align-items: center; justify-content: center;
-  margin: 0 auto 2rem; box-shadow: 0 12px 40px rgba(21,96,255,0.3);
-  animation: popIn 0.5s cubic-bezier(.22,.68,0,1.4) both;
-}
+.success-wrap { display: none; max-width: 560px; margin: 0 auto; padding: 3rem 2rem 5rem; text-align: center; }
+.success-wrap.show { display: block; }
+.success-badge { width: 68px; height: 68px; border-radius: 50%; background: linear-gradient(135deg, var(--blue) 0%, #00CFFF 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.75rem; box-shadow: 0 8px 32px rgba(21,96,255,0.28); animation: popIn 0.45s cubic-bezier(.22,.68,0,1.4) both; }
+@keyframes popIn { from { opacity: 0; transform: scale(0.5); } to { opacity: 1; transform: scale(1); } }
 .success-badge svg { color: #fff; }
-.success-title { font-family: var(--display); font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800; letter-spacing: -1.5px; color: var(--ink); margin-bottom: 0.6rem; line-height: 1.05; }
-.success-body { font-size: 15px; color: var(--muted); line-height: 1.8; margin-bottom: 2.5rem; }
-.success-pills { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 2rem; }
-.success-pill { display: flex; align-items: center; gap: 7px; padding: 8px 16px; background: var(--blue-lt); border: 1px solid var(--blue-mid); border-radius: 50px; font-size: 13px; font-weight: 600; color: var(--blue); }
-.back-home { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--muted2); text-decoration: none; padding: 10px 20px; border-radius: 50px; border: 1.5px solid var(--border2); transition: all 0.15s; }
-.back-home:hover { border-color: var(--blue); color: var(--blue); }
+.success-title { font-family: var(--display); font-size: clamp(1.7rem, 4vw, 2.4rem); font-weight: 800; letter-spacing: -1.2px; color: var(--ink); margin-bottom: 0.6rem; line-height: 1.1; }
+.success-body { font-size: 15px; color: var(--muted); line-height: 1.8; margin-bottom: 2rem; }
+.success-body strong { color: var(--ink); font-weight: 600; }
 
-/* ── LOADING SPINNER ── */
-.spinner { width: 18px; height: 18px; border: 2.5px solid rgba(255,255,255,0.3); border-top-color: #fff; border-radius: 50%; animation: spin 0.7s linear infinite; display: none; }
-.spinner.show { display: block; }
-@keyframes spin { to { transform: rotate(360deg); } }
-
-/* ── CHAR COUNT ── */
-.char-count { font-size: 11px; color: var(--muted2); text-align: right; margin-top: 4px; transition: color 0.15s; }
-.char-count.warn { color: #F59E0B; }
-.char-count.over { color: var(--red); }
-
-/* ── FOOTER ── */
 footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.75rem 2rem; }
 .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
 .footer-copy { font-size: 12px; color: var(--muted2); }
@@ -352,148 +144,93 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
 .footer-links a { font-size: 12px; color: var(--muted2); text-decoration: none; transition: color 0.15s; }
 .footer-links a:hover { color: var(--blue); }
 
-/* ── RESPONSIVE ── */
 @media (max-width: 720px) {
   nav { display: none; }
-  .mob-nav { display: flex; }
+  .mob-top-nav { display: flex; }
   .page-wrap { padding-top: 60px; }
   .page-hero { padding: 2.5rem 1.25rem 2rem; }
-  .trust-bar { padding: 0.75rem 1rem; }
+  .trust-bar { padding: 0.75rem 1rem; gap: 0; }
   .trust-sep { display: none; }
-  .trust-item { padding: 4px 10px; font-size: 12px; }
-  .form-outer { padding: 1.5rem 1rem 3.5rem; }
+  .trust-item { padding: 4px 12px; font-size: 12px; }
+  .form-outer { padding: 1.5rem 1rem 3rem; }
   .card-block { padding: 1.5rem 1.25rem; }
-  .submit-block { padding: 1.25rem; }
+  .submit-block { padding: 1.25rem 1.25rem 1.5rem; }
   .service-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
   .field-row { grid-template-columns: 1fr; gap: 12px; }
   footer { padding: 1.25rem 1rem; }
   .footer-inner { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
 }
-
-/* Honeypot */
-.hp-field { display: none !important; }
 </style>
 </head>
 <body>
 
-<!-- Desktop Nav -->
-<nav>
-  <a href="index.html" class="nav-logo">
-    <div class="logo-mark"><img src="logo.png" alt="FixMyPC Perth"></div>
-    <span class="logo-name">FixMyPC <em>Perth</em></span>
-  </a>
-  <div class="nav-right">
-    <a href="pricing.html" class="nav-pill">Pricing</a>
-    <a href="business-it-support.html" class="nav-pill">Business IT Support</a>
-    <a href="quiz.html" class="nav-pill">Free PC Diagnostic</a>
-    <a href="blog.html" class="nav-pill">Tech Tips</a>
-    <a href="reviews.html" class="nav-pill">Reviews &amp; FAQ</a>
-  </div>
-</nav>
+<nav id="nav"></nav>
 
-<!-- Mobile Nav -->
-<div class="mob-nav">
-  <a href="index.html" class="nav-logo">
+<div class="mob-top-nav">
+  <a href="index.html" class="mob-top-logo">
     <div class="logo-mark"><img src="logo.png" alt="FixMyPC Perth"></div>
     <span class="logo-name" style="font-size:14px">FixMyPC <em>Perth</em></span>
   </a>
-  <button class="mob-hamburger" id="mobHam" aria-label="Open menu" aria-expanded="false">
+  <button class="mob-top-hamburger" id="mobHamburger" aria-label="Open menu">
     <span></span><span></span><span></span>
   </button>
 </div>
-<nav class="mob-menu" id="mobMenu" role="navigation" aria-label="Mobile navigation">
+  <div class="mob-drop-menu" id="mob-drop-menu">
   <a href="pricing.html" class="mob-link">Pricing</a>
   <a href="business-it-support.html" class="mob-link">Business IT Support</a>
   <a href="quiz.html" class="mob-link">Free PC Diagnostic</a>
   <a href="blog.html" class="mob-link">Tech Tips</a>
   <a href="reviews.html" class="mob-link">Reviews &amp; FAQ</a>
-</nav>
+</div>
 
 <div class="page-wrap">
 
   <div class="page-hero" id="pageHero">
-    <div class="eyebrow"><span class="eyebrow-dot"></span> Free Quote · No Obligation</div>
+    <span class="eyebrow">Free Quote · No Obligation</span>
     <h1 class="page-title">Request a <em>Free Quote</em></h1>
-    <p class="page-sub">Fill in the form and we'll get back to you within the hour — usually faster.</p>
+    <p class="page-sub">Fill in the form below and we will get back to you as fast as possible, usually within the hour.</p>
   </div>
 
-  <div class="trust-bar" id="trustBar">
-    <div class="trust-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> Same or next day</div>
+  <div class="trust-bar">
+    <div class="trust-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> Same or next day turnaround</div>
     <div class="trust-sep"></div>
-    <div class="trust-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> 30 day warranty</div>
+    <div class="trust-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> 30 day labour warranty</div>
     <div class="trust-sep"></div>
-    <div class="trust-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> Upfront pricing</div>
+    <div class="trust-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> Upfront pricing, no surprises</div>
     <div class="trust-sep"></div>
-    <div class="trust-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> No fix, no fee</div>
+    <div class="trust-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> No fix, no fee on data recovery</div>
   </div>
 
   <div class="form-outer" id="formOuter">
+    <form action="https://formsubmit.co/aly.imran.raja@gmail.com" method="POST" id="quoteForm" onsubmit="return handleFormSubmit(event)">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_next" value="https://www.fixmypcperth.com/quote-request.html?success=true">
     <div class="card">
 
-      <!-- SECTION 1: Service -->
       <div class="card-block">
         <div class="block-heading"><div class="block-num">1</div> What do you need help with?</div>
-        <div class="block-sub">Select all that apply — you can choose multiple.</div>
-        <div class="service-grid" id="serviceGrid" role="group" aria-label="Service selection">
-          <div class="svc-card" data-val="Virus and Malware Removal" role="checkbox" aria-checked="false" tabindex="0">
-            <span class="svc-icon" aria-hidden="true">🛡️</span>
-            <div class="svc-label">Virus Removal</div>
-          </div>
-          <div class="svc-card" data-val="SSD Upgrade" role="checkbox" aria-checked="false" tabindex="0">
-            <span class="svc-icon" aria-hidden="true">⚡</span>
-            <div class="svc-label">SSD Upgrade</div>
-          </div>
-          <div class="svc-card" data-val="Windows Reinstall" role="checkbox" aria-checked="false" tabindex="0">
-            <span class="svc-icon" aria-hidden="true">💿</span>
-            <div class="svc-label">Windows Reinstall</div>
-          </div>
-          <div class="svc-card" data-val="WiFi and Printer Setup" role="checkbox" aria-checked="false" tabindex="0">
-            <span class="svc-icon" aria-hidden="true">📶</span>
-            <div class="svc-label">WiFi &amp; Printer</div>
-          </div>
-          <div class="svc-card" data-val="Gaming PC Build or Upgrade" role="checkbox" aria-checked="false" tabindex="0">
-            <span class="svc-icon" aria-hidden="true">🎮</span>
-            <div class="svc-label">Gaming PC</div>
-          </div>
-          <div class="svc-card" data-val="Cable Management" role="checkbox" aria-checked="false" tabindex="0">
-            <span class="svc-icon" aria-hidden="true">🔌</span>
-            <div class="svc-label">Cable Management</div>
-          </div>
-          <div class="svc-card" data-val="Remote Support" role="checkbox" aria-checked="false" tabindex="0">
-            <span class="svc-icon" aria-hidden="true">🖥️</span>
-            <div class="svc-label">Remote Support</div>
-          </div>
-          <div class="svc-card" data-val="Data Recovery" role="checkbox" aria-checked="false" tabindex="0">
-            <span class="svc-icon" aria-hidden="true">💾</span>
-            <div class="svc-label">Data Recovery</div>
-          </div>
-          <div class="svc-card" data-val="Other" role="checkbox" aria-checked="false" tabindex="0" id="otherCard">
-            <span class="svc-icon" aria-hidden="true">🔧</span>
-            <div class="svc-label">Other</div>
-          </div>
+        <div class="service-grid" id="serviceGrid">
+          <input type="hidden" name="Services" id="servicesInput" value="">
+          <div class="svc-card" data-val="Virus and Malware Removal" onclick="toggleSvc(this)"><div class="svc-label">Virus Removal</div></div>
+          <div class="svc-card" data-val="SSD Upgrade" onclick="toggleSvc(this)"><div class="svc-label">SSD Upgrade</div></div>
+          <div class="svc-card" data-val="Windows Reinstall" onclick="toggleSvc(this)"><div class="svc-label">Windows Reinstall</div></div>
+          <div class="svc-card" data-val="WiFi and Printer Setup" onclick="toggleSvc(this)"><div class="svc-label">WiFi and Printer</div></div>
+          <div class="svc-card" data-val="Gaming PC Build or Upgrade" onclick="toggleSvc(this)"><div class="svc-label">Gaming PC</div></div>
+          <div class="svc-card" data-val="Cable Management" onclick="toggleSvc(this)"><div class="svc-label">Cable Management</div></div>
+          <div class="svc-card" data-val="Remote Support" onclick="toggleSvc(this)"><div class="svc-label">Remote Support</div></div>
+          <div class="svc-card" data-val="Data Recovery" onclick="toggleSvc(this)"><div class="svc-label">Data Recovery</div></div>
+          <div class="svc-card" data-val="Other" onclick="toggleSvc(this)" id="otherCard"><div class="svc-label">Other</div></div>
         </div>
-        <div class="svc-error" id="svcErr" role="alert">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-          Please select at least one service.
-        </div>
-        <div class="other-reveal" id="otherReveal">
-          <input type="text" id="otherText" placeholder="Please describe what you need help with">
-          <div class="field-err" id="otherErr" role="alert">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-            Please describe what you need.
-          </div>
-        </div>
+        <div class="svc-error" id="svcErr">Please select at least one service.</div>
+        <div class="other-reveal" id="otherReveal"><input type="text" name="Other Details" id="otherText" placeholder="Please describe what you need help with"></div>
       </div>
 
-      <!-- SECTION 2: Device -->
       <div class="card-block">
         <div class="block-heading"><div class="block-num">2</div> About your device</div>
-        <div class="block-sub">Help us understand what we're working with.</div>
-
         <div class="field-row">
           <div class="field-col">
             <label for="deviceType">Device Type <span class="req">*</span></label>
-            <select id="deviceType">
+            <select id="deviceType" name="Device Type" required>
               <option value="">Select device type</option>
               <option>Desktop PC</option>
               <option>Laptop</option>
@@ -501,128 +238,73 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
               <option>Mac</option>
               <option>Other</option>
             </select>
-            <div class="field-err" id="deviceErr" role="alert">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-              Please select a device type.
-            </div>
+            <div class="field-err" id="deviceErr">Please select a device type.</div>
           </div>
           <div class="field-col">
             <label>How urgent is this?</label>
-            <div class="pill-row" style="margin-top:3px" role="radiogroup" aria-label="Urgency">
-              <div class="sel-pill active" data-val="No rush" role="radio" aria-checked="true" tabindex="0">No Rush</div>
-              <div class="sel-pill" data-val="This week" role="radio" aria-checked="false" tabindex="0">This Week</div>
-              <div class="sel-pill" data-val="ASAP" role="radio" aria-checked="false" tabindex="0">ASAP 🔥</div>
+            <div class="pill-row" style="margin-top:2px">
+              <div class="sel-pill active" data-val="No rush" onclick="pickUrgency(this)">No Rush</div>
+              <div class="sel-pill" data-val="This week" onclick="pickUrgency(this)">This Week</div>
+              <div class="sel-pill" data-val="ASAP" onclick="pickUrgency(this)">ASAP</div>
             </div>
+            <input type="hidden" name="Urgency" id="urgencyInput" value="No rush">
           </div>
         </div>
-
         <div class="field-single">
           <label for="description">What is happening with your device? <span class="req">*</span></label>
-          <textarea id="description" maxlength="600" placeholder="e.g. My PC takes a long time to start, keeps freezing and I think it may have a virus. Running Windows 11."></textarea>
-          <div class="char-count" id="charCount">0 / 600</div>
-          <div class="field-err" id="descErr" role="alert">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-            Please describe what is happening (at least 10 characters).
-          </div>
+          <textarea id="description" name="Description" placeholder="For example: My PC takes a long time to start, keeps freezing and I think it may have a virus. Running Windows 11." required></textarea>
+          <div class="field-err" id="descErr">Please describe what is happening.</div>
         </div>
       </div>
 
-      <!-- SECTION 3: Contact -->
       <div class="card-block">
         <div class="block-heading"><div class="block-num">3</div> Your contact details</div>
-        <div class="block-sub">We'll only use this to get back to you with your quote.</div>
-
         <div class="field-row">
           <div class="field-col">
             <label for="custName">Full Name <span class="req">*</span></label>
-            <div class="input-wrap">
-              <svg class="input-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-              <input type="text" id="custName" placeholder="John Smith" autocomplete="name">
-              <svg class="valid-tick" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-            </div>
-            <div class="field-err" id="nameErr" role="alert">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-              Please enter your name.
-            </div>
+            <input type="text" id="custName" name="Name" placeholder="John Smith" required>
+            <div class="field-err" id="nameErr">Please enter your name.</div>
           </div>
           <div class="field-col">
             <label for="custPhone">Phone Number <span class="req">*</span></label>
-            <div class="input-wrap">
-              <svg class="input-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.58 3.38 2 2 0 0 1 3.55 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.69a16 16 0 0 0 6 6l.86-.86a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.42 16l.5.92z"/></svg>
-              <input type="tel" id="custPhone" placeholder="04XX XXX XXX" autocomplete="tel">
-              <svg class="valid-tick" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-            </div>
-            <div class="field-err" id="phoneErr" role="alert">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-              Please enter a valid Australian mobile or phone number.
-            </div>
+            <input type="tel" id="custPhone" name="Phone" placeholder="04XX XXX XXX" required>
+            <div class="field-err" id="phoneErr">Please enter your phone number.</div>
           </div>
         </div>
-
         <div class="field-row">
           <div class="field-col">
             <label for="custEmail">Email Address <span class="opt">(optional)</span></label>
-            <div class="input-wrap">
-              <svg class="input-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              <input type="email" id="custEmail" placeholder="john@example.com" autocomplete="email">
-              <svg class="valid-tick" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-            </div>
+            <input type="email" id="custEmail" name="Email" placeholder="john@example.com">
           </div>
           <div class="field-col">
             <label for="custSuburb">Your Suburb <span class="opt">(optional)</span></label>
-            <div class="input-wrap">
-              <svg class="input-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              <input type="text" id="custSuburb" placeholder="e.g. Canning Vale" autocomplete="address-level2">
-            </div>
+            <input type="text" id="custSuburb" name="Suburb" placeholder="e.g. Canning Vale">
           </div>
         </div>
-
-        <div class="field-single">
-          <label>Preferred contact method</label>
-          <div class="pill-row" role="radiogroup" aria-label="Preferred contact method">
-            <div class="sel-pill active" data-val="WhatsApp" role="radio" aria-checked="true" tabindex="0">💬 WhatsApp</div>
-            <div class="sel-pill" data-val="Phone Call" role="radio" aria-checked="false" tabindex="0">📞 Phone Call</div>
-            <div class="sel-pill" data-val="Email" role="radio" aria-checked="false" tabindex="0">✉️ Email</div>
+        <div>
+          <label style="margin-bottom: 8px; display:block;">Preferred contact method</label>
+          <div class="pill-row">
+            <div class="sel-pill active" data-val="WhatsApp" onclick="pickContact(this)">WhatsApp</div>
+            <div class="sel-pill" data-val="Email" onclick="pickContact(this)">Email</div>
           </div>
+          <input type="hidden" name="Preferred Contact" id="contactInput" value="WhatsApp">
         </div>
       </div>
 
-      <!-- Honeypot -->
-      <div class="hp-field" aria-hidden="true">
-        <input type="text" name="website" id="hpField" tabindex="-1" autocomplete="off">
-      </div>
-
-      <!-- SUBMIT -->
       <div class="submit-block">
-        <div class="privacy-note">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-          Your info is only used to respond to your quote. Never shared.
-        </div>
-        <button class="btn-submit" id="submitBtn" type="button">
-          <span id="submitText">Send Quote Request</span>
-          <div class="spinner" id="submitSpinner"></div>
-          <svg id="submitArrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </button>
+        <div class="privacy-note"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Your information is only used to respond to your quote request and is never shared.</div>
+        <button type="submit" class="btn-submit">Send Quote Request <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
       </div>
 
     </div>
+    </form>
   </div>
 
-  <!-- Success -->
-  <div class="success-wrap" id="successWrap" role="status" aria-live="polite">
-    <div class="success-badge">
-      <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-    </div>
-    <h2 class="success-title">Quote request sent!</h2>
-    <p class="success-body">We'll get back to you as fast as possible — usually within the hour. We'll reach out via your preferred contact method.</p>
-    <div class="success-pills">
-      <div class="success-pill"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> Request received</div>
-      <div class="success-pill"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Reply within the hour</div>
-    </div>
-    <a href="index.html" class="back-home">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-      Back to homepage
-    </a>
+  <div class="success-wrap" id="successWrap">
+    <div class="success-badge"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+    <h2 class="success-title">Request received.</h2>
+    <p class="success-body">Our tech team will get back to you as fast as possible, typically within the hour. We will reach out via your preferred contact method.</p>
+    <a href="index.html" class="back-home" style="text-align:center;display:block;font-size:13px;color:var(--muted2);text-decoration:none;margin-top:2rem">Back to homepage</a>
   </div>
 
 </div>
@@ -638,368 +320,95 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
   </div>
 </footer>
 
-<!-- WhatsApp bubble -->
-<a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair."
-   target="_blank" rel="noopener" aria-label="Chat on WhatsApp"
-   style="position:fixed;bottom:24px;right:24px;z-index:9999;width:58px;height:58px;background:#22C55E;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(34,197,94,0.45);text-decoration:none;transition:transform 0.2s"
-   class="wa-bubble">
-  <svg width="28" height="28" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>
-</a>
-
-<style>
-  .wa-bubble:hover { transform: scale(1.1); }
-</style>
+<a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" style="position:fixed;bottom:24px;right:24px;z-index:9999;width:58px;height:58px;background:#22C55E;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(34,197,94,0.45);transition:transform 0.2s;text-decoration:none" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg></a>
 
 <script>
-(function () {
-  'use strict';
+let selectedSvcs = [];
+let urgency = 'No rush';
+let contactPref = 'WhatsApp';
 
-  // ── STATE ──
-  const state = {
-    selectedSvcs: [],
-    urgency: 'No rush',
-    contactPref: 'WhatsApp',
-  };
-
-  const STORAGE_KEY = 'fmpc_quote_draft';
-
-  // ── SAVE / RESTORE DRAFT ──
-  function saveDraft() {
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify({
-        svcs: state.selectedSvcs,
-        urgency: state.urgency,
-        contactPref: state.contactPref,
-        otherText: id('otherText').value,
-        deviceType: id('deviceType').value,
-        description: id('description').value,
-        custName: id('custName').value,
-        custPhone: id('custPhone').value,
-        custEmail: id('custEmail').value,
-        custSuburb: id('custSuburb').value,
-      }));
-    } catch (e) {}
+// Check for success redirect
+window.addEventListener('DOMContentLoaded', () => {
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('success') === 'true') {
+    document.getElementById('pageHero').style.display = 'none';
+    document.getElementById('formOuter').style.display = 'none';
+    document.querySelector('.trust-bar').style.display = 'none'; // Add this line
+    document.getElementById('successWrap').classList.add('show');
+    window.scrollTo({ top: 0, behavior: 'auto' });
   }
+});
 
-  function restoreDraft() {
-    try {
-      const raw = localStorage.getItem(STORAGE_KEY);
-      if (!raw) return;
-      const d = JSON.parse(raw);
-      if (d.svcs && Array.isArray(d.svcs)) {
-        d.svcs.forEach(val => {
-          const card = document.querySelector(`.svc-card[data-val="${val}"]`);
-          if (card) activateSvc(card);
-        });
-      }
-      if (d.urgency) {
-        const pill = document.querySelector(`#deviceType ~ * .sel-pill[data-val="${d.urgency}"], .pill-row .sel-pill[data-val="${d.urgency}"]`);
-        const urgPill = document.querySelector(`.pill-row .sel-pill[data-val="${d.urgency}"]`);
-        if (urgPill) pickUrgency(urgPill);
-      }
-      if (d.contactPref) {
-        const cpPills = document.querySelectorAll('.submit-block ~ * .sel-pill, .field-single .sel-pill');
-        document.querySelectorAll('.field-single .pill-row .sel-pill').forEach(p => {
-          if (p.dataset.val === d.contactPref) pickContact(p);
-        });
-      }
-      if (d.otherText) id('otherText').value = d.otherText;
-      if (d.deviceType) id('deviceType').value = d.deviceType;
-      if (d.description) { id('description').value = d.description; updateCharCount(); }
-      if (d.custName) { id('custName').value = d.custName; validateName(id('custName')); }
-      if (d.custPhone) { id('custPhone').value = d.custPhone; validatePhone(id('custPhone')); }
-      if (d.custEmail) { id('custEmail').value = d.custEmail; validateEmail(id('custEmail')); }
-      if (d.custSuburb) id('custSuburb').value = d.custSuburb;
-    } catch (e) {}
+function toggleSvc(el) {
+  const val = el.dataset.val;
+  el.classList.toggle('active');
+  if (el.classList.contains('active')) {
+    selectedSvcs.push(val);
+  } else {
+    selectedSvcs = selectedSvcs.filter(s => s !== val);
   }
+  document.getElementById('servicesInput').value = selectedSvcs.join(', ');
+  document.getElementById('otherReveal').classList.toggle('show', selectedSvcs.includes('Other'));
+  if (selectedSvcs.length) document.getElementById('svcErr').classList.remove('show');
+}
 
-  function clearDraft() {
-    try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
+function pickUrgency(el) {
+  el.parentElement.querySelectorAll('.sel-pill').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+  urgency = el.dataset.val;
+  document.getElementById('urgencyInput').value = urgency;
+}
+
+function pickContact(el) {
+  el.parentElement.querySelectorAll('.sel-pill').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+  contactPref = el.dataset.val;
+  document.getElementById('contactInput').value = contactPref;
+}
+
+document.getElementById('quoteForm').addEventListener('submit', function(e) {
+  let ok = true;
+  
+  if (!selectedSvcs.length) {
+    document.getElementById('svcErr').classList.add('show');
+    ok = false;
+  } else {
+    document.getElementById('svcErr').classList.remove('show');
   }
-
-  // ── HELPERS ──
-  function id(i) { return document.getElementById(i); }
-
-  function showErr(fieldEl, errId) {
-    if (fieldEl) fieldEl.classList.add('err');
-    id(errId).classList.add('show');
+  
+  if (!ok) {
+    e.preventDefault();
+    const first = document.querySelector('.svc-error.show, .field-err.show');
+    if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
+  // If ok is true, form submits normally to FormSubmit
+});
 
-  function clearErr(fieldEl, errId) {
-    if (fieldEl) fieldEl.classList.remove('err');
-    id(errId).classList.remove('show');
-  }
+// NAV
+document.getElementById('nav').innerHTML = `
+  <a href="index.html" class="nav-logo">
+    <div class="logo-mark"><img src="logo.png" alt="FixMyPC Perth"></div>
+    <span class="logo-name">FixMyPC <em>Perth</em></span>
+  </a>
+  <div class="nav-right">
+    <a href="pricing.html" class="nav-pill pill-ghost">Pricing</a>
+    <a href="business-it-support.html" class="nav-pill pill-ghost">Business IT Support</a>
+    <a href="quiz.html" class="nav-pill pill-ghost">Free PC Diagnostic</a>
+    <a href="blog.html" class="nav-pill pill-ghost">Tech Tips</a>
+    <a href="reviews.html" class="nav-pill pill-ghost">Reviews &amp; FAQ</a>
+  </div>`;
 
-  // ── SERVICE CARDS (delegated) ──
-  function activateSvc(el) {
-    const val = el.dataset.val;
-    el.classList.add('active');
-    el.setAttribute('aria-checked', 'true');
-    if (!state.selectedSvcs.includes(val)) state.selectedSvcs.push(val);
-    if (val === 'Other') id('otherReveal').classList.add('show');
-    if (state.selectedSvcs.length) id('svcErr').classList.remove('show');
-  }
-
-  function deactivateSvc(el) {
-    const val = el.dataset.val;
-    el.classList.remove('active');
-    el.setAttribute('aria-checked', 'false');
-    state.selectedSvcs = state.selectedSvcs.filter(s => s !== val);
-    if (val === 'Other') id('otherReveal').classList.remove('show');
-  }
-
-  id('serviceGrid').addEventListener('click', function (e) {
-    const card = e.target.closest('.svc-card');
-    if (!card) return;
-    card.classList.contains('active') ? deactivateSvc(card) : activateSvc(card);
-    saveDraft();
-  });
-
-  id('serviceGrid').addEventListener('keydown', function (e) {
-    if (e.key === ' ' || e.key === 'Enter') {
-      const card = e.target.closest('.svc-card');
-      if (!card) return;
-      e.preventDefault();
-      card.classList.contains('active') ? deactivateSvc(card) : activateSvc(card);
-      saveDraft();
-    }
-  });
-
-  // ── URGENCY / CONTACT PILLS ──
-  function pickUrgency(el) {
-    el.closest('.pill-row').querySelectorAll('.sel-pill').forEach(p => {
-      p.classList.remove('active');
-      p.setAttribute('aria-checked', 'false');
-    });
-    el.classList.add('active');
-    el.setAttribute('aria-checked', 'true');
-    state.urgency = el.dataset.val;
-    saveDraft();
-  }
-
-  function pickContact(el) {
-    el.closest('.pill-row').querySelectorAll('.sel-pill').forEach(p => {
-      p.classList.remove('active');
-      p.setAttribute('aria-checked', 'false');
-    });
-    el.classList.add('active');
-    el.setAttribute('aria-checked', 'true');
-    state.contactPref = el.dataset.val;
-    saveDraft();
-  }
-
-  // Attach urgency pills
-  document.querySelectorAll('.field-col .pill-row .sel-pill').forEach(p => {
-    p.addEventListener('click', () => pickUrgency(p));
-    p.addEventListener('keydown', e => { if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); pickUrgency(p); } });
-  });
-
-  // Attach contact pills (last pill-row in the form)
-  document.querySelectorAll('.field-single .pill-row .sel-pill').forEach(p => {
-    p.addEventListener('click', () => pickContact(p));
-    p.addEventListener('keydown', e => { if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); pickContact(p); } });
-  });
-
-  // ── CHAR COUNT ──
-  function updateCharCount() {
-    const el = id('description');
-    const count = el.value.length;
-    const cc = id('charCount');
-    cc.textContent = count + ' / 600';
-    cc.className = 'char-count' + (count > 540 ? ' warn' : '') + (count >= 600 ? ' over' : '');
-  }
-
-  id('description').addEventListener('input', () => { updateCharCount(); clearErr(id('description'), 'descErr'); saveDraft(); });
-
-  // ── FIELD VALIDATION ──
-  function validateName(input) {
-    const ok = input.value.trim().length >= 2;
-    input.classList.toggle('valid', ok);
-    input.classList.toggle('err', !ok && input.value.length > 0);
-    if (ok) id('nameErr').classList.remove('show');
-    return ok;
-  }
-
-  function validatePhone(input) {
-    const val = input.value.replace(/[\s\-()]/g, '');
-    // Accepts: 04XXXXXXXX, 04XX XXX XXX, +614XXXXXXXX, 02/03/07/08XXXXXXXX
-    const ok = /^(\+?61[2-578]\d{8}|0[2-578]\d{8}|04\d{8})$/.test(val);
-    input.classList.toggle('valid', ok);
-    input.classList.toggle('err', !ok && input.value.length > 3);
-    if (ok) id('phoneErr').classList.remove('show');
-    return ok;
-  }
-
-  function validateEmail(input) {
-    if (!input.value) { input.classList.remove('valid', 'err'); return true; }
-    const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value);
-    input.classList.toggle('valid', ok);
-    input.classList.toggle('err', !ok);
-    return ok;
-  }
-
-  id('custName').addEventListener('input', () => { validateName(id('custName')); saveDraft(); });
-  id('custPhone').addEventListener('input', () => { validatePhone(id('custPhone')); saveDraft(); });
-  id('custEmail').addEventListener('input', () => { validateEmail(id('custEmail')); saveDraft(); });
-  id('custSuburb').addEventListener('input', saveDraft);
-  id('otherText').addEventListener('input', () => { clearErr(id('otherText'), 'otherErr'); saveDraft(); });
-  id('deviceType').addEventListener('change', () => { clearErr(id('deviceType'), 'deviceErr'); saveDraft(); });
-
-  // ── FULL FORM VALIDATION ──
-  function validateAll() {
-    let ok = true;
-    let firstErr = null;
-
-    if (!state.selectedSvcs.length) {
-      id('svcErr').classList.add('show');
-      firstErr = firstErr || id('serviceGrid');
-      ok = false;
-    }
-
-    // If "Other" is the only service, require the text field
-    if (state.selectedSvcs.length === 1 && state.selectedSvcs[0] === 'Other') {
-      const ot = id('otherText');
-      if (!ot.value.trim()) {
-        showErr(ot, 'otherErr');
-        firstErr = firstErr || ot;
-        ok = false;
-      }
-    }
-
-    const dt = id('deviceType');
-    if (!dt.value) {
-      showErr(dt, 'deviceErr');
-      firstErr = firstErr || dt;
-      ok = false;
-    }
-
-    const desc = id('description');
-    if (desc.value.trim().length < 10) {
-      showErr(desc, 'descErr');
-      firstErr = firstErr || desc;
-      ok = false;
-    }
-
-    if (!validateName(id('custName'))) {
-      showErr(id('custName'), 'nameErr');
-      firstErr = firstErr || id('custName');
-      ok = false;
-    }
-
-    if (!validatePhone(id('custPhone'))) {
-      showErr(id('custPhone'), 'phoneErr');
-      firstErr = firstErr || id('custPhone');
-      ok = false;
-    }
-
-    if (firstErr) {
-      firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      setTimeout(() => firstErr.focus && firstErr.focus(), 300);
-    }
-
-    return ok;
-  }
-
-  // ── SUBMIT ──
-  id('submitBtn').addEventListener('click', async function () {
-    if (!validateAll()) return;
-
-    // Honeypot check
-    if (id('hpField').value) return;
-
-    const btn = id('submitBtn');
-    const spinner = id('submitSpinner');
-    const arrow = id('submitArrow');
-    const txt = id('submitText');
-
-    btn.disabled = true;
-    spinner.classList.add('show');
-    arrow.style.display = 'none';
-    txt.textContent = 'Sending...';
-
-    const svcText = state.selectedSvcs.join(', ') +
-      (id('otherText').value ? ' — ' + id('otherText').value : '');
-
-    const payload = {
-      access_key: 'b00c2b06-22d4-4924-af92-5143e83ab18',
-      subject: 'New Quote Request — FixMyPC Perth',
-      from_name: id('custName').value,
-      Services: svcText,
-      Device: id('deviceType').value,
-      Urgency: state.urgency,
-      Description: id('description').value,
-      Name: id('custName').value,
-      Phone: id('custPhone').value,
-      Email: id('custEmail').value || 'Not provided',
-      Suburb: id('custSuburb').value || 'Not provided',
-      'Preferred Contact': state.contactPref,
-      botcheck: '',
-    };
-
-    const MAX_RETRIES = 2;
-    let attempt = 0;
-    let success = false;
-
-    while (attempt <= MAX_RETRIES && !success) {
-      try {
-        const res = await fetch('https://api.web3forms.com/submit', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-          body: JSON.stringify(payload),
-        });
-        const data = await res.json();
-        if (data.success) { success = true; }
-        else { throw new Error(data.message || 'Submission failed'); }
-      } catch (err) {
-        attempt++;
-        if (attempt > MAX_RETRIES) {
-          btn.disabled = false;
-          spinner.classList.remove('show');
-          arrow.style.display = '';
-          txt.textContent = 'Send Quote Request';
-          alert('Something went wrong. Please try again or contact us directly on WhatsApp.');
-          return;
-        }
-        await new Promise(r => setTimeout(r, 1000 * attempt));
-      }
-    }
-
-    clearDraft();
-    id('formOuter').style.display = 'none';
-    id('pageHero').style.display = 'none';
-    id('trustBar').style.display = 'none';
-    id('successWrap').classList.add('show');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-
-  // ── MOBILE NAV ──
-  const ham = id('mobHam');
-  const menu = id('mobMenu');
-
-  ham.addEventListener('click', () => {
-    const open = menu.classList.toggle('open');
-    ham.classList.toggle('open', open);
-    ham.setAttribute('aria-expanded', String(open));
-  });
-
-  menu.querySelectorAll('.mob-link').forEach(l => l.addEventListener('click', () => {
-    menu.classList.remove('open');
-    ham.classList.remove('open');
-    ham.setAttribute('aria-expanded', 'false');
-  }));
-
-  document.addEventListener('click', e => {
-    if (menu.classList.contains('open') && !menu.contains(e.target) && !ham.contains(e.target)) {
-      menu.classList.remove('open');
-      ham.classList.remove('open');
-      ham.setAttribute('aria-expanded', 'false');
-    }
-  });
-
-  // ── RESTORE DRAFT ON LOAD ──
-  restoreDraft();
-
-})();
+const ham = document.getElementById('mobHamburger');
+const menu = document.getElementById('mobMenu');
+ham.addEventListener('click', () => {
+  ham.classList.toggle('open');
+  menu.classList.toggle('open');
+});
+menu.querySelectorAll('.mob-link').forEach(l => l.addEventListener('click', () => {
+  ham.classList.remove('open');
+  menu.classList.remove('open');
+}));
 </script>
+
 </body>
 </html>
