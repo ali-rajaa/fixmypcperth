@@ -3,25 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
- 
-<!-- ============================================================
-     EDIT THESE 6 LINES FOR EVERY NEW POST
-     ============================================================ -->
+
 <title>SSD Upgrade Guide: How Much Faster Will Your PC Actually Get | FixMyPC Perth</title>
 <meta name="description" content="Swapping a hard drive for an SSD is the single best upgrade you can make. Boot times go from 3 minutes to under 10 seconds. Here is everything you need to know.">
 <link rel="canonical" href="https://www.fixmypcperth.com/blog/ssd-upgrade-perth-guide.html">
 <meta property="og:title" content="SSD Upgrade Guide: How Much Faster Will Your PC Actually Get | FixMyPC Perth">
 <meta property="og:description" content="Swapping a hard drive for an SSD is the single best upgrade you can make. Boot times go from 3 minutes to under 10 seconds. Here is everything you need to know.">
 <meta property="og:url" content="https://www.fixmypcperth.com/blog/ssd-upgrade-perth-guide.html">
-<!-- ============================================================ -->
- 
 <meta property="og:type" content="article">
 <meta name="robots" content="index, follow">
+<meta name="author" content="Ali Raja · FixMyPC Perth">
 <link rel="icon" type="image/png" href="../favicon.png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
- 
-<!-- Article schema — edit title, description, date, url -->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -34,419 +32,497 @@
   "url": "https://www.fixmypcperth.com/blog/ssd-upgrade-perth-guide.html"
 }
 </script>
- 
+
 <style>
-  :root {
-    --blue:    #1560FF;
-    --blue-lt: #EEF3FF;
-    --blue-mid:#C7D8FF;
-    --blue-dk: #0A3ACC;
-    --teal:    #00CFFF;
-    --ink:     #0F172A;
-    --ink2:    #1E293B;
-    --muted:   #64748B;
-    --muted2:  #94A3B8;
-    --border:  #E2E8F0;
-    --border2: #CBD5E1;
-    --bg:      #FFFFFF;
-    --bg2:     #F8FAFC;
-    --bg3:     #F1F5F9;
-    --green:   #16A34A;
-    --wa:      #22C55E;
-    --wa-dk:   #16A34A;
-    --fb:      #1877F2;
-    --display: 'Sora', sans-serif;
-    --body:    'DM Sans', sans-serif;
-    --radius:  14px;
-    --radius-sm: 8px;
-  }
- .mob-link {
-  font-family: var(--body);
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--ink);
-  text-decoration: none;
-  padding: 0.85rem 1rem;
-  border-radius: 10px;
-  display: block;
-  transition: background 0.15s, color 0.15s;
+:root {
+  --blue:      #1560FF;
+  --blue-lt:   #EEF3FF;
+  --blue-mid:  #C7D8FF;
+  --blue-dk:   #0A3ACC;
+  --teal:      #00CFFF;
+  --ink:       #0F172A;
+  --ink2:      #1E293B;
+  --muted:     #64748B;
+  --muted2:    #94A3B8;
+  --border:    #E2E8F0;
+  --border2:   #CBD5E1;
+  --bg:        #FFFFFF;
+  --bg2:       #F8FAFC;
+  --bg3:       #F1F5F9;
+  --green:     #16A34A;
+  --wa:        #22C55E;
+  --wa-dk:     #16A34A;
+  --display:   'Sora', sans-serif;
+  --body:      'DM Sans', sans-serif;
+  --nav-h:     64px;
+  --mob-nav-h: 60px;
 }
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
-  body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.7; overflow-x: hidden; }
- 
-  /* ── DESKTOP NAV ── */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 2rem; height: 64px;
-    background: rgba(255,255,255,0.92); backdrop-filter: blur(20px) saturate(180%);
-    border-bottom: 1px solid rgba(226,232,240,0.8);
-  }
-  .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-  .logo-mark {
-    width: 38px; height: 38px; background: transparent; border-radius: 10px;
-    display: flex; align-items: center; justify-content: center; box-shadow: none;
-  }
-  .logo-mark img { width: 100%; height: 100%; object-fit: contain; }
-  .logo-name { font-family: var(--display); font-size: 16px; font-weight: 700; color: var(--ink); letter-spacing: -0.3px; }
-  .logo-name em { color: var(--blue); font-style: normal; }
-  .nav-right { display: flex; align-items: center; gap: 10px; }
-  .nav-pill {
-    display: inline-flex; align-items: center; gap: 6px;
-    font-family: var(--body); font-size: 13px; font-weight: 600;
-    padding: 9px 18px; border-radius: 50px; text-decoration: none;
-    transition: transform 0.15s, opacity 0.15s; white-space: nowrap;
-  }
-  .nav-pill:hover { transform: translateY(-1px); opacity: 0.92; }
-  .pill-ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--border2); padding: 8px 16px; }
-  .pill-ghost:hover { border-color: var(--blue); color: var(--blue); transform: none; }
- 
-  /* ── MOBILE TOP NAV ── */
-  .mob-top-nav {
-    display: none;
-    position: fixed; top: 0; left: 0; right: 0; z-index: 300;
-    height: 60px; background: rgba(255,255,255,0.97); backdrop-filter: blur(20px);
-    border-bottom: 1.5px solid var(--border); padding: 0 1.25rem;
-    align-items: center; justify-content: space-between;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-  }
-  .mob-top-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
-  .mob-top-hamburger {
-    display: flex; flex-direction: column; justify-content: center; align-items: center;
-    gap: 5px; width: 40px; height: 40px;
-    background: var(--bg3); border: 1.5px solid var(--border2);
-    border-radius: 10px; cursor: pointer; flex-shrink: 0;
-    transition: background 0.15s, border-color 0.15s;
-  }
-  .mob-top-hamburger:hover { background: var(--blue-lt); border-color: var(--blue-mid); }
-  .mob-top-hamburger span { display: block; width: 16px; height: 2px; background: var(--ink); border-radius: 2px; transition: transform 0.3s, opacity 0.3s; }
-  .mob-top-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-  .mob-top-hamburger.open span:nth-child(2) { opacity: 0; }
-  .mob-top-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
- 
-  /* ── MOBILE DROPDOWN MENU ── */
-  .mob-drop-menu {
-    display: none;
-    position: fixed; top: 60px; left: 0; right: 0; z-index: 299;
-    background: rgba(255,255,255,0.98); backdrop-filter: blur(20px);
-    border-bottom: 1.5px solid var(--border); padding: 0.75rem 1.25rem 1.25rem;
-    flex-direction: column; gap: 6px;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.1); border-radius: 0 0 20px 20px;
-  }
-  .mob-drop-menu.open { display: flex; }
-  .mob-drop-link {
-    font-family: var(--body); font-size: 15px; font-weight: 600;
-    color: var(--ink); text-decoration: none;
-    padding: 0.85rem 1rem; border-radius: 10px;
-    border: 1.5px solid var(--border);
-    transition: background 0.15s, color 0.15s, border-color 0.15s;
-    text-align: center;
-  }
-  .mob-drop-link:hover { background: var(--blue-lt); color: var(--blue); border-color: var(--blue-mid); }
-  .mob-drop-wa {
-    background: var(--wa); color: #fff !important;
-    border-color: var(--wa); margin-top: 4px;
-    box-shadow: 0 4px 14px rgba(34,197,94,0.35);
-  }
-  .mob-drop-wa:hover { background: var(--wa-dk) !important; border-color: var(--wa-dk) !important; }
- 
-  /* ── ARTICLE LAYOUT ── */
-  .article-wrap { max-width: 720px; margin: 0 auto; padding: 100px 2rem 5rem; }
- 
-  /* ── POST HEADER ── */
-  .post-header { margin-bottom: 2.5rem; }
-  .post-breadcrumb {
-    display: flex; align-items: center; gap: 6px;
-    font-size: 12px; color: var(--muted2); margin-bottom: 1.25rem;
-  }
-  .post-breadcrumb a { color: var(--blue); text-decoration: none; font-weight: 600; }
-  .post-breadcrumb a:hover { text-decoration: underline; }
-  .post-cat {
-    display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
-    text-transform: uppercase; color: var(--blue); background: var(--blue-lt);
-    border: 1px solid var(--blue-mid); padding: 4px 12px; border-radius: 50px; margin-bottom: 1rem;
-  }
-  .post-h1 {
-    font-family: var(--display); font-size: clamp(1.75rem, 4vw, 2.6rem);
-    font-weight: 800; letter-spacing: -1.5px; color: var(--ink);
-    line-height: 1.1; margin-bottom: 1rem;
-  }
-  .post-meta {
-    display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
-    font-size: 13px; color: var(--muted2); font-weight: 500;
-    padding-bottom: 1.5rem; border-bottom: 1.5px solid var(--border);
-  }
-  .post-meta-author { color: var(--ink); font-weight: 600; }
- 
-  /* ── POST BODY ── */
-  .post-body { font-size: 16px; color: var(--ink2); line-height: 1.8; }
-  .post-body p { margin-bottom: 1.25rem; }
-  .post-body h2 {
-    font-family: var(--display); font-size: 1.4rem; font-weight: 800;
-    color: var(--ink); letter-spacing: -0.5px; margin: 2.5rem 0 0.75rem; padding-top: 0.5rem;
-  }
-  .post-body h3 {
-    font-family: var(--display); font-size: 1.1rem; font-weight: 700;
-    color: var(--ink); margin: 1.75rem 0 0.5rem;
-  }
-  .post-body ul, .post-body ol { padding-left: 1.5rem; margin-bottom: 1.25rem; }
-  .post-body li { margin-bottom: 0.5rem; color: var(--ink2); }
-  .post-body strong { color: var(--ink); font-weight: 700; }
-  .post-body a { color: var(--blue); text-decoration: underline; }
-  .post-body a:hover { color: var(--blue-dk); }
- 
-  /* ── CALLOUT BOX ── */
-  .callout {
-    background: var(--blue-lt); border: 1.5px solid var(--blue-mid);
-    border-left: 4px solid var(--blue); border-radius: 12px;
-    padding: 1.25rem 1.5rem; margin: 1.75rem 0;
-    font-size: 14.5px; color: var(--ink2); line-height: 1.7;
-  }
-  .callout strong { color: var(--blue); }
-  .callout-warn { background: #FFF7ED; border-color: #FED7AA; border-left-color: #F97316; }
-  .callout-warn strong { color: #C2410C; }
-  .callout-green { background: #F0FDF4; border-color: #BBF7D0; border-left-color: var(--wa); }
-  .callout-green strong { color: var(--green); }
- 
-  /* ── NUMBERED STEPS ── */
-  .step-list { list-style: none; padding: 0; margin: 1.5rem 0; }
-  .step-list li { display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 1.25rem; font-size: 15px; color: var(--ink2); }
-  .step-num {
-    width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0;
-    background: var(--blue); color: #fff;
-    font-family: var(--display); font-size: 14px; font-weight: 800;
-    display: flex; align-items: center; justify-content: center; margin-top: 2px;
-  }
- 
-  /* ── IN-ARTICLE CTA ── */
-  .inline-cta {
-    background: var(--ink); border-radius: 16px; padding: 1.75rem 2rem;
-    margin: 2.5rem 0; position: relative; overflow: hidden;
-  }
-  .inline-cta::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-    background: linear-gradient(90deg, var(--blue), var(--teal), var(--wa));
-  }
-  .inline-cta-title { font-family: var(--display); font-size: 1.1rem; font-weight: 800; color: #fff; margin-bottom: 0.4rem; letter-spacing: -0.3px; }
-  .inline-cta-desc { font-size: 13.5px; color: rgba(255,255,255,0.5); margin-bottom: 1.25rem; line-height: 1.6; }
-  .inline-cta-btn {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: var(--wa); color: #fff; font-family: var(--body); font-size: 14px; font-weight: 700;
-    padding: 12px 22px; border-radius: 50px; text-decoration: none;
-    box-shadow: 0 4px 14px rgba(34,197,94,0.4); transition: transform 0.15s;
-  }
-  .inline-cta-btn:hover { transform: translateY(-2px); }
- 
-  /* ── POST FOOTER NAV ── */
-  .post-footer-nav {
-    display: flex; align-items: center; justify-content: space-between;
-    gap: 1rem; margin-top: 3rem; padding-top: 2rem; border-top: 1.5px solid var(--border); flex-wrap: wrap;
-  }
-  .post-footer-link {
-    font-size: 13px; font-weight: 700; color: var(--blue); text-decoration: none;
-    display: flex; align-items: center; gap: 4px;
-  }
-  .post-footer-link:hover { text-decoration: underline; }
- 
-  /* ── FOOTER ── */
-  footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.75rem 2rem; margin-top: 4rem; }
-  .footer-inner {
-    max-width: 1100px; margin: 0 auto;
-    display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
-  }
-  .footer-copy { font-size: 12px; color: var(--muted2); }
-  .footer-note { font-size: 12px; color: var(--muted2); }
- 
-  /* ── RESPONSIVE ── */
-  @media (max-width: 720px) {
-    nav { display: none; }
-    .mob-top-nav { display: flex; }
-    body { padding-top: 60px; }
-    .article-wrap { padding: 24px 1.25rem 4rem; }
-    .post-h1 { font-size: clamp(1.5rem, 6vw, 2rem); }
-    .inline-cta { padding: 1.5rem; }
-    footer { padding: 1.25rem 1rem; }
-    .footer-inner { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
-  }
-  @media (max-width: 540px) {
-    .inline-cta { padding: 1.25rem; }
-  }
-  @media (max-width: 360px) { .logo-name { display: none; } }
+
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--bg2); }
+::-webkit-scrollbar-thumb { background: linear-gradient(180deg, var(--blue) 0%, var(--blue-dk) 100%); border-radius: 10px; border: 2px solid var(--bg2); }
+::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, var(--blue-dk) 0%, var(--blue) 100%); }
+
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--body); font-size: 16px;
+  line-height: 1.7; overflow-x: hidden;
+}
+
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+
+/* ── DESKTOP NAV ── */
+.desk-nav {
+  position: fixed; top: 3px; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2rem; height: var(--nav-h);
+  background: rgba(255,255,255,0.88);
+  backdrop-filter: blur(30px) saturate(200%);
+  -webkit-backdrop-filter: blur(30px) saturate(200%);
+  border-bottom: 1px solid rgba(226,232,240,0.5);
+  border-top: 1px solid rgba(255,255,255,0.8);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.05);
+}
+.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
+.logo-mark { width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.logo-mark img { width: 100%; height: 100%; object-fit: contain; }
+.logo-name { font-family: var(--display); font-size: 16px; font-weight: 700; color: var(--ink); letter-spacing: -0.3px; white-space: nowrap; }
+.logo-name em { color: var(--blue); font-style: normal; }
+.nav-right { display: flex; align-items: center; gap: 8px; }
+.nav-pill { display: inline-flex; align-items: center; gap: 6px; font-family: var(--body); font-size: 13px; font-weight: 600; padding: 9px 18px; border-radius: 50px; text-decoration: none; border: none; cursor: pointer; transition: transform 0.15s, opacity 0.15s; white-space: nowrap; }
+.nav-pill:hover { transform: translateY(-1px); opacity: 0.92; }
+.pill-ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--border2); padding: 8px 16px; }
+.pill-ghost:hover { border-color: var(--blue); color: var(--blue); transform: none; opacity: 1; }
+
+/* ── MOBILE TOP NAV ── */
+.mob-nav {
+  display: none; position: fixed; top: 0; left: 0; right: 0; z-index: 300;
+  height: var(--mob-nav-h); background: rgba(255,255,255,0.97);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1.5px solid var(--border); padding: 0 1.25rem;
+  align-items: center; justify-content: space-between;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+}
+.mob-hamburger {
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  gap: 5px; width: 42px; height: 42px;
+  background: var(--bg3); border: 1.5px solid var(--border2);
+  border-radius: 10px; cursor: pointer; flex-shrink: 0;
+  transition: background 0.15s, border-color 0.15s;
+}
+.mob-hamburger:hover { background: var(--blue-lt); border-color: var(--blue-mid); }
+.mob-hamburger span { display: block; width: 16px; height: 2px; background: var(--ink); border-radius: 2px; transition: transform 0.3s ease, opacity 0.3s ease; }
+.mob-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.mob-hamburger.open span:nth-child(2) { opacity: 0; }
+.mob-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── MOBILE DROPDOWN ── */
+.mob-menu {
+  display: none; position: fixed; top: var(--mob-nav-h); left: 0; right: 0; z-index: 299;
+  background: rgba(255,255,255,0.98); backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px); border-bottom: 1.5px solid var(--border);
+  padding: 0.75rem 1.25rem 1.5rem; flex-direction: column; gap: 4px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.1); border-radius: 0 0 20px 20px;
+}
+.mob-menu.open { display: flex; }
+.mob-link { font-family: var(--body); font-size: 15px; font-weight: 600; color: var(--ink); text-decoration: none; padding: 0.9rem 1rem; border-radius: 10px; display: block; transition: background 0.15s, color 0.15s; }
+.mob-link:hover { background: var(--blue-lt); color: var(--blue); }
+
+/* ── ARTICLE LAYOUT ── */
+.article-wrap {
+  max-width: 740px; margin: 0 auto;
+  padding: calc(var(--nav-h) + 40px) 2rem 5rem;
+}
+
+/* ── POST HEADER ── */
+.post-breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--muted2); margin-bottom: 1.25rem; }
+.post-breadcrumb a { color: var(--blue); text-decoration: none; font-weight: 600; }
+.post-breadcrumb a:hover { text-decoration: underline; }
+.post-cat { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue); background: var(--blue-lt); border: 1px solid var(--blue-mid); padding: 4px 12px; border-radius: 50px; margin-bottom: 1rem; }
+.post-h1 { font-family: var(--display); font-size: clamp(1.8rem, 4vw, 2.7rem); font-weight: 800; letter-spacing: -1.5px; color: var(--ink); line-height: 1.1; margin-bottom: 1rem; }
+.post-meta { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; font-size: 13px; color: var(--muted2); font-weight: 500; padding-bottom: 1.5rem; border-bottom: 1.5px solid var(--border); margin-bottom: 2rem; }
+.post-meta-author { color: var(--ink); font-weight: 700; }
+
+/* ── POST BODY ── */
+.post-body { font-size: 16px; color: var(--ink2); line-height: 1.85; }
+.post-body p { margin-bottom: 1.35rem; }
+.post-body h2 { font-family: var(--display); font-size: 1.45rem; font-weight: 800; color: var(--ink); letter-spacing: -0.5px; margin: 2.75rem 0 0.8rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+.post-body h3 { font-family: var(--display); font-size: 1.05rem; font-weight: 700; color: var(--ink); margin: 1.75rem 0 0.5rem; }
+.post-body ul, .post-body ol { padding-left: 1.5rem; margin-bottom: 1.25rem; }
+.post-body li { margin-bottom: 0.6rem; color: var(--ink2); }
+.post-body strong { color: var(--ink); font-weight: 700; }
+.post-body a { color: var(--blue); text-decoration: underline; }
+.post-body a:hover { color: var(--blue-dk); }
+
+/* ── CALLOUT BOXES ── */
+.callout { background: var(--blue-lt); border: 1.5px solid var(--blue-mid); border-left: 4px solid var(--blue); border-radius: 12px; padding: 1.25rem 1.5rem; margin: 1.75rem 0; font-size: 14.5px; color: var(--ink2); line-height: 1.75; }
+.callout strong { color: var(--blue); }
+.callout-warn { background: #FFF7ED; border-color: #FED7AA; border-left-color: #F97316; }
+.callout-warn strong { color: #C2410C; }
+.callout-green { background: #F0FDF4; border-color: #BBF7D0; border-left-color: var(--wa); }
+.callout-green strong { color: var(--green); }
+
+/* ── QUICK SUMMARY BOX ── */
+.summary-box {
+  background: var(--ink); border-radius: 16px; padding: 1.5rem 1.75rem;
+  margin: 0 0 2.5rem; position: relative; overflow: hidden;
+}
+.summary-box::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--blue), var(--teal), var(--wa)); }
+.summary-box-title { font-family: var(--display); font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); margin-bottom: 0.75rem; }
+.summary-box ul { padding-left: 0; list-style: none; }
+.summary-box ul li { font-size: 13.5px; color: rgba(255,255,255,0.78); padding: 0.3rem 0; display: flex; align-items: center; gap: 8px; }
+.summary-box ul li::before { content: ''; width: 5px; height: 5px; background: var(--teal); border-radius: 50%; flex-shrink: 0; }
+
+/* ── STAT HIGHLIGHT ── */
+.stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 1.75rem 0; }
+.stat-box { background: var(--bg2); border: 1.5px solid var(--border); border-radius: 12px; padding: 1rem; text-align: center; }
+.stat-val { font-family: var(--display); font-size: 2rem; font-weight: 800; color: var(--blue); letter-spacing: -1px; display: block; }
+.stat-lbl { font-size: 11.5px; color: var(--muted); font-weight: 500; margin-top: 3px; display: block; }
+
+/* ── NUMBERED STEPS ── */
+.step-list { list-style: none; padding: 0; margin: 1.5rem 0; }
+.step-list li { display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 1.25rem; font-size: 15px; color: var(--ink2); }
+.step-num { width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0; background: var(--blue); color: #fff; font-family: var(--display); font-size: 14px; font-weight: 800; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
+
+/* ── CHECKLIST ── */
+.check-list { list-style: none; padding: 0; margin: 1.25rem 0; }
+.check-list li { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 0.65rem; font-size: 14.5px; color: var(--ink2); }
+.check-icon { width: 20px; height: 20px; border-radius: 50%; background: rgba(34,197,94,0.12); border: 1px solid rgba(34,197,94,0.3); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 10px; color: var(--wa-dk); font-weight: 800; margin-top: 2px; }
+
+/* ── IN-ARTICLE CTA ── */
+.inline-cta { background: var(--ink); border-radius: 16px; padding: 1.75rem 2rem; margin: 2.5rem 0; position: relative; overflow: hidden; }
+.inline-cta::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--blue), var(--teal), var(--wa)); }
+.inline-cta-title { font-family: var(--display); font-size: 1.15rem; font-weight: 800; color: #fff; margin-bottom: 0.4rem; letter-spacing: -0.3px; }
+.inline-cta-desc { font-size: 13.5px; color: rgba(255,255,255,0.52); margin-bottom: 1.25rem; line-height: 1.65; }
+.inline-cta-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+.inline-cta-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--wa); color: #fff; font-family: var(--body); font-size: 14px; font-weight: 700; padding: 12px 22px; border-radius: 50px; text-decoration: none; box-shadow: 0 4px 14px rgba(34,197,94,0.4); transition: transform 0.15s; }
+.inline-cta-btn:hover { transform: translateY(-2px); }
+.inline-cta-btn-outline { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: rgba(255,255,255,0.75); font-family: var(--body); font-size: 14px; font-weight: 600; padding: 12px 22px; border-radius: 50px; text-decoration: none; border: 1.5px solid rgba(255,255,255,0.2); transition: border-color 0.15s, color 0.15s; }
+.inline-cta-btn-outline:hover { border-color: rgba(255,255,255,0.5); color: #fff; }
+
+/* ── POST FOOTER NAV ── */
+.post-footer-nav { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 3rem; padding-top: 2rem; border-top: 1.5px solid var(--border); flex-wrap: wrap; }
+.post-footer-link { font-size: 13px; font-weight: 700; color: var(--blue); text-decoration: none; display: flex; align-items: center; gap: 4px; }
+.post-footer-link:hover { text-decoration: underline; }
+
+/* ── FOOTER ── */
+footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.75rem 2rem; }
+.footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.footer-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; flex-shrink: 0; }
+.footer-copy { font-size: 12px; color: var(--muted2); line-height: 1.6; }
+.footer-links { display: flex; gap: 1.25rem; }
+.footer-links a { font-size: 12px; color: var(--muted2); text-decoration: none; transition: color 0.15s; }
+.footer-links a:hover { color: var(--blue); }
+
+/* ── WA BUBBLE ── */
+.wa-bubble { position: fixed; bottom: 24px; right: 24px; z-index: 9999; width: 58px; height: 58px; background: var(--wa); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(34,197,94,0.45); transition: transform 0.2s, box-shadow 0.2s; text-decoration: none; }
+.wa-bubble:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(34,197,94,0.55); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 720px) {
+  .desk-nav { display: none; }
+  .mob-nav { display: flex; }
+  body { padding-top: var(--mob-nav-h); }
+  .article-wrap { padding: 1.5rem 1.25rem 4rem; }
+  .post-h1 { font-size: clamp(1.55rem, 6.5vw, 2rem); letter-spacing: -1px; }
+  .stat-row { grid-template-columns: 1fr 1fr; }
+  .inline-cta { padding: 1.4rem 1.25rem; }
+  .inline-cta-btns { flex-direction: column; }
+  .inline-cta-btn, .inline-cta-btn-outline { width: 100%; justify-content: center; }
+  footer { padding: 1.5rem 1.25rem; }
+  .footer-inner { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+  .wa-bubble { bottom: 20px; right: 16px; width: 52px; height: 52px; }
+}
+@media (max-width: 480px) {
+  .stat-row { grid-template-columns: 1fr; }
+  .stat-val { font-size: 1.75rem; }
+}
 </style>
 </head>
 <body>
- 
+
 <!-- DESKTOP NAV -->
-<nav>
-  <a href="../index.html" class="nav-logo">
-    <div class="logo-mark"><img src="../logo.png" alt="FixMyPC Perth"></div>
+<nav class="desk-nav" aria-label="Main navigation">
+  <a href="../index.html" class="nav-logo" aria-label="FixMyPC Perth Home">
+    <div class="logo-mark"><img src="../logo.png" alt="FixMyPC Perth" width="38" height="38" loading="lazy"></div>
     <span class="logo-name">FixMyPC <em>Perth</em></span>
   </a>
   <div class="nav-right">
     <a href="../pricing.html" class="nav-pill pill-ghost">Pricing</a>
+    <a href="../business-it-support.html" class="nav-pill pill-ghost">Business IT Support</a>
     <a href="../quiz.html" class="nav-pill pill-ghost">Free PC Diagnostic</a>
     <a href="../blog.html" class="nav-pill pill-ghost">Tech Tips</a>
-    <a href="../reviews.html" class="nav-pill pill-ghost">Reviews & FAQ</a>
+    <a href="../reviews.html" class="nav-pill pill-ghost">Reviews &amp; FAQ</a>
   </div>
 </nav>
- 
-<!-- MOBILE TOP NAV -->
-<div class="mob-top-nav">
-  <a href="../index.html" class="mob-top-logo">
-    <div class="logo-mark"><img src="../logo.png" alt="FixMyPC Perth"></div>
+
+<!-- MOBILE NAV -->
+<div class="mob-nav" role="navigation" aria-label="Mobile navigation">
+  <a href="../index.html" class="nav-logo" aria-label="FixMyPC Perth Home">
+    <div class="logo-mark"><img src="../logo.png" alt="FixMyPC Perth" width="38" height="38" loading="lazy"></div>
     <span class="logo-name" style="font-size:14px">FixMyPC <em>Perth</em></span>
   </a>
-  <button class="mob-top-hamburger" id="mob-top-hamburger" aria-label="Open menu">
+  <button class="mob-hamburger" id="mob-hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mob-menu">
     <span></span><span></span><span></span>
   </button>
 </div>
- 
-<!-- MOBILE DROPDOWN MENU -->
-<div class="mob-drop-menu" id="mob-drop-menu">
-  <a href="pricing.html" class="mob-link">Pricing</a>
-  <a href="quiz.html" class="mob-link">Free PC Diagnostic</a>
-  <a href="blog.html" class="mob-link">Tech Tips</a>
-  <a href="reviews.html" class="mob-link">Reviews &amp; FAQ</a>
+<div class="mob-menu" id="mob-menu" role="menu">
+  <a href="../pricing.html" class="mob-link" role="menuitem">Pricing</a>
+  <a href="../business-it-support.html" class="mob-link" role="menuitem">Business IT Support</a>
+  <a href="../quiz.html" class="mob-link" role="menuitem">Free PC Diagnostic</a>
+  <a href="../blog.html" class="mob-link" role="menuitem">Tech Tips</a>
+  <a href="../reviews.html" class="mob-link" role="menuitem">Reviews &amp; FAQ</a>
 </div>
- 
+
 <!-- ARTICLE -->
 <div class="article-wrap">
- 
-  <div class="post-header">
-    <div class="post-breadcrumb">
-      <a href="../blog.html">← Tech Tips</a>
-      <span>/</span>
-      <span>Upgrades</span>
-    </div>
-    <span class="post-cat">Upgrades</span>
-    <h1 class="post-h1">SSD Upgrade Guide: How Much Faster Will Your PC Get</h1>
-    <div class="post-meta">
-      <span class="post-meta-author">Ali Raja · FixMyPC Perth</span>
-      <span>·</span>
-      <span>5 May 2026</span>
-      <span>·</span>
-      <span>7 min read</span>
-      <span>·</span>
-      <span>Perth WA</span>
-    </div>
+
+  <div class="post-breadcrumb">
+    <a href="../blog.html">← Tech Tips</a>
+    <span>/</span>
+    <span>Upgrades</span>
   </div>
- 
+
+  <span class="post-cat">Upgrades</span>
+  <h1 class="post-h1">SSD Upgrade Guide: How Much Faster Will Your PC Actually Get</h1>
+
+  <div class="post-meta">
+    <span class="post-meta-author">Ali Raja · FixMyPC Perth</span>
+    <span>·</span>
+    <span>5 May 2026</span>
+    <span>·</span>
+    <span>9 min read</span>
+    <span>·</span>
+    <span>Perth WA</span>
+  </div>
+
+  <!-- QUICK SUMMARY -->
+  <div class="summary-box">
+    <div class="summary-box-title">What you will learn in this guide</div>
+    <ul>
+      <li>What an SSD actually is and why it is so much faster than a traditional hard drive</li>
+      <li>Exactly what you will notice the moment your PC boots from an SSD for the first time</li>
+      <li>Whether your specific machine is a good candidate for an upgrade</li>
+      <li>What happens to all your files, programs and settings during the process</li>
+      <li>When an upgrade makes financial sense and when it does not</li>
+    </ul>
+  </div>
+
   <div class="post-body">
- 
-    <p>If your computer takes several minutes to turn on, stutters when you open Chrome, or sounds like it is grinding away inside, you do not necessarily need a new PC. In fact, swapping out an old hard drive for a Solid State Drive (SSD) is the single best upgrade you can make.</p>
- 
-    <p>I perform dozens of SSD upgrades every month in Canning Vale, and customers consistently tell me their 6 year old laptops feel faster than the day they bought them. Here is everything you need to know about the difference an SSD makes.</p>
- 
-    <h2>What is the difference between an HDD and an SSD</h2>
-    <p>Traditional Hard Disk Drives (HDDs) have been around for decades. Inside, they look like a tiny record player, using a mechanical arm to read and write data on spinning magnetic platters. Because they rely on moving parts, they are physically limited in how fast they can fetch your files.</p>
-    <p>A Solid State Drive (SSD), on the other hand, uses flash memory similar to what is inside your smartphone. There are absolutely zero moving parts. This means data is written and accessed instantly, silently, and with much less battery drain on laptops.</p>
- 
-    <h2>The Real World Speed Difference</h2>
-    <p>When we talk about speed, the numbers speak for themselves. Even the most basic, entry level SSD is roughly <strong>5 to 10 times faster</strong> than a standard mechanical hard drive. If you install an NVMe SSD (a newer, smaller type of SSD), it can be up to 35 times faster.</p>
- 
-    <div class="callout callout-green">
-      <strong>Real Results:</strong> I recently upgraded a customer's 2018 HP laptop in Thornlie. Before the upgrade, it took <strong>3 minutes and 15 seconds</strong> just to load the Windows desktop. After installing a 1TB SSD, it booted in <strong>11 seconds</strong>.
+
+    <p>If your computer takes several minutes to turn on, stutters when you open a browser, or sounds like it is constantly grinding away inside, you may not need a new machine at all. In fact, swapping out your old hard drive for a Solid State Drive is the single most impactful upgrade you can make to almost any computer built in the last ten to twelve years. The difference is not subtle. It is the kind of change that makes people think they have a completely new machine.</p>
+
+    <p>We perform SSD upgrades week after week, and the reaction from customers is remarkably consistent. People who have been tolerating a three or four minute boot time for years are genuinely surprised when the same computer, same Windows installation, same files and programs, loads the desktop in under fifteen seconds. This guide will explain exactly why that happens, what you can expect from your own machine, and how to make sure the process is done correctly so you do not lose a single file in the process.</p>
+
+    <div class="stat-row">
+      <div class="stat-box"><span class="stat-val">6x</span><span class="stat-lbl">faster than a standard hard drive at minimum</span></div>
+      <div class="stat-box"><span class="stat-val">Same day</span><span class="stat-lbl">turnaround on most SSD upgrades</span></div>
+      <div class="stat-box"><span class="stat-val">$150</span><span class="stat-lbl">all in including a 500GB Samsung or Crucial SSD</span></div>
     </div>
- 
-    <h3>What you will notice immediately:</h3>
+
+    <h2>What is the difference between a hard drive and an SSD</h2>
+
+    <p>To understand why this upgrade matters so much, you need to understand what you are currently working with. Traditional Hard Disk Drives, which most laptops and desktops shipped with up until around 2015 to 2018, use spinning magnetic platters to store your data. A tiny mechanical arm moves back and forth across those platters to read and write information, not unlike a record player needle tracking a vinyl record. Because these parts physically move, there is an inherent speed limit to how fast data can be accessed.</p>
+
+    <p>A Solid State Drive has no moving parts at all. It stores data on flash memory chips, the same fundamental technology inside your phone. When your computer asks for a file, the SSD retrieves it almost instantly rather than waiting for a platter to spin into the right position and an arm to move to the right track. That difference in access time is what produces the dramatic real-world speed improvements you will feel every single time you use your computer.</p>
+
+    <p>On a standard spinning hard drive, your data reads at roughly 80 to 160 megabytes per second. A basic SATA SSD reads at 500 to 560 megabytes per second. An NVMe SSD, which fits into a newer slot type found in most machines from 2018 onwards, reads at anywhere from 2,000 to 7,000 megabytes per second depending on the model. Even at the conservative end, you are looking at a machine that retrieves your files five to six times faster than before. At the high end, the difference is closer to forty times.</p>
+
+    <h2>What you will actually notice after the upgrade</h2>
+
+    <p>The speed numbers are compelling on paper, but what matters to you is how your computer feels to use day to day. Here is what changes the moment your machine is running from an SSD.</p>
+
     <ul class="step-list">
       <li>
         <div class="step-num">1</div>
-        <div><strong>Lightning fast boot times:</strong> Press the power button and be at your login screen in seconds, not minutes.</div>
+        <div><strong>Boot times that genuinely surprise you.</strong> Where your computer used to take two, three, or even four minutes to become usable after you pressed the power button, you will now be at your desktop and ready to work in ten to twenty seconds. That is not an exaggeration. It is the most immediate and visible change, and it happens every single morning.</div>
       </li>
       <li>
         <div class="step-num">2</div>
-        <div><strong>Instant app launches:</strong> Programs like Word, Excel, Chrome, and Photoshop open almost the moment you click them.</div>
+        <div><strong>Programs that open the moment you click them.</strong> Chrome, Word, Excel, Outlook, Photoshop and any other application you use regularly will launch almost instantly instead of making you wait through a progress bar. When you are used to waiting eight seconds for a spreadsheet to open, the upgrade feels remarkable.</div>
       </li>
       <li>
         <div class="step-num">3</div>
-        <div><strong>Seamless updates:</strong> Windows updates install significantly faster and do not hijack your computer for hours.</div>
+        <div><strong>Windows updates that actually finish.</strong> You know the update that tells you not to turn off your computer and then sits at 35 percent for forty minutes? On an SSD, updates install significantly faster because your system can read and write files at the speed they were designed to be processed.</div>
       </li>
       <li>
         <div class="step-num">4</div>
-        <div><strong>Silent operation:</strong> Because there are no spinning disks, your laptop or desktop will run much quieter.</div>
+        <div><strong>Silence.</strong> The grinding and clicking you have been hearing from your machine for years is the hard drive doing its job. SSDs produce no noise whatsoever. If you work in a quiet environment, the change is noticeable immediately.</div>
+      </li>
+      <li>
+        <div class="step-num">5</div>
+        <div><strong>Better battery life on laptops.</strong> Because an SSD draws significantly less power than a spinning hard drive, your laptop battery will last longer between charges. This benefit is often overlooked but it is real and measurable on most devices.</div>
       </li>
     </ul>
- 
-    <h2>What happens to all my files and programs</h2>
-    <p>This is the most common concern I hear. The short answer: <strong>You do not lose anything.</strong></p>
-    <p>When you get an SSD upgrade, we perform a process called cloning. We make an exact 1 to 1 digital copy of your old hard drive and transfer it to the new SSD. When you turn your computer back on, your desktop background, your passwords, your photos, and all your software will be exactly where you left them, they will just load a lot faster.</p>
- 
-    <h2>Is my PC too old for an SSD</h2>
-    <p>Probably not. Almost every laptop and desktop manufactured in the last 12 years uses a standard SATA connection, which is fully compatible with modern 2.5 inch SSDs. If your PC is running Windows 10 or 11 but feels unbearably slow, it is a prime candidate for an upgrade.</p>
- 
+
+    <div class="callout callout-green">
+      <strong>Real result from a customer in Thornlie:</strong> A 2018 HP laptop was brought in taking four minutes and twenty seconds from power button to usable desktop. The machine had 8GB of RAM and a solid processor but a spinning hard drive that had never been replaced. After an SSD upgrade and a full data clone, it booted in eleven seconds. Same laptop. Same Windows installation. Same files in exactly the same place. Just a different drive.
+    </div>
+
+    <h2>What happens to all your files and programs</h2>
+
+    <p>This is the question we hear most often, and we want to answer it clearly so you feel completely confident going into the process. When you get an SSD upgrade, we perform what is called a drive clone. We create an exact digital copy of everything on your existing hard drive, your operating system, your installed programs, your documents, your photos, your browser bookmarks, your saved passwords, your desktop wallpaper, and transfer all of it to the new SSD. When you turn your computer back on, everything is where you left it. Nothing is reinstalled from scratch. Nothing is missing.</p>
+
+    <p>The cloning process is non-destructive. Your original hard drive is not wiped or formatted until you have confirmed that the new SSD is working perfectly and everything is present. In practice, we always verify the clone thoroughly before the old drive is touched. You should never feel anxious about this process because your data is protected throughout every stage of it.</p>
+
+    <p>One important note: if your existing hard drive has bad sectors, physical damage, or is beginning to fail, a straight clone may not be possible. In that case, we will tell you clearly before doing any work, and we can discuss data recovery options if needed. We will never start a job without giving you an honest picture of the situation first.</p>
+
+    <h2>Is your computer the right candidate for an SSD upgrade</h2>
+
+    <p>Almost certainly yes, if it is more than three years old and still running a spinning hard drive. Here is how to think about whether an upgrade makes sense for your specific situation.</p>
+
+    <p>The right candidate is a machine that works reasonably well except for being slow. Good screen, comfortable keyboard, no major physical damage, and a processor that was decent when it was new. If your computer ticks those boxes, an SSD upgrade is almost always the most cost-effective way to extend its useful life by another three to five years.</p>
+
+    <p>The situation where an upgrade may not be worth it is when the machine has a fundamentally underpowered processor, like an Intel Celeron or Atom chip, physical damage to the chassis or screen, or other hardware failures that the SSD alone will not resolve. We will always give you an honest assessment of which category your machine falls into. If an upgrade is genuinely not worth your money, we will tell you that rather than take it.</p>
+
     <div class="callout callout-warn">
-      <strong>Important Note:</strong> If your laptop is heavily physically damaged, or if the processor (CPU) was extremely low end even 10 years ago (like an Intel Celeron or Atom), an SSD will help, but it might be more cost effective to replace the machine. I always offer honest advice on whether an upgrade is actually worth your money.
+      <strong>Worth checking before you book:</strong> Press <strong>Ctrl + Shift + Esc</strong> to open Task Manager and click the Performance tab, then Disk. If you see your disk running at or near 100 percent usage even when the computer appears to be sitting idle, that is a strong sign you are working with a spinning hard drive that is struggling. An SSD will almost certainly transform how your machine feels to use.
     </div>
- 
+
+    <ul class="check-list">
+      <li><span class="check-icon">✓</span> Your computer takes more than 90 seconds to reach the desktop after turning on</li>
+      <li><span class="check-icon">✓</span> Programs are slow to open even after the computer has been running for a while</li>
+      <li><span class="check-icon">✓</span> You can hear the drive grinding or clicking during normal use</li>
+      <li><span class="check-icon">✓</span> Task Manager shows disk usage sitting near 100 percent frequently</li>
+      <li><span class="check-icon">✓</span> The machine feels sluggish even though it was fast when it was new</li>
+    </ul>
+
     <div class="inline-cta">
-      <div class="inline-cta-title">Ready to make your PC fast again</div>
-      <div class="inline-cta-desc">Stop waiting for your computer to catch up. Message me on WhatsApp for a free, no obligation quote on an SSD upgrade. All data cloned safely, sorted same or next day in Canning Vale.</div>
-      <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20an%20SSD%20upgrade." target="_blank" class="inline-cta-btn" rel="noopener">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>
-        Message me for a quote
-      </a>
+      <div class="inline-cta-title">Not sure if your machine is the right candidate?</div>
+      <div class="inline-cta-desc">Message us on WhatsApp with your computer model and what you are experiencing. We will give you an honest answer about whether an SSD upgrade will make a real difference and what it will cost before you commit to anything.</div>
+      <div class="inline-cta-btns">
+        <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20an%20SSD%20upgrade." target="_blank" rel="noopener" class="inline-cta-btn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>
+          WhatsApp us, it is free
+        </a>
+        <a href="../quote-request.html" class="inline-cta-btn-outline">Use the quote form instead</a>
+      </div>
     </div>
- 
-    <h2>Is it better to just buy a new computer</h2>
-    <p>A brand new laptop of decent quality will cost you anywhere from $800 to $1,500. By comparison, an SSD upgrade (including the drive itself and the labour to clone your data) generally costs a fraction of that price and yields similar performance for everyday tasks like web browsing, emails, and office work.</p>
-    <p>If your computer has a good screen, a comfortable keyboard, and is not falling apart at the hinges, an SSD upgrade is the smartest, most cost effective way to extend its lifespan by another 3 to 5 years.</p>
- 
+
+    <h2>SSD versus buying a new computer: what makes financial sense</h2>
+
+    <p>A new laptop of reasonable quality will cost you anywhere from $800 to $1,500 today. A new desktop with comparable performance sits in a similar range. By comparison, an SSD upgrade including the drive itself and the labour to clone your data starts from $150. For most people doing everyday tasks like web browsing, email, documents and video calls, the performance of an SSD-upgraded five-year-old machine is genuinely comparable to a new budget laptop. You are not sacrificing much, and you are keeping several hundred dollars in your pocket.</p>
+
+    <p>The calculation shifts if your machine has other problems beyond the drive. If the battery no longer holds charge, the screen has damage, the hinges are broken, or the processor was genuinely underpowered from the start, then an SSD upgrade is solving one problem while others remain. We think it is important to be upfront about this. If your machine has several compounding issues and a replacement is the smarter long-term decision, we will tell you that honestly rather than take money for a job that will not fully resolve your frustration.</p>
+
+    <p>For machines that are otherwise in good shape and simply slow, though, an upgrade is almost always the right call. It is the fastest way to make your computer feel new again, and we back every job with a 30-day labour warranty from the moment you collect your machine.</p>
+
+    <h2>Which SSD is right for your machine</h2>
+
+    <p>There are two main types of SSD connection you will encounter in consumer computers. SATA SSDs use the same cable and port as the spinning hard drive they replace, making them compatible with virtually every laptop or desktop from the last twelve years. They read at around 500 to 560 megabytes per second, which is already a transformative upgrade from any spinning drive.</p>
+
+    <p>NVMe SSDs connect directly to the motherboard via an M.2 slot and are significantly faster still, reaching 2,000 to 7,000 megabytes per second in the best cases. Most laptops and desktops from 2018 onwards support at least one M.2 slot. If your machine can take an NVMe drive, we will recommend one, as the price difference between a good SATA and entry-level NVMe is small and the benefit is real.</p>
+
+    <p>For capacity, 500GB covers most everyday users comfortably. If you store large amounts of photos, videos, or work files locally, a 1TB drive gives you more breathing room and typically costs only marginally more. We stock Samsung and Crucial drives in both sizes because their reliability record is excellent and both carry manufacturer warranties.</p>
+
+    <h2>The upgrade process from start to finish</h2>
+
+    <p>When you bring your machine to us for an SSD upgrade, here is exactly what happens so there are no surprises.</p>
+
+    <p>We start by checking the health of your existing hard drive to make sure a clean clone is possible. We then connect your machine to our cloning hardware and create a full image of your existing drive to the new SSD. This process takes anywhere from thirty minutes to a couple of hours depending on how much data you have. Once the clone is complete, we swap the drives, boot the machine from the new SSD, and verify that everything is present and working correctly before you are called to collect.</p>
+
+    <p>In most cases the full turnaround is same day. If you drop off in the morning, you are typically collecting in the afternoon with a machine that feels completely different to use. We will walk you through what was done when you collect so you understand exactly what changed and why.</p>
+
+    <h2>The bottom line</h2>
+
+    <p>If your computer is slow and you have been tolerating it for months or years, an SSD upgrade is almost certainly the fastest and most cost-effective fix available to you. It takes your machine from frustrating to genuinely fast, it keeps all your files and settings intact, and it extends the useful life of a machine you already know how to use by several years.</p>
+
+    <p>We offer upfront pricing before anything is touched, a no-surprises approach to every job, and a 30-day labour warranty on all work. If you are not sure whether your machine is a good candidate, message us and we will give you an honest answer at no cost.</p>
+
+    <!-- BOTTOM CTA -->
+    <div class="inline-cta">
+      <div class="inline-cta-title">Ready to make your PC fast again?</div>
+      <div class="inline-cta-desc">Message us now for a free quote on an SSD upgrade. All data cloned safely. Same or next day turnaround. 5 out of 5 rated by Perth locals.</div>
+      <div class="inline-cta-btns">
+        <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20an%20SSD%20upgrade." target="_blank" rel="noopener" class="inline-cta-btn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>
+          Get a free quote now
+        </a>
+        <a href="../pricing.html" class="inline-cta-btn-outline">View full pricing</a>
+      </div>
+    </div>
+
   </div>
- 
+
   <div class="post-footer-nav">
     <a href="../blog.html" class="post-footer-link">← Back to all posts</a>
-    <a href="../pricing.html" class="post-footer-link">View pricing →</a>
+    <a href="../pricing.html" class="post-footer-link">View full pricing →</a>
   </div>
- 
+
 </div>
- 
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
-    <a href="../index.html" class="nav-logo">
-      <div class="logo-mark"><img src="../logo.png" alt="FixMyPC Perth"></div>
+    <a href="../index.html" class="footer-logo" aria-label="FixMyPC Perth Home">
+      <div class="logo-mark"><img src="../logo.png" alt="FixMyPC Perth" width="38" height="38" loading="lazy"></div>
       <span class="logo-name" style="font-size:14px">FixMyPC <em>Perth</em></span>
     </a>
-    <div class="footer-copy">© 2026 FixMyPC Perth · Perth WA</div>
-    <div class="footer-note">30 day labour warranty on all services · All prices include GST</div>
+    <div class="footer-copy">© 2026 FixMyPC Perth · ABN 67 645 153 359 · All Prices Include GST · Perth WA</div>
+    <div class="footer-links">
+      <a href="../terms.html">Terms and Conditions</a>
+    </div>
   </div>
 </footer>
- 
-<script>
-const hamburger = document.getElementById('mob-top-hamburger');
-const mobMenu = document.getElementById('mob-drop-menu');
-hamburger.addEventListener('click', () => {
-  hamburger.classList.toggle('open');
-  mobMenu.classList.toggle('open');
-});
-mobMenu.querySelectorAll('.mob-link').forEach(link => {
-  link.addEventListener('click', () => {
-    hamburger.classList.remove('open');
-    mobMenu.classList.remove('open');
-  });
-});
-</script>
- 
-<!-- WhatsApp Bubble -->
-<a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair."
-   target="_blank" rel="noopener"
-   style="
-     position: fixed; bottom: 24px; right: 24px; z-index: 9999;
-     width: 58px; height: 58px; background: #22C55E; border-radius: 50%;
-     display: flex; align-items: center; justify-content: center;
-     box-shadow: 0 4px 20px rgba(34,197,94,0.45);
-     transition: transform 0.2s, box-shadow 0.2s; text-decoration: none;
-   "
-   onmouseover="this.style.transform='scale(1.1)';this.style.boxShadow='0 6px 28px rgba(34,197,94,0.55)'"
-   onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 4px 20px rgba(34,197,94,0.45)'"
-   aria-label="Chat with us on WhatsApp">
-  <svg width="30" height="30" viewBox="0 0 24 24" fill="white">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/>
-  </svg>
+
+<!-- WA BUBBLE -->
+<a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener noreferrer" class="wa-bubble" aria-label="Chat with FixMyPC Perth on WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>
 </a>
- 
+
+<script>
+(function() {
+  'use strict';
+
+  /* ── SCROLL PROGRESS BAR ── */
+  const progressBar = document.createElement('div');
+  progressBar.style.cssText = 'position:fixed;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#1560FF,#00CFFF,#22C55E);transform:scaleX(0);transform-origin:left;z-index:99999;';
+  document.body.appendChild(progressBar);
+  window.addEventListener('scroll', () => {
+    const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrolled = window.scrollY / scrollHeight;
+    progressBar.style.transform = 'scaleX(' + scrolled + ')';
+  }, { passive: true });
+
+  /* ── MOBILE HAMBURGER ── */
+  const hamburger = document.getElementById('mob-hamburger');
+  const mobMenu   = document.getElementById('mob-menu');
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+    hamburger.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+  });
+
+  mobMenu.querySelectorAll('.mob-link').forEach(link => {
+    link.addEventListener('click', () => {
+      mobMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      hamburger.setAttribute('aria-label', 'Open navigation menu');
+    });
+  });
+
+  document.addEventListener('click', (e) => {
+    if (
+      mobMenu.classList.contains('open') &&
+      !mobMenu.contains(e.target) &&
+      !hamburger.contains(e.target)
+    ) {
+      mobMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      hamburger.setAttribute('aria-label', 'Open navigation menu');
+    }
+  });
+
+})();
+</script>
+
 </body>
 </html>
