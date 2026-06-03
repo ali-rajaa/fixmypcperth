@@ -1689,28 +1689,39 @@ footer {
   .hero-desc { font-size: 14.5px; line-height: 1.7; }
 
   .hero-actions {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0.65rem;
-  }
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.65rem;
+}
 
-  .hero-actions .btn-blue {
-    width: 100%;
-  }
+.hero-actions .btn-blue {
+  width: 100%;
+}
 
-  .hero-action-icons {
-    display: flex;
-    gap: 10px;
-  }
+.hero-action-icons {
+  display: flex;
+  gap: 0;
+  width: 100%;
+  border-radius: 50px;
+  overflow: hidden;
+  border: none;
+}
 
-  .hero-action-icons .hero-icon-btn {
-    flex: 1;
-    border-radius: 50px;
-    width: auto;
-    height: 50px;
-    padding: 0 1rem;
-  }
+.hero-action-icons .hero-icon-btn {
+  flex: 1;
+  border-radius: 0;
+  width: auto;
+  height: 50px;
+  padding: 0 1rem;
+}
 
+.hero-action-icons .hero-icon-btn.wa {
+  border-radius: 50px 0 0 50px;
+}
+
+.hero-action-icons .hero-icon-btn.fb {
+  border-radius: 0 50px 50px 0;
+}
   /* Sections */
   .section,
   .section-alt,
