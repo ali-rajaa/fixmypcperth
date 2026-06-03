@@ -109,7 +109,7 @@ a { color: inherit; }
    NAV — identical to index.html
    ============================================= */
 .desk-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  position: fixed; top: 3px; left: 0; right: 0; z-index: 200;
   display: flex; align-items: center; justify-content: space-between;
   padding: 0 2rem; height: var(--nav-h);
   background: rgba(255,255,255,0.88);
@@ -1594,7 +1594,7 @@ if (searchInput) {
 
 /* ── SCROLL PROGRESS BAR ── */
 const progressBar = document.createElement('div');
-progressBar.style.cssText = 'position:fixed;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#1560FF,#00CFFF,#22C55E);transform:scaleX(0);transform-origin:left;z-index:9999;';
+progressBar.style.cssText = 'position:fixed;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#1560FF,#00CFFF,#22C55E);transform:scaleX(0);transform-origin:left;z-index:99999;';
 document.body.appendChild(progressBar);
 
 window.addEventListener('scroll', () => {
