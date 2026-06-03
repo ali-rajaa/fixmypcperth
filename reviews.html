@@ -152,15 +152,37 @@
 
   /* REVIEW CARDS */
   .reviews-grid {
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-    gap: 1rem; margin-bottom: 3rem;
+    display: flex;
+    overflow-x: auto;
+    gap: 1.25rem;
+    margin-bottom: 3rem;
+    padding-bottom: 1rem;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+  }
+  .reviews-grid::-webkit-scrollbar {
+    height: 6px;
+  }
+  .reviews-grid::-webkit-scrollbar-track {
+    background: var(--bg3);
+    border-radius: 10px;
+  }
+  .reviews-grid::-webkit-scrollbar-thumb {
+    background: var(--border2);
+    border-radius: 10px;
+  }
+  .reviews-grid::-webkit-scrollbar-thumb:hover {
+    background: var(--blue);
   }
   .review-card {
+    flex: 0 0 auto;
+    width: 300px;
     background: var(--bg2); border: 1.5px solid var(--border);
     border-radius: 16px; padding: 1.4rem 1.5rem;
     display: flex; flex-direction: column; gap: 0.9rem;
     transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
     position: relative; overflow: hidden;
+    scroll-snap-align: start;
   }
   .review-card::before {
     content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
@@ -411,7 +433,143 @@
 ::-webkit-scrollbar-track { background: var(--bg2); }
 ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, var(--blue) 0%, var(--blue-dk) 100%); border-radius: 10px; border: 2px solid var(--bg2); }
 ::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, var(--blue-dk) 0%, var(--blue) 100%); }
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 1024px) {
+  .page { padding: 80px 1.5rem 4rem; }
+  .how-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .how-arrow { transform: rotate(90deg); margin: 1rem 0; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  nav { padding: 0 1rem; }
+  .page { padding: 70px 1rem 3.5rem; }
+  .page-hero { padding: 2.5rem 1rem 2rem; }
+  .wrap { padding: 0 1rem; }
+  .review-card { width: 280px; }
+  .cta-bar { padding: 2rem 1.5rem; }
+  .cta-bar h3 { font-size: clamp(1.3rem, 2.5vw, 1.8rem); }
+  .how-wrap { padding: 2rem 1.5rem; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .stat-item { padding: 0.5rem 0.75rem; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .stat-item:nth-child(even) { border-right: 1px solid rgba(255,255,255,0.08); border-bottom: none; }
+  .stat-val { font-size: 2rem; }
+  .stat-lbl { font-size: 11px; }
+}
+
+@media (max-width: 640px) {
+  .page { padding: 60px 1rem 3rem; }
+  .page-title { font-size: clamp(1.6rem, 4vw, 2.2rem); }
+  .page-hero { padding: 2rem 1rem 1.5rem; }
+  .review-card { width: 100%; min-width: 280px; }
+  .reviews-grid { gap: 1rem; padding-bottom: 0.75rem; }
+  .cta-btns { flex-direction: column; gap: 0.5rem; }
+  .btn-wa, .btn-fb, .btn-pricing { width: 100%; justify-content: center; padding: 12px 20px; }
+  .nav-right { display: none; }
+  .mob-top-nav { display: flex; }
+  .trust-item { padding: 0 1.5rem; font-size: 12px; }
+  .sec-label { font-size: 1.4rem; }
+  .faq-trigger { padding: 1rem 1.2rem; }
+  .faq-answer { padding: 1rem 1.2rem 1.2rem; }
+}
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much does a repair cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It is a flat $120 diagnostic and repair fee for most jobs. That covers me diagnosing the problem, fixing it, and giving you a 30 day labour warranty on the work. No hidden extras and no nasty surprises. If parts are needed (like an SSD or RAM), those are quoted separately and you approve before anything is ordered."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is included in the $120 fee?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The $120 flat fee includes a full diagnosis of your PC, the actual repair itself, and a 30 day labour warranty on everything done. You are not paying separately for diagnosis and then again for the repair. One price, job done. If the fix turns out to need parts, we will let you know the total cost before touching anything."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you come to me, or do I drop my PC off?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Both options are available! For most PC repairs, upgrades and builds, you drop your machine off to me in Canning Vale. It is quicker and means we can work on it properly. For networking, printer setup and on site jobs, we come to you anywhere in the Perth metro area. A $40 callout fee applies for on site visits."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does a repair take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most repairs are done same day or next day. Simple jobs like virus removal, SSD upgrades and password resets are often sorted within a few hours. More involved work like data recovery or a full Windows reinstall may take a full day. We will always give you a time estimate before you book so there are no surprises."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will you wipe my files or data?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Never without your permission. We always back up your files before doing anything that could affect them, including Windows reinstalls. You will be told exactly what will happen to your data before we proceed."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there a warranty on your work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes! All services come with a 30 day labour warranty. If the same issue comes back within 30 days of the repair, We will look at it again at no extra labour cost. Hardware components like SSDs and RAM also carry their manufacturer warranty on top of that."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you work on laptops as well as desktop PCs?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes! Most software repairs, virus removal, Windows reinstalls, data recovery and SSD upgrades can be done on laptops as well as desktops. Hardware upgrades like RAM and storage are possible on many laptops too depending on the model. Message us with your laptop model and we will let you know what is possible before you book."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What areas in Perth do you service?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We am based in Canning Vale and customers drop off from all across Perth. For on site visits (networking, printer setup, smart TV), We travel across the greater Perth metro area including the southern suburbs, eastern suburbs and the CBD. Not sure if we cover your area? Just message me and we will confirm straight away."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "My PC will not turn on at all. Can you still help?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolutely! A PC that will not turn on is one of the most common things we work on. It could be a failed power supply, a faulty component, or something simpler. Drop it off and we will diagnose exactly what is going on. The flat $120 fee covers the diagnosis and the repair, so you will know the full picture before paying anything extra."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I pay?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Payment is accepted via bank transfer or cash on collection. Payment is according to the quote that you received before. No payment is required upfront. You pay when you are happy with the work."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can you help me choose parts for a new PC build?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "100%! If you are building a gaming PC or upgrading and do not know where to start, message me with your budget and what you will be using it for and we will put together a parts list. We always recommend the best value for your budget. No inflated margins, just honest advice. Assembly is $150."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -488,9 +646,8 @@
   </div>
 
   <!-- REVIEWS -->
-  <div class="fade-up" style="margin-bottom:0.5rem;">
+  <div class="fade-up" style="margin-bottom:1.5rem;">
     <div class="sec-label">What Perth locals are saying</div>
-    <p class="sec-sublabel">Every review is real. No scripts, no incentives, just honest feedback from happy customers.</p>
   </div>
 
   <div class="reviews-grid fade-up">
