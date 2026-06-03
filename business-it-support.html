@@ -686,7 +686,7 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
   .audit-checklist { display: none; }
 
   .plan-tabs {
-  display: flex; /* Changed from none to flex */
+  display: none;
   gap: 0;
   background: var(--bg3);
   border: 1.5px solid var(--border);
@@ -695,8 +695,6 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
   margin: 0 auto 1.5rem;
   max-width: 320px;
 }
-
-
 .plan-tab {
   flex: 1; padding: 8px 12px; border-radius: 50px;
   border: none; background: transparent;
@@ -733,10 +731,6 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
   /* ── Audit dark section ── */
   .audit-section { padding: 3rem 1.25rem; }
   .audit-content { grid-template-columns: 1fr; gap: 2rem; }
-
-  /* ADD THIS TO YOUR GENERAL CSS */
-.plan-tabs { display: none; }
-
 
   /* ── CTA final ── */
   .cta-final { padding: 3.5rem 1.25rem; }
@@ -820,7 +814,24 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
     align-items: flex-start !important;
   }
 }
-
+.plan-tabs {
+  display: none;
+  gap: 0;
+  background: var(--bg3);
+  border: 1.5px solid var(--border);
+  border-radius: 50px;
+  padding: 4px;
+  margin: 0 auto 1.5rem;
+  max-width: 320px;
+}
+.plan-tab {
+  flex: 1; padding: 8px 12px; border-radius: 50px;
+  border: none; background: transparent;
+  font-family: var(--body); font-size: 13px; font-weight: 600;
+  color: var(--muted); cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.plan-tab.active { background: var(--blue); color: #fff; }
 
 </style>
 </head>
