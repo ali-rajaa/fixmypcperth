@@ -3,17 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PC Repair Tips & Guides | FixMyPC Perth</title>
+<title>PC Repair Tips, Guides & How-To Articles | FixMyPC Perth Blog</title>
 <link rel="icon" type="image/png" href="favicon.png">
-<meta name="description" content="Free PC repair tips, guides and advice from Perth's trusted computer repair specialist. Learn how to speed up your PC, remove viruses, recover data and more.">
+<meta name="description" content="Free PC repair tips, guides and how-to articles from Perth's trusted computer repair specialist. Learn how to speed up your PC, fix viruses, recover data, upgrade hardware, and troubleshoot common computer problems in Perth.">
 <link rel="canonical" href="https://www.fixmypcperth.com/blog.html">
-<meta name="robots" content="index, follow">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="keywords" content="PC repair tips Perth, computer repair guide, how to speed up PC, virus removal tips, data recovery guide, SSD upgrade, Windows troubleshooting, laptop repair Perth, hard drive failure signs, computer maintenance tips">
+<meta name="author" content="FixMyPC Perth">
+<meta name="geo.region" content="AU-WA">
+<meta name="geo.placename" content="Perth, Western Australia">
+<link rel="alternate" hreflang="en-AU" href="https://www.fixmypcperth.com/blog.html">
 <meta property="og:type" content="website">
-<meta property="og:title" content="PC Repair Tips & Guides | FixMyPC Perth">
-<meta property="og:description" content="Free PC repair tips and guides from Perth's trusted computer repair specialist.">
+<meta property="og:title" content="PC Repair Tips, Guides & How-To Articles | FixMyPC Perth Blog">
+<meta property="og:description" content="Free PC repair tips, guides and how-to articles. Learn how to speed up your PC, fix viruses, recover data, upgrade hardware, and troubleshoot common computer problems in Perth.">
 <meta property="og:url" content="https://www.fixmypcperth.com/blog.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
  
 <script>
 /* ============================================================
@@ -25,7 +32,7 @@ const BLOG_POSTS = [
   {
     slug:      "why-is-my-pc-so-slow",
     title:     "Why Is My PC So Slow? The 7 Most Common Causes (And Fixes)",
-    excerpt:   "A slow PC is the most common complaint I hear in Canning Vale. Here are the real reasons your PC has slowed down and what you can do about each one.",
+    excerpt:   "Experiencing a slow PC in Perth? Discover the 7 most common reasons your computer is running slow, from software issues to hardware bottlenecks, and learn effective solutions to speed up your Windows 10 or 11 system. This guide covers common causes like too many startup programs, insufficient RAM, fragmented hard drives, and malware, providing actionable steps to diagnose and fix performance issues.",
     category:  "Speed & Performance",
     date:      "2026-05-15",
     readMin:   6,
@@ -34,7 +41,7 @@ const BLOG_POSTS = [
   {
     slug:      "how-to-tell-if-pc-has-virus",
     title:     "How To Tell If Your PC Has a Virus: 9 Warning Signs",
-    excerpt:   "Pop-ups, sluggishness, weird browser behaviour. These are the signs most people miss every day. Here's exactly what to look for and what to do next.",
+    excerpt:   "Worried your PC has a virus? Learn to identify the 9 critical warning signs of malware infection, including persistent pop-ups, system sluggishness, unexpected browser redirects, and suspicious software installations. This guide helps Perth residents protect their data and provides expert virus removal advice to keep your computer secure.",
     category:  "Virus & Security",
     date:      "2026-05-10",
     readMin:   5,
@@ -43,7 +50,7 @@ const BLOG_POSTS = [
   {
     slug:      "laptop-screen-replacement-physical-repairs",
     title:     "Cracked Screen? The Ultimate Guide to Laptop Screen & Physical Repairs in Perth",
-    excerpt:   "A slow PC is the most common complaint I hear in Canning Vale. Here are the real reasons your PC has slowed down and what you can do about each one.",
+    excerpt:   "Cracked laptop screen or physical damage? This comprehensive guide covers everything you need to know about laptop screen replacement and other physical repairs in Perth, including common issues like broken hinges, liquid spills, and keyboard malfunctions. Get insights into repair costs and how to find reliable computer repair services in Canning Vale.",
     category:  "Upgrades",
     date:      "2026-03-16",
     readMin:   4,
@@ -52,7 +59,7 @@ const BLOG_POSTS = [
   {
     slug:      "how-to-fix-a-slow-computer",
     title:     "How to Fix a Slow Computer: 10 Instant Speed Boosts (Fixes Windows 10/11 speed)",
-    excerpt:   "Speed up your Windows 10 or 11 PC instantly with these 10 easy, step-by-step troubleshooting tips to fix slow performance.",
+    excerpt:   "Is your Windows 10 or 11 computer running slow? Get 10 instant speed boosts and step-by-step troubleshooting tips to fix slow performance, optimise your system, and improve overall PC speed in Perth. Learn about disk cleanup, startup program management, driver updates, and other essential maintenance for a faster computer.",
     category:  "Speed & Performance",
     date:      "2026-05-21",
     readMin:   6,
@@ -61,7 +68,7 @@ const BLOG_POSTS = [
   {
     slug:      "ssd-upgrade-perth-guide",
     title:     "SSD Upgrade Guide: How Much Faster Will Your PC Actually Get?",
-    excerpt:   "Swapping a hard drive for an SSD is the single best upgrade you can make. Boot times go from 3 minutes to under 10 seconds. Here's everything you need to know.",
+    excerpt:   "Considering an SSD upgrade in Perth? Discover how replacing your old hard drive with a Solid State Drive can dramatically improve your PC's boot times, application loading speeds, and overall performance. Learn about different SSD types, the installation process, and data migration for a seamless upgrade.",
     category:  "Upgrades",
     date:      "2026-05-05",
     readMin:   7,
@@ -70,7 +77,7 @@ const BLOG_POSTS = [
   {
     slug:      "data-recovery-perth-guide",
     title:     "Data Recovery Perth: What to Do If Your Hard Drive Fails",
-    excerpt:   "Your drive is clicking. Your files are gone. Don't panic. Here's exactly what to do, and critically, what NOT to do — to give your data the best chance of recovery.",
+    excerpt:   "Hard drive failed in Perth? Don't panic! This essential guide to data recovery in Perth explains what to do (and what not to do) when your hard drive crashes, to maximise your chances of recovering precious photos, documents, and files. Learn about common data loss scenarios and professional recovery options.",
     category:  "Data Recovery",
     date:      "2026-04-28",
     readMin:   8,
@@ -79,7 +86,7 @@ const BLOG_POSTS = [
   {
     slug:      "how-much-does-pc-repair-cost-perth",
     title:     "How Much Does PC Repair Cost in Perth? (2026 Guide)",
-    excerpt:   "Honest breakdown of what PC repair actually costs in Perth — from virus removal to full rebuilds. No fluff, no upsells, just real prices you can compare.",
+    excerpt:   "Curious about PC repair costs in Perth? Get an honest, transparent breakdown of typical prices for common computer repairs, including virus removal, data recovery, hardware upgrades, and Windows reinstalls. Compare real prices with no hidden fees and understand what to expect from computer repair services in Canning Vale.",
     category:  "Pricing & Advice",
     date:      "2026-04-20",
     readMin:   5,
@@ -88,7 +95,7 @@ const BLOG_POSTS = [
   {
     slug:      "signs-hard-drive-failing",
     title:     "5 Signs Your Hard Drive Is About to Fail (Don't Ignore These)",
-    excerpt:   "Hard drives give warning signs before they die. If you catch them early, you can save your data. Here are the five signs Perth locals miss most often.",
+    excerpt:   "Is your hard drive failing? Learn to recognise the 5 critical warning signs of an impending hard drive failure, such as strange noises, frequent crashes, and corrupted files. Early detection can help you back up your data and prevent permanent loss. Essential tips for PC users in Perth to safeguard their valuable information.",
     category:  "Data Recovery",
     date:      "2026-04-12",
     readMin:   4,
@@ -138,16 +145,24 @@ const BLOG_POSTS = [
 }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
-  body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.6; overflow-x: hidden; }
+  ::-webkit-scrollbar { width: 10px; }
+  ::-webkit-scrollbar-track { background: var(--bg2); }
+  ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, var(--blue) 0%, var(--blue-dk) 100%); border-radius: 10px; border: 2px solid var(--bg2); }
+  ::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, var(--blue-dk) 0%, var(--blue) 100%); }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  @media (prefers-reduced-motion: no-preference) { .fade-up { animation: fadeUp 0.6s ease-out forwards; } }
+  body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.6; overflow-x: hidden; position: relative; }
  
   /* ── DESKTOP NAV ── */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 200;
     display: flex; align-items: center; justify-content: space-between;
     padding: 0 2rem; height: 64px;
-    background: rgba(255,255,255,0.92);
-    backdrop-filter: blur(20px) saturate(180%);
-    border-bottom: 1px solid rgba(226,232,240,0.8);
+    background: rgba(255,255,255,0.88);
+    backdrop-filter: blur(30px) saturate(200%);
+    border-bottom: 1px solid rgba(226,232,240,0.5);
+    border-top: 1px solid rgba(255,255,255,0.8);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.05);
   }
   .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
   .logo-mark {
@@ -230,7 +245,7 @@ const BLOG_POSTS = [
  
   /* ── PAGE HERO ── */
   .page-hero {
-    padding: 120px 2rem 4rem; text-align: center;
+    padding: 100px 2rem 2rem; text-align: center;
     background: var(--bg); position: relative; overflow: hidden;
   }
   .page-hero::before {
@@ -257,7 +272,7 @@ const BLOG_POSTS = [
   /* ── FILTER BAR ── */
  .filter-bar {
     display: flex; gap: 8px; flex-wrap: wrap;
-    padding: 5rem 2rem 0; max-width: 1100px; margin: 0 auto;
+    padding: 1rem 2rem 0; max-width: 1100px; margin: 0 auto;
     position: relative; z-index: 10;
 }
   .filter-btn {
@@ -516,6 +531,12 @@ const BLOG_POSTS = [
  
 
  
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <h1 class="page-title" style="font-size: clamp(1.8rem, 4vw, 2.8rem);">PC Repair Tips & <em>Guides</em></h1>
+  <p class="page-sub">Expert advice on computer maintenance, upgrades, and repairs. Need help? View our <a href="pricing.html" style="color: var(--blue); text-decoration: none; font-weight: 600;">pricing</a> or <a href="index.html" style="color: var(--blue); text-decoration: none; font-weight: 600;">book a repair</a>.</p>
+</div>
+
 <!-- FILTER BAR -->
 <div class="filter-bar" id="filter-bar"></div>
  
