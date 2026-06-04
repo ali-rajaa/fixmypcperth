@@ -390,6 +390,16 @@ nav {
 .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s cubic-bezier(.22,.68,0,1.2), transform 0.6s cubic-bezier(.22,.68,0,1.2); }
 .fade-up.in { opacity: 1; transform: none; }
 
+#plan-tabs {
+  display: none;
+}
+
+@media (max-width: 720px) {
+  #plan-tabs {
+    display: flex;
+  }
+}
+
 /* ─── HERO ───────────────────────────────────────────────────── */
 .hero { padding: 100px 2rem 60px; background: var(--bg); position: relative; overflow: hidden; }
 .hero::before {
@@ -541,17 +551,18 @@ nav {
 
 /* ─── FIRST MONTH BANNER ─────────────────────────────────────── */
 .first-month-banner {
-  background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
-  border: 1.5px solid rgba(245,158,11,0.35);
+  background: linear-gradient(135deg, #172d6a 0%, #4057a4 100%);
+  border: 1.5px solid rgba(255,255,255,0.1);
   border-radius: 18px; padding: 1.75rem 2rem;
   margin: 0 auto 2.5rem; max-width: 1100px;
   display: flex; align-items: center; justify-content: space-between;
   gap: 2rem; flex-wrap: wrap; position: relative; overflow: hidden;
 }
-.first-month-banner::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #F59E0B, #FF6B6B); }
-.first-month-badge { background: linear-gradient(135deg, #F59E0B, #FF6B6B); color: #fff; font-family: var(--display); font-size: 1.6rem; font-weight: 800; letter-spacing: -1px; padding: 0.6rem 1.1rem; border-radius: 12px; flex-shrink: 0; white-space: nowrap; }
+.first-month-banner::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #93C5FD, #fff); }
+.first-month-badge { background: #fff; color: #1b2a52; font-family: var(--display); font-size: 1.6rem; font-weight: 800; letter-spacing: -1px; padding: 0.6rem 1.1rem; border-radius: 12px; flex-shrink: 0; white-space: nowrap; box-shadow: 0 4px 16px rgba(0,0,0,0.15); }
 .first-month-text h4 { font-family: var(--display); font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 3px; }
-.first-month-text p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.5; }
+.first-month-text p { font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.5; }
+ 
 
 /* ─── ADD-ONS ────────────────────────────────────────────────── */
 .addons-section { padding: 5.5rem 2rem; background: var(--bg2); }
@@ -702,16 +713,7 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
   .audit-inner a { text-align: center; width: 100%; justify-content: center; }
   .audit-checklist { display: none; }
 
-  .plan-tabs {
-  display: none;
-  background: var(--bg3);
-  border: 1.5px solid var(--border2);
-  border-radius: 14px;
-  padding: 5px;
-  width: 100%;
-  box-sizing: border-box;
-  margin: 0 0 10px 0;
-}
+
 .plan-tab {
   flex: 1;
   padding: 10px 8px;
@@ -792,11 +794,11 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
   }
 
   .plan-tabs {
-  display: flex;
+  display: none;
 }
 
   .plan-tabs {
-  display: flex;
+  display: none;
 }
 .plans-grid {
   display: flex;
@@ -993,51 +995,51 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
   <div class="plans-header fade-up">
     <span class="s-eyebrow">Transparent Pricing</span>
     <h2 class="s-title">One monthly fee. <span class="accent">Full IT coverage.</span></h2>
-    <p class="s-sub" style="margin-top:0.75rem;">No hidden costs. No surprise invoices. A single fixed monthly investment covering everything your business needs to stay protected, productive and online.</p>
+    <p class="s-sub" style="margin-top:0.75rem;">Transparent pricing. Zero surprise invoices. Monthly plans tailored perfectly to your team size, keeping your business secure, fast, and online.</p>
   </div>
 
   <div class="first-month-banner fade-up">
     <div class="first-month-badge">$99</div>
     <div class="first-month-text" style="flex:1;">
-      <h4>First Month Offer! Any Plan for $99</h4>
-      <p>Limited to new business clients only. Try any plan for your first month at $99, then move to standard pricing. No lock-in, no risk.</p>
+      <h4>Get Your First Month on Any Plan for Just $99</h4>
+      <p>Available for new clients. Experience full-service IT support and next-gen security for your entire team for just $99 your first month. No lock-in contracts, no risk. Cancel anytime if we aren't a perfect fit.</p>
     </div>
   </div>
 
   <div id="plans-scroll-wrapper" style="padding: 0 1.25rem;">
     <div class="plan-tabs" id="plan-tabs">
-      <button class="plan-tab active" onclick="scrollToPlan(0,this)">Starter</button>
+      <button class="plan-tab active" onclick="scrollToPlan(0,this)">Essential</button>
       <button class="plan-tab" onclick="scrollToPlan(1,this)">Business</button>
       <button class="plan-tab" onclick="scrollToPlan(2,this)">Premium</button>
     </div>
     <div class="plans-grid">
 
-      <!-- STARTER -->
-      <div class="plan-card fade-up" aria-label="Starter managed IT support plan Perth 199 per month">
+      <!-- ESSENTIAL -->
+      <div class="plan-card fade-up" aria-label="Essential managed IT support plan Perth from 149 per month plus 35 per device">
         <div class="plan-bar"></div>
         <div class="plan-inner">
-          <div class="plan-name">Starter</div>
-          <p class="plan-tagline">The right foundation for sole traders and small teams with 1 to 3 PCs.</p>
+          <div class="plan-name">Essential</div>
+          <p class="plan-tagline">The right foundation for sole traders and small teams. Ideal for businesses running 2 to 5 devices.</p>
           <div class="plan-price-block">
             <div class="plan-price-row">
               <span class="plan-dollar">$</span>
-              <span class="plan-num">199</span>
+              <span class="plan-num">149</span>
             </div>
-            <div class="plan-period">per month, billed monthly</div>
-            <div class="plan-note">Additional PCs from $29 per month each</div>
-            <div class="plan-coverage">Up to 3 PCs covered</div>
+            <div class="plan-period">base per month, billed monthly</div>
+            <div class="plan-note">+ $35 per device / month</div>
+            <div class="plan-coverage">Up to 5 PCs covered</div>
           </div>
           <a href="#audit-form" onclick="event.preventDefault();document.querySelector('.audit-section').scrollIntoView({behavior:'smooth',block:'start'});" class="plan-cta">Get Started Today</a>
           <div class="plan-divider"></div>
           <div class="plan-feat-label">What is included</div>
           <div class="plan-features">
-            <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Unlimited remote support</strong> — our team available 24/7, issues resolved remotely the same day</span></div>
-            <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>1 onsite visit per month</strong> — we come to your business, no travel charge</span></div>
-            <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Managed antivirus</strong> — Malwarebytes installed and actively monitored across all PCs</span></div>
+            <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Unlimited remote support</strong> — available 7 days a week, 7am to 11pm, issues resolved the same day</span></div>
+            <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>1 onsite visit per month</strong> — we come to your business, no travel charge within southern Perth</span></div>
+            <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Managed antivirus</strong> — Malwarebytes installed and actively monitored across all devices</span></div>
             <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Windows updates managed</strong> — your systems stay patched, current and secure</span></div>
-            <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Monthly health report</strong> — A summary of your PC status each month</span></div>
-            <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Phone and email support</strong> — Mon to Sat, 8am to 6pm</span></div>
-            <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>No lock-in contract</strong> — cancel or change plans at any time within 7 days notice</span></div>
+            <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Monthly health report</strong> — a plain-English summary of your PC status each month</span></div>
+            <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>WhatsApp and email support</strong> — 7 days a week, 7am to 11pm</span></div>
+            <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>No lock-in contract</strong> — cancel or change plans at any time with 14 days notice</span></div>
           </div>
           <div class="plan-best">
             <div class="plan-best-label">Best for</div>
@@ -1047,32 +1049,33 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
       </div>
 
       <!-- BUSINESS (FEATURED) -->
-      <div class="plan-card featured fade-up" aria-label="Business managed IT support plan Perth 399 per month most popular">
+      <div class="plan-card featured fade-up" aria-label="Business managed IT support plan Perth from 199 per month plus 45 per device most popular">
         <div class="plan-bar"></div>
         <div class="plan-inner">
           <div class="plan-badge badge-popular">Most Popular</div>
           <div class="plan-name">Business</div>
-          <p class="plan-tagline">Complete coverage for growing businesses with 4 to 10 PCs and no tolerance for downtime.</p>
+          <p class="plan-tagline">Complete coverage for growing businesses with 3 to 10 devices and no tolerance for downtime.</p>
           <div class="plan-price-block">
             <div class="plan-price-row">
               <span class="plan-dollar">$</span>
-              <span class="plan-num">399</span>
+              <span class="plan-num">199</span>
             </div>
-            <div class="plan-period">per month, billed monthly</div>
-            <div class="plan-note">Additional PCs from $25 per month each</div>
-            <div class="plan-coverage">Up to 8 PCs covered</div>
+            <div class="plan-period">base per month, billed monthly</div>
+            <div class="plan-note">+ $45 per device / month</div>
+            <div class="plan-coverage">Up to 10 PCs covered</div>
           </div>
           <a href="#audit-form" onclick="event.preventDefault();document.querySelector('.audit-section').scrollIntoView({behavior:'smooth',block:'start'});" class="plan-cta">Get Started Today</a>
           <div class="plan-divider"></div>
-          <div class="plan-feat-label">Everything in Starter, plus</div>
+          <div class="plan-feat-label">Everything in Essential, plus</div>
           <div class="plan-features">
-            <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>2 onsite visits per month</strong> — priority scheduling for your business</span></div>
-            <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Cloud backup managed</strong> — daily automatic backup of all critical business files</span></div>
-            <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Proactive PC monitoring</strong> — our team is alerted before issues reach you</span></div>
-            <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Network and wifi security audit</strong> — monthly router and network review</span></div>
+            <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>2 onsite visits per month</strong> — priority scheduling for your business, no travel charge</span></div>
+            <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Cloud backup managed</strong> — daily automatic backup of critical business files via OneDrive or Google Drive</span></div>
+            <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Proactive PC monitoring</strong> — alerted before issues reach you</span></div>
+            <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Network and WiFi security audit</strong> — monthly router and network review</span></div>
             <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Printer and peripheral support</strong> — printers, scanners and EFTPOS managed</span></div>
-            <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Priority response</strong> — your calls answered ahead of standard clients</span></div>
-            <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Full 24/7 support team</strong> — around the clock coverage, not just business hours</span></div>
+            <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>New staff PC setup included</strong> — new devices configured and ready, no extra charge</span></div>
+            <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Priority response</strong> — your calls and messages answered ahead of Essential clients</span></div>
+            <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Quarterly IT review call</strong> — 30 minutes every quarter covering what is working and what needs attention</span></div>
           </div>
           <div class="plan-best">
             <div class="plan-best-label">Best for</div>
@@ -1082,7 +1085,7 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
       </div>
 
       <!-- PREMIUM -->
-      <div class="plan-card premium-tier fade-up" aria-label="Premium managed IT support plan Perth 699 per month unlimited PCs">
+      <div class="plan-card premium-tier fade-up" aria-label="Premium managed IT support plan Perth from 299 per month plus 60 per device unlimited onsite">
         <div class="plan-bar"></div>
         <div class="plan-inner">
           <div class="plan-badge badge-premium">Premium Tier</div>
@@ -1091,23 +1094,24 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
           <div class="plan-price-block">
             <div class="plan-price-row">
               <span class="plan-dollar">$</span>
-              <span class="plan-num">699</span>
+              <span class="plan-num">299</span>
             </div>
-            <div class="plan-period">per month, billed monthly</div>
-            <div class="plan-note">Unlimited PCs included. No per device charges.</div>
-            <div class="plan-coverage">Unlimited PCs covered</div>
+            <div class="plan-period">base per month, billed monthly</div>
+            <div class="plan-note">+ $60 per device / month</div>
+            <div class="plan-coverage">Up to 20 PCs covered</div>
           </div>
           <a href="#audit-form" onclick="event.preventDefault();document.querySelector('.audit-section').scrollIntoView({behavior:'smooth',block:'start'});" class="plan-cta">Get Started Today</a>
           <div class="plan-divider"></div>
           <div class="plan-feat-label">Everything in Business, plus</div>
           <div class="plan-features">
-            <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Unlimited onsite visits</strong> — our team attends as many times as your business requires</span></div>
-            <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Same day emergency response</strong> — guaranteed onsite within 4 hours of your call</span></div>
-            <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Full network management</strong> — router, switches, wifi access points and everything connected</span></div>
-            <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Staff cyber security training</strong> — annual session for your entire team</span></div>
-            <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Full business software support</strong> — assistance with any software your team relies on</span></div>
-            <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Quarterly IT strategy review</strong> — we assess your setup and plan your technology roadmap</span></div>
-            <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Direct WhatsApp line</strong> — a dedicated line to our team, not a call centre</span></div>
+            <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Unlimited onsite visits</strong> — we attend as many times as your business requires, no callout fee ever</span></div>
+            <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Same day emergency response</strong> — guaranteed onsite within 4 hours of your call, southern Perth</span></div>
+            <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Full network management</strong> — router, switches, WiFi access points and everything connected</span></div>
+            <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Annual staff cyber security briefing</strong> — a practical one-hour session for your entire team</span></div>
+            <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Full business software support</strong> — assistance with any software your team relies on day to day</span></div>
+            <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>IT roadmap review twice per year</strong> — what needs replacing and what to budget for, planned in advance</span></div>
+            <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Direct WhatsApp line to Ali</strong> — not a ticketing queue, not a call centre, straight to the person doing the work</span></div>
+            <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Hardware procurement support</strong> — we source and compare quotes on new equipment so you never overpay</span></div>
           </div>
           <div class="plan-best">
             <div class="plan-best-label">Best for</div>
@@ -1120,11 +1124,10 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
   </div><!-- end plans-scroll-wrapper -->
 
   <div style="text-align:center;margin-top:2.5rem;width:100%;display:flex;flex-direction:column;align-items:center;gap:1.25rem;" class="fade-up">
-    <p style="font-size:14px;color:var(--muted);line-height:1.75;">Not sure which plan fits your business? Let's assess your setup and recommend only what you actually need</p>
-    <a href="#audit-form" onclick="event.preventDefault();document.querySelector('.audit-section').scrollIntoView({behavior:'smooth',block:'start'});" class="btn-outline">Speak with our team</a>
+    <p style="font-size:14px;color:var(--muted);line-height:1.75;">Not sure which plan fits your business? Message me and I will tell you exactly which plan makes sense for your setup.</p>
+    <a href="#audit-form" onclick="event.preventDefault();document.querySelector('.audit-section').scrollIntoView({behavior:'smooth',block:'start'});" class="btn-outline">Get a free IT assessment</a>
   </div>
 </section>
-
 
 
 <!-- RESULTS -->
@@ -1961,6 +1964,7 @@ window.addEventListener('scroll', () => {
   progressBar.style.transform = `scaleX(${scrolled})`;
 });
 
+
   var observer = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry, i) {
       if (entry.isIntersecting) {
@@ -1983,3 +1987,4 @@ window.addEventListener('scroll', () => {
 
 </body>
 </html>
+
