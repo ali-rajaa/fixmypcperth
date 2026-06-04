@@ -634,7 +634,24 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
    ══════════════════════════════════════════════════════════════ */
 
 @media (max-width: 1000px) {
-  .plans-grid { grid-template-columns: 1fr; max-width: 460px; margin: 0 auto; }
+  .plans-grid {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 1rem;
+    padding: 0.5rem 1.25rem 1.25rem;
+    max-width: 100%;
+    margin: 0;
+    scrollbar-width: none;
+  }
+  .plans-grid::-webkit-scrollbar { display: none; }
+  .plans-grid .plan-card {
+    flex: 0 0 85vw;
+    max-width: 360px;
+    scroll-snap-align: center;
+  }
   .plan-card.featured { transform: none; }
   .plan-card.featured:hover { transform: translateY(-5px); }
 }
@@ -685,8 +702,8 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
   .audit-inner a { text-align: center; width: 100%; justify-content: center; }
   .audit-checklist { display: none; }
 
-  .plan-tabs {
-  display: none;
+.plan-tabs {
+  display: none; /* hidden on desktop */
   gap: 0;
   background: var(--bg3);
   border: 1.5px solid var(--border);
@@ -695,6 +712,7 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
   margin: 0 auto 1.5rem;
   max-width: 320px;
 }
+
 .plan-tab {
   flex: 1; padding: 8px 12px; border-radius: 50px;
   border: none; background: transparent;
@@ -762,6 +780,10 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
   .case-study-grid > div:first-child {
     gap: 1.25rem !important;
   }
+
+  .plan-tabs {
+  display: flex;
+}
 
   /* Company name size */
   .case-study-grid > div:first-child > div:nth-child(1) > div:nth-child(2) {
@@ -1920,12 +1942,13 @@ window.addEventListener('scroll', () => {
   document.querySelectorAll('.fade-up').forEach(function(el) { observer.observe(el); });
 
   /* ── SMOOTH SCROLL TO PLANS ── */
-  document.querySelectorAll('a[href="#plans"]').forEach(function(link) {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-      document.getElementById('plans').scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
-  });
+  function scrollToPlan(index, tab) {
+  const grid = document.querySelector('.plans-grid');
+  const cards = grid.querySelectorAll('.plan-card');
+  cards[index].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  document.querySelectorAll('.plan-tab').forEach(t => t.classList.remove('active'));
+  tab.classList.add('active');
+}
 </script>
 
 </body>
