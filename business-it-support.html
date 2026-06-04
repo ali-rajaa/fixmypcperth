@@ -702,25 +702,35 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
   .audit-inner a { text-align: center; width: 100%; justify-content: center; }
   .audit-checklist { display: none; }
 
-.plan-tabs {
-  display: none; /* hidden on desktop */
-  gap: 0;
+  .plan-tabs {
+  display: none;
   background: var(--bg3);
-  border: 1.5px solid var(--border);
-  border-radius: 50px;
-  padding: 4px;
-  margin: 0 auto 1.5rem;
-  max-width: 320px;
+  border: 1.5px solid var(--border2);
+  border-radius: 14px;
+  padding: 5px;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0 0 10px 0;
 }
-
 .plan-tab {
-  flex: 1; padding: 8px 12px; border-radius: 50px;
-  border: none; background: transparent;
-  font-family: var(--body); font-size: 13px; font-weight: 600;
-  color: var(--muted); cursor: pointer;
-  transition: background 0.2s, color 0.2s;
+  flex: 1;
+  padding: 10px 8px;
+  border-radius: 10px;
+  border: none;
+  background: transparent;
+  font-family: var(--body);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  white-space: nowrap;
 }
-.plan-tab.active { background: var(--blue); color: #fff; }
+.plan-tab.active {
+  background: var(--blue);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(21,96,255,0.3);
+}
 
   /* ── Metrics ── */
   .metrics-strip { padding: 2.5rem 1.25rem; }
@@ -785,6 +795,29 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
   display: flex;
 }
 
+  .plan-tabs {
+  display: flex;
+}
+.plans-grid {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  gap: 0;
+  padding: 0;
+  max-width: 100%;
+  margin: 0;
+  scrollbar-width: none;
+}
+.plans-grid::-webkit-scrollbar { display: none; }
+.plans-grid .plan-card {
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+  border-radius: 18px;
+}
+.plan-card.featured { transform: none; }
+
   /* Company name size */
   .case-study-grid > div:first-child > div:nth-child(1) > div:nth-child(2) {
     font-size: 1.4rem !important;
@@ -836,24 +869,6 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
     align-items: flex-start !important;
   }
 }
-.plan-tabs {
-  display: none;
-  gap: 0;
-  background: var(--bg3);
-  border: 1.5px solid var(--border);
-  border-radius: 50px;
-  padding: 4px;
-  margin: 0 auto 1.5rem;
-  max-width: 320px;
-}
-.plan-tab {
-  flex: 1; padding: 8px 12px; border-radius: 50px;
-  border: none; background: transparent;
-  font-family: var(--body); font-size: 13px; font-weight: 600;
-  color: var(--muted); cursor: pointer;
-  transition: background 0.2s, color 0.2s;
-}
-.plan-tab.active { background: var(--blue); color: #fff; }
 
 </style>
 </head>
@@ -978,7 +993,7 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
   <div class="plans-header fade-up">
     <span class="s-eyebrow">Transparent Pricing</span>
     <h2 class="s-title">One monthly fee. <span class="accent">Full IT coverage.</span></h2>
-    <p class="s-sub" style="margin-top:0.75rem;">No hidden costs. No surprise invoices. A single fixed monthly investment covering everything<br>your business needs to stay protected, productive and online.</p>
+    <p class="s-sub" style="margin-top:0.75rem;">No hidden costs. No surprise invoices. A single fixed monthly investment covering everything your business needs to stay protected, productive and online.</p>
   </div>
 
   <div class="first-month-banner fade-up">
@@ -989,125 +1004,127 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
     </div>
   </div>
 
-  <div class="plan-tabs" id="plan-tabs">
-  <button class="plan-tab active" onclick="scrollToPlan(0,this)">Starter</button>
-  <button class="plan-tab" onclick="scrollToPlan(1,this)">Business</button>
-  <button class="plan-tab" onclick="scrollToPlan(2,this)">Premium</button>
-</div>
+  <div id="plans-scroll-wrapper" style="padding: 0 1.25rem;">
+    <div class="plan-tabs" id="plan-tabs">
+      <button class="plan-tab active" onclick="scrollToPlan(0,this)">Starter</button>
+      <button class="plan-tab" onclick="scrollToPlan(1,this)">Business</button>
+      <button class="plan-tab" onclick="scrollToPlan(2,this)">Premium</button>
+    </div>
+    <div class="plans-grid">
 
-  <div class="plans-grid">
-
-    <!-- STARTER -->
-    <div class="plan-card fade-up" aria-label="Starter managed IT support plan Perth 199 per month">
-      <div class="plan-bar"></div>
-      <div class="plan-inner">
-        <div class="plan-name">Starter</div>
-        <p class="plan-tagline">The right foundation for sole traders and small teams with 1 to 3 PCs.</p>
-        <div class="plan-price-block">
-          <div class="plan-price-row">
-            <span class="plan-dollar">$</span>
-            <span class="plan-num">199</span>
+      <!-- STARTER -->
+      <div class="plan-card fade-up" aria-label="Starter managed IT support plan Perth 199 per month">
+        <div class="plan-bar"></div>
+        <div class="plan-inner">
+          <div class="plan-name">Starter</div>
+          <p class="plan-tagline">The right foundation for sole traders and small teams with 1 to 3 PCs.</p>
+          <div class="plan-price-block">
+            <div class="plan-price-row">
+              <span class="plan-dollar">$</span>
+              <span class="plan-num">199</span>
+            </div>
+            <div class="plan-period">per month, billed monthly</div>
+            <div class="plan-note">Additional PCs from $29 per month each</div>
+            <div class="plan-coverage">Up to 3 PCs covered</div>
           </div>
-          <div class="plan-period">per month, billed monthly</div>
-          <div class="plan-note">Additional PCs from $29 per month each</div>
-          <div class="plan-coverage">Up to 3 PCs covered</div>
-        </div>
-        <a href="#audit-form" onclick="event.preventDefault();document.querySelector('.audit-section').scrollIntoView({behavior:'smooth',block:'start'});" class="plan-cta">Get Started Today</a>
-        <div class="plan-divider"></div>
-        <div class="plan-feat-label">What is included</div>
-        <div class="plan-features">
-          <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Unlimited remote support</strong> — our team available 24/7, issues resolved remotely the same day</span></div>
-          <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>1 onsite visit per month</strong> — we come to your business, no travel charge</span></div>
-          <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Managed antivirus</strong> — Malwarebytes installed and actively monitored across all PCs</span></div>
-          <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Windows updates managed</strong> — your systems stay patched, current and secure</span></div>
-          <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Monthly health report</strong> — A summary of your PC status each month</span></div>
-          <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Phone and email support</strong> — Mon to Sat, 8am to 6pm</span></div>
-          <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>No lock-in contract</strong> — cancel or change plans at any time within 7 days notice</span></div>
-        </div>
-        <div class="plan-best">
-          <div class="plan-best-label">Best for</div>
-          <div class="plan-best-text">Cafes, salons, small retail, sole trader tradies</div>
+          <a href="#audit-form" onclick="event.preventDefault();document.querySelector('.audit-section').scrollIntoView({behavior:'smooth',block:'start'});" class="plan-cta">Get Started Today</a>
+          <div class="plan-divider"></div>
+          <div class="plan-feat-label">What is included</div>
+          <div class="plan-features">
+            <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Unlimited remote support</strong> — our team available 24/7, issues resolved remotely the same day</span></div>
+            <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>1 onsite visit per month</strong> — we come to your business, no travel charge</span></div>
+            <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Managed antivirus</strong> — Malwarebytes installed and actively monitored across all PCs</span></div>
+            <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Windows updates managed</strong> — your systems stay patched, current and secure</span></div>
+            <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Monthly health report</strong> — A summary of your PC status each month</span></div>
+            <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Phone and email support</strong> — Mon to Sat, 8am to 6pm</span></div>
+            <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>No lock-in contract</strong> — cancel or change plans at any time within 7 days notice</span></div>
+          </div>
+          <div class="plan-best">
+            <div class="plan-best-label">Best for</div>
+            <div class="plan-best-text">Cafes, salons, small retail, sole trader tradies</div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- BUSINESS (FEATURED) -->
-    <div class="plan-card featured fade-up" aria-label="Business managed IT support plan Perth 399 per month most popular">
-      <div class="plan-bar"></div>
-      <div class="plan-inner">
-        <div class="plan-badge badge-popular">Most Popular</div>
-        <div class="plan-name">Business</div>
-        <p class="plan-tagline">Complete coverage for growing businesses with 4 to 10 PCs and no tolerance for downtime.</p>
-        <div class="plan-price-block">
-          <div class="plan-price-row">
-            <span class="plan-dollar">$</span>
-            <span class="plan-num">399</span>
+      <!-- BUSINESS (FEATURED) -->
+      <div class="plan-card featured fade-up" aria-label="Business managed IT support plan Perth 399 per month most popular">
+        <div class="plan-bar"></div>
+        <div class="plan-inner">
+          <div class="plan-badge badge-popular">Most Popular</div>
+          <div class="plan-name">Business</div>
+          <p class="plan-tagline">Complete coverage for growing businesses with 4 to 10 PCs and no tolerance for downtime.</p>
+          <div class="plan-price-block">
+            <div class="plan-price-row">
+              <span class="plan-dollar">$</span>
+              <span class="plan-num">399</span>
+            </div>
+            <div class="plan-period">per month, billed monthly</div>
+            <div class="plan-note">Additional PCs from $25 per month each</div>
+            <div class="plan-coverage">Up to 8 PCs covered</div>
           </div>
-          <div class="plan-period">per month, billed monthly</div>
-          <div class="plan-note">Additional PCs from $25 per month each</div>
-          <div class="plan-coverage">Up to 8 PCs covered</div>
-        </div>
-        <a href="#audit-form" onclick="event.preventDefault();document.querySelector('.audit-section').scrollIntoView({behavior:'smooth',block:'start'});" class="plan-cta">Get Started Today</a>
-        <div class="plan-divider"></div>
-        <div class="plan-feat-label">Everything in Starter, plus</div>
-        <div class="plan-features">
-          <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>2 onsite visits per month</strong> — priority scheduling for your business</span></div>
-          <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Cloud backup managed</strong> — daily automatic backup of all critical business files</span></div>
-          <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Proactive PC monitoring</strong> — our team is alerted before issues reach you</span></div>
-          <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Network and wifi security audit</strong> — monthly router and network review</span></div>
-          <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Printer and peripheral support</strong> — printers, scanners and EFTPOS managed</span></div>
-          <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Priority response</strong> — your calls answered ahead of standard clients</span></div>
-          <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Full 24/7 support team</strong> — around the clock coverage, not just business hours</span></div>
-        </div>
-        <div class="plan-best">
-          <div class="plan-best-label">Best for</div>
-          <div class="plan-best-text">Real estate offices, medical clinics, restaurants, retail shops</div>
+          <a href="#audit-form" onclick="event.preventDefault();document.querySelector('.audit-section').scrollIntoView({behavior:'smooth',block:'start'});" class="plan-cta">Get Started Today</a>
+          <div class="plan-divider"></div>
+          <div class="plan-feat-label">Everything in Starter, plus</div>
+          <div class="plan-features">
+            <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>2 onsite visits per month</strong> — priority scheduling for your business</span></div>
+            <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Cloud backup managed</strong> — daily automatic backup of all critical business files</span></div>
+            <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Proactive PC monitoring</strong> — our team is alerted before issues reach you</span></div>
+            <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Network and wifi security audit</strong> — monthly router and network review</span></div>
+            <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Printer and peripheral support</strong> — printers, scanners and EFTPOS managed</span></div>
+            <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Priority response</strong> — your calls answered ahead of standard clients</span></div>
+            <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Full 24/7 support team</strong> — around the clock coverage, not just business hours</span></div>
+          </div>
+          <div class="plan-best">
+            <div class="plan-best-label">Best for</div>
+            <div class="plan-best-text">Real estate offices, medical clinics, restaurants, retail shops</div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- PREMIUM -->
-    <div class="plan-card premium-tier fade-up" aria-label="Premium managed IT support plan Perth 699 per month unlimited PCs">
-      <div class="plan-bar"></div>
-      <div class="plan-inner">
-        <div class="plan-badge badge-premium">Premium Tier</div>
-        <div class="plan-name">Premium</div>
-        <p class="plan-tagline">The complete IT partnership for businesses where every hour of downtime has a direct cost.</p>
-        <div class="plan-price-block">
-          <div class="plan-price-row">
-            <span class="plan-dollar">$</span>
-            <span class="plan-num">699</span>
+      <!-- PREMIUM -->
+      <div class="plan-card premium-tier fade-up" aria-label="Premium managed IT support plan Perth 699 per month unlimited PCs">
+        <div class="plan-bar"></div>
+        <div class="plan-inner">
+          <div class="plan-badge badge-premium">Premium Tier</div>
+          <div class="plan-name">Premium</div>
+          <p class="plan-tagline">The complete IT partnership for businesses where every hour of downtime has a direct cost.</p>
+          <div class="plan-price-block">
+            <div class="plan-price-row">
+              <span class="plan-dollar">$</span>
+              <span class="plan-num">699</span>
+            </div>
+            <div class="plan-period">per month, billed monthly</div>
+            <div class="plan-note">Unlimited PCs included. No per device charges.</div>
+            <div class="plan-coverage">Unlimited PCs covered</div>
           </div>
-          <div class="plan-period">per month, billed monthly</div>
-          <div class="plan-note">Unlimited PCs included. No per device charges.</div>
-          <div class="plan-coverage">Unlimited PCs covered</div>
-        </div>
-        <a href="#audit-form" onclick="event.preventDefault();document.querySelector('.audit-section').scrollIntoView({behavior:'smooth',block:'start'});" class="plan-cta">Get Started Today</a>
-        <div class="plan-divider"></div>
-        <div class="plan-feat-label">Everything in Business, plus</div>
-        <div class="plan-features">
-          <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Unlimited onsite visits</strong> — our team attends as many times as your business requires</span></div>
-          <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Same day emergency response</strong> — guaranteed onsite within 4 hours of your call</span></div>
-          <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Full network management</strong> — router, switches, wifi access points and everything connected</span></div>
-          <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Staff cyber security training</strong> — annual session for your entire team</span></div>
-          <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Full business software support</strong> — assistance with any software your team relies on</span></div>
-          <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Quarterly IT strategy review</strong> — we assess your setup and plan your technology roadmap</span></div>
-          <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Direct WhatsApp line</strong> — a dedicated line to our team, not a call centre</span></div>
-        </div>
-        <div class="plan-best">
-          <div class="plan-best-label">Best for</div>
-          <div class="plan-best-text">Dental and medical clinics, accounting and law firms, multi-PC retail</div>
+          <a href="#audit-form" onclick="event.preventDefault();document.querySelector('.audit-section').scrollIntoView({behavior:'smooth',block:'start'});" class="plan-cta">Get Started Today</a>
+          <div class="plan-divider"></div>
+          <div class="plan-feat-label">Everything in Business, plus</div>
+          <div class="plan-features">
+            <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Unlimited onsite visits</strong> — our team attends as many times as your business requires</span></div>
+            <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Same day emergency response</strong> — guaranteed onsite within 4 hours of your call</span></div>
+            <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Full network management</strong> — router, switches, wifi access points and everything connected</span></div>
+            <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Staff cyber security training</strong> — annual session for your entire team</span></div>
+            <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Full business software support</strong> — assistance with any software your team relies on</span></div>
+            <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Quarterly IT strategy review</strong> — we assess your setup and plan your technology roadmap</span></div>
+            <div class="plan-feat"><span class="feat-icon">✓</span><span><strong>Direct WhatsApp line</strong> — a dedicated line to our team, not a call centre</span></div>
+          </div>
+          <div class="plan-best">
+            <div class="plan-best-label">Best for</div>
+            <div class="plan-best-text">Dental and medical clinics, accounting and law firms, multi-PC retail</div>
+          </div>
         </div>
       </div>
-    </div>
 
-  </div>
+    </div><!-- end plans-grid -->
+  </div><!-- end plans-scroll-wrapper -->
 
   <div style="text-align:center;margin-top:2.5rem;width:100%;display:flex;flex-direction:column;align-items:center;gap:1.25rem;" class="fade-up">
     <p style="font-size:14px;color:var(--muted);line-height:1.75;">Not sure which plan fits your business? Let's assess your setup and recommend only what you actually need</p>
     <a href="#audit-form" onclick="event.preventDefault();document.querySelector('.audit-section').scrollIntoView({behavior:'smooth',block:'start'});" class="btn-outline">Speak with our team</a>
   </div>
 </section>
+
 
 
 <!-- RESULTS -->
@@ -1825,16 +1842,22 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
 }
 
 // Update tab when user manually scrolls
+  function scrollToPlan(index, tab) {
+  const grid = document.querySelector('.plans-grid');
+  const cards = grid.querySelectorAll('.plan-card');
+  grid.scrollTo({ left: cards[index].offsetLeft, behavior: 'smooth' });
+  document.querySelectorAll('.plan-tab').forEach(t => t.classList.remove('active'));
+  tab.classList.add('active');
+}
+
 const plansGrid = document.querySelector('.plans-grid');
 if (plansGrid) {
   plansGrid.addEventListener('scroll', () => {
     const cards = plansGrid.querySelectorAll('.plan-card');
-    const gridCenter = plansGrid.scrollLeft + plansGrid.offsetWidth / 2;
-    let closest = 0;
-    let closestDist = Infinity;
+    const scrollCenter = plansGrid.scrollLeft + plansGrid.offsetWidth / 2;
+    let closest = 0, closestDist = Infinity;
     cards.forEach((card, i) => {
-      const cardCenter = card.offsetLeft + card.offsetWidth / 2;
-      const dist = Math.abs(gridCenter - cardCenter);
+      const dist = Math.abs((card.offsetLeft + card.offsetWidth / 2) - scrollCenter);
       if (dist < closestDist) { closestDist = dist; closest = i; }
     });
     document.querySelectorAll('.plan-tab').forEach((t, i) => {
@@ -1842,6 +1865,7 @@ if (plansGrid) {
     });
   });
 }
+
 
   /* ── MOBILE HAMBURGER ── */
   document.getElementById('mob-hamburger').addEventListener('click', function() {
