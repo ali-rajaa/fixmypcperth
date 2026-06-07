@@ -368,28 +368,7 @@ a { color: inherit; }
   background: var(--blue-dk); flex-shrink: 0;
 }
 
-/* ─────────────────────────────────────────
-   STAT STRIP
-───────────────────────────────────────── */
-.stat-strip { background: var(--ink); padding: 2.25rem 2rem; }
-.stat-strip-inner {
-  max-width: 900px; margin: 0 auto;
-  display: grid; grid-template-columns: repeat(4, 1fr);
-}
-.stat-item {
-  text-align: center; padding: 1.25rem 1.5rem; position: relative;
-}
-.stat-item:not(:last-child)::after {
-  content: ''; position: absolute; right: 0; top: 20%; height: 60%;
-  width: 1px; background: rgba(255,255,255,0.08);
-}
-.stat-val {
-  font-family: var(--display); font-size: 2.2rem; font-weight: 800;
-  color: #fff; letter-spacing: -2px; display: block; line-height: 1;
-  margin-bottom: 4px;
-}
-.stat-val span { color: var(--teal); }
-.stat-lbl { font-size: 12px; color: rgba(255,255,255,0.45); font-weight: 500; line-height: 1.45; display: block; }
+
 
 /* ─────────────────────────────────────────
    PAGE WRAP + SECTIONS
@@ -764,11 +743,7 @@ footer {
   .btn-wa, .btn-outline { justify-content: center; }
   .hero-trust { gap: 1rem; }
 
-  .stat-strip { padding: 1.75rem 1.25rem; }
-  .stat-strip-inner { grid-template-columns: 1fr 1fr; }
-  .stat-item:nth-child(2)::after,
-  .stat-item:nth-child(4)::after { display: none; }
-  .stat-val { font-size: 1.8rem; }
+ 
 
   .page-wrap { padding: 2.5rem 1.25rem 4rem; }
 
@@ -798,10 +773,8 @@ footer {
   .wa-float { bottom: 18px; right: 16px; width: 50px; height: 50px; }
 }
 
-@media (max-width: 480px) {
-  .stat-strip-inner { grid-template-columns: 1fr 1fr; gap: 0; }
-  .hero-trust { flex-direction: column; align-items: flex-start; gap: 0.5rem; padding: 0 0.25rem; }
-}
+
+
 </style>
 </head>
 <body>
@@ -872,26 +845,6 @@ footer {
 <!-- ─────────────────────────────────────────
      STAT STRIP
 ───────────────────────────────────────── -->
-<div class="stat-strip" aria-label="Key service statistics">
-  <div class="stat-strip-inner">
-    <div class="stat-item">
-      <span class="stat-val">$<span>140</span></span>
-      <span class="stat-lbl">Flat fee — all types of malware</span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-val">2–4<span>hr</span></span>
-      <span class="stat-lbl">Average removal time, same day</span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-val">30<span>d</span></span>
-      <span class="stat-lbl">Re-infection warranty included</span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-val">5<span>★</span></span>
-      <span class="stat-lbl">Rated by Perth locals on Google</span>
-    </div>
-  </div>
-</div>
 
 <!-- ─────────────────────────────────────────
      MAIN CONTENT
