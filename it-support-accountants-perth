@@ -30,7 +30,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="geo.region" content="AU-WA">
 <meta name="geo.placename" content="Canning Vale, Perth, Western Australia">
-<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="icon" type="image/png" href="favicon.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -490,16 +490,16 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
      DESKTOP NAV
      ============================================================ -->
 <nav class="desk-nav" aria-label="Main navigation">
-  <a href="../index.html" class="nav-logo" aria-label="FixMyPC Perth Home">
-    <div class="logo-mark"><img src="../logo.png" alt="FixMyPC Perth" width="38" height="38" loading="lazy"></div>
+  <a href="index.html" class="nav-logo" aria-label="FixMyPC Perth Home">
+    <div class="logo-mark"><img src="logo.png" alt="FixMyPC Perth" width="38" height="38" loading="lazy"></div>
     <span class="logo-name">FixMyPC <em>Perth</em></span>
   </a>
   <div class="nav-right">
-    <a href="../pricing.html"             class="nav-pill pill-ghost">Pricing</a>
-    <a href="../business-it-support.html" class="nav-pill pill-active">Business IT Support</a>
-    <a href="../quiz.html"                class="nav-pill pill-ghost">Free Diagnostic</a>
-    <a href="../blog.html"                class="nav-pill pill-ghost">Tech Tips</a>
-    <a href="../reviews.html"             class="nav-pill pill-ghost">Reviews &amp; FAQ</a>
+    <a href="pricing.html"             class="nav-pill pill-ghost">Pricing</a>
+    <a href="business-it-support.html" class="nav-pill pill-active">Business IT Support</a>
+    <a href="quiz.html"                class="nav-pill pill-ghost">Free Diagnostic</a>
+    <a href="blog.html"                class="nav-pill pill-ghost">Tech Tips</a>
+    <a href="reviews.html"             class="nav-pill pill-ghost">Reviews &amp; FAQ</a>
   </div>
 </nav>
 
@@ -507,8 +507,8 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
      MOBILE NAV
      ============================================================ -->
 <div class="mob-nav" role="navigation" aria-label="Mobile navigation">
-  <a href="../index.html" class="nav-logo" aria-label="FixMyPC Perth Home">
-    <div class="logo-mark"><img src="../logo.png" alt="FixMyPC Perth" width="38" height="38" loading="lazy"></div>
+  <a href="index.html" class="nav-logo" aria-label="FixMyPC Perth Home">
+    <div class="logo-mark"><img src="logo.png" alt="FixMyPC Perth" width="38" height="38" loading="lazy"></div>
     <span class="logo-name" style="font-size:14px">FixMyPC <em>Perth</em></span>
   </a>
   <button class="mob-hamburger" id="mob-hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mob-menu">
@@ -516,11 +516,11 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
   </button>
 </div>
 <div class="mob-menu" id="mob-menu" role="menu">
-  <a href="../pricing.html"             class="mob-link" role="menuitem">Pricing</a>
-  <a href="../business-it-support.html" class="mob-link" role="menuitem">Business IT Support</a>
-  <a href="../quiz.html"                class="mob-link" role="menuitem">Free PC Diagnostic</a>
-  <a href="../blog.html"                class="mob-link" role="menuitem">Tech Tips</a>
-  <a href="../reviews.html"             class="mob-link" role="menuitem">Reviews &amp; FAQ</a>
+  <a href="pricing.html"             class="mob-link" role="menuitem">Pricing</a>
+  <a href="business-it-support.html" class="mob-link" role="menuitem">Business IT Support</a>
+  <a href="quiz.html"                class="mob-link" role="menuitem">Free PC Diagnostic</a>
+  <a href="blog.html"                class="mob-link" role="menuitem">Tech Tips</a>
+  <a href="reviews.html"             class="mob-link" role="menuitem">Reviews &amp; FAQ</a>
 </div>
 
 <!-- ============================================================
@@ -529,7 +529,7 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
 <div class="article-wrap">
 
   <div class="post-breadcrumb">
-    <a href="../business-it-support.html">Business IT Support</a>
+    <a href="business-it-support.html">Business IT Support</a>
     <span>/</span>
     <span>Accountants &amp; Bookkeepers</span>
   </div>
@@ -727,8 +727,8 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
       <div class="inline-cta-title">Ready to stop IT problems eating into your practice's productive time?</div>
       <div class="inline-cta-desc">Book a free 30-minute IT audit. We document exactly where your practice stands and what needs fixing, at no cost and no obligation.</div>
       <div class="inline-cta-btns">
-        <a href="../business-it-support.html#audit-section" class="inline-cta-btn">Book a free IT audit</a>
-        <a href="../pricing.html" class="inline-cta-btn-outline">View full pricing</a>
+        <a href="business-it-support.html#audit-section" class="inline-cta-btn">Book a free IT audit</a>
+        <a href="pricing.html" class="inline-cta-btn-outline">View full pricing</a>
       </div>
     </div>
 
@@ -747,28 +747,28 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
     <p>All plans are month to month with no lock-in contracts. You can cancel or change plans at any time with 14 days notice. Every plan includes unlimited remote support, managed antivirus, encrypted cloud backup and scheduled onsite visits.</p>
 
     <div class="service-links">
-      <a href="../business-it-support.html#plans" class="service-link-card">
+      <a href="business-it-support.html#plans" class="service-link-card">
         <div>
           <div class="service-link-label">Essential Plan</div>
           <div class="service-link-price">From $149 base per month · Up to 5 devices</div>
         </div>
         <span class="service-link-arrow">&#8594;</span>
       </a>
-      <a href="../business-it-support.html#plans" class="service-link-card">
+      <a href="business-it-support.html#plans" class="service-link-card">
         <div>
           <div class="service-link-label">Business Plan</div>
           <div class="service-link-price">From $199 base per month · Up to 10 devices</div>
         </div>
         <span class="service-link-arrow">&#8594;</span>
       </a>
-      <a href="../business-it-support.html#plans" class="service-link-card">
+      <a href="business-it-support.html#plans" class="service-link-card">
         <div>
           <div class="service-link-label">Premium Plan</div>
           <div class="service-link-price">From $299 base per month · Up to 20 devices</div>
         </div>
         <span class="service-link-arrow">&#8594;</span>
       </a>
-      <a href="../business-it-support.html#audit-section" class="service-link-card">
+      <a href="business-it-support.html#audit-section" class="service-link-card">
         <div>
           <div class="service-link-label">Free IT Audit</div>
           <div class="service-link-price">30 minutes · No obligation</div>
@@ -793,15 +793,15 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
 
     <p>The right plan depends on the number of devices in your practice and the level of coverage that matches your workflow. A sole practitioner or small bookkeeping firm with two or three workstations will be well covered by the Essential plan. A practice with a reception desk, senior accountants and junior staff across five to eight devices will typically suit the Business plan. Larger firms with multiple fee-earners, a need for guaranteed response during peak lodgement periods and 10 or more active devices will find the Premium plan is the appropriate fit.</p>
 
-    <p>If you are uncertain which plan is right, the free 30-minute IT audit is the correct starting point. We assess your current setup, document what you have, identify any security gaps or performance risks and give you a clear recommendation with no obligation to proceed. The documentation the audit produces is useful to most accounting principals regardless of whether they proceed with a managed plan. Full plan details including per-device pricing, visit schedules, response time commitments and optional add-ons are available on the <a href="../business-it-support.html#plans">Business IT Support page</a>.</p>
+    <p>If you are uncertain which plan is right, the free 30-minute IT audit is the correct starting point. We assess your current setup, document what you have, identify any security gaps or performance risks and give you a clear recommendation with no obligation to proceed. The documentation the audit produces is useful to most accounting principals regardless of whether they proceed with a managed plan. Full plan details including per-device pricing, visit schedules, response time commitments and optional add-ons are available on the <a href="business-it-support.html#plans">Business IT Support page</a>.</p>
 
     <!-- BOTTOM CTA -->
     <div class="inline-cta">
       <div class="inline-cta-title">Get your accounting practice IT sorted before the next peak period</div>
       <div class="inline-cta-desc">Book a free 30-minute IT audit. We assess your full environment, document every risk and show you exactly what needs to be in place before BAS or EOFY season arrives.</div>
       <div class="inline-cta-btns">
-        <a href="../business-it-support.html#audit-section" class="inline-cta-btn">Book a free IT audit</a>
-        <a href="../business-it-support.html#plans" class="inline-cta-btn-outline">View plans and pricing</a>
+        <a href="business-it-support.html#audit-section" class="inline-cta-btn">Book a free IT audit</a>
+        <a href="business-it-support.html#plans" class="inline-cta-btn-outline">View plans and pricing</a>
       </div>
     </div>
 
@@ -866,31 +866,31 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
       <div style="font-family: var(--display); font-size: 1rem; font-weight: 800; color: var(--ink); margin-bottom: 0.5rem;">IT support for other Perth industries</div>
       <p style="font-size: 14px; color: var(--muted); margin-bottom: 1.25rem;">We provide industry-specific managed IT support across Perth. Find your sector below.</p>
       <div class="industry-links">
-        <a href="it-support-trades-perth" class="industry-pill">
+        <a href="it-support-trades-perth.html class="industry-pill">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
           Trades &amp; Construction
         </a>
-        <a href="it-support-real-estate-perth" class="industry-pill">
+        <a href="it-support-real-estate-perth.html" class="industry-pill">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
           Real Estate Agencies
         </a>
-        <a href="it-support-allied-health-perth" class="industry-pill">
+        <a href="it-support-allied-health-perth.html" class="industry-pill">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
           Allied Health &amp; Medical
         </a>
-        <a href="it-support-legal-perth" class="industry-pill">
+        <a href="it-support-legal-perth.html" class="industry-pill">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           Legal &amp; Conveyancing
         </a>
-        <a href="it-support-retail-perth" class="industry-pill">
+        <a href="it-support-retail-perth.html" class="industry-pill">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
           Retail Businesses
         </a>
-        <a href="it-support-childcare-perth" class="industry-pill">
+        <a href="it-support-childcare-perth.html" class="industry-pill">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
           Childcare Centres
         </a>
-        <a href="it-support-hospitality-perth" class="industry-pill">
+        <a href="it-support-hospitality-perth.html" class="industry-pill">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
           Cafes &amp; Restaurants
         </a>
@@ -900,8 +900,8 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
   </div>
 
   <div class="post-footer-nav">
-    <a href="../business-it-support.html" class="post-footer-link">&#8592; Back to Business IT Support</a>
-    <a href="../pricing.html" class="post-footer-link">View full pricing &#8594;</a>
+    <a href="business-it-support.html" class="post-footer-link">&#8592; Back to Business IT Support</a>
+    <a href="pricing.html" class="post-footer-link">View full pricing &#8594;</a>
   </div>
 
 </div>
@@ -911,13 +911,13 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
      ============================================================ -->
 <footer>
   <div class="footer-inner">
-    <a href="../index.html" class="footer-logo" aria-label="FixMyPC Perth Home">
-      <div class="logo-mark"><img src="../logo.png" alt="FixMyPC Perth" width="38" height="38" loading="lazy"></div>
+    <a href="index.html" class="footer-logo" aria-label="FixMyPC Perth Home">
+      <div class="logo-mark"><img src="logo.png" alt="FixMyPC Perth" width="38" height="38" loading="lazy"></div>
       <span class="logo-name" style="font-size:14px">FixMyPC <em>Perth</em></span>
     </a>
     <div class="footer-copy">© 2026 FixMyPC Perth · ABN 67 645 153 359 · All Prices Include GST · Canning Vale WA 6155</div>
     <div class="footer-links">
-      <a href="../terms.html">Terms and Conditions</a>
+      <a href="terms.html">Terms and Conditions</a>
     </div>
   </div>
 </footer>
