@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S0CW1QXBDY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-S0CW1QXBDY');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>IT Support for Accountants and Bookkeepers Perth | FixMyPC Perth</title>
+<meta name="description" content="Managed IT support for Perth accountants and bookkeeping firms. Keep MYOB, Xero and ATO portals running without disruption. From $149 per month. No lock-in contracts.">
+<meta name="keywords" content="IT support accountants Perth, IT support bookkeepers Perth, managed IT accounting firm Perth, MYOB IT support Perth, Xero IT support Perth, computer support accountants Perth, business IT support Canning Vale">
+
+<link rel="canonical" href="https://www.fixmypcperth.com/industries/it-support-accountants-perth">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="author" content="Ali Raja · FixMyPC Perth">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_AU">
+<meta property="og:site_name" content="FixMyPC Perth">
+<meta property="og:title" content="IT Support for Accountants and Bookkeepers Perth | FixMyPC Perth">
+<meta property="og:description" content="Managed IT support for Perth accountants and bookkeeping firms. Keep MYOB, Xero and ATO portals running without disruption. From $149 per month. No lock-in contracts.">
+<meta property="og:url" content="https://www.fixmypcperth.com/industries/it-support-accountants-perth">
+<meta property="og:image" content="https://fixmypcperth.com/facebook-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="geo.region" content="AU-WA">
+<meta name="geo.placename" content="Canning Vale, Perth, Western Australia">
+<link rel="icon" type="image/png" href="../favicon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "name": "IT Support for Accountants and Bookkeepers Perth",
+      "description": "Managed IT support for Perth accountants and bookkeeping firms. Keep MYOB, Xero and ATO portals running without disruption. From $149 per month. No lock-in contracts.",
+      "url": "https://www.fixmypcperth.com/industries/it-support-accountants-perth",
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.fixmypcperth.com" },
+          { "@type": "ListItem", "position": 2, "name": "Business IT Support", "item": "https://www.fixmypcperth.com/business-it-support" },
+          { "@type": "ListItem", "position": 3, "name": "IT Support for Accountants and Bookkeepers Perth", "item": "https://www.fixmypcperth.com/industries/it-support-accountants-perth" }
+        ]
+      }
+    },
+    {
+      "@type": "LocalBusiness",
+      "name": "FixMyPC Perth",
+      "description": "Perth IT support specialist for accounting and bookkeeping firms. Managed IT for MYOB, Xero, Reckon, ATO portals and cloud accounting platforms. Same day service from $149 per month.",
+      "url": "https://www.fixmypcperth.com",
+      "telephone": "+61452573701",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "7 Barraberry Retreat",
+        "addressLocality": "Canning Vale",
+        "addressRegion": "WA",
+        "postalCode": "6155",
+        "addressCountry": "AU"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -32.0742,
+        "longitude": 115.9239
+      },
+      "areaServed": [
+        "Canning Vale","Cockburn","Willetton","Thornlie","Gosnells",
+        "Armadale","Jandakot","Harrisdale","Atwell","Cannington"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What IT support do accounting firms in Perth need?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Accounting and bookkeeping firms in Perth typically need IT support for accounting platforms such as MYOB, Xero, Reckon and QuickBooks, ATO portal access and tax lodgement software including Xero Tax and MYOB Tax, document management and client portal tools, secure encrypted backup of all client financial records, and robust security arrangements to meet their professional and regulatory obligations under the Privacy Act and Tax Practitioners Board standards. FixMyPC Perth covers all of these under a single fixed monthly plan with no lock-in contracts."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does IT support for an accounting firm cost in Perth?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Managed IT support for accounting firms starts from $149 per month base plus $35 per device per month on the Essential plan covering up to 5 devices. The Business plan is $199 base plus $45 per device for up to 10 devices. The Premium plan is $299 base plus $60 per device for up to 20 devices. All plans are month to month with no lock-in contracts and include unlimited remote support, managed antivirus and scheduled onsite visits."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you support MYOB, Xero and ATO portal access for Perth accountants?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. FixMyPC Perth provides IT support for all major accounting and tax platforms used by Perth firms including MYOB AccountRight, Xero, Reckon, QuickBooks, Xero Tax, MYOB Tax, Class Super and BGL360. We also manage ATO portal connectivity, multi-factor authentication setup and the browser and network configurations required for reliable access to ATO Online Services for Agents."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do accounting firms have special data security obligations that IT support needs to address?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Accounting and bookkeeping firms in Australia hold sensitive client financial data and are subject to obligations under the Australian Privacy Act, the Tax Practitioners Board Code of Professional Conduct and ATO security standards for registered tax agents. FixMyPC Perth implements managed antivirus, encrypted cloud backup, multi-factor authentication, controlled device access and network security as standard components of every managed IT plan."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens if our accounting software goes down during tax season or BAS lodgement periods?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Business and Premium plan clients receive priority remote support with most software issues resolved within the hour. Premium clients receive a guaranteed same day onsite response within 4 hours for emergencies. For accounting firms, downtime during BAS periods, end of financial year or tax lodgement deadlines carries a direct cost in staff overtime and client relationship damage. Fast response during peak periods is built into every plan we offer."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+:root {
+  --blue:      #1560FF;
+  --blue-lt:   #EEF3FF;
+  --blue-mid:  #C7D8FF;
+  --blue-dk:   #0A3ACC;
+  --teal:      #00CFFF;
+  --ink:       #0F172A;
+  --ink2:      #1E293B;
+  --muted:     #64748B;
+  --muted2:    #94A3B8;
+  --border:    #E2E8F0;
+  --border2:   #CBD5E1;
+  --bg:        #FFFFFF;
+  --bg2:       #F8FAFC;
+  --bg3:       #F1F5F9;
+  --green:     #16A34A;
+  --wa:        #22C55E;
+  --wa-dk:     #16A34A;
+  --display:   'Sora', sans-serif;
+  --body:      'DM Sans', sans-serif;
+  --nav-h:     64px;
+  --mob-nav-h: 60px;
+}
+
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--bg2); }
+::-webkit-scrollbar-thumb { background: linear-gradient(180deg, var(--blue) 0%, var(--blue-dk) 100%); border-radius: 10px; border: 2px solid var(--bg2); }
+::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, var(--blue-dk) 0%, var(--blue) 100%); }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+
+/* ============================================================
+   DESKTOP NAV
+   ============================================================ */
+.desk-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2rem; height: var(--nav-h);
+  background: rgba(255,255,255,0.88);
+  backdrop-filter: blur(30px) saturate(200%);
+  -webkit-backdrop-filter: blur(30px) saturate(200%);
+  border-bottom: 1px solid rgba(226,232,240,0.5);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.05);
+}
+.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
+.logo-mark { width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.logo-mark img { width: 100%; height: 100%; object-fit: contain; }
+.logo-name { font-family: var(--display); font-size: 16px; font-weight: 700; color: var(--ink); letter-spacing: -0.3px; white-space: nowrap; }
+.logo-name em { color: var(--blue); font-style: normal; }
+.nav-right { display: flex; align-items: center; gap: 8px; }
+.nav-pill { display: inline-flex; align-items: center; gap: 6px; font-family: var(--body); font-size: 13px; font-weight: 600; padding: 9px 18px; border-radius: 50px; text-decoration: none; border: none; cursor: pointer; transition: transform 0.15s, opacity 0.15s; white-space: nowrap; }
+.nav-pill:hover { transform: translateY(-1px); opacity: 0.92; }
+.pill-ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--border2); padding: 8px 16px; }
+.pill-ghost:hover { border-color: var(--blue); color: var(--blue); transform: none; opacity: 1; }
+.pill-active { background: var(--blue-lt); color: var(--blue); border: 1.5px solid var(--blue-mid); }
+
+/* ============================================================
+   MOBILE NAV
+   ============================================================ */
+.mob-nav {
+  display: none; position: fixed; top: 0; left: 0; right: 0; z-index: 300;
+  height: var(--mob-nav-h); background: rgba(255,255,255,0.97);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1.5px solid var(--border); padding: 0 1.25rem;
+  align-items: center; justify-content: space-between;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+}
+.mob-hamburger {
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  gap: 5px; width: 42px; height: 42px;
+  background: var(--bg3); border: 1.5px solid var(--border2);
+  border-radius: 10px; cursor: pointer; flex-shrink: 0;
+  transition: background 0.15s, border-color 0.15s;
+}
+.mob-hamburger:hover { background: var(--blue-lt); border-color: var(--blue-mid); }
+.mob-hamburger span { display: block; width: 16px; height: 2px; background: var(--ink); border-radius: 2px; transition: transform 0.3s ease, opacity 0.3s ease; }
+.mob-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.mob-hamburger.open span:nth-child(2) { opacity: 0; }
+.mob-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.mob-menu {
+  display: none; position: fixed; top: var(--mob-nav-h); left: 0; right: 0; z-index: 299;
+  background: rgba(255,255,255,0.98); backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px); border-bottom: 1.5px solid var(--border);
+  padding: 0.75rem 1.25rem 1.5rem; flex-direction: column; gap: 4px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.1); border-radius: 0 0 20px 20px;
+}
+.mob-menu.open { display: flex; }
+.mob-link { font-family: var(--body); font-size: 15px; font-weight: 600; color: var(--ink); text-decoration: none; padding: 0.9rem 1rem; border-radius: 10px; display: block; transition: background 0.15s, color 0.15s; }
+.mob-link:hover { background: var(--blue-lt); color: var(--blue); }
+
+/* ============================================================
+   ARTICLE LAYOUT
+   ============================================================ */
+.article-wrap {
+  max-width: 740px;
+  margin: 0 auto;
+  padding: calc(var(--nav-h) + 40px) 2rem 5rem;
+}
+
+/* ============================================================
+   POST HEADER
+   ============================================================ */
+.post-breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--muted2); margin-bottom: 1.25rem; }
+.post-breadcrumb a { color: var(--blue); text-decoration: none; font-weight: 600; }
+.post-breadcrumb a:hover { text-decoration: underline; }
+.post-cat { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue); background: var(--blue-lt); border: 1px solid var(--blue-mid); padding: 4px 12px; border-radius: 50px; margin-bottom: 1rem; }
+.post-h1 { font-family: var(--display); font-size: clamp(1.8rem, 4vw, 2.7rem); font-weight: 800; letter-spacing: -1.5px; color: var(--ink); line-height: 1.1; margin-bottom: 1rem; }
+.post-meta { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; font-size: 13px; color: var(--muted2); font-weight: 500; padding-bottom: 1.5rem; border-bottom: 1.5px solid var(--border); margin-bottom: 2rem; }
+.post-meta-author { color: var(--ink); font-weight: 700; }
+
+/* ============================================================
+   POST BODY
+   ============================================================ */
+.post-body { font-size: 16px; color: var(--ink2); line-height: 1.85; }
+.post-body p { margin-bottom: 1.35rem; }
+.post-body h2 { font-family: var(--display); font-size: 1.45rem; font-weight: 800; color: var(--ink); letter-spacing: -0.5px; margin: 2.75rem 0 0.8rem; border-top: 1px solid var(--border); padding-top: 1.5rem; }
+.post-body strong { color: var(--ink); font-weight: 700; }
+.post-body a { color: var(--blue); text-decoration: underline; }
+.post-body a:hover { color: var(--blue-dk); }
+
+/* ============================================================
+   CALLOUT BOXES
+   ============================================================ */
+.callout { background: var(--blue-lt); border: 1.5px solid var(--blue-mid); border-left: 4px solid var(--blue); border-radius: 12px; padding: 1.25rem 1.5rem; margin: 1.75rem 0; font-size: 14.5px; color: var(--ink2); line-height: 1.75; }
+.callout strong { color: var(--blue); }
+.callout-green { background: #F0FDF4; border-color: #BBF7D0; border-left-color: var(--wa); }
+.callout-green strong { color: var(--green); }
+.callout-amber { background: #FFFBEB; border-color: #FDE68A; border-left-color: #D97706; }
+.callout-amber strong { color: #92400E; }
+
+/* ============================================================
+   SUMMARY BOX
+   ============================================================ */
+.summary-box {
+  background: var(--ink); border-radius: 16px; padding: 1.5rem 1.75rem;
+  margin: 0 0 2.5rem; position: relative; overflow: hidden;
+}
+.summary-box::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--blue), var(--teal), var(--wa)); }
+.summary-box-title { font-family: var(--display); font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); margin-bottom: 0.75rem; }
+.summary-box ul { padding-left: 0; list-style: none; }
+.summary-box ul li { font-size: 13.5px; color: rgba(255,255,255,0.78); padding: 0.3rem 0; display: flex; align-items: center; gap: 8px; }
+.summary-box ul li::before { content: ''; width: 5px; height: 5px; background: var(--teal); border-radius: 50%; flex-shrink: 0; }
+
+/* ============================================================
+   STAT ROW
+   ============================================================ */
+.stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 1.75rem 0; }
+.stat-box { background: var(--bg2); border: 1.5px solid var(--border); border-radius: 12px; padding: 1rem; text-align: center; }
+.stat-val { font-family: var(--display); font-size: 2rem; font-weight: 800; color: var(--blue); letter-spacing: -1px; display: block; }
+.stat-lbl { font-size: 11.5px; color: var(--muted); font-weight: 500; margin-top: 3px; display: block; }
+
+/* ============================================================
+   TWO-COLUMN TABLE — coverage and problems
+   ============================================================ */
+.coverage-list,
+.problem-list {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0 1.75rem;
+  display: flex;
+  flex-direction: column;
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.coverage-item,
+.problem-item {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  border-bottom: 1px solid var(--border);
+}
+
+.coverage-item:last-child,
+.problem-item:last-child {
+  border-bottom: none;
+}
+
+.coverage-label,
+.problem-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 1rem 1.25rem;
+  background: var(--bg2);
+  border-right: 1px solid var(--border);
+}
+
+.coverage-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(34,197,94,0.12);
+  border: 1px solid rgba(34,197,94,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 11px;
+  color: var(--wa-dk);
+  font-weight: 800;
+  margin-top: 1px;
+}
+
+.problem-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(239,68,68,0.08);
+  border: 1px solid rgba(239,68,68,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 11px;
+  color: #DC2626;
+  font-weight: 800;
+  margin-top: 1px;
+}
+
+.coverage-label-text,
+.problem-label-text {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.45;
+}
+
+.coverage-desc,
+.problem-desc {
+  padding: 1rem 1.25rem;
+  font-size: 14px;
+  color: var(--ink2);
+  line-height: 1.65;
+  background: var(--bg);
+}
+
+/* ============================================================
+   INLINE CTA
+   ============================================================ */
+.inline-cta { background: var(--ink); border-radius: 16px; padding: 1.75rem 2rem; margin: 2.5rem 0; position: relative; overflow: hidden; }
+.inline-cta::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--blue), var(--teal), var(--wa)); }
+.inline-cta-title { font-family: var(--display); font-size: 1.15rem; font-weight: 800; color: #fff; margin-bottom: 0.4rem; letter-spacing: -0.3px; }
+.inline-cta-desc { font-size: 13.5px; color: rgba(255,255,255,0.52); margin-bottom: 1.25rem; line-height: 1.65; }
+.inline-cta-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+.inline-cta-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--wa); color: #fff; font-family: var(--body); font-size: 14px; font-weight: 700; padding: 12px 22px; border-radius: 50px; text-decoration: none; box-shadow: 0 4px 14px rgba(34,197,94,0.4); transition: transform 0.15s; }
+.inline-cta-btn:hover { transform: translateY(-2px); }
+.inline-cta-btn-outline { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: rgba(255,255,255,0.75); font-family: var(--body); font-size: 14px; font-weight: 600; padding: 12px 22px; border-radius: 50px; text-decoration: none; border: 1.5px solid rgba(255,255,255,0.2); transition: border-color 0.15s, color 0.15s; }
+.inline-cta-btn-outline:hover { border-color: rgba(255,255,255,0.5); color: #fff; }
+
+/* ============================================================
+   SERVICE LINK CARDS
+   ============================================================ */
+.service-links { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 2rem 0; }
+.service-link-card { background: var(--bg2); border: 1.5px solid var(--border); border-radius: 12px; padding: 1rem 1.25rem; text-decoration: none; display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; transition: border-color 0.15s, background 0.15s; }
+.service-link-card:hover { border-color: var(--blue); background: var(--blue-lt); }
+.service-link-label { font-size: 13.5px; font-weight: 700; color: var(--ink); line-height: 1.35; }
+.service-link-price { font-size: 12px; color: var(--muted); font-weight: 500; white-space: nowrap; }
+.service-link-arrow { color: var(--blue); font-size: 16px; flex-shrink: 0; }
+
+/* ============================================================
+   FAQ
+   ============================================================ */
+.faq-section { margin: 3rem 0 0; }
+.faq-section-title { font-family: var(--display); font-size: 1.45rem; font-weight: 800; color: var(--ink); letter-spacing: -0.5px; margin-bottom: 1.25rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+.faq-item { border: 1.5px solid var(--border); border-radius: 12px; margin-bottom: 10px; overflow: hidden; }
+.faq-question { width: 100%; text-align: left; font-family: var(--body); font-size: 15px; font-weight: 700; color: var(--ink); background: var(--bg2); padding: 1rem 1.25rem; border: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 1rem; transition: background 0.15s, color 0.15s; }
+.faq-question:hover { background: var(--blue-lt); color: var(--blue); }
+.faq-question[aria-expanded="true"] { background: var(--blue-lt); color: var(--blue); }
+.faq-icon { flex-shrink: 0; width: 22px; height: 22px; background: var(--border); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; transition: background 0.15s, transform 0.25s; }
+.faq-question[aria-expanded="true"] .faq-icon { background: var(--blue); color: #fff; transform: rotate(45deg); }
+.faq-answer { font-size: 14.5px; color: var(--ink2); line-height: 1.75; padding: 0 1.25rem; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; }
+.faq-answer.open { max-height: 400px; padding: 1rem 1.25rem 1.25rem; }
+
+/* ============================================================
+   INDUSTRY PILLS
+   ============================================================ */
+.industry-links { display: flex; flex-wrap: wrap; gap: 10px; margin: 1.5rem 0; }
+.industry-pill { display: inline-flex; align-items: center; gap: 8px; background: var(--bg2); border: 1.5px solid var(--border); border-radius: 50px; padding: 0.55rem 1rem; text-decoration: none; font-size: 13px; font-weight: 700; color: var(--ink); transition: border-color 0.15s, background 0.15s, color 0.15s; }
+.industry-pill:hover { border-color: var(--blue); background: var(--blue-lt); color: var(--blue); }
+.industry-pill svg { flex-shrink: 0; color: var(--muted); transition: color 0.15s; }
+.industry-pill:hover svg { color: var(--blue); }
+
+/* ============================================================
+   POST FOOTER NAV
+   ============================================================ */
+.post-footer-nav { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 3rem; padding-top: 2rem; border-top: 1.5px solid var(--border); flex-wrap: wrap; }
+.post-footer-link { font-size: 13px; font-weight: 700; color: var(--blue); text-decoration: none; display: flex; align-items: center; gap: 4px; }
+.post-footer-link:hover { text-decoration: underline; }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.75rem 2rem; }
+.footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.footer-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; flex-shrink: 0; }
+.footer-copy { font-size: 12px; color: var(--muted2); line-height: 1.6; }
+.footer-links { display: flex; gap: 1.25rem; }
+.footer-links a { font-size: 12px; color: var(--muted2); text-decoration: none; transition: color 0.15s; }
+.footer-links a:hover { color: var(--blue); }
+
+/* ============================================================
+   WHATSAPP BUBBLE
+   ============================================================ */
+.wa-bubble { position: fixed; bottom: 24px; right: 24px; z-index: 9999; width: 58px; height: 58px; background: var(--wa); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(34,197,94,0.45); transition: transform 0.2s, box-shadow 0.2s; text-decoration: none; }
+.wa-bubble:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(34,197,94,0.55); }
+
+/* ============================================================
+   SCROLL PROGRESS BAR
+   ============================================================ */
+#scroll-bar { position: fixed; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #1560FF, #00CFFF, #22C55E); transform: scaleX(0); transform-origin: left; z-index: 99999; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 720px) {
+  .desk-nav { display: none; }
+  .mob-nav { display: flex; }
+  body { padding-top: var(--mob-nav-h); }
+  .article-wrap { padding: 1.5rem 1.25rem 4rem; }
+  .post-h1 { font-size: clamp(1.55rem, 6.5vw, 2rem); letter-spacing: -1px; }
+  .stat-row { grid-template-columns: 1fr 1fr; }
+  .inline-cta { padding: 1.4rem 1.25rem; }
+  .inline-cta-btns { flex-direction: column; }
+  .inline-cta-btn, .inline-cta-btn-outline { width: 100%; justify-content: center; }
+  .service-links { grid-template-columns: 1fr; }
+  .coverage-item, .problem-item { grid-template-columns: 1fr; }
+  .coverage-label, .problem-label { border-right: none; border-bottom: 1px solid var(--border); }
+  .coverage-desc, .problem-desc { padding: 0.85rem 1.25rem; }
+  footer { padding: 1.5rem 1.25rem; }
+  .footer-inner { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+  .wa-bubble { bottom: 20px; right: 16px; width: 52px; height: 52px; }
+}
+@media (max-width: 480px) {
+  .stat-row { grid-template-columns: 1fr; }
+  .stat-val { font-size: 1.75rem; }
+}
+</style>
+</head>
+<body>
+
+<div id="scroll-bar" aria-hidden="true"></div>
+
+<!-- ============================================================
+     DESKTOP NAV
+     ============================================================ -->
+<nav class="desk-nav" aria-label="Main navigation">
+  <a href="../index.html" class="nav-logo" aria-label="FixMyPC Perth Home">
+    <div class="logo-mark"><img src="../logo.png" alt="FixMyPC Perth" width="38" height="38" loading="lazy"></div>
+    <span class="logo-name">FixMyPC <em>Perth</em></span>
+  </a>
+  <div class="nav-right">
+    <a href="../pricing.html"             class="nav-pill pill-ghost">Pricing</a>
+    <a href="../business-it-support.html" class="nav-pill pill-active">Business IT Support</a>
+    <a href="../quiz.html"                class="nav-pill pill-ghost">Free Diagnostic</a>
+    <a href="../blog.html"                class="nav-pill pill-ghost">Tech Tips</a>
+    <a href="../reviews.html"             class="nav-pill pill-ghost">Reviews &amp; FAQ</a>
+  </div>
+</nav>
+
+<!-- ============================================================
+     MOBILE NAV
+     ============================================================ -->
+<div class="mob-nav" role="navigation" aria-label="Mobile navigation">
+  <a href="../index.html" class="nav-logo" aria-label="FixMyPC Perth Home">
+    <div class="logo-mark"><img src="../logo.png" alt="FixMyPC Perth" width="38" height="38" loading="lazy"></div>
+    <span class="logo-name" style="font-size:14px">FixMyPC <em>Perth</em></span>
+  </a>
+  <button class="mob-hamburger" id="mob-hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mob-menu">
+    <span></span><span></span><span></span>
+  </button>
+</div>
+<div class="mob-menu" id="mob-menu" role="menu">
+  <a href="../pricing.html"             class="mob-link" role="menuitem">Pricing</a>
+  <a href="../business-it-support.html" class="mob-link" role="menuitem">Business IT Support</a>
+  <a href="../quiz.html"                class="mob-link" role="menuitem">Free PC Diagnostic</a>
+  <a href="../blog.html"                class="mob-link" role="menuitem">Tech Tips</a>
+  <a href="../reviews.html"             class="mob-link" role="menuitem">Reviews &amp; FAQ</a>
+</div>
+
+<!-- ============================================================
+     ARTICLE
+     ============================================================ -->
+<div class="article-wrap">
+
+  <div class="post-breadcrumb">
+    <a href="../business-it-support.html">Business IT Support</a>
+    <span>/</span>
+    <span>Accountants &amp; Bookkeepers</span>
+  </div>
+
+  <span class="post-cat">Industry IT Support</span>
+  <h1 class="post-h1">IT Support for Accountants and Bookkeepers in Perth</h1>
+
+  <div class="post-meta">
+    <span class="post-meta-author">Ali Raja · FixMyPC Perth</span>
+    <span>·</span>
+    <span>Canning Vale, Perth WA</span>
+    <span>·</span>
+    <span>From $149 per month</span>
+  </div>
+
+  <!-- SUMMARY BOX -->
+  <div class="summary-box">
+    <div class="summary-box-title">What this page covers</div>
+    <ul>
+      <li>Why accounting and bookkeeping firms cannot tolerate IT downtime</li>
+      <li>The most common IT problems that cost Perth accountants time and money</li>
+      <li>The security and compliance obligations that affect your IT environment</li>
+      <li>Exactly what FixMyPC Perth covers for your firm</li>
+      <li>How managed IT saves money compared to the reactive model</li>
+      <li>Transparent plan pricing with no lock-in contracts</li>
+    </ul>
+  </div>
+
+  <div class="post-body">
+
+    <p>Accounting and bookkeeping firms in Perth operate to deadlines that are not negotiable. BAS lodgements, tax return submissions, end-of-financial-year processing, payroll runs and ATO correspondence all carry fixed dates with real consequences for missing them. When MYOB will not open, when Xero cannot connect to the bank feed, when the ATO's Online Services for Agents portal times out repeatedly, or when a staff member's laptop fails the morning before a client review, the cost is immediate and it falls directly on principals and senior staff who are already at capacity.</p>
+
+    <p>The majority of Perth accounting and bookkeeping firms manage IT reactively. Something fails, someone spends time trying to fix it, and eventually a technician is called. The hours lost in that process during peak periods cost far more in staff time and overtime than a structured managed IT arrangement would cost across the entire year. FixMyPC Perth provides Perth accounting firms with a better model: proactive, fixed-price IT support from a local technician who understands accounting workflows, the software your firm depends on and the compliance environment you operate within.</p>
+
+    <div class="stat-row">
+      <div class="stat-box"><span class="stat-val">$149</span><span class="stat-lbl">Starting from per month</span></div>
+      <div class="stat-box"><span class="stat-val">Same day</span><span class="stat-lbl">Remote support response</span></div>
+      <div class="stat-box"><span class="stat-val">0</span><span class="stat-lbl">Lock-in contracts</span></div>
+    </div>
+
+    <h2>Why IT Failures Are Particularly Costly for Accounting Firms</h2>
+
+    <p>An accounting firm's entire productive output depends on software, connectivity and data access functioning correctly and simultaneously. Unlike many other business types, there is no meaningful workaround when the primary tools fail. A property manager can still take a phone call when the software is down. An accountant cannot lodge a return, reconcile accounts or produce a financial statement without access to the platform those tasks require.</p>
+
+    <p>The cost compounds during peak periods. A single morning of MYOB or Xero unavailability during BAS week does not just cost that morning. It creates a backlog that runs into the afternoon and forces work into the following day. In a firm with multiple staff, that backlog multiplies. Senior accountants end up performing data entry to clear it. Client communications slip. Deadlines are approached with less margin than they should be.</p>
+
+    <p>There is also the matter of professional and regulatory exposure. Registered tax agents operate under the Tax Practitioners Board Code of Professional Conduct, which includes obligations around the security and integrity of client information. Accounting firms hold some of the most sensitive personal and financial data that exists: tax file numbers, financial statements, payroll records, bank account details and ATO correspondence for individuals and businesses alike. A security breach affecting that data is not only a client relationship problem. It is a regulatory one with consequences for registration and professional standing.</p>
+
+    <div class="callout callout-amber">
+      <strong>Regulatory note:</strong> The Tax Practitioners Board requires registered tax agents to maintain appropriate security controls over client data. The Australian Privacy Act imposes mandatory data breach notification obligations on firms handling personal information. FixMyPC Perth implements managed antivirus, encrypted backup, multi-factor authentication and controlled device access as standard components of every managed IT plan, directly supporting your compliance obligations in these areas.
+    </div>
+
+    <h2>The Most Common IT Problems We See in Perth Accounting Firms</h2>
+
+    <p>After working with accounting and bookkeeping businesses across Perth and the southern suburbs, the same IT problems surface repeatedly. These are the issues that cost firms the most time and carry the highest risk if left unaddressed.</p>
+
+    <ul class="problem-list">
+      <li class="problem-item">
+        <div class="problem-label">
+          <span class="problem-icon">!</span>
+          <span class="problem-label-text">MYOB and Xero connectivity and performance failures</span>
+        </div>
+        <div class="problem-desc">Slow loading, failed bank feed synchronisation and session timeouts in MYOB AccountRight and Xero are frequently caused by outdated browser configurations, network settings that have never been optimised for cloud accounting, or Windows updates that introduced conflicts with the accounting software environment.</div>
+      </li>
+      <li class="problem-item">
+        <div class="problem-label">
+          <span class="problem-icon">!</span>
+          <span class="problem-label-text">ATO portal access failures</span>
+        </div>
+        <div class="problem-desc">Online Services for Agents requires specific browser versions, security certificates and multi-factor authentication configurations that must be maintained across every device that accesses it. When these fall out of alignment, staff lose access at exactly the moments they need it most, during lodgement periods when portal demand is highest.</div>
+      </li>
+      <li class="problem-item">
+        <div class="problem-label">
+          <span class="problem-icon">!</span>
+          <span class="problem-label-text">Tax lodgement software errors</span>
+        </div>
+        <div class="problem-desc">Xero Tax, MYOB Tax and CCH iFirm require carefully managed software environments. Version conflicts, corrupted installations and permission errors produce failures at the worst possible times: during EOFY processing and individual tax return lodgement season when volume is at its highest.</div>
+      </li>
+      <li class="problem-item">
+        <div class="problem-label">
+          <span class="problem-icon">!</span>
+          <span class="problem-label-text">No secure and tested backup of client data</span>
+        </div>
+        <div class="problem-desc">Client financial records, signed engagement letters, completed tax returns and ATO correspondence stored only on local drives or a basic shared folder have no protection against hardware failure, theft or ransomware. Firms that have never verified their backup can find it has not been running correctly for months only when they need to use it.</div>
+      </li>
+      <li class="problem-item">
+        <div class="problem-label">
+          <span class="problem-icon">!</span>
+          <span class="problem-label-text">Email security and phishing exposure</span>
+        </div>
+        <div class="problem-desc">Accounting firms are targeted by phishing campaigns specifically because of the financial data and ATO credentials they hold. Staff who receive convincing imitation ATO emails or false client payment requests without security training and email filtering in place represent a real and recurring financial risk to the firm and its clients.</div>
+      </li>
+      <li class="problem-item">
+        <div class="problem-label">
+          <span class="problem-icon">!</span>
+          <span class="problem-label-text">Slow computers during peak processing periods</span>
+        </div>
+        <div class="problem-desc">MYOB AccountRight, large Excel workbooks and concurrent cloud application use demand reasonable hardware performance. Computers that were adequate three years ago become a meaningful productivity constraint during EOFY and BAS periods when every minute of processing time matters.</div>
+      </li>
+    </ul>
+
+    <h2>What We Cover for Accounting and Bookkeeping Firms</h2>
+
+    <p>FixMyPC Perth acts as the dedicated IT department for your accounting practice. You get a local Perth technician who knows your software environment, understands the compliance context you operate in and responds fast when something goes wrong. The following is covered under our managed IT plans for accounting firms.</p>
+
+    <ul class="coverage-list">
+      <li class="coverage-item">
+        <div class="coverage-label">
+          <span class="coverage-icon">&#10003;</span>
+          <span class="coverage-label-text">Accounting software support</span>
+        </div>
+        <div class="coverage-desc">Including MYOB AccountRight, Xero, Reckon, QuickBooks, Class Super and BGL360. We handle installation, configuration, updates and troubleshooting so your team can focus on client work rather than software problems.</div>
+      </li>
+      <li class="coverage-item">
+        <div class="coverage-label">
+          <span class="coverage-icon">&#10003;</span>
+          <span class="coverage-label-text">Tax lodgement platform support</span>
+        </div>
+        <div class="coverage-desc">Xero Tax, MYOB Tax and CCH iFirm environments are maintained and kept compatible across all devices so that lodgement season proceeds without software-related delays or access failures.</div>
+      </li>
+      <li class="coverage-item">
+        <div class="coverage-label">
+          <span class="coverage-icon">&#10003;</span>
+          <span class="coverage-label-text">ATO portal configuration and maintenance</span>
+        </div>
+        <div class="coverage-desc">We manage the browser configurations, multi-factor authentication setup and security certificate maintenance required for reliable access to Online Services for Agents across every device your practice uses.</div>
+      </li>
+      <li class="coverage-item">
+        <div class="coverage-label">
+          <span class="coverage-icon">&#10003;</span>
+          <span class="coverage-label-text">Managed antivirus across all devices</span>
+        </div>
+        <div class="coverage-desc">Every computer and laptop in your practice is monitored and protected at all times, with real-time threat detection and regular reporting. This directly supports your obligations under the Privacy Act and TPB Code of Professional Conduct.</div>
+      </li>
+      <li class="coverage-item">
+        <div class="coverage-label">
+          <span class="coverage-icon">&#10003;</span>
+          <span class="coverage-label-text">Encrypted cloud backup of client records</span>
+        </div>
+        <div class="coverage-desc">Tax returns, financial statements, engagement letters, ATO correspondence and working papers are backed up securely with encryption and verified regularly so that a hardware failure or ransomware attack cannot destroy records your practice is legally required to retain.</div>
+      </li>
+      <li class="coverage-item">
+        <div class="coverage-label">
+          <span class="coverage-icon">&#10003;</span>
+          <span class="coverage-label-text">Email security and phishing protection</span>
+        </div>
+        <div class="coverage-desc">Email filtering, phishing detection and staff security awareness configuration reduce the risk of credentials being compromised through targeted email attacks, which are disproportionately directed at accounting and financial services firms.</div>
+      </li>
+      <li class="coverage-item">
+        <div class="coverage-label">
+          <span class="coverage-icon">&#10003;</span>
+          <span class="coverage-label-text">Multi-factor authentication setup</span>
+        </div>
+        <div class="coverage-desc">MFA is configured and maintained across accounting platforms, email accounts, ATO portals and cloud storage so that compromised passwords alone cannot result in unauthorised access to client data or financial systems.</div>
+      </li>
+      <li class="coverage-item">
+        <div class="coverage-label">
+          <span class="coverage-icon">&#10003;</span>
+          <span class="coverage-label-text">Network security and maintenance</span>
+        </div>
+        <div class="coverage-desc">Your office network is configured securely with appropriate access controls and kept updated so that the environment your accounting software runs in does not introduce unnecessary risk or performance degradation over time.</div>
+      </li>
+      <li class="coverage-item">
+        <div class="coverage-label">
+          <span class="coverage-icon">&#10003;</span>
+          <span class="coverage-label-text">New staff device setup and onboarding</span>
+        </div>
+        <div class="coverage-desc">When a new accountant or administrator joins your practice, their device is ready from day one with the correct software, accounting platform access, cloud connections, email configuration and security controls already in place.</div>
+      </li>
+      <li class="coverage-item">
+        <div class="coverage-label">
+          <span class="coverage-icon">&#10003;</span>
+          <span class="coverage-label-text">Unlimited remote support</span>
+        </div>
+        <div class="coverage-desc">Available seven days a week so issues are resolved before they interrupt client work. No call queues, no ticket systems, no waiting for a callback. You reach Ali directly and the problem gets addressed.</div>
+      </li>
+      <li class="coverage-item">
+        <div class="coverage-label">
+          <span class="coverage-icon">&#10003;</span>
+          <span class="coverage-label-text">Scheduled onsite visits</span>
+        </div>
+        <div class="coverage-desc">Included in every plan at no additional travel charge for practices in southern Perth including Canning Vale, Cockburn, Jandakot, Harrisdale, Armadale, Gosnells, Thornlie and Willetton.</div>
+      </li>
+      <li class="coverage-item">
+        <div class="coverage-label">
+          <span class="coverage-icon">&#10003;</span>
+          <span class="coverage-label-text">Windows updates managed centrally</span>
+        </div>
+        <div class="coverage-desc">Updates are tested and scheduled outside peak periods so devices stay current and secure without patches being applied at times that could break accounting software compatibility or interrupt lodgement work.</div>
+      </li>
+    </ul>
+
+    <!-- MID-PAGE CTA -->
+    <div class="inline-cta">
+      <div class="inline-cta-title">Ready to stop IT problems eating into your practice's productive time?</div>
+      <div class="inline-cta-desc">Book a free 30-minute IT audit. We document exactly where your practice stands and what needs fixing, at no cost and no obligation.</div>
+      <div class="inline-cta-btns">
+        <a href="../business-it-support.html#audit-section" class="inline-cta-btn">Book a free IT audit</a>
+        <a href="../pricing.html" class="inline-cta-btn-outline">View full pricing</a>
+      </div>
+    </div>
+
+    <h2>Why Choosing FixMyPC Perth Saves Your Practice Money</h2>
+
+    <p>Accounting principals are well placed to understand the cost of reactive IT because they can calculate it precisely. A senior accountant billing at $200 per hour who spends three hours across a week dealing with software failures, waiting for a technician and catching up on backlogged work has incurred a direct cost of $600 in billable time that was not billed. In a practice with three fee-earners, that figure runs to over $1,800 per week during peak periods. Across a BAS quarter and an EOFY period, the cumulative cost of reactive IT frequently exceeds the annual cost of a managed IT plan by a significant margin.</p>
+
+    <p>Managed IT eliminates the variable cost structure that reactive IT creates. You pay a fixed monthly amount that covers monitoring, maintenance, security, unlimited support and scheduled visits. Problems are identified and addressed before they become outages. When something does require attention, it is resolved the same day rather than waiting for a technician's availability to align with the practice's schedule. The time your team retains across a year of proactive IT management translates directly into client work that gets done and billed rather than time spent managing IT problems.</p>
+
+    <p>The security component of managed IT carries its own financial justification that is particularly relevant for accounting firms. The average cost of recovering from a ransomware attack for a small professional services firm without a current tested backup and appropriate security controls in place runs into tens of thousands of dollars, and that figure does not include the client notification obligations, reputational damage or potential regulatory consequences that accompany a breach of the kind of data accounting firms hold. Managed antivirus, encrypted backup and email security, all included in every FixMyPC Perth plan, eliminate that exposure for a monthly cost that is a small fraction of the risk they remove.</p>
+
+    <p>Staff onboarding is another area where managed IT delivers measurable savings that accounting principals rarely cost correctly. Each new graduate or administrator who joins requires a correctly configured device with the right software licences, accounting platform access, ATO portal credentials and security controls. Without a managed IT arrangement, that process typically takes a senior staff member the better part of a full day. Under a managed plan, it is a structured process that is completed correctly, quickly and without drawing on the time of your highest-cost staff.</p>
+
+    <h2>Our Managed IT Plans for Accounting Firms</h2>
+
+    <p>All plans are month to month with no lock-in contracts. You can cancel or change plans at any time with 14 days notice. Every plan includes unlimited remote support, managed antivirus, encrypted cloud backup and scheduled onsite visits.</p>
+
+    <div class="service-links">
+      <a href="../business-it-support.html#plans" class="service-link-card">
+        <div>
+          <div class="service-link-label">Essential Plan</div>
+          <div class="service-link-price">From $149 base per month · Up to 5 devices</div>
+        </div>
+        <span class="service-link-arrow">&#8594;</span>
+      </a>
+      <a href="../business-it-support.html#plans" class="service-link-card">
+        <div>
+          <div class="service-link-label">Business Plan</div>
+          <div class="service-link-price">From $199 base per month · Up to 10 devices</div>
+        </div>
+        <span class="service-link-arrow">&#8594;</span>
+      </a>
+      <a href="../business-it-support.html#plans" class="service-link-card">
+        <div>
+          <div class="service-link-label">Premium Plan</div>
+          <div class="service-link-price">From $299 base per month · Up to 20 devices</div>
+        </div>
+        <span class="service-link-arrow">&#8594;</span>
+      </a>
+      <a href="../business-it-support.html#audit-section" class="service-link-card">
+        <div>
+          <div class="service-link-label">Free IT Audit</div>
+          <div class="service-link-price">30 minutes · No obligation</div>
+        </div>
+        <span class="service-link-arrow">&#8594;</span>
+      </a>
+    </div>
+
+    <h2>Why Perth Accounting Firms Choose FixMyPC Perth</h2>
+
+    <p>Accounting principals have a natural scepticism about service providers who promise responsiveness and then deliver a ticket system, a call centre and a wait measured in days rather than hours. FixMyPC Perth operates differently by design. When your practice contacts us, you reach Ali directly. There is no intermediary, no escalation path and no case number. Ali knows your software environment, knows the deadlines your practice operates against and knows what needs to happen to resolve a problem quickly.</p>
+
+    <p>Most remote issues are resolved the same day. Onsite visits for practices in the southern Perth corridor are scheduled without weeks of lead time. During BAS periods and EOFY, priority response is built into the Business and Premium plans specifically because those are the periods when IT problems carry the highest cost for accounting firms.</p>
+
+    <p>We are based in Canning Vale and service all southern Perth suburbs for onsite visits including Cockburn, Jandakot, Harrisdale, Armadale, Gosnells, Thornlie and Willetton. If your practice operates in the southern corridor, we are local and available when the timing matters most.</p>
+
+    <div class="callout callout-green">
+      <strong>No lock-in contracts:</strong> Every plan at FixMyPC Perth is month to month. We retain your practice's business through consistent results and fast response, not through contracts that are difficult to exit. If we are not delivering the value you expect, you can leave with 14 days notice.
+    </div>
+
+    <h2>Which Plan Is Right for Your Accounting Practice</h2>
+
+    <p>The right plan depends on the number of devices in your practice and the level of coverage that matches your workflow. A sole practitioner or small bookkeeping firm with two or three workstations will be well covered by the Essential plan. A practice with a reception desk, senior accountants and junior staff across five to eight devices will typically suit the Business plan. Larger firms with multiple fee-earners, a need for guaranteed response during peak lodgement periods and 10 or more active devices will find the Premium plan is the appropriate fit.</p>
+
+    <p>If you are uncertain which plan is right, the free 30-minute IT audit is the correct starting point. We assess your current setup, document what you have, identify any security gaps or performance risks and give you a clear recommendation with no obligation to proceed. The documentation the audit produces is useful to most accounting principals regardless of whether they proceed with a managed plan. Full plan details including per-device pricing, visit schedules, response time commitments and optional add-ons are available on the <a href="../business-it-support.html#plans">Business IT Support page</a>.</p>
+
+    <!-- BOTTOM CTA -->
+    <div class="inline-cta">
+      <div class="inline-cta-title">Get your accounting practice IT sorted before the next peak period</div>
+      <div class="inline-cta-desc">Book a free 30-minute IT audit. We assess your full environment, document every risk and show you exactly what needs to be in place before BAS or EOFY season arrives.</div>
+      <div class="inline-cta-btns">
+        <a href="../business-it-support.html#audit-section" class="inline-cta-btn">Book a free IT audit</a>
+        <a href="../business-it-support.html#plans" class="inline-cta-btn-outline">View plans and pricing</a>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="faq-section">
+      <div class="faq-section-title">Frequently Asked Questions</div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          What IT support do accounting firms in Perth need?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Accounting and bookkeeping firms in Perth typically need IT support for accounting platforms such as MYOB, Xero, Reckon and QuickBooks, ATO portal access and tax lodgement software including Xero Tax and MYOB Tax, secure encrypted backup of all client financial records, email security and phishing protection, and multi-factor authentication across all systems. FixMyPC Perth covers all of these under a single fixed monthly plan with no lock-in contracts.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          How much does IT support for an accounting firm cost in Perth?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Managed IT support for accounting firms starts from $149 per month base plus $35 per device per month on the Essential plan covering up to 5 devices. The Business plan is $199 base plus $45 per device for up to 10 devices. The Premium plan is $299 base plus $60 per device for up to 20 devices. All plans are month to month with no lock-in contracts and include unlimited remote support, managed antivirus, encrypted backup and scheduled onsite visits.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Can you support MYOB, Xero and ATO portal access for Perth accountants?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Yes. FixMyPC Perth supports all major accounting and tax platforms used by Perth firms including MYOB AccountRight, Xero, Reckon, QuickBooks, Xero Tax, MYOB Tax, Class Super and BGL360. We also manage ATO portal connectivity, multi-factor authentication configuration and the browser and network settings required for reliable access to Online Services for Agents.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Do accounting firms have special data security obligations that IT support needs to address?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Yes. Accounting and bookkeeping firms hold sensitive client financial data and are subject to obligations under the Australian Privacy Act, the Tax Practitioners Board Code of Professional Conduct and ATO security standards for registered tax agents. FixMyPC Perth implements managed antivirus, encrypted cloud backup, multi-factor authentication, email security and controlled device access as standard components of every managed IT plan, directly supporting your compliance obligations in each of these areas.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          What happens if our accounting software goes down during BAS or EOFY?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Business and Premium plan clients receive priority remote support with most software issues resolved within the hour. Premium clients receive a guaranteed same day onsite response within 4 hours for emergencies. For accounting firms, downtime during BAS periods, EOFY processing or individual tax lodgement season carries a direct cost in staff overtime and potential deadline risk. Fast response during peak periods is built into every plan we offer for exactly this reason.
+        </div>
+      </div>
+
+    </div>
+
+    <!-- OTHER INDUSTRIES -->
+    <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1.5px solid var(--border);">
+      <div style="font-family: var(--display); font-size: 1rem; font-weight: 800; color: var(--ink); margin-bottom: 0.5rem;">IT support for other Perth industries</div>
+      <p style="font-size: 14px; color: var(--muted); margin-bottom: 1.25rem;">We provide industry-specific managed IT support across Perth. Find your sector below.</p>
+      <div class="industry-links">
+        <a href="it-support-trades-perth" class="industry-pill">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          Trades &amp; Construction
+        </a>
+        <a href="it-support-real-estate-perth" class="industry-pill">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          Real Estate Agencies
+        </a>
+        <a href="it-support-allied-health-perth" class="industry-pill">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          Allied Health &amp; Medical
+        </a>
+        <a href="it-support-legal-perth" class="industry-pill">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Legal &amp; Conveyancing
+        </a>
+        <a href="it-support-retail-perth" class="industry-pill">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          Retail Businesses
+        </a>
+        <a href="it-support-childcare-perth" class="industry-pill">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Childcare Centres
+        </a>
+        <a href="it-support-hospitality-perth" class="industry-pill">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+          Cafes &amp; Restaurants
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="post-footer-nav">
+    <a href="../business-it-support.html" class="post-footer-link">&#8592; Back to Business IT Support</a>
+    <a href="../pricing.html" class="post-footer-link">View full pricing &#8594;</a>
+  </div>
+
+</div>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer>
+  <div class="footer-inner">
+    <a href="../index.html" class="footer-logo" aria-label="FixMyPC Perth Home">
+      <div class="logo-mark"><img src="../logo.png" alt="FixMyPC Perth" width="38" height="38" loading="lazy"></div>
+      <span class="logo-name" style="font-size:14px">FixMyPC <em>Perth</em></span>
+    </a>
+    <div class="footer-copy">© 2026 FixMyPC Perth · ABN 67 645 153 359 · All Prices Include GST · Canning Vale WA 6155</div>
+    <div class="footer-links">
+      <a href="../terms.html">Terms and Conditions</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     WHATSAPP BUBBLE
+     ============================================================ -->
+<a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20IT%20support." target="_blank" rel="noopener noreferrer" class="wa-bubble" aria-label="Chat with FixMyPC Perth on WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>
+</a>
+
+<script>
+(function() {
+  'use strict';
+
+  /* SCROLL PROGRESS BAR */
+  var bar = document.getElementById('scroll-bar');
+  window.addEventListener('scroll', function() {
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.transform = 'scaleX(' + (window.scrollY / h) + ')';
+  }, { passive: true });
+
+  /* MOBILE HAMBURGER */
+  var hamburger = document.getElementById('mob-hamburger');
+  var mobMenu   = document.getElementById('mob-menu');
+
+  hamburger.addEventListener('click', function() {
+    var isOpen = mobMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+    hamburger.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+  });
+
+  mobMenu.querySelectorAll('.mob-link').forEach(function(link) {
+    link.addEventListener('click', function() {
+      mobMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      hamburger.setAttribute('aria-label', 'Open navigation menu');
+    });
+  });
+
+  document.addEventListener('click', function(e) {
+    if (mobMenu.classList.contains('open') && !mobMenu.contains(e.target) && !hamburger.contains(e.target)) {
+      mobMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      hamburger.setAttribute('aria-label', 'Open navigation menu');
+    }
+  });
+
+  /* FAQ ACCORDION */
+  document.querySelectorAll('.faq-question').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var answer = btn.nextElementSibling;
+      var isOpen = answer.classList.contains('open');
+      document.querySelectorAll('.faq-answer').forEach(function(a) { a.classList.remove('open'); });
+      document.querySelectorAll('.faq-question').forEach(function(b) { b.setAttribute('aria-expanded', 'false'); });
+      if (!isOpen) {
+        answer.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+})();
+</script>
+
+</body>
+</html>
