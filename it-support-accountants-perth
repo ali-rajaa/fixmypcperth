@@ -16,7 +16,7 @@
 <meta name="description" content="Managed IT support for Perth accountants and bookkeeping firms. Keep MYOB, Xero and ATO portals running without disruption. From $149 per month. No lock-in contracts.">
 <meta name="keywords" content="IT support accountants Perth, IT support bookkeepers Perth, managed IT accounting firm Perth, MYOB IT support Perth, Xero IT support Perth, computer support accountants Perth, business IT support Canning Vale">
 
-<link rel="canonical" href="https://www.fixmypcperth.com/industries/it-support-accountants-perth">
+<link rel="canonical" href="https://www.fixmypcperth.com/it-support-accountants-perth">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta name="author" content="Ali Raja · FixMyPC Perth">
 
@@ -25,7 +25,7 @@
 <meta property="og:site_name" content="FixMyPC Perth">
 <meta property="og:title" content="IT Support for Accountants and Bookkeepers Perth | FixMyPC Perth">
 <meta property="og:description" content="Managed IT support for Perth accountants and bookkeeping firms. Keep MYOB, Xero and ATO portals running without disruption. From $149 per month. No lock-in contracts.">
-<meta property="og:url" content="https://www.fixmypcperth.com/industries/it-support-accountants-perth">
+<meta property="og:url" content="https://www.fixmypcperth.com/it-support-accountants-perth">
 <meta property="og:image" content="https://fixmypcperth.com/facebook-cover.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="geo.region" content="AU-WA">
@@ -45,13 +45,13 @@
       "@type": "WebPage",
       "name": "IT Support for Accountants and Bookkeepers Perth",
       "description": "Managed IT support for Perth accountants and bookkeeping firms. Keep MYOB, Xero and ATO portals running without disruption. From $149 per month. No lock-in contracts.",
-      "url": "https://www.fixmypcperth.com/industries/it-support-accountants-perth",
+      "url": "https://www.fixmypcperth.com/it-support-accountants-perth",
       "breadcrumb": {
         "@type": "BreadcrumbList",
         "itemListElement": [
           { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.fixmypcperth.com" },
           { "@type": "ListItem", "position": 2, "name": "Business IT Support", "item": "https://www.fixmypcperth.com/business-it-support" },
-          { "@type": "ListItem", "position": 3, "name": "IT Support for Accountants and Bookkeepers Perth", "item": "https://www.fixmypcperth.com/industries/it-support-accountants-perth" }
+          { "@type": "ListItem", "position": 3, "name": "IT Support for Accountants and Bookkeepers Perth", "item": "https://www.fixmypcperth.com/it-support-accountants-perth" }
         ]
       }
     },
