@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S0CW1QXBDY"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-S0CW1QXBDY');
 </script>
 <meta charset="UTF-8">
@@ -29,7 +27,7 @@
 <meta property="og:site_name" content="FixMyPC Perth">
 <meta property="og:title" content="Free PC Health Check Quiz | Instant Computer Diagnosis | FixMyPC Perth">
 <meta property="og:description" content="Answer 5 quick questions and get an instant diagnosis of what is wrong with your PC. Free, no sign up, instant results. Based in Canning Vale, Perth WA.">
-<meta property="og:url" content="https://www.fixmypcperth.com/quiz.html">
+<meta property="og:url" content="https://www.fixmypcperth.com/quiz">
 <meta property="og:image" content="https://fixmypcperth.com/facebook-cover.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Free PC Health Check Quiz | FixMyPC Perth">
@@ -204,1372 +202,616 @@
   --mob-nav-h: 60px;
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html {
-  scroll-behavior: smooth;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 10px;
-}
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--bg2); }
+::-webkit-scrollbar-thumb { background: linear-gradient(180deg, var(--blue) 0%, var(--blue-dk) 100%); border-radius: 10px; border: 2px solid var(--bg2); }
+::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, var(--blue-dk) 0%, var(--blue) 100%); }
 
-::-webkit-scrollbar-track {
-  background: var(--bg2);
-}
-
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, var(--blue) 0%, var(--blue-dk) 100%);
-  border-radius: 10px;
-  border: 2px solid var(--bg2);
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, var(--blue-dk) 0%, var(--blue) 100%);
-}
-
-body {
-  background: var(--bg);
-  color: var(--ink);
-  font-family: var(--body);
-  font-size: 16px;
-  line-height: 1.6;
-  overflow-x: hidden;
-  position: relative;
-}
-
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
 img { display: block; max-width: 100%; }
 a { color: inherit; }
 
-.wrap {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 2rem;
-}
+.wrap { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
 
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0.3; }
-}
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
+@keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+@keyframes fadeSlideUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:none} }
+@keyframes qEnter { from{opacity:0;transform:translateX(28px) scale(0.985)} to{opacity:1;transform:none} }
+@keyframes qExit  { from{opacity:1;transform:none} to{opacity:0;transform:translateX(-20px) scale(0.985)} }
 
-@keyframes ticker {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-
-@keyframes fadeSlideUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: none; }
-}
-
-@keyframes qEnter {
-  from { opacity: 0; transform: translateX(28px) scale(0.985); }
-  to   { opacity: 1; transform: none; }
-}
-
-@keyframes qExit {
-  from { opacity: 1; transform: none; }
-  to   { opacity: 0; transform: translateX(-20px) scale(0.985); }
-}
-
-.fade-up {
-  opacity: 0;
-  transform: translateY(24px);
-  transition:
-    opacity 0.6s cubic-bezier(.22,.68,0,1.2),
-    transform 0.6s cubic-bezier(.22,.68,0,1.2);
-}
-.fade-up.in { opacity: 1; transform: none; }
+.fade-up { opacity:0; transform:translateY(24px); transition: opacity 0.6s cubic-bezier(.22,.68,0,1.2), transform 0.6s cubic-bezier(.22,.68,0,1.2); }
+.fade-up.in { opacity:1; transform:none; }
 
 .accent { color: var(--blue); }
 
-.s-eyebrow {
-  display: inline-block;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--blue);
-  background: var(--blue-lt);
-  padding: 4px 12px;
-  border-radius: 50px;
-  border: 1px solid var(--blue-mid);
-  margin-bottom: 1rem;
-}
+.s-eyebrow { display:inline-block; font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--blue); background:var(--blue-lt); padding:4px 12px; border-radius:50px; border:1px solid var(--blue-mid); margin-bottom:1rem; }
 
-.s-title {
-  font-family: var(--display);
-  font-size: clamp(1.8rem, 3vw, 2.8rem);
-  font-weight: 800;
-  letter-spacing: -1.2px;
-  line-height: 1.1;
-  color: var(--ink);
-  margin-bottom: 0.75rem;
-}
+.s-title { font-family:var(--display); font-size:clamp(1.8rem,3vw,2.8rem); font-weight:800; letter-spacing:-1.2px; line-height:1.1; color:var(--ink); margin-bottom:0.75rem; }
 
-.s-sub {
-  font-size: 16px;
-  color: var(--muted);
-  max-width: 560px;
-  line-height: 1.7;
-}
+.s-sub { font-size:16px; color:var(--muted); max-width:560px; line-height:1.7; }
 
 /* ============================================================
    DESKTOP NAV
    ============================================================ */
-.desk-nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 200;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 2rem;
-  height: var(--nav-h);
-  background: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(30px) saturate(200%);
-  -webkit-backdrop-filter: blur(30px) saturate(200%);
-  border-bottom: 1px solid rgba(226, 232, 240, 0.5);
-  border-top: 1px solid rgba(255, 255, 255, 0.8);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
-}
-
-.nav-logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
-  flex-shrink: 0;
-}
-
-.logo-mark {
-  width: 38px; height: 38px;
-  border-radius: 10px;
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-}
-.logo-mark img { width: 100%; height: 100%; object-fit: contain; }
-
-.logo-name {
-  font-family: var(--display);
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--ink);
-  letter-spacing: -0.3px;
-  white-space: nowrap;
-}
-.logo-name em { color: var(--blue); font-style: normal; }
-
-.nav-right {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.nav-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-family: var(--body);
-  font-size: 13px;
-  font-weight: 600;
-  padding: 9px 18px;
-  border-radius: 50px;
-  text-decoration: none;
-  border: none;
-  cursor: pointer;
-  transition: transform 0.15s, box-shadow 0.15s, opacity 0.15s;
-  white-space: nowrap;
-}
-.nav-pill:hover { transform: translateY(-1px); opacity: 0.92; }
-
-.pill-ghost {
-  background: transparent;
-  color: var(--ink);
-  border: 1.5px solid var(--border2);
-  padding: 8px 16px;
-}
-.pill-ghost:hover { border-color: var(--blue); color: var(--blue); transform: none; opacity: 1; }
+.desk-nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; align-items:center; justify-content:space-between; padding:0 2rem; height:var(--nav-h); background:rgba(255,255,255,0.88); backdrop-filter:blur(30px) saturate(200%); -webkit-backdrop-filter:blur(30px) saturate(200%); border-bottom:1px solid rgba(226,232,240,0.5); border-top:1px solid rgba(255,255,255,0.8); box-shadow:0 8px 32px rgba(0,0,0,0.05); }
+.nav-logo { display:flex; align-items:center; gap:10px; text-decoration:none; flex-shrink:0; }
+.logo-mark { width:38px; height:38px; border-radius:10px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.logo-mark img { width:100%; height:100%; object-fit:contain; }
+.logo-name { font-family:var(--display); font-size:16px; font-weight:700; color:var(--ink); letter-spacing:-0.3px; white-space:nowrap; }
+.logo-name em { color:var(--blue); font-style:normal; }
+.nav-right { display:flex; align-items:center; gap:8px; }
+.nav-pill { display:inline-flex; align-items:center; gap:6px; font-family:var(--body); font-size:13px; font-weight:600; padding:9px 18px; border-radius:50px; text-decoration:none; border:none; cursor:pointer; transition:transform 0.15s,box-shadow 0.15s,opacity 0.15s; white-space:nowrap; }
+.nav-pill:hover { transform:translateY(-1px); opacity:0.92; }
+.pill-ghost { background:transparent; color:var(--ink); border:1.5px solid var(--border2); padding:8px 16px; }
+.pill-ghost:hover { border-color:var(--blue); color:var(--blue); transform:none; opacity:1; }
 
 /* ============================================================
    MOBILE NAV
    ============================================================ */
-.mob-nav {
-  display: none;
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 300;
-  height: var(--mob-nav-h);
-  background: rgba(255, 255, 255, 0.97);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1.5px solid var(--border);
-  padding: 0 1.25rem;
-  align-items: center;
-  justify-content: space-between;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
-}
-
-.mob-hamburger {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
-  width: 42px; height: 42px;
-  background: var(--bg3);
-  border: 1.5px solid var(--border2);
-  border-radius: 10px;
-  cursor: pointer;
-  flex-shrink: 0;
-  transition: background 0.15s, border-color 0.15s;
-}
-.mob-hamburger:hover { background: var(--blue-lt); border-color: var(--blue-mid); }
-.mob-hamburger span {
-  display: block; width: 16px; height: 2px;
-  background: var(--ink); border-radius: 2px;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
-.mob-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.mob-hamburger.open span:nth-child(2) { opacity: 0; }
-.mob-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-.mob-menu {
-  display: none;
-  position: fixed;
-  top: var(--mob-nav-h);
-  left: 0; right: 0;
-  z-index: 299;
-  background: rgba(255, 255, 255, 0.98);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1.5px solid var(--border);
-  padding: 0.75rem 1.25rem 1.5rem;
-  flex-direction: column;
-  gap: 4px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-  border-radius: 0 0 20px 20px;
-}
-.mob-menu.open { display: flex; }
-
-.mob-link {
-  font-family: var(--body);
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--ink);
-  text-decoration: none;
-  padding: 0.9rem 1rem;
-  border-radius: 10px;
-  display: block;
-  transition: background 0.15s, color 0.15s;
-}
-.mob-link:hover { background: var(--blue-lt); color: var(--blue); }
+.mob-nav { display:none; position:fixed; top:0; left:0; right:0; z-index:300; height:var(--mob-nav-h); background:rgba(255,255,255,0.97); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border-bottom:1.5px solid var(--border); padding:0 1.25rem; align-items:center; justify-content:space-between; box-shadow:0 4px 20px rgba(0,0,0,0.07); }
+.mob-hamburger { display:flex; flex-direction:column; justify-content:center; align-items:center; gap:5px; width:42px; height:42px; background:var(--bg3); border:1.5px solid var(--border2); border-radius:10px; cursor:pointer; flex-shrink:0; transition:background 0.15s,border-color 0.15s; }
+.mob-hamburger:hover { background:var(--blue-lt); border-color:var(--blue-mid); }
+.mob-hamburger span { display:block; width:16px; height:2px; background:var(--ink); border-radius:2px; transition:transform 0.3s ease,opacity 0.3s ease; }
+.mob-hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+.mob-hamburger.open span:nth-child(2) { opacity:0; }
+.mob-hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+.mob-menu { display:none; position:fixed; top:var(--mob-nav-h); left:0; right:0; z-index:299; background:rgba(255,255,255,0.98); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border-bottom:1.5px solid var(--border); padding:0.75rem 1.25rem 1.5rem; flex-direction:column; gap:4px; box-shadow:0 8px 30px rgba(0,0,0,0.1); border-radius:0 0 20px 20px; }
+.mob-menu.open { display:flex; }
+.mob-link { font-family:var(--body); font-size:15px; font-weight:600; color:var(--ink); text-decoration:none; padding:0.9rem 1rem; border-radius:10px; display:block; transition:background 0.15s,color 0.15s; }
+.mob-link:hover { background:var(--blue-lt); color:var(--blue); }
 
 /* ============================================================
    TRUST TICKER
    ============================================================ */
-.trust-strip {
-  background: var(--ink);
-  padding: 14px 0;
-  overflow: hidden;
-}
-.trust-track {
-  display: flex;
-  white-space: nowrap;
-  animation: ticker 16s linear infinite;
-}
-.trust-track:hover { animation-play-state: paused; }
-.trust-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 0 2.5rem;
-  font-size: 13px;
-  font-weight: 600;
-  color: rgba(255,255,255,0.85);
-  white-space: nowrap;
-}
-.trust-dot {
-  width: 4px; height: 4px;
-  background: var(--blue);
-  border-radius: 50%; flex-shrink: 0;
-}
+.trust-strip { background:var(--ink); padding:14px 0; overflow:hidden; }
+.trust-track { display:flex; white-space:nowrap; animation:ticker 16s linear infinite; }
+.trust-track:hover { animation-play-state:paused; }
+.trust-item { display:inline-flex; align-items:center; gap:8px; padding:0 2.5rem; font-size:13px; font-weight:600; color:rgba(255,255,255,0.85); white-space:nowrap; }
+.trust-dot { width:4px; height:4px; background:var(--blue); border-radius:50%; flex-shrink:0; }
 
 /* ============================================================
    BUTTONS
    ============================================================ */
-.btn-blue {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  background: var(--blue);
-  color: #fff;
-  font-family: var(--body);
-  font-size: 15px;
-  font-weight: 700;
-  padding: 14px 26px;
-  border-radius: 50px;
-  text-decoration: none;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 4px 16px rgba(21,96,255,0.35);
-  transition: transform 0.15s, box-shadow 0.15s;
-  white-space: nowrap;
-}
-.btn-blue:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(21,96,255,0.45); }
+.btn-blue { display:inline-flex; align-items:center; justify-content:center; gap:8px; background:var(--blue); color:#fff; font-family:var(--body); font-size:15px; font-weight:700; padding:14px 26px; border-radius:50px; text-decoration:none; border:none; cursor:pointer; box-shadow:0 4px 16px rgba(21,96,255,0.35); transition:transform 0.15s,box-shadow 0.15s; white-space:nowrap; }
+.btn-blue:hover { transform:translateY(-2px); box-shadow:0 6px 20px rgba(21,96,255,0.45); }
 
-.btn-wa {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  background: var(--wa);
-  color: #fff;
-  font-family: var(--body);
-  font-size: 15px;
-  font-weight: 700;
-  padding: 14px 26px;
-  border-radius: 50px;
-  text-decoration: none;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 4px 16px rgba(34,197,94,0.35);
-  transition: transform 0.15s, box-shadow 0.15s;
-  white-space: nowrap;
-}
-.btn-wa:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(34,197,94,0.45); }
+.btn-wa { display:inline-flex; align-items:center; justify-content:center; gap:8px; background:var(--wa); color:#fff; font-family:var(--body); font-size:15px; font-weight:700; padding:14px 26px; border-radius:50px; text-decoration:none; border:none; cursor:pointer; box-shadow:0 4px 16px rgba(34,197,94,0.35); transition:transform 0.15s,box-shadow 0.15s; white-space:nowrap; }
+.btn-wa:hover { transform:translateY(-2px); box-shadow:0 6px 20px rgba(34,197,94,0.45); }
 
-.btn-outline {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  background: transparent;
-  color: var(--ink);
-  font-family: var(--body);
-  font-size: 15px;
-  font-weight: 600;
-  padding: 13px 24px;
-  border-radius: 50px;
-  text-decoration: none;
-  border: 1.5px solid var(--border2);
-  cursor: pointer;
-  transition: border-color 0.15s, color 0.15s;
-  white-space: nowrap;
-}
-.btn-outline:hover { border-color: var(--blue); color: var(--blue); }
+.btn-outline { display:inline-flex; align-items:center; justify-content:center; gap:8px; background:transparent; color:var(--ink); font-family:var(--body); font-size:15px; font-weight:600; padding:13px 24px; border-radius:50px; text-decoration:none; border:1.5px solid var(--border2); cursor:pointer; transition:border-color 0.15s,color 0.15s; white-space:nowrap; }
+.btn-outline:hover { border-color:var(--blue); color:var(--blue); }
 
 /* ============================================================
    PAGE HERO
    ============================================================ */
-.quiz-hero {
-  padding: 100px 2rem 40px;
-  background: var(--bg);
-  position: relative;
-  overflow: hidden;
-}
-.quiz-hero::before {
-  content: '';
-  position: absolute; inset: 0;
-  background:
-    radial-gradient(ellipse 800px 500px at 70% 40%, rgba(21,96,255,0.06) 0%, transparent 70%),
-    radial-gradient(ellipse 400px 300px at 10% 80%, rgba(34,197,94,0.05) 0%, transparent 60%);
-  pointer-events: none;
-}
-
-.quiz-hero-inner {
-  max-width: 900px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.quiz-hero-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--blue);
-  background: var(--blue-lt);
-  border: 1px solid var(--blue-mid);
-  padding: 5px 14px;
-  border-radius: 50px;
-  margin-bottom: 1.5rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-.eyebrow-dot {
-  width: 6px; height: 6px;
-  background: var(--blue);
-  border-radius: 50%;
-  animation: pulse 2s infinite;
-  flex-shrink: 0;
-}
-
-.quiz-hero h1 {
-  font-family: var(--display);
-  font-size: clamp(2.2rem, 5vw, 3.8rem);
-  font-weight: 800;
-  letter-spacing: -2px;
-  line-height: 1.05;
-  color: var(--ink);
-  margin-bottom: 1rem;
-}
-
-.quiz-hero-sub {
-  font-size: 16px;
-  color: var(--muted);
-  line-height: 1.7;
-  margin-bottom: 1.5rem;
-  max-width: 540px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.trust-pills {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-  margin-bottom: 1.75rem;
-}
-.trust-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  font-size: 12.5px;
-  font-weight: 600;
-  color: var(--ink2);
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  padding: 6px 14px;
-  border-radius: 50px;
-}
-.tp-icon {
-  width: 18px; height: 18px;
-  border-radius: 50%;
-  background: var(--blue-lt);
-  border: 1px solid var(--blue-mid);
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-}
-.tp-icon svg { width: 10px; height: 10px; color: var(--blue); }
-
-.btn-start-quiz {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  background: var(--blue);
-  color: #fff;
-  font-family: var(--body);
-  font-size: 16px;
-  font-weight: 700;
-  padding: 17px 38px;
-  border-radius: 50px;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 4px 24px rgba(21,96,255,0.4);
-  transition: transform 0.15s, box-shadow 0.15s;
-}
-.btn-start-quiz:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(21,96,255,0.5); }
-.btn-start-quiz svg { transition: transform 0.2s; }
-.btn-start-quiz:hover svg { transform: translateX(4px); }
-
-.hero-social-proof {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.5rem;
-  margin-top: 1.5rem;
-  flex-wrap: wrap;
-}
-.proof-item {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 12.5px;
-  color: var(--muted);
-  font-weight: 500;
-}
-.proof-stars { display: flex; gap: 2px; }
-.proof-stars span { font-size: 12px; color: #F59E0B; }
+.quiz-hero { padding:100px 2rem 40px; background:var(--bg); position:relative; overflow:hidden; }
+.quiz-hero::before { content:''; position:absolute; inset:0; background: radial-gradient(ellipse 800px 500px at 70% 40%,rgba(21,96,255,0.06) 0%,transparent 70%), radial-gradient(ellipse 400px 300px at 10% 80%,rgba(34,197,94,0.05) 0%,transparent 60%); pointer-events:none; }
+.quiz-hero-inner { max-width:900px; margin:0 auto; text-align:center; }
+.quiz-hero-eyebrow { display:inline-flex; align-items:center; gap:8px; font-size:12px; font-weight:600; color:var(--blue); background:var(--blue-lt); border:1px solid var(--blue-mid); padding:5px 14px; border-radius:50px; margin-bottom:1.5rem; letter-spacing:0.04em; text-transform:uppercase; }
+.eyebrow-dot { width:6px; height:6px; background:var(--blue); border-radius:50%; animation:pulse 2s infinite; flex-shrink:0; }
+.quiz-hero h1 { font-family:var(--display); font-size:clamp(2.2rem,5vw,3.8rem); font-weight:800; letter-spacing:-2px; line-height:1.05; color:var(--ink); margin-bottom:1rem; }
+.quiz-hero-sub { font-size:16px; color:var(--muted); line-height:1.7; margin-bottom:1.5rem; max-width:540px; margin-left:auto; margin-right:auto; }
+.trust-pills { display:flex; align-items:center; justify-content:center; gap:0.75rem; flex-wrap:wrap; margin-bottom:1.75rem; }
+.trust-pill { display:inline-flex; align-items:center; gap:7px; font-size:12.5px; font-weight:600; color:var(--ink2); background:var(--bg2); border:1px solid var(--border); padding:6px 14px; border-radius:50px; }
+.tp-icon { width:18px; height:18px; border-radius:50%; background:var(--blue-lt); border:1px solid var(--blue-mid); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.tp-icon svg { width:10px; height:10px; color:var(--blue); }
+.btn-start-quiz { display:inline-flex; align-items:center; justify-content:center; gap:10px; background:var(--blue); color:#fff; font-family:var(--body); font-size:16px; font-weight:700; padding:17px 38px; border-radius:50px; border:none; cursor:pointer; box-shadow:0 4px 24px rgba(21,96,255,0.4); transition:transform 0.15s,box-shadow 0.15s; }
+.btn-start-quiz:hover { transform:translateY(-2px); box-shadow:0 8px 32px rgba(21,96,255,0.5); }
+.btn-start-quiz svg { transition:transform 0.2s; }
+.btn-start-quiz:hover svg { transform:translateX(4px); }
+.hero-social-proof { display:flex; align-items:center; justify-content:center; gap:1.5rem; margin-top:1.5rem; flex-wrap:wrap; }
+.proof-item { display:flex; align-items:center; gap:6px; font-size:12.5px; color:var(--muted); font-weight:500; }
+.proof-stars { display:flex; gap:2px; }
+.proof-stars span { font-size:12px; color:#F59E0B; }
 
 /* ============================================================
-   QUIZ SECTION WRAPPER
+   QUIZ SECTION
    ============================================================ */
-.quiz-section {
-  background: var(--bg2);
-  padding: 4rem 2rem;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-}
-
-.quiz-wrap {
-  max-width: 720px;
-  margin: 0 auto;
-}
-
-/* ============================================================
-   STEP INDICATOR
-   ============================================================ */
-.step-bar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0;
-  margin-bottom: 2rem;
-}
-.step-node {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-}
-.step-circle {
-  width: 38px; height: 38px;
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--display);
-  font-size: 13px; font-weight: 800;
-  border: 2px solid var(--border2);
-  background: var(--bg);
-  color: var(--muted2);
-  transition: all 0.35s cubic-bezier(.22,.68,0,1.2);
-  position: relative; z-index: 1;
-}
-.step-circle.active {
-  background: var(--blue); border-color: var(--blue); color: #fff;
-  box-shadow: 0 0 0 5px rgba(21,96,255,0.15);
-  transform: scale(1.1);
-}
-.step-circle.done {
-  background: var(--ink2); border-color: var(--ink2); color: #fff;
-}
-.step-circle.done .step-num { display: none; }
-.step-circle.done::after { content: '\2713'; position: absolute; font-size: 13px; font-weight: 800; }
-.step-label {
-  font-size: 10px; font-weight: 700;
-  color: var(--muted2);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  white-space: nowrap;
-}
-.step-label.active { color: var(--blue); }
-.step-label.done   { color: var(--ink2); }
-.step-connector {
-  width: 50px; height: 2px;
-  background: var(--border);
-  margin: 0 4px; margin-bottom: 22px;
-  border-radius: 2px;
-  overflow: hidden;
-  flex-shrink: 0;
-}
-.step-connector .conn-fill {
-  height: 100%; width: 0%;
-  background: var(--ink2);
-  transition: width 0.5s ease;
-}
-.step-connector.done .conn-fill { width: 100%; }
-
-/* ============================================================
-   CONFIDENCE METER
-   ============================================================ */
-.conf-meter {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 1rem 1.25rem;
-  margin-bottom: 1.5rem;
-}
-.conf-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 8px;
-}
-.conf-title { font-size: 12px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; }
-.conf-pct   { font-size: 12px; font-weight: 800; color: var(--blue); }
-.conf-track {
-  height: 8px;
-  background: var(--border);
-  border-radius: 50px;
-  overflow: hidden;
-}
-.conf-fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--blue), var(--teal));
-  border-radius: 50px;
-  transition: width 0.6s cubic-bezier(.22,.68,0,1.2);
-}
-
-/* ============================================================
-   QUESTION CARD
-   ============================================================ */
-.question-card {
-  background: var(--bg);
-  border: 1.5px solid var(--border);
-  border-radius: 20px;
-  padding: 2rem;
-  box-shadow: 0 4px 32px rgba(15,23,42,0.07), 0 1px 4px rgba(15,23,42,0.04);
-  position: relative;
-  overflow: hidden;
-}
-.question-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--blue), var(--teal));
-}
-.q-enter { animation: qEnter 0.4s cubic-bezier(.22,.68,0,1.2) forwards; }
-.q-exit  { animation: qExit  0.25s ease-in forwards; }
-
-.q-meta {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 1.25rem;
-}
-.q-tag {
-  font-size: 11px; font-weight: 700;
-  letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--blue);
-  background: var(--blue-lt);
-  border: 1px solid var(--blue-mid);
-  padding: 3px 10px;
-  border-radius: 50px;
-}
-.q-text {
-  font-family: var(--display);
-  font-size: clamp(1.15rem, 2.5vw, 1.45rem);
-  font-weight: 800;
-  color: var(--ink);
-  letter-spacing: -0.5px;
-  line-height: 1.25;
-  margin-bottom: 0.4rem;
-}
-.q-hint {
-  font-size: 13.5px;
-  color: var(--muted);
-  margin-bottom: 1.5rem;
-  line-height: 1.6;
-}
-
-/* ============================================================
-   OPTIONS GRID
-   ============================================================ */
-.options-list    { display: flex; flex-direction: column; gap: 10px; }
-.options-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-
-.option-btn {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  background: var(--bg2);
-  border: 1.5px solid var(--border);
-  border-radius: 14px;
-  padding: 1rem 1.1rem;
-  cursor: pointer;
-  text-align: left;
-  width: 100%;
-  font-family: var(--body);
-  position: relative;
-  overflow: hidden;
-  transition: border-color 0.15s, background 0.15s, transform 0.15s, box-shadow 0.15s;
-}
-.option-btn::before {
-  content: '';
-  position: absolute;
-  left: 0; top: 0; bottom: 0;
-  width: 3px;
-  background: var(--blue);
-  transform: scaleY(0);
-  transition: transform 0.2s;
-  border-radius: 0 2px 2px 0;
-}
-.option-btn:hover {
-  border-color: var(--blue);
-  background: var(--blue-lt);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 16px rgba(21,96,255,0.1);
-}
-.option-btn:hover::before { transform: scaleY(1); }
-.option-btn.selected {
-  border-color: var(--blue);
-  background: var(--blue-lt);
-  box-shadow: 0 0 0 3px rgba(21,96,255,0.12);
-}
-.option-btn.selected::before { transform: scaleY(1); }
-
-.opt-icon {
-  width: 44px; height: 44px;
-  border-radius: 12px;
-  background: var(--bg);
-  border: 1.5px solid var(--border);
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-  transition: background 0.15s, border-color 0.15s;
-}
-.opt-icon svg { width: 20px; height: 20px; }
-.option-btn.selected .opt-icon,
-.option-btn:hover .opt-icon {
-  background: rgba(21,96,255,0.08);
-  border-color: var(--blue-mid);
-}
-
-.opt-text { flex: 1; min-width: 0; }
-.opt-label { font-size: 14px; font-weight: 700; color: var(--ink); display: block; line-height: 1.3; }
-.opt-sub   { font-size: 12px; color: var(--muted); display: block; margin-top: 2px; line-height: 1.4; }
-
-.opt-check {
-  width: 22px; height: 22px;
-  border-radius: 50%;
-  border: 2px solid var(--border2);
-  flex-shrink: 0;
-  display: flex; align-items: center; justify-content: center;
-  transition: all 0.2s;
-}
-.option-btn.selected .opt-check {
-  background: var(--blue);
-  border-color: var(--blue);
-}
-.option-btn.selected .opt-check::after {
-  content: '';
-  width: 8px; height: 8px;
-  background: #fff;
-  border-radius: 50%;
-  display: block;
-}
-.option-btn.multi .opt-check { border-radius: 7px; }
-.option-btn.multi.selected .opt-check::after {
-  content: '\2713';
-  color: #fff;
-  font-size: 12px;
-  font-weight: 900;
-  width: auto; height: auto;
-  background: none;
-  border-radius: 0;
-}
-
-/* ============================================================
-   NEXT BUTTON AREA
-   ============================================================ */
-.next-area {
-  margin-top: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-}
-.btn-next {
-  width: 100%;
-  display: flex; align-items: center; justify-content: center; gap: 10px;
-  background: var(--blue); color: #fff;
-  font-family: var(--body); font-size: 15px; font-weight: 700;
-  padding: 15px 28px; border-radius: 50px; border: none; cursor: pointer;
-  box-shadow: 0 4px 20px rgba(21,96,255,0.35);
-  transition: transform 0.15s, box-shadow 0.15s, opacity 0.15s;
-}
-.btn-next:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(21,96,255,0.45); }
-.btn-next:disabled { opacity: 0.35; cursor: not-allowed; }
-.btn-next svg { transition: transform 0.2s; }
-.btn-next:not(:disabled):hover svg { transform: translateX(3px); }
-
-.btn-skip-q {
-  text-align: center;
-  font-size: 13px; font-weight: 600;
-  color: var(--muted2);
-  cursor: pointer;
-  background: none; border: none;
-  font-family: var(--body);
-  width: 100%; padding: 4px;
-  transition: color 0.15s;
-}
-.btn-skip-q:hover { color: var(--muted); }
+.quiz-section { background:var(--bg2); padding:4rem 2rem; border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+.quiz-wrap { max-width:720px; margin:0 auto; }
+.step-bar { display:flex; align-items:center; justify-content:center; gap:0; margin-bottom:2rem; }
+.step-node { display:flex; flex-direction:column; align-items:center; gap:6px; }
+.step-circle { width:38px; height:38px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:var(--display); font-size:13px; font-weight:800; border:2px solid var(--border2); background:var(--bg); color:var(--muted2); transition:all 0.35s cubic-bezier(.22,.68,0,1.2); position:relative; z-index:1; }
+.step-circle.active { background:var(--blue); border-color:var(--blue); color:#fff; box-shadow:0 0 0 5px rgba(21,96,255,0.15); transform:scale(1.1); }
+.step-circle.done { background:var(--ink2); border-color:var(--ink2); color:#fff; }
+.step-circle.done .step-num { display:none; }
+.step-circle.done::after { content:'\2713'; position:absolute; font-size:13px; font-weight:800; }
+.step-label { font-size:10px; font-weight:700; color:var(--muted2); text-transform:uppercase; letter-spacing:0.06em; white-space:nowrap; }
+.step-label.active { color:var(--blue); }
+.step-label.done   { color:var(--ink2); }
+.step-connector { width:50px; height:2px; background:var(--border); margin:0 4px; margin-bottom:22px; border-radius:2px; overflow:hidden; flex-shrink:0; }
+.step-connector .conn-fill { height:100%; width:0%; background:var(--ink2); transition:width 0.5s ease; }
+.step-connector.done .conn-fill { width:100%; }
+.conf-meter { background:var(--bg); border:1px solid var(--border); border-radius:12px; padding:1rem 1.25rem; margin-bottom:1.5rem; }
+.conf-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:8px; }
+.conf-title { font-size:12px; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:0.07em; }
+.conf-pct   { font-size:12px; font-weight:800; color:var(--blue); }
+.conf-track { height:8px; background:var(--border); border-radius:50px; overflow:hidden; }
+.conf-fill  { height:100%; background:linear-gradient(90deg,var(--blue),var(--teal)); border-radius:50px; transition:width 0.6s cubic-bezier(.22,.68,0,1.2); }
+.question-card { background:var(--bg); border:1.5px solid var(--border); border-radius:20px; padding:2rem; box-shadow:0 4px 32px rgba(15,23,42,0.07),0 1px 4px rgba(15,23,42,0.04); position:relative; overflow:hidden; }
+.question-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--blue),var(--teal)); }
+.q-enter { animation:qEnter 0.4s cubic-bezier(.22,.68,0,1.2) forwards; }
+.q-exit  { animation:qExit  0.25s ease-in forwards; }
+.q-meta { display:flex; align-items:center; justify-content:space-between; margin-bottom:1.25rem; }
+.q-tag { font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--blue); background:var(--blue-lt); border:1px solid var(--blue-mid); padding:3px 10px; border-radius:50px; }
+.q-text { font-family:var(--display); font-size:clamp(1.15rem,2.5vw,1.45rem); font-weight:800; color:var(--ink); letter-spacing:-0.5px; line-height:1.25; margin-bottom:0.4rem; }
+.q-hint { font-size:13.5px; color:var(--muted); margin-bottom:1.5rem; line-height:1.6; }
+.options-list    { display:flex; flex-direction:column; gap:10px; }
+.options-two-col { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.option-btn { display:flex; align-items:center; gap:12px; background:var(--bg2); border:1.5px solid var(--border); border-radius:14px; padding:1rem 1.1rem; cursor:pointer; text-align:left; width:100%; font-family:var(--body); position:relative; overflow:hidden; transition:border-color 0.15s,background 0.15s,transform 0.15s,box-shadow 0.15s; }
+.option-btn::before { content:''; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--blue); transform:scaleY(0); transition:transform 0.2s; border-radius:0 2px 2px 0; }
+.option-btn:hover { border-color:var(--blue); background:var(--blue-lt); transform:translateY(-1px); box-shadow:0 4px 16px rgba(21,96,255,0.1); }
+.option-btn:hover::before { transform:scaleY(1); }
+.option-btn.selected { border-color:var(--blue); background:var(--blue-lt); box-shadow:0 0 0 3px rgba(21,96,255,0.12); }
+.option-btn.selected::before { transform:scaleY(1); }
+.opt-icon { width:44px; height:44px; border-radius:12px; background:var(--bg); border:1.5px solid var(--border); display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:background 0.15s,border-color 0.15s; }
+.opt-icon svg { width:20px; height:20px; }
+.option-btn.selected .opt-icon,.option-btn:hover .opt-icon { background:rgba(21,96,255,0.08); border-color:var(--blue-mid); }
+.opt-text { flex:1; min-width:0; }
+.opt-label { font-size:14px; font-weight:700; color:var(--ink); display:block; line-height:1.3; }
+.opt-sub   { font-size:12px; color:var(--muted); display:block; margin-top:2px; line-height:1.4; }
+.opt-check { width:22px; height:22px; border-radius:50%; border:2px solid var(--border2); flex-shrink:0; display:flex; align-items:center; justify-content:center; transition:all 0.2s; }
+.option-btn.selected .opt-check { background:var(--blue); border-color:var(--blue); }
+.option-btn.selected .opt-check::after { content:''; width:8px; height:8px; background:#fff; border-radius:50%; display:block; }
+.option-btn.multi .opt-check { border-radius:7px; }
+.option-btn.multi.selected .opt-check::after { content:'\2713'; color:#fff; font-size:12px; font-weight:900; width:auto; height:auto; background:none; border-radius:0; }
+.next-area { margin-top:1.5rem; display:flex; flex-direction:column; gap:0.6rem; }
+.btn-next { width:100%; display:flex; align-items:center; justify-content:center; gap:10px; background:var(--blue); color:#fff; font-family:var(--body); font-size:15px; font-weight:700; padding:15px 28px; border-radius:50px; border:none; cursor:pointer; box-shadow:0 4px 20px rgba(21,96,255,0.35); transition:transform 0.15s,box-shadow 0.15s,opacity 0.15s; }
+.btn-next:hover:not(:disabled) { transform:translateY(-2px); box-shadow:0 6px 28px rgba(21,96,255,0.45); }
+.btn-next:disabled { opacity:0.35; cursor:not-allowed; }
+.btn-next svg { transition:transform 0.2s; }
+.btn-next:not(:disabled):hover svg { transform:translateX(3px); }
+.btn-skip-q { text-align:center; font-size:13px; font-weight:600; color:var(--muted2); cursor:pointer; background:none; border:none; font-family:var(--body); width:100%; padding:4px; transition:color 0.15s; }
+.btn-skip-q:hover { color:var(--muted); }
 
 /* ============================================================
    RESULT CARD
    ============================================================ */
-.result-card {
-  background: var(--ink);
-  border-radius: 24px;
-  padding: 2.5rem;
-  position: relative;
-  overflow: hidden;
-  animation: qEnter 0.5s cubic-bezier(.22,.68,0,1.2);
-}
-.result-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 4px;
-}
-.result-card.sev-high::before   { background: linear-gradient(90deg, #EF4444, #F97316); }
-.result-card.sev-medium::before { background: linear-gradient(90deg, #EAB308, #F97316); }
-.result-card.sev-low::before    { background: linear-gradient(90deg, #16A34A, #00CFFF); }
-
-.result-glow {
-  position: absolute;
-  bottom: -100px; right: -80px;
-  width: 300px; height: 300px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(21,96,255,0.14) 0%, transparent 70%);
-  pointer-events: none;
-}
-
-.result-top {
-  display: flex;
-  align-items: flex-start;
-  gap: 1.25rem;
-  margin-bottom: 1.5rem;
-}
-.result-icon {
-  width: 62px; height: 62px;
-  border-radius: 16px;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.12);
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-}
-.result-icon svg { width: 30px; height: 30px; }
-.result-eyebrow {
-  font-size: 10px; font-weight: 700;
-  letter-spacing: 0.12em; text-transform: uppercase;
-  color: var(--teal); margin-bottom: 5px;
-}
-.result-title {
-  font-family: var(--display);
-  font-size: clamp(1.1rem, 3vw, 1.5rem);
-  font-weight: 800; color: #fff;
-  letter-spacing: -0.5px; line-height: 1.2;
-}
-
-.sev-badge {
-  display: inline-flex; align-items: center; gap: 7px;
-  font-size: 11px; font-weight: 700;
-  letter-spacing: 0.06em; text-transform: uppercase;
-  padding: 5px 14px; border-radius: 50px;
-  margin-bottom: 1.25rem;
-}
-.sev-badge .badge-dot {
-  width: 6px; height: 6px; border-radius: 50%;
-  background: currentColor; animation: pulse 1.5s infinite;
-}
-.sev-badge.high   { background: rgba(239,68,68,0.15);  color: #FCA5A5; border: 1px solid rgba(239,68,68,0.3); }
-.sev-badge.medium { background: rgba(234,179,8,0.15);  color: #FDE047; border: 1px solid rgba(234,179,8,0.3); }
-.sev-badge.low    { background: rgba(22,163,74,0.15);  color: #4ADE80; border: 1px solid rgba(22,163,74,0.3); }
-
-.result-conf-bar { margin-bottom: 1.5rem; }
-.rcb-header { display: flex; justify-content: space-between; margin-bottom: 6px; }
-.rcb-header span  { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.4); }
-.rcb-header strong{ font-size: 12px; font-weight: 800; color: rgba(255,255,255,0.75); }
-.rcb-track { height: 7px; background: rgba(255,255,255,0.1); border-radius: 50px; overflow: hidden; }
-.rcb-fill  { height: 100%; border-radius: 50px; transition: width 1s cubic-bezier(.22,.68,0,1.2); }
-.rcb-fill.high   { background: linear-gradient(90deg, #EF4444, #F97316); }
-.rcb-fill.medium { background: linear-gradient(90deg, #EAB308, #F97316); }
-.rcb-fill.low    { background: linear-gradient(90deg, #16A34A, #00CFFF); }
-
-.result-desc {
-  font-size: 15px;
-  color: rgba(255,255,255,0.62);
-  line-height: 1.8;
-  margin-bottom: 1.5rem;
-}
-.result-points {
-  display: flex; flex-direction: column; gap: 10px;
-  margin-bottom: 1.75rem;
-}
-.rp-item {
-  display: flex; align-items: flex-start; gap: 10px;
-  font-size: 14px; color: rgba(255,255,255,0.78);
-  font-weight: 500; line-height: 1.5;
-}
-.rp-dot {
-  width: 7px; height: 7px;
-  background: linear-gradient(135deg, var(--blue), var(--teal));
-  border-radius: 50%; flex-shrink: 0; margin-top: 5px;
-}
-.result-urgency {
-  background: rgba(239,68,68,0.1);
-  border: 1px solid rgba(239,68,68,0.25);
-  border-radius: 12px;
-  padding: 1rem 1.25rem;
-  margin-bottom: 1.75rem;
-  display: flex; align-items: flex-start; gap: 10px;
-}
-.urg-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
-.urg-icon svg { width: 18px; height: 18px; color: #FCA5A5; }
-.urg-text { font-size: 13.5px; color: rgba(255,255,255,0.6); line-height: 1.65; }
-.urg-text strong { color: #FCA5A5; font-weight: 700; }
-
-.also-consider {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.09);
-  border-radius: 12px;
-  padding: 1rem 1.25rem;
-  margin-bottom: 1.75rem;
-}
-.ac-label {
-  font-size: 11px; font-weight: 700;
-  text-transform: uppercase; letter-spacing: 0.08em;
-  color: rgba(255,255,255,0.35);
-  margin-bottom: 0.6rem;
-}
-.ac-item {
-  font-size: 13px;
-  color: rgba(255,255,255,0.5);
-  display: flex; align-items: center; gap: 8px;
-  padding: 3px 0;
-}
-.ac-item::before { content: '\2193'; color: rgba(255,255,255,0.25); font-size: 11px; }
-
-.result-ctas { display: flex; flex-direction: column; gap: 10px; }
-
-.btn-wa-result {
-  display: flex; align-items: center; justify-content: center; gap: 10px;
-  background: var(--wa); color: #fff;
-  font-family: var(--body); font-size: 15px; font-weight: 700;
-  padding: 16px 28px; border-radius: 50px; text-decoration: none;
-  box-shadow: 0 4px 20px rgba(34,197,94,0.4);
-  transition: transform 0.15s, box-shadow 0.15s;
-}
-.btn-wa-result:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(34,197,94,0.5); }
-
-.btn-retake {
-  display: flex; align-items: center; justify-content: center; gap: 8px;
-  background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.55);
-  font-family: var(--body); font-size: 14px; font-weight: 600;
-  padding: 13px 28px; border-radius: 50px;
-  border: 1px solid rgba(255,255,255,0.12);
-  cursor: pointer; transition: background 0.15s, color 0.15s;
-}
-.btn-retake:hover { background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.82); }
-
-.result-trust-row {
-  display: flex; align-items: center; justify-content: center;
-  gap: 1.5rem; flex-wrap: wrap;
-  margin-top: 1.5rem;
-  padding: 1.25rem;
-  background: var(--bg2);
-  border-radius: 16px;
-  border: 1px solid var(--border);
-}
-.rt-item {
-  display: flex; align-items: center; gap: 7px;
-  font-size: 12px; font-weight: 600; color: var(--muted);
-}
-.rt-icon {
-  width: 20px; height: 20px;
-  border-radius: 50%;
-  background: var(--blue-lt);
-  border: 1px solid var(--blue-mid);
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-}
-.rt-icon svg { width: 10px; height: 10px; color: var(--blue); }
+.result-card { background:var(--ink); border-radius:24px; padding:2.5rem; position:relative; overflow:hidden; animation:qEnter 0.5s cubic-bezier(.22,.68,0,1.2); }
+.result-card::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; }
+.result-card.sev-high::before   { background:linear-gradient(90deg,#EF4444,#F97316); }
+.result-card.sev-medium::before { background:linear-gradient(90deg,#EAB308,#F97316); }
+.result-card.sev-low::before    { background:linear-gradient(90deg,#16A34A,#00CFFF); }
+.result-glow { position:absolute; bottom:-100px; right:-80px; width:300px; height:300px; border-radius:50%; background:radial-gradient(circle,rgba(21,96,255,0.14) 0%,transparent 70%); pointer-events:none; }
+.result-top { display:flex; align-items:flex-start; gap:1.25rem; margin-bottom:1.5rem; }
+.result-icon { width:62px; height:62px; border-radius:16px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.result-icon svg { width:30px; height:30px; }
+.result-eyebrow { font-size:10px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--teal); margin-bottom:5px; }
+.result-title { font-family:var(--display); font-size:clamp(1.1rem,3vw,1.5rem); font-weight:800; color:#fff; letter-spacing:-0.5px; line-height:1.2; }
+.sev-badge { display:inline-flex; align-items:center; gap:7px; font-size:11px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; padding:5px 14px; border-radius:50px; margin-bottom:1.25rem; }
+.sev-badge .badge-dot { width:6px; height:6px; border-radius:50%; background:currentColor; animation:pulse 1.5s infinite; }
+.sev-badge.high   { background:rgba(239,68,68,0.15);  color:#FCA5A5; border:1px solid rgba(239,68,68,0.3); }
+.sev-badge.medium { background:rgba(234,179,8,0.15);  color:#FDE047; border:1px solid rgba(234,179,8,0.3); }
+.sev-badge.low    { background:rgba(22,163,74,0.15);  color:#4ADE80; border:1px solid rgba(22,163,74,0.3); }
+.result-conf-bar { margin-bottom:1.5rem; }
+.rcb-header { display:flex; justify-content:space-between; margin-bottom:6px; }
+.rcb-header span  { font-size:12px; font-weight:600; color:rgba(255,255,255,0.4); }
+.rcb-header strong{ font-size:12px; font-weight:800; color:rgba(255,255,255,0.75); }
+.rcb-track { height:7px; background:rgba(255,255,255,0.1); border-radius:50px; overflow:hidden; }
+.rcb-fill  { height:100%; border-radius:50px; transition:width 1s cubic-bezier(.22,.68,0,1.2); }
+.rcb-fill.high   { background:linear-gradient(90deg,#EF4444,#F97316); }
+.rcb-fill.medium { background:linear-gradient(90deg,#EAB308,#F97316); }
+.rcb-fill.low    { background:linear-gradient(90deg,#16A34A,#00CFFF); }
+.result-desc { font-size:15px; color:rgba(255,255,255,0.62); line-height:1.8; margin-bottom:1.5rem; }
+.result-points { display:flex; flex-direction:column; gap:10px; margin-bottom:1.75rem; }
+.rp-item { display:flex; align-items:flex-start; gap:10px; font-size:14px; color:rgba(255,255,255,0.78); font-weight:500; line-height:1.5; }
+.rp-dot { width:7px; height:7px; background:linear-gradient(135deg,var(--blue),var(--teal)); border-radius:50%; flex-shrink:0; margin-top:5px; }
+.result-urgency { background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.25); border-radius:12px; padding:1rem 1.25rem; margin-bottom:1.75rem; display:flex; align-items:flex-start; gap:10px; }
+.urg-icon { font-size:16px; flex-shrink:0; margin-top:1px; }
+.urg-icon svg { width:18px; height:18px; color:#FCA5A5; }
+.urg-text { font-size:13.5px; color:rgba(255,255,255,0.6); line-height:1.65; }
+.urg-text strong { color:#FCA5A5; font-weight:700; }
+.also-consider { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.09); border-radius:12px; padding:1rem 1.25rem; margin-bottom:1.75rem; }
+.ac-label { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:rgba(255,255,255,0.35); margin-bottom:0.6rem; }
+.ac-item { font-size:13px; color:rgba(255,255,255,0.5); display:flex; align-items:center; gap:8px; padding:3px 0; }
+.ac-item::before { content:'\2193'; color:rgba(255,255,255,0.25); font-size:11px; }
+.result-ctas { display:flex; flex-direction:column; gap:10px; }
+.btn-wa-result { display:flex; align-items:center; justify-content:center; gap:10px; background:var(--wa); color:#fff; font-family:var(--body); font-size:15px; font-weight:700; padding:16px 28px; border-radius:50px; text-decoration:none; box-shadow:0 4px 20px rgba(34,197,94,0.4); transition:transform 0.15s,box-shadow 0.15s; }
+.btn-wa-result:hover { transform:translateY(-2px); box-shadow:0 6px 28px rgba(34,197,94,0.5); }
+.btn-retake { display:flex; align-items:center; justify-content:center; gap:8px; background:rgba(255,255,255,0.07); color:rgba(255,255,255,0.55); font-family:var(--body); font-size:14px; font-weight:600; padding:13px 28px; border-radius:50px; border:1px solid rgba(255,255,255,0.12); cursor:pointer; transition:background 0.15s,color 0.15s; }
+.btn-retake:hover { background:rgba(255,255,255,0.12); color:rgba(255,255,255,0.82); }
+.result-trust-row { display:flex; align-items:center; justify-content:center; gap:1.5rem; flex-wrap:wrap; margin-top:1.5rem; padding:1.25rem; background:var(--bg2); border-radius:16px; border:1px solid var(--border); }
+.rt-item { display:flex; align-items:center; gap:7px; font-size:12px; font-weight:600; color:var(--muted); }
+.rt-icon { width:20px; height:20px; border-radius:50%; background:var(--blue-lt); border:1px solid var(--blue-mid); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.rt-icon svg { width:10px; height:10px; color:var(--blue); }
 
 /* ============================================================
-   SECTIONS BELOW QUIZ
+   SHARED SECTION WRAPPER
    ============================================================ */
-.section { padding: 5.5rem 2rem; }
-.section-alt { background: var(--bg2); }
+.section     { padding:5rem 2rem; }
+.section-alt { background:var(--bg2); }
 
 /* ============================================================
-   EDITORIAL CARDS — Premium Redesign
+   SCROLL TRACK — horizontal scrollable card row
+   Used for: What We Fix, Why Slow, Virus Signs
    ============================================================ */
-.editorial-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
+.scroll-section { padding:5rem 0; }
+.scroll-section.section-alt { background:var(--bg2); }
+
+.scroll-section-head {
+  max-width:1100px;
+  margin:0 auto;
+  padding:0 2rem;
+  margin-bottom:1.75rem;
 }
 
-.ed-card {
-  background: var(--bg);
-  border: 1.5px solid var(--border);
-  border-radius: 20px;
-  padding: 2rem;
-  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+.scroll-track-outer {
+  position:relative;
+  overflow:hidden;
 }
 
-.ed-card:hover {
-  transform: translateY(-5px);
-  border-color: var(--blue-mid);
-  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
+/* Fade edges */
+.scroll-track-outer::before,
+.scroll-track-outer::after {
+  content:'';
+  position:absolute;
+  top:0; bottom:0;
+  width:40px;
+  z-index:2;
+  pointer-events:none;
 }
+.scroll-track-outer::before { left:0; background:linear-gradient(to right, var(--bg), transparent); }
+.scroll-track-outer.alt-bg::before { background:linear-gradient(to right, var(--bg2), transparent); }
+.scroll-track-outer::after  { right:0; background:linear-gradient(to left, var(--bg), transparent); }
+.scroll-track-outer.alt-bg::after  { background:linear-gradient(to left, var(--bg2), transparent); }
 
-.ed-icon {
-  width: 48px; height: 48px;
-  background: var(--blue-lt);
-  border-radius: 12px;
-  display: flex; align-items: center; justify-content: center;
-  color: var(--blue);
-  margin-bottom: 0.5rem;
+.scroll-track {
+  display:flex;
+  gap:14px;
+  overflow-x:auto;
+  padding:0.5rem 2rem 1.25rem;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
 }
-
-.ed-h {
-  font-family: var(--display);
-  font-size: 1.25rem;
-  font-weight: 800;
-  color: var(--ink);
-  letter-spacing: -0.5px;
-}
-
-.ed-p {
-  font-size: 15px;
-  color: var(--muted);
-  line-height: 1.7;
-}
+.scroll-track::-webkit-scrollbar { display:none; }
 
 /* ============================================================
-   STATS ROW
+   INFO CARD — used in all scroll rows
+   Compact, fixed width, scroll-snap
    ============================================================ */
-.stats-row {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1px;
-  background: var(--border);
-  border-radius: 18px;
-  overflow: hidden;
-  margin-top: 2.5rem;
+.info-card {
+  background:var(--bg);
+  border:1.5px solid var(--border);
+  border-radius:18px;
+  padding:1.5rem;
+  flex:0 0 260px;
+  min-width:260px;
+  scroll-snap-align:start;
+  display:flex;
+  flex-direction:column;
+  gap:0.75rem;
+  position:relative;
+  overflow:hidden;
+  transition:border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+.info-card::before {
+  content:'';
+  position:absolute;
+  top:0; left:0; right:0;
+  height:3px;
+  background:linear-gradient(90deg, var(--blue), var(--teal));
+  opacity:0;
+  transition:opacity 0.2s;
+}
+
+.info-card:hover {
+  border-color:var(--blue);
+  transform:translateY(-3px);
+  box-shadow:0 8px 28px rgba(21,96,255,0.1);
+}
+
+.info-card:hover::before { opacity:1; }
+
+.info-card-icon {
+  width:42px; height:42px;
+  border-radius:11px;
+  background:var(--blue-lt);
+  border:1.5px solid var(--blue-mid);
+  display:flex; align-items:center; justify-content:center;
+  flex-shrink:0;
+  color:var(--blue);
+}
+
+.info-card-icon svg { width:20px; height:20px; }
+
+.info-card h3 {
+  font-family:var(--display);
+  font-size:14.5px;
+  font-weight:800;
+  color:var(--ink);
+  letter-spacing:-0.3px;
+  line-height:1.3;
+}
+
+.info-card p {
+  font-size:13.5px;
+  color:var(--muted);
+  line-height:1.65;
+  flex:1;
+}
+
+/* Scroll hint dots */
+.scroll-dots {
+  display:flex;
+  justify-content:center;
+  gap:6px;
+  padding-top:0.5rem;
+}
+.scroll-dot {
+  width:6px; height:6px;
+  border-radius:50%;
+  background:var(--border2);
+  cursor:pointer;
+  transition:background 0.2s, width 0.2s;
+  border:none;
+  padding:0;
+}
+.scroll-dot.active { background:var(--blue); width:18px; border-radius:3px; }
+
+/* ============================================================
+   STATS ROW — compact horizontal strip
+   ============================================================ */
+.stats-strip {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:1px;
+  background:var(--border);
+  border-radius:18px;
+  overflow:hidden;
+  margin-top:2.5rem;
 }
 .stat-cell {
-  background: var(--bg);
-  padding: 1.75rem;
-  text-align: center;
+  background:var(--bg);
+  padding:1.5rem 1.25rem;
+  text-align:center;
 }
 .stat-val {
-  font-family: var(--display);
-  font-size: clamp(1.8rem, 3vw, 2.2rem);
-  font-weight: 800; color: var(--blue);
-  letter-spacing: -1px; line-height: 1;
-  display: block; margin-bottom: 0.4rem;
+  font-family:var(--display);
+  font-size:clamp(1.7rem,2.5vw,2.1rem);
+  font-weight:800;
+  color:var(--blue);
+  letter-spacing:-1px;
+  line-height:1;
+  display:block;
+  margin-bottom:0.35rem;
 }
-.stat-lbl { font-size: 12px; color: var(--muted); font-weight: 500; line-height: 1.4; }
+.stat-lbl { font-size:12px; color:var(--muted); font-weight:500; line-height:1.4; }
 
 /* ============================================================
-   PRICING CALLOUT
+   PRICING TABLE — clean, no dark box
    ============================================================ */
-.pricing-card {
-  background: var(--ink);
-  border-radius: 24px;
-  padding: 3rem;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 3rem;
-  align-items: center;
-  position: relative; overflow: hidden;
+.pricing-table {
+  margin-top:2.5rem;
+  border:1.5px solid var(--border);
+  border-radius:18px;
+  overflow:hidden;
 }
-.pricing-card::before {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0; height: 3px;
-  background: linear-gradient(90deg, var(--blue), var(--teal), var(--wa));
+
+.pricing-table-header {
+  background:var(--ink2);
+  padding:1rem 1.5rem;
+  display:grid;
+  grid-template-columns:1fr auto;
+  align-items:center;
+  gap:1rem;
 }
-.pricing-card::after {
-  content: '';
-  position: absolute; bottom: -100px; right: -100px;
-  width: 300px; height: 300px;
-  background: radial-gradient(circle, rgba(21,96,255,0.15) 0%, transparent 70%);
-  pointer-events: none;
+
+.pricing-table-header span {
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,0.5);
 }
-.pc-label {
-  font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--teal); margin-bottom: 0.6rem; display: block;
+
+.pricing-table-header strong {
+  font-family:var(--display);
+  font-size:14px;
+  font-weight:700;
+  color:#fff;
 }
-.pc-title {
-  font-family: var(--display);
-  font-size: clamp(1.3rem, 2.5vw, 1.9rem);
-  font-weight: 800; color: #fff; letter-spacing: -0.8px;
-  margin-bottom: 1.25rem;
+
+.pricing-row {
+  display:grid;
+  grid-template-columns:1fr auto;
+  align-items:center;
+  gap:1rem;
+  padding:1rem 1.5rem;
+  border-bottom:1px solid var(--border);
+  background:var(--bg);
+  transition:background 0.15s;
 }
-.pc-items { display: flex; flex-direction: column; gap: 8px; }
-.pc-item {
-  display: flex; align-items: center; gap: 10px;
-  font-size: 14px; color: rgba(255,255,255,0.75); font-weight: 500;
+
+.pricing-row:last-child { border-bottom:none; }
+.pricing-row:hover { background:var(--blue-lt); }
+
+.pricing-row-name {
+  font-size:14.5px;
+  font-weight:600;
+  color:var(--ink);
+  line-height:1.35;
 }
-.pc-item::before {
-  content: '';
-  width: 5px; height: 5px;
-  background: linear-gradient(135deg, var(--blue), var(--teal));
-  border-radius: 50%; flex-shrink: 0;
+
+.pricing-row-sub {
+  font-size:12.5px;
+  color:var(--muted);
+  margin-top:2px;
+  display:block;
 }
-.pc-cta { text-align: center; position: relative; z-index: 1; }
-.pc-from { font-size: 12px; color: rgba(255,255,255,0.4); display: block; margin-bottom: 4px; }
-.pc-price { font-family: var(--display); font-size: 3.5rem; font-weight: 800; color: #fff; letter-spacing: -2px; display: block; line-height: 1; }
-.pc-note  { font-size: 11px; color: rgba(255,255,255,0.4); display: block; margin-bottom: 1.5rem; }
+
+.pricing-row-price {
+  font-family:var(--display);
+  font-size:15px;
+  font-weight:800;
+  color:var(--blue);
+  white-space:nowrap;
+  text-align:right;
+}
+
+.pricing-cta-row {
+  padding:1.25rem 1.5rem;
+  background:var(--bg2);
+  border-top:1px solid var(--border);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+  flex-wrap:wrap;
+}
+
+.pricing-cta-note {
+  font-size:13px;
+  color:var(--muted);
+  font-weight:500;
+}
 
 /* ============================================================
    FAQ
    ============================================================ */
-.faq-list {
-  display: flex; flex-direction: column;
-  gap: 1px; background: var(--border);
-  border-radius: 18px; overflow: hidden;
-  margin-top: 2rem;
-}
-.faq-item  { background: var(--bg2); }
-.faq-q {
-  width: 100%;
-  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
-  padding: 1.25rem 1.5rem;
-  cursor: pointer; border: none; background: transparent;
-  font-family: var(--display); font-size: 15px; font-weight: 700; color: var(--ink);
-  text-align: left; transition: background 0.15s;
-}
-.faq-q:hover { background: var(--bg3); }
-.faq-arrow {
-  flex-shrink: 0;
-  width: 24px; height: 24px;
-  background: var(--border);
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  transition: transform 0.3s, background 0.2s;
-}
-.faq-arrow svg { width: 12px; height: 12px; color: var(--muted); transition: color 0.2s; }
-.faq-item.open .faq-q .faq-arrow { transform: rotate(180deg); background: var(--blue-lt); }
-.faq-item.open .faq-q .faq-arrow svg { color: var(--blue); }
-.faq-a {
-  display: none;
-  padding: 0 1.5rem 1.25rem;
-  font-size: 14.5px; color: var(--muted); line-height: 1.8;
-}
-.faq-item.open .faq-a { display: block; }
+.faq-list { display:flex; flex-direction:column; gap:1px; background:var(--border); border-radius:18px; overflow:hidden; margin-top:2rem; }
+.faq-item { background:var(--bg2); }
+.faq-q { width:100%; display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:1.25rem 1.5rem; cursor:pointer; border:none; background:transparent; font-family:var(--display); font-size:15px; font-weight:700; color:var(--ink); text-align:left; transition:background 0.15s; }
+.faq-q:hover { background:var(--bg3); }
+.faq-arrow { flex-shrink:0; width:24px; height:24px; background:var(--border); border-radius:50%; display:flex; align-items:center; justify-content:center; transition:transform 0.3s,background 0.2s; }
+.faq-arrow svg { width:12px; height:12px; color:var(--muted); transition:color 0.2s; }
+.faq-item.open .faq-q .faq-arrow { transform:rotate(180deg); background:var(--blue-lt); }
+.faq-item.open .faq-q .faq-arrow svg { color:var(--blue); }
+.faq-a { display:none; padding:0 1.5rem 1.25rem; font-size:14.5px; color:var(--muted); line-height:1.8; }
+.faq-item.open .faq-a { display:block; }
 
 /* ============================================================
    CTA SECTION
    ============================================================ */
-.cta-section {
-  background: var(--bg2);
-  padding: 5rem 2rem;
-  border-top: 1px solid var(--border);
-}
-.cta-inner {
-  max-width: 1100px; margin: 0 auto;
-  display: grid; grid-template-columns: 1fr auto;
-  gap: 3rem; align-items: center;
-}
-.cta-kicker { font-size: 12px; font-weight: 600; color: var(--blue); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.75rem; }
-.cta-title {
-  font-family: var(--display);
-  font-size: clamp(1.7rem, 3vw, 2.6rem);
-  font-weight: 800; color: var(--ink); letter-spacing: -1px; line-height: 1.1; margin-bottom: 0.6rem;
-}
-.cta-desc { font-size: 15px; color: var(--muted); }
-.cta-actions { display: flex; flex-direction: column; gap: 10px; flex-shrink: 0; min-width: 220px; }
-.cta-icon-row { display: flex; gap: 8px; }
-.cta-icon-btn {
-  flex: 1; height: 50px; border-radius: 50px;
-  display: flex; align-items: center; justify-content: center;
-  text-decoration: none; transition: transform 0.15s;
-}
-.cta-icon-btn:hover { transform: translateY(-2px); }
-.cta-icon-btn.wa { background: var(--wa); box-shadow: 0 4px 16px rgba(34,197,94,0.35); }
-.cta-icon-btn.fb { background: var(--fb); box-shadow: 0 4px 16px rgba(24,119,242,0.3); }
+.cta-section { background:var(--bg2); padding:5rem 2rem; border-top:1px solid var(--border); }
+.cta-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr auto; gap:3rem; align-items:center; }
+.cta-kicker { font-size:12px; font-weight:600; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:0.75rem; }
+.cta-title { font-family:var(--display); font-size:clamp(1.7rem,3vw,2.6rem); font-weight:800; color:var(--ink); letter-spacing:-1px; line-height:1.1; margin-bottom:0.6rem; }
+.cta-desc { font-size:15px; color:var(--muted); }
+.cta-actions { display:flex; flex-direction:column; gap:10px; flex-shrink:0; min-width:220px; }
+.cta-icon-row { display:flex; gap:8px; }
+.cta-icon-btn { flex:1; height:50px; border-radius:50px; display:flex; align-items:center; justify-content:center; text-decoration:none; transition:transform 0.15s; }
+.cta-icon-btn:hover { transform:translateY(-2px); }
+.cta-icon-btn.wa { background:var(--wa); box-shadow:0 4px 16px rgba(34,197,94,0.35); }
+.cta-icon-btn.fb { background:var(--fb); box-shadow:0 4px 16px rgba(24,119,242,0.3); }
 
 /* ============================================================
    FOOTER
    ============================================================ */
-footer {
-  background: var(--bg);
-  border-top: 1px solid var(--border);
-  padding: 1.75rem 2rem;
-}
-.footer-inner {
-  max-width: 1100px; margin: 0 auto;
-  display: flex; align-items: center; justify-content: space-between;
-  gap: 1rem; flex-wrap: wrap;
-}
-.footer-logo {
-  display: flex; align-items: center; gap: 8px;
-  text-decoration: none; flex-shrink: 0;
-}
-.footer-copy { font-size: 12px; color: var(--muted2); line-height: 1.6; }
-.footer-links { display: flex; gap: 1.25rem; }
-.footer-links a { font-size: 12px; color: var(--muted2); text-decoration: none; transition: color 0.15s; }
-  .footer-links a:hover { color: var(--blue); }
-
-/* ============================================================
-   EDITORIAL CARDS — Premium Redesign
-   ============================================================ */
-.editorial-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-
-.ed-card {
-  background: var(--bg);
-  border: 1.5px solid var(--border);
-  border-radius: 20px;
-  padding: 2rem;
-  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.ed-card:hover {
-  transform: translateY(-5px);
-  border-color: var(--blue-mid);
-  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
-}
-
-.ed-icon {
-  width: 48px; height: 48px;
-  background: var(--blue-lt);
-  border-radius: 12px;
-  display: flex; align-items: center; justify-content: center;
-  color: var(--blue);
-  margin-bottom: 0.5rem;
-}
-
-.ed-h {
-  font-family: var(--display);
-  font-size: 1.25rem;
-  font-weight: 800;
-  color: var(--ink);
-  letter-spacing: -0.5px;
-}
-
-.ed-p {
-  font-size: 15px;
-  color: var(--muted);
-  line-height: 1.7;
-}
-
-@media (max-width: 768px) {
-  .editorial-grid {
-    grid-template-columns: 1fr;
-  }
-}
+footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75rem 2rem; }
+.footer-inner { max-width:1100px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; }
+.footer-logo { display:flex; align-items:center; gap:8px; text-decoration:none; flex-shrink:0; }
+.footer-copy { font-size:12px; color:var(--muted2); line-height:1.6; }
+.footer-links { display:flex; gap:1.25rem; }
+.footer-links a { font-size:12px; color:var(--muted2); text-decoration:none; transition:color 0.15s; }
+.footer-links a:hover { color:var(--blue); }
 
 /* ============================================================
    WHATSAPP BUBBLE
    ============================================================ */
-.wa-bubble {
-  position: fixed; bottom: 24px; right: 24px; z-index: 9999;
-  width: 58px; height: 58px;
-  background: var(--wa); border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 4px 20px rgba(34,197,94,0.45);
-  transition: transform 0.2s, box-shadow 0.2s;
-  text-decoration: none;
-}
-.wa-bubble:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(34,197,94,0.55); }
+.wa-bubble { position:fixed; bottom:24px; right:24px; z-index:9999; width:58px; height:58px; background:var(--wa); border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 20px rgba(34,197,94,0.45); transition:transform 0.2s,box-shadow 0.2s; text-decoration:none; }
+.wa-bubble:hover { transform:scale(1.1); box-shadow:0 6px 28px rgba(34,197,94,0.55); }
 
 /* ============================================================
    SEO NAV
    ============================================================ */
-.seo-nav {
-  position: absolute;
-  width: 1px; height: 1px;
-  overflow: hidden; clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
+.seo-nav { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; }
 
 /* ============================================================
-   RESPONSIVE — TABLET
+   RESPONSIVE
    ============================================================ */
 @media (max-width: 900px) {
-  .pricing-card { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
-  .pc-items { align-items: flex-start; text-align: left; }
-  .cta-inner { grid-template-columns: 1fr; gap: 2rem; }
-  .cta-actions { flex-direction: row; flex-wrap: wrap; min-width: unset; width: 100%; }
-  .cta-icon-row { flex: 1; }
-  .stats-row { grid-template-columns: repeat(2, 1fr); }
+  .cta-inner { grid-template-columns:1fr; gap:2rem; }
+  .cta-actions { flex-direction:row; flex-wrap:wrap; min-width:unset; width:100%; }
+  .cta-icon-row { flex:1; }
+  .stats-strip { grid-template-columns:repeat(2,1fr); }
 }
 
-/* ============================================================
-   RESPONSIVE — MOBILE
-   ============================================================ */
 @media (max-width: 720px) {
-  .desk-nav { display: none; }
-  .mob-nav  { display: flex; }
-  body { padding-top: var(--mob-nav-h); }
+  .desk-nav { display:none; }
+  .mob-nav  { display:flex; }
+  body { padding-top:var(--mob-nav-h); }
 
-  .quiz-hero { padding: 1.75rem 1.25rem 2.5rem; }
-  .quiz-hero h1 { font-size: clamp(1.9rem, 8vw, 2.6rem); letter-spacing: -1.5px; }
-  .quiz-hero-sub { font-size: 15px; }
-  .trust-pills { gap: 0.5rem; }
-  .trust-pill  { font-size: 11.5px; padding: 5px 11px; }
-  .btn-start-quiz { padding: 15px 28px; font-size: 15px; width: 100%; }
-  .hero-social-proof { gap: 1rem; }
+  .quiz-hero { padding:1.75rem 1.25rem 2.5rem; }
+  .quiz-hero h1 { font-size:clamp(1.9rem,8vw,2.6rem); letter-spacing:-1.5px; }
+  .quiz-hero-sub { font-size:15px; }
+  .trust-pills { gap:0.5rem; }
+  .trust-pill  { font-size:11.5px; padding:5px 11px; }
+  .btn-start-quiz { padding:15px 28px; font-size:15px; width:100%; }
+  .hero-social-proof { gap:1rem; }
 
-  .quiz-section { padding: 2.5rem 1.25rem; }
-  .question-card { padding: 1.4rem; }
-  .q-text  { font-size: 1.1rem; }
-  .q-hint  { font-size: 13px; }
-  .opt-icon { width: 38px; height: 38px; }
-  .opt-label { font-size: 13.5px; }
-  .opt-sub   { font-size: 11.5px; }
-  .options-two-col { grid-template-columns: 1fr; }
-  .step-connector { width: 28px; }
-  .step-label { display: none; }
+  .quiz-section { padding:2.5rem 1.25rem; }
+  .question-card { padding:1.4rem; }
+  .q-text  { font-size:1.1rem; }
+  .q-hint  { font-size:13px; }
+  .opt-icon { width:38px; height:38px; }
+  .opt-label { font-size:13.5px; }
+  .opt-sub   { font-size:11.5px; }
+  .options-two-col { grid-template-columns:1fr; }
+  .step-connector { width:28px; }
+  .step-label { display:none; }
 
-  .result-card { padding: 1.5rem; }
-  .result-top  { flex-direction: column; gap: 0.75rem; }
-  .result-title { font-size: 1.1rem; }
-  .result-desc  { font-size: 14px; }
-  .rp-item      { font-size: 13.5px; }
-  .result-trust-row { gap: 1rem; }
-  .rt-item { font-size: 11.5px; }
+  .result-card { padding:1.5rem; }
+  .result-top  { flex-direction:column; gap:0.75rem; }
+  .result-title { font-size:1.1rem; }
+  .result-desc  { font-size:14px; }
+  .rp-item      { font-size:13.5px; }
+  .result-trust-row { gap:1rem; }
+  .rt-item { font-size:11.5px; }
 
-  .section, .section-alt, .cta-section { padding: 3rem 1.25rem; }
-  .s-title { font-size: clamp(1.5rem, 6vw, 1.9rem); letter-spacing: -0.8px; }
-  .s-sub   { font-size: 14.5px; max-width: 100%; }
+  .section,.section-alt,.cta-section { padding:3rem 1.25rem; }
+  .scroll-section { padding:3rem 0; }
+  .scroll-section-head { padding:0 1.25rem; }
+  .scroll-track { padding:0.5rem 1.25rem 1.25rem; }
+  .s-title { font-size:clamp(1.5rem,6vw,1.9rem); letter-spacing:-0.8px; }
+  .s-sub   { font-size:14.5px; max-width:100%; }
 
-  .stats-row { grid-template-columns: 1fr 1fr; border-radius: 14px; }
-  .stat-cell { padding: 1.25rem 1rem; }
-  .stat-val  { font-size: 1.75rem; }
+  .stats-strip { grid-template-columns:1fr 1fr; border-radius:14px; }
+  .stat-cell { padding:1.1rem 0.9rem; }
+  .stat-val  { font-size:1.65rem; }
 
-  .pricing-card { padding: 1.75rem 1.25rem; }
-  .pc-price { font-size: 2.8rem; }
+  .pricing-table-header { padding:0.875rem 1.1rem; }
+  .pricing-row { padding:0.875rem 1.1rem; gap:0.75rem; }
+  .pricing-row-name { font-size:13.5px; }
+  .pricing-row-price { font-size:14px; }
+  .pricing-cta-row { padding:1rem 1.1rem; flex-direction:column; align-items:stretch; }
 
-  .faq-q { font-size: 14px; padding: 1rem 1.1rem; }
-  .faq-a  { padding: 0 1.1rem 1rem; font-size: 14px; }
+  .faq-q { font-size:14px; padding:1rem 1.1rem; }
+  .faq-a  { padding:0 1.1rem 1rem; font-size:14px; }
 
-  .cta-inner  { grid-template-columns: 1fr; }
-  .cta-title  { font-size: clamp(1.5rem, 6vw, 2rem); }
-  .cta-actions { flex-direction: column; align-items: stretch; width: 100%; }
-  .cta-actions .btn-blue { width: 100%; }
-  .cta-icon-row { display: flex; gap: 8px; width: 100%; }
-  .cta-icon-btn { flex: 1; height: 50px; }
+  .cta-inner  { grid-template-columns:1fr; }
+  .cta-title  { font-size:clamp(1.5rem,6vw,2rem); }
+  .cta-actions { flex-direction:column; align-items:stretch; width:100%; }
+  .cta-actions .btn-blue { width:100%; }
+  .cta-icon-row { display:flex; gap:8px; width:100%; }
+  .cta-icon-btn { flex:1; height:50px; }
 
-  .footer-inner { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
-  .wa-bubble { bottom: 18px; right: 14px; width: 52px; height: 52px; }
+  .footer-inner { flex-direction:column; align-items:flex-start; gap:0.75rem; }
+  .wa-bubble { bottom:18px; right:14px; width:52px; height:52px; }
+  .trust-strip .trust-item { font-size:12px; padding:0 1.75rem; }
 
-  .trust-strip .trust-item { font-size: 12px; padding: 0 1.75rem; }
-
-  .prose-lead { font-size: 15px; }
-  .prose-h    { font-size: 15px; }
-  .prose-block p { font-size: 14.5px; }
+  .info-card { flex:0 0 220px; min-width:220px; padding:1.2rem; }
+  .info-card h3 { font-size:13.5px; }
+  .info-card p  { font-size:12.5px; }
+  .info-card-icon { width:36px; height:36px; }
+  .info-card-icon svg { width:17px; height:17px; }
 }
 
 @media (max-width: 540px) {
-  .section, .section-alt, .cta-section { padding: 2.5rem 1.25rem; }
-  .quiz-hero h1 { font-size: 1.7rem; }
-  .result-trust-row { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+  .section,.section-alt,.cta-section { padding:2.5rem 1.25rem; }
+  .quiz-hero h1 { font-size:1.7rem; }
+  .result-trust-row { flex-direction:column; align-items:flex-start; gap:0.75rem; }
+  .stats-strip { grid-template-columns:1fr 1fr; }
 }
 </style>
 </head>
 <body>
 
-<!-- SEO suburb links -->
 <nav class="seo-nav" aria-label="Service areas">
   <h2>PC Diagnostic and Repair Across Perth</h2>
   <ul>
@@ -1595,9 +837,7 @@ footer {
 <!-- DESKTOP NAV -->
 <nav class="desk-nav" aria-label="Main navigation">
   <a href="index.html" class="nav-logo" aria-label="FixMyPC Perth Home">
-    <div class="logo-mark">
-      <img src="logo.png" alt="FixMyPC Perth logo">
-    </div>
+    <div class="logo-mark"><img src="logo.png" alt="FixMyPC Perth logo"></div>
     <span class="logo-name">FixMyPC <em>Perth</em></span>
   </a>
   <div class="nav-right">
@@ -1612,16 +852,13 @@ footer {
 <!-- MOBILE NAV -->
 <div class="mob-nav" role="navigation" aria-label="Mobile navigation">
   <a href="index.html" class="nav-logo" aria-label="FixMyPC Perth Home">
-    <div class="logo-mark">
-      <img src="logo.png" alt="FixMyPC Perth logo">
-    </div>
+    <div class="logo-mark"><img src="logo.png" alt="FixMyPC Perth logo"></div>
     <span class="logo-name" style="font-size:14px">FixMyPC <em>Perth</em></span>
   </a>
   <button class="mob-hamburger" id="mob-hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mob-menu">
     <span></span><span></span><span></span>
   </button>
 </div>
-
 <div class="mob-menu" id="mob-menu" role="menu">
   <a href="pricing.html"             class="mob-link" role="menuitem">Pricing</a>
   <a href="business-it-support.html" class="mob-link" role="menuitem">Business IT Support</a>
@@ -1630,62 +867,47 @@ footer {
   <a href="reviews.html"             class="mob-link" role="menuitem">Reviews &amp; FAQ</a>
 </div>
 
-<!-- HERO -->
+<!-- ============================================================
+     HERO — unchanged
+     ============================================================ -->
 <section class="quiz-hero" aria-label="Free PC health check quiz Perth">
   <div class="quiz-hero-inner">
     <div class="quiz-hero-eyebrow">
       <span class="eyebrow-dot" aria-hidden="true"></span>
-      Free Diagnostic Tool &nbsp;·&nbsp; Perth, Western Australia
+      Free Diagnostic Tool &nbsp;&middot;&nbsp; Perth, Western Australia
     </div>
-
     <h1>What is <span class="accent">actually wrong</span><br>with your PC?</h1>
-
     <p class="quiz-hero-sub">
       Answer 5 questions and get an instant personalised diagnosis. Whether your
       computer is slow, crashing, infected or completely dead, our weighted
       diagnosis engine pinpoints the most likely cause in under a minute.
       No sign up, no email, 100% free.
     </p>
-
     <div class="trust-pills" role="list" aria-label="Quiz features">
       <div class="trust-pill" role="listitem">
-        <div class="tp-icon" aria-hidden="true">
-          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg>
-        </div>
+        <div class="tp-icon" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></div>
         Instant results
       </div>
       <div class="trust-pill" role="listitem">
-        <div class="tp-icon" aria-hidden="true">
-          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="2" width="8" height="8" rx="2"/><path d="M4 6h4M6 4v4"/></svg>
-        </div>
+        <div class="tp-icon" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="2" width="8" height="8" rx="2"/><path d="M4 6h4M6 4v4"/></svg></div>
         No sign up needed
       </div>
       <div class="trust-pill" role="listitem">
-        <div class="tp-icon" aria-hidden="true">
-          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="6" cy="6" r="4"/><path d="M4 6l1.5 1.5L8 4"/></svg>
-        </div>
+        <div class="tp-icon" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="6" cy="6" r="4"/><path d="M4 6l1.5 1.5L8 4"/></svg></div>
         Weighted scoring engine
       </div>
       <div class="trust-pill" role="listitem">
-        <div class="tp-icon" aria-hidden="true">
-          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 2C3.79 2 2 3.79 2 6s1.79 4 4 4 4-1.79 4-4"/><path d="M6 4v2l1.5 1.5"/></svg>
-        </div>
+        <div class="tp-icon" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 2C3.79 2 2 3.79 2 6s1.79 4 4 4 4-1.79 4-4"/><path d="M6 4v2l1.5 1.5"/></svg></div>
         Same day turnaround
       </div>
     </div>
-
     <button class="btn-start-quiz" id="btn-start-quiz" aria-label="Start the free PC health check quiz">
       Start the free quiz
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
-
     <div class="hero-social-proof" aria-label="Social proof">
       <div class="proof-item">
-        <div class="proof-stars" aria-label="5 star rating">
-          <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
-        </div>
+        <div class="proof-stars" aria-label="5 star rating"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
         <span>5/5 rated service</span>
       </div>
       <div class="proof-item">
@@ -1705,7 +927,7 @@ footer {
   <div class="trust-track" id="trust-track"></div>
 </div>
 
-<!-- QUIZ SECTION -->
+<!-- QUIZ SECTION — unchanged -->
 <section class="quiz-section" aria-label="PC health check quiz" id="quiz-section">
   <div class="quiz-wrap">
     <div class="step-bar" id="step-bar" style="display:none" role="progressbar" aria-label="Quiz progress"></div>
@@ -1724,78 +946,83 @@ footer {
 </section>
 
 <!-- ============================================================
-     WHAT WE FIX — editorial prose
+     WHAT WE FIX — scrollable card row
      ============================================================ -->
-<section class="section" aria-label="Common PC problems fixed in Perth">
-  <div class="wrap">
-    <div style="text-align: center; margin-bottom: 3rem;">
-      <span class="s-eyebrow">What we fix</span>
-      <h2 class="s-title">The most common PC problems<br><span class="accent">Perth residents deal with.</span></h2>
-    </div>
+<section class="scroll-section" aria-label="Common PC problems fixed in Perth">
+  <div class="scroll-section-head fade-up">
+    <span class="s-eyebrow">What we fix</span>
+    <h2 class="s-title">The most common PC problems<br><span class="accent">Perth residents deal with</span></h2>
+    <p class="s-sub">Every symptom below can be properly diagnosed and fixed. Same day turnaround on most.</p>
+  </div>
+  <div class="scroll-track-outer" id="fix-track-outer">
+    <div class="scroll-track" id="fix-track" role="list">
 
-    <div class="editorial-grid">
-      <div class="ed-card fade-up">
-        <div class="ed-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      <article class="info-card" role="listitem">
+        <div class="info-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
         </div>
-        <h3 class="ed-h">Slow Performance</h3>
-        <p class="ed-p">Slow PCs are often bottlenecked by ageing mechanical hard drives. An SSD upgrade can drop boot times from minutes to under 15 seconds, making old laptops feel brand new.</p>
-      </div>
+        <h3>Slow Performance</h3>
+        <p>Ageing hard drives are the number one cause of sluggish computers. An SSD upgrade drops boot times from several minutes to under 15 seconds, making an old laptop feel brand new.</p>
+      </article>
 
-      <div class="ed-card fade-up" style="transition-delay: 0.1s;">
-        <div class="ed-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+      <article class="info-card" role="listitem">
+        <div class="info-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
         </div>
-        <h3 class="ed-h">Virus & Malware</h3>
-        <p class="ed-p">Modern malware runs silently, capturing keystrokes or consuming resources. Professional removal clears deeply embedded threats that standard antivirus tools often miss.</p>
-      </div>
+        <h3>Virus and Malware</h3>
+        <p>Modern malware runs silently, capturing keystrokes or consuming resources. Professional removal clears deeply embedded threats that standard antivirus tools frequently miss entirely.</p>
+      </article>
 
-      <div class="ed-card fade-up" style="transition-delay: 0.2s;">
-        <div class="ed-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/></svg>
+      <article class="info-card" role="listitem">
+        <div class="info-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/></svg>
         </div>
-        <h3 class="ed-h">No Power / Black Screen</h3>
-        <p class="ed-p">From failed power supplies to motherboard faults, a proper component-level diagnostic identifies the exact failure. Your data is often safe even if the PC won't boot.</p>
-      </div>
+        <h3>No Power or Black Screen</h3>
+        <p>From failed power supplies to motherboard faults, a component-level diagnostic identifies the exact failure. Your data is often safe even when the PC itself cannot be repaired.</p>
+      </article>
 
-      <div class="ed-card fade-up">
-        <div class="ed-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      <article class="info-card" role="listitem">
+        <div class="info-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 12l2 2 4-4"/></svg>
         </div>
-        <h3 class="ed-h">Crashes & Blue Screens</h3>
-        <p class="ed-p">Blue screens are Windows' way of protecting itself from hardware or driver faults. We read system logs to find the root cause—be it failing RAM or corrupted files.</p>
-      </div>
+        <h3>Crashes and Blue Screens</h3>
+        <p>Blue screens are Windows protecting itself from hardware or driver faults. Reading the system event log identifies the root cause, whether that is failing RAM, bad drivers or corrupt system files.</p>
+      </article>
 
-      <div class="ed-card fade-up" style="transition-delay: 0.1s;">
-        <div class="ed-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+      <article class="info-card" role="listitem">
+        <div class="info-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
         </div>
-        <h3 class="ed-h">Overheating Fix</h3>
-        <p class="ed-p">Dust and dried thermal paste cause "thermal throttling," making your PC feel slow. A full internal clean and repaste can drop temperatures by up to 30°C.</p>
-      </div>
+        <h3>Overheating</h3>
+        <p>Dust and dried thermal paste cause thermal throttling, making a capable machine feel sluggish. A full internal clean and CPU repaste can drop operating temperatures by up to 30 degrees Celsius.</p>
+      </article>
 
-      <div class="ed-card fade-up" style="transition-delay: 0.2s;">
-        <div class="ed-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      <article class="info-card" role="listitem">
+        <div class="info-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         </div>
-        <h3 class="ed-h">Data Recovery</h3>
-        <p class="ed-p">Accidentally deleted files or a clicking hard drive? Stop using the drive immediately. Our recovery experts can often retrieve files from even hopeless-looking situations.</p>
-      </div>
+        <h3>Data Recovery</h3>
+        <p>Accidentally deleted files or a clicking hard drive require immediate action. Stop using the drive and bring it in. Recovery is possible from drives that appear completely failed in many cases.</p>
+      </article>
+
     </div>
   </div>
+  <div class="scroll-dots" id="fix-dots" aria-hidden="true"></div>
 </section>
 
-<!-- STATS -->
-<section class="section section-alt" aria-label="FixMyPC Perth stats">
+<!-- ============================================================
+     STATS STRIP
+     ============================================================ -->
+<section class="section section-alt" aria-label="FixMyPC Perth stats and results">
   <div class="wrap">
     <div class="fade-up">
       <span class="s-eyebrow">By the numbers</span>
-      <h2 class="s-title">Results that speak<br><span class="accent">for themselves.</span></h2>
+      <h2 class="s-title">Results that speak<br><span class="accent">for themselves</span></h2>
     </div>
-    <div class="stats-row fade-up">
+    <div class="stats-strip fade-up">
       <div class="stat-cell">
         <span class="stat-val">94%</span>
-        <span class="stat-lbl">of slow PCs fixed with an SSD upgrade</span>
+        <span class="stat-lbl">of slow PCs resolved with an SSD upgrade</span>
       </div>
       <div class="stat-cell">
         <span class="stat-val">24h</span>
@@ -1803,7 +1030,7 @@ footer {
       </div>
       <div class="stat-cell">
         <span class="stat-val">30d</span>
-        <span class="stat-lbl">labour warranty on every single repair</span>
+        <span class="stat-lbl">labour warranty on every repair</span>
       </div>
       <div class="stat-cell">
         <span class="stat-val">5/5</span>
@@ -1814,141 +1041,208 @@ footer {
 </section>
 
 <!-- ============================================================
-     WHY IS MY PC SLOW — editorial prose
+     WHY IS MY PC SLOW — scrollable card row
      ============================================================ -->
-<section class="section" aria-label="Why is my computer so slow Perth guide">
-  <div class="wrap">
-    <div style="text-align: center; margin-bottom: 3rem;">
-      <span class="s-eyebrow">Tech explained simply</span>
-      <h2 class="s-title">Why is my computer so slow?<br><span class="accent">A practical guide.</span></h2>
-    </div>
+<section class="scroll-section" aria-label="Why is my computer so slow Perth guide">
+  <div class="scroll-section-head fade-up">
+    <span class="s-eyebrow">Tech explained simply</span>
+    <h2 class="s-title">Why is my computer so slow?<br><span class="accent">A practical guide</span></h2>
+    <p class="s-sub">Four causes account for the overwhelming majority of slow computers in Perth. Here is how each one works and what fixes it.</p>
+  </div>
+  <div class="scroll-track-outer alt-bg" id="slow-track-outer">
+    <div class="scroll-track" id="slow-track" role="list">
 
-    <div class="editorial-grid">
-      <div class="ed-card fade-up">
-        <div class="ed-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M8 12h8M12 10v4"/></svg>
+      <article class="info-card" role="listitem">
+        <div class="info-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M8 12h8M12 10v4"/></svg>
         </div>
-        <h3 class="ed-h">Ageing Hard Drive</h3>
-        <p class="ed-p">Old mechanical drives degrade over time, causing boot times to hit minutes. Upgrading to an SSD fundamentally changes how your machine feels—making it faster than the day you bought it.</p>
-      </div>
+        <h3>Ageing Hard Drive</h3>
+        <p>Old mechanical drives degrade continuously. Even when healthy they are five to ten times slower than a modern SSD. An upgrade fundamentally changes how the machine feels and it costs less than most people expect.</p>
+      </article>
 
-      <div class="ed-card fade-up" style="transition-delay: 0.1s;">
-        <div class="ed-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+      <article class="info-card" role="listitem">
+        <div class="info-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
         </div>
-        <h3 class="ed-h">Background Malware</h3>
-        <p class="ed-p">Not all malware is loud. Many infections run silently, consuming your CPU and RAM for crypto-mining or data harvesting. If your PC is slow and hot for no reason, this is a likely culprit.</p>
-      </div>
+        <h3>Background Malware</h3>
+        <p>Many infections run silently, consuming CPU and RAM for crypto mining or data harvesting. A slow and hot PC with no obvious cause is a strong indicator of an active background infection.</p>
+      </article>
 
-      <div class="ed-card fade-up" style="transition-delay: 0.2s;">
-        <div class="ed-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+      <article class="info-card" role="listitem">
+        <div class="info-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
         </div>
-        <h3 class="ed-h">Windows Corruption</h3>
-        <p class="ed-p">Years of software updates and registry changes leave "bloat" that slows down even fast hardware. A clean Windows reinstall resets the environment, giving you a fresh start.</p>
-      </div>
+        <h3>Windows Corruption</h3>
+        <p>Years of software updates and registry changes leave broken entries and orphaned files that accumulate invisibly. A clean Windows reinstall removes all of it and your files are backed up first.</p>
+      </article>
 
-      <div class="ed-card fade-up">
-        <div class="ed-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="2" x2="9" y2="4"/><line x1="15" y1="2" x2="15" y2="4"/></svg>
+      <article class="info-card" role="listitem">
+        <div class="info-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="2" x2="9" y2="4"/><line x1="15" y1="2" x2="15" y2="4"/></svg>
         </div>
-        <h3 class="ed-h">Insufficient RAM</h3>
-        <p class="ed-p">Modern browsers are RAM-hungry. If you have 4GB or 8GB of RAM, your PC is likely struggling to keep up with today's apps. Upgrading your memory allows for smooth multitasking.</p>
-      </div>
+        <h3>Insufficient RAM</h3>
+        <p>Modern browsers alone can consume 4 to 6 GB of RAM. If your machine has 4 GB or 8 GB it is likely struggling to keep pace with today's applications. A RAM upgrade allows genuine multitasking again.</p>
+      </article>
+
     </div>
   </div>
+  <div class="scroll-dots" id="slow-dots" aria-hidden="true"></div>
 </section>
 
 <!-- ============================================================
-     VIRUS SIGNS — editorial prose
+     VIRUS SIGNS — scrollable card row
      ============================================================ -->
-<section class="section section-alt" aria-label="Signs of a computer virus Perth">
-  <div class="wrap">
-    <div style="text-align: center; margin-bottom: 3rem;">
-      <span class="s-eyebrow">Virus and malware</span>
-      <h2 class="s-title">How to tell if your computer<br><span class="accent">has a virus.</span></h2>
-    </div>
+<section class="scroll-section section-alt" aria-label="Signs of a computer virus Perth">
+  <div class="scroll-section-head fade-up">
+    <span class="s-eyebrow">Virus and malware</span>
+    <h2 class="s-title">How to tell if your computer<br><span class="accent">has a virus</span></h2>
+    <p class="s-sub">These are the four most reliable indicators that your PC has an active infection rather than a hardware or software issue.</p>
+  </div>
+  <div class="scroll-track-outer alt-bg" id="virus-track-outer">
+    <div class="scroll-track" id="virus-track" role="list">
 
-    <div class="editorial-grid">
-      <div class="ed-card fade-up">
-        <div class="ed-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+      <article class="info-card" role="listitem">
+        <div class="info-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
         </div>
-        <h3 class="ed-h">Hijacked Browser</h3>
-        <p class="ed-p">Homepages changing, random search redirects, and new toolbars appearing are classic signs of browser malware. These threats often resist standard settings and require professional removal.</p>
-      </div>
+        <h3>Hijacked Browser</h3>
+        <p>Homepages changing, random search redirects and new toolbars appearing without permission are classic browser malware indicators. These threats often survive reinstalling the browser and need professional removal.</p>
+      </article>
 
-      <div class="ed-card fade-up" style="transition-delay: 0.1s;">
-        <div class="ed-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
+      <article class="info-card" role="listitem">
+        <div class="info-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
         </div>
-        <h3 class="ed-h">High Idle Usage</h3>
-        <p class="ed-p">If your Task Manager shows high CPU or RAM usage when you aren't doing anything, malware could be running silently in the background, mining crypto or harvesting data.</p>
-      </div>
+        <h3>High Idle CPU Usage</h3>
+        <p>If Task Manager shows high CPU or RAM usage when nothing is open, malware is very likely running in the background. Crypto-mining infections are the most common cause of this specific pattern.</p>
+      </article>
 
-      <div class="ed-card fade-up" style="transition-delay: 0.2s;">
-        <div class="ed-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      <article class="info-card" role="listitem">
+        <div class="info-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
         </div>
-        <h3 class="ed-h">Disabled Security</h3>
-        <p class="ed-p">Sophisticated infections often disable Windows Defender or your antivirus first. If your security software won't open or stays turned off, your system is likely compromised.</p>
-      </div>
+        <h3>Disabled Security Software</h3>
+        <p>Sophisticated infections disable Windows Defender or installed antivirus as their first action. If your security software will not open or stays turned off after being enabled, the system is almost certainly compromised.</p>
+      </article>
 
-      <div class="ed-card fade-up">
-        <div class="ed-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      <article class="info-card" role="listitem">
+        <div class="info-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         </div>
-        <h3 class="ed-h">Ghost Messages</h3>
-        <p class="ed-p">If friends report receiving strange emails or messages from you that you didn't send, your credentials have likely been harvested and are being used by third parties.</p>
-      </div>
+        <h3>Messages Sent Without You</h3>
+        <p>If contacts report receiving strange emails or messages from your account that you did not send, your credentials have been harvested and are actively being used. Change passwords immediately and get the machine scanned.</p>
+      </article>
+
     </div>
   </div>
+  <div class="scroll-dots" id="virus-dots" aria-hidden="true"></div>
 </section>
 
 <!-- ============================================================
-     PRICING CALLOUT
+     PRICING TABLE — clean replacement for the dark box
      ============================================================ -->
 <section class="section" aria-label="PC repair pricing Perth">
   <div class="wrap">
     <div class="fade-up">
       <span class="s-eyebrow">Transparent pricing</span>
-      <h2 class="s-title">What PC repair actually<br><span class="accent">costs in Perth.</span></h2>
+      <h2 class="s-title">What PC repair actually<br><span class="accent">costs in Perth</span></h2>
       <p class="s-sub">
         One of the most common concerns is not knowing whether a quote is fair.
-        Here is a clear guide to what repairs realistically cost so anyone can
-        walk in with full confidence and accurate expectations.
+        Here is a clear guide to what repairs realistically cost so you can walk
+        in with full confidence and accurate expectations.
       </p>
     </div>
 
-    <div class="pricing-card fade-up" style="margin-top:2.5rem">
-      <div style="position:relative;z-index:1">
-        <span class="pc-label">All prices include GST. Upfront quote before any work begins.</span>
-        <div class="pc-title">Common repair pricing at FixMyPC Perth</div>
-        <div class="pc-items">
-          <div class="pc-item">Virus and malware removal including browser cleanup from $99</div>
-          <div class="pc-item">SSD upgrade labour only from $65, with drive supplied from $150</div>
-          <div class="pc-item">Windows reinstall with full data backup from $120</div>
-          <div class="pc-item">RAM upgrade labour only from $55, with RAM supplied from $160</div>
-          <div class="pc-item">Full diagnostic and repair with 30 day warranty from $120</div>
-          <div class="pc-item">Data recovery from failing drive from $149, no fix no fee</div>
-          <div class="pc-item">Laptop screen replacement labour from $120, parts quoted separately</div>
-          <div class="pc-item">Blue screen and crash diagnosis from $99</div>
-        </div>
+    <div class="pricing-table fade-up" style="margin-top:2.5rem" role="table" aria-label="PC repair pricing table">
+      <div class="pricing-table-header" role="row">
+        <strong role="columnheader">Service</strong>
+        <span role="columnheader" style="text-align:right">From price (incl. GST)</span>
       </div>
-      <div class="pc-cta" style="position:relative;z-index:1">
-        <span class="pc-from">Free quote, no obligation</span>
-        <span class="pc-price">$0</span>
-        <span class="pc-note">to get a quote</span>
-        <a
-          href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair."
-          target="_blank" rel="noopener noreferrer"
-          class="btn-wa"
-          aria-label="Get a free PC repair quote on WhatsApp"
-        >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>
-          Get a free quote now
-        </a>
-        <div style="margin-top:0.75rem">
+
+      <div class="pricing-row" role="row">
+        <div role="cell">
+          <div class="pricing-row-name">Virus and Malware Removal</div>
+          <span class="pricing-row-sub">Full scan, removal, browser cleanup and antivirus setup</span>
+        </div>
+        <div class="pricing-row-price" role="cell">From $80</div>
+      </div>
+
+      <div class="pricing-row" role="row">
+        <div role="cell">
+          <div class="pricing-row-name">SSD Upgrade — Labour Only</div>
+          <span class="pricing-row-sub">You supply the SSD, we fit it and transfer all your data</span>
+        </div>
+        <div class="pricing-row-price" role="cell">From $65</div>
+      </div>
+
+      <div class="pricing-row" role="row">
+        <div role="cell">
+          <div class="pricing-row-name">SSD Upgrade — Drive Supplied</div>
+          <span class="pricing-row-sub">Samsung or Crucial SSD supplied, fitted and data transferred</span>
+        </div>
+        <div class="pricing-row-price" role="cell">From $150</div>
+      </div>
+
+      <div class="pricing-row" role="row">
+        <div role="cell">
+          <div class="pricing-row-name">Windows Reinstall with Data Backup</div>
+          <span class="pricing-row-sub">Clean install, all personal files backed up and transferred safely</span>
+        </div>
+        <div class="pricing-row-price" role="cell">From $120</div>
+      </div>
+
+      <div class="pricing-row" role="row">
+        <div role="cell">
+          <div class="pricing-row-name">RAM Upgrade — Labour Only</div>
+          <span class="pricing-row-sub">You supply the RAM, we install and enable XMP or EXPO profile</span>
+        </div>
+        <div class="pricing-row-price" role="cell">From $55</div>
+      </div>
+
+      <div class="pricing-row" role="row">
+        <div role="cell">
+          <div class="pricing-row-name">Full Diagnostic and Repair</div>
+          <span class="pricing-row-sub">Written report before we touch anything, 30-day labour warranty included</span>
+        </div>
+        <div class="pricing-row-price" role="cell">From $120</div>
+      </div>
+
+      <div class="pricing-row" role="row">
+        <div role="cell">
+          <div class="pricing-row-name">Data Recovery — Failing Drive</div>
+          <span class="pricing-row-sub">Recover files from slow, clicking or partially working drives</span>
+        </div>
+        <div class="pricing-row-price" role="cell">From $149</div>
+      </div>
+
+      <div class="pricing-row" role="row">
+        <div role="cell">
+          <div class="pricing-row-name">Data Recovery — Dead Drive</div>
+          <span class="pricing-row-sub">Advanced recovery, no fix no fee guarantee applies</span>
+        </div>
+        <div class="pricing-row-price" role="cell">From $249</div>
+      </div>
+
+      <div class="pricing-row" role="row">
+        <div role="cell">
+          <div class="pricing-row-name">Laptop Screen Replacement</div>
+          <span class="pricing-row-sub">Labour only, all common screen sizes, parts quoted separately upfront</span>
+        </div>
+        <div class="pricing-row-price" role="cell">From $120</div>
+      </div>
+
+      <div class="pricing-row" role="row">
+        <div role="cell">
+          <div class="pricing-row-name">Blue Screen and Crash Fix</div>
+          <span class="pricing-row-sub">Root cause diagnosis from system logs, driver and hardware checks</span>
+        </div>
+        <div class="pricing-row-price" role="cell">From $99</div>
+      </div>
+
+      <div class="pricing-cta-row">
+        <span class="pricing-cta-note">All prices include GST. Upfront written quote before any work begins. No hidden fees.</span>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
+          <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener noreferrer" class="btn-wa" aria-label="Get a free PC repair quote on WhatsApp">Get a free quote</a>
           <a href="pricing.html" class="btn-outline" aria-label="View full pricing page">View all pricing</a>
         </div>
       </div>
@@ -1963,7 +1257,7 @@ footer {
   <div class="wrap">
     <div class="fade-up">
       <span class="s-eyebrow">Common questions</span>
-      <h2 class="s-title">Frequently asked<br><span class="accent">questions.</span></h2>
+      <h2 class="s-title">Frequently asked<br><span class="accent">questions</span></h2>
       <p class="s-sub">
         Straightforward answers to the questions Perth residents ask most often before
         bringing a computer in for repair.
@@ -1974,82 +1268,68 @@ footer {
 
       <div class="faq-item" role="listitem">
         <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
-          How do I know what is wrong with my computer?
-          <span class="faq-arrow" aria-hidden="true">
-            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 4l4 4 4-4"/></svg>
-          </span>
+          <h3 style="font-family:var(--display);font-size:inherit;font-weight:inherit;color:inherit;margin:0;">How do I know what is wrong with my computer?</h3>
+          <span class="faq-arrow" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 4l4 4 4-4"/></svg></span>
         </button>
         <div class="faq-a">
-          The free quiz above is a good starting point — it uses a weighted scoring engine to match symptoms to the most likely cause. For a definitive answer, a professional diagnostic checks every component including hard drive health, RAM integrity, temperatures, and Windows error logs. Most diagnostics take under an hour and the technician explains exactly what was found in plain language before any work begins.
+          The free quiz above is a good starting point. It uses a weighted scoring engine to match your symptoms to the most likely cause. For a definitive answer, a professional diagnostic checks every component including hard drive health, RAM integrity, temperatures and Windows error logs. Most diagnostics take under an hour and the technician explains everything found in plain language before any work begins.
         </div>
       </div>
 
       <div class="faq-item" role="listitem">
         <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
-          Do I bring my PC in or do you come to me?
-          <span class="faq-arrow" aria-hidden="true">
-            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 4l4 4 4-4"/></svg>
-          </span>
+          <h3 style="font-family:var(--display);font-size:inherit;font-weight:inherit;color:inherit;margin:0;">Do I bring my PC in or do you come to me?</h3>
+          <span class="faq-arrow" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 4l4 4 4-4"/></svg></span>
         </button>
         <div class="faq-a">
-          Both options are available depending on the repair type. Many software repairs including virus removals, Windows issues, and configuration problems can be done remotely via secure screen share. For hardware repairs such as SSD upgrades, screen replacements, or physical diagnostics the machine is brought to Canning Vale. Onsite visits are available for business customers across the Perth metro area.
+          Both options are available depending on the repair type. Software repairs including virus removals, Windows issues and configuration problems can be done remotely via secure screen share. Hardware repairs such as SSD upgrades, screen replacements or physical diagnostics require the machine to be brought to Canning Vale. Onsite visits are available for business customers across the Perth metro area.
         </div>
       </div>
 
       <div class="faq-item" role="listitem">
         <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
-          My PC will not turn on at all. Is my data gone?
-          <span class="faq-arrow" aria-hidden="true">
-            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 4l4 4 4-4"/></svg>
-          </span>
+          <h3 style="font-family:var(--display);font-size:inherit;font-weight:inherit;color:inherit;margin:0;">My PC will not turn on at all. Is my data gone?</h3>
+          <span class="faq-arrow" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 4l4 4 4-4"/></svg></span>
         </button>
         <div class="faq-a">
-          Not necessarily. A PC that will not turn on usually has a problem with the power supply, motherboard, or boot drive rather than the storage device containing your data. In most cases even when the machine itself cannot be saved, the files are fully recoverable. Data recovery options are assessed before any repair path is recommended, and a no fix no fee policy applies to data recovery work.
+          Not necessarily. A PC that will not turn on usually has a problem with the power supply, motherboard or boot drive rather than the storage device containing your data. In most cases, even when the machine itself cannot be saved, the files are fully recoverable. Data recovery options are assessed before any repair path is recommended. A no fix no fee policy applies to data recovery work.
         </div>
       </div>
 
       <div class="faq-item" role="listitem">
         <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
-          Will I lose my files if Windows gets reinstalled?
-          <span class="faq-arrow" aria-hidden="true">
-            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 4l4 4 4-4"/></svg>
-          </span>
+          <h3 style="font-family:var(--display);font-size:inherit;font-weight:inherit;color:inherit;margin:0;">Will I lose my files if Windows gets reinstalled?</h3>
+          <span class="faq-arrow" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 4l4 4 4-4"/></svg></span>
         </button>
         <div class="faq-a">
-          No, not if the repair is done properly. Before any Windows reinstall all personal files including documents, photos, downloads and desktop items are backed up to an external drive. After the clean install the files are copied back over. The main things that need to be reactivated afterward are software licences such as Microsoft Office and any passwords, since a clean install removes previously installed programs. Exactly what to expect is explained before starting.
+          No, not if the repair is done properly. Before any Windows reinstall, all personal files including documents, photos, downloads and desktop items are backed up to an external drive. After the clean install the files are copied back over. The main things that need to be reactivated afterwards are software licences such as Microsoft Office and any stored passwords, since a clean install removes previously installed programs. Exactly what to expect is explained before starting.
         </div>
       </div>
 
       <div class="faq-item" role="listitem">
         <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
-          How long does PC repair take in Perth?
-          <span class="faq-arrow" aria-hidden="true">
-            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 4l4 4 4-4"/></svg>
-          </span>
+          <h3 style="font-family:var(--display);font-size:inherit;font-weight:inherit;color:inherit;margin:0;">How long does PC repair take in Perth?</h3>
+          <span class="faq-arrow" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 4l4 4 4-4"/></svg></span>
         </button>
         <div class="faq-a">
-          Most repairs are completed same day or next day. A virus removal or Windows reinstall takes 2 to 4 hours of active work. An SSD upgrade with full data transfer takes 3 to 5 hours. Hardware diagnostics typically take 1 to 2 hours. Complex repairs that require sourcing specific parts may take 1 to 3 business days and updates are provided throughout.
+          Most repairs are completed same day or next day. A virus removal or Windows reinstall takes 2 to 4 hours of active work. An SSD upgrade with full data transfer typically takes 3 to 5 hours. Hardware diagnostics take 1 to 2 hours. Complex repairs requiring specific parts may take 1 to 3 business days and updates are provided throughout the process.
         </div>
       </div>
 
       <div class="faq-item" role="listitem">
         <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
-          Is it worth repairing an old computer?
-          <span class="faq-arrow" aria-hidden="true">
-            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 4l4 4 4-4"/></svg>
-          </span>
+          <h3 style="font-family:var(--display);font-size:inherit;font-weight:inherit;color:inherit;margin:0;">Is it worth repairing an old computer?</h3>
+          <span class="faq-arrow" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 4l4 4 4-4"/></svg></span>
         </button>
         <div class="faq-a">
-          It depends on the age, condition, and repair cost relative to a replacement. As a rough guide, if the repair costs less than 40 to 50 percent of what a comparable replacement machine would cost and the PC is under 7 to 8 years old, repair is almost always the better option. Honest advice is given — if a machine genuinely is not worth fixing that is communicated upfront rather than charging for work that will not last.
+          It depends on the age, condition and repair cost relative to a replacement. As a rough guide, if the repair costs less than 40 to 50 percent of what a comparable replacement would cost and the PC is under 7 to 8 years old, repair is almost always the better option. Honest advice is given. If a machine genuinely is not worth fixing, that is communicated upfront rather than charging for work that will not last.
         </div>
       </div>
 
       <div class="faq-item" role="listitem">
         <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
-          Do you offer a warranty on repairs?
-          <span class="faq-arrow" aria-hidden="true">
-            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 4l4 4 4-4"/></svg>
-          </span>
+          <h3 style="font-family:var(--display);font-size:inherit;font-weight:inherit;color:inherit;margin:0;">Do you offer a warranty on repairs?</h3>
+          <span class="faq-arrow" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 4l4 4 4-4"/></svg></span>
         </button>
         <div class="faq-a">
           Yes. All work at FixMyPC Perth comes with a 30 day labour warranty. If the same issue returns within 30 days of collection it is fixed at no additional charge. No exceptions and no fine print. This applies to every service offered.
@@ -2058,10 +1338,8 @@ footer {
 
       <div class="faq-item" role="listitem">
         <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
-          Where is FixMyPC Perth located and what areas do you serve?
-          <span class="faq-arrow" aria-hidden="true">
-            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 4l4 4 4-4"/></svg>
-          </span>
+          <h3 style="font-family:var(--display);font-size:inherit;font-weight:inherit;color:inherit;margin:0;">Where is FixMyPC Perth located and what areas do you serve?</h3>
+          <span class="faq-arrow" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 4l4 4 4-4"/></svg></span>
         </button>
         <div class="faq-a">
           FixMyPC Perth is based in Canning Vale, Perth WA 6155. All southern Perth suburbs are served including Cockburn, Willetton, Jandakot, Atwell, Harrisdale, Byford, Armadale, Gosnells, Thornlie and Cannington. Remote support for software and network issues is available Australia-wide. Drop off is available 8am to 8pm seven days a week.
@@ -2085,24 +1363,12 @@ footer {
       </p>
     </div>
     <div class="cta-actions fade-up">
-      <a href="quote-request.html" class="btn-blue" aria-label="Get a free computer repair quote">
-        Get a free quote
-      </a>
+      <a href="quote-request.html" class="btn-blue" aria-label="Get a free computer repair quote">Get a free quote</a>
       <div class="cta-icon-row">
-        <a
-          href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair."
-          target="_blank" rel="noopener noreferrer"
-          class="cta-icon-btn wa"
-          aria-label="WhatsApp FixMyPC Perth for a free quote"
-        >
+        <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener noreferrer" class="cta-icon-btn wa" aria-label="WhatsApp FixMyPC Perth for a free quote">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>
         </a>
-        <a
-          href="https://www.facebook.com/profile.php?id=61588810785733"
-          target="_blank" rel="noopener noreferrer"
-          class="cta-icon-btn fb"
-          aria-label="Facebook FixMyPC Perth"
-        >
+        <a href="https://www.facebook.com/profile.php?id=61588810785733" target="_blank" rel="noopener noreferrer" class="cta-icon-btn fb" aria-label="Facebook FixMyPC Perth">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
         </a>
       </div>
@@ -2114,31 +1380,22 @@ footer {
 <footer>
   <div class="footer-inner">
     <a href="index.html" class="footer-logo" aria-label="FixMyPC Perth Home">
-      <div class="logo-mark">
-        <img src="logo.png" alt="FixMyPC Perth logo">
-      </div>
+      <div class="logo-mark"><img src="logo.png" alt="FixMyPC Perth logo"></div>
       <span class="logo-name" style="font-size:14px">FixMyPC <em>Perth</em></span>
     </a>
-    <div class="footer-copy">
-      &copy; 2026 FixMyPC Perth &nbsp;&middot;&nbsp; ABN 67 645 153 359 &nbsp;&middot;&nbsp; All Prices Include GST &nbsp;&middot;&nbsp; Canning Vale WA 6155
-    </div>
-    <div class="footer-links">
-      <a href="terms.html">Terms and Conditions</a>
-    </div>
+    <div class="footer-copy">&copy; 2026 FixMyPC Perth &nbsp;&middot;&nbsp; ABN 67 645 153 359 &nbsp;&middot;&nbsp; All Prices Include GST &nbsp;&middot;&nbsp; Canning Vale WA 6155</div>
+    <div class="footer-links"><a href="terms.html">Terms and Conditions</a></div>
   </div>
 </footer>
 
 <!-- WHATSAPP BUBBLE -->
-<a
-  href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair."
-  target="_blank" rel="noopener noreferrer"
-  class="wa-bubble"
-  aria-label="Chat with FixMyPC Perth on WhatsApp"
->
+<a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener noreferrer" class="wa-bubble" aria-label="Chat with FixMyPC Perth on WhatsApp">
   <svg width="30" height="30" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>
 </a>
 
-<!-- JAVASCRIPT — unchanged from original -->
+<!-- ============================================================
+     JAVASCRIPT — quiz JS unchanged + new scroll dot JS
+     ============================================================ -->
 <script>
 (function () {
 'use strict';
@@ -2223,13 +1480,58 @@ function toggleFaq(btn) {
 }
 window.toggleFaq = toggleFaq;
 
+/* ── Scroll dots for card rows ── */
+function initScrollDots(trackId, dotsId) {
+  const track = document.getElementById(trackId);
+  const dotsEl = document.getElementById(dotsId);
+  if (!track || !dotsEl) return;
+
+  const cards = track.querySelectorAll('.info-card');
+  if (cards.length === 0) return;
+
+  // Build dots
+  dotsEl.innerHTML = '';
+  cards.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'scroll-dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', 'Go to card ' + (i + 1));
+    dot.addEventListener('click', () => {
+      cards[i].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+    });
+    dotsEl.appendChild(dot);
+  });
+
+  const dots = dotsEl.querySelectorAll('.scroll-dot');
+
+  // Update active dot on scroll
+  track.addEventListener('scroll', () => {
+    const scrollLeft = track.scrollLeft;
+    const cardWidth  = cards[0].offsetWidth + 14; // gap
+    const active     = Math.round(scrollLeft / cardWidth);
+    dots.forEach((d, i) => d.classList.toggle('active', i === active));
+  }, { passive: true });
+}
+
+initScrollDots('fix-track',   'fix-dots');
+initScrollDots('slow-track',  'slow-dots');
+initScrollDots('virus-track', 'virus-dots');
+
+/* ── Scroll progress bar ── */
+const progressBar = document.createElement('div');
+progressBar.style.cssText = 'position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--teal));z-index:10000;width:0%;transition:width 0.1s;';
+document.body.appendChild(progressBar);
+window.addEventListener('scroll', () => {
+  const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  progressBar.style.width = (winScroll / height) * 100 + '%';
+}, { passive: true });
+
 /* ══════════════════════════════════════════
-   QUIZ DATA
+   QUIZ DATA — completely unchanged
 ══════════════════════════════════════════ */
 const QUESTIONS = [
   {
-    id: 1,
-    tag: 'Question 1 of 5',
+    id: 1, tag: 'Question 1 of 5',
     text: 'What is the main symptom that brought you here?',
     hint: 'Pick the one that best describes your situation right now.',
     type: 'single', layout: 'list',
@@ -2243,8 +1545,7 @@ const QUESTIONS = [
     ]
   },
   {
-    id: 2,
-    tag: 'Question 2 of 5',
+    id: 2, tag: 'Question 2 of 5',
     text: 'How did the problem start?',
     hint: 'The pattern of onset tells us a lot about the likely cause.',
     type: 'single', layout: 'list',
@@ -2257,8 +1558,7 @@ const QUESTIONS = [
     ]
   },
   {
-    id: 3,
-    tag: 'Question 3 of 5',
+    id: 3, tag: 'Question 3 of 5',
     text: 'Which of these are you also experiencing?',
     hint: 'Select everything that applies. This is the most important question for accuracy.',
     type: 'multi', layout: 'list',
@@ -2273,8 +1573,7 @@ const QUESTIONS = [
     ]
   },
   {
-    id: 4,
-    tag: 'Question 4 of 5',
+    id: 4, tag: 'Question 4 of 5',
     text: 'How old is the computer?',
     hint: 'An estimate is fine. Age is a major factor in narrowing down the cause.',
     type: 'single', layout: 'two-col',
@@ -2286,8 +1585,7 @@ const QUESTIONS = [
     ]
   },
   {
-    id: 5,
-    tag: 'Question 5 of 5',
+    id: 5, tag: 'Question 5 of 5',
     text: 'What do you mainly use your PC for?',
     hint: 'This helps us tailor the urgency and recommendation to your situation.',
     type: 'single', layout: 'two-col',
@@ -2310,39 +1608,32 @@ function scoreAnswers(answers) {
   const extras  =  answers[2] || [];
   const age     = (answers[3] || [])[0] || '';
   const use     = (answers[4] || [])[0] || '';
-
-  if (main === 'slow')  { s.ssd += 30; s.windows += 20; s.virus += 10; }
-  if (main === 'dead')  { s.hardware += 50; s.ssd += 10; }
-  if (main === 'crash') { s.hardware += 20; s.windows += 20; s.heat += 20; }
-  if (main === 'virus') { s.virus += 55; }
-  if (main === 'heat')  { s.heat += 55; }
-  if (main === 'other') { s.general += 20; }
-
-  if (timing === 'sudden')   { s.hardware += 25; s.virus += 10; }
-  if (timing === 'gradual')  { s.ssd += 20; s.windows += 15; s.heat += 10; }
-  if (timing === 'months')   { s.windows += 20; s.ssd += 15; s.virus += 10; }
-  if (timing === 'always')   { s.windows += 25; s.hardware += 10; }
-  if (timing === 'software') { s.windows += 30; s.virus += 15; }
-
-  if (extras.includes('bsod'))     { s.hardware += 25; s.heat += 15; s.windows += 10; }
-  if (extras.includes('noise'))    { s.hardware += 35; s.heat += 20; }
-  if (extras.includes('popups'))   { s.virus += 40; }
-  if (extras.includes('slowboot')) { s.ssd += 30; s.windows += 15; s.virus += 10; }
-  if (extras.includes('files'))    { s.hardware += 30; s.ssd += 15; }
-  if (extras.includes('shutdown')) { s.heat += 30; s.hardware += 20; }
-
-  if (age === 'new')    { s.virus += 10; s.windows += 10; s.hardware += 5; }
-  if (age === 'mid')    { s.ssd += 10; s.windows += 10; }
-  if (age === 'old')    { s.ssd += 25; s.heat += 10; s.windows += 5; }
-  if (age === 'ancient'){ s.ssd += 35; s.hardware += 15; s.heat += 10; }
-
-  const urgencyBonus = use === 'work' ? 1.15 : use === 'gaming' ? 1.05 : 1.0;
+  if (main==='slow')  { s.ssd+=30; s.windows+=20; s.virus+=10; }
+  if (main==='dead')  { s.hardware+=50; s.ssd+=10; }
+  if (main==='crash') { s.hardware+=20; s.windows+=20; s.heat+=20; }
+  if (main==='virus') { s.virus+=55; }
+  if (main==='heat')  { s.heat+=55; }
+  if (main==='other') { s.general+=20; }
+  if (timing==='sudden')   { s.hardware+=25; s.virus+=10; }
+  if (timing==='gradual')  { s.ssd+=20; s.windows+=15; s.heat+=10; }
+  if (timing==='months')   { s.windows+=20; s.ssd+=15; s.virus+=10; }
+  if (timing==='always')   { s.windows+=25; s.hardware+=10; }
+  if (timing==='software') { s.windows+=30; s.virus+=15; }
+  if (extras.includes('bsod'))     { s.hardware+=25; s.heat+=15; s.windows+=10; }
+  if (extras.includes('noise'))    { s.hardware+=35; s.heat+=20; }
+  if (extras.includes('popups'))   { s.virus+=40; }
+  if (extras.includes('slowboot')) { s.ssd+=30; s.windows+=15; s.virus+=10; }
+  if (extras.includes('files'))    { s.hardware+=30; s.ssd+=15; }
+  if (extras.includes('shutdown')) { s.heat+=30; s.hardware+=20; }
+  if (age==='new')    { s.virus+=10; s.windows+=10; s.hardware+=5; }
+  if (age==='mid')    { s.ssd+=10; s.windows+=10; }
+  if (age==='old')    { s.ssd+=25; s.heat+=10; s.windows+=5; }
+  if (age==='ancient'){ s.ssd+=35; s.hardware+=15; s.heat+=10; }
+  const urgencyBonus = use==='work' ? 1.15 : use==='gaming' ? 1.05 : 1.0;
   DIAG_KEYS.forEach(k => s[k] = Math.round(s[k] * urgencyBonus));
-
-  if (main === 'virus' && extras.includes('popups')) s.virus += 30;
-  if (main === 'dead')  s.hardware = Math.max(s.hardware, 70);
-  if (extras.includes('noise') && extras.includes('files')) s.hardware += 20;
-
+  if (main==='virus' && extras.includes('popups')) s.virus+=30;
+  if (main==='dead')  s.hardware = Math.max(s.hardware, 70);
+  if (extras.includes('noise') && extras.includes('files')) s.hardware+=20;
   return s;
 }
 
@@ -2431,7 +1722,6 @@ const DIAG_NAMES = {
   general: 'General diagnostic and tune-up',
 };
 
-/* ── Quiz state ── */
 let currentQ = 0;
 let answers  = {};
 
@@ -2448,15 +1738,8 @@ function buildStepBar(active) {
   QUESTIONS.forEach((q, i) => {
     const isDone   = i < active;
     const isActive = i === active;
-    html += `<div class="step-node">
-      <div class="step-circle ${isDone ? 'done' : isActive ? 'active' : ''}">
-        <span class="step-num">${i+1}</span>
-      </div>
-      <span class="step-label ${isDone ? 'done' : isActive ? 'active' : ''}">${labels[i]}</span>
-    </div>`;
-    if (i < QUESTIONS.length - 1) {
-      html += `<div class="step-connector ${isDone ? 'done' : ''}"><div class="conn-fill"></div></div>`;
-    }
+    html += `<div class="step-node"><div class="step-circle ${isDone?'done':isActive?'active':''}"><span class="step-num">${i+1}</span></div><span class="step-label ${isDone?'done':isActive?'active':''}">${labels[i]}</span></div>`;
+    if (i < QUESTIONS.length - 1) html += `<div class="step-connector ${isDone?'done':''}"><div class="conn-fill"></div></div>`;
   });
   stepBarEl.innerHTML = html;
 }
@@ -2474,7 +1757,7 @@ function updateConf(qIndex) {
 btnStart.addEventListener('click', () => {
   document.querySelector('.quiz-hero').style.display = 'none';
   document.querySelector('.trust-strip').style.display = 'none';
-  stepBarEl.style.display  = 'flex';
+  stepBarEl.style.display   = 'flex';
   confMeterEl.style.display = 'block';
   buildStepBar(0);
   renderQuestion(0);
@@ -2482,39 +1765,29 @@ btnStart.addEventListener('click', () => {
 });
 
 function renderQuestion(index) {
-  const q      = QUESTIONS[index];
+  const q       = QUESTIONS[index];
   const isMulti = q.type === 'multi';
   const isLast  = index === QUESTIONS.length - 1;
   const gridCls = q.layout === 'two-col' ? 'options-two-col' : 'options-list';
   const multiCls = isMulti ? ' multi' : '';
-
   buildStepBar(index);
   updateConf(index);
-
   const optionsHtml = q.options.map(opt => `
-    <button class="option-btn${multiCls}" data-value="${opt.value}" onclick="selectOpt(this, ${isMulti})" aria-pressed="false">
+    <button class="option-btn${multiCls}" data-value="${opt.value}" onclick="selectOpt(this,${isMulti})" aria-pressed="false">
       <span class="opt-icon" aria-hidden="true">${opt.icon}</span>
-      <span class="opt-text">
-        <span class="opt-label">${opt.label}</span>
-        <span class="opt-sub">${opt.sub}</span>
-      </span>
+      <span class="opt-text"><span class="opt-label">${opt.label}</span><span class="opt-sub">${opt.sub}</span></span>
       <span class="opt-check" aria-hidden="true"></span>
     </button>`).join('');
-
   questionEl.innerHTML = `
     <div class="question-card q-enter" role="group" aria-labelledby="q-text-${index}">
-      <div class="q-meta">
-        <span class="q-tag">${q.tag}</span>
-      </div>
+      <div class="q-meta"><span class="q-tag">${q.tag}</span></div>
       <div class="q-text" id="q-text-${index}">${q.text}</div>
       <div class="q-hint">${q.hint}</div>
-      <div class="${gridCls}" id="opts-grid" role="${isMulti ? 'group' : 'radiogroup'}" aria-label="Answer options">${optionsHtml}</div>
+      <div class="${gridCls}" id="opts-grid" role="${isMulti?'group':'radiogroup'}" aria-label="Answer options">${optionsHtml}</div>
       <div class="next-area">
-        <button class="btn-next" id="btn-next" disabled onclick="nextQ()" aria-label="${isLast ? 'Get my diagnosis' : 'Next question'}">
+        <button class="btn-next" id="btn-next" disabled onclick="nextQ()" aria-label="${isLast?'Get my diagnosis':'Next question'}">
           ${isLast ? 'Get my diagnosis' : 'Next question'}
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
         ${isMulti ? `<button class="btn-skip-q" onclick="skipMulti()" aria-label="Skip this question">Skip this question</button>` : ''}
       </div>
@@ -2527,8 +1800,7 @@ function selectOpt(btn, isMulti) {
   if (isMulti) {
     if (btn.dataset.value === 'none') {
       all.forEach(b => { b.classList.remove('selected'); b.setAttribute('aria-pressed','false'); });
-      btn.classList.add('selected');
-      btn.setAttribute('aria-pressed','true');
+      btn.classList.add('selected'); btn.setAttribute('aria-pressed','true');
     } else {
       const noneBtn = grid.querySelector('[data-value="none"]');
       if (noneBtn) { noneBtn.classList.remove('selected'); noneBtn.setAttribute('aria-pressed','false'); }
@@ -2537,17 +1809,13 @@ function selectOpt(btn, isMulti) {
     }
   } else {
     all.forEach(b => { b.classList.remove('selected'); b.setAttribute('aria-pressed','false'); });
-    btn.classList.add('selected');
-    btn.setAttribute('aria-pressed','true');
+    btn.classList.add('selected'); btn.setAttribute('aria-pressed','true');
   }
   document.getElementById('btn-next').disabled = grid.querySelectorAll('.option-btn.selected').length === 0;
 }
 window.selectOpt = selectOpt;
 
-function skipMulti() {
-  answers[currentQ] = [];
-  advance();
-}
+function skipMulti() { answers[currentQ] = []; advance(); }
 window.skipMulti = skipMulti;
 
 function nextQ() {
@@ -2561,17 +1829,10 @@ window.nextQ = nextQ;
 function advance() {
   const card = questionEl.querySelector('.question-card');
   if (card) {
-    card.classList.remove('q-enter');
-    card.classList.add('q-exit');
-    setTimeout(() => {
-      currentQ++;
-      if (currentQ >= QUESTIONS.length) showResult();
-      else renderQuestion(currentQ);
-    }, 220);
+    card.classList.remove('q-enter'); card.classList.add('q-exit');
+    setTimeout(() => { currentQ++; if (currentQ >= QUESTIONS.length) showResult(); else renderQuestion(currentQ); }, 220);
   } else {
-    currentQ++;
-    if (currentQ >= QUESTIONS.length) showResult();
-    else renderQuestion(currentQ);
+    currentQ++; if (currentQ >= QUESTIONS.length) showResult(); else renderQuestion(currentQ);
   }
 }
 
@@ -2579,7 +1840,6 @@ function showResult() {
   questionEl.innerHTML = '';
   stepBarEl.style.display   = 'none';
   confMeterEl.style.display = 'none';
-
   const scores   = scoreAnswers(answers);
   const ranked   = getRanked(scores);
   const topKey   = ranked[0].key;
@@ -2588,51 +1848,27 @@ function showResult() {
   const use      = (answers[4] || [])[0] || 'high';
   const urgency  = d.urgency[use] || d.urgency.high;
   const waLink   = `https://wa.me/61452573701?text=${encodeURIComponent(d.waMsg)}`;
-
   const confLabel = conf >= 85 ? 'Very high confidence' : conf >= 65 ? 'High confidence' : conf >= 45 ? 'Moderate confidence' : 'Possible match';
   const sevLabel  = d.severity === 'high' ? 'Needs urgent attention' : d.severity === 'medium' ? 'Needs attention soon' : 'Worth getting checked';
-
-  const alsoKeys = (d.also || []).filter(k => k !== topKey && scores[k] > 0).slice(0, 2);
-  const alsoHtml = alsoKeys.length > 0 ? `
-    <div class="also-consider">
-      <div class="ac-label">Also possible based on your answers</div>
-      ${alsoKeys.map(k => `<div class="ac-item">${DIAG_NAMES[k]}</div>`).join('')}
-    </div>` : '';
-
+  const alsoKeys  = (d.also || []).filter(k => k !== topKey && scores[k] > 0).slice(0, 2);
+  const alsoHtml  = alsoKeys.length > 0 ? `<div class="also-consider"><div class="ac-label">Also possible based on your answers</div>${alsoKeys.map(k=>`<div class="ac-item">${DIAG_NAMES[k]}</div>`).join('')}</div>` : '';
   resultEl.innerHTML = `
     <div class="result-card sev-${d.severity}" role="region" aria-label="Your PC diagnosis result">
       <div class="result-glow" aria-hidden="true"></div>
       <div class="result-top">
         <div class="result-icon" aria-hidden="true">${d.icon}</div>
-        <div>
-          <div class="result-eyebrow">Your PC Diagnosis</div>
-          <div class="result-title">${d.title}</div>
-        </div>
+        <div><div class="result-eyebrow">Your PC Diagnosis</div><div class="result-title">${d.title}</div></div>
       </div>
-      <div class="sev-badge ${d.severity}" role="status">
-        <span class="badge-dot" aria-hidden="true"></span>${sevLabel}
-      </div>
+      <div class="sev-badge ${d.severity}" role="status"><span class="badge-dot" aria-hidden="true"></span>${sevLabel}</div>
       <div class="result-conf-bar">
-        <div class="rcb-header">
-          <span>Diagnosis confidence</span>
-          <strong>${confLabel} (${conf}%)</strong>
-        </div>
-        <div class="rcb-track">
-          <div class="rcb-fill ${d.severity}" id="rcb-fill" style="width:0%"></div>
-        </div>
+        <div class="rcb-header"><span>Diagnosis confidence</span><strong>${confLabel} (${conf}%)</strong></div>
+        <div class="rcb-track"><div class="rcb-fill ${d.severity}" id="rcb-fill" style="width:0%"></div></div>
       </div>
       <p class="result-desc">${d.desc}</p>
-      <div class="result-points" role="list">
-        ${d.items.map(item => `<div class="rp-item" role="listitem"><span class="rp-dot" aria-hidden="true"></span>${item}</div>`).join('')}
-      </div>
+      <div class="result-points" role="list">${d.items.map(item=>`<div class="rp-item" role="listitem"><span class="rp-dot" aria-hidden="true"></span>${item}</div>`).join('')}</div>
       ${alsoHtml}
       <div class="result-urgency" role="alert">
-        <span class="urg-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-            <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
-            <line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
-          </svg>
-        </span>
+        <span class="urg-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>
         <p class="urg-text"><strong>Heads up:</strong> ${urgency}</p>
       </div>
       <div class="result-ctas">
@@ -2644,35 +1880,17 @@ function showResult() {
       </div>
     </div>
     <div class="result-trust-row" role="list" aria-label="Service guarantees">
-      <div class="rt-item" role="listitem">
-        <div class="rt-icon" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></div>
-        Same or next day turnaround
-      </div>
-      <div class="rt-item" role="listitem">
-        <div class="rt-icon" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 1l1.5 3 3.5.5-2.5 2.5.5 3.5L6 9l-3 1.5.5-3.5L1 4.5l3.5-.5z"/></svg></div>
-        30 day labour warranty
-      </div>
-      <div class="rt-item" role="listitem">
-        <div class="rt-icon" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="6" cy="6" r="5"/><path d="M4 6l1.5 1.5L8 4"/></svg></div>
-        No fix, no fee on data recovery
-      </div>
-      <div class="rt-item" role="listitem">
-        <div class="rt-icon" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 1C3.24 1 1 3.24 1 6s2.24 5 5 5 5-2.24 5-5"/><polyline points="6 3 6 6 8 7"/></svg></div>
-        Canning Vale, Perth based
-      </div>
+      <div class="rt-item" role="listitem"><div class="rt-icon" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></div>Same or next day turnaround</div>
+      <div class="rt-item" role="listitem"><div class="rt-icon" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 1l1.5 3 3.5.5-2.5 2.5.5 3.5L6 9l-3 1.5.5-3.5L1 4.5l3.5-.5z"/></svg></div>30 day labour warranty</div>
+      <div class="rt-item" role="listitem"><div class="rt-icon" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="6" cy="6" r="5"/><path d="M4 6l1.5 1.5L8 4"/></svg></div>No fix, no fee on data recovery</div>
+      <div class="rt-item" role="listitem"><div class="rt-icon" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 1C3.24 1 1 3.24 1 6s2.24 5 5 5 5-2.24 5-5"/><polyline points="6 3 6 6 8 7"/></svg></div>Canning Vale, Perth based</div>
     </div>`;
-
-  setTimeout(() => {
-    const bar = document.getElementById('rcb-fill');
-    if (bar) bar.style.width = conf + '%';
-  }, 300);
-
+  setTimeout(() => { const bar = document.getElementById('rcb-fill'); if (bar) bar.style.width = conf + '%'; }, 300);
   quizSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 function retakeQuiz() {
-  currentQ = 0;
-  answers  = {};
+  currentQ = 0; answers = {};
   resultEl.innerHTML = '';
   document.querySelector('.quiz-hero').style.display  = '';
   document.querySelector('.trust-strip').style.display = '';
@@ -2680,35 +1898,8 @@ function retakeQuiz() {
   confMeterEl.style.display = 'none';
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
-  window.retakeQuiz = retakeQuiz;
+window.retakeQuiz = retakeQuiz;
 
-  // Premium UI Enhancements
-  document.addEventListener('DOMContentLoaded', () => {
-    // Scroll Progress Bar
-    const progressBar = document.createElement('div');
-    progressBar.style.cssText = 'position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--teal));z-index:10000;width:0%;transition:width 0.1s;';
-    document.body.appendChild(progressBar);
-
-    window.addEventListener('scroll', () => {
-      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const scrolled = (winScroll / height) * 100;
-      progressBar.style.width = scrolled + '%';
-    });
-
-    // Fade-up Animations
-    const observerOptions = { threshold: 0.1 };
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, observerOptions);
-
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-  });
 })();
 </script>
 </body>
