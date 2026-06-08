@@ -557,25 +557,27 @@ a    { color:inherit; }
 /* ============================================================
    SERVICE AREAS
    ============================================================ */
-    .area-pill--link {
-      text-decoration: none;
-      color: inherit;
-      cursor: pointer;
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
+a.area-pill--link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
 
-    .area-pill--link:hover {
-      border-color: var(--blue);
-      box-shadow: 0 2px 12px rgba(21, 96, 255, 0.12);
-    }
+a.area-pill--link:hover {
+  border-color: var(--blue);
+  box-shadow: 0 2px 12px rgba(21, 96, 255, 0.12);
+}
 
-    .area-pill--link:hover .area-dot {
-      background: var(--blue);
-    }
+a.area-pill--link:hover .area-dot {
+  background: var(--blue);
+}
 
-    .area-pill--link:hover .area-name {
-      color: var(--blue);
-    }
+a.area-pill--link:hover .area-name {
+  color: var(--blue);
+}
 
 /* ============================================================
    CTA SECTION
