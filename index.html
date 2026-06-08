@@ -557,18 +557,28 @@ a    { color:inherit; }
 /* ============================================================
    SERVICE AREAS
    ============================================================ */
+  .area-pill,
 a.area-pill--link {
   display: flex;
   align-items: center;
+  gap: 10px;
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+a.area-pill--link {
   text-decoration: none;
   color: inherit;
   cursor: pointer;
-  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 a.area-pill--link:hover {
   border-color: var(--blue);
   box-shadow: 0 2px 12px rgba(21, 96, 255, 0.12);
+  transform: translateY(-2px);
 }
 
 a.area-pill--link:hover .area-dot {
@@ -577,6 +587,29 @@ a.area-pill--link:hover .area-dot {
 
 a.area-pill--link:hover .area-name {
   color: var(--blue);
+}
+
+.area-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--blue-mid);
+  flex-shrink: 0;
+  transition: background 0.2s;
+}
+
+.area-name {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--ink);
+  transition: color 0.2s;
+}
+
+.areas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 10px;
+  margin-top: 2.5rem;
 }
 
 /* ============================================================
