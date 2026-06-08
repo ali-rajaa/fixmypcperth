@@ -333,7 +333,7 @@ a    { color:inherit; }
 /* ============================================================
    DESKTOP NAV
    ============================================================ */
-.desk-nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; align-items:center; justify-content:space-between; padding:0 2rem; height:var(--nav-h); background:rgba(255,255,255,0.88); backdrop-filter:blur(30px) saturate(200%); -webkit-backdrop-filter:blur(30px) saturate(200%); border-bottom:1px solid rgba(226,232,240,0.5); box-shadow:0 8px 32px rgba(0,0,0,0.05); }
+.desk-nav { position:fixed; top:3; left:0; right:0; z-index:200; display:flex; align-items:center; justify-content:space-between; padding:0 2rem; height:var(--nav-h); background:rgba(255,255,255,0.88); backdrop-filter:blur(30px) saturate(200%); -webkit-backdrop-filter:blur(30px) saturate(200%); border-bottom:1px solid rgba(226,232,240,0.5); box-shadow:0 8px 32px rgba(0,0,0,0.05); }
 
 .nav-logo { display:flex; align-items:center; gap:10px; text-decoration:none; flex-shrink:0; }
 .logo-mark { width:38px; height:38px; border-radius:10px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
@@ -769,16 +769,20 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
      DESKTOP NAV
      ============================================================ -->
 <nav class="desk-nav" aria-label="Main navigation">
-  <a href="index.html" class="nav-logo" aria-label="FixMyPC Perth Home">
-    <div class="logo-mark"><img src="logo.png" alt="FixMyPC Perth - Computer Repair Specialist" width="38" height="38" loading="lazy"></div>
-    <span class="logo-name">FixMyPC <em>Perth</em></span>
-  </a>
-  <div class="nav-right">
-    <a href="pricing.html" class="nav-pill pill-ghost">Pricing</a>
-    <a href="business-it-support.html" class="nav-pill pill-ghost">Business IT Support</a>
-    <a href="quiz.html" class="nav-pill pill-ghost">Free PC Diagnostic</a>
-    <a href="blog.html" class="nav-pill pill-ghost">Tech Tips</a>
-    <a href="reviews.html" class="nav-pill pill-ghost">Reviews &amp; FAQ</a>
+  <div style="display:flex;align-items:center;justify-content:space-between;width:100%;max-width:1100px;margin:0 auto;">
+    <a href="index.html" class="nav-logo" aria-label="FixMyPC Perth – Home">
+      <div class="logo-mark">
+        <img src="logo.png" alt="FixMyPC Perth Computer Repair Logo" width="40" height="40" loading="lazy">
+      </div>
+      <span class="logo-name">FixMyPC <em>Perth</em></span>
+    </a>
+    <div class="nav-right">
+      <a href="pricing.html"              class="nav-pill pill-ghost">Pricing</a>
+      <a href="business-it-support.html" class="nav-pill pill-ghost">Business IT Support</a>
+      <a href="quiz.html"                class="nav-pill pill-ghost">Free PC Diagnostic</a>
+      <a href="blog.html"                class="nav-pill pill-ghost">Tech Tips</a>
+      <a href="reviews.html"             class="nav-pill pill-ghost">Reviews &amp; FAQ</a>
+    </div>
   </div>
 </nav>
 
