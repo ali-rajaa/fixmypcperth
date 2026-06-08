@@ -557,11 +557,25 @@ a    { color:inherit; }
 /* ============================================================
    SERVICE AREAS
    ============================================================ */
-.areas-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:10px; margin-top:2rem; }
-.area-pill { background:var(--bg); border:1.5px solid var(--border); border-radius:10px; padding:0.9rem 1rem; display:flex; align-items:center; gap:8px; transition:border-color 0.2s,background 0.2s,transform 0.15s; }
-.area-pill:hover { border-color:var(--blue); background:var(--blue-lt); transform:translateY(-2px); }
-.area-dot { width:6px; height:6px; border-radius:50%; background:var(--blue); flex-shrink:0; }
-.area-name { font-family:var(--display); font-size:13px; font-weight:600; color:var(--ink); }
+    .area-pill--link {
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .area-pill--link:hover {
+      border-color: var(--blue);
+      box-shadow: 0 2px 12px rgba(21, 96, 255, 0.12);
+    }
+
+    .area-pill--link:hover .area-dot {
+      background: var(--blue);
+    }
+
+    .area-pill--link:hover .area-name {
+      color: var(--blue);
+    }
 
 /* ============================================================
    CTA SECTION
@@ -1256,15 +1270,15 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
       <p class="s-sub">Based in Canning Vale, we serve the entire southern Perth corridor. Drop off your PC or laptop — usually back to you next day. Remote support available Australia-wide.</p>
     </div>
     <div class="areas-grid fade-up">
-      <div class="area-pill"><div class="area-dot"></div><span class="area-name">Canning Vale</span></div>
+      <a href="/suburbs/canning-vale.html" class="area-pill area-pill--link"><div class="area-dot"></div><span class="area-name">Canning Vale</span></a>
       <div class="area-pill"><div class="area-dot"></div><span class="area-name">Cockburn</span></div>
-      <div class="area-pill"><div class="area-dot"></div><span class="area-name">Willetton</span></div>
-      <div class="area-pill"><div class="area-dot"></div><span class="area-name">Jandakot</span></div>
-      <div class="area-pill"><div class="area-dot"></div><span class="area-name">Thornlie</span></div>
-      <div class="area-pill"><div class="area-dot"></div><span class="area-name">Cannington</span></div>
+      <a href="/suburbs/willetton.html" class="area-pill area-pill--link"><div class="area-dot"></div><span class="area-name">Willetton</span></a>
+      <a href="/suburbs/jandakot.html" class="area-pill area-pill--link"><div class="area-dot"></div><span class="area-name">Jandakot</span></a>
+      <a href="/suburbs/thornlie.html" class="area-pill area-pill--link"><div class="area-dot"></div><span class="area-name">Thornlie</span></a>
+      <a href="/suburbs/cannington.html" class="area-pill area-pill--link"><div class="area-dot"></div><span class="area-name">Cannington</span></a>
       <div class="area-pill"><div class="area-dot"></div><span class="area-name">Harrisdale</span></div>
       <div class="area-pill"><div class="area-dot"></div><span class="area-name">Atwell</span></div>
-      <div class="area-pill"><div class="area-dot"></div><span class="area-name">Gosnells</span></div>
+      <a href="/suburbs/gosnells.html" class="area-pill area-pill--link"><div class="area-dot"></div><span class="area-name">Gosnells</span></a>
       <div class="area-pill"><div class="area-dot"></div><span class="area-name">Armadale</span></div>
       <div class="area-pill"><div class="area-dot"></div><span class="area-name">Byford</span></div>
       <div class="area-pill"><div class="area-dot"></div><span class="area-name">Piara Waters</span></div>
