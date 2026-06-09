@@ -300,14 +300,13 @@
   .faq-a.open { display: block; }
 
   /* FOOTER NAV */
-  .post-footer-nav { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 3rem; padding-top: 2rem; border-top: 1.5px solid var(--border); flex-wrap: wrap; }
-  .post-footer-link { font-size: 13px; font-weight: 700; color: var(--blue); text-decoration: none; display: flex; align-items: center; gap: 4px; }
-  .post-footer-link:hover { text-decoration: underline; }
-
-  footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.75rem 2rem; margin-top: 4rem; }
-  .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
-  .footer-copy { font-size: 12px; color: var(--muted2); }
-  .footer-note { font-size: 12px; color: var(--muted2); }
+ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.75rem 2rem; }
+.footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.footer-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; flex-shrink: 0; }
+.footer-copy { font-size: 12px; color: var(--muted2); line-height: 1.6; }
+.footer-links { display: flex; gap: 1.25rem; }
+.footer-links a { font-size: 12px; color: var(--muted2); text-decoration: none; transition: color 0.15s; }
+.footer-links a:hover { color: var(--blue); }
 
   @media (max-width: 720px) {
     nav { display: none; }
@@ -317,7 +316,7 @@
     .post-h1 { font-size: clamp(1.5rem, 6vw, 2rem); }
     .inline-cta { padding: 1.5rem; }
     footer { padding: 1.25rem 1rem; }
-    .footer-inner { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+    .footer-inner { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
     .trust-bar { flex-direction: column; }
     .price-table { font-size: 13px; }
     .price-table thead th, .price-table tbody td { padding: 0.6rem 0.75rem; }
@@ -662,14 +661,17 @@
 
 </div>
 
+<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
-    <a href="../index.html" class="nav-logo">
-      <div class="logo-mark"><img src="../logo.png" alt="FixMyPC Perth logo"></div>
+    <a href="../index.html" class="footer-logo" aria-label="FixMyPC Perth Home">
+      <div class="logo-mark"><img src="../logo.png" alt="FixMyPC Perth - Computer Repair Specialist" width="38" height="38" loading="lazy"></div>
       <span class="logo-name" style="font-size:14px">FixMyPC <em>Perth</em></span>
     </a>
-    <div class="footer-copy">&copy; 2026 FixMyPC Perth, Perth WA</div>
-    <div class="footer-note">30 day labour warranty on all services</div>
+    <div class="footer-copy">© 2026 FixMyPC Perth · ABN 67 645 153 359 · All Prices Include GST · Canning Vale WA 6155</div>
+    <div class="footer-links">
+      <a href="../terms.html">Terms and Conditions</a>
+    </div>
   </div>
 </footer>
 
