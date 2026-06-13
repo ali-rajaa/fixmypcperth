@@ -672,6 +672,20 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
 #scroll-bar { position:fixed; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,#1560FF,#00CFFF,#22C55E); transform:scaleX(0); transform-origin:left; z-index:9999; }
 
 /* ============================================================
+   ARTICLE / GUIDE CONTENT BLOCK
+   ============================================================ */
+.guide-block { max-width:760px; }
+.guide-block h3 { font-family:var(--display); font-size:1.35rem; font-weight:800; letter-spacing:-0.5px; color:var(--ink); margin:2.5rem 0 0.85rem; }
+.guide-block h3:first-of-type { margin-top:0.5rem; }
+.guide-block h4 { font-family:var(--display); font-size:1.05rem; font-weight:700; color:var(--ink2); margin:1.5rem 0 0.5rem; }
+.guide-block p { font-size:15.5px; color:var(--ink2); line-height:1.85; margin-bottom:1rem; }
+.guide-block ul { margin:0 0 1.25rem 1.25rem; }
+.guide-block li { font-size:15.5px; color:var(--ink2); line-height:1.85; margin-bottom:0.4rem; }
+.guide-block strong { color:var(--ink); }
+.guide-block a { color:var(--blue); font-weight:600; text-decoration:none; border-bottom:1.5px solid var(--blue-mid); }
+.guide-block a:hover { border-color:var(--blue); }
+
+/* ============================================================
    RESPONSIVE — TABLET (≤ 900px)
    ============================================================ */
 @media (max-width:900px) {
@@ -739,6 +753,8 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
   .svc-links-grid { gap:6px; }
   .svc-link-pill { font-size:12px; padding:5px 12px; }
   .wa-bubble { bottom:20px; right:16px; width:52px; height:52px; }
+  .guide-block h3 { font-size:1.2rem; }
+  .guide-block p, .guide-block li { font-size:14.5px; }
 }
 
 @media (max-width:540px) {
@@ -1208,6 +1224,94 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
     </div>
   </div>
 </section>
+
+<!-- ============================================================
+     COMPUTER REPAIR PERTH — IN-DEPTH GUIDE
+     New long-form content section targeting high-impression,
+     low-position queries from Search Console: "computer repair
+     perth", "pc repair in perth", "slow computer / pc" cluster,
+     "computer virus removal perth", "business it support perth",
+     "laptop repair perth", "data recovery perth" and related cost
+     queries. Reuses existing typography classes only.
+     ============================================================ -->
+<section class="section section-alt" aria-label="Computer repair Perth guide and FAQs">
+  <div class="wrap">
+    <div class="fade-up">
+      <span class="s-eyebrow">Local Guide</span>
+      <h2 class="s-title">Computer Repair Perth: <span class="accent">The Complete Local Guide</span></h2>
+      <p class="s-sub">Everything Perth residents and small businesses ask us before booking a repair — written by the team that actually does the work in Canning Vale.</p>
+    </div>
+
+    <div class="guide-block fade-up" style="margin-top:2.5rem;">
+
+      <p>If you've typed "computer repair Perth" or "PC repair Perth" into Google, you've probably noticed two things: there are a lot of options, and almost none of them tell you what's actually wrong with your computer before you hand it over. That's the gap FixMyPC Perth was built to close. We're a Canning Vale based computer repair business that services the entire southern Perth corridor — Cockburn, Willetton, Jandakot, Thornlie, Cannington, Harrisdale, Atwell, Gosnells, Armadale, Byford and beyond — and this guide walks through the most common questions we get about computer repairs, slow PCs, virus removal, laptop repair, data recovery and small business IT support in Perth.</p>
+
+      <h3>Computer Repairs Perth: What "Repair" Actually Covers</h3>
+      <p>When people search for <strong>computer repairs Perth</strong> or <strong>computer repair in Perth</strong>, they're usually dealing with one of a handful of problems: a computer that won't turn on, a computer that's painfully slow, a blue screen or constant crashing, a virus or malware infection, a cracked laptop screen, or a hard drive that's failed and taken important files with it. Every one of these is something we see weekly in our Canning Vale workshop, and every one of them gets the same starting point — a proper diagnostic before any work begins.</p>
+      <p>A lot of "PC repair Perth" services either guess at the problem or replace parts until something works, which can mean paying for components you didn't need. Our approach is the opposite: full diagnostic first, written report on exactly what's wrong, fixed-price quote, and only then do we start work. For most repairs — virus removal, SSD upgrades, RAM upgrades, software issues, Windows reinstalls — turnaround is same day or next day. More involved jobs like data recovery or motherboard-level repairs can take one to three days depending on parts availability.</p>
+
+      <h3>Why Is My Computer So Slow? The Real Causes</h3>
+      <p>"Why is my computer so slow" and "why is my PC so slow" are two of the most common things people search before they ever think about a repair shop — and honestly, in a lot of cases the fix doesn't need a technician at all. Here are the seven causes we see most often when diagnosing a slow PC or laptop in Perth:</p>
+      <ul>
+        <li><strong>Too many startup programs.</strong> Software you installed months ago is often still loading every time you turn the computer on, quietly eating RAM and CPU before you've opened a single window.</li>
+        <li><strong>A nearly full hard drive.</strong> Once a drive — especially an older spinning hard disk — gets above about 85% full, Windows slows down significantly because it has nowhere to write temporary files.</li>
+        <li><strong>Malware or adware running in the background.</strong> Infections don't always show obvious symptoms like pop-ups; sometimes the only sign is a computer that's mysteriously sluggish, especially when browsing.</li>
+        <li><strong>Not enough RAM for what you're doing.</strong> If you've got a browser open with 30 tabs, Office, and a video call all running on 8GB of RAM, the computer is constantly swapping memory to disk — and that's painfully slow.</li>
+        <li><strong>An old spinning hard drive instead of an SSD.</strong> This is the single biggest factor we see. A computer with a traditional hard drive can take two to three minutes to boot; the same computer with an SSD often boots in under fifteen seconds.</li>
+        <li><strong>Overheating.</strong> Dust build-up inside laptops and desktops causes the CPU to throttle its own speed to avoid overheating — which feels exactly like a slow computer, because it is one (deliberately, by design).</li>
+        <li><strong>A Windows installation that's accumulated years of junk.</strong> Registry bloat, leftover driver versions, failed updates and corrupted system files all add up. Sometimes the cleanest fix really is a fresh Windows install with your files backed up first.</li>
+      </ul>
+      <p>If you want to dig into this in more detail, our <a href="blog/why-is-my-pc-so-slow.html">full guide on why your PC is slow</a> walks through how to check each of these yourself using Task Manager and free tools, before you spend a cent on a repair.</p>
+
+      <h4>How to Fix a Slow Computer Yourself (Before You Book a Repair)</h4>
+      <p>If your computer is slow and unresponsive, here's the order we'd check things in, starting with the free options:</p>
+      <ul>
+        <li>Open Task Manager (Ctrl + Shift + Esc) and sort by CPU and Memory to see what's actually using your resources right now.</li>
+        <li>Go into Startup Apps and disable anything you don't recognise or don't need running constantly.</li>
+        <li>Check your free disk space — aim to keep at least 15-20% of your main drive free.</li>
+        <li>Run a full scan with a reputable free tool like Malwarebytes to rule out malware.</li>
+        <li>Check Windows Update is fully up to date — sometimes a stuck update is silently consuming resources.</li>
+      </ul>
+      <p>If you've done all of that and the computer is still slow, the hardware itself is usually the limiting factor — most commonly an old hard drive or insufficient RAM. That's where an <strong>SSD upgrade</strong> (from $65 labour, you can supply the drive or we can) makes the biggest difference of almost any single repair we do. Customers consistently tell us it feels like a brand new computer.</p>
+
+      <h3>Computer Virus Removal Perth: Signs Your PC Is Infected</h3>
+      <p>Searches for <strong>computer virus removal Perth</strong> and "how do I know if my computer has a virus" spike constantly, and for good reason — modern malware is often designed to be invisible. Common signs include: your browser homepage or search engine changed without you doing it, new toolbars or extensions you didn't install, pop-ups appearing even when you're not browsing, programs opening or closing on their own, your antivirus being disabled without your permission, and friends receiving strange messages or emails "from you" that you never sent.</p>
+      <p>Our virus and malware removal service in Perth starts from <strong>$80</strong> and covers a full system scan, removal of viruses, spyware, ransomware and browser hijackers, a full browser cleanup (removing malicious extensions and resetting hijacked settings), and setting up proper antivirus protection so it doesn't come straight back. Most infections are cleared the same day you drop the computer off in Canning Vale.</p>
+
+      <h3>Laptop Repair Perth: Screens, Batteries and Hinges</h3>
+      <p>For <strong>laptop repair Perth</strong> and <strong>laptop repairs Perth</strong> searches, the most common jobs are cracked or dead screens, swollen or dead batteries, broken hinges, and laptops that won't charge. Laptop screen replacement starts from $120 in labour, with parts quoted separately and upfront once we've identified the exact panel your model needs — laptop screens vary a lot between manufacturers and even between different revisions of the same model, so we always confirm the part before ordering. The good news is that laptop screen and battery replacements are usually same-day jobs once the part is in stock.</p>
+
+      <h3>Data Recovery Perth: What to Do If Your Drive Has Failed</h3>
+      <p>If you're searching <strong>data recovery Perth</strong> or "signs your hard drive is failing," the most important thing is to stop using the drive immediately. Continuing to use a failing hard drive — especially one making clicking, grinding or beeping noises — can turn a recoverable situation into a permanent one. Common warning signs of a failing hard drive include unusual noises, files that suddenly become corrupted or won't open, the computer freezing during file transfers, and increasingly frequent "blue screen" crashes.</p>
+      <p>Our data recovery service starts from $149 and is offered on a <strong>no fix, no fee</strong> basis — if we can't recover your photos, documents or files, you don't pay for the recovery attempt. We see this most often with family photo collections, small business accounting files, and university or work documents that weren't backed up anywhere else.</p>
+
+      <h3>Business IT Support Perth: What Small Businesses Actually Need</h3>
+      <p>Searches like <strong>business IT support Perth</strong>, <strong>small business IT support Perth</strong> and <strong>medical IT support Perth</strong> tend to come from business owners who've just had something break at the worst possible time — a server down, a staff PC that won't boot, or an email system that's stopped working. For most small Perth businesses (cafes, retail shops, medical and allied health practices, accountants, trades businesses), the difference between "IT support" and "computer repair" is really about prevention versus reaction.</p>
+      <p>Our managed IT plans start from $149/month and are built around proactive monitoring (so problems get caught before they cause downtime), remote support for day-to-day issues, onsite visits when something needs hands-on attention, managed antivirus across all business devices, and automated cloud backups. There's no lock-in contract — if a plan isn't working for your business, you can cancel with 14 days notice. For businesses that just need help right now rather than an ongoing plan, on-demand remote and onsite support is available from $89, with same-day availability across southern Perth.</p>
+
+      <h3>How Much Does Computer Repair Cost in Perth?</h3>
+      <p>This is one of the most searched questions we see — "how much does computer repair cost," "computer repair rates," "PC repair rates" — and the honest answer is that it depends entirely on what's wrong. That said, here's a realistic breakdown of typical pricing in the Perth market based on what we charge:</p>
+      <ul>
+        <li><strong>PC diagnostic and repair:</strong> from $120, includes a written report before any work starts</li>
+        <li><strong>Virus and malware removal:</strong> from $80, most done same day</li>
+        <li><strong>SSD upgrade (labour):</strong> from $65, you can supply the SSD or we can source one</li>
+        <li><strong>Data recovery:</strong> from $149, no fix no fee</li>
+        <li><strong>Laptop screen replacement (labour):</strong> from $120, parts quoted separately</li>
+        <li><strong>Windows reinstall with data backup:</strong> from $120</li>
+        <li><strong>Gaming PC build/upgrade (labour):</strong> from $80-120 depending on complexity</li>
+        <li><strong>Complete PC Overhaul Package:</strong> $299 — combines virus removal, Windows 11 reinstall, cable management, thermal paste, driver updates, performance tuning and a benchmark report</li>
+      </ul>
+      <p>All prices include GST, and you always get a fixed quote in writing before any work begins — no surprises when you come to collect your PC or laptop.</p>
+
+      <h3>Computer Repair Near Canning Vale and Surrounding Suburbs</h3>
+      <p>We're based in Canning Vale (WA 6155), which puts us within easy reach of Cockburn, Willetton, Jandakot, Thornlie, Cannington, Harrisdale, Atwell, Piara Waters, Southern River, Riverton, Parkwood, Queens Park, Maddington, Leeming, Gosnells, Armadale and Byford. If you've searched "computer repair near me," "PC repair near me" or "laptop repairs near me" from one of these suburbs, dropping off in Canning Vale is usually the fastest option — no appointment needed, and most repairs are ready the same day or the next. We also provide remote support Australia-wide for software, virus removal and network issues that don't require hands-on access to the machine.</p>
+
+      <p>Whatever's going on with your PC or laptop — slow, infected, cracked screen, dead drive, or just acting strange — get in touch via WhatsApp for a free, no-obligation quote. We'll tell you honestly what's wrong and what it'll cost before you commit to anything.</p>
+
+    </div>
+  </div>
+</section>
+
 <!-- ============================================================
      FAQ SECTION — visible on page, matches FAQ schema above
      Drives "People Also Ask" rich results & conversions
