@@ -64,7 +64,6 @@
 
 <!-- ============================================================
      LOCAL BUSINESS SCHEMA
-     FIX: Corrected "$a9" → "$49" in priceRange description
      ============================================================ -->
 <script type="application/ld+json">
 {
@@ -152,8 +151,6 @@
 
 <!-- ============================================================
      FAQ SCHEMA
-     FIX: Corrected "$a9" typo → "$49"
-     FIX: Removed duplicate "How much does computer repair cost" question
      ============================================================ -->
 <script type="application/ld+json">
 {
@@ -228,6 +225,9 @@
 }
 </script>
 
+<!-- ============================================================
+     BREADCRUMB SCHEMA
+     ============================================================ -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -236,6 +236,27 @@
     {"@type":"ListItem","position":1,"name":"Home","item":"https://www.fixmypcperth.com/"},
     {"@type":"ListItem","position":2,"name":"Computer Repair Services Perth","item":"https://www.fixmypcperth.com/pricing.html"},
     {"@type":"ListItem","position":3,"name":"Business IT Support Perth","item":"https://www.fixmypcperth.com/business-it-support.html"}
+  ]
+}
+</script>
+
+<!-- ============================================================
+     SUBURB PAGES SCHEMA — links Google to each suburb page
+     ============================================================ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Computer Repair Perth – Suburb Service Pages",
+  "description": "FixMyPC Perth provides computer repair services across all southern Perth suburbs. Click your suburb for local pricing and service information.",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Computer Repair Canning Vale","url":"https://www.fixmypcperth.com/suburbs/canning-vale.html"},
+    {"@type":"ListItem","position":2,"name":"Computer Repair Cockburn","url":"https://www.fixmypcperth.com/suburbs/cockburn.html"},
+    {"@type":"ListItem","position":3,"name":"Computer Repair Willetton","url":"https://www.fixmypcperth.com/suburbs/willetton.html"},
+    {"@type":"ListItem","position":4,"name":"Computer Repair Jandakot","url":"https://www.fixmypcperth.com/suburbs/jandakot.html"},
+    {"@type":"ListItem","position":5,"name":"Computer Repair Thornlie","url":"https://www.fixmypcperth.com/suburbs/thornlie.html"},
+    {"@type":"ListItem","position":6,"name":"Computer Repair Cannington","url":"https://www.fixmypcperth.com/suburbs/cannington.html"},
+    {"@type":"ListItem","position":7,"name":"Computer Repair Harrisdale","url":"https://www.fixmypcperth.com/suburbs/harrisdale.html"}
   ]
 }
 </script>
@@ -326,7 +347,7 @@ a    { color:inherit; }
 .pill-ghost:hover { border-color: var(--blue); color: var(--blue); transform: none; opacity: 1; }
 
 /* ============================================================
-   MOBILE NAV — FIX: removed duplicate CSS block, kept one clean copy
+   MOBILE NAV
    ============================================================ */
 .mob-nav { display:none; position:fixed; top:0; left:0; right:0; z-index:300; height:var(--mob-nav-h); background:rgba(255,255,255,0.97); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border-bottom:1.5px solid var(--border); padding:0 1.25rem; align-items:center; justify-content:space-between; box-shadow:0 4px 20px rgba(0,0,0,0.07); }
 
@@ -522,7 +543,6 @@ a    { color:inherit; }
 .faq-list { margin-top:2.5rem; display:flex; flex-direction:column; gap:10px; max-width:760px; }
 .faq-item { border:1.5px solid var(--border); border-radius:14px; overflow:hidden; transition:border-color 0.2s; }
 .faq-item:hover { border-color:var(--blue-mid); }
-/* FIX: Added proper focus styles for accessibility */
 .faq-q { width:100%; background:none; border:none; text-align:left; cursor:pointer; font-family:var(--display); font-size:15px; font-weight:700; color:var(--ink); padding:1.25rem 1.5rem; display:flex; justify-content:space-between; align-items:center; gap:1rem; transition:color 0.15s; }
 .faq-q:hover { color:var(--blue); }
 .faq-q:focus-visible { outline:2px solid var(--blue); outline-offset:-2px; }
@@ -564,6 +584,12 @@ a.area-pill--link:hover .area-dot {
 
 a.area-pill--link:hover .area-name {
   color: var(--blue);
+}
+
+/* Live suburb pages get a slightly stronger indicator */
+a.area-pill--link.has-page .area-dot {
+  background: var(--blue);
+  box-shadow: 0 0 0 3px var(--blue-lt);
 }
 
 .area-dot {
@@ -740,8 +766,7 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
 <div id="scroll-bar" aria-hidden="true"></div>
 
 <!-- ============================================================
-     SEO SUBURB LINKS
-     FIX: Corrected broken </a> tag on "How to Fix Slow PC" link
+     SEO SUBURB LINKS — visible to crawlers, hidden visually
      ============================================================ -->
 <nav class="seo-nav" aria-label="Service areas">
   <h2>Computer Repair Services Across Perth</h2>
@@ -753,6 +778,14 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
     <li><a href="gaming-pc-build-perth.html">Gaming PC Build Perth</a></li>
     <li><a href="blog/why-is-my-pc-so-slow.html">Why Is My PC Slow</a></li>
     <li><a href="slow-computer-repair-perth.html">How to Fix Slow PC</a></li>
+    <!-- Suburb pages -->
+    <li><a href="suburbs/canning-vale.html">Computer Repair Canning Vale</a></li>
+    <li><a href="suburbs/cockburn.html">Computer Repair Cockburn</a></li>
+    <li><a href="suburbs/willetton.html">Computer Repair Willetton</a></li>
+    <li><a href="suburbs/jandakot.html">Computer Repair Jandakot</a></li>
+    <li><a href="suburbs/thornlie.html">Computer Repair Thornlie</a></li>
+    <li><a href="suburbs/cannington.html">Computer Repair Cannington</a></li>
+    <li><a href="suburbs/harrisdale.html">Computer Repair Harrisdale</a></li>
   </ul>
 </nav>
 
@@ -779,7 +812,6 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
 
 <!-- ============================================================
      MOBILE NAV
-     FIX: Added type="button" to hamburger button
      ============================================================ -->
 <div class="mob-nav" role="navigation" aria-label="Mobile navigation">
   <a href="index.html" class="nav-logo" aria-label="FixMyPC Perth – Home">
@@ -803,7 +835,6 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
 
 <!-- ============================================================
      HERO
-     FIX: Hero card "Starting from" now consistently shows $49
      ============================================================ -->
 <section class="hero" aria-label="Perth Computer Repair – Canning Vale">
   <div class="hero-inner">
@@ -837,7 +868,6 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
       </div>
     </div>
 
-    <!-- Hero card — FIX: "Starting from" now shows $49 consistently -->
     <div class="hero-card" role="complementary" aria-label="FixMyPC Perth service summary">
       <div class="hc-header">
         <div class="hc-dot" style="background:#FF5F57"></div>
@@ -1234,7 +1264,7 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
       <p>All prices include GST, and you always get a fixed quote in writing before any work begins — no surprises when you come to collect your PC or laptop.</p>
 
       <h3>Computer Repair Near Canning Vale and Surrounding Suburbs</h3>
-      <p>We're based in Canning Vale (WA 6155), which puts us within easy reach of Cockburn, Willetton, Jandakot, Thornlie, Cannington, Harrisdale, Atwell, Piara Waters, Southern River, Riverton, Parkwood, Queens Park, Maddington, Leeming, Gosnells, Armadale and Byford. If you've searched "computer repair near me," "PC repair near me" or "laptop repairs near me" from one of these suburbs, dropping off in Canning Vale is usually the fastest option — no appointment needed, and most repairs are ready the same day or the next. We also provide remote support Australia-wide for software, virus removal and network issues that don't require hands-on access to the machine.</p>
+      <p>We're based in Canning Vale (WA 6155), which puts us within easy reach of <a href="suburbs/cockburn.html">Cockburn</a>, <a href="suburbs/willetton.html">Willetton</a>, <a href="suburbs/jandakot.html">Jandakot</a>, <a href="suburbs/thornlie.html">Thornlie</a>, <a href="suburbs/cannington.html">Cannington</a>, <a href="suburbs/harrisdale.html">Harrisdale</a>, Atwell, Piara Waters, Southern River, Riverton, Parkwood, Queens Park, Maddington, Leeming, Gosnells, Armadale and Byford. If you've searched "computer repair near me," "PC repair near me" or "laptop repairs near me" from one of these suburbs, dropping off in <a href="suburbs/canning-vale.html">Canning Vale</a> is usually the fastest option — no appointment needed, and most repairs are ready the same day or the next. We also provide remote support Australia-wide for software, virus removal and network issues that don't require hands-on access to the machine.</p>
 
       <p>Whatever's going on with your PC or laptop — slow, infected, cracked screen, dead drive, or just acting strange — get in touch via WhatsApp for a free, no-obligation quote. We'll tell you honestly what's wrong and what it'll cost before you commit to anything.</p>
 
@@ -1244,8 +1274,6 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
 
 <!-- ============================================================
      FAQ SECTION
-     FIX: Removed duplicate "How much does computer repair cost" question
-     FIX: Added id + aria-controls on each button for screen readers
      ============================================================ -->
 <section class="faq-section" aria-label="Frequently asked questions about computer repair in Perth">
   <div class="wrap">
@@ -1342,9 +1370,8 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
 
 <!-- ============================================================
      SERVICE AREAS
-     FIX: Suburb links now point to # (placeholder) to avoid
-          immediate 404s until those pages are built. Replace
-          href="#" with real paths as each page goes live.
+     Live suburb pages get href to suburbs/*.html
+     Pages not yet built keep href="#" — swap as you add them
      ============================================================ -->
 <section class="section section-alt" aria-label="Computer repair service areas across Perth">
   <div class="wrap">
@@ -1354,24 +1381,26 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
       <p class="s-sub">Based in Canning Vale, we serve the entire southern Perth corridor. Drop off your PC or laptop — usually back to you next day. Remote support available Australia-wide.</p>
     </div>
     <div class="areas-grid fade-up">
-      <a href="#" class="area-pill area-pill--link"><div class="area-dot"></div><span class="area-name">Canning Vale</span></a>
-      <a href="#" class="area-pill area-pill--link"><div class="area-dot"></div><span class="area-name">Cockburn</span></a>
-      <a href="#" class="area-pill area-pill--link"><div class="area-dot"></div><span class="area-name">Willetton</span></a>
-      <a href="#" class="area-pill area-pill--link"><div class="area-dot"></div><span class="area-name">Jandakot</span></a>
-      <a href="#" class="area-pill area-pill--link"><div class="area-dot"></div><span class="area-name">Thornlie</span></a>
-      <a href="#" class="area-pill area-pill--link"><div class="area-dot"></div><span class="area-name">Cannington</span></a>
-      <a href="#" class="area-pill area-pill--link"><div class="area-dot"></div><span class="area-name">Harrisdale</span></a>
-      <a href="#" class="area-pill area-pill--link"><div class="area-dot"></div><span class="area-name">Atwell</span></a>
-      <a href="#" class="area-pill area-pill--link"><div class="area-dot"></div><span class="area-name">Gosnells</span></a>
-      <a href="#" class="area-pill area-pill--link"><div class="area-dot"></div><span class="area-name">Armadale</span></a>
-      <a href="#" class="area-pill area-pill--link"><div class="area-dot"></div><span class="area-name">Byford</span></a>
-      <a href="#" class="area-pill area-pill--link"><div class="area-dot"></div><span class="area-name">Piara Waters</span></a>
-      <a href="#" class="area-pill area-pill--link"><div class="area-dot"></div><span class="area-name">Southern River</span></a>
-      <a href="#" class="area-pill area-pill--link"><div class="area-dot"></div><span class="area-name">Riverton</span></a>
-      <a href="#" class="area-pill area-pill--link"><div class="area-dot"></div><span class="area-name">Parkwood</span></a>
-      <a href="#" class="area-pill area-pill--link"><div class="area-dot"></div><span class="area-name">Queens Park</span></a>
-      <a href="#" class="area-pill area-pill--link"><div class="area-dot"></div><span class="area-name">Maddington</span></a>
-      <a href="#" class="area-pill area-pill--link"><div class="area-dot"></div><span class="area-name">Leeming</span></a>
+      <!-- LIVE pages — real hrefs -->
+      <a href="suburbs/canning-vale.html"  class="area-pill area-pill--link has-page" aria-label="Computer repair Canning Vale"><div class="area-dot"></div><span class="area-name">Canning Vale</span></a>
+      <a href="suburbs/cockburn.html"      class="area-pill area-pill--link has-page" aria-label="Computer repair Cockburn"><div class="area-dot"></div><span class="area-name">Cockburn</span></a>
+      <a href="suburbs/willetton.html"     class="area-pill area-pill--link has-page" aria-label="Computer repair Willetton"><div class="area-dot"></div><span class="area-name">Willetton</span></a>
+      <a href="suburbs/jandakot.html"      class="area-pill area-pill--link has-page" aria-label="Computer repair Jandakot"><div class="area-dot"></div><span class="area-name">Jandakot</span></a>
+      <a href="suburbs/thornlie.html"      class="area-pill area-pill--link has-page" aria-label="Computer repair Thornlie"><div class="area-dot"></div><span class="area-name">Thornlie</span></a>
+      <a href="suburbs/cannington.html"    class="area-pill area-pill--link has-page" aria-label="Computer repair Cannington"><div class="area-dot"></div><span class="area-name">Cannington</span></a>
+      <a href="suburbs/harrisdale.html"    class="area-pill area-pill--link has-page" aria-label="Computer repair Harrisdale"><div class="area-dot"></div><span class="area-name">Harrisdale</span></a>
+      <!-- NOT YET BUILT — keep href="#" until page exists -->
+      <a href="#" class="area-pill area-pill--link" aria-label="Computer repair Atwell"><div class="area-dot"></div><span class="area-name">Atwell</span></a>
+      <a href="#" class="area-pill area-pill--link" aria-label="Computer repair Gosnells"><div class="area-dot"></div><span class="area-name">Gosnells</span></a>
+      <a href="#" class="area-pill area-pill--link" aria-label="Computer repair Armadale"><div class="area-dot"></div><span class="area-name">Armadale</span></a>
+      <a href="#" class="area-pill area-pill--link" aria-label="Computer repair Byford"><div class="area-dot"></div><span class="area-name">Byford</span></a>
+      <a href="#" class="area-pill area-pill--link" aria-label="Computer repair Piara Waters"><div class="area-dot"></div><span class="area-name">Piara Waters</span></a>
+      <a href="#" class="area-pill area-pill--link" aria-label="Computer repair Southern River"><div class="area-dot"></div><span class="area-name">Southern River</span></a>
+      <a href="#" class="area-pill area-pill--link" aria-label="Computer repair Riverton"><div class="area-dot"></div><span class="area-name">Riverton</span></a>
+      <a href="#" class="area-pill area-pill--link" aria-label="Computer repair Parkwood"><div class="area-dot"></div><span class="area-name">Parkwood</span></a>
+      <a href="#" class="area-pill area-pill--link" aria-label="Computer repair Queens Park"><div class="area-dot"></div><span class="area-name">Queens Park</span></a>
+      <a href="#" class="area-pill area-pill--link" aria-label="Computer repair Maddington"><div class="area-dot"></div><span class="area-name">Maddington</span></a>
+      <a href="#" class="area-pill area-pill--link" aria-label="Computer repair Leeming"><div class="area-dot"></div><span class="area-name">Leeming</span></a>
     </div>
   </div>
 </section>
@@ -1507,12 +1536,10 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
     btn.addEventListener('click', function() {
       var item = btn.closest('.faq-item');
       var isOpen = item.classList.contains('open');
-      // Close all
       document.querySelectorAll('.faq-item').forEach(function(i) {
         i.classList.remove('open');
         i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
       });
-      // Open clicked if was closed
       if (!isOpen) {
         item.classList.add('open');
         btn.setAttribute('aria-expanded', 'true');
