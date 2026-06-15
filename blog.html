@@ -206,10 +206,11 @@ nav.desk-nav {
 }
 .mob-hamburger {
   display: flex; flex-direction: column; justify-content: center; align-items: center;
-  gap: 5px; width: 40px; height: 40px; background: var(--bg3);
-  border: 1.5px solid var(--border2); border-radius: 10px; cursor: pointer;
-  transition: background 0.15s;
+  gap: 5px; width: 42px; height: 42px; background: var(--bg3);
+  border: 1.5px solid var(--border2); border-radius: 10px; cursor: pointer; flex-shrink: 0;
+  transition: background 0.15s, border-color 0.15s;
 }
+.mob-hamburger:hover { background: var(--blue-lt); border-color: var(--blue-mid); }
 .mob-hamburger span { display: block; width: 16px; height: 2px; background: var(--ink); border-radius: 2px; transition: transform 0.3s, opacity 0.3s; }
 .mob-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .mob-hamburger.open span:nth-child(2) { opacity: 0; }
@@ -221,8 +222,8 @@ nav.desk-nav {
   box-shadow: 0 8px 30px rgba(0,0,0,0.1); border-radius: 0 0 20px 20px;
 }
 .mob-menu.open { display: flex; }
-.mob-link { font-family: var(--body); font-size: 15px; font-weight: 600; color: var(--ink); text-decoration: none; padding: 0.85rem 1rem; border-radius: 10px; border: 1.5px solid var(--border); display: block; transition: background 0.15s, color 0.15s; text-align: center; }
-.mob-link:hover { background: var(--blue-lt); color: var(--blue); border-color: var(--blue-mid); }
+.mob-link { font-family: var(--body); font-size: 15px; font-weight: 600; color: var(--ink); text-decoration: none; padding: 0.9rem 1rem; border-radius: 10px; display: block; transition: background 0.15s, color 0.15s; }
+.mob-link:hover { background: var(--blue-lt); color: var(--blue); }
 
 /* ── PAGE BODY ── */
 .page-body { padding-top: var(--nav-h); }
