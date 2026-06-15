@@ -427,16 +427,19 @@ a { color: inherit; }
 
 /* ============================================================
    SCROLL TRACK — horizontal scrollable card row
-   Used for: What We Fix, Why Slow, Virus Signs
    ============================================================ */
-.scroll-section { padding:5rem 0; }
+/* FIX: consistent padding + border-top to match .section rhythm */
+.scroll-section {
+  padding:5rem 0;
+  border-top:1px solid var(--border);
+}
 .scroll-section.section-alt { background:var(--bg2); }
 
 .scroll-section-head {
   max-width:1100px;
   margin:0 auto;
   padding:0 2rem;
-  margin-bottom:1.75rem;
+  margin-bottom:2.5rem; /* FIX: was 1.75rem — now matches .section heading rhythm */
 }
 
 .scroll-track-outer {
@@ -472,7 +475,6 @@ a { color: inherit; }
 
 /* ============================================================
    INFO CARD — used in all scroll rows
-   Compact, fixed width, scroll-snap
    ============================================================ */
 .info-card {
   background:var(--bg);
@@ -584,7 +586,7 @@ a { color: inherit; }
 .stat-lbl { font-size:12px; color:var(--muted); font-weight:500; line-height:1.4; }
 
 /* ============================================================
-   PRICING TABLE — clean, no dark box
+   PRICING TABLE
    ============================================================ */
 .pricing-table {
   margin-top:2.5rem;
@@ -765,8 +767,9 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
   .rt-item { font-size:11.5px; }
 
   .section,.section-alt,.cta-section { padding:3rem 1.25rem; }
-  .scroll-section { padding:3rem 0; }
-  .scroll-section-head { padding:0 1.25rem; }
+  /* FIX: mobile scroll-section matches .section mobile padding rhythm */
+  .scroll-section { padding:3rem 0; border-top:1px solid var(--border); }
+  .scroll-section-head { padding:0 1.25rem; margin-bottom:2rem; }
   .scroll-track { padding:0.5rem 1.25rem 1.25rem; }
   .s-title { font-size:clamp(1.5rem,6vw,1.9rem); letter-spacing:-0.8px; }
   .s-sub   { font-size:14.5px; max-width:100%; }
@@ -804,6 +807,8 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
 
 @media (max-width: 540px) {
   .section,.section-alt,.cta-section { padding:2.5rem 1.25rem; }
+  .scroll-section { padding:2.5rem 0; }
+  .scroll-section-head { margin-bottom:1.75rem; }
   .quiz-hero h1 { font-size:1.7rem; }
   .result-trust-row { flex-direction:column; align-items:flex-start; gap:0.75rem; }
   .stats-strip { grid-template-columns:1fr 1fr; }
@@ -867,9 +872,7 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
   <a href="reviews.html"             class="mob-link" role="menuitem">Reviews &amp; FAQ</a>
 </div>
 
-<!-- ============================================================
-     HERO — unchanged
-     ============================================================ -->
+<!-- HERO -->
 <section class="quiz-hero" aria-label="Free PC health check quiz Perth">
   <div class="quiz-hero-inner">
     <div class="quiz-hero-eyebrow">
@@ -927,7 +930,7 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
   <div class="trust-track" id="trust-track"></div>
 </div>
 
-<!-- QUIZ SECTION — unchanged -->
+<!-- QUIZ SECTION -->
 <section class="quiz-section" aria-label="PC health check quiz" id="quiz-section">
   <div class="quiz-wrap">
     <div class="step-bar" id="step-bar" style="display:none" role="progressbar" aria-label="Quiz progress"></div>
@@ -945,9 +948,7 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
   </div>
 </section>
 
-<!-- ============================================================
-     WHAT WE FIX — scrollable card row
-     ============================================================ -->
+<!-- WHAT WE FIX -->
 <section class="scroll-section" aria-label="Common PC problems fixed in Perth">
   <div class="scroll-section-head fade-up">
     <span class="s-eyebrow">What we fix</span>
@@ -1010,9 +1011,7 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
   <div class="scroll-dots" id="fix-dots" aria-hidden="true"></div>
 </section>
 
-<!-- ============================================================
-     STATS STRIP
-     ============================================================ -->
+<!-- STATS STRIP -->
 <section class="section section-alt" aria-label="FixMyPC Perth stats and results">
   <div class="wrap">
     <div class="fade-up">
@@ -1040,9 +1039,7 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
   </div>
 </section>
 
-<!-- ============================================================
-     WHY IS MY PC SLOW — scrollable card row
-     ============================================================ -->
+<!-- WHY IS MY PC SLOW -->
 <section class="scroll-section" aria-label="Why is my computer so slow Perth guide">
   <div class="scroll-section-head fade-up">
     <span class="s-eyebrow">Tech explained simply</span>
@@ -1089,9 +1086,7 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
   <div class="scroll-dots" id="slow-dots" aria-hidden="true"></div>
 </section>
 
-<!-- ============================================================
-     VIRUS SIGNS — scrollable card row
-     ============================================================ -->
+<!-- VIRUS SIGNS -->
 <section class="scroll-section section-alt" aria-label="Signs of a computer virus Perth">
   <div class="scroll-section-head fade-up">
     <span class="s-eyebrow">Virus and malware</span>
@@ -1138,9 +1133,7 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
   <div class="scroll-dots" id="virus-dots" aria-hidden="true"></div>
 </section>
 
-<!-- ============================================================
-     PRICING TABLE — clean replacement for the dark box
-     ============================================================ -->
+<!-- PRICING TABLE -->
 <section class="section" aria-label="PC repair pricing Perth">
   <div class="wrap">
     <div class="fade-up">
@@ -1250,9 +1243,7 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
   </div>
 </section>
 
-<!-- ============================================================
-     FAQ
-     ============================================================ -->
+<!-- FAQ -->
 <section class="section section-alt" aria-label="Frequently asked questions about PC repair Perth">
   <div class="wrap">
     <div class="fade-up">
@@ -1393,9 +1384,6 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
   <svg width="30" height="30" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>
 </a>
 
-<!-- ============================================================
-     JAVASCRIPT — quiz JS unchanged + new scroll dot JS
-     ============================================================ -->
 <script>
 (function () {
 'use strict';
@@ -1489,7 +1477,6 @@ function initScrollDots(trackId, dotsId) {
   const cards = track.querySelectorAll('.info-card');
   if (cards.length === 0) return;
 
-  // Build dots
   dotsEl.innerHTML = '';
   cards.forEach((_, i) => {
     const dot = document.createElement('button');
@@ -1503,10 +1490,9 @@ function initScrollDots(trackId, dotsId) {
 
   const dots = dotsEl.querySelectorAll('.scroll-dot');
 
-  // Update active dot on scroll
   track.addEventListener('scroll', () => {
     const scrollLeft = track.scrollLeft;
-    const cardWidth  = cards[0].offsetWidth + 14; // gap
+    const cardWidth  = cards[0].offsetWidth + 14;
     const active     = Math.round(scrollLeft / cardWidth);
     dots.forEach((d, i) => d.classList.toggle('active', i === active));
   }, { passive: true });
@@ -1527,7 +1513,7 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 
 /* ══════════════════════════════════════════
-   QUIZ DATA — completely unchanged
+   QUIZ DATA
 ══════════════════════════════════════════ */
 const QUESTIONS = [
   {
