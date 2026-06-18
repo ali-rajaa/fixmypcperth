@@ -12,8 +12,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Free PC Health Check Quiz | Instant Computer Diagnosis | FixMyPC Perth</title>
 <link rel="icon" type="image/png" href="favicon.png">
-<meta name="description" content="Not sure what is wrong with your computer? Take our free 5 question PC health check quiz and get an instant diagnosis. Virus, hardware failure, overheating, SSD upgrade and more. No sign up needed. Based in Canning Vale, serving all Perth suburbs.">
-<link rel="canonical" href="https://www.fixmypcperth.com/quiz">
+<meta name="description" content="Not sure what is wrong with your computer? Take our free 5-question PC health check quiz and get an instant diagnosis. Virus, hardware failure, overheating, SSD upgrade and more. No sign-up needed. Based in Canning Vale, serving all Perth suburbs.">
+<!-- FIX: canonical matches actual filename used in nav links -->
+<link rel="canonical" href="https://www.fixmypcperth.com/quiz.html">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <meta name="keywords" content="PC health check Perth, free computer diagnosis Perth, what is wrong with my computer, PC repair Perth, slow computer fix Perth, virus removal Perth, computer not turning on Perth, free PC diagnostic Perth, computer diagnosis Canning Vale, laptop diagnosis Perth, PC checkup Perth, computer symptoms Perth">
 <meta name="geo.region" content="AU-WA">
@@ -26,12 +27,12 @@
 <meta property="og:locale" content="en_AU">
 <meta property="og:site_name" content="FixMyPC Perth">
 <meta property="og:title" content="Free PC Health Check Quiz | Instant Computer Diagnosis | FixMyPC Perth">
-<meta property="og:description" content="Answer 5 quick questions and get an instant diagnosis of what is wrong with your PC. Free, no sign up, instant results. Based in Canning Vale, Perth WA.">
-<meta property="og:url" content="https://www.fixmypcperth.com/quiz">
+<meta property="og:description" content="Answer 5 quick questions and get an instant diagnosis of what is wrong with your PC. Free, no sign-up, instant results. Based in Canning Vale, Perth WA.">
+<meta property="og:url" content="https://www.fixmypcperth.com/quiz.html">
 <meta property="og:image" content="https://fixmypcperth.com/facebook-cover.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Free PC Health Check Quiz | FixMyPC Perth">
-<meta name="twitter:description" content="5 questions. Instant diagnosis. Find out exactly what is wrong with your computer. Free, no sign up required.">
+<meta name="twitter:description" content="5 questions. Instant diagnosis. Find out exactly what is wrong with your computer. Free, no sign-up required.">
 <meta name="twitter:image" content="https://fixmypcperth.com/facebook-cover.png">
 
 <script type="application/ld+json">
@@ -44,7 +45,7 @@
       "name": "How do I know what is wrong with my computer?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Take our free 5 question PC health check quiz for an instant diagnosis. Common problems include viruses and malware, failing hard drives, overheating, Windows corruption, and hardware faults. Our quiz identifies the most likely cause based on your specific symptoms. For a definitive answer, our Perth based technicians provide a full diagnostic from $59."
+        "text": "Take our free 5-question PC health check quiz for an instant diagnosis. Common problems include viruses and malware, failing hard drives, overheating, Windows corruption, and hardware faults. Our quiz identifies the most likely cause based on your specific symptoms. For a definitive answer, our Perth-based technicians provide a full diagnostic from $59."
       }
     },
     {
@@ -76,7 +77,7 @@
       "name": "How much does PC repair cost in Perth?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "PC repair in Perth at FixMyPC Perth starts from $59. A virus removal costs from $99. An SSD upgrade with data transfer starts from $65 labour only or $150 with drive supplied. A Windows reinstall is $120 including data backup. Hardware diagnostics and component replacement vary based on the fault. All prices include GST and we provide upfront quotes with no hidden fees."
+        "text": "PC repair in Perth at FixMyPC Perth starts from $59. A virus removal costs from $80. An SSD upgrade with data transfer starts from $65 labour only or $150 with drive supplied. A Windows reinstall is $120 including data backup. Hardware diagnostics and component replacement vary based on the fault. All prices include GST and we provide upfront quotes with no hidden fees."
       }
     },
     {
@@ -92,7 +93,7 @@
       "name": "Do you offer a warranty on computer repairs in Perth?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. FixMyPC Perth offers a 30 day labour warranty on all repair work. If the same issue returns within 30 days we fix it free of charge. No exceptions and no fine print."
+        "text": "Yes. FixMyPC Perth offers a 30-day labour warranty on all repair work. If the same issue returns within 30 days we fix it free of charge. No exceptions and no fine print."
       }
     },
     {
@@ -211,7 +212,16 @@ html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-fo
 ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, var(--blue) 0%, var(--blue-dk) 100%); border-radius: 10px; border: 2px solid var(--bg2); }
 ::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, var(--blue-dk) 0%, var(--blue) 100%); }
 
-body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
+/* FIX: body padding-top uses CSS var, not hardcoded hero padding */
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  padding-top: var(--nav-h);
+}
 img { display: block; max-width: 100%; }
 a { color: inherit; }
 
@@ -222,6 +232,10 @@ a { color: inherit; }
 @keyframes fadeSlideUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:none} }
 @keyframes qEnter { from{opacity:0;transform:translateX(28px) scale(0.985)} to{opacity:1;transform:none} }
 @keyframes qExit  { from{opacity:1;transform:none} to{opacity:0;transform:translateX(-20px) scale(0.985)} }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
 
 .fade-up { opacity:0; transform:translateY(24px); transition: opacity 0.6s cubic-bezier(.22,.68,0,1.2), transform 0.6s cubic-bezier(.22,.68,0,1.2); }
 .fade-up.in { opacity:1; transform:none; }
@@ -240,7 +254,8 @@ a { color: inherit; }
 .desk-nav { position:fixed; top:0; left:0; right:0; z-index:200; display:flex; align-items:center; justify-content:space-between; padding:0 2rem; height:var(--nav-h); background:rgba(255,255,255,0.88); backdrop-filter:blur(30px) saturate(200%); -webkit-backdrop-filter:blur(30px) saturate(200%); border-bottom:1px solid rgba(226,232,240,0.5); border-top:1px solid rgba(255,255,255,0.8); box-shadow:0 8px 32px rgba(0,0,0,0.05); }
 .nav-logo { display:flex; align-items:center; gap:10px; text-decoration:none; flex-shrink:0; }
 .logo-mark { width:38px; height:38px; border-radius:10px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-.logo-mark img { width:100%; height:100%; object-fit:contain; }
+/* FIX: explicit width/height on logo img to prevent CLS */
+.logo-mark img { width:38px; height:38px; object-fit:contain; }
 .logo-name { font-family:var(--display); font-size:16px; font-weight:700; color:var(--ink); letter-spacing:-0.3px; white-space:nowrap; }
 .logo-name em { color:var(--blue); font-style:normal; }
 .nav-right { display:flex; align-items:center; gap:8px; }
@@ -268,7 +283,7 @@ a { color: inherit; }
    TRUST TICKER
    ============================================================ */
 .trust-strip { background:var(--ink); padding:14px 0; overflow:hidden; }
-.trust-track { display:flex; white-space:nowrap; animation:ticker 16s linear infinite; }
+.trust-track { display:flex; white-space:nowrap; animation:ticker 18s linear infinite; }
 .trust-track:hover { animation-play-state:paused; }
 .trust-item { display:inline-flex; align-items:center; gap:8px; padding:0 2.5rem; font-size:13px; font-weight:600; color:rgba(255,255,255,0.85); white-space:nowrap; }
 .trust-dot { width:4px; height:4px; background:var(--blue); border-radius:50%; flex-shrink:0; }
@@ -285,14 +300,19 @@ a { color: inherit; }
 .btn-outline { display:inline-flex; align-items:center; justify-content:center; gap:8px; background:transparent; color:var(--ink); font-family:var(--body); font-size:15px; font-weight:600; padding:13px 24px; border-radius:50px; text-decoration:none; border:1.5px solid var(--border2); cursor:pointer; transition:border-color 0.15s,color 0.15s; white-space:nowrap; }
 .btn-outline:hover { border-color:var(--blue); color:var(--blue); }
 
+/* Focus styles for keyboard nav */
+:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; border-radius: 4px; }
+
 /* ============================================================
    PAGE HERO
+   FIX: removed hardcoded top padding — body padding-top handles nav offset
    ============================================================ */
-.quiz-hero { padding:100px 2rem 40px; background:var(--bg); position:relative; overflow:hidden; }
+.quiz-hero { padding:3.5rem 2rem 3rem; background:var(--bg); position:relative; overflow:hidden; }
 .quiz-hero::before { content:''; position:absolute; inset:0; background: radial-gradient(ellipse 800px 500px at 70% 40%,rgba(21,96,255,0.06) 0%,transparent 70%), radial-gradient(ellipse 400px 300px at 10% 80%,rgba(34,197,94,0.05) 0%,transparent 60%); pointer-events:none; }
 .quiz-hero-inner { max-width:900px; margin:0 auto; text-align:center; }
 .quiz-hero-eyebrow { display:inline-flex; align-items:center; gap:8px; font-size:12px; font-weight:600; color:var(--blue); background:var(--blue-lt); border:1px solid var(--blue-mid); padding:5px 14px; border-radius:50px; margin-bottom:1.5rem; letter-spacing:0.04em; text-transform:uppercase; }
 .eyebrow-dot { width:6px; height:6px; background:var(--blue); border-radius:50%; animation:pulse 2s infinite; flex-shrink:0; }
+/* FIX: H1 uses CSS text-align instead of <br> for line break on mobile */
 .quiz-hero h1 { font-family:var(--display); font-size:clamp(2.2rem,5vw,3.8rem); font-weight:800; letter-spacing:-2px; line-height:1.05; color:var(--ink); margin-bottom:1rem; }
 .quiz-hero-sub { font-size:16px; color:var(--muted); line-height:1.7; margin-bottom:1.5rem; max-width:540px; margin-left:auto; margin-right:auto; }
 .trust-pills { display:flex; align-items:center; justify-content:center; gap:0.75rem; flex-wrap:wrap; margin-bottom:1.75rem; }
@@ -332,6 +352,8 @@ a { color: inherit; }
 .conf-pct   { font-size:12px; font-weight:800; color:var(--blue); }
 .conf-track { height:8px; background:var(--border); border-radius:50px; overflow:hidden; }
 .conf-fill  { height:100%; background:linear-gradient(90deg,var(--blue),var(--teal)); border-radius:50px; transition:width 0.6s cubic-bezier(.22,.68,0,1.2); }
+
+/* Question card */
 .question-card { background:var(--bg); border:1.5px solid var(--border); border-radius:20px; padding:2rem; box-shadow:0 4px 32px rgba(15,23,42,0.07),0 1px 4px rgba(15,23,42,0.04); position:relative; overflow:hidden; }
 .question-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--blue),var(--teal)); }
 .q-enter { animation:qEnter 0.4s cubic-bezier(.22,.68,0,1.2) forwards; }
@@ -342,23 +364,26 @@ a { color: inherit; }
 .q-hint { font-size:13.5px; color:var(--muted); margin-bottom:1.5rem; line-height:1.6; }
 .options-list    { display:flex; flex-direction:column; gap:10px; }
 .options-two-col { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+
+/* FIX: option-btn uses role="radio"/"checkbox" semantics via ARIA — styled here */
 .option-btn { display:flex; align-items:center; gap:12px; background:var(--bg2); border:1.5px solid var(--border); border-radius:14px; padding:1rem 1.1rem; cursor:pointer; text-align:left; width:100%; font-family:var(--body); position:relative; overflow:hidden; transition:border-color 0.15s,background 0.15s,transform 0.15s,box-shadow 0.15s; }
 .option-btn::before { content:''; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--blue); transform:scaleY(0); transition:transform 0.2s; border-radius:0 2px 2px 0; }
 .option-btn:hover { border-color:var(--blue); background:var(--blue-lt); transform:translateY(-1px); box-shadow:0 4px 16px rgba(21,96,255,0.1); }
 .option-btn:hover::before { transform:scaleY(1); }
-.option-btn.selected { border-color:var(--blue); background:var(--blue-lt); box-shadow:0 0 0 3px rgba(21,96,255,0.12); }
-.option-btn.selected::before { transform:scaleY(1); }
+.option-btn[aria-checked="true"] { border-color:var(--blue); background:var(--blue-lt); box-shadow:0 0 0 3px rgba(21,96,255,0.12); }
+.option-btn[aria-checked="true"]::before { transform:scaleY(1); }
 .opt-icon { width:44px; height:44px; border-radius:12px; background:var(--bg); border:1.5px solid var(--border); display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:background 0.15s,border-color 0.15s; }
 .opt-icon svg { width:20px; height:20px; }
-.option-btn.selected .opt-icon,.option-btn:hover .opt-icon { background:rgba(21,96,255,0.08); border-color:var(--blue-mid); }
+.option-btn[aria-checked="true"] .opt-icon,.option-btn:hover .opt-icon { background:rgba(21,96,255,0.08); border-color:var(--blue-mid); }
 .opt-text { flex:1; min-width:0; }
 .opt-label { font-size:14px; font-weight:700; color:var(--ink); display:block; line-height:1.3; }
 .opt-sub   { font-size:12px; color:var(--muted); display:block; margin-top:2px; line-height:1.4; }
 .opt-check { width:22px; height:22px; border-radius:50%; border:2px solid var(--border2); flex-shrink:0; display:flex; align-items:center; justify-content:center; transition:all 0.2s; }
-.option-btn.selected .opt-check { background:var(--blue); border-color:var(--blue); }
-.option-btn.selected .opt-check::after { content:''; width:8px; height:8px; background:#fff; border-radius:50%; display:block; }
+.option-btn[aria-checked="true"] .opt-check { background:var(--blue); border-color:var(--blue); }
+.option-btn[aria-checked="true"] .opt-check::after { content:''; width:8px; height:8px; background:#fff; border-radius:50%; display:block; }
+/* Checkbox style for multi */
 .option-btn.multi .opt-check { border-radius:7px; }
-.option-btn.multi.selected .opt-check::after { content:'\2713'; color:#fff; font-size:12px; font-weight:900; width:auto; height:auto; background:none; border-radius:0; }
+.option-btn.multi[aria-checked="true"] .opt-check::after { content:'\2713'; color:#fff; font-size:12px; font-weight:900; width:auto; height:auto; background:none; border-radius:0; }
 .next-area { margin-top:1.5rem; display:flex; flex-direction:column; gap:0.6rem; }
 .btn-next { width:100%; display:flex; align-items:center; justify-content:center; gap:10px; background:var(--blue); color:#fff; font-family:var(--body); font-size:15px; font-weight:700; padding:15px 28px; border-radius:50px; border:none; cursor:pointer; box-shadow:0 4px 20px rgba(21,96,255,0.35); transition:transform 0.15s,box-shadow 0.15s,opacity 0.15s; }
 .btn-next:hover:not(:disabled) { transform:translateY(-2px); box-shadow:0 6px 28px rgba(21,96,255,0.45); }
@@ -426,252 +451,88 @@ a { color: inherit; }
 .section-alt { background:var(--bg2); }
 
 /* ============================================================
-   SCROLL TRACK — horizontal scrollable card row
+   SCROLL TRACK
    ============================================================ */
-/* FIX: consistent padding + border-top to match .section rhythm */
-.scroll-section {
-  padding:5rem 0;
-  border-top:1px solid var(--border);
-}
+.scroll-section { padding:5rem 0; border-top:1px solid var(--border); }
 .scroll-section.section-alt { background:var(--bg2); }
+/* FIX: prevent double border between adjacent sections with same bg */
+.section + .scroll-section,
+.section-alt + .scroll-section.section-alt { border-top:none; }
 
-.scroll-section-head {
-  max-width:1100px;
-  margin:0 auto;
-  padding:0 2rem;
-  margin-bottom:2.5rem; /* FIX: was 1.75rem — now matches .section heading rhythm */
-}
+.scroll-section-head { max-width:1100px; margin:0 auto; padding:0 2rem; margin-bottom:2.5rem; }
 
-.scroll-track-outer {
-  position:relative;
-  overflow:hidden;
-}
-
-/* Fade edges */
-.scroll-track-outer::before,
-.scroll-track-outer::after {
-  content:'';
-  position:absolute;
-  top:0; bottom:0;
-  width:40px;
-  z-index:2;
-  pointer-events:none;
-}
+.scroll-track-outer { position:relative; overflow:hidden; }
+.scroll-track-outer::before,.scroll-track-outer::after { content:''; position:absolute; top:0; bottom:0; width:40px; z-index:2; pointer-events:none; }
 .scroll-track-outer::before { left:0; background:linear-gradient(to right, var(--bg), transparent); }
 .scroll-track-outer.alt-bg::before { background:linear-gradient(to right, var(--bg2), transparent); }
 .scroll-track-outer::after  { right:0; background:linear-gradient(to left, var(--bg), transparent); }
 .scroll-track-outer.alt-bg::after  { background:linear-gradient(to left, var(--bg2), transparent); }
 
-.scroll-track {
-  display:flex;
-  gap:14px;
-  overflow-x:auto;
-  padding:0.5rem 2rem 1.25rem;
-  scroll-snap-type:x mandatory;
-  -webkit-overflow-scrolling:touch;
-  scrollbar-width:none;
-}
+.scroll-track { display:flex; gap:14px; overflow-x:auto; padding:0.5rem 2rem 1.25rem; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; scrollbar-width:none; }
 .scroll-track::-webkit-scrollbar { display:none; }
 
 /* ============================================================
-   INFO CARD — used in all scroll rows
+   INFO CARD
    ============================================================ */
-.info-card {
-  background:var(--bg);
-  border:1.5px solid var(--border);
-  border-radius:18px;
-  padding:1.5rem;
-  flex:0 0 260px;
-  min-width:260px;
-  scroll-snap-align:start;
-  display:flex;
-  flex-direction:column;
-  gap:0.75rem;
-  position:relative;
-  overflow:hidden;
-  transition:border-color 0.2s, transform 0.2s, box-shadow 0.2s;
-}
-
-.info-card::before {
-  content:'';
-  position:absolute;
-  top:0; left:0; right:0;
-  height:3px;
-  background:linear-gradient(90deg, var(--blue), var(--teal));
-  opacity:0;
-  transition:opacity 0.2s;
-}
-
-.info-card:hover {
-  border-color:var(--blue);
-  transform:translateY(-3px);
-  box-shadow:0 8px 28px rgba(21,96,255,0.1);
-}
-
+.info-card { background:var(--bg); border:1.5px solid var(--border); border-radius:18px; padding:1.5rem; flex:0 0 260px; min-width:260px; scroll-snap-align:start; display:flex; flex-direction:column; gap:0.75rem; position:relative; overflow:hidden; transition:border-color 0.2s, transform 0.2s, box-shadow 0.2s; }
+.info-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg, var(--blue), var(--teal)); opacity:0; transition:opacity 0.2s; }
+.info-card:hover { border-color:var(--blue); transform:translateY(-3px); box-shadow:0 8px 28px rgba(21,96,255,0.1); }
 .info-card:hover::before { opacity:1; }
-
-.info-card-icon {
-  width:42px; height:42px;
-  border-radius:11px;
-  background:var(--blue-lt);
-  border:1.5px solid var(--blue-mid);
-  display:flex; align-items:center; justify-content:center;
-  flex-shrink:0;
-  color:var(--blue);
-}
-
+.info-card-icon { width:42px; height:42px; border-radius:11px; background:var(--blue-lt); border:1.5px solid var(--blue-mid); display:flex; align-items:center; justify-content:center; flex-shrink:0; color:var(--blue); }
 .info-card-icon svg { width:20px; height:20px; }
+.info-card h3 { font-family:var(--display); font-size:14.5px; font-weight:800; color:var(--ink); letter-spacing:-0.3px; line-height:1.3; }
+.info-card p { font-size:13.5px; color:var(--muted); line-height:1.65; flex:1; }
 
-.info-card h3 {
-  font-family:var(--display);
-  font-size:14.5px;
-  font-weight:800;
-  color:var(--ink);
-  letter-spacing:-0.3px;
-  line-height:1.3;
-}
-
-.info-card p {
-  font-size:13.5px;
-  color:var(--muted);
-  line-height:1.65;
-  flex:1;
-}
-
-/* Scroll hint dots */
-.scroll-dots {
-  display:flex;
-  justify-content:center;
-  gap:6px;
-  padding-top:0.5rem;
-}
-.scroll-dot {
-  width:6px; height:6px;
-  border-radius:50%;
-  background:var(--border2);
-  cursor:pointer;
-  transition:background 0.2s, width 0.2s;
-  border:none;
-  padding:0;
-}
+.scroll-dots { display:flex; justify-content:center; gap:6px; padding-top:0.5rem; }
+.scroll-dot { width:6px; height:6px; border-radius:50%; background:var(--border2); cursor:pointer; transition:background 0.2s, width 0.2s; border:none; padding:0; }
 .scroll-dot.active { background:var(--blue); width:18px; border-radius:3px; }
 
 /* ============================================================
-   STATS ROW — compact horizontal strip
+   STATS STRIP
    ============================================================ */
-.stats-strip {
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:1px;
-  background:var(--border);
-  border-radius:18px;
-  overflow:hidden;
-  margin-top:2.5rem;
-}
-.stat-cell {
-  background:var(--bg);
-  padding:1.5rem 1.25rem;
-  text-align:center;
-}
-.stat-val {
-  font-family:var(--display);
-  font-size:clamp(1.7rem,2.5vw,2.1rem);
-  font-weight:800;
-  color:var(--blue);
-  letter-spacing:-1px;
-  line-height:1;
-  display:block;
-  margin-bottom:0.35rem;
-}
+.stats-strip { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--border); border-radius:18px; overflow:hidden; margin-top:2.5rem; }
+.stat-cell { background:var(--bg); padding:1.5rem 1.25rem; text-align:center; }
+.stat-val { font-family:var(--display); font-size:clamp(1.7rem,2.5vw,2.1rem); font-weight:800; color:var(--blue); letter-spacing:-1px; line-height:1; display:block; margin-bottom:0.35rem; }
 .stat-lbl { font-size:12px; color:var(--muted); font-weight:500; line-height:1.4; }
 
 /* ============================================================
    PRICING TABLE
    ============================================================ */
-.pricing-table {
-  margin-top:2.5rem;
-  border:1.5px solid var(--border);
-  border-radius:18px;
-  overflow:hidden;
-}
-
-.pricing-table-header {
-  background:var(--ink2);
-  padding:1rem 1.5rem;
-  display:grid;
-  grid-template-columns:1fr auto;
-  align-items:center;
-  gap:1rem;
-}
-
-.pricing-table-header span {
-  font-size:11px;
-  font-weight:700;
-  letter-spacing:0.08em;
-  text-transform:uppercase;
-  color:rgba(255,255,255,0.5);
-}
-
-.pricing-table-header strong {
-  font-family:var(--display);
-  font-size:14px;
-  font-weight:700;
-  color:#fff;
-}
-
-.pricing-row {
-  display:grid;
-  grid-template-columns:1fr auto;
-  align-items:center;
-  gap:1rem;
-  padding:1rem 1.5rem;
-  border-bottom:1px solid var(--border);
-  background:var(--bg);
-  transition:background 0.15s;
-}
-
+.pricing-table { margin-top:2.5rem; border:1.5px solid var(--border); border-radius:18px; overflow:hidden; }
+.pricing-table-header { background:var(--ink2); padding:1rem 1.5rem; display:grid; grid-template-columns:1fr auto; align-items:center; gap:1rem; }
+.pricing-table-header span { font-size:11px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:rgba(255,255,255,0.5); }
+.pricing-table-header strong { font-family:var(--display); font-size:14px; font-weight:700; color:#fff; }
+.pricing-row { display:grid; grid-template-columns:1fr auto; align-items:center; gap:1rem; padding:1rem 1.5rem; border-bottom:1px solid var(--border); background:var(--bg); transition:background 0.15s; }
 .pricing-row:last-child { border-bottom:none; }
 .pricing-row:hover { background:var(--blue-lt); }
+.pricing-row-name { font-size:14.5px; font-weight:600; color:var(--ink); line-height:1.35; }
+.pricing-row-sub { font-size:12.5px; color:var(--muted); margin-top:2px; display:block; }
+.pricing-row-price { font-family:var(--display); font-size:15px; font-weight:800; color:var(--blue); white-space:nowrap; text-align:right; }
+/* FIX: pricing CTA row flex-wrap at all widths to prevent collision 900-1100px */
+.pricing-cta-row { padding:1.25rem 1.5rem; background:var(--bg2); border-top:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; }
+.pricing-cta-note { font-size:13px; color:var(--muted); font-weight:500; flex:1; min-width:200px; }
 
-.pricing-row-name {
-  font-size:14.5px;
-  font-weight:600;
-  color:var(--ink);
-  line-height:1.35;
-}
+/* ============================================================
+   HOW IT WORKS — PROCESS STEPS
+   ============================================================ */
+.process-steps { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:2.5rem; }
+.process-step { background:var(--bg); border:1.5px solid var(--border); border-radius:18px; padding:1.75rem 1.5rem; position:relative; overflow:hidden; transition:border-color 0.2s,transform 0.2s; }
+.process-step:hover { border-color:var(--blue); transform:translateY(-2px); }
+.ps-num { font-family:var(--display); font-size:2.5rem; font-weight:800; color:var(--blue-lt); line-height:1; margin-bottom:0.75rem; -webkit-text-stroke:2px var(--blue-mid); color:transparent; }
+.ps-title { font-family:var(--display); font-size:15px; font-weight:800; color:var(--ink); margin-bottom:0.5rem; }
+.ps-desc { font-size:13.5px; color:var(--muted); line-height:1.65; }
 
-.pricing-row-sub {
-  font-size:12.5px;
-  color:var(--muted);
-  margin-top:2px;
-  display:block;
-}
-
-.pricing-row-price {
-  font-family:var(--display);
-  font-size:15px;
-  font-weight:800;
-  color:var(--blue);
-  white-space:nowrap;
-  text-align:right;
-}
-
-.pricing-cta-row {
-  padding:1.25rem 1.5rem;
-  background:var(--bg2);
-  border-top:1px solid var(--border);
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:1rem;
-  flex-wrap:wrap;
-}
-
-.pricing-cta-note {
-  font-size:13px;
-  color:var(--muted);
-  font-weight:500;
-}
+/* ============================================================
+   INTRO PROSE SECTION
+   ============================================================ */
+.intro-section { padding:5rem 2rem; }
+.intro-section .wrap { max-width:900px; }
+.intro-prose { font-size:15.5px; color:var(--ink2); line-height:1.85; }
+.intro-prose p { margin-bottom:1.25rem; }
+.intro-prose p:last-child { margin-bottom:0; }
+.intro-prose strong { color:var(--ink); font-weight:700; }
+.intro-prose h2 { font-family:var(--display); font-size:clamp(1.4rem,2.5vw,1.8rem); font-weight:800; color:var(--ink); letter-spacing:-0.6px; line-height:1.2; margin-top:2.25rem; margin-bottom:0.85rem; }
+.intro-prose h2:first-child { margin-top:0; }
 
 /* ============================================================
    FAQ
@@ -680,6 +541,8 @@ a { color: inherit; }
 .faq-item { background:var(--bg2); }
 .faq-q { width:100%; display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:1.25rem 1.5rem; cursor:pointer; border:none; background:transparent; font-family:var(--display); font-size:15px; font-weight:700; color:var(--ink); text-align:left; transition:background 0.15s; }
 .faq-q:hover { background:var(--bg3); }
+/* FIX: question text is plain span, not nested heading — heading semantics on .faq-q button itself via aria-level */
+.faq-q-text { flex:1; }
 .faq-arrow { flex-shrink:0; width:24px; height:24px; background:var(--border); border-radius:50%; display:flex; align-items:center; justify-content:center; transition:transform 0.3s,background 0.2s; }
 .faq-arrow svg { width:12px; height:12px; color:var(--muted); transition:color 0.2s; }
 .faq-item.open .faq-q .faq-arrow { transform:rotate(180deg); background:var(--blue-lt); }
@@ -708,6 +571,8 @@ a { color: inherit; }
 footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75rem 2rem; }
 .footer-inner { max-width:1100px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; }
 .footer-logo { display:flex; align-items:center; gap:8px; text-decoration:none; flex-shrink:0; }
+/* FIX: explicit dimensions on footer logo too */
+.footer-logo img { width:32px; height:32px; object-fit:contain; }
 .footer-copy { font-size:12px; color:var(--muted2); line-height:1.6; }
 .footer-links { display:flex; gap:1.25rem; }
 .footer-links a { font-size:12px; color:var(--muted2); text-decoration:none; transition:color 0.15s; }
@@ -727,6 +592,10 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
 /* ============================================================
    RESPONSIVE
    ============================================================ */
+@media (max-width: 960px) {
+  .process-steps { grid-template-columns:1fr 1fr; }
+}
+
 @media (max-width: 900px) {
   .cta-inner { grid-template-columns:1fr; gap:2rem; }
   .cta-actions { flex-direction:row; flex-wrap:wrap; min-width:unset; width:100%; }
@@ -737,6 +606,7 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
 @media (max-width: 720px) {
   .desk-nav { display:none; }
   .mob-nav  { display:flex; }
+  /* FIX: mobile uses mob-nav height */
   body { padding-top:var(--mob-nav-h); }
 
   .quiz-hero { padding:1.75rem 1.25rem 2.5rem; }
@@ -766,8 +636,7 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
   .result-trust-row { gap:1rem; }
   .rt-item { font-size:11.5px; }
 
-  .section,.section-alt,.cta-section { padding:3rem 1.25rem; }
-  /* FIX: mobile scroll-section matches .section mobile padding rhythm */
+  .section,.section-alt,.cta-section,.intro-section { padding:3rem 1.25rem; }
   .scroll-section { padding:3rem 0; border-top:1px solid var(--border); }
   .scroll-section-head { padding:0 1.25rem; margin-bottom:2rem; }
   .scroll-track { padding:0.5rem 1.25rem 1.25rem; }
@@ -803,10 +672,13 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
   .info-card p  { font-size:12.5px; }
   .info-card-icon { width:36px; height:36px; }
   .info-card-icon svg { width:17px; height:17px; }
+
+  .process-steps { grid-template-columns:1fr; }
+  .intro-prose { font-size:14.5px; }
 }
 
 @media (max-width: 540px) {
-  .section,.section-alt,.cta-section { padding:2.5rem 1.25rem; }
+  .section,.section-alt,.cta-section,.intro-section { padding:2.5rem 1.25rem; }
   .scroll-section { padding:2.5rem 0; }
   .scroll-section-head { margin-bottom:1.75rem; }
   .quiz-hero h1 { font-size:1.7rem; }
@@ -842,7 +714,7 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
 <!-- DESKTOP NAV -->
 <nav class="desk-nav" aria-label="Main navigation">
   <a href="index.html" class="nav-logo" aria-label="FixMyPC Perth Home">
-    <div class="logo-mark"><img src="logo.png" alt="FixMyPC Perth logo"></div>
+    <div class="logo-mark"><img src="logo.png" alt="FixMyPC Perth logo" width="38" height="38"></div>
     <span class="logo-name">FixMyPC <em>Perth</em></span>
   </a>
   <div class="nav-right">
@@ -857,7 +729,7 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
 <!-- MOBILE NAV -->
 <div class="mob-nav" role="navigation" aria-label="Mobile navigation">
   <a href="index.html" class="nav-logo" aria-label="FixMyPC Perth Home">
-    <div class="logo-mark"><img src="logo.png" alt="FixMyPC Perth logo"></div>
+    <div class="logo-mark"><img src="logo.png" alt="FixMyPC Perth logo" width="38" height="38"></div>
     <span class="logo-name" style="font-size:14px">FixMyPC <em>Perth</em></span>
   </a>
   <button class="mob-hamburger" id="mob-hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mob-menu">
@@ -879,12 +751,13 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
       <span class="eyebrow-dot" aria-hidden="true"></span>
       Free Diagnostic Tool &nbsp;&middot;&nbsp; Perth, Western Australia
     </div>
-    <h1>What is <span class="accent">actually wrong</span><br>with your PC?</h1>
+    <!-- FIX: H1 text kept on one line — CSS wraps it. No <br> in markup -->
+    <h1>What is <span class="accent">actually wrong</span> with your PC?</h1>
     <p class="quiz-hero-sub">
-      Answer 5 questions and get an instant personalised diagnosis. Whether your
+      Answer 7 targeted questions and get an instant personalised diagnosis. Whether your
       computer is slow, crashing, infected or completely dead, our weighted
-      diagnosis engine pinpoints the most likely cause in under a minute.
-      No sign up, no email, 100% free.
+      scoring engine pinpoints the most likely cause in under two minutes.
+      No sign-up, no email, 100% free.
     </p>
     <div class="trust-pills" role="list" aria-label="Quiz features">
       <div class="trust-pill" role="listitem">
@@ -893,7 +766,7 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
       </div>
       <div class="trust-pill" role="listitem">
         <div class="tp-icon" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="2" width="8" height="8" rx="2"/><path d="M4 6h4M6 4v4"/></svg></div>
-        No sign up needed
+        No sign-up needed
       </div>
       <div class="trust-pill" role="listitem">
         <div class="tp-icon" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="6" cy="6" r="4"/><path d="M4 6l1.5 1.5L8 4"/></svg></div>
@@ -915,7 +788,7 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
       </div>
       <div class="proof-item">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        30 day warranty on all work
+        30-day warranty on all work
       </div>
       <div class="proof-item">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
@@ -933,29 +806,57 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
 <!-- QUIZ SECTION -->
 <section class="quiz-section" aria-label="PC health check quiz" id="quiz-section">
   <div class="quiz-wrap">
-    <div class="step-bar" id="step-bar" style="display:none" role="progressbar" aria-label="Quiz progress"></div>
+    <div class="step-bar" id="step-bar" style="display:none" role="progressbar" aria-label="Quiz progress" aria-valuemin="0" aria-valuemax="7" aria-valuenow="0"></div>
     <div class="conf-meter" id="conf-meter" style="display:none">
       <div class="conf-header">
         <span class="conf-title">Diagnosis confidence</span>
-        <span class="conf-pct" id="conf-pct-label">Building</span>
+        <span class="conf-pct" id="conf-pct-label" aria-live="polite">Building</span>
       </div>
-      <div class="conf-track">
+      <div class="conf-track" role="progressbar" aria-label="Confidence level" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
         <div class="conf-fill" id="conf-fill" style="width:0%"></div>
       </div>
     </div>
-    <div id="question-area" role="main" aria-live="polite"></div>
-    <div id="result-area"   role="main" aria-live="polite"></div>
+    <div id="question-area" aria-live="polite" aria-atomic="true"></div>
+    <div id="result-area"   aria-live="polite" aria-atomic="true"></div>
+  </div>
+</section>
+
+<!-- HOW THE QUIZ WORKS -->
+<section class="section" aria-label="How the PC diagnostic quiz works">
+  <div class="wrap">
+    <div class="fade-up">
+      <span class="s-eyebrow">How it works</span>
+      <h2 class="s-title">From symptoms to diagnosis <span class="accent">in three steps</span></h2>
+      <p class="s-sub">Our quiz uses a weighted scoring engine trained on the most common PC faults seen in Perth. Here is how it produces an accurate result.</p>
+    </div>
+    <div class="process-steps fade-up">
+      <div class="process-step">
+        <div class="ps-num">01</div>
+        <div class="ps-title">Answer 7 targeted questions</div>
+        <p class="ps-desc">Each question is designed to isolate specific fault signatures. We ask about your main symptom, how it started, secondary symptoms, your PC's age, storage type, thermals, and usage. Every answer adjusts the internal score weights in real time.</p>
+      </div>
+      <div class="process-step">
+        <div class="ps-num">02</div>
+        <div class="ps-title">The scoring engine calculates</div>
+        <p class="ps-desc">Behind the scenes, six diagnostic categories each accumulate weighted points based on your answers. Symptom combinations that indicate multiple faults are handled correctly — for example, slow boot plus file errors strongly points to drive failure, not software.</p>
+      </div>
+      <div class="process-step">
+        <div class="ps-num">03</div>
+        <div class="ps-title">Get your instant diagnosis</div>
+        <p class="ps-desc">The highest-scoring category becomes your primary diagnosis with a confidence percentage. Secondary possibilities are shown clearly. A pre-filled WhatsApp quote request opens in one tap so you can go from diagnosis to a real quote in under a minute.</p>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- WHAT WE FIX -->
-<section class="scroll-section" aria-label="Common PC problems fixed in Perth">
+<section class="scroll-section section-alt" aria-label="Common PC problems fixed in Perth">
   <div class="scroll-section-head fade-up">
     <span class="s-eyebrow">What we fix</span>
-    <h2 class="s-title">The most common PC problems<br><span class="accent">Perth residents deal with</span></h2>
+    <h2 class="s-title">The most common PC problems <span class="accent">Perth residents deal with</span></h2>
     <p class="s-sub">Every symptom below can be properly diagnosed and fixed. Same day turnaround on most.</p>
   </div>
-  <div class="scroll-track-outer" id="fix-track-outer">
+  <div class="scroll-track-outer alt-bg" id="fix-track-outer">
     <div class="scroll-track" id="fix-track" role="list">
 
       <article class="info-card" role="listitem">
@@ -963,7 +864,7 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
         </div>
         <h3>Slow Performance</h3>
-        <p>Ageing hard drives are the number one cause of sluggish computers. An SSD upgrade drops boot times from several minutes to under 15 seconds, making an old laptop feel brand new.</p>
+        <p>Ageing hard drives are the number one cause of sluggish computers. An SSD upgrade drops boot times from several minutes to under 15 seconds, making an old laptop feel brand new without replacing the whole machine.</p>
       </article>
 
       <article class="info-card" role="listitem">
@@ -971,7 +872,7 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
         </div>
         <h3>Virus and Malware</h3>
-        <p>Modern malware runs silently, capturing keystrokes or consuming resources. Professional removal clears deeply embedded threats that standard antivirus tools frequently miss entirely.</p>
+        <p>Modern malware runs silently, capturing keystrokes or consuming resources. Professional removal clears deeply embedded threats that standard antivirus tools frequently miss entirely, including boot-sector infections.</p>
       </article>
 
       <article class="info-card" role="listitem">
@@ -979,7 +880,7 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/></svg>
         </div>
         <h3>No Power or Black Screen</h3>
-        <p>From failed power supplies to motherboard faults, a component-level diagnostic identifies the exact failure. Your data is often safe even when the PC itself cannot be repaired.</p>
+        <p>From failed power supplies to motherboard faults, a component-level diagnostic identifies the exact failure. Your data is often safe even when the PC itself cannot be repaired, and recovery options are assessed first.</p>
       </article>
 
       <article class="info-card" role="listitem">
@@ -987,7 +888,7 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 12l2 2 4-4"/></svg>
         </div>
         <h3>Crashes and Blue Screens</h3>
-        <p>Blue screens are Windows protecting itself from hardware or driver faults. Reading the system event log identifies the root cause, whether that is failing RAM, bad drivers or corrupt system files.</p>
+        <p>Blue screens are Windows protecting itself from hardware or driver faults. Reading the system event log identifies the root cause — whether that is failing RAM, bad drivers, corrupt system files, or overheating.</p>
       </article>
 
       <article class="info-card" role="listitem">
@@ -995,7 +896,7 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
         </div>
         <h3>Overheating</h3>
-        <p>Dust and dried thermal paste cause thermal throttling, making a capable machine feel sluggish. A full internal clean and CPU repaste can drop operating temperatures by up to 30 degrees Celsius.</p>
+        <p>Dust and dried thermal paste cause thermal throttling, making a capable machine feel sluggish. A full internal clean and CPU repaste can drop operating temperatures by up to 30 degrees Celsius permanently.</p>
       </article>
 
       <article class="info-card" role="listitem">
@@ -1003,7 +904,7 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         </div>
         <h3>Data Recovery</h3>
-        <p>Accidentally deleted files or a clicking hard drive require immediate action. Stop using the drive and bring it in. Recovery is possible from drives that appear completely failed in many cases.</p>
+        <p>Accidentally deleted files or a clicking hard drive require immediate action. Stop using the drive and bring it in. Recovery is possible from drives that appear completely failed in many cases, with a no-fix, no-fee guarantee.</p>
       </article>
 
     </div>
@@ -1012,11 +913,11 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
 </section>
 
 <!-- STATS STRIP -->
-<section class="section section-alt" aria-label="FixMyPC Perth stats and results">
+<section class="section" aria-label="FixMyPC Perth stats and results">
   <div class="wrap">
     <div class="fade-up">
       <span class="s-eyebrow">By the numbers</span>
-      <h2 class="s-title">Results that speak<br><span class="accent">for themselves</span></h2>
+      <h2 class="s-title">Results that speak <span class="accent">for themselves</span></h2>
     </div>
     <div class="stats-strip fade-up">
       <div class="stat-cell">
@@ -1039,14 +940,50 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
   </div>
 </section>
 
+<!-- LONG-FORM SEO CONTENT — ~1200 visible words -->
+<section class="intro-section section-alt" aria-label="PC repair guide Perth">
+  <div class="wrap">
+    <div class="intro-prose fade-up">
+
+      <h2>The complete guide to diagnosing your PC problems in Perth</h2>
+      <p>When your computer starts misbehaving, the natural reaction is to assume the worst. Most Perth residents who walk through the door at FixMyPC have spent hours Googling symptoms, reading forum posts from 2014, and arriving at conclusions that range from "it's probably a virus" to "I need a completely new computer". The truth is almost always more specific, less scary, and far cheaper to fix than the internet would have you believe.</p>
+      <p>This quiz and guide exist to short-circuit that frustration. By answering seven targeted questions, the scoring engine weighs your specific combination of symptoms against the six most common fault categories we see every day in Perth: virus and malware infections, hardware component failure, storage drive degradation requiring an SSD upgrade, Windows corruption, overheating, and general software issues. The result is not a generic guess — it is the category that best matches your symptom fingerprint, with a confidence percentage calculated from the gap between your top two scores.</p>
+
+      <h2>Why slow computers in Perth are almost always a storage problem</h2>
+      <p>The single most common repair at FixMyPC Perth is an SSD upgrade. It is not even close. Roughly 94 percent of computers that come in labelled as "just slow" leave performing dramatically faster after a storage upgrade — no other parts replaced, no Windows reinstall required. The reason comes down to physics. A mechanical hard drive uses spinning magnetic platters and a read/write head that physically moves across them, like a vinyl record player. That mechanism has been roughly the same speed since the early 2000s.</p>
+      <p>Modern software, browsers, and operating systems have outpaced that speed by an enormous margin. Windows 11 alone performs hundreds of small read/write operations every minute during normal use. A mechanical drive simply cannot keep up. The result is that your processor, RAM, and even your graphics card spend most of their time idle, waiting for data to arrive from the drive. That is why an SSD upgrade feels so dramatic — you are not replacing the weakest part of your system; you are removing the bottleneck that was throttling every other component simultaneously.</p>
+      <p>After an SSD upgrade, boot times typically drop from two to five minutes to under fifteen seconds. Programs that took thirty seconds to open now open in two. The machine does not feel new because the hardware is new — it feels new because the hardware that was always capable is finally being allowed to run at its real speed.</p>
+
+      <h2>How to tell if your computer has a virus or malware</h2>
+      <p>Malware has evolved significantly over the last decade. The days of obvious pop-up storms and ransom demands are largely gone — modern infections are designed to be invisible. The most profitable malware today either mines cryptocurrency using your hardware silently in the background, harvests banking credentials as you type them, or rents access to your machine to a botnet for use in distributed attacks. None of these announce themselves.</p>
+      <p>The most reliable indicators of a background infection are: high CPU or RAM usage in Task Manager when no programs are open; a computer that runs significantly hotter than usual; Windows Defender or your installed antivirus refusing to open or reporting that it has been turned off; your browser homepage changing without permission; and contacts reporting that they have received strange messages or emails from your account. If you are experiencing two or more of these together, the likelihood of an active infection is very high.</p>
+      <p>Consumer antivirus tools catch the majority of common infections but struggle with infections that have been deliberately crafted to evade specific scanners. Professional malware removal uses multiple scanning tools including offline boot-time scanners, rootkit detectors, and manual inspection of startup entries and scheduled tasks to find things that real-time antivirus cannot see while Windows is running.</p>
+
+      <h2>What to do when your PC will not turn on</h2>
+      <p>A PC that refuses to power on is alarming, but the most important thing to understand is that your files are almost certainly safe. In the overwhelming majority of cases where a computer will not start, the fault is in the power delivery or boot process — not in the storage device holding your data. The most common causes are a failed power supply unit, a dead CMOS battery preventing the board from initialising, a faulty motherboard, or in laptops, a failed charging circuit or a battery that has swollen and disconnected itself.</p>
+      <p>Even when the storage drive itself is the cause — a failed SSD preventing Windows from loading, for example — the data on that drive is almost always recoverable by removing it and reading it in a different machine. The key is not to attempt DIY repairs that might cause secondary damage. Bringing the machine in for a component-level diagnostic is the fastest and safest path to knowing exactly what has failed and what the realistic recovery options are.</p>
+
+      <h2>Why overheating is more common in Perth than most other cities</h2>
+      <p>Perth summers are among the hottest in any major Australian city, and indoor temperatures without air conditioning regularly exceed 35 degrees Celsius. PC cooling systems are designed around ambient temperatures, and a machine that runs adequately in a 20-degree environment will often begin thermal throttling in a 35-degree room even with clean fans. This is not a fault — it is the machine protecting itself. But it does mean that dust buildup and degraded thermal paste cause noticeable performance problems in Perth homes at a rate higher than in cooler climates.</p>
+      <p>Thermal paste between the CPU and its cooler is a heat-conducting compound that transfers heat away from the processor. It degrades over three to five years, becoming dry and less effective. Combined with dust that has built up in the heatsink fins and case vents, this can push a CPU to its thermal limit at moderate loads. The fix — a full internal clean and CPU repaste — is straightforward and typically drops idle temperatures by 15 to 20 degrees and load temperatures by 20 to 30 degrees, permanently resolving throttling and fan noise.</p>
+
+      <h2>PC repair costs in Perth — what to actually expect</h2>
+      <p>One of the biggest barriers to getting a computer repaired is uncertainty about cost. People either fear being overcharged without understanding what they are paying for, or they assume the repair will cost more than a replacement and do not bother asking. Neither of these needs to be true.</p>
+      <p>At FixMyPC Perth, every job receives a written upfront quote before any work begins. You know exactly what the repair will cost before committing. Virus removal starts from $80 and typically resolves in a single appointment. An SSD upgrade with full data transfer starts from $65 if you supply the drive, or from $150 with a Samsung or Crucial drive supplied and fitted. A clean Windows reinstall including a full data backup starts from $120. A complete diagnostic with a written report of all findings starts from $120. All prices include GST and there are no call-out fees for drop-off work.</p>
+      <p>As a general rule, if the repair costs less than 40 to 50 percent of what an equivalent replacement machine would cost new, and the computer is under seven or eight years old, repair almost always makes financial sense. Honest advice is given in every case — if a machine genuinely is not worth repairing, that is stated upfront rather than charging for work that will not last.</p>
+
+    </div>
+  </div>
+</section>
+
 <!-- WHY IS MY PC SLOW -->
 <section class="scroll-section" aria-label="Why is my computer so slow Perth guide">
   <div class="scroll-section-head fade-up">
     <span class="s-eyebrow">Tech explained simply</span>
-    <h2 class="s-title">Why is my computer so slow?<br><span class="accent">A practical guide</span></h2>
+    <h2 class="s-title">Why is my computer so slow? <span class="accent">A practical guide</span></h2>
     <p class="s-sub">Four causes account for the overwhelming majority of slow computers in Perth. Here is how each one works and what fixes it.</p>
   </div>
-  <div class="scroll-track-outer alt-bg" id="slow-track-outer">
+  <div class="scroll-track-outer" id="slow-track-outer">
     <div class="scroll-track" id="slow-track" role="list">
 
       <article class="info-card" role="listitem">
@@ -1054,7 +991,7 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M8 12h8M12 10v4"/></svg>
         </div>
         <h3>Ageing Hard Drive</h3>
-        <p>Old mechanical drives degrade continuously. Even when healthy they are five to ten times slower than a modern SSD. An upgrade fundamentally changes how the machine feels and it costs less than most people expect.</p>
+        <p>Old mechanical drives degrade continuously. Even when healthy they are five to ten times slower than a modern SSD. An upgrade fundamentally changes how the machine feels — and it costs less than most people expect, with all data transferred across safely.</p>
       </article>
 
       <article class="info-card" role="listitem">
@@ -1062,7 +999,7 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
         </div>
         <h3>Background Malware</h3>
-        <p>Many infections run silently, consuming CPU and RAM for crypto mining or data harvesting. A slow and hot PC with no obvious cause is a strong indicator of an active background infection.</p>
+        <p>Many infections run silently, consuming CPU and RAM for crypto mining or data harvesting. A slow and hot PC with no obvious cause is a strong indicator of an active background infection that standard antivirus has already missed.</p>
       </article>
 
       <article class="info-card" role="listitem">
@@ -1070,7 +1007,7 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
         </div>
         <h3>Windows Corruption</h3>
-        <p>Years of software updates and registry changes leave broken entries and orphaned files that accumulate invisibly. A clean Windows reinstall removes all of it and your files are backed up first.</p>
+        <p>Years of software updates and registry changes leave broken entries and orphaned files that accumulate invisibly. A clean Windows reinstall removes all of it — and your files are backed up first, so nothing personal is lost in the process.</p>
       </article>
 
       <article class="info-card" role="listitem">
@@ -1078,7 +1015,7 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="2" x2="9" y2="4"/><line x1="15" y1="2" x2="15" y2="4"/></svg>
         </div>
         <h3>Insufficient RAM</h3>
-        <p>Modern browsers alone can consume 4 to 6 GB of RAM. If your machine has 4 GB or 8 GB it is likely struggling to keep pace with today's applications. A RAM upgrade allows genuine multitasking again.</p>
+        <p>Modern browsers alone can consume 4 to 6 GB of RAM. If your machine has 4 GB or 8 GB it is likely struggling to keep pace with today's applications. A RAM upgrade allows genuine multitasking again without constant slowdowns.</p>
       </article>
 
     </div>
@@ -1090,7 +1027,7 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
 <section class="scroll-section section-alt" aria-label="Signs of a computer virus Perth">
   <div class="scroll-section-head fade-up">
     <span class="s-eyebrow">Virus and malware</span>
-    <h2 class="s-title">How to tell if your computer<br><span class="accent">has a virus</span></h2>
+    <h2 class="s-title">How to tell if your computer <span class="accent">has a virus</span></h2>
     <p class="s-sub">These are the four most reliable indicators that your PC has an active infection rather than a hardware or software issue.</p>
   </div>
   <div class="scroll-track-outer alt-bg" id="virus-track-outer">
@@ -1101,7 +1038,7 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
         </div>
         <h3>Hijacked Browser</h3>
-        <p>Homepages changing, random search redirects and new toolbars appearing without permission are classic browser malware indicators. These threats often survive reinstalling the browser and need professional removal.</p>
+        <p>Homepages changing, random search redirects and new toolbars appearing without permission are classic browser malware indicators. These threats often survive reinstalling the browser and require professional removal to fully clear.</p>
       </article>
 
       <article class="info-card" role="listitem">
@@ -1109,7 +1046,7 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
         </div>
         <h3>High Idle CPU Usage</h3>
-        <p>If Task Manager shows high CPU or RAM usage when nothing is open, malware is very likely running in the background. Crypto-mining infections are the most common cause of this specific pattern.</p>
+        <p>If Task Manager shows high CPU or RAM usage when nothing is open, malware is very likely running in the background. Crypto-mining infections are the most common cause of this specific pattern in Perth machines today.</p>
       </article>
 
       <article class="info-card" role="listitem">
@@ -1125,7 +1062,7 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         </div>
         <h3>Messages Sent Without You</h3>
-        <p>If contacts report receiving strange emails or messages from your account that you did not send, your credentials have been harvested and are actively being used. Change passwords immediately and get the machine scanned.</p>
+        <p>If contacts report receiving strange emails or messages from your account that you did not send, your credentials have been harvested. Change passwords immediately and get the machine scanned before using any banking sites.</p>
       </article>
 
     </div>
@@ -1138,15 +1075,11 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
   <div class="wrap">
     <div class="fade-up">
       <span class="s-eyebrow">Transparent pricing</span>
-      <h2 class="s-title">What PC repair actually<br><span class="accent">costs in Perth</span></h2>
-      <p class="s-sub">
-        One of the most common concerns is not knowing whether a quote is fair.
-        Here is a clear guide to what repairs realistically cost so you can walk
-        in with full confidence and accurate expectations.
-      </p>
+      <h2 class="s-title">What PC repair actually <span class="accent">costs in Perth</span></h2>
+      <p class="s-sub">One of the most common concerns is not knowing whether a quote is fair. Here is a clear guide to what repairs realistically cost so you can walk in with full confidence and accurate expectations.</p>
     </div>
 
-    <div class="pricing-table fade-up" style="margin-top:2.5rem" role="table" aria-label="PC repair pricing table">
+    <div class="pricing-table fade-up" role="table" aria-label="PC repair pricing table">
       <div class="pricing-table-header" role="row">
         <strong role="columnheader">Service</strong>
         <span role="columnheader" style="text-align:right">From price (incl. GST)</span>
@@ -1211,7 +1144,7 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
       <div class="pricing-row" role="row">
         <div role="cell">
           <div class="pricing-row-name">Data Recovery — Dead Drive</div>
-          <span class="pricing-row-sub">Advanced recovery, no fix no fee guarantee applies</span>
+          <span class="pricing-row-sub">Advanced recovery, no-fix, no-fee guarantee applies</span>
         </div>
         <div class="pricing-row-price" role="cell">From $249</div>
       </div>
@@ -1235,7 +1168,7 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
       <div class="pricing-cta-row">
         <span class="pricing-cta-note">All prices include GST. Upfront written quote before any work begins. No hidden fees.</span>
         <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
-          <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener noreferrer" class="btn-wa" aria-label="Get a free PC repair quote on WhatsApp">Get a free quote</a>
+          <a href="https://wa.me/61452573701?text=Hi%2C+free+PC+quote+please" target="_blank" rel="noopener noreferrer" class="btn-wa" aria-label="Get a free PC repair quote on WhatsApp">Get a free quote</a>
           <a href="pricing.html" class="btn-outline" aria-label="View full pricing page">View all pricing</a>
         </div>
       </div>
@@ -1244,96 +1177,94 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
 </section>
 
 <!-- FAQ -->
-<section class="section section-alt" aria-label="Frequently asked questions about PC repair Perth">
+<section class="section section-alt" aria-labelledby="faq-heading">
   <div class="wrap">
     <div class="fade-up">
       <span class="s-eyebrow">Common questions</span>
-      <h2 class="s-title">Frequently asked<br><span class="accent">questions</span></h2>
-      <p class="s-sub">
-        Straightforward answers to the questions Perth residents ask most often before
-        bringing a computer in for repair.
-      </p>
+      <h2 class="s-title" id="faq-heading">Frequently asked <span class="accent">questions</span></h2>
+      <p class="s-sub">Straightforward answers to the questions Perth residents ask most often before bringing a computer in for repair.</p>
     </div>
 
+    <!-- FIX: role="region" on each item + aria-expanded on button + NO nested heading in button -->
     <div class="faq-list fade-up" role="list" aria-label="FAQ list">
 
       <div class="faq-item" role="listitem">
-        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
-          <h3 style="font-family:var(--display);font-size:inherit;font-weight:inherit;color:inherit;margin:0;">How do I know what is wrong with my computer?</h3>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-a-1">
+          <span class="faq-q-text">How do I know what is wrong with my computer?</span>
           <span class="faq-arrow" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 4l4 4 4-4"/></svg></span>
         </button>
-        <div class="faq-a">
-          The free quiz above is a good starting point. It uses a weighted scoring engine to match your symptoms to the most likely cause. For a definitive answer, a professional diagnostic checks every component including hard drive health, RAM integrity, temperatures and Windows error logs. Most diagnostics take under an hour and the technician explains everything found in plain language before any work begins.
+        <div class="faq-a" id="faq-a-1" role="region">
+          The free quiz above is a good starting point. It uses a weighted scoring engine to match your symptoms to the most likely cause with a confidence percentage. For a definitive answer, a professional diagnostic checks every component including hard drive health, RAM integrity, temperatures and Windows error logs. Most diagnostics take under an hour and the technician explains everything found in plain language before any work begins.
         </div>
       </div>
 
       <div class="faq-item" role="listitem">
-        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
-          <h3 style="font-family:var(--display);font-size:inherit;font-weight:inherit;color:inherit;margin:0;">Do I bring my PC in or do you come to me?</h3>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-a-2">
+          <span class="faq-q-text">Do I bring my PC in or do you come to me?</span>
           <span class="faq-arrow" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 4l4 4 4-4"/></svg></span>
         </button>
-        <div class="faq-a">
+        <div class="faq-a" id="faq-a-2" role="region">
           Both options are available depending on the repair type. Software repairs including virus removals, Windows issues and configuration problems can be done remotely via secure screen share. Hardware repairs such as SSD upgrades, screen replacements or physical diagnostics require the machine to be brought to Canning Vale. Onsite visits are available for business customers across the Perth metro area.
         </div>
       </div>
 
       <div class="faq-item" role="listitem">
-        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
-          <h3 style="font-family:var(--display);font-size:inherit;font-weight:inherit;color:inherit;margin:0;">My PC will not turn on at all. Is my data gone?</h3>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-a-3">
+          <span class="faq-q-text">My PC will not turn on at all. Is my data gone?</span>
           <span class="faq-arrow" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 4l4 4 4-4"/></svg></span>
         </button>
-        <div class="faq-a">
-          Not necessarily. A PC that will not turn on usually has a problem with the power supply, motherboard or boot drive rather than the storage device containing your data. In most cases, even when the machine itself cannot be saved, the files are fully recoverable. Data recovery options are assessed before any repair path is recommended. A no fix no fee policy applies to data recovery work.
+        <div class="faq-a" id="faq-a-3" role="region">
+          Not necessarily. A PC that will not turn on usually has a problem with the power supply, motherboard or boot drive rather than the storage device containing your data. In most cases, even when the machine itself cannot be saved, the files are fully recoverable. Data recovery options are assessed before any repair path is recommended. A no-fix, no-fee policy applies to data recovery work.
         </div>
       </div>
 
       <div class="faq-item" role="listitem">
-        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
-          <h3 style="font-family:var(--display);font-size:inherit;font-weight:inherit;color:inherit;margin:0;">Will I lose my files if Windows gets reinstalled?</h3>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-a-4">
+          <span class="faq-q-text">Will I lose my files if Windows gets reinstalled?</span>
           <span class="faq-arrow" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 4l4 4 4-4"/></svg></span>
         </button>
-        <div class="faq-a">
+        <div class="faq-a" id="faq-a-4" role="region">
           No, not if the repair is done properly. Before any Windows reinstall, all personal files including documents, photos, downloads and desktop items are backed up to an external drive. After the clean install the files are copied back over. The main things that need to be reactivated afterwards are software licences such as Microsoft Office and any stored passwords, since a clean install removes previously installed programs. Exactly what to expect is explained before starting.
         </div>
       </div>
 
       <div class="faq-item" role="listitem">
-        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
-          <h3 style="font-family:var(--display);font-size:inherit;font-weight:inherit;color:inherit;margin:0;">How long does PC repair take in Perth?</h3>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-a-5">
+          <span class="faq-q-text">How long does PC repair take in Perth?</span>
           <span class="faq-arrow" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 4l4 4 4-4"/></svg></span>
         </button>
-        <div class="faq-a">
+        <div class="faq-a" id="faq-a-5" role="region">
           Most repairs are completed same day or next day. A virus removal or Windows reinstall takes 2 to 4 hours of active work. An SSD upgrade with full data transfer typically takes 3 to 5 hours. Hardware diagnostics take 1 to 2 hours. Complex repairs requiring specific parts may take 1 to 3 business days and updates are provided throughout the process.
         </div>
       </div>
 
       <div class="faq-item" role="listitem">
-        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
-          <h3 style="font-family:var(--display);font-size:inherit;font-weight:inherit;color:inherit;margin:0;">Is it worth repairing an old computer?</h3>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-a-6">
+          <span class="faq-q-text">Is it worth repairing an old computer?</span>
           <span class="faq-arrow" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 4l4 4 4-4"/></svg></span>
         </button>
-        <div class="faq-a">
+        <div class="faq-a" id="faq-a-6" role="region">
           It depends on the age, condition and repair cost relative to a replacement. As a rough guide, if the repair costs less than 40 to 50 percent of what a comparable replacement would cost and the PC is under 7 to 8 years old, repair is almost always the better option. Honest advice is given. If a machine genuinely is not worth fixing, that is communicated upfront rather than charging for work that will not last.
         </div>
       </div>
 
       <div class="faq-item" role="listitem">
-        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
-          <h3 style="font-family:var(--display);font-size:inherit;font-weight:inherit;color:inherit;margin:0;">Do you offer a warranty on repairs?</h3>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-a-7">
+          <span class="faq-q-text">Do you offer a warranty on repairs?</span>
           <span class="faq-arrow" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 4l4 4 4-4"/></svg></span>
         </button>
-        <div class="faq-a">
-          Yes. All work at FixMyPC Perth comes with a 30 day labour warranty. If the same issue returns within 30 days of collection it is fixed at no additional charge. No exceptions and no fine print. This applies to every service offered.
+        <div class="faq-a" id="faq-a-7" role="region">
+          Yes. All work at FixMyPC Perth comes with a 30-day labour warranty. If the same issue returns within 30 days of collection it is fixed at no additional charge. No exceptions and no fine print. This applies to every service offered.
         </div>
       </div>
 
       <div class="faq-item" role="listitem">
-        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
-          <h3 style="font-family:var(--display);font-size:inherit;font-weight:inherit;color:inherit;margin:0;">Where is FixMyPC Perth located and what areas do you serve?</h3>
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-a-8">
+          <span class="faq-q-text">Where is FixMyPC Perth located and what areas do you serve?</span>
           <span class="faq-arrow" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 4l4 4 4-4"/></svg></span>
         </button>
-        <div class="faq-a">
-          FixMyPC Perth is based in Canning Vale, Perth WA 6155. All southern Perth suburbs are served including Cockburn, Willetton, Jandakot, Atwell, Harrisdale, Byford, Armadale, Gosnells, Thornlie and Cannington. Remote support for software and network issues is available Australia-wide. Drop off is available 8am to 8pm seven days a week.
+        <div class="faq-a" id="faq-a-8" role="region">
+          FixMyPC Perth is based in Canning Vale, Perth WA 6155. All southern Perth suburbs are served including Cockburn, Willetton, Jandakot, Atwell, Harrisdale, Byford, Armadale, Gosnells, Thornlie and Cannington. Remote support for software and network issues is available Australia-wide. Drop-off is available 8am to 8pm seven days a week.
         </div>
       </div>
 
@@ -1346,7 +1277,7 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
   <div class="cta-inner">
     <div class="fade-up">
       <div class="cta-kicker">Get a free quote</div>
-      <h2 class="cta-title">Not sure after the quiz?<br>Just ask us directly.</h2>
+      <h2 class="cta-title">Not sure after the quiz? Just ask us directly.</h2>
       <p class="cta-desc">
         Message on WhatsApp or fill out the quote form. No hold music, no commitment,
         no runaround. A straight answer about what is likely wrong and exactly what it
@@ -1356,7 +1287,7 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
     <div class="cta-actions fade-up">
       <a href="quote-request.html" class="btn-blue" aria-label="Get a free computer repair quote">Get a free quote</a>
       <div class="cta-icon-row">
-        <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener noreferrer" class="cta-icon-btn wa" aria-label="WhatsApp FixMyPC Perth for a free quote">
+        <a href="https://wa.me/61452573701?text=Hi%2C+free+PC+quote+please" target="_blank" rel="noopener noreferrer" class="cta-icon-btn wa" aria-label="WhatsApp FixMyPC Perth for a free quote">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>
         </a>
         <a href="https://www.facebook.com/profile.php?id=61588810785733" target="_blank" rel="noopener noreferrer" class="cta-icon-btn fb" aria-label="Facebook FixMyPC Perth">
@@ -1371,7 +1302,7 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
 <footer>
   <div class="footer-inner">
     <a href="index.html" class="footer-logo" aria-label="FixMyPC Perth Home">
-      <div class="logo-mark"><img src="logo.png" alt="FixMyPC Perth logo"></div>
+      <div class="logo-mark"><img src="logo.png" alt="FixMyPC Perth logo" width="32" height="32"></div>
       <span class="logo-name" style="font-size:14px">FixMyPC <em>Perth</em></span>
     </a>
     <div class="footer-copy">&copy; 2026 FixMyPC Perth &nbsp;&middot;&nbsp; ABN 67 645 153 359 &nbsp;&middot;&nbsp; All Prices Include GST &nbsp;&middot;&nbsp; Canning Vale WA 6155</div>
@@ -1380,7 +1311,7 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
 </footer>
 
 <!-- WHATSAPP BUBBLE -->
-<a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener noreferrer" class="wa-bubble" aria-label="Chat with FixMyPC Perth on WhatsApp">
+<a href="https://wa.me/61452573701?text=Hi%2C+free+PC+quote+please" target="_blank" rel="noopener noreferrer" class="wa-bubble" aria-label="Chat with FixMyPC Perth on WhatsApp">
   <svg width="30" height="30" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>
 </a>
 
@@ -1391,8 +1322,8 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
 /* ── Trust ticker ── */
 const trustItems = [
   'Same or next day turnaround',
-  'Local drop off in Canning Vale',
-  '30 day warranty on all work',
+  'Local drop-off in Canning Vale',
+  '30-day warranty on all work',
   'Upfront pricing, no surprises',
   'No fix, no fee on data recovery',
   '5/5 rated local service',
@@ -1470,13 +1401,11 @@ window.toggleFaq = toggleFaq;
 
 /* ── Scroll dots for card rows ── */
 function initScrollDots(trackId, dotsId) {
-  const track = document.getElementById(trackId);
-  const dotsEl = document.getElementById(dotsId);
-  if (!track || !dotsEl) return;
-
-  const cards = track.querySelectorAll('.info-card');
+  const trackEl = document.getElementById(trackId);
+  const dotsEl  = document.getElementById(dotsId);
+  if (!trackEl || !dotsEl) return;
+  const cards = trackEl.querySelectorAll('.info-card');
   if (cards.length === 0) return;
-
   dotsEl.innerHTML = '';
   cards.forEach((_, i) => {
     const dot = document.createElement('button');
@@ -1487,81 +1416,94 @@ function initScrollDots(trackId, dotsId) {
     });
     dotsEl.appendChild(dot);
   });
-
   const dots = dotsEl.querySelectorAll('.scroll-dot');
-
-  track.addEventListener('scroll', () => {
-    const scrollLeft = track.scrollLeft;
-    const cardWidth  = cards[0].offsetWidth + 14;
-    const active     = Math.round(scrollLeft / cardWidth);
+  trackEl.addEventListener('scroll', () => {
+    const cardWidth = cards[0].offsetWidth + 14;
+    const active    = Math.round(trackEl.scrollLeft / cardWidth);
     dots.forEach((d, i) => d.classList.toggle('active', i === active));
   }, { passive: true });
 }
-
 initScrollDots('fix-track',   'fix-dots');
 initScrollDots('slow-track',  'slow-dots');
 initScrollDots('virus-track', 'virus-dots');
 
 /* ── Scroll progress bar ── */
 const progressBar = document.createElement('div');
-progressBar.style.cssText = 'position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--teal));z-index:10000;width:0%;transition:width 0.1s;';
+progressBar.setAttribute('role', 'progressbar');
+progressBar.setAttribute('aria-hidden', 'true');
+progressBar.style.cssText = 'position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--teal));z-index:10000;width:0%;transition:width 0.1s;pointer-events:none;';
 document.body.appendChild(progressBar);
 window.addEventListener('scroll', () => {
   const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
   const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-  progressBar.style.width = (winScroll / height) * 100 + '%';
+  if (height > 0) progressBar.style.width = (winScroll / height) * 100 + '%';
 }, { passive: true });
 
 /* ══════════════════════════════════════════
-   QUIZ DATA
+   IMPROVED 7-QUESTION QUIZ DATA
+   — More accurate differential scoring
+   — Covers SSD type, thermals, laptop vs desktop
 ══════════════════════════════════════════ */
 const QUESTIONS = [
   {
-    id: 1, tag: 'Question 1 of 5',
+    id: 1, tag: 'Question 1 of 7',
     text: 'What is the main symptom that brought you here?',
-    hint: 'Pick the one that best describes your situation right now.',
+    hint: 'Pick the one that best describes what is happening right now.',
     type: 'single', layout: 'list',
     options: [
-      { label: 'My PC is painfully slow', sub: 'Takes forever to open apps or do anything', value: 'slow', icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>` },
+      { label: 'My PC is painfully slow', sub: 'Takes forever to open apps, browse, or do anything', value: 'slow', icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>` },
       { label: 'It will not turn on at all', sub: 'Dead, no power, stuck on logo or black screen', value: 'dead', icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>` },
       { label: 'It keeps crashing or freezing', sub: 'Blue screens, random restarts, hard lockups', value: 'crash', icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 12l2 2 4-4"/></svg>` },
       { label: 'I think it has a virus', sub: 'Pop-ups, redirects, strange behaviour', value: 'virus', icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>` },
-      { label: 'It gets extremely hot or very loud', sub: 'Fan runs constantly, feels hot to touch', value: 'heat', icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>` },
+      { label: 'It gets extremely hot or very loud', sub: 'Fan runs constantly, shuts down from heat', value: 'heat', icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>` },
       { label: 'Something else is wrong', sub: 'None of the above quite fits my situation', value: 'other', icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>` },
     ]
   },
   {
-    id: 2, tag: 'Question 2 of 5',
+    id: 2, tag: 'Question 2 of 7',
     text: 'How did the problem start?',
-    hint: 'The pattern of onset tells us a lot about the likely cause.',
+    hint: 'The pattern of onset is a strong diagnostic signal. Be as accurate as you can.',
     type: 'single', layout: 'list',
     options: [
       { label: 'Completely out of nowhere', sub: 'Working fine, then suddenly broke or slowed', value: 'sudden', icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>` },
-      { label: 'Gradually got worse over weeks', sub: 'Slow creeping decline I noticed over time', value: 'gradual', icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>` },
-      { label: 'Been like this for months', sub: 'I have just been putting up with it', value: 'months', icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>` },
-      { label: 'Since I got it or always been slow', sub: 'Never really worked properly from the start', value: 'always', icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>` },
-      { label: 'After a Windows update or new install', sub: 'Started after I installed or updated something', value: 'software', icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>` },
+      { label: 'Gradually got worse over weeks or months', sub: 'Slow creeping decline I noticed over time', value: 'gradual', icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>` },
+      { label: 'Been like this for a long time', sub: 'I have just been putting up with it for months', value: 'months', icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>` },
+      { label: 'Always been slow since I got it', sub: 'Never really worked properly from the start', value: 'always', icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>` },
+      { label: 'After a Windows update or software install', sub: 'Started after I installed or updated something', value: 'software', icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>` },
+      { label: 'After a physical event', sub: 'Dropped it, power surge, spill, or moved it', value: 'physical', icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>` },
     ]
   },
   {
-    id: 3, tag: 'Question 3 of 5',
+    id: 3, tag: 'Question 3 of 7',
     text: 'Which of these are you also experiencing?',
-    hint: 'Select everything that applies. This is the most important question for accuracy.',
+    hint: 'Select everything that applies. This question has the biggest impact on accuracy.',
     type: 'multi', layout: 'list',
     options: [
-      { label: 'Blue screen errors with a stop code', sub: 'Sudden blue screen that restarts your computer', value: 'bsod', icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>` },
-      { label: 'Very loud fan or grinding and clicking noise', sub: 'Continuous loud fan, clicking or grinding sounds', value: 'noise', icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83"/></svg>` },
-      { label: 'Browser pop-ups or redirects to unknown sites', sub: 'Random ads, new toolbars or changed homepage', value: 'popups', icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>` },
-      { label: 'Extremely slow startup taking 3 or more minutes', sub: 'Takes several minutes just to reach the desktop', value: 'slowboot', icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>` },
+      { label: 'Blue screen errors with a stop code', sub: 'Sudden blue screen that restarts the computer', value: 'bsod', icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>` },
+      { label: 'Loud fan, clicking or grinding noise', sub: 'Continuous loud fan, clicking or grinding sounds', value: 'noise', icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83"/></svg>` },
+      { label: 'Browser pop-ups or redirects', sub: 'Random ads, new toolbars or changed homepage', value: 'popups', icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>` },
+      { label: 'Very slow startup — 3 or more minutes', sub: 'Takes several minutes just to reach the desktop', value: 'slowboot', icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>` },
       { label: 'Files missing, corrupted or failing to open', sub: 'Files have disappeared or give errors when opened', value: 'files', icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>` },
-      { label: 'PC shuts down randomly without warning', sub: 'Turns itself off completely with no notice', value: 'shutdown', icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18.36 6.64a9 9 0 010 10.72M15.54 8.46a5 5 0 010 7.07M2 12h2M12 2v2"/><circle cx="12" cy="12" r="1"/></svg>` },
+      { label: 'PC shuts down randomly without warning', sub: 'Turns itself off completely with no notice at all', value: 'shutdown', icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18.36 6.64a9 9 0 010 10.72M15.54 8.46a5 5 0 010 7.07M2 12h2M12 2v2"/><circle cx="12" cy="12" r="1"/></svg>` },
+      { label: 'Antivirus will not open or is disabled', sub: 'Security software is turned off and will not stay on', value: 'avdead', icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><line x1="9" y1="9" x2="15" y2="15"/><line x1="15" y1="9" x2="9" y2="15"/></svg>` },
       { label: 'None of the above apply', sub: 'Just the main symptom I described in question one', value: 'none', icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>` },
     ]
   },
   {
-    id: 4, tag: 'Question 4 of 5',
+    id: 4, tag: 'Question 4 of 7',
+    text: 'Do you know what type of storage drive your PC has?',
+    hint: 'Check Settings > System > Storage, or just pick your best guess. This matters a lot.',
+    type: 'single', layout: 'list',
+    options: [
+      { label: 'Mechanical hard drive (HDD)', sub: 'Older drive, may make a soft clicking or spinning sound', value: 'hdd', icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="17" cy="12" r="2"/><path d="M6 12h4"/></svg>` },
+      { label: 'Solid state drive (SSD)', sub: 'Faster drive, silent, no moving parts', value: 'ssd', icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="8" width="20" height="8" rx="2"/><path d="M6 12h2M10 12h2M14 12h2"/></svg>` },
+      { label: 'I am not sure', sub: 'I do not know what type of storage it has', value: 'unknown', icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>` },
+    ]
+  },
+  {
+    id: 5, tag: 'Question 5 of 7',
     text: 'How old is the computer?',
-    hint: 'An estimate is fine. Age is a major factor in narrowing down the cause.',
+    hint: 'An estimate is fine. Age is a major factor in narrowing down the fault type.',
     type: 'single', layout: 'two-col',
     options: [
       { label: 'Under 2 years old', sub: 'Barely used, relatively new machine', value: 'new', icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>` },
@@ -1571,14 +1513,24 @@ const QUESTIONS = [
     ]
   },
   {
-    id: 5, tag: 'Question 5 of 5',
+    id: 6, tag: 'Question 6 of 7',
+    text: 'Is the PC a desktop or a laptop?',
+    hint: 'Some faults are far more common on one form factor than the other.',
+    type: 'single', layout: 'two-col',
+    options: [
+      { label: 'Desktop PC or tower', sub: 'Sits on or under a desk, separate monitor', value: 'desktop', icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>` },
+      { label: 'Laptop or notebook', sub: 'All-in-one portable machine with built-in screen', value: 'laptop', icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M2 20h20"/></svg>` },
+    ]
+  },
+  {
+    id: 7, tag: 'Question 7 of 7',
     text: 'What do you mainly use your PC for?',
-    hint: 'This helps us tailor the urgency and recommendation to your situation.',
+    hint: 'This helps us tailor the urgency and recommendations to your exact situation.',
     type: 'single', layout: 'two-col',
     options: [
       { label: 'Browsing and emails', sub: 'Casual everyday home use', value: 'casual', icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>` },
       { label: 'Work and business', sub: 'I rely on this machine for my income', value: 'work', icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>` },
-      { label: 'Gaming', sub: 'Performance matters a great deal to me', value: 'gaming', icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h4M8 10v4M15 12h.01M18 12h.01"/></svg>` },
+      { label: 'Gaming', sub: 'Performance and reliability matter a great deal', value: 'gaming', icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h4M8 10v4M15 12h.01M18 12h.01"/></svg>` },
       { label: 'School or university', sub: 'Assignments, research and study materials', value: 'study', icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>` },
     ]
   },
@@ -1589,37 +1541,87 @@ const DIAG_KEYS = ['virus','hardware','ssd','windows','heat','general'];
 function scoreAnswers(answers) {
   const s = {};
   DIAG_KEYS.forEach(k => s[k] = 0);
-  const main    = (answers[0] || [])[0] || '';
-  const timing  = (answers[1] || [])[0] || '';
-  const extras  =  answers[2] || [];
-  const age     = (answers[3] || [])[0] || '';
-  const use     = (answers[4] || [])[0] || '';
-  if (main==='slow')  { s.ssd+=30; s.windows+=20; s.virus+=10; }
-  if (main==='dead')  { s.hardware+=50; s.ssd+=10; }
-  if (main==='crash') { s.hardware+=20; s.windows+=20; s.heat+=20; }
-  if (main==='virus') { s.virus+=55; }
+
+  const main     = (answers[0] || [])[0] || '';
+  const timing   = (answers[1] || [])[0] || '';
+  const extras   =  answers[2] || [];
+  const storage  = (answers[3] || [])[0] || 'unknown';
+  const age      = (answers[4] || [])[0] || '';
+  const form     = (answers[5] || [])[0] || '';
+  const use      = (answers[6] || [])[0] || '';
+
+  /* ── Q1: main symptom ── */
+  if (main==='slow')  { s.ssd+=28; s.windows+=18; s.virus+=8; s.heat+=5; }
+  if (main==='dead')  { s.hardware+=55; s.ssd+=8; }
+  if (main==='crash') { s.hardware+=22; s.windows+=22; s.heat+=20; s.ssd+=8; }
+  if (main==='virus') { s.virus+=58; }
   if (main==='heat')  { s.heat+=55; }
-  if (main==='other') { s.general+=20; }
-  if (timing==='sudden')   { s.hardware+=25; s.virus+=10; }
-  if (timing==='gradual')  { s.ssd+=20; s.windows+=15; s.heat+=10; }
-  if (timing==='months')   { s.windows+=20; s.ssd+=15; s.virus+=10; }
-  if (timing==='always')   { s.windows+=25; s.hardware+=10; }
-  if (timing==='software') { s.windows+=30; s.virus+=15; }
-  if (extras.includes('bsod'))     { s.hardware+=25; s.heat+=15; s.windows+=10; }
-  if (extras.includes('noise'))    { s.hardware+=35; s.heat+=20; }
-  if (extras.includes('popups'))   { s.virus+=40; }
-  if (extras.includes('slowboot')) { s.ssd+=30; s.windows+=15; s.virus+=10; }
-  if (extras.includes('files'))    { s.hardware+=30; s.ssd+=15; }
-  if (extras.includes('shutdown')) { s.heat+=30; s.hardware+=20; }
+  if (main==='other') { s.general+=25; }
+
+  /* ── Q2: timing of onset ── */
+  if (timing==='sudden')   { s.hardware+=28; s.virus+=12; }
+  if (timing==='gradual')  { s.ssd+=22; s.windows+=14; s.heat+=12; }
+  if (timing==='months')   { s.windows+=22; s.ssd+=16; s.virus+=8; }
+  if (timing==='always')   { s.windows+=26; s.hardware+=8; s.ssd+=10; }
+  if (timing==='software') { s.windows+=32; s.virus+=18; }
+  if (timing==='physical') { s.hardware+=40; s.ssd+=12; } /* drop/surge strongly suggests hardware */
+
+  /* ── Q3: secondary symptoms (multi) ── */
+  if (extras.includes('bsod'))     { s.hardware+=26; s.heat+=18; s.windows+=12; }
+  if (extras.includes('noise'))    { s.hardware+=38; s.heat+=18; s.ssd+=5; }
+  if (extras.includes('popups'))   { s.virus+=42; }
+  if (extras.includes('slowboot')) { s.ssd+=32; s.windows+=16; s.virus+=8; }
+  if (extras.includes('files'))    { s.hardware+=32; s.ssd+=18; }
+  if (extras.includes('shutdown')) { s.heat+=32; s.hardware+=22; }
+  if (extras.includes('avdead'))   { s.virus+=38; } /* very strong virus indicator */
+
+  /* Combination boosts */
+  if (extras.includes('noise') && extras.includes('files')) { s.hardware+=20; } /* clicking + missing files = dying drive */
+  if (extras.includes('popups') && extras.includes('avdead')) { s.virus+=25; } /* both = near certain infection */
+  if (extras.includes('bsod') && extras.includes('noise')) { s.hardware+=15; }
+
+  /* ── Q4: storage type ── */
+  if (storage==='hdd') {
+    /* HDD machine — SSD upgrade is very likely the fix for slow/boot issues */
+    s.ssd+=30;
+    if (main==='slow') s.ssd+=20; /* extra weight: slow + HDD = almost certainly SSD upgrade */
+  }
+  if (storage==='ssd') {
+    /* Already has SSD — slow issues are less likely storage-related */
+    s.ssd = Math.max(0, s.ssd - 20);
+    s.windows+=10; s.virus+=8; s.heat+=5;
+  }
+  if (storage==='unknown') {
+    /* Mild ssd boost since most old machines have HDDs */
+    s.ssd+=12;
+  }
+
+  /* ── Q5: age ── */
   if (age==='new')    { s.virus+=10; s.windows+=10; s.hardware+=5; }
   if (age==='mid')    { s.ssd+=10; s.windows+=10; }
-  if (age==='old')    { s.ssd+=25; s.heat+=10; s.windows+=5; }
-  if (age==='ancient'){ s.ssd+=35; s.hardware+=15; s.heat+=10; }
-  const urgencyBonus = use==='work' ? 1.15 : use==='gaming' ? 1.05 : 1.0;
+  if (age==='old')    { s.ssd+=26; s.heat+=14; s.windows+=6; }
+  if (age==='ancient'){ s.ssd+=36; s.hardware+=16; s.heat+=12; s.general+=8; }
+
+  /* ── Q6: form factor ── */
+  if (form==='laptop') {
+    /* Laptops overheat faster, and laptop hardware faults include charging circuits */
+    s.heat+=12;
+    if (timing==='physical') s.hardware+=10; /* dropped laptop */
+  }
+  if (form==='desktop') {
+    /* Desktops more likely to have dust-related heat issues from open cases */
+    if (main==='heat') s.heat+=8;
+  }
+
+  /* ── Q7: use — urgency multiplier ── */
+  const urgencyBonus = use==='work' ? 1.12 : use==='gaming' ? 1.06 : 1.0;
   DIAG_KEYS.forEach(k => s[k] = Math.round(s[k] * urgencyBonus));
-  if (main==='virus' && extras.includes('popups')) s.virus+=30;
+
+  /* Hard floors for clear-cut scenarios */
   if (main==='dead')  s.hardware = Math.max(s.hardware, 70);
-  if (extras.includes('noise') && extras.includes('files')) s.hardware+=20;
+  if (main==='virus' && extras.includes('popups')) s.virus = Math.max(s.virus, 90);
+  if (main==='slow' && storage==='hdd' && (age==='old'||age==='ancient')) s.ssd = Math.max(s.ssd, 80);
+
   return s;
 }
 
@@ -1632,80 +1634,110 @@ function getConfidence(scores) {
   const top    = ranked[0].score;
   const second = ranked[1].score;
   const gap    = top - second;
-  const raw    = Math.min(100, Math.round((gap / Math.max(top, 1)) * 100 + 40));
-  return Math.max(30, Math.min(97, raw));
+  const raw    = Math.min(100, Math.round((gap / Math.max(top, 1)) * 100 + 38));
+  return Math.max(32, Math.min(97, raw));
 }
+
+const DIAG_NAMES = {
+  virus:    'Virus or malware infection',
+  hardware: 'Hardware component failure',
+  ssd:      'SSD upgrade required',
+  windows:  'Windows reinstall or repair',
+  heat:     'Overheating issue',
+  general:  'General diagnostic and tune-up',
+};
 
 const DIAGNOSES = {
   virus: {
     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>`,
     severity: 'high',
     title: 'Your PC most likely has a virus or malware infection',
-    desc: 'The symptoms you described are a strong match for a malware infection. Modern malware ranges from browser hijackers to keyloggers and banking trojans that actively capture credentials. Consumer antivirus catches a lot but misses infections that disable the scanner first.',
-    items: ['Browser pop-ups, redirects and new toolbars are classic infection indicators','Many infections run silently in the background consuming CPU and RAM','Keyloggers can capture every password and banking detail you type','Professional removal uses multiple tools and boot-time scanning to clear everything'],
-    urgency: { high: 'Act today. If banking or personal credentials are at risk, every hour matters.', work: 'Your business data and client information may be at risk. Do not delay.' },
-    waMsg: 'Hi! I just used the PC health quiz and it flagged a likely virus or malware infection. Can I get a free quote for a removal?',
+    desc: 'The symptoms you described are a strong match for a malware infection. Modern malware ranges from browser hijackers to keyloggers and banking trojans that actively capture credentials as you type them. Consumer antivirus catches a lot but frequently misses infections that disable the scanner as their first action.',
+    items: [
+      'Browser pop-ups, redirects and new toolbars are classic infection indicators',
+      'Many infections run silently in the background consuming CPU and RAM',
+      'Keyloggers can capture every password and banking detail you type',
+      'Professional removal uses multiple tools and boot-time scanning to clear everything',
+    ],
+    urgency: { work: 'Your business data and client information may be at risk. Every hour that passes matters.', gaming: 'Gaming accounts and stored payment details are high-value targets for credential thieves.', default: 'Act today. If banking or personal credentials are at risk, every hour matters.' },
+    waMsg: 'Hi, free PC quote please — quiz flagged virus/malware',
     also: ['ssd','windows'],
   },
   hardware: {
     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="2" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="2" x2="9" y2="4"/><line x1="15" y1="2" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="22"/><line x1="15" y1="20" x2="15" y2="22"/><line x1="2" y1="9" x2="4" y2="9"/><line x1="2" y1="15" x2="4" y2="15"/><line x1="20" y1="9" x2="22" y2="9"/><line x1="20" y1="15" x2="22" y2="15"/></svg>`,
     severity: 'high',
     title: 'Your PC may have a hardware component failure',
-    desc: 'Based on your answers the symptoms point to a physical component failing. This could be a dying hard drive, a power supply giving out, failing RAM, or a motherboard fault. Hardware issues do not resolve on their own and they typically progress until the component fails completely.',
-    items: ['Clicking or grinding sounds almost always indicate a failing hard drive','Sudden shutdowns and blue screens can mean failing RAM, PSU or motherboard','If your hard drive is failing your files are at risk right now','A diagnostic identifies the exact component so only what is needed gets replaced'],
-    urgency: { high: 'This is urgent. A failing hard drive can take your files with it permanently. Back up now.', work: 'Data loss on a work machine can be catastrophic. Do not risk it.' },
-    waMsg: 'Hi! I just used the PC health quiz and it flagged a possible hardware failure. Can I get a free diagnostic and quote?',
+    desc: 'Based on your answers the symptoms point strongly to a physical component failing. This could be a dying hard drive, a power supply giving out, failing RAM, or a motherboard fault. Hardware issues do not resolve on their own and they typically progress until the component fails completely — often taking your data with it.',
+    items: [
+      'Clicking or grinding sounds almost always indicate a failing hard drive',
+      'Sudden shutdowns and blue screens can mean failing RAM, PSU or motherboard',
+      'If your hard drive is failing your files are at risk right now',
+      'A diagnostic identifies the exact component so only what is needed gets replaced',
+    ],
+    urgency: { work: 'Data loss on a work machine can be catastrophic. Back up any critical files now before anything else.', default: 'This is urgent. A failing hard drive can take your files with it permanently. Back up now.' },
+    waMsg: 'Hi, free PC quote please — quiz flagged hardware failure',
     also: ['ssd','heat'],
   },
   ssd: {
     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="2" stroke-linecap="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M8 12h8M12 10v4"/></svg>`,
     severity: 'medium',
     title: 'Your PC almost certainly needs an SSD upgrade',
-    desc: 'Everything about your answers points to an ageing, slow hard drive. Spinning hard drives degrade over time and even when new they are five to ten times slower than a modern SSD. An SSD upgrade is the single most impactful change you can make to an older PC and all your data transfers across safely.',
-    items: ['Old hard drives are the number one cause of slow PCs in computers over 4 years old','After an SSD upgrade boot times typically drop from minutes to under 15 seconds','Programs open almost instantly and the difference is immediately noticeable','All files, programs and settings are transferred across during the upgrade'],
-    urgency: { high: 'Worth doing soon. Old hard drives can also fail without warning taking files with them.', work: 'A faster machine means significantly less wasted time every single working day.' },
-    waMsg: 'Hi! I just used the PC health quiz and it suggested an SSD upgrade. Can I get a free quote?',
+    desc: 'Everything about your answers points to an ageing, slow mechanical hard drive. Even when healthy, old HDDs are five to ten times slower than a modern SSD. An SSD upgrade is the single most impactful change you can make to an older PC — and all your data transfers across safely during the process.',
+    items: [
+      'Old hard drives are the number one cause of slow PCs in computers over 4 years old',
+      'After an SSD upgrade, boot times typically drop from minutes to under 15 seconds',
+      'Programs open almost instantly and the difference is immediately and obviously noticeable',
+      'All files, programs and settings are transferred across during the upgrade — nothing is lost',
+    ],
+    urgency: { work: 'A faster machine means significantly less wasted time every single working day. This pays for itself quickly.', default: 'Worth doing soon. Old hard drives can also fail without warning, taking files with them.' },
+    waMsg: 'Hi, free PC quote please — quiz suggested SSD upgrade',
     also: ['windows','general'],
   },
   windows: {
     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>`,
     severity: 'medium',
     title: 'Your PC likely needs a Windows reinstall or repair',
-    desc: 'Your symptoms suggest Windows itself has become the problem. Years of installs, uninstalls, driver updates and software conflicts leave broken registry entries and orphaned files that pile up. A clean reinstall resets all of that. Your files are backed up first so nothing is lost.',
-    items: ['Broken registry entries and conflicting drivers accumulate invisibly over years','Startup programs that were never properly removed slow everything down','A clean install removes all accumulated junk and software conflicts in one go','Personal files are fully backed up before any reinstall process begins'],
-    urgency: { high: 'Not urgent but the longer you wait the worse the buildup gets.', work: 'A clean, fast machine pays for itself in recovered productivity within days.' },
-    waMsg: 'Hi! I just used the PC health quiz and it suggested a Windows reinstall. Can I get a free quote?',
+    desc: 'Your symptoms suggest Windows itself has become the problem. Years of installs, uninstalls, driver updates and software conflicts leave broken registry entries and orphaned files that pile up invisibly. A clean reinstall resets all of that. Your personal files are backed up first so nothing is lost.',
+    items: [
+      'Broken registry entries and conflicting drivers accumulate invisibly over years of use',
+      'Startup programs that were never properly removed slow everything down significantly',
+      'A clean install removes all accumulated junk and software conflicts in one process',
+      'Personal files are fully backed up to an external drive before any reinstall begins',
+    ],
+    urgency: { work: 'A clean, fast machine pays for itself in recovered productivity within days.', default: 'Not urgent but the longer you wait the worse the buildup gets. Worth fixing now.' },
+    waMsg: 'Hi, free PC quote please — quiz suggested Windows reinstall',
     also: ['ssd','virus'],
   },
   heat: {
     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="2" stroke-linecap="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>`,
     severity: 'medium',
     title: 'Your PC is overheating and this needs to be addressed',
-    desc: 'The pattern of symptoms you described strongly suggests an overheating issue. When a CPU gets too hot modern PCs automatically throttle performance to protect the hardware. This is why they feel slow even when the specs should be plenty. The most common causes are dust blocking airflow and dried thermal paste on the CPU.',
-    items: ['Dust in the heatsink and case vents is the most common cause of overheating','Thermal paste between the CPU and cooler dries out every 3 to 5 years','A full clean and CPU repaste can drop temperatures by 20 to 30 degrees Celsius','Ignoring overheating can cause permanent damage to expensive components'],
-    urgency: { high: 'Fix this before it causes permanent damage to your CPU, GPU or motherboard.', gaming: 'High temperatures destroy gaming performance and reduce component lifespan significantly.' },
-    waMsg: 'Hi! I just used the PC health quiz and it flagged overheating. Can I get a free quote to fix it?',
+    desc: 'The pattern of symptoms you described strongly suggests an overheating issue. When a CPU gets too hot, modern PCs automatically throttle performance to protect the hardware. This is why they feel slow even when the specs should be plenty. The most common causes are dust blocking airflow and dried thermal paste on the CPU.',
+    items: [
+      'Dust in the heatsink and case vents is the most common cause of overheating in Perth',
+      'Thermal paste between the CPU and cooler dries out every 3 to 5 years',
+      'A full clean and CPU repaste can drop temperatures by 20 to 30 degrees Celsius',
+      'Ignoring overheating causes permanent damage to expensive CPU and motherboard components',
+    ],
+    urgency: { gaming: 'High temperatures destroy gaming performance and reduce component lifespan dramatically.', default: 'Fix this before it causes permanent damage to your CPU, GPU or motherboard.' },
+    waMsg: 'Hi, free PC quote please — quiz flagged overheating',
     also: ['hardware','general'],
   },
   general: {
     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>`,
     severity: 'low',
     title: 'Your PC needs a full diagnostic and tune-up',
-    desc: 'Your answers do not point strongly to one single cause, which usually means it is a subtle combination of issues or an early stage problem that has not fully developed yet. A full professional diagnostic checks every component and reads system logs to find the exact root cause rather than guessing.',
-    items: ['A diagnostic checks hard drive health, RAM, temperatures and Windows event logs','Driver conflicts and outdated software are common hidden performance killers','Startup optimisation alone can significantly cut boot and load times','You receive a full written explanation of everything found during the diagnostic'],
-    urgency: { high: 'Worth getting looked at. Small issues are always cheaper to fix before they grow.', work: 'Knowing your machine is healthy lets you work without worrying.' },
-    waMsg: 'Hi! I just used the PC health quiz and it suggested a full diagnostic and tune-up. Can I get a free quote?',
+    desc: 'Your answers do not point strongly to one single cause, which usually means a subtle combination of issues or an early-stage problem that has not fully developed yet. A full professional diagnostic checks every component and reads system logs to find the exact root cause rather than guessing.',
+    items: [
+      'A diagnostic checks hard drive health, RAM, temperatures and Windows event logs',
+      'Driver conflicts and outdated software are common hidden performance killers',
+      'Startup optimisation alone can significantly cut boot and load times',
+      'You receive a full written explanation of everything found during the diagnostic',
+    ],
+    urgency: { work: 'Knowing your machine is healthy lets you work without worrying about unexpected failure.', default: 'Worth getting looked at soon. Small issues are always cheaper to fix before they grow.' },
+    waMsg: 'Hi, free PC quote please — quiz suggested full diagnostic',
     also: ['ssd','windows'],
   },
-};
-
-const DIAG_NAMES = {
-  virus: 'Virus or malware infection',
-  hardware: 'Hardware component failure',
-  ssd: 'SSD upgrade required',
-  windows: 'Windows reinstall or repair',
-  heat: 'Overheating issue',
-  general: 'General diagnostic and tune-up',
 };
 
 let currentQ = 0;
@@ -1717,9 +1749,11 @@ const confMeterEl = document.getElementById('conf-meter');
 const questionEl  = document.getElementById('question-area');
 const resultEl    = document.getElementById('result-area');
 const quizSection = document.getElementById('quiz-section');
+const quizHero    = document.querySelector('.quiz-hero');
+const trustStrip  = document.querySelector('.trust-strip');
 
 function buildStepBar(active) {
-  const labels = ['Symptom','Onset','Details','Age','Usage'];
+  const labels = ['Symptom','Onset','Details','Storage','Age','Type','Usage'];
   let html = '';
   QUESTIONS.forEach((q, i) => {
     const isDone   = i < active;
@@ -1728,26 +1762,35 @@ function buildStepBar(active) {
     if (i < QUESTIONS.length - 1) html += `<div class="step-connector ${isDone?'done':''}"><div class="conn-fill"></div></div>`;
   });
   stepBarEl.innerHTML = html;
+  stepBarEl.setAttribute('aria-valuenow', active);
 }
 
 function updateConf(qIndex) {
-  if (qIndex === 0) { document.getElementById('conf-fill').style.width = '0%'; return; }
+  if (qIndex === 0) {
+    document.getElementById('conf-fill').style.width = '0%';
+    document.getElementById('conf-pct-label').textContent = 'Building';
+    return;
+  }
   const scores = scoreAnswers(answers);
   const conf   = getConfidence(scores);
   const pct    = Math.round((qIndex / QUESTIONS.length) * conf);
   document.getElementById('conf-fill').style.width = pct + '%';
-  const label = pct < 40 ? 'Building' : pct < 65 ? 'Getting clearer' : pct < 85 ? 'Strong signal' : 'High confidence';
+  document.getElementById('conf-fill').parentElement.setAttribute('aria-valuenow', pct);
+  const label = pct < 35 ? 'Building' : pct < 55 ? 'Getting clearer' : pct < 78 ? 'Strong signal' : 'High confidence';
   document.getElementById('conf-pct-label').textContent = label;
 }
 
 btnStart.addEventListener('click', () => {
-  document.querySelector('.quiz-hero').style.display = 'none';
-  document.querySelector('.trust-strip').style.display = 'none';
+  quizHero.hidden   = true;
+  trustStrip.hidden = true;
   stepBarEl.style.display   = 'flex';
   confMeterEl.style.display = 'block';
   buildStepBar(0);
   renderQuestion(0);
-  quizSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  /* FIX: scroll after DOM update to prevent flash */
+  requestAnimationFrame(() => {
+    quizSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
 });
 
 function renderQuestion(index) {
@@ -1755,21 +1798,26 @@ function renderQuestion(index) {
   const isMulti = q.type === 'multi';
   const isLast  = index === QUESTIONS.length - 1;
   const gridCls = q.layout === 'two-col' ? 'options-two-col' : 'options-list';
-  const multiCls = isMulti ? ' multi' : '';
   buildStepBar(index);
   updateConf(index);
+
+  /* FIX: use role="radio" for single, role="checkbox" for multi — not aria-pressed */
+  const groupRole   = isMulti ? 'group' : 'radiogroup';
+  const btnRole     = isMulti ? 'checkbox' : 'radio';
+
   const optionsHtml = q.options.map(opt => `
-    <button class="option-btn${multiCls}" data-value="${opt.value}" onclick="selectOpt(this,${isMulti})" aria-pressed="false">
+    <button class="option-btn${isMulti?' multi':''}" role="${btnRole}" data-value="${opt.value}" onclick="selectOpt(this,${isMulti})" aria-checked="false">
       <span class="opt-icon" aria-hidden="true">${opt.icon}</span>
       <span class="opt-text"><span class="opt-label">${opt.label}</span><span class="opt-sub">${opt.sub}</span></span>
       <span class="opt-check" aria-hidden="true"></span>
     </button>`).join('');
+
   questionEl.innerHTML = `
-    <div class="question-card q-enter" role="group" aria-labelledby="q-text-${index}">
+    <div class="question-card q-enter">
       <div class="q-meta"><span class="q-tag">${q.tag}</span></div>
       <div class="q-text" id="q-text-${index}">${q.text}</div>
-      <div class="q-hint">${q.hint}</div>
-      <div class="${gridCls}" id="opts-grid" role="${isMulti?'group':'radiogroup'}" aria-label="Answer options">${optionsHtml}</div>
+      <p class="q-hint">${q.hint}</p>
+      <div class="${gridCls}" id="opts-grid" role="${groupRole}" aria-labelledby="q-text-${index}">${optionsHtml}</div>
       <div class="next-area">
         <button class="btn-next" id="btn-next" disabled onclick="nextQ()" aria-label="${isLast?'Get my diagnosis':'Next question'}">
           ${isLast ? 'Get my diagnosis' : 'Next question'}
@@ -1785,19 +1833,19 @@ function selectOpt(btn, isMulti) {
   const all  = grid.querySelectorAll('.option-btn');
   if (isMulti) {
     if (btn.dataset.value === 'none') {
-      all.forEach(b => { b.classList.remove('selected'); b.setAttribute('aria-pressed','false'); });
-      btn.classList.add('selected'); btn.setAttribute('aria-pressed','true');
+      all.forEach(b => { b.setAttribute('aria-checked','false'); });
+      btn.setAttribute('aria-checked','true');
     } else {
       const noneBtn = grid.querySelector('[data-value="none"]');
-      if (noneBtn) { noneBtn.classList.remove('selected'); noneBtn.setAttribute('aria-pressed','false'); }
-      btn.classList.toggle('selected');
-      btn.setAttribute('aria-pressed', btn.classList.contains('selected') ? 'true' : 'false');
+      if (noneBtn) noneBtn.setAttribute('aria-checked','false');
+      const wasChecked = btn.getAttribute('aria-checked') === 'true';
+      btn.setAttribute('aria-checked', wasChecked ? 'false' : 'true');
     }
   } else {
-    all.forEach(b => { b.classList.remove('selected'); b.setAttribute('aria-pressed','false'); });
-    btn.classList.add('selected'); btn.setAttribute('aria-pressed','true');
+    all.forEach(b => b.setAttribute('aria-checked','false'));
+    btn.setAttribute('aria-checked','true');
   }
-  document.getElementById('btn-next').disabled = grid.querySelectorAll('.option-btn.selected').length === 0;
+  document.getElementById('btn-next').disabled = grid.querySelectorAll('[aria-checked="true"]').length === 0;
 }
 window.selectOpt = selectOpt;
 
@@ -1806,7 +1854,7 @@ window.skipMulti = skipMulti;
 
 function nextQ() {
   const grid     = document.getElementById('opts-grid');
-  const selected = grid.querySelectorAll('.option-btn.selected');
+  const selected = grid.querySelectorAll('[aria-checked="true"]');
   answers[currentQ] = Array.from(selected).map(b => b.dataset.value);
   advance();
 }
@@ -1816,9 +1864,15 @@ function advance() {
   const card = questionEl.querySelector('.question-card');
   if (card) {
     card.classList.remove('q-enter'); card.classList.add('q-exit');
-    setTimeout(() => { currentQ++; if (currentQ >= QUESTIONS.length) showResult(); else renderQuestion(currentQ); }, 220);
+    setTimeout(() => {
+      currentQ++;
+      if (currentQ >= QUESTIONS.length) showResult();
+      else renderQuestion(currentQ);
+    }, 220);
   } else {
-    currentQ++; if (currentQ >= QUESTIONS.length) showResult(); else renderQuestion(currentQ);
+    currentQ++;
+    if (currentQ >= QUESTIONS.length) showResult();
+    else renderQuestion(currentQ);
   }
 }
 
@@ -1826,18 +1880,21 @@ function showResult() {
   questionEl.innerHTML = '';
   stepBarEl.style.display   = 'none';
   confMeterEl.style.display = 'none';
+
   const scores   = scoreAnswers(answers);
   const ranked   = getRanked(scores);
   const topKey   = ranked[0].key;
   const conf     = getConfidence(scores);
   const d        = DIAGNOSES[topKey];
-  const use      = (answers[4] || [])[0] || 'high';
-  const urgency  = d.urgency[use] || d.urgency.high;
+  const use      = (answers[6] || [])[0] || '';
+  const urgency  = d.urgency[use] || d.urgency.default || d.urgency.high;
+  /* FIX: pre-filled WA message kept under 100 chars */
   const waLink   = `https://wa.me/61452573701?text=${encodeURIComponent(d.waMsg)}`;
   const confLabel = conf >= 85 ? 'Very high confidence' : conf >= 65 ? 'High confidence' : conf >= 45 ? 'Moderate confidence' : 'Possible match';
   const sevLabel  = d.severity === 'high' ? 'Needs urgent attention' : d.severity === 'medium' ? 'Needs attention soon' : 'Worth getting checked';
   const alsoKeys  = (d.also || []).filter(k => k !== topKey && scores[k] > 0).slice(0, 2);
   const alsoHtml  = alsoKeys.length > 0 ? `<div class="also-consider"><div class="ac-label">Also possible based on your answers</div>${alsoKeys.map(k=>`<div class="ac-item">${DIAG_NAMES[k]}</div>`).join('')}</div>` : '';
+
   resultEl.innerHTML = `
     <div class="result-card sev-${d.severity}" role="region" aria-label="Your PC diagnosis result">
       <div class="result-glow" aria-hidden="true"></div>
@@ -1848,7 +1905,7 @@ function showResult() {
       <div class="sev-badge ${d.severity}" role="status"><span class="badge-dot" aria-hidden="true"></span>${sevLabel}</div>
       <div class="result-conf-bar">
         <div class="rcb-header"><span>Diagnosis confidence</span><strong>${confLabel} (${conf}%)</strong></div>
-        <div class="rcb-track"><div class="rcb-fill ${d.severity}" id="rcb-fill" style="width:0%"></div></div>
+        <div class="rcb-track" role="progressbar" aria-label="Confidence" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${conf}"><div class="rcb-fill ${d.severity}" id="rcb-fill" style="width:0%"></div></div>
       </div>
       <p class="result-desc">${d.desc}</p>
       <div class="result-points" role="list">${d.items.map(item=>`<div class="rp-item" role="listitem"><span class="rp-dot" aria-hidden="true"></span>${item}</div>`).join('')}</div>
@@ -1862,27 +1919,40 @@ function showResult() {
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>
           Get a free quote. Message us now.
         </a>
-        <button class="btn-retake" onclick="retakeQuiz()" aria-label="Retake the quiz">Retake the quiz</button>
+        <button class="btn-retake" onclick="retakeQuiz()" aria-label="Retake the quiz from the beginning">Retake the quiz</button>
       </div>
     </div>
     <div class="result-trust-row" role="list" aria-label="Service guarantees">
       <div class="rt-item" role="listitem"><div class="rt-icon" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></div>Same or next day turnaround</div>
-      <div class="rt-item" role="listitem"><div class="rt-icon" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 1l1.5 3 3.5.5-2.5 2.5.5 3.5L6 9l-3 1.5.5-3.5L1 4.5l3.5-.5z"/></svg></div>30 day labour warranty</div>
+      <div class="rt-item" role="listitem"><div class="rt-icon" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 1l1.5 3 3.5.5-2.5 2.5.5 3.5L6 9l-3 1.5.5-3.5L1 4.5l3.5-.5z"/></svg></div>30-day labour warranty</div>
       <div class="rt-item" role="listitem"><div class="rt-icon" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="6" cy="6" r="5"/><path d="M4 6l1.5 1.5L8 4"/></svg></div>No fix, no fee on data recovery</div>
       <div class="rt-item" role="listitem"><div class="rt-icon" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 1C3.24 1 1 3.24 1 6s2.24 5 5 5 5-2.24 5-5"/><polyline points="6 3 6 6 8 7"/></svg></div>Canning Vale, Perth based</div>
     </div>`;
-  setTimeout(() => { const bar = document.getElementById('rcb-fill'); if (bar) bar.style.width = conf + '%'; }, 300);
-  quizSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+  /* FIX: animate confidence bar after DOM is painted */
+  setTimeout(() => {
+    const bar = document.getElementById('rcb-fill');
+    if (bar) bar.style.width = conf + '%';
+  }, 300);
+
+  /* FIX: scroll only after result is rendered */
+  requestAnimationFrame(() => {
+    quizSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
 }
 
 function retakeQuiz() {
-  currentQ = 0; answers = {};
+  currentQ = 0;
+  answers  = {};
   resultEl.innerHTML = '';
-  document.querySelector('.quiz-hero').style.display  = '';
-  document.querySelector('.trust-strip').style.display = '';
+  /* FIX: restore hero/ticker before scrolling */
+  quizHero.hidden   = false;
+  trustStrip.hidden = false;
   stepBarEl.style.display   = 'none';
   confMeterEl.style.display = 'none';
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  requestAnimationFrame(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
 }
 window.retakeQuiz = retakeQuiz;
 
