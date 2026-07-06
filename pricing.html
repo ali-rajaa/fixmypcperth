@@ -576,6 +576,76 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
 .addon-tile-name { font-size: 12.5px; font-weight: 600; color: var(--ink); font-family: var(--display); }
 .addon-tile-price { font-family: var(--display); font-size: 13.5px; font-weight: 800; color: var(--blue); white-space: nowrap; }
 
+/* OPTION CARDS — multi-choice service rows (screen replacement, SSD, RAM etc) */
+.prow-multi {
+  display: block;
+  padding: 1.4rem 1.4rem 1.5rem;
+}
+.prow-multi:hover { background: var(--bg); }
+.pm-head {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: 1rem; margin-bottom: 1.1rem; flex-wrap: wrap;
+}
+.pm-head-text { min-width: 0; flex: 1; }
+.pm-hint {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 11.5px; font-weight: 700; color: var(--blue);
+  background: var(--blue-lt); border: 1px solid var(--blue-mid);
+  padding: 6px 13px; border-radius: 50px; white-space: nowrap; flex-shrink: 0;
+}
+.option-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 12px;
+}
+.option-card {
+  background: var(--bg2);
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  padding: 1.1rem 1.1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  transition: border-color 0.18s, box-shadow 0.18s, transform 0.18s, background 0.18s;
+  position: relative;
+}
+.option-card:hover {
+  border-color: var(--blue);
+  background: var(--bg);
+  box-shadow: 0 8px 22px rgba(21,96,255,0.1);
+  transform: translateY(-3px);
+}
+.option-card.is-best { border-color: var(--blue-mid); background: var(--blue-lt); }
+.option-card.is-best:hover { background: var(--bg); }
+.option-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.option-name {
+  font-family: var(--display); font-size: 13.5px; font-weight: 700; color: var(--ink);
+  letter-spacing: -0.2px;
+}
+.option-best-tag {
+  font-size: 8px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--blue); background: #fff; border: 1px solid var(--blue-mid);
+  padding: 2px 7px; border-radius: 50px; white-space: nowrap; flex-shrink: 0;
+}
+.option-price-row { display: flex; align-items: baseline; gap: 4px; }
+.option-price-pre { font-size: 10.5px; color: var(--muted2); font-weight: 600; }
+.option-price {
+  font-family: var(--display); font-size: 1.55rem; font-weight: 800;
+  color: var(--blue); letter-spacing: -0.7px; line-height: 1;
+}
+.option-note { font-size: 11.5px; color: var(--muted); line-height: 1.5; min-height: 17px; }
+.option-book {
+  margin-top: auto;
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  font-size: 12px; font-weight: 700; color: #fff;
+  background: var(--blue); border: none;
+  padding: 8px 14px; border-radius: 50px; text-decoration: none;
+  transition: background 0.15s, transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 2px 10px rgba(21,96,255,0.22);
+}
+.option-book:hover { background: var(--blue-dk); transform: translateY(-1px); box-shadow: 0 4px 14px rgba(21,96,255,0.32); }
+.option-book svg { flex-shrink: 0; }
+
 /* PACKAGE SPOTLIGHT */
 .pkg-spotlight {
   background: var(--ink); border-radius: 18px; overflow: hidden;
@@ -935,17 +1005,24 @@ details[open] .faq-chev { transform: rotate(180deg); background: var(--blue-lt);
   .why-grid { grid-template-columns: 1fr; }
   .pricing-intro-block { padding: 1.25rem 0 1.25rem; }
   .price-search-wrap { top: var(--mob-nav-h); padding: 0.75rem 1.25rem; }
+  .prow-multi { padding: 1.1rem 0.9rem 1.25rem; }
+  .pm-head { flex-direction: column; align-items: flex-start; }
+  .option-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 480px) {
   .addons-wrap { grid-template-columns: 1fr; }
   .hero-pills { flex-direction: column; }
   .trust-bar { grid-template-columns: 1fr 1fr; }
+  .option-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .option-card { padding: 0.9rem 0.9rem 0.85rem; }
+  .option-price { font-size: 1.3rem; }
 }
 
 @media (max-width: 380px) {
   .hero-h1 { font-size: 1.7rem; }
   .prow-price { font-size: 1rem; min-width: 54px; }
+  .option-grid { grid-template-columns: 1fr; }
 }
 
 /* SCROLL PROGRESS */
@@ -1061,11 +1138,13 @@ details[open] .faq-chev { transform: rotate(180deg); background: var(--blue-lt);
 <!-- MOBILE TABS -->
 <div class="mob-tabs" role="tablist" aria-label="Pricing categories" id="mob-tabs">
   <button class="mtab active" data-target="sec-repairs">Repairs</button>
+  <button class="mtab" data-target="sec-performance">Performance</button>
   <button class="mtab" data-target="sec-upgrades">Upgrades</button>
   <button class="mtab" data-target="sec-gaming">Gaming PC</button>
   <button class="mtab" data-target="sec-network">Networking</button>
   <button class="mtab" data-target="sec-software">Software</button>
   <button class="mtab" data-target="sec-addons">Add Ons</button>
+  <button class="mtab" data-target="sec-referral">Referral</button>
   <button class="mtab" data-target="sec-package">Package</button>
 </div>
 
@@ -1081,76 +1160,80 @@ details[open] .faq-chev { transform: rotate(180deg); background: var(--blue-lt);
           <div class="sb-header-title">Full price list</div>
         </div>
         <nav class="sb-nav" aria-label="Category navigation">
-          <button class="sb-item active" data-target="sec-repairs">
-            <div class="sb-item-accent"></div>
-            <div class="sb-item-inner">
-              <div class="sb-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
-              <div class="sb-item-text"><div class="sb-item-name">PC &amp; Laptop Repairs</div></div>
-              <span class="sb-item-count">12</span>
-            </div>
-          </button>
-          <button class="sb-item" data-target="sec-upgrades">
-            <div class="sb-item-accent"></div>
-            <div class="sb-item-inner">
-              <div class="sb-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
-              <div class="sb-item-text"><div class="sb-item-name">Upgrades</div></div>
-              <span class="sb-item-count">8</span>
-            </div>
-          </button>
-          <button class="sb-item" data-target="sec-gaming">
-            <div class="sb-item-accent"></div>
-            <div class="sb-item-inner">
-              <div class="sb-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h4M8 10v4M15 13h.01M18 11h.01"/></svg></div>
-              <div class="sb-item-text"><div class="sb-item-name">Gaming PC Builds</div></div>
-              <span class="sb-item-count">8</span>
-            </div>
-          </button>
-          <button class="sb-item" data-target="sec-network">
-            <div class="sb-item-accent"></div>
-            <div class="sb-item-inner">
-              <div class="sb-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.59 16.11a6 6 0 0 1 6.82 0M12 20h.01"/></svg></div>
-              <div class="sb-item-text"><div class="sb-item-name">Networking &amp; Setup</div></div>
-              <span class="sb-item-count">8</span>
-            </div>
-          </button>
-          <button class="sb-item" data-target="sec-software">
-            <div class="sb-item-accent"></div>
-            <div class="sb-item-inner">
-              <div class="sb-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="2" y1="20" x2="22" y2="20"/></svg></div>
-              <div class="sb-item-text"><div class="sb-item-name">Software &amp; Remote</div></div>
-              <span class="sb-item-count">7</span>
-            </div>
-          </button>
-          <div class="sb-divider"></div>
-          <button class="sb-item" data-target="sec-addons">
-            <div class="sb-item-accent"></div>
-            <div class="sb-item-inner">
-              <div class="sb-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
-              <div class="sb-item-text"><div class="sb-item-name">Add Ons</div></div>
-              <span class="sb-item-count">5</span>
-            </div>
-          </button>
-          <button class="sb-item" data-target="sec-package">
-            <div class="sb-item-accent"></div>
-            <div class="sb-item-inner">
-              <div class="sb-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
-              <div class="sb-item-text"><div class="sb-item-name">Full Package</div></div>
-              <span class="sb-item-count" style="background:var(--wa);color:#fff;border-color:var(--wa);">$299</span>
-            </div>
-          </button>
-        </nav>
-        <div class="sb-rating">
-          <div class="sb-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-          <span class="sb-rating-text">5/5 rated · Canning Vale Perth</span>
-        </div>
-        <div class="sb-cta-block">
-          <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener noreferrer" class="sb-cta-wa" aria-label="WhatsApp for a free quote">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>
-            Free quote on WhatsApp
-          </a>
-          <a href="quote-request.html" class="sb-cta-quote" aria-label="Fill out the quote form">Use quote form instead</a>
-        </div>
-      </div>
+  <button class="sb-item active" data-target="sec-repairs">
+    <div class="sb-item-accent"></div>
+    <div class="sb-item-inner">
+      <div class="sb-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+      <div class="sb-item-text"><div class="sb-item-name">PC and Laptop Repairs</div></div>
+      <span class="sb-item-count">19</span>
+    </div>
+  </button>
+  <button class="sb-item" data-target="sec-performance">
+    <div class="sb-item-accent"></div>
+    <div class="sb-item-inner">
+      <div class="sb-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 2 13 9 20 9"/><path d="M4 12a8 8 0 1 0 8 -8"/><polyline points="4 4 4 12 12 12"/></svg></div>
+      <div class="sb-item-text"><div class="sb-item-name">Performance Enhancement</div></div>
+      <span class="sb-item-count">3</span>
+    </div>
+  </button>
+  <button class="sb-item" data-target="sec-upgrades">
+    <div class="sb-item-accent"></div>
+    <div class="sb-item-inner">
+      <div class="sb-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+      <div class="sb-item-text"><div class="sb-item-name">Upgrades</div></div>
+      <span class="sb-item-count">10</span>
+    </div>
+  </button>
+  <button class="sb-item" data-target="sec-gaming">
+    <div class="sb-item-accent"></div>
+    <div class="sb-item-inner">
+      <div class="sb-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h4M8 10v4M15 13h.01M18 11h.01"/></svg></div>
+      <div class="sb-item-text"><div class="sb-item-name">Gaming PC Assembly</div></div>
+      <span class="sb-item-count">12</span>
+    </div>
+  </button>
+  <button class="sb-item" data-target="sec-network">
+    <div class="sb-item-accent"></div>
+    <div class="sb-item-inner">
+      <div class="sb-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.59 16.11a6 6 0 0 1 6.82 0M12 20h.01"/></svg></div>
+      <div class="sb-item-text"><div class="sb-item-name">Networking and Setup</div></div>
+      <span class="sb-item-count">9</span>
+    </div>
+  </button>
+  <button class="sb-item" data-target="sec-software">
+    <div class="sb-item-accent"></div>
+    <div class="sb-item-inner">
+      <div class="sb-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="2" y1="20" x2="22" y2="20"/></svg></div>
+      <div class="sb-item-text"><div class="sb-item-name">Software and Remote</div></div>
+      <span class="sb-item-count">8</span>
+    </div>
+  </button>
+  <div class="sb-divider"></div>
+  <button class="sb-item" data-target="sec-addons">
+    <div class="sb-item-accent"></div>
+    <div class="sb-item-inner">
+      <div class="sb-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+      <div class="sb-item-text"><div class="sb-item-name">Add Ons</div></div>
+      <span class="sb-item-count">6</span>
+    </div>
+  </button>
+  <button class="sb-item" data-target="sec-referral">
+    <div class="sb-item-accent"></div>
+    <div class="sb-item-inner">
+      <div class="sb-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="4"/><path d="M2 21v-2a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v2"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+      <div class="sb-item-text"><div class="sb-item-name">Referral Rewards</div></div>
+      <span class="sb-item-count" style="background:var(--wa);color:#fff;border-color:var(--wa);">$20</span>
+    </div>
+  </button>
+  <button class="sb-item" data-target="sec-package">
+    <div class="sb-item-accent"></div>
+    <div class="sb-item-inner">
+      <div class="sb-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
+      <div class="sb-item-text"><div class="sb-item-name">Full Package</div></div>
+      <span class="sb-item-count" style="background:var(--wa);color:#fff;border-color:var(--wa);">$299</span>
+    </div>
+  </button>
+</nav>
     </aside>
 
     <!-- MAIN -->
@@ -1163,56 +1246,198 @@ details[open] .faq-chev { transform: rotate(180deg); background: var(--blue-lt);
 
       <!-- REPAIRS -->
       <section class="pricing-section fade-up" id="sec-repairs" aria-labelledby="r-h">
-        <div class="psec-head">
-          <h2 class="psec-title" id="r-h">PC &amp; Laptop Repairs</h2>
-          <span class="psec-note">Flat fee includes diagnostic, labour and 30 day warranty</span>
-        </div>
-        <div class="ptable" data-accent="blue">
-          <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">Virus &amp; Malware Removal <span class="badge badge-pop">Most Popular</span></div><div class="prow-desc">Full scan, complete removal, browser cleanup and security setup. Most infections cleared same day.</div></div></div><div class="prow-right"><div class="prow-price">$99</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
-          <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">Windows Reinstall and Data Backup</div><div class="prow-desc">Fresh Windows 10 or 11 install with all files and data safely backed up and transferred.</div></div></div><div class="prow-right"><div class="prow-price">$120</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
-          <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">Blue Screen and Crash Fix</div><div class="prow-desc">Root cause diagnosis and permanent fix for BSOD, crashes, freezing and random restarts.</div></div></div><div class="prow-right"><div class="prow-price">$99</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
-          <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">PC or Laptop Won't Turn On <span class="badge badge-pop">Most Popular</span></div><div class="prow-desc">Full hardware and software diagnosis for no boot, no POST, boot loops and stuck on logo.</div></div></div><div class="prow-right"><div class="prow-price">$99</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
-          <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">Overheating Fix and Deep Clean</div><div class="prow-desc">Full internal clean, thermal paste replaced, fan inspection and airflow optimised.</div></div></div><div class="prow-right"><div class="prow-price">$89</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
-          <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">Password Reset and Account Recovery</div><div class="prow-desc">Regain access to a locked Windows login, Microsoft or local account. No data loss.</div></div></div><div class="prow-right"><div class="prow-price">$79</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
-          <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">Driver and Software Conflict Repair</div><div class="prow-desc">Identify and fix driver conflicts causing crashes, missing devices or audio and display errors.</div></div></div><div class="prow-right"><div class="prow-price">$85</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
-          <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">Laptop Screen Replacement <span class="badge badge-pop">Most Popular</span></div><div class="prow-desc">Labour only, all common sizes. Parts quoted separately once model is confirmed.</div></div></div><div class="prow-right"><div class="prow-price">$120</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
-          <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">Laptop Battery Replacement</div><div class="prow-desc">Labour only. Battery quoted separately, most major brands supported. Tested post-fit.</div></div></div><div class="prow-right"><div class="prow-price">$89</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
-          <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">Laptop Keyboard Replacement</div><div class="prow-desc">Labour for individual key repairs or full keyboard swaps on most laptop models.</div></div></div><div class="prow-right"><div class="prow-price">$89</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
-          <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">Data Recovery, Failing Drive</div><div class="prow-desc">Recover files from slow, clicking or partially accessible drives. Act fast for best results.</div></div></div><div class="prow-right"><div class="prow-price">$149</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
-          <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">Data Recovery, Dead Drive <span class="badge badge-fee">NO FIX NO FEE</span></div><div class="prow-desc">Advanced recovery from drives that won't spin or mount. You pay nothing if we can't recover.</div></div></div><div class="prow-right"><div class="prow-price">$249</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
-        </div>
-      </section>
+  <div class="psec-head">
+    <h2 class="psec-title" id="r-h">PC and Laptop Repairs</h2>
+    <span class="psec-note">Flat fee includes diagnostic, labour and 30 day warranty</span>
+  </div>
+  <div class="ptable" data-accent="blue">
+    <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">Virus and Malware Removal <span class="badge badge-pop">Most Popular</span></div><div class="prow-desc">Full scan, complete removal, browser cleanup and security setup. Most infections cleared same day.</div></div></div><div class="prow-right"><div class="prow-price">$99</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
+    <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">Windows Reinstall and Data Backup</div><div class="prow-desc">Fresh Windows 10 or 11 install with all files and data safely backed up and transferred.</div></div></div><div class="prow-right"><div class="prow-price">$120</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
+    <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">Blue Screen and Crash Fix</div><div class="prow-desc">Root cause diagnosis and permanent fix for BSOD, crashes, freezing and random restarts.</div></div></div><div class="prow-right"><div class="prow-price">$99</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
+    <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">PC or Laptop Won't Turn On <span class="badge badge-pop">Most Popular</span></div><div class="prow-desc">Full hardware and software diagnosis for no boot, no POST, boot loops and stuck on logo.</div></div></div><div class="prow-right"><div class="prow-price">$99</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
+    <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">Overheating Fix and Deep Clean</div><div class="prow-desc">Full internal clean, thermal paste replaced, fan inspection and airflow optimised.</div></div></div><div class="prow-right"><div class="prow-price">$89</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
+    <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">Password Reset and Account Recovery</div><div class="prow-desc">Regain access to a locked Windows login, Microsoft or local account. No data loss.</div></div></div><div class="prow-right"><div class="prow-price">$79</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
+    <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">Driver and Software Conflict Repair</div><div class="prow-desc">Identify and fix driver conflicts causing crashes, missing devices or audio and display errors.</div></div></div><div class="prow-right"><div class="prow-price">$85</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
 
+    <div class="prow prow-multi">
+      <div class="pm-head">
+        <div class="pm-head-text">
+          <div class="prow-name">Laptop Screen Replacement <span class="badge badge-spec">Multiple Options</span></div>
+          <div class="prow-desc">Labour only. Parts quoted separately once your exact model is confirmed.</div>
+        </div>
+        <span class="pm-hint">Pick your screen type below</span>
+      </div>
+      <div class="option-grid">
+        <div class="option-card">
+          <div class="option-top"><span class="option-name">Standard</span></div>
+          <div class="option-price-row"><span class="option-price">$145</span></div>
+          <div class="option-note">Non touch, most common panel type</div>
+          <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20a%20Standard%20Non%20Touch%20laptop%20screen%20replacement%20(%24145)." target="_blank" rel="noopener" class="option-book">Book this option</a>
+        </div>
+        <div class="option-card is-best">
+          <div class="option-top"><span class="option-name">Touchscreen</span><span class="option-best-tag">Popular</span></div>
+          <div class="option-price-row"><span class="option-price">$175</span></div>
+          <div class="option-note">Touchscreen or gaming high refresh panels</div>
+          <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20a%20Touchscreen%20or%20High%20Refresh%20laptop%20screen%20replacement%20(%24175)." target="_blank" rel="noopener" class="option-book">Book this option</a>
+        </div>
+        <div class="option-card">
+          <div class="option-top"><span class="option-name">OLED / Premium</span></div>
+          <div class="option-price-row"><span class="option-price">$199</span></div>
+          <div class="option-note">OLED or premium 2 in 1 displays</div>
+          <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20an%20OLED%20or%20Premium%202%20in%201%20laptop%20screen%20replacement%20(%24199)." target="_blank" rel="noopener" class="option-book">Book this option</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">Laptop Battery Replacement</div><div class="prow-desc">Labour only. Battery quoted separately, most major brands supported. Tested post fit.</div></div></div><div class="prow-right"><div class="prow-price">$89</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
+    <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">Laptop Keyboard Replacement</div><div class="prow-desc">Labour for individual key repairs or full keyboard swaps on most laptop models.</div></div></div><div class="prow-right"><div class="prow-price">$89</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
+    <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">Charging Port Repair</div><div class="prow-desc">Loose, damaged or non charging ports repaired or replaced on laptops and 2 in 1 devices.</div></div></div><div class="prow-right"><div class="prow-price">$99</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
+    <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">Laptop Hinge Repair</div><div class="prow-desc">Loose, cracked or snapped hinges repaired so the lid opens and closes properly again.</div></div></div><div class="prow-right"><div class="prow-price">$99</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
+    <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">Laptop Screen Flicker or Line Repair</div><div class="prow-desc">Flex cable or connection repair for flickering, lines or dead areas, often cheaper than a full screen swap.</div></div></div><div class="prow-right"><div class="prow-price">$99</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
+    <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">Trackpad Replacement</div><div class="prow-desc">Unresponsive, clicking or drifting trackpads replaced and calibrated.</div></div></div><div class="prow-right"><div class="prow-price">$89</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
+    <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">Liquid Spill Damage Cleaning and Repair <span class="badge badge-spec">New</span></div><div class="prow-desc">Full strip down, internal clean and corrosion treatment after a spill. Component level repair quoted separately if needed.</div></div></div><div class="prow-right"><div class="prow-price">from $129</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
+    <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">Data Recovery, Failing Drive</div><div class="prow-desc">Recover files from slow, clicking or partially accessible drives. Act fast for best results.</div></div></div><div class="prow-right"><div class="prow-price">$149</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
+    <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">Data Recovery, Dead Drive <span class="badge badge-fee">No Fix No Fee</span></div><div class="prow-desc">Advanced recovery from drives that will not spin or mount. You pay nothing if we cannot recover.</div></div></div><div class="prow-right"><div class="prow-price">$249</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
+    <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">External Drive and USB Data Recovery</div><div class="prow-desc">Recovery from external hard drives, USB sticks and memory cards.</div></div></div><div class="prow-right"><div class="prow-price">$99</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
+    <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">Secure Data Wipe and Certified Erase</div><div class="prow-desc">Full secure erase before selling, donating or disposing of a PC or laptop, protecting your personal data.</div></div></div><div class="prow-right"><div class="prow-price">$59</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
+    <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">Pre Purchase Used PC or Laptop Inspection <span class="badge badge-spec">New</span></div><div class="prow-desc">Buying second hand off Marketplace or Gumtree. We check it over before you hand over any cash.</div></div></div><div class="prow-right"><div class="prow-price">$49</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
+  </div>
+</section>
+<section class="pricing-section fade-up" id="sec-performance" aria-labelledby="pe-h">
+  <div class="psec-head">
+    <h2 class="psec-title" id="pe-h">PC and Laptop Performance Enhancement</h2>
+    <span class="psec-note">Three levels, pick the one that matches how slow it feels</span>
+  </div>
+  <div class="ptable" data-accent="teal">
+    <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">Basic Tune Up</div><div class="prow-desc">Junk file and bloatware cleanup, startup program cleanup, driver updates and a quick malware scan.</div></div></div><div class="prow-right"><div class="prow-price">$79</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20a%20PC%20tune%20up." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
+    <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">Advanced Performance Boost <span class="badge badge-pop">Most Popular</span></div><div class="prow-desc">Everything in Basic, plus thermal paste replacement, full browser and registry optimisation and a before and after benchmark.</div></div></div><div class="prow-right"><div class="prow-price">$129</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20a%20PC%20tune%20up." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
+    <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">Pro Performance Overhaul</div><div class="prow-desc">Everything in Advanced, plus a full internal clean, RAM and SSD tuning, a written performance report and a 3 month follow up check.</div></div></div><div class="prow-right"><div class="prow-price">$189</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20a%20PC%20tune%20up." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
+  </div>
+</section>
       <!-- UPGRADES -->
       <section class="pricing-section fade-up" id="sec-upgrades" aria-labelledby="u-h">
-        <div class="psec-head"><h2 class="psec-title" id="u-h">PC &amp; Laptop Upgrades</h2><span class="psec-note">No diagnostic fee, priced upfront</span></div>
-        <div class="ptable" data-accent="teal">
-          <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">Windows 11 Upgrade with Activation Key</div><div class="prow-desc">Upgrade your system with the latest windows, we supply you with a key worth $49.</div></div></div><div class="prow-right"><div class="prow-price">$120</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
-          <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">SSD Upgrade, Labour Only</div><div class="prow-desc">You supply the SSD, we fit it and transfer all data. The fastest single upgrade for a slow PC.</div></div></div><div class="prow-right"><div class="prow-price">$65</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
-          <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">SSD Upgrade, 500GB Supplied <span class="badge badge-pop">Most Popular</span></div><div class="prow-desc">Samsung or Crucial 500GB SSD supplied, fitted and full data transferred.</div></div></div><div class="prow-right"><div class="prow-price">$150</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
-          <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">SSD Upgrade, 1TB Supplied</div><div class="prow-desc">Samsung or Crucial 1TB SSD supplied, fitted and full data transferred.</div></div></div><div class="prow-right"><div class="prow-price">$185</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
-          <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">RAM Upgrade, Labour Only</div><div class="prow-desc">You supply the RAM, we install and configure XMP or EXPO in BIOS for full rated speed.</div></div></div><div class="prow-right"><div class="prow-price">$55</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
-          <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">RAM Upgrade, 16GB Supplied</div><div class="prow-desc">16GB DDR4 or DDR5 sourced, installed and configured with XMP or EXPO enabled.</div></div></div><div class="prow-right"><div class="prow-price">From $160</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
-          <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">RAM Upgrade, 32GB Supplied</div><div class="prow-desc">32GB DDR4 or DDR5 sourced, installed and fully configured for power users.</div></div></div><div class="prow-right"><div class="prow-price">From $240</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
-          <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">CPU Thermal Paste Replacement</div><div class="prow-desc">Cooler removed, surfaces cleaned, premium compound applied. Dramatically lowers temps.</div></div></div><div class="prow-right"><div class="prow-price">$60</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
-          <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">Case Fan Installation, Per Fan</div><div class="prow-desc">Labour only. You supply fans. Mounted, connected and routed for clean airflow.</div></div></div><div class="prow-right"><div class="prow-price">$40</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
+  <div class="psec-head"><h2 class="psec-title" id="u-h">PC and Laptop Upgrades</h2><span class="psec-note">Fitting and setup included, final price depends on parts chosen</span></div>
+  <div class="ptable" data-accent="teal">
+    <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">Windows 11 Upgrade with Activation Key</div><div class="prow-desc">Upgrade your system with the latest windows, we supply a genuine key worth $49.</div></div></div><div class="prow-right"><div class="prow-price">$120</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
+    <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">SSD Upgrade, Labour Only</div><div class="prow-desc">You supply the SSD, SATA or NVMe, we fit it and transfer all data. The fastest single upgrade for a slow PC.</div></div></div><div class="prow-right"><div class="prow-price">$65</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
+
+    <div class="prow prow-multi">
+      <div class="pm-head">
+        <div class="pm-head-text">
+          <div class="prow-name">SSD Upgrade, Drive Supplied <span class="badge badge-spec">Multiple Options</span></div>
+          <div class="prow-desc">Quality Samsung or Crucial drive sourced, fitted and full data transferred. SATA drives sit at the lower end of each range and NVMe M.2 drives at the higher end, depending on speed and capacity chosen.</div>
         </div>
-      </section>
+        <span class="pm-hint">Pick your capacity below</span>
+      </div>
+      <div class="option-grid">
+        <div class="option-card">
+          <div class="option-top"><span class="option-name">500GB</span></div>
+          <div class="option-price-row"><span class="option-price-pre">from</span><span class="option-price">$150</span></div>
+          <div class="option-note">Great for everyday browsing and office use</div>
+          <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20a%20500GB%20SSD%20upgrade%2C%20drive%20supplied%20(from%20%24150)." target="_blank" rel="noopener" class="option-book">Book this option</a>
+        </div>
+        <div class="option-card is-best">
+          <div class="option-top"><span class="option-name">1TB</span><span class="option-best-tag">Popular</span></div>
+          <div class="option-price-row"><span class="option-price-pre">from</span><span class="option-price">$195</span></div>
+          <div class="option-note">The sweet spot for most home users</div>
+          <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20a%201TB%20SSD%20upgrade%2C%20drive%20supplied%20(from%20%24195)." target="_blank" rel="noopener" class="option-book">Book this option</a>
+        </div>
+        <div class="option-card">
+          <div class="option-top"><span class="option-name">2TB</span></div>
+          <div class="option-price-row"><span class="option-price-pre">from</span><span class="option-price">$280</span></div>
+          <div class="option-note">Photos, media libraries and games</div>
+          <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20a%202TB%20SSD%20upgrade%2C%20drive%20supplied%20(from%20%24280)." target="_blank" rel="noopener" class="option-book">Book this option</a>
+        </div>
+        <div class="option-card">
+          <div class="option-top"><span class="option-name">4TB</span></div>
+          <div class="option-price-row"><span class="option-price-pre">from</span><span class="option-price">$420</span></div>
+          <div class="option-note">Heavy creators and large game libraries</div>
+          <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20a%204TB%20SSD%20upgrade%2C%20drive%20supplied%20(from%20%24420)." target="_blank" rel="noopener" class="option-book">Book this option</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">RAM Upgrade, Labour Only</div><div class="prow-desc">You supply the RAM, DDR4 or DDR5, we install and configure XMP or EXPO in BIOS for full rated speed.</div></div></div><div class="prow-right"><div class="prow-price">$55</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
+
+    <div class="prow prow-multi">
+      <div class="pm-head">
+        <div class="pm-head-text">
+          <div class="prow-name">RAM Upgrade, Supplied <span class="badge badge-spec">Multiple Options</span></div>
+          <div class="prow-desc">Sourced, installed and fully configured. DDR4 sits at the lower end of each range and DDR5 at the higher end, depending on speed and capacity chosen.</div>
+        </div>
+        <span class="pm-hint">Pick your capacity below</span>
+      </div>
+      <div class="option-grid">
+        <div class="option-card">
+          <div class="option-top"><span class="option-name">8GB</span></div>
+          <div class="option-price-row"><span class="option-price-pre">from</span><span class="option-price">$130</span></div>
+          <div class="option-note">Light browsing and basic tasks</div>
+          <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20an%208GB%20RAM%20upgrade%2C%20supplied%20(from%20%24130)." target="_blank" rel="noopener" class="option-book">Book this option</a>
+        </div>
+        <div class="option-card is-best">
+          <div class="option-top"><span class="option-name">16GB</span><span class="option-best-tag">Popular</span></div>
+          <div class="option-price-row"><span class="option-price-pre">from</span><span class="option-price">$160</span></div>
+          <div class="option-note">Best all-rounder for most PCs</div>
+          <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20a%2016GB%20RAM%20upgrade%2C%20supplied%20(from%20%24160)." target="_blank" rel="noopener" class="option-book">Book this option</a>
+        </div>
+        <div class="option-card">
+          <div class="option-top"><span class="option-name">32GB</span></div>
+          <div class="option-price-row"><span class="option-price-pre">from</span><span class="option-price">$230</span></div>
+          <div class="option-note">Gaming, streaming and multitasking</div>
+          <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20a%2032GB%20RAM%20upgrade%2C%20supplied%20(from%20%24230)." target="_blank" rel="noopener" class="option-book">Book this option</a>
+        </div>
+        <div class="option-card">
+          <div class="option-top"><span class="option-name">64GB</span></div>
+          <div class="option-price-row"><span class="option-price-pre">from</span><span class="option-price">$340</span></div>
+          <div class="option-note">Video editing and heavy workloads</div>
+          <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20a%2064GB%20RAM%20upgrade%2C%20supplied%20(from%20%24340)." target="_blank" rel="noopener" class="option-book">Book this option</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">HDD to SSD Full Migration</div><div class="prow-desc">Drive supplied, your entire system cloned across so nothing is lost. Great for older machines.</div></div></div><div class="prow-right"><div class="prow-price">from $175</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
+    <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">GPU Upgrade Installation and Driver Setup</div><div class="prow-desc">Seated in PCIe, power connected, latest Nvidia or AMD drivers installed and verified stable.</div></div></div><div class="prow-right"><div class="prow-price">$60</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
+    <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">CPU Thermal Paste Replacement</div><div class="prow-desc">Cooler removed, surfaces cleaned, premium compound applied. Dramatically lowers temps.</div></div></div><div class="prow-right"><div class="prow-price">$60</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
+    <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">Gaming Laptop Repaste and Deep Clean <span class="badge badge-spec">Specialist</span></div><div class="prow-desc">Full strip down, repaste and fan and vent clean for gaming laptops running hot or throttling.</div></div></div><div class="prow-right"><div class="prow-price">$99</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
+    <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">Case Fan Installation, Per Fan</div><div class="prow-desc">Labour only. You supply fans. Mounted, connected and routed for clean airflow.</div></div></div><div class="prow-right"><div class="prow-price">$40</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
+    <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">Free Upgrade Consultation</div><div class="prow-desc">Message us your specs and budget and we will tell you what is actually worth upgrading before you spend anything.</div></div></div><div class="prow-right"><div class="prow-price">Free</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20upgrade%20consultation." target="_blank" rel="noopener" class="prow-book">Message us</a></div></div>
+  </div>
+</section>
 
       <!-- GAMING PC -->
       <section class="pricing-section fade-up" id="sec-gaming" aria-labelledby="g-h">
-        <div class="psec-head"><h2 class="psec-title" id="g-h">Gaming PC Builds and Upgrades</h2><span class="psec-note">Benchmarked before every handover</span></div>
-        <div class="ptable" data-accent="purple">
-          <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">Full Custom PC Assembly <span class="badge badge-spec">SPECIALIST</span></div><div class="prow-desc">Your parts, fully assembled, cable managed, drivers installed and benchmarked.</div></div></div><div class="prow-right"><div class="prow-price">from $149</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
-          <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">GPU Installation and Driver Setup</div><div class="prow-desc">Seated in PCIe, power connected, latest Nvidia or AMD drivers installed and verified stable.</div></div></div><div class="prow-right"><div class="prow-price">$60</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
-          <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">CPU Cooler Installation</div><div class="prow-desc">Stock removed, aftermarket air or AIO mounted with premium paste. Temps verified.</div></div></div><div class="prow-right"><div class="prow-price">$80</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
-          <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">Cable Management, Basic Tidy</div><div class="prow-desc">Cables bundled and routed. Before and after photos provided.</div></div></div><div class="prow-right"><div class="prow-price">$70</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
-          <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">Cable Management, Full Professional</div><div class="prow-desc">Behind-tray routing, velcro throughout, airflow optimised. Show-build finish.</div></div></div><div class="prow-right"><div class="prow-price">$110</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
-          <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">PBO and BIOS Performance Tuning</div><div class="prow-desc">PBO, XMP or EXPO and BIOS power limits optimised. Typically 10 to 15% more CPU performance.</div></div></div><div class="prow-right"><div class="prow-price">$60</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
-          <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">RGB Software Setup and Sync</div><div class="prow-desc">iCUE, Armory Crate, Mystic Light, ARGB sync across all components. No brand conflicts.</div></div></div><div class="prow-right"><div class="prow-price">$69</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
-          <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">Benchmark Testing and Written Report</div><div class="prow-desc">Cinebench, 3DMark and FurMark with logged temps. Full written performance report.</div></div></div><div class="prow-right"><div class="prow-price">$99</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
-        </div>
-      </section>
+  <div class="psec-head"><h2 class="psec-title" id="g-h">Gaming PC Assembly and Tuning</h2><span class="psec-note">Assembly only, using your own parts. Every tier includes a free Windows 11 key</span></div>
+  <div class="ptable" data-accent="purple">
+    <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">Essential Assembly</div><div class="prow-desc">Full assembly, basic cable tidy, OS and driver install, benchmark check, 30 day warranty and a free Windows 11 key.</div></div></div><div class="prow-right"><div class="prow-price">$149</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20gaming%20PC%20assembly." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
+    <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">Performance Assembly <span class="badge badge-pop">Most Popular</span></div><div class="prow-desc">Everything in Essential, plus full professional cable management, PBO, XMP or EXPO tuning, a written benchmark report and RGB sync setup.</div></div></div><div class="prow-right"><div class="prow-price">$199</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20gaming%20PC%20assembly." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
+    <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">Elite Assembly</div><div class="prow-desc">Everything in Performance, plus a 24 hour stress test burn in, premium thermal compound, airflow and dust filter optimisation, priority same day slot where parts allow, and an extended 60 day warranty.</div></div></div><div class="prow-right"><div class="prow-price">$249</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20gaming%20PC%20assembly." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
+    <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">GPU Installation and Driver Setup</div><div class="prow-desc">Seated in PCIe, power connected, latest Nvidia or AMD drivers installed and verified stable.</div></div></div><div class="prow-right"><div class="prow-price">$60</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
+    <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">CPU Cooler Installation</div><div class="prow-desc">Stock removed, aftermarket air or AIO mounted with premium paste. Temps verified.</div></div></div><div class="prow-right"><div class="prow-price">$80</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
+    <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">Cable Management, Basic Tidy</div><div class="prow-desc">Cables bundled and routed. Before and after photos provided.</div></div></div><div class="prow-right"><div class="prow-price">$70</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
+    <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">Cable Management, Full Professional</div><div class="prow-desc">Behind tray routing, velcro throughout, airflow optimised. Show build finish.</div></div></div><div class="prow-right"><div class="prow-price">$110</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
+    <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">PBO and BIOS Performance Tuning</div><div class="prow-desc">PBO, XMP or EXPO and BIOS power limits optimised. Typically 10 to 15% more CPU performance.</div></div></div><div class="prow-right"><div class="prow-price">$60</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
+    <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">RGB Software Setup and Sync</div><div class="prow-desc">iCUE, Armoury Crate, Mystic Light, ARGB sync across all components. No brand conflicts.</div></div></div><div class="prow-right"><div class="prow-price">$69</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
+    <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">Benchmark Testing and Written Report</div><div class="prow-desc">Cinebench, 3DMark and FurMark with logged temps. Full written performance report.</div></div></div><div class="prow-right"><div class="prow-price">$99</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
+    <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">Overclocking Service, CPU or GPU</div><div class="prow-desc">Safe, stability tested overclock with temperature and voltage limits set correctly.</div></div></div><div class="prow-right"><div class="prow-price">$89</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
+    <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">Streaming and Content Creator Setup <span class="badge badge-spec">New</span></div><div class="prow-desc">OBS configuration, capture card setup and dual PC streaming rigs configured and tested.</div></div></div><div class="prow-right"><div class="prow-price">$129</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
+    <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">Creator Workstation Optimisation <span class="badge badge-spec">New</span></div><div class="prow-desc">Render and export speed tuning for video editing and 3D workloads.</div></div></div><div class="prow-right"><div class="prow-price">$99</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
+    <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">Console Repair, PS5 or Xbox <span class="badge badge-spec">New</span></div><div class="prow-desc">HDMI port, disc drive, overheating and fan noise issues diagnosed and repaired.</div></div></div><div class="prow-right"><div class="prow-price">from $99</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20console%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
+  </div>
+
+  <div class="bottom-cta fade-up" style="margin-top:1.25rem;">
+    <div>
+      <div class="bcta-kicker">Full custom builds, quoted personally</div>
+      <div class="bcta-title">Want a complete gaming PC built for you, parts and all?</div>
+      <p class="bcta-desc">We only publish pricing for assembly. If you want us to source every component and build a full custom PC from scratch, message us and we will put together a personalised build and quote based on your budget and what you actually play or create.</p>
+    </div>
+    <div class="bcta-btns">
+      <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20to%20build%20a%20custom%20PC%2C%20can%20you%20help%20source%20parts%20and%20quote%20me%3F" target="_blank" rel="noopener noreferrer" class="btn-wa-sm">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>
+        Contact us to build your PC
+      </a>
+    </div>
+  </div>
+</section>
 
       <!-- NETWORKING -->
       <section class="pricing-section fade-up" id="sec-network" aria-labelledby="n-h">
@@ -1221,6 +1446,7 @@ details[open] .faq-chev { transform: rotate(180deg); background: var(--blue-lt);
           <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">NBN Router Setup and Optimisation</div><div class="prow-desc">Router configured, WiFi channels set, QoS enabled, security hardened and all devices tested.</div></div></div><div class="prow-right"><div class="prow-price">$79</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
           <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">WiFi Dead Spot Diagnosis and Fix</div><div class="prow-desc">Find coverage gaps, reposition equipment or recommend the right solution for your layout.</div></div></div><div class="prow-right"><div class="prow-price">$89</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
           <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">Mesh WiFi System Setup, Per Node</div><div class="prow-desc">Eero, Google Nest, Orbi and all major brands. Optimal placement and full configuration.</div></div></div><div class="prow-right"><div class="prow-price">$65</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
+          <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">Gaming Network Optimisation <span class="badge badge-spec">New</span></div><div class="prow-desc">Router QoS tuned for low ping and stable connection during online gaming.</div></div></div><div class="prow-right"><div class="prow-price">$89</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
           <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">Wireless Printer Setup</div><div class="prow-desc">Connected to network, drivers on all devices, test print confirmed on every machine.</div></div></div><div class="prow-right"><div class="prow-price">$69</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
           <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">USB Printer Setup</div><div class="prow-desc">Driver install, test print and any error troubleshooting sorted on the spot.</div></div></div><div class="prow-right"><div class="prow-price">$55</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
           <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">Smart TV and Streaming Device Setup</div><div class="prow-desc">WiFi connected, apps installed, accounts logged in. Chromecast, Apple TV, Fire Stick and more.</div></div></div><div class="prow-right"><div class="prow-price">$59</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
@@ -1240,6 +1466,7 @@ details[open] .faq-chev { transform: rotate(180deg); background: var(--blue-lt);
           <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">PC to PC Data Transfer</div><div class="prow-desc">All files, photos, documents and bookmarks moved from old to new PC. Verified complete.</div></div></div><div class="prow-right"><div class="prow-price">$65</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
           <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">Cloud Backup Setup</div><div class="prow-desc">Google Drive or OneDrive auto backup configured with folder selection and storage management.</div></div></div><div class="prow-right"><div class="prow-price">$55</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
           <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">Driver Updates and Windows Optimisation</div><div class="prow-desc">All drivers updated, startup trimmed, junk cleared. Noticeably faster on the same hardware.</div></div></div><div class="prow-right"><div class="prow-price">$60</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" class="prow-book">Book now</a></div></div>
+          <div class="prow"><div class="prow-left"><div class="prow-name-wrap"><div class="prow-name">Small Business Fleet Setup and Bulk Deployment</div><div class="prow-desc">Multiple computers configured, imaged and deployed for a small office. Ties in with our Business IT Support plans.</div></div></div><div class="prow-right"><div class="prow-price">Custom quote</div><a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20quote%20for%20a%20business%20fleet%20setup." target="_blank" rel="noopener" class="prow-book">Message us</a></div></div>
         </div>
       </section>
 
@@ -1252,8 +1479,55 @@ details[open] .faq-chev { transform: rotate(180deg); background: var(--blue-lt);
           <div class="addon-tile"><span class="addon-tile-name">3 month follow up check</span><span class="addon-tile-price">+$25</span></div>
           <div class="addon-tile"><span class="addon-tile-name">Priority same day booking</span><span class="addon-tile-price">+$20</span></div>
           <div class="addon-tile"><span class="addon-tile-name">On site callout fee</span><span class="addon-tile-price">+$40</span></div>
+          <div class="addon-tile"><span class="addon-tile-name">Home PC Care Plan, per month</span><span class="addon-tile-price">+$35</span></div>
         </div>
       </section>
+
+      <section class="pricing-section fade-up" id="sec-referral" aria-labelledby="ref-h">
+  <div class="psec-head"><h2 class="psec-title" id="ref-h">FixMyPC Referral Rewards</h2><span class="psec-note">No limit on how many friends you refer</span></div>
+  <div class="pkg-spotlight">
+    <div class="pkg-inner">
+      <div class="pkg-top">
+        <div>
+          <div class="pkg-eyebrow">Give $20, get $20</div>
+          <div class="pkg-title">Refer a friend and you both save</div>
+          <div class="pkg-sub">Simple, no app and no code needed, just mention a name on WhatsApp</div>
+        </div>
+        <div class="pkg-price-col">
+          <span class="pkg-price">$20</span>
+          <span class="pkg-lbl">credit for you, per referral</span>
+          <span class="pkg-save">Plus $20 off for your friend</span>
+        </div>
+      </div>
+      <div class="pkg-items">
+        <div class="pkg-item">Refer a friend, neighbour or colleague</div>
+        <div class="pkg-item">They get $20 off their first service of $80 or more</div>
+        <div class="pkg-item">You get a $20 credit toward your next visit</div>
+        <div class="pkg-item">Credits stack, no limit on referrals</div>
+        <div class="pkg-item">Just have your friend mention your name on WhatsApp</div>
+        <div class="pkg-item">Works alongside any other offer or package</div>
+      </div>
+      <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20to%20refer%20a%20friend%20to%20FixMyPC%20Perth." target="_blank" rel="noopener noreferrer" class="pkg-cta">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>
+        Refer a friend on WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="bottom-cta fade-up" style="margin-bottom:2.5rem;">
+  <div>
+    <div class="bcta-kicker">Not listed above</div>
+    <div class="bcta-title">Do not see what you need?</div>
+    <p class="bcta-desc">This list covers our most requested jobs, but it is not everything we do. If your problem is not listed here, message us on WhatsApp and describe it. Chances are we can help, and if we cannot, we will tell you straight away instead of wasting your time.</p>
+  </div>
+  <div class="bcta-btns">
+    <a href="https://wa.me/61452573701?text=Hi%21%20I%20have%20a%20question%20about%20a%20service%20not%20listed%20on%20your%20pricing%20page." target="_blank" rel="noopener noreferrer" class="btn-wa-sm">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>
+      Ask us on WhatsApp
+    </a>
+  </div>
+</div>
 
       <!-- PACKAGE -->
       <section class="pricing-section fade-up" id="sec-package" aria-labelledby="pk-h">
