@@ -1,586 +1,965 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-AU">
 <head>
-<!-- Google tag (gtag.js) -->
+
+<!-- ============================================================
+     GOOGLE ANALYTICS 4
+     ============================================================ -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S0CW1QXBDY"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-S0CW1QXBDY');
+
+  /* ---- GA4 CONVERSION GOALS ---- */
+  function trackQuoteForm()  { gtag('event','conversion',{event_category:'Lead',event_label:'Quote Form Click',value:80}); }
+  function trackPhoneClick() { gtag('event','conversion',{event_category:'Lead',event_label:'Phone Click',value:80}); }
+  function trackWAClick()    { gtag('event','conversion',{event_category:'Lead',event_label:'WhatsApp Click',value:80}); }
 </script>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Request a Quote | FixMyPC Perth</title>
-<link rel="icon" type="image/png" href="favicon.png">
-<meta name="description" content="Request a free quote from FixMyPC Perth. Fast response, transparent pricing, no obligation.">
 
-<!-- SEO & Performance Enhancements -->
-<meta name="keywords" content="PC repair Perth, laptop repair Perth, computer repair Perth, free quote, FixMyPC Perth">
-<link rel="canonical" href="https://www.fixmypcperth.com/quote-request">
+<title>Request a Free Quote | Computer Repair Perth | FixMyPC Perth</title>
+
+<link rel="icon" type="image/png" href="favicon.png">
+
+<meta name="description" content="Request a free, no-obligation computer repair quote from FixMyPC Perth. Tell us what's wrong and we'll reply with a fixed price, usually within the hour. Open 24 hours in Canning Vale.">
+
+<meta name="keywords" content="computer repair quote Perth, PC repair quote Perth, laptop repair quote Perth, free quote computer repair Perth, FixMyPC Perth quote">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet"></noscript>
+
+<meta name="geo.region" content="AU-WA">
+<meta name="geo.placename" content="Canning Vale, Perth, Western Australia">
+<meta name="geo.position" content="-32.0742;115.9239">
+<meta name="ICBM" content="-32.0742, 115.9239">
+
+<link rel="canonical" href="https://www.fixmypcperth.com/quote-request">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="author" content="Ali Raja – FixMyPC Perth">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_AU">
+<meta property="og:site_name" content="FixMyPC Perth">
+<meta property="og:title" content="Request a Free Quote | Computer Repair Perth | FixMyPC Perth">
+<meta property="og:description" content="Tell us what's wrong and we'll reply with a fixed price, usually within the hour. Free, no obligation. Open 24 hours in Canning Vale, Perth.">
+<meta property="og:url" content="https://www.fixmypcperth.com/quote-request">
+<meta property="og:image" content="https://www.fixmypcperth.com/facebook-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="FixMyPC Perth – request a free computer repair quote">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Request a Free Quote | Computer Repair Perth | FixMyPC Perth">
+<meta name="twitter:description" content="Tell us what's wrong and we'll reply with a fixed price, usually within the hour. Free, no obligation.">
+<meta name="twitter:image" content="https://www.fixmypcperth.com/facebook-cover.png">
+
+<meta name="theme-color" content="#0D1117">
+<link rel="apple-touch-icon" href="favicon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<!-- ============================================================
+     LOCAL BUSINESS SCHEMA
+     ============================================================ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://www.fixmypcperth.com/#business",
+  "name": "FixMyPC Perth",
+  "image": "https://www.fixmypcperth.com/facebook-cover.png",
+  "logo": "https://www.fixmypcperth.com/logo.png",
+  "description": "Perth computer repair specialist based in Canning Vale. Free, no-obligation quotes on PC and laptop repair, virus removal, data recovery, SSD upgrades and gaming PC builds. Open 24 hours, 7 days.",
+  "url": "https://www.fixmypcperth.com/",
+  "telephone": "+61452573701",
+  "priceRange": "$$",
+  "currenciesAccepted": "AUD",
+  "paymentAccepted": "Cash, Bank Transfer, PayID",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "7 Barraberry Retreat",
+    "addressLocality": "Canning Vale",
+    "addressRegion": "WA",
+    "postalCode": "6155",
+    "addressCountry": "AU"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": -32.0742, "longitude": 115.9239 },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "00:00",
+      "closes": "23:59"
+    }
+  ],
+  "sameAs": [
+    "https://www.facebook.com/profile.php?id=61588810785733",
+    "https://www.google.com/maps/place/FixMyPC+Perth/@-32.0697802,115.922018,17z/data=!3m1!4b1!4m6!3m5!1s0x2a32972020981243:0x3d33799da9010e17!8m2!3d-32.0697802!4d115.9245929"
+  ]
+}
+</script>
+
+<!-- ============================================================
+     BREADCRUMB SCHEMA
+     ============================================================ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://www.fixmypcperth.com/"},
+    {"@type":"ListItem","position":2,"name":"Request a Quote","item":"https://www.fixmypcperth.com/quote-request"}
+  ]
+}
+</script>
 
 <style>
+/* ============================================================
+   CSS CUSTOM PROPERTIES — identical token set to index.html
+   ============================================================ */
 :root {
-  --blue: #1560FF;
-  --blue-lt: #EEF3FF;
-  --blue-mid: #C7D8FF;
-  --blue-dk: #0A3ACC;
-  --ink: #0F172A;
-  --ink2: #1E293B;
-  --muted: #64748B;
-  --muted2: #94A3B8;
-  --border: #E2E8F0;
-  --border2: #CBD5E1;
-  --bg: #FFFFFF;
-  --bg2: #F8FAFC;
-  --bg3: #F1F5F9;
-  --wa: #22C55E;
-  --red: #EF4444;
-  --display: 'Sora', sans-serif;
-  --body: 'DM Sans', sans-serif;
-  --radius: 14px;
+  --blue:      #1560FF;
+  --blue-lt:   #EEF3FF;
+  --blue-mid:  #C7D8FF;
+  --blue-dk:   #0A3ACC;
+  --ink:       #0F172A;
+  --ink2:      #1E293B;
+  --muted:     #64748B;
+  --muted2:    #94A3B8;
+  --border:    #E2E8F0;
+  --border2:   #CBD5E1;
+  --bg:        #FFFFFF;
+  --bg2:       #F8FAFC;
+  --bg3:       #F1F5F9;
+  --wa:        #22C55E;
+  --wa-dk:     #16A34A;
+  --fb:        #1877F2;
+  --red:       #EF4444;
+  --display:   'Sora', sans-serif;
+  --body:      'DM Sans', sans-serif;
+  --radius:    14px;
+  --radius-sm: 8px;
+  --nav-h:     64px;
+  --mob-nav-h: 60px;
 }
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
 ::-webkit-scrollbar { width: 10px; }
 ::-webkit-scrollbar-track { background: var(--bg2); }
 ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, var(--blue) 0%, var(--blue-dk) 100%); border-radius: 10px; border: 2px solid var(--bg2); }
-::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, var(--blue-dk) 0%, var(--blue) 100%); }
-@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-@media (prefers-reduced-motion: no-preference) { .fade-up { animation: fadeUp 0.6s ease-out forwards; } }
-body { background: var(--bg2); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.6; overflow-x: hidden; position: relative; }
+::-webkit-scrollbar-thumb:hover { background: var(--blue-dk); }
 
-/* NAV - EXACTLY AS ORIGINAL */
-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; height: 64px; background: rgba(255,255,255,0.88); backdrop-filter: blur(30px) saturate(200%); border-bottom: 1px solid rgba(226,232,240,0.5); border-top: 1px solid rgba(255,255,255,0.8); box-shadow: 0 8px 32px rgba(0,0,0,0.05); }
-.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-.logo-mark { width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+@keyframes popIn { from { opacity:0; transform:scale(0.5); } to { opacity:1; transform:scale(1); } }
+
+body { background:var(--bg2); color:var(--ink); font-family:var(--body); font-size:16px; line-height:1.6; overflow-x:hidden; }
+img  { display:block; max-width:100%; }
+a    { color:inherit; }
+
+.fade-up { opacity:0; transform:translateY(24px); transition:opacity 0.6s cubic-bezier(.22,.68,0,1.2),transform 0.6s cubic-bezier(.22,.68,0,1.2); }
+.fade-up.in { opacity:1; transform:none; }
+
+/* ============================================================
+   DESKTOP NAV — shared across all pages, do not edit per page
+   ============================================================ */
+.desk-nav {
+  position: fixed; top: 3px; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center;
+  padding: 0 2rem; height: var(--nav-h);
+  background: rgba(255,255,255,0.88);
+  backdrop-filter: blur(30px) saturate(200%);
+  -webkit-backdrop-filter: blur(30px) saturate(200%);
+  border-bottom: 1px solid rgba(226,232,240,0.5);
+  border-top: 1px solid rgba(255,255,255,0.8);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.05);
+}
+.desk-nav-inner { display:flex; align-items:center; justify-content:space-between; width:100%; max-width:1100px; margin:0 auto; }
+.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
+.logo-mark { width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .logo-mark img { width: 100%; height: 100%; object-fit: contain; }
-.logo-name { font-family: var(--display); font-size: 16px; font-weight: 700; color: var(--ink); letter-spacing: -0.3px; }
+.logo-name { font-family: var(--display); font-size: 16px; font-weight: 700; color: var(--ink); letter-spacing: -0.3px; white-space: nowrap; }
+.logo-name--mob { font-size: 14px; }
 .logo-name em { color: var(--blue); font-style: normal; }
-.nav-right { display: flex; align-items: center; gap: 10px; }
+.nav-right { display: flex; align-items: center; gap: 8px; margin-left: auto; }
 .nav-pill { display: inline-flex; align-items: center; gap: 6px; font-family: var(--body); font-size: 13px; font-weight: 600; padding: 9px 18px; border-radius: 50px; text-decoration: none; border: none; cursor: pointer; transition: transform 0.15s, opacity 0.15s; white-space: nowrap; }
 .nav-pill:hover { transform: translateY(-1px); opacity: 0.92; }
 .pill-ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--border2); padding: 8px 16px; }
-.pill-ghost:hover { border-color: var(--blue); color: var(--blue); transform: none; }
+.pill-ghost:hover { border-color: var(--blue); color: var(--blue); transform: none; opacity: 1; }
+.nav-pill.active { background: var(--blue-lt); border-color: var(--blue-mid); color: var(--blue-dk); }
 
-.mob-top-nav { display: none; position: fixed; top: 0; left: 0; right: 0; z-index: 300; height: 60px; background: rgba(255,255,255,0.97); backdrop-filter: blur(20px); border-bottom: 1.5px solid var(--border); padding: 0 1.25rem; align-items: center; justify-content: space-between; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
-.mob-top-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
-.mob-top-hamburger { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 5px; width: 40px; height: 40px; background: var(--bg3); border: 1.5px solid var(--border2); border-radius: 10px; cursor: pointer; flex-shrink: 0; }
-.mob-top-hamburger span { display: block; width: 16px; height: 2px; background: var(--ink); border-radius: 2px; transition: transform 0.3s, opacity 0.3s; }
-.mob-top-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.mob-top-hamburger.open span:nth-child(2) { opacity: 0; }
-.mob-top-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-.mob-drop-menu { display: none; position: fixed; top: 60px; left: 0; right: 0; z-index: 299; background: rgba(255,255,255,0.98); backdrop-filter: blur(20px); border-bottom: 1.5px solid var(--border); padding: 0.75rem 1.25rem 1.25rem; flex-direction: column; gap: 6px; box-shadow: 0 8px 30px rgba(0,0,0,0.1); border-radius: 0 0 20px 20px; }
-.mob-drop-menu.open { display: flex; }
-.mob-link { font-family: var(--body); font-size: 14px; font-weight: 600; color: var(--ink); text-decoration: none; padding: 0.85rem 1rem; border-radius: 10px; display: block; transition: background 0.15s, color 0.15s; }
-.mob-link:hover { background: var(--blue-lt); color: var(--blue); }
+/* ============================================================
+   MOBILE NAV — shared across all pages
+   ============================================================ */
+.mob-nav { display:none; position:fixed; top:0; left:0; right:0; z-index:300; height:var(--mob-nav-h); background:rgba(255,255,255,0.97); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border-bottom:1.5px solid var(--border); padding:0 1.25rem; align-items:center; justify-content:space-between; box-shadow:0 4px 20px rgba(0,0,0,0.07); }
+.mob-hamburger { display:flex; flex-direction:column; justify-content:center; align-items:center; gap:5px; width:42px; height:42px; background:var(--bg3); border:1.5px solid var(--border2); border-radius:10px; cursor:pointer; flex-shrink:0; transition:background 0.15s,border-color 0.15s; }
+.mob-hamburger:hover { background:var(--blue-lt); border-color:var(--blue-mid); }
+.mob-hamburger span { display:block; width:16px; height:2px; background:var(--ink); border-radius:2px; transition:transform 0.3s ease,opacity 0.3s ease; }
+.mob-hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+.mob-hamburger.open span:nth-child(2) { opacity:0; }
+.mob-hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+.mob-menu { display:none; position:fixed; top:var(--mob-nav-h); left:0; right:0; z-index:299; background:rgba(255,255,255,0.98); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border-bottom:1.5px solid var(--border); padding:0.75rem 1.25rem 1.5rem; flex-direction:column; gap:4px; box-shadow:0 8px 30px rgba(0,0,0,0.1); border-radius:0 0 20px 20px; }
+.mob-menu.open { display:flex; }
+.mob-link { font-family:var(--body); font-size:15px; font-weight:600; color:var(--ink); text-decoration:none; padding:0.9rem 1rem; border-radius:10px; display:block; transition:background 0.15s,color 0.15s; }
+.mob-link:hover { background:var(--blue-lt); color:var(--blue); }
+.mob-link.active { background:var(--blue-lt); color:var(--blue-dk); }
 
-.page-wrap { padding-top: 64px; min-height: 100vh; }
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn-blue { display:inline-flex; align-items:center; justify-content:center; gap:8px; background:var(--blue); color:#fff; font-family:var(--body); font-size:14px; font-weight:700; padding:13px 24px; border-radius:50px; text-decoration:none; box-shadow:0 4px 16px rgba(21,96,255,0.35); transition:transform 0.2s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.2s,filter 0.2s; white-space:nowrap; }
+.btn-blue:hover { transform:translateY(-3px) scale(1.02); box-shadow:0 12px 32px rgba(21,96,255,0.5); filter:brightness(1.1); }
+.btn-wa { display:inline-flex; align-items:center; justify-content:center; gap:8px; background:var(--wa); color:#fff; font-family:var(--body); font-size:14px; font-weight:700; padding:13px 24px; border-radius:50px; text-decoration:none; box-shadow:0 4px 16px rgba(34,197,94,0.35); transition:transform 0.2s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.2s; white-space:nowrap; }
+.btn-wa:hover { transform:translateY(-3px) scale(1.02); box-shadow:0 12px 32px rgba(34,197,94,0.5); }
+.btn-outline { display:inline-flex; align-items:center; justify-content:center; gap:8px; background:transparent; color:var(--ink); font-family:var(--body); font-size:14px; font-weight:600; padding:12px 22px; border-radius:50px; text-decoration:none; border:1.5px solid var(--border2); transition:border-color 0.15s,color 0.15s; }
+.btn-outline:hover { border-color:var(--blue); color:var(--blue); }
 
-.page-hero { background: var(--bg); border-bottom: 1px solid var(--border); padding: 3.5rem 2rem 3rem; text-align: center; position: relative; overflow: hidden; }
-.page-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 800px 400px at 50% 120%, rgba(21,96,255,0.05) 0%, transparent 70%); pointer-events: none; }
-.eyebrow { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); background: var(--blue-lt); padding: 4px 14px; border-radius: 50px; border: 1px solid var(--blue-mid); margin-bottom: 1.1rem; }
-.page-title { font-family: var(--display); font-size: clamp(2rem, 4.5vw, 3rem); font-weight: 800; letter-spacing: -1.8px; color: var(--ink); margin-bottom: 0.7rem; line-height: 1.06; }
-.page-title em { color: var(--blue); font-style: normal; }
-.page-sub { font-size: 15px; color: var(--muted); max-width: 420px; margin: 0 auto; line-height: 1.75; }
+/* ============================================================
+   PAGE SHELL
+   ============================================================ */
+.page-wrap { padding-top: var(--nav-h); min-height: 100vh; }
 
-.trust-bar { background: var(--bg); border-bottom: 1px solid var(--border); padding: 0.9rem 2rem; display: flex; align-items: center; justify-content: center; gap: 0; flex-wrap: wrap; }
-.trust-item { display: flex; align-items: center; gap: 7px; font-size: 12.5px; font-weight: 600; color: var(--muted); padding: 4px 20px; }
-.trust-item svg { color: var(--blue); flex-shrink: 0; }
-.trust-sep { width: 1px; height: 16px; background: var(--border2); }
+.page-hero { background:var(--bg); border-bottom:1px solid var(--border); padding:3rem 2rem 2.5rem; text-align:center; position:relative; overflow:hidden; }
+.page-hero::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 800px 400px at 50% 120%,rgba(21,96,255,0.05) 0%,transparent 70%); pointer-events:none; }
+.hero-tag { display:inline-flex; align-items:center; gap:7px; font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--blue); background:var(--blue-lt); border:1px solid var(--blue-mid); padding:5px 13px; border-radius:50px; margin-bottom:1.1rem; position:relative; z-index:1; }
+.hero-dot { width:6px; height:6px; background:var(--blue); border-radius:50%; animation:pulse 2s infinite; flex-shrink:0; }
+.page-title { font-family:var(--display); font-size:clamp(2rem,4.5vw,3rem); font-weight:800; letter-spacing:-1.8px; color:var(--ink); margin-bottom:0.7rem; line-height:1.06; position:relative; z-index:1; }
+.page-title em { color:var(--blue); font-style:normal; }
+.page-sub { font-size:15px; color:var(--muted); max-width:440px; margin:0 auto; line-height:1.75; position:relative; z-index:1; }
 
-.form-outer { max-width: 740px; margin: 0 auto; padding: 2.5rem 2rem 4rem; }
-.card { background: var(--bg); border: 1.5px solid var(--border); border-radius: 20px; overflow: hidden; box-shadow: 0 2px 24px rgba(15,23,42,0.06); }
-.card-block { padding: 2rem 2.25rem; }
-.card-block + .card-block { border-top: 1px solid var(--border); }
-.block-heading { font-family: var(--display); font-size: 13px; font-weight: 700; color: var(--ink); margin-bottom: 1.25rem; letter-spacing: -0.2px; display: flex; align-items: center; gap: 10px; }
-.block-num { width: 22px; height: 22px; border-radius: 50%; background: var(--blue); color: #fff; font-size: 11px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+/* ---- Trust pills (matches hero-pill treatment sitewide) ---- */
+.trust-bar { background:var(--bg); border-bottom:1px solid var(--border); padding:1rem 2rem; display:flex; align-items:center; justify-content:center; gap:8px; flex-wrap:wrap; }
+.trust-pill { display:inline-flex; align-items:center; gap:7px; background:var(--bg2); border:1.5px solid var(--border); padding:7px 14px; border-radius:50px; font-size:12.5px; font-weight:600; color:var(--ink2); }
+.tpill-check { width:18px; height:18px; border-radius:50%; background:rgba(34,197,94,0.12); border:1px solid rgba(34,197,94,0.3); display:flex; align-items:center; justify-content:center; color:var(--wa-dk); flex-shrink:0; }
 
-.service-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 6px; }
-.svc-card { padding: 14px 10px 12px; background: var(--bg2); border: 1.5px solid var(--border); border-radius: 12px; cursor: pointer; text-align: center; transition: border-color 0.18s, background 0.18s, transform 0.15s, box-shadow 0.15s; position: relative; user-select: none; }
-.svc-card:hover { border-color: var(--blue-mid); background: var(--blue-lt); transform: translateY(-1px); }
-.svc-card.active { border-color: var(--blue); background: var(--blue-lt); box-shadow: 0 0 0 3px rgba(21,96,255,0.08); }
-.svc-card.active::after { content: ''; position: absolute; top: 7px; right: 7px; width: 8px; height: 8px; border-radius: 50%; background: var(--blue); }
-.svc-label { font-size: 11.5px; font-weight: 600; color: var(--ink2); line-height: 1.35; }
-.svc-card.active .svc-label { color: var(--blue); }
+/* ============================================================
+   FORM
+   ============================================================ */
+.form-outer { max-width:740px; margin:0 auto; padding:2.25rem 2rem 4rem; }
+.card { background:var(--bg); border:1.5px solid var(--border); border-radius:20px; overflow:hidden; box-shadow:0 2px 24px rgba(15,23,42,0.06); }
+.card-block { padding:1.85rem 2.15rem; }
+.card-block + .card-block { border-top:1px solid var(--border); }
+.block-heading { font-family:var(--display); font-size:13.5px; font-weight:700; color:var(--ink); margin-bottom:1.15rem; letter-spacing:-0.2px; display:flex; align-items:center; gap:10px; }
+.block-num { width:22px; height:22px; border-radius:50%; background:var(--blue); color:#fff; font-size:11px; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.block-num.done { background:var(--wa); }
 
-.svc-error { font-size: 12px; color: var(--red); margin-top: 8px; display: none; }
-.svc-error.show { display: block; }
+/* ---- Progress ---- */
+.form-progress { display:flex; align-items:center; gap:9px; padding:1rem 2.15rem; background:var(--bg2); border-bottom:1px solid var(--border); }
+.fp-bar { flex:1; height:5px; border-radius:5px; background:var(--border); overflow:hidden; }
+.fp-fill { height:100%; width:0%; background:linear-gradient(90deg,var(--blue),#00CFFF); border-radius:5px; transition:width 0.4s cubic-bezier(.22,.68,0,1.2); }
+.fp-label { font-size:11px; font-weight:700; color:var(--muted); white-space:nowrap; letter-spacing:0.03em; font-variant-numeric:tabular-nums; }
 
-.other-reveal { display: none; margin-top: 10px; }
-.other-reveal.show { display: block; }
-.other-reveal input { width: 100%; padding: 10px 14px; background: var(--bg2); border: 1.5px solid var(--border); border-radius: 10px; font-family: var(--body); font-size: 13px; color: var(--ink); outline: none; transition: border-color 0.15s; }
-.other-reveal input:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(21,96,255,0.1); background: var(--bg); }
+/* ---- Service tiles ---- */
+.service-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; }
+.svc-checkbox { position:absolute; opacity:0; width:1px; height:1px; pointer-events:none; margin:0; }
+.svc-card { padding:14px 10px 12px; background:var(--bg2); border:1.5px solid var(--border); border-radius:12px; cursor:pointer; text-align:center; transition:border-color 0.18s,background 0.18s,transform 0.15s,box-shadow 0.15s; position:relative; user-select:none; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; min-height:74px; }
+.svc-card:hover { border-color:var(--blue-mid); background:var(--blue-lt); transform:translateY(-1px); }
+.svc-card svg { width:19px; height:19px; color:var(--blue); flex-shrink:0; }
+.svc-label { font-size:11.5px; font-weight:600; color:var(--ink2); line-height:1.35; }
+.svc-checkbox:checked + .svc-card { border-color:var(--blue); background:var(--blue-lt); box-shadow:0 0 0 3px rgba(21,96,255,0.08); }
+.svc-checkbox:checked + .svc-card .svc-label { color:var(--blue-dk); }
+.svc-checkbox:checked + .svc-card::after { content:''; position:absolute; top:7px; right:7px; width:8px; height:8px; border-radius:50%; background:var(--blue); }
+.svc-checkbox:focus-visible + .svc-card { outline:2px solid var(--blue); outline-offset:2px; }
 
-.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
-.field-col { display: flex; flex-direction: column; gap: 5px; }
-.field-single { margin-bottom: 14px; display: flex; flex-direction: column; gap: 5px; }
+.other-reveal { display:none; margin-top:10px; }
+.other-reveal.show { display:block; }
 
-label { font-size: 12px; font-weight: 600; color: var(--ink2); }
-label .opt { font-weight: 400; color: var(--muted2); }
-label .req { color: var(--red); margin-left: 2px; }
+/* ---- Fields ---- */
+.field-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:14px; }
+.field-col { display:flex; flex-direction:column; gap:5px; }
+.field-single { margin-bottom:14px; display:flex; flex-direction:column; gap:5px; }
+.field-row:last-child, .field-single:last-child { margin-bottom:0; }
 
-input[type="text"], input[type="email"], input[type="tel"], input[type="hidden"], select, textarea { width: 100%; padding: 10px 14px; background: var(--bg2); border: 1.5px solid var(--border); border-radius: 10px; font-family: var(--body); font-size: 13px; color: var(--ink); outline: none; transition: border-color 0.15s, box-shadow 0.15s, background 0.15s; -webkit-appearance: none; appearance: none; }
-input[type="hidden"] { display: none; }
-input:focus, select:focus, textarea:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(21,96,255,0.1); background: var(--bg); }
-input::placeholder, textarea::placeholder { color: var(--muted2); }
-input.err, select.err, textarea.err { border-color: var(--red) !important; }
+label { font-size:12px; font-weight:600; color:var(--ink2); }
+label .opt { font-weight:400; color:var(--muted2); }
+label .req { color:var(--red); margin-left:2px; }
 
-select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2364748B' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 13px center; padding-right: 36px; cursor: pointer; }
+input[type="text"], input[type="email"], input[type="tel"], select, textarea {
+  width:100%; padding:11px 14px; background:var(--bg2); border:1.5px solid var(--border);
+  border-radius:10px; font-family:var(--body); font-size:13.5px; color:var(--ink);
+  outline:none; transition:border-color 0.15s,box-shadow 0.15s,background 0.15s;
+  -webkit-appearance:none; appearance:none;
+}
+input:focus, select:focus, textarea:focus { border-color:var(--blue); box-shadow:0 0 0 3px rgba(21,96,255,0.1); background:var(--bg); }
+input::placeholder, textarea::placeholder { color:var(--muted2); }
+input.err, select.err, textarea.err { border-color:var(--red); }
 
-textarea { resize: vertical; min-height: 96px; line-height: 1.65; }
+select { background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2364748B' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 13px center; padding-right:36px; cursor:pointer; }
+textarea { resize:vertical; min-height:96px; line-height:1.65; }
 
-.field-err { font-size: 11px; color: var(--red); margin-top: 4px; display: none; }
-.field-err.show { display: block; }
+.field-err, .svc-error { font-size:11.5px; color:var(--red); margin-top:5px; display:none; }
+.field-err.show, .svc-error.show { display:block; }
 
-.pill-row { display: flex; gap: 8px; flex-wrap: wrap; }
-.sel-pill { padding: 7px 18px; border: 1.5px solid var(--border2); border-radius: 50px; font-family: var(--body); font-size: 13px; font-weight: 600; color: var(--muted); background: var(--bg2); cursor: pointer; transition: all 0.15s; user-select: none; }
-.sel-pill:hover { border-color: var(--blue-mid); color: var(--blue); background: var(--blue-lt); }
-.sel-pill.active { border-color: var(--blue); color: var(--blue); background: var(--blue-lt); }
+/* ---- Choice pills ---- */
+.pill-row { display:flex; gap:8px; flex-wrap:wrap; }
+.pill-radio { position:absolute; opacity:0; width:1px; height:1px; pointer-events:none; margin:0; }
+.sel-pill { padding:8px 18px; border:1.5px solid var(--border2); border-radius:50px; font-family:var(--body); font-size:13px; font-weight:600; color:var(--muted); background:var(--bg2); cursor:pointer; transition:border-color 0.15s,color 0.15s,background 0.15s; user-select:none; display:inline-flex; align-items:center; gap:6px; }
+.sel-pill:hover { border-color:var(--blue-mid); color:var(--blue); background:var(--blue-lt); }
+.sel-pill svg { width:14px; height:14px; flex-shrink:0; }
+.pill-radio:checked + .sel-pill { border-color:var(--blue); color:var(--blue-dk); background:var(--blue-lt); }
+.pill-radio:focus-visible + .sel-pill { outline:2px solid var(--blue); outline-offset:2px; }
 
-.submit-block { padding: 1.75rem 2.25rem 2rem; background: var(--bg2); border-top: 1px solid var(--border); }
-.privacy-note { font-size: 12px; color: var(--muted2); text-align: center; margin-bottom: 1.1rem; display: flex; align-items: center; justify-content: center; gap: 6px; }
-.btn-submit { width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px; background: var(--blue); color: #fff; font-family: var(--display); font-size: 16px; font-weight: 700; padding: 17px 28px; border-radius: 50px; border: none; cursor: pointer; letter-spacing: -0.3px; box-shadow: 0 4px 24px rgba(21,96,255,0.28); transition: background 0.15s, transform 0.15s, box-shadow 0.15s; }
-.btn-submit:hover { background: var(--blue-dk); transform: translateY(-2px); box-shadow: 0 6px 32px rgba(21,96,255,0.38); }
-.btn-submit:active { transform: none; }
-.btn-submit:disabled { opacity: 0.7; cursor: not-allowed; }
+/* ---- Submit ---- */
+.submit-block { padding:1.6rem 2.15rem 1.85rem; background:var(--bg2); border-top:1px solid var(--border); }
+.autosave-msg { font-size:11.5px; color:var(--wa-dk); text-align:center; margin-bottom:9px; font-weight:600; display:none; align-items:center; justify-content:center; gap:7px; }
+.autosave-msg.show { display:flex; }
+.autosave-clear { background:none; border:none; color:var(--muted2); font-family:var(--body); font-size:11px; font-weight:600; text-decoration:underline; cursor:pointer; padding:0; }
+.autosave-clear:hover { color:var(--red); }
+.privacy-note { font-size:12px; color:var(--muted2); text-align:center; margin-bottom:1rem; display:flex; align-items:center; justify-content:center; gap:6px; }
+.btn-submit { width:100%; display:flex; align-items:center; justify-content:center; gap:10px; background:var(--blue); color:#fff; font-family:var(--display); font-size:16px; font-weight:700; padding:16px 28px; border-radius:50px; border:none; cursor:pointer; letter-spacing:-0.3px; box-shadow:0 4px 24px rgba(21,96,255,0.28); transition:background 0.15s,transform 0.15s,box-shadow 0.15s; }
+.btn-submit:hover { background:var(--blue-dk); transform:translateY(-2px); box-shadow:0 6px 32px rgba(21,96,255,0.38); }
+.btn-submit:disabled { opacity:0.7; cursor:not-allowed; transform:none; }
+.submit-note { font-size:11.5px; color:var(--muted2); text-align:center; margin-top:9px; display:flex; align-items:center; justify-content:center; gap:6px; }
+.submit-note-dot { width:6px; height:6px; border-radius:50%; background:var(--wa); animation:pulse 2s infinite; flex-shrink:0; }
 
-/* Success State Styles */
-.success-wrap { display: none; max-width: 560px; margin: 0 auto; padding: 3rem 2rem 5rem; text-align: center; }
-.success-wrap.show { display: block; }
-.success-badge { width: 68px; height: 68px; border-radius: 50%; background: linear-gradient(135deg, var(--blue) 0%, #00CFFF 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.75rem; box-shadow: 0 8px 32px rgba(21,96,255,0.28); animation: popIn 0.45s cubic-bezier(.22,.68,0,1.4) both; }
-@keyframes popIn { from { opacity: 0; transform: scale(0.5); } to { opacity: 1; transform: scale(1); } }
-.success-badge svg { color: #fff; }
-.success-title { font-family: var(--display); font-size: clamp(1.7rem, 4vw, 2.4rem); font-weight: 800; letter-spacing: -1.2px; color: var(--ink); margin-bottom: 0.6rem; line-height: 1.1; }
-.success-body { font-size: 15px; color: var(--muted); line-height: 1.8; margin-bottom: 2rem; }
-.success-body strong { color: var(--ink); font-weight: 600; }
+/* ============================================================
+   SUCCESS STATE
+   ============================================================ */
+.success-wrap { display:none; max-width:560px; margin:0 auto; padding:3rem 2rem 4rem; text-align:center; }
+.success-wrap.show { display:block; }
+.success-badge { width:68px; height:68px; border-radius:50%; background:linear-gradient(135deg,var(--blue) 0%,#00CFFF 100%); display:flex; align-items:center; justify-content:center; margin:0 auto 1.6rem; box-shadow:0 8px 32px rgba(21,96,255,0.28); animation:popIn 0.45s cubic-bezier(.22,.68,0,1.4) both; color:#fff; }
+.success-title { font-family:var(--display); font-size:clamp(1.7rem,4vw,2.4rem); font-weight:800; letter-spacing:-1.2px; color:var(--ink); margin-bottom:0.6rem; line-height:1.1; }
+.success-body { font-size:15px; color:var(--muted); line-height:1.8; margin-bottom:1.75rem; }
+.success-body strong { color:var(--ink); font-weight:600; }
+.success-actions { display:flex; gap:9px; justify-content:center; flex-wrap:wrap; margin-bottom:1.5rem; }
+.success-links { font-size:13px; color:var(--muted2); }
+.success-links a { color:var(--blue); font-weight:600; text-decoration:none; }
+.success-links a:hover { text-decoration:underline; }
 
-footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.75rem 2rem; }
-.footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
-.footer-copy { font-size: 12px; color: var(--muted2); }
-.footer-links { display: flex; gap: 1.25rem; }
-.footer-links a { font-size: 12px; color: var(--muted2); text-decoration: none; transition: color 0.15s; }
-.footer-links a:hover { color: var(--blue); }
+/* ============================================================
+   FOOTER / WA BUBBLE / STICKY CTA / SCROLL BAR
+   ============================================================ */
+footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75rem 2rem; }
+.footer-inner { max-width:1100px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; }
+.footer-logo { display:flex; align-items:center; gap:8px; text-decoration:none; flex-shrink:0; }
+.footer-copy { font-size:12px; color:var(--muted2); line-height:1.6; }
+.footer-links { display:flex; gap:1.25rem; }
+.footer-links a { font-size:12px; color:var(--muted2); text-decoration:none; transition:color 0.15s; }
+.footer-links a:hover { color:var(--blue); }
 
-/* Auto-save Indicator */
-.autosave-msg { font-size: 11px; color: var(--wa); text-align: center; margin-bottom: 8px; font-weight: 600; display: none; }
-.autosave-msg.show { display: block; }
+.wa-bubble { position:fixed; bottom:24px; right:24px; z-index:9999; width:58px; height:58px; background:var(--wa); border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 20px rgba(34,197,94,0.45); transition:transform 0.2s,box-shadow 0.2s; text-decoration:none; }
+.wa-bubble:hover { transform:scale(1.1); box-shadow:0 6px 28px rgba(34,197,94,0.55); }
 
-@media (max-width: 720px) {
-  nav { display: none; }
-  .mob-top-nav { display: flex; }
-  .page-wrap { padding-top: 60px; }
-  .page-hero { padding: 2.5rem 1.25rem 2rem; }
-  .trust-bar { padding: 0.75rem 1rem; gap: 0; }
-  .trust-sep { display: none; }
-  .trust-item { padding: 4px 12px; font-size: 12px; }
-  .form-outer { padding: 1.5rem 1rem 3rem; }
-  .card-block { padding: 1.5rem 1.25rem; }
-  .submit-block { padding: 1.25rem 1.25rem 1.5rem; }
-  .service-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
-  .field-row { grid-template-columns: 1fr; gap: 12px; }
-  footer { padding: 1.25rem 1rem; }
-  .footer-inner { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+.sticky-cta { display:none; position:fixed; bottom:0; left:0; right:0; z-index:400; background:rgba(255,255,255,0.97); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border-top:1.5px solid var(--border); box-shadow:0 -4px 24px rgba(15,23,42,0.1); padding:10px 12px calc(10px + env(safe-area-inset-bottom)); gap:8px; transform:translateY(110%); transition:transform 0.3s cubic-bezier(.22,.68,0,1.2); }
+.sticky-cta.show { transform:translateY(0); }
+.sticky-cta button, .sticky-cta a { flex:1; display:flex; align-items:center; justify-content:center; gap:7px; font-family:var(--body); font-size:14px; font-weight:700; padding:13px 10px; border-radius:50px; text-decoration:none; white-space:nowrap; border:none; cursor:pointer; background:var(--blue); color:#fff; box-shadow:0 4px 14px rgba(21,96,255,0.35); }
+.sticky-cta svg { width:17px; height:17px; flex-shrink:0; }
+
+#scroll-progress { position:fixed; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,#1560FF,#00CFFF,#22C55E); transform:scaleX(0); transform-origin:left; z-index:99999; }
+
+/* ============================================================
+   RESPONSIVE — MOBILE (≤ 720px)
+   ============================================================ */
+@media (max-width:720px) {
+  .desk-nav { display:none; }
+  .mob-nav  { display:flex; }
+  .page-wrap { padding-top:var(--mob-nav-h); }
+  body { padding-bottom:76px; }
+  .sticky-cta { display:flex; }
+  .page-hero { padding:2.25rem 1.25rem 1.75rem; }
+  .trust-bar { padding:0.85rem 1.25rem; gap:6px; }
+  .trust-pill { font-size:11.5px; padding:6px 12px; }
+  .form-outer { padding:1.5rem 1.25rem 3rem; }
+  .card-block { padding:1.4rem 1.25rem; }
+  .form-progress { padding:0.85rem 1.25rem; }
+  .submit-block { padding:1.25rem 1.25rem 1.5rem; }
+  .service-grid { grid-template-columns:repeat(2,1fr); }
+  .field-row { grid-template-columns:1fr; gap:12px; }
+  .success-wrap { padding:2.5rem 1.25rem 3rem; }
+  .success-actions { flex-direction:column; }
+  .success-actions a { width:100%; }
+  footer { padding:1.5rem 1.25rem; }
+  .footer-inner { flex-direction:column; align-items:flex-start; gap:0.75rem; }
+  .wa-bubble { bottom:88px; right:16px; width:50px; height:50px; }
+}
+
+@media (max-width:380px) {
+  .service-grid { grid-template-columns:1fr 1fr; gap:6px; }
+  .svc-card { min-height:68px; padding:11px 7px; }
+  .svc-label { font-size:11px; }
 }
 </style>
 </head>
 <body>
 
-<nav id="nav"></nav>
+<div id="scroll-progress" aria-hidden="true"></div>
 
-<div class="mob-top-nav">
-  <a href="index.html" class="mob-top-logo">
-    <div class="logo-mark"><img src="logo.png" alt="FixMyPC Perth"></div>
-    <span class="logo-name" style="font-size:14px">FixMyPC <em>Perth</em></span>
+<!-- ============================================================
+     DESKTOP NAV
+     ============================================================ -->
+<nav class="desk-nav" aria-label="Main navigation">
+  <div class="desk-nav-inner">
+    <a href="/" class="nav-logo" aria-label="FixMyPC Perth – Home">
+      <div class="logo-mark">
+        <img src="logo.png" alt="FixMyPC Perth Computer Repair Logo" width="38" height="38" loading="lazy">
+      </div>
+      <span class="logo-name">FixMyPC <em>Perth</em></span>
+    </a>
+    <div class="nav-right">
+      <a href="/pricing" class="nav-pill pill-ghost">Pricing</a>
+      <a href="/business-it-support" class="nav-pill pill-ghost">Business IT Support</a>
+      <a href="/quiz" class="nav-pill pill-ghost">Free PC Diagnostic</a>
+      <a href="/blog" class="nav-pill pill-ghost">Tech Tips</a>
+      <a href="/reviews" class="nav-pill pill-ghost">Reviews &amp; FAQ</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============================================================
+     MOBILE NAV
+     ============================================================ -->
+<div class="mob-nav" role="navigation" aria-label="Mobile navigation">
+  <a href="/" class="nav-logo" aria-label="FixMyPC Perth – Home">
+    <div class="logo-mark">
+      <img src="logo.png" alt="FixMyPC Perth Computer Repair Logo" width="38" height="38" loading="lazy">
+    </div>
+    <span class="logo-name logo-name--mob">FixMyPC <em>Perth</em></span>
   </a>
-  <button class="mob-top-hamburger" id="mobHamburger" aria-label="Open menu">
+  <button type="button" class="mob-hamburger" id="mob-hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mob-menu">
     <span></span><span></span><span></span>
   </button>
 </div>
-<div class="mob-drop-menu" id="mob-drop-menu">
-  <a href="pricing.html" class="mob-link">Pricing</a>
-  <a href="business-it-support.html" class="mob-link">Business IT Support</a>
-  <a href="quiz.html" class="mob-link">Free PC Diagnostic</a>
-  <a href="blog.html" class="mob-link">Tech Tips</a>
-  <a href="reviews.html" class="mob-link">Reviews &amp; FAQ</a>
-</div>
 
+<div class="mob-menu" id="mob-menu" role="menu">
+  <a href="/pricing" class="mob-link" role="menuitem">Pricing</a>
+  <a href="/business-it-support" class="mob-link" role="menuitem">Business IT Support</a>
+  <a href="/quiz" class="mob-link" role="menuitem">Free PC Diagnostic</a>
+  <a href="/blog" class="mob-link" role="menuitem">Tech Tips</a>
+  <a href="/reviews" class="mob-link" role="menuitem">Reviews &amp; FAQ</a>
+</div>
 <div class="page-wrap">
 
-  <div class="page-hero" id="pageHero">
-    <span class="eyebrow">Free Quote · No Obligation</span>
+  <!-- ============================================================
+       HERO
+       ============================================================ -->
+  <section class="page-hero" id="pageHero">
+    <div class="hero-tag">
+      <span class="hero-dot" aria-hidden="true"></span>
+      Free Quote · No Obligation · Open 24 Hours
+    </div>
     <h1 class="page-title">Request a <em>Free Quote</em></h1>
-    <p class="page-sub">Fill in the form below and we will get back to you as fast as possible, usually within the hour.</p>
-  </div>
+    <p class="page-sub">Tell us what's going on and we'll come back with a fixed price, usually within the hour. No obligation, and no charge for asking.</p>
+  </section>
 
   <div class="trust-bar" id="trustBar">
-    <div class="trust-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> Same or next day turnaround</div>
-    <div class="trust-sep"></div>
-    <div class="trust-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> 30 day labour warranty</div>
-    <div class="trust-sep"></div>
-    <div class="trust-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> Upfront pricing, no surprises</div>
-    <div class="trust-sep"></div>
-    <div class="trust-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> Perth-based, local technicians</div>
+    <div class="trust-pill"><span class="tpill-check" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Same or next day turnaround</div>
+    <div class="trust-pill"><span class="tpill-check" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> 30-day labour warranty</div>
+    <div class="trust-pill"><span class="tpill-check" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Upfront pricing, no surprises</div>
+    <div class="trust-pill"><span class="tpill-check" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Local Canning Vale workshop</div>
   </div>
 
+  <!-- ============================================================
+       QUOTE FORM
+       ============================================================ -->
   <div class="form-outer" id="formOuter">
     <form id="quoteForm" novalidate>
       <input type="hidden" name="access_key" value="b00c2b06-22d4-4924-af92-5143e83ab186">
       <input type="hidden" name="subject" value="New Quote Request - FixMyPC Perth">
-      <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+      <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" aria-hidden="true">
+      <input type="hidden" name="Services" id="servicesInput" value="">
 
       <div class="card">
 
+        <div class="form-progress">
+          <div class="fp-bar"><div class="fp-fill" id="fpFill"></div></div>
+          <span class="fp-label" id="fpLabel">0% complete</span>
+        </div>
+
+        <!-- STEP 1 -->
         <div class="card-block">
-          <div class="block-heading"><div class="block-num">1</div> What do you need help with?</div>
-          <div class="service-grid" id="serviceGrid">
-            <input type="hidden" name="Services" id="servicesInput" value="">
-            <div class="svc-card" data-val="Virus and Malware Removal" onclick="toggleSvc(this)"><div class="svc-label">Virus Removal</div></div>
-            <div class="svc-card" data-val="SSD Upgrade" onclick="toggleSvc(this)"><div class="svc-label">SSD Upgrade</div></div>
-            <div class="svc-card" data-val="Windows Reinstall" onclick="toggleSvc(this)"><div class="svc-label">Windows Reinstall</div></div>
-            <div class="svc-card" data-val="WiFi and Printer Setup" onclick="toggleSvc(this)"><div class="svc-label">WiFi and Printer</div></div>
-            <div class="svc-card" data-val="Gaming PC Build or Upgrade" onclick="toggleSvc(this)"><div class="svc-label">Gaming PC</div></div>
-            <div class="svc-card" data-val="Cable Management" onclick="toggleSvc(this)"><div class="svc-label">Cable Management</div></div>
-            <div class="svc-card" data-val="Remote Support" onclick="toggleSvc(this)"><div class="svc-label">Remote Support</div></div>
-            <div class="svc-card" data-val="Data Recovery" onclick="toggleSvc(this)"><div class="svc-label">Data Recovery</div></div>
-            <div class="svc-card" data-val="Other" onclick="toggleSvc(this)" id="otherCard"><div class="svc-label">Other</div></div>
+          <div class="block-heading"><div class="block-num" id="num1">1</div> What do you need help with?</div>
+          <div class="service-grid" id="serviceGrid" role="group" aria-label="Select one or more services">
+
+            <input type="checkbox" class="svc-checkbox" id="svc1" value="Virus and Malware Removal">
+            <label for="svc1" class="svc-card">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <span class="svc-label">Virus Removal</span>
+            </label>
+
+            <input type="checkbox" class="svc-checkbox" id="svc2" value="Slow Computer or PC Diagnostic">
+            <label for="svc2" class="svc-card">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span class="svc-label">Slow PC / Diagnostic</span>
+            </label>
+
+            <input type="checkbox" class="svc-checkbox" id="svc3" value="Data Recovery">
+            <label for="svc3" class="svc-card">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+              <span class="svc-label">Data Recovery</span>
+            </label>
+
+            <input type="checkbox" class="svc-checkbox" id="svc4" value="SSD or RAM Upgrade">
+            <label for="svc4" class="svc-card">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="2" y="8" width="20" height="8" rx="2"/><path d="M6 12h.01M10 12h.01"/></svg>
+              <span class="svc-label">SSD / RAM Upgrade</span>
+            </label>
+
+            <input type="checkbox" class="svc-checkbox" id="svc5" value="Laptop Screen or Battery Replacement">
+            <label for="svc5" class="svc-card">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+              <span class="svc-label">Screen / Battery</span>
+            </label>
+
+            <input type="checkbox" class="svc-checkbox" id="svc6" value="Computer Will Not Turn On">
+            <label for="svc6" class="svc-card">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18.36 6.64A9 9 0 1 1 5.64 6.64"/><line x1="12" y1="2" x2="12" y2="12"/></svg>
+              <span class="svc-label">Won't Turn On</span>
+            </label>
+
+            <input type="checkbox" class="svc-checkbox" id="svc7" value="Gaming PC Build or Upgrade">
+            <label for="svc7" class="svc-card">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h4M8 10v4M15 12h.01M18 12h.01"/></svg>
+              <span class="svc-label">Gaming PC Build</span>
+            </label>
+
+            <input type="checkbox" class="svc-checkbox" id="svc8" value="Something Else">
+            <label for="svc8" class="svc-card">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              <span class="svc-label">Something Else</span>
+            </label>
+
           </div>
           <div class="svc-error" id="svcErr">Please select at least one service.</div>
-          <div class="other-reveal" id="otherReveal"><input type="text" id="otherText" name="Other Details" placeholder="Please describe what you need help with"></div>
-          <div class="field-err" id="otherErr">Please describe what you need help with.</div>
+          <div class="other-reveal" id="otherReveal">
+            <label for="otherText" style="display:block;margin-bottom:5px;">Tell us what you need <span class="req">*</span></label>
+            <input type="text" id="otherText" name="Other Details" placeholder="Please describe what you need help with">
+            <div class="field-err" id="otherErr">Please describe what you need help with.</div>
+          </div>
         </div>
 
+        <!-- STEP 2 -->
         <div class="card-block">
-          <div class="block-heading"><div class="block-num">2</div> About your device</div>
-          <div class="field-row">
-            <div class="field-col">
-              <label for="deviceType">Device Type <span class="req">*</span></label>
-              <select id="deviceType" name="Device Type" required>
-                <option value="">Select device type</option>
-                <option>Desktop PC</option>
-                <option>Laptop</option>
-                <option>All in One</option>
-                <option>Mac</option>
-                <option>Other</option>
-              </select>
-              <div class="field-err" id="deviceErr">Please select a device type.</div>
-            </div>
-            <div class="field-col">
-              <label>How urgent is this?</label>
-              <div class="pill-row" style="margin-top:2px">
-                <div class="sel-pill active" data-val="No rush" onclick="pickUrgency(this)">No Rush</div>
-                <div class="sel-pill" data-val="This week" onclick="pickUrgency(this)">This Week</div>
-                <div class="sel-pill" data-val="ASAP" onclick="pickUrgency(this)">ASAP</div>
-              </div>
-              <input type="hidden" name="Urgency" id="urgencyInput" value="No rush">
-            </div>
+          <div class="block-heading"><div class="block-num" id="num2">2</div> About your device</div>
+          <div class="field-single">
+            <label for="deviceType">Device Type <span class="req">*</span></label>
+            <select id="deviceType" name="Device Type" required>
+              <option value="">Select device type</option>
+              <option>Desktop PC</option>
+              <option>Laptop</option>
+              <option>All in One</option>
+              <option>Mac</option>
+              <option>Other</option>
+            </select>
+            <div class="field-err" id="deviceErr">Please select a device type.</div>
           </div>
           <div class="field-single">
-            <label for="description">What is happening with your device? <span class="req">*</span></label>
+            <label for="description">What's happening with your device? <span class="req">*</span></label>
             <textarea id="description" name="Description" placeholder="For example: My PC takes a long time to start, keeps freezing and I think it may have a virus. Running Windows 11." required></textarea>
-            <div class="field-err" id="descErr">Please describe what is happening.</div>
+            <div class="field-err" id="descErr">Please describe what's happening.</div>
           </div>
         </div>
 
+        <!-- STEP 3 -->
         <div class="card-block">
-          <div class="block-heading"><div class="block-num">3</div> Your contact details</div>
+          <div class="block-heading"><div class="block-num" id="num3">3</div> Your contact details</div>
           <div class="field-row">
             <div class="field-col">
               <label for="custName">Full Name <span class="req">*</span></label>
-              <input type="text" id="custName" name="Name" placeholder="John Smith" required>
+              <input type="text" id="custName" name="Name" placeholder="John Smith" autocomplete="name" required>
               <div class="field-err" id="nameErr">Please enter your name.</div>
             </div>
             <div class="field-col">
               <label for="custPhone">Phone Number <span class="req">*</span></label>
-              <input type="tel" id="custPhone" name="Phone" placeholder="04XX XXX XXX" required>
+              <input type="tel" id="custPhone" name="Phone" placeholder="04XX XXX XXX" autocomplete="tel" required>
               <div class="field-err" id="phoneErr">Please enter a valid Australian phone number.</div>
             </div>
           </div>
-          <div class="field-row">
-            <div class="field-col">
-              <label for="custEmail">Email Address <span class="opt">(optional)</span></label>
-              <input type="email" id="custEmail" name="Email" placeholder="john@example.com">
-            </div>
-            <div class="field-col">
-              <label for="custSuburb">Your Suburb <span class="opt">(optional)</span></label>
-              <input type="text" id="custSuburb" name="Suburb" placeholder="e.g. Canning Vale">
-            </div>
+          <div class="field-single">
+            <label for="custEmail">Email Address <span class="opt" id="emailOpt">(optional)</span></label>
+            <input type="email" id="custEmail" name="Email" placeholder="john@example.com" autocomplete="email">
+            <div class="field-err" id="emailErr">Please enter a valid email so we can reply.</div>
           </div>
           <div>
-            <label style="margin-bottom: 8px; display:block;">Preferred contact method</label>
-            <div class="pill-row">
-              <div class="sel-pill active" data-val="WhatsApp" onclick="pickContact(this)">WhatsApp</div>
-              <div class="sel-pill" data-val="Email" onclick="pickContact(this)">Email</div>
+            <label id="contactLabel" style="margin-bottom:8px;display:block;">Preferred contact method</label>
+            <div class="pill-row" role="radiogroup" aria-labelledby="contactLabel">
+              <input type="radio" class="pill-radio" name="Preferred Contact" id="pref1" value="WhatsApp" checked>
+              <label for="pref1" class="sel-pill">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>
+                WhatsApp
+              </label>
+              <input type="radio" class="pill-radio" name="Preferred Contact" id="pref2" value="Email">
+              <label for="pref2" class="sel-pill">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+                Email
+              </label>
             </div>
-            <input type="hidden" name="Preferred Contact" id="contactInput" value="WhatsApp">
           </div>
         </div>
 
         <div class="submit-block">
-          <div class="autosave-msg" id="autosaveMsg">Progress auto-saved</div>
-          <div class="privacy-note"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Your information is only used to respond to your quote request and is never shared.</div>
-          <button type="submit" class="btn-submit" id="submitBtn">Send Quote Request <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+          <div class="autosave-msg" id="autosaveMsg">
+            <span>Progress saved on this device</span>
+            <button type="button" class="autosave-clear" id="autosaveClear">Clear</button>
+          </div>
+          <div class="privacy-note">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            Your details are only used to answer this quote request and are never shared.
+          </div>
+          <button type="submit" class="btn-submit" id="submitBtn">
+            Send Quote Request
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+          <div class="submit-note">
+            <span class="submit-note-dot" aria-hidden="true"></span>
+            We usually reply within the hour
+          </div>
         </div>
 
       </div>
     </form>
   </div>
 
+  <!-- ============================================================
+       SUCCESS STATE
+       ============================================================ -->
   <div class="success-wrap" id="successWrap">
-    <div class="success-badge"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+    <div class="success-badge" aria-hidden="true">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
     <h2 class="success-title">Request received.</h2>
-    <p class="success-body">Our tech team will get back to you as fast as possible, typically <strong>within the hour</strong>. We will reach out via your preferred contact method.</p>
-    <a href="index.html" class="back-home" style="text-align:center;display:block;font-size:13px;color:var(--muted2);text-decoration:none;margin-top:2rem">Back to homepage</a>
+    <p class="success-body">Our tech team will get back to you as fast as possible, typically <strong>within the hour</strong>. We'll reach out using your preferred contact method.</p>
+    <div class="success-actions">
+      <a href="https://wa.me/61452573701?text=Hi%21%20I%20just%20submitted%20a%20quote%20request%20on%20your%20website." target="_blank" rel="noopener noreferrer" class="btn-wa" onclick="trackWAClick()">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>
+        Message us on WhatsApp
+      </a>
+      <a href="/pricing" class="btn-outline">See full pricing</a>
+    </div>
+    <p class="success-links">In the meantime, have a look at our <a href="/pricing">price list</a> or <a href="/reviews">customer reviews</a>. <a href="/">Back to homepage</a></p>
   </div>
 
-</div>
+</div><!-- .page-wrap -->
 
 <footer>
   <div class="footer-inner">
-    <a href="index.html" class="nav-logo">
-      <div class="logo-mark"><img src="logo.png" alt="FixMyPC Perth"></div>
-      <span class="logo-name" style="font-size:14px">FixMyPC <em>Perth</em></span>
+    <a href="/" class="footer-logo" aria-label="FixMyPC Perth – Home">
+      <div class="logo-mark">
+        <img src="logo.png" alt="FixMyPC Perth Computer Repair Logo" width="38" height="38" loading="lazy">
+      </div>
+      <span class="logo-name logo-name--mob">FixMyPC <em>Perth</em></span>
     </a>
-    <div class="footer-copy">© 2026 FixMyPC Perth · Perth WA · All Prices Include GST</div>
-    <div class="footer-links"><a href="terms.html">Terms and Conditions</a></div>
+    <div class="footer-copy">&copy; 2026 FixMyPC Perth &middot; ABN 67 645 153 359 &middot; All Prices Include GST &middot; Canning Vale WA 6155</div>
+    <div class="footer-links">
+      <a href="/terms">Terms and Conditions</a>
+    </div>
   </div>
 </footer>
 
-<a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener" style="position:fixed;bottom:24px;right:24px;z-index:9999;width:58px;height:58px;background:#22C55E;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(34,197,94,0.45);transition:transform 0.2s;text-decoration:none" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg></a>
+<!-- ============================================================
+     STICKY MOBILE CTA
+     ============================================================ -->
+<div class="sticky-cta" id="stickyCta" role="navigation" aria-label="Submit quote request">
+  <button type="button" id="stickySubmit">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    Send my quote request
+  </button>
+</div>
 
+<!-- WHATSAPP FLOATING BUBBLE -->
+<a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener noreferrer" class="wa-bubble" aria-label="Chat with FixMyPC Perth on WhatsApp" onclick="trackWAClick()">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>
+</a>
+
+<!-- ============================================================
+     JAVASCRIPT
+     ============================================================ -->
 <script>
-(function() {
-  let selectedSvcs = [];
-  let urgency = 'No rush';
-  let contactPref = 'WhatsApp';
-  let saveTimer = null;
+(function () {
+  'use strict';
+
   const LS_KEY = 'fmpp_quote_draft';
+  const form   = document.getElementById('quoteForm');
+  if (!form) return;
 
-  // NAV SETUP
-  document.getElementById('nav').innerHTML = `
-    <a href="index.html" class="nav-logo">
-      <div class="logo-mark"><img src="logo.png" alt="FixMyPC Perth"></div>
-      <span class="logo-name">FixMyPC <em>Perth</em></span>
-    </a>
-    <div class="nav-right">
-      <a href="pricing.html" class="nav-pill pill-ghost">Pricing</a>
-      <a href="business-it-support.html" class="nav-pill pill-ghost">Business IT Support</a>
-      <a href="quiz.html" class="nav-pill pill-ghost">Free PC Diagnostic</a>
-      <a href="blog.html" class="nav-pill pill-ghost">Tech Tips</a>
-      <a href="reviews.html" class="nav-pill pill-ghost">Reviews &amp; FAQ</a>
-    </div>`;
+  /* ---- Scroll progress ---- */
+  const progressBar = document.getElementById('scroll-progress');
+  window.addEventListener('scroll', function() {
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    progressBar.style.transform = 'scaleX(' + (h > 0 ? window.scrollY / h : 0) + ')';
+  }, { passive: true });
 
-  // MOBILE MENU FIX
-  const ham = document.getElementById('mobHamburger');
-  const menu = document.getElementById('mob-drop-menu');
-  ham.addEventListener('click', () => {
-    ham.classList.toggle('open');
-    menu.classList.toggle('open');
+  /* ---- Mobile hamburger ---- */
+  const hamburger = document.getElementById('mob-hamburger');
+  const mobMenu   = document.getElementById('mob-menu');
+  hamburger.addEventListener('click', function() {
+    const isOpen = mobMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+    hamburger.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
   });
-  menu.querySelectorAll('.mob-link').forEach(l => l.addEventListener('click', () => {
-    ham.classList.remove('open');
-    menu.classList.remove('open');
-  }));
+  mobMenu.querySelectorAll('.mob-link').forEach(function(link) {
+    link.addEventListener('click', function() {
+      mobMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
+  document.addEventListener('click', function(e) {
+    if (mobMenu.classList.contains('open') && !mobMenu.contains(e.target) && !hamburger.contains(e.target)) {
+      mobMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    }
+  });
 
-  // AUTO-SAVE LOGIC
-  function saveDraft() {
-    const data = {
-      services: selectedSvcs,
-      other: document.getElementById('otherText').value,
-      device: document.getElementById('deviceType').value,
-      urgency: urgency,
-      description: document.getElementById('description').value,
-      name: document.getElementById('custName').value,
-      phone: document.getElementById('custPhone').value,
-      email: document.getElementById('custEmail').value,
-      suburb: document.getElementById('custSuburb').value,
-      contact: contactPref
-    };
-    localStorage.setItem(LS_KEY, JSON.stringify(data));
-    const msg = document.getElementById('autosaveMsg');
-    msg.classList.add('show');
-    setTimeout(() => msg.classList.remove('show'), 2000);
+  /* ---- Element refs ---- */
+  const svcBoxes  = Array.prototype.slice.call(document.querySelectorAll('.svc-checkbox'));
+  const servicesInput = document.getElementById('servicesInput');
+  const otherReveal   = document.getElementById('otherReveal');
+  const otherText     = document.getElementById('otherText');
+  const deviceType    = document.getElementById('deviceType');
+  const description   = document.getElementById('description');
+  const custName      = document.getElementById('custName');
+  const custPhone     = document.getElementById('custPhone');
+  const custEmail     = document.getElementById('custEmail');
+  const emailOpt      = document.getElementById('emailOpt');
+  const submitBtn     = document.getElementById('submitBtn');
+  const OTHER_VALUE   = 'Something Else';
+
+  function selectedServices() {
+    return svcBoxes.filter(function(b){ return b.checked; }).map(function(b){ return b.value; });
+  }
+  function prefContact() {
+    const el = form.querySelector('input[name="Preferred Contact"]:checked');
+    return el ? el.value : 'WhatsApp';
+  }
+  function emailRequired() { return prefContact() === 'Email'; }
+
+  /* ---- Sync derived state ---- */
+  function syncServices() {
+    const sel = selectedServices();
+    servicesInput.value = sel.join(', ');
+    otherReveal.classList.toggle('show', sel.indexOf(OTHER_VALUE) !== -1);
+    if (sel.length) document.getElementById('svcErr').classList.remove('show');
   }
 
+  /* Email becomes required when Email is the preferred contact method,
+     otherwise there is no way for us to actually reply. */
+  function syncEmailRequirement() {
+    const req = emailRequired();
+    emailOpt.textContent = req ? '(required)' : '(optional)';
+    emailOpt.style.color = req ? 'var(--red)' : '';
+    custEmail.setAttribute('aria-required', String(req));
+    if (!req) {
+      document.getElementById('emailErr').classList.remove('show');
+      custEmail.classList.remove('err');
+    }
+  }
+
+  /* ---- Completion progress ---- */
+  function syncProgress() {
+    const steps = [
+      selectedServices().length > 0,
+      !!deviceType.value && description.value.trim().length > 0,
+      custName.value.trim().length > 0 && custPhone.value.trim().length > 0 &&
+        (!emailRequired() || custEmail.value.trim().length > 0)
+    ];
+    const done = steps.filter(Boolean).length;
+    const pct  = Math.round((done / steps.length) * 100);
+    document.getElementById('fpFill').style.width = pct + '%';
+    document.getElementById('fpLabel').textContent = pct + '% complete';
+    steps.forEach(function(ok, i) {
+      const badge = document.getElementById('num' + (i + 1));
+      if (badge) {
+        badge.classList.toggle('done', ok);
+        badge.textContent = ok ? '\u2713' : String(i + 1);
+      }
+    });
+  }
+
+  /* ---- Draft autosave ---- */
+  let saveTimer = null;
+  function saveDraft() {
+    try {
+      localStorage.setItem(LS_KEY, JSON.stringify({
+        services: selectedServices(),
+        other: otherText.value,
+        device: deviceType.value,
+        description: description.value,
+        name: custName.value,
+        phone: custPhone.value,
+        email: custEmail.value,
+        contact: prefContact()
+      }));
+      document.getElementById('autosaveMsg').classList.add('show');
+    } catch (e) { /* storage unavailable — form still works */ }
+  }
   function scheduleSave() {
     clearTimeout(saveTimer);
-    saveTimer = setTimeout(saveDraft, 1000);
+    saveTimer = setTimeout(saveDraft, 800);
   }
 
   function restoreDraft() {
-    const saved = localStorage.getItem(LS_KEY);
-    if (!saved) return;
+    let data;
     try {
-      const data = JSON.parse(saved);
-      if (data.services) {
-        data.services.forEach(s => {
-          const el = Array.from(document.querySelectorAll('.svc-card')).find(c => c.dataset.val === s);
-          if (el) toggleSvc(el, false);
-        });
-      }
-      if (data.other) document.getElementById('otherText').value = data.other;
-      if (data.device) document.getElementById('deviceType').value = data.device;
-      if (data.urgency) {
-        const el = Array.from(document.querySelectorAll('.sel-pill')).find(p => p.dataset.val === data.urgency && p.onclick.toString().includes('pickUrgency'));
-        if (el) pickUrgency(el, false);
-      }
-      if (data.description) document.getElementById('description').value = data.description;
-      if (data.name) document.getElementById('custName').value = data.name;
-      if (data.phone) document.getElementById('custPhone').value = data.phone;
-      if (data.email) document.getElementById('custEmail').value = data.email;
-      if (data.suburb) document.getElementById('custSuburb').value = data.suburb;
-      if (data.contact) {
-        const el = Array.from(document.querySelectorAll('.sel-pill')).find(p => p.dataset.val === data.contact && p.onclick.toString().includes('pickContact'));
-        if (el) pickContact(el, false);
-      }
-    } catch (e) { console.error("Restore failed", e); }
+      const raw = localStorage.getItem(LS_KEY);
+      if (!raw) return;
+      data = JSON.parse(raw);
+    } catch (e) { return; }
+
+    if (Array.isArray(data.services)) {
+      svcBoxes.forEach(function(b){ b.checked = data.services.indexOf(b.value) !== -1; });
+    }
+    if (data.other)       otherText.value   = data.other;
+    if (data.device)      deviceType.value  = data.device;
+    if (data.description) description.value = data.description;
+    if (data.name)        custName.value    = data.name;
+    if (data.phone)       custPhone.value   = data.phone;
+    if (data.email)       custEmail.value   = data.email;
+
+    /* Radios matched by value rather than by inspecting handlers */
+    if (data.contact) {
+      const c = form.querySelector('input[name="Preferred Contact"][value="' + data.contact.replace(/"/g,'') + '"]');
+      if (c) c.checked = true;
+    }
+
+    syncServices();
+    syncEmailRequirement();
+    syncProgress();
+    document.getElementById('autosaveMsg').classList.add('show');
   }
 
-  // FORM HANDLERS
-  window.toggleSvc = function(el, autoSave = true) {
-    const val = el.dataset.val;
-    el.classList.toggle('active');
-    if (el.classList.contains('active')) {
-      selectedSvcs.push(val);
-    } else {
-      selectedSvcs = selectedSvcs.filter(s => s !== val);
-    }
-    document.getElementById('servicesInput').value = selectedSvcs.join(', ');
-    document.getElementById('otherReveal').classList.toggle('show', selectedSvcs.includes('Other'));
-    if (selectedSvcs.length) document.getElementById('svcErr').classList.remove('show');
-    
-    // Logic: Other is required if it's the only service
-    document.getElementById('otherText').required = (selectedSvcs.includes('Other') && selectedSvcs.length === 1);
-    
-    if (autoSave) scheduleSave();
-  };
-
-  window.pickUrgency = function(el, autoSave = true) {
-    el.parentElement.querySelectorAll('.sel-pill').forEach(p => p.classList.remove('active'));
-    el.classList.add('active');
-    urgency = el.dataset.val;
-    document.getElementById('urgencyInput').value = urgency;
-    if (autoSave) scheduleSave();
-  };
-
-  window.pickContact = function(el, autoSave = true) {
-    el.parentElement.querySelectorAll('.sel-pill').forEach(p => p.classList.remove('active'));
-    el.classList.add('active');
-    contactPref = el.dataset.val;
-    document.getElementById('contactInput').value = contactPref;
-    if (autoSave) scheduleSave();
-  };
-
-  // Add listeners for text fields
-  ['otherText', 'deviceType', 'description', 'custName', 'custPhone', 'custEmail', 'custSuburb'].forEach(id => {
-    document.getElementById(id).addEventListener('input', scheduleSave);
+  document.getElementById('autosaveClear').addEventListener('click', function() {
+    try { localStorage.removeItem(LS_KEY); } catch (e) {}
+    form.reset();
+    svcBoxes.forEach(function(b){ b.checked = false; });
+    syncServices();
+    syncEmailRequirement();
+    syncProgress();
+    document.getElementById('autosaveMsg').classList.remove('show');
   });
 
-  // SUBMIT HANDLER
-  document.getElementById('quoteForm').addEventListener('submit', async function(e) {
+  /* ---- Listeners ---- */
+  svcBoxes.forEach(function(b) {
+    b.addEventListener('change', function() { syncServices(); syncProgress(); scheduleSave(); });
+  });
+  form.querySelectorAll('input[name="Preferred Contact"]').forEach(function(r) {
+    r.addEventListener('change', function() { syncEmailRequirement(); syncProgress(); scheduleSave(); });
+  });
+  [otherText, deviceType, description, custName, custPhone, custEmail].forEach(function(el) {
+    el.addEventListener('input', function() { syncProgress(); scheduleSave(); });
+    el.addEventListener('change', function() { syncProgress(); scheduleSave(); });
+  });
+
+  /* ---- Sticky mobile CTA ---- */
+  (function() {
+    const bar = document.getElementById('stickyCta');
+    const btn = document.getElementById('stickySubmit');
+    if (!bar || !btn) return;
+    const hero = document.getElementById('pageHero');
+    window.addEventListener('scroll', function() {
+      const past = hero ? (window.scrollY > hero.offsetHeight * 0.9) : (window.scrollY > 400);
+      const done = document.getElementById('successWrap').classList.contains('show');
+      bar.classList.toggle('show', past && !done);
+    }, { passive: true });
+    btn.addEventListener('click', function() {
+      if (typeof form.requestSubmit === 'function') form.requestSubmit();
+      else form.dispatchEvent(new Event('submit', { cancelable: true }));
+    });
+  })();
+
+  /* ---- Submit ---- */
+  form.addEventListener('submit', async function(e) {
     e.preventDefault();
     let ok = true;
 
-    // Reset errors
-    document.querySelectorAll('.field-err, .svc-error').forEach(e => e.classList.remove('show'));
-    document.querySelectorAll('.err').forEach(e => e.classList.remove('err'));
+    form.querySelectorAll('.field-err, .svc-error').forEach(function(el){ el.classList.remove('show'); });
+    form.querySelectorAll('.err').forEach(function(el){ el.classList.remove('err'); });
 
-    if (!selectedSvcs.length) {
+    const sel = selectedServices();
+    if (!sel.length) {
       document.getElementById('svcErr').classList.add('show');
       ok = false;
     }
-    
-    if (selectedSvcs.includes('Other') && selectedSvcs.length === 1 && !document.getElementById('otherText').value.trim()) {
+    if (sel.indexOf(OTHER_VALUE) !== -1 && !otherText.value.trim()) {
       document.getElementById('otherErr').classList.add('show');
-      document.getElementById('otherText').classList.add('err');
+      otherText.classList.add('err');
       ok = false;
     }
-
-    if (!document.getElementById('deviceType').value) {
+    if (!deviceType.value) {
       document.getElementById('deviceErr').classList.add('show');
-      document.getElementById('deviceType').classList.add('err');
+      deviceType.classList.add('err');
       ok = false;
     }
-
-    if (!document.getElementById('description').value.trim()) {
+    if (!description.value.trim()) {
       document.getElementById('descErr').classList.add('show');
-      document.getElementById('description').classList.add('err');
+      description.classList.add('err');
       ok = false;
     }
-
-    if (!document.getElementById('custName').value.trim()) {
+    if (!custName.value.trim()) {
       document.getElementById('nameErr').classList.add('show');
-      document.getElementById('custName').classList.add('err');
+      custName.classList.add('err');
       ok = false;
     }
 
-    // Fixed Phone Regex: Accepts 04XX mobiles and AU landlines
-    const phoneVal = document.getElementById('custPhone').value.replace(/[\s\-()]/g, '');
+    const phoneVal = custPhone.value.replace(/[\s\-()]/g, '');
     const phoneRe = /^(\+?61\s?|0)[2-9](\s?\d){8}$/;
     if (!phoneRe.test(phoneVal)) {
       document.getElementById('phoneErr').classList.add('show');
-      document.getElementById('custPhone').classList.add('err');
+      custPhone.classList.add('err');
+      ok = false;
+    }
+
+    const emailVal = custEmail.value.trim();
+    const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if ((emailRequired() && !emailVal) || (emailVal && !emailRe.test(emailVal))) {
+      document.getElementById('emailErr').classList.add('show');
+      custEmail.classList.add('err');
       ok = false;
     }
 
     if (!ok) {
-      const first = document.querySelector('.svc-error.show, .field-err.show');
+      const first = form.querySelector('.svc-error.show, .field-err.show');
       if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
       return;
     }
 
-    // Submit via Web3Forms
-    const btn = document.getElementById('submitBtn');
-    btn.disabled = true;
-    btn.innerText = "Sending...";
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
 
     try {
-      const formData = new FormData(this);
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        body: formData
+        body: new FormData(form)
       });
       const result = await response.json();
       if (result.success) {
-        localStorage.removeItem(LS_KEY);
-        document.getElementById('pageHero').style.display = 'none';
+        if (typeof trackQuoteForm === 'function') trackQuoteForm();
+        try { localStorage.removeItem(LS_KEY); } catch (e) {}
+        document.getElementById('pageHero').style.display  = 'none';
+        document.getElementById('trustBar').style.display  = 'none';
         document.getElementById('formOuter').style.display = 'none';
-        document.getElementById('trustBar').style.display = 'none';
+        document.getElementById('stickyCta').classList.remove('show');
         document.getElementById('successWrap').classList.add('show');
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
-        alert("Submission failed. Please try again or contact us on WhatsApp.");
-        btn.disabled = false;
-        btn.innerText = "Send Quote Request";
+        alert('Submission failed. Please try again or contact us on WhatsApp.');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Quote Request';
       }
     } catch (err) {
-      alert("An error occurred. Please try again.");
-      btn.disabled = false;
-      btn.innerText = "Send Quote Request";
+      alert('An error occurred. Please try again.');
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send Quote Request';
     }
   });
 
-  /* ── SCROLL PROGRESS BAR ── */
-const progressBar = document.createElement('div');
-progressBar.style.cssText = 'position:fixed;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#1560FF,#00CFFF,#22C55E);transform:scaleX(0);transform-origin:left;z-index:9999;';
-document.body.appendChild(progressBar);
-
-window.addEventListener('scroll', () => {
-  const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-  const scrolled = window.scrollY / scrollHeight;
-  progressBar.style.transform = `scaleX(${scrolled})`;
-});
-
-
-  // Init
+  /* ---- Init ---- */
   restoreDraft();
+  syncServices();
+  syncEmailRequirement();
+  syncProgress();
+
 })();
 </script>
-
 </body>
 </html>
