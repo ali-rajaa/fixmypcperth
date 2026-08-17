@@ -120,8 +120,8 @@
     {
       "@type": "OpeningHoursSpecification",
       "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-      "opens": "07:00",
-      "closes": "22:00"
+      "opens": "00:00",
+      "closes": "23:59"
     }
   ],
   "sameAs": [
@@ -133,10 +133,10 @@
     "name": "Computer Repair Services Perth",
     "itemListElement": [
       {"@type":"Offer","itemOffered":{"@type":"Service","name":"PC Diagnostic and Repair Perth","description":"Full diagnostic, repair and 30-day labour warranty included. Written report before we touch anything."},"price":"120","priceCurrency":"AUD"},
-      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Virus and Malware Removal Perth","description":"Full scan, removal, browser cleanup and security setup. Most infections cleared same day."},"price":"80","priceCurrency":"AUD"},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Virus and Malware Removal Perth","description":"Full scan, removal, browser cleanup and security setup. Most infections cleared same day."},"price":"99","priceCurrency":"AUD"},
       {"@type":"Offer","itemOffered":{"@type":"Service","name":"Data Recovery Perth","description":"Recover photos, documents and files from failing or dead hard drives. No fix, no fee."},"price":"149","priceCurrency":"AUD"},
       {"@type":"Offer","itemOffered":{"@type":"Service","name":"SSD Upgrade Perth","description":"Labour only – you supply the SSD, we fit and transfer all data."},"price":"65","priceCurrency":"AUD"},
-      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Gaming PC Build Perth","description":"Custom gaming PC assembly, cable management, PBO tuning and benchmarking."},"price":"120","priceCurrency":"AUD"},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Gaming PC Build Perth","description":"Custom gaming PC assembly in three tiers: Essential, Performance and Elite. Includes cable management, PBO tuning, benchmarking and a free Windows 11 key."},"price":"149","priceCurrency":"AUD"},
       {"@type":"Offer","itemOffered":{"@type":"Service","name":"Windows Reinstall Perth","description":"Fresh Windows install, all files backed up and transferred safely."},"price":"120","priceCurrency":"AUD"},
       {"@type":"Offer","itemOffered":{"@type":"Service","name":"Laptop Screen Replacement Perth","description":"Labour only – all common screen sizes, parts quoted separately."},"price":"120","priceCurrency":"AUD"},
       {"@type":"Offer","itemOffered":{"@type":"Service","name":"Business IT Support Perth","description":"Managed IT support for Perth small businesses. Proactive monitoring, remote help, onsite visits, managed antivirus and cloud backup."},"price":"149","priceCurrency":"AUD"},
@@ -176,7 +176,7 @@
       "name": "How much does computer repair cost in Perth?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Computer repair at FixMyPC Perth starts from $49. Virus removal starts from $80, full diagnostics and repair from $120, data recovery from $149, our Complete PC Overhaul Package is $180 and our Used Laptop Revival Package is $140. All prices include GST with upfront transparent pricing and no hidden fees."
+        "text": "Computer repair at FixMyPC Perth starts from $49. Virus removal starts from $99, full diagnostics and repair from $120, data recovery from $149, our Complete PC Overhaul Package is $180 and our Used Laptop Revival Package is $140. All prices include GST with upfront transparent pricing and no hidden fees."
       }
     },
     {
@@ -216,7 +216,7 @@
       "name": "Do you build custom gaming PCs in Perth?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. FixMyPC Perth specialises in custom gaming PC builds across Perth. We handle everything from parts selection to assembly, cable management, PBO tuning and benchmarking. Gaming PC build labour starts from $120."
+        "text": "Yes. FixMyPC Perth specialises in custom gaming PC builds across Perth. We handle everything from parts selection to assembly, cable management, PBO tuning and benchmarking. Gaming PC assembly starts from $149."
       }
     },
     {
@@ -232,7 +232,7 @@
       "name": "Can you remove a virus from my computer in Perth?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Our virus and malware removal service is $80 and most infections are cleared the same day. We run a full scan, remove all threats, clean your browser and set up antivirus protection. Drop off in Canning Vale or get a free quote on WhatsApp."
+        "text": "Yes. Our virus and malware removal service is $99 and most infections are cleared the same day. We run a full scan, remove all threats, clean your browser and set up antivirus protection. Drop off in Canning Vale or get a free quote on WhatsApp."
       }
     }
   ]
@@ -338,7 +338,7 @@ a    { color:inherit; }
 .s-sub { font-size:16px; color:var(--muted); max-width:560px; line-height:1.7; }
 
 /* ============================================================
-   DESKTOP NAV
+   DESKTOP NAV — shared across all pages, do not edit per page
    ============================================================ */
 .desk-nav {
   position: fixed; top: 3px; left: 0; right: 0; z-index: 200;
@@ -351,34 +351,35 @@ a    { color:inherit; }
   border-top: 1px solid rgba(255,255,255,0.8);
   box-shadow: 0 8px 32px rgba(0,0,0,0.05);
 }
+.desk-nav-inner { display:flex; align-items:center; justify-content:space-between; width:100%; max-width:1100px; margin:0 auto; }
 .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
 .logo-mark { width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .logo-mark img { width: 100%; height: 100%; object-fit: contain; }
 .logo-name { font-family: var(--display); font-size: 16px; font-weight: 700; color: var(--ink); letter-spacing: -0.3px; white-space: nowrap; }
+.logo-name--mob { font-size: 14px; }
 .logo-name em { color: var(--blue); font-style: normal; }
 .nav-right { display: flex; align-items: center; gap: 8px; margin-left: auto; }
 .nav-pill { display: inline-flex; align-items: center; gap: 6px; font-family: var(--body); font-size: 13px; font-weight: 600; padding: 9px 18px; border-radius: 50px; text-decoration: none; border: none; cursor: pointer; transition: transform 0.15s, opacity 0.15s; white-space: nowrap; }
 .nav-pill:hover { transform: translateY(-1px); opacity: 0.92; }
 .pill-ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--border2); padding: 8px 16px; }
 .pill-ghost:hover { border-color: var(--blue); color: var(--blue); transform: none; opacity: 1; }
+.nav-pill.active { background: var(--blue-lt); border-color: var(--blue-mid); color: var(--blue-dk); }
 
 /* ============================================================
-   MOBILE NAV
+   MOBILE NAV — shared across all pages
    ============================================================ */
 .mob-nav { display:none; position:fixed; top:0; left:0; right:0; z-index:300; height:var(--mob-nav-h); background:rgba(255,255,255,0.97); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border-bottom:1.5px solid var(--border); padding:0 1.25rem; align-items:center; justify-content:space-between; box-shadow:0 4px 20px rgba(0,0,0,0.07); }
-
 .mob-hamburger { display:flex; flex-direction:column; justify-content:center; align-items:center; gap:5px; width:42px; height:42px; background:var(--bg3); border:1.5px solid var(--border2); border-radius:10px; cursor:pointer; flex-shrink:0; transition:background 0.15s,border-color 0.15s; }
 .mob-hamburger:hover { background:var(--blue-lt); border-color:var(--blue-mid); }
 .mob-hamburger span { display:block; width:16px; height:2px; background:var(--ink); border-radius:2px; transition:transform 0.3s ease,opacity 0.3s ease; }
 .mob-hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
 .mob-hamburger.open span:nth-child(2) { opacity:0; }
 .mob-hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
-
 .mob-menu { display:none; position:fixed; top:var(--mob-nav-h); left:0; right:0; z-index:299; background:rgba(255,255,255,0.98); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border-bottom:1.5px solid var(--border); padding:0.75rem 1.25rem 1.5rem; flex-direction:column; gap:4px; box-shadow:0 8px 30px rgba(0,0,0,0.1); border-radius:0 0 20px 20px; }
 .mob-menu.open { display:flex; }
-
 .mob-link { font-family:var(--body); font-size:15px; font-weight:600; color:var(--ink); text-decoration:none; padding:0.9rem 1rem; border-radius:10px; display:block; transition:background 0.15s,color 0.15s; }
 .mob-link:hover { background:var(--blue-lt); color:var(--blue); }
+.mob-link.active { background:var(--blue-lt); color:var(--blue-dk); }
 
 /* ============================================================
    BUTTONS
@@ -1096,7 +1097,7 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
       "description": "Same-day virus, spyware, ransomware and browser hijacker removal in Perth. Full system scan, browser cleanup and antivirus setup included.",
       "provider": { "@type": "LocalBusiness", "name": "FixMyPC Perth", "@id": "https://www.fixmypcperth.com/#business" },
       "areaServed": { "@type": "City", "name": "Perth" },
-      "offers": { "@type": "Offer", "price": "80", "priceCurrency": "AUD", "availability": "https://schema.org/InStock" }
+      "offers": { "@type": "Offer", "price": "99", "priceCurrency": "AUD", "availability": "https://schema.org/InStock" }
     },
     {
       "@type": "Service",
@@ -1147,10 +1148,10 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
       "@type": "Service",
       "serviceType": "Gaming PC Build",
       "name": "Gaming PC Build and Upgrade Perth",
-      "description": "Custom gaming PC assembly, GPU and RAM upgrades, cable management, PBO tuning and benchmarking in Perth.",
+      "description": "Custom gaming PC assembly in Perth across three tiers: Essential $149, Performance $199 and Elite $249. Includes cable management, PBO tuning, benchmarking and a free Windows 11 key.",
       "provider": { "@type": "LocalBusiness", "name": "FixMyPC Perth", "@id": "https://www.fixmypcperth.com/#business" },
       "areaServed": { "@type": "City", "name": "Perth" },
-      "offers": { "@type": "Offer", "price": "80", "priceCurrency": "AUD", "availability": "https://schema.org/InStock" }
+      "offers": { "@type": "Offer", "price": "149", "priceCurrency": "AUD", "availability": "https://schema.org/InStock" }
     }
   ]
 }
@@ -1167,19 +1168,19 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
      DESKTOP NAV
      ============================================================ -->
 <nav class="desk-nav" aria-label="Main navigation">
-  <div style="display:flex;align-items:center;justify-content:space-between;width:100%;max-width:1100px;margin:0 auto;">
+  <div class="desk-nav-inner">
     <a href="/" class="nav-logo" aria-label="FixMyPC Perth – Home">
       <div class="logo-mark">
-        <img src="logo.png" alt="FixMyPC Perth Computer Repair Logo" width="40" height="40" loading="lazy">
+        <img src="logo.png" alt="FixMyPC Perth Computer Repair Logo" width="38" height="38" loading="lazy">
       </div>
       <span class="logo-name">FixMyPC <em>Perth</em></span>
     </a>
     <div class="nav-right">
-      <a href="/pricing"              class="nav-pill pill-ghost">Pricing</a>
+      <a href="/pricing" class="nav-pill pill-ghost">Pricing</a>
       <a href="/business-it-support" class="nav-pill pill-ghost">Business IT Support</a>
-      <a href="/quiz"                class="nav-pill pill-ghost">Free PC Diagnostic</a>
-      <a href="/blog"                class="nav-pill pill-ghost">Tech Tips</a>
-      <a href="/reviews"             class="nav-pill pill-ghost">Reviews &amp; FAQ</a>
+      <a href="/quiz" class="nav-pill pill-ghost">Free PC Diagnostic</a>
+      <a href="/blog" class="nav-pill pill-ghost">Tech Tips</a>
+      <a href="/reviews" class="nav-pill pill-ghost">Reviews &amp; FAQ</a>
     </div>
   </div>
 </nav>
@@ -1190,9 +1191,9 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
 <div class="mob-nav" role="navigation" aria-label="Mobile navigation">
   <a href="/" class="nav-logo" aria-label="FixMyPC Perth – Home">
     <div class="logo-mark">
-      <img src="logo.png" alt="FixMyPC Perth Computer Repair Logo" width="40" height="40" loading="lazy">
+      <img src="logo.png" alt="FixMyPC Perth Computer Repair Logo" width="38" height="38" loading="lazy">
     </div>
-    <span class="logo-name" style="font-size:14px">FixMyPC <em>Perth</em></span>
+    <span class="logo-name logo-name--mob">FixMyPC <em>Perth</em></span>
   </a>
   <button type="button" class="mob-hamburger" id="mob-hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mob-menu">
     <span></span><span></span><span></span>
@@ -1200,11 +1201,11 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
 </div>
 
 <div class="mob-menu" id="mob-menu" role="menu">
-  <a href="/pricing"              class="mob-link" role="menuitem">Pricing</a>
+  <a href="/pricing" class="mob-link" role="menuitem">Pricing</a>
   <a href="/business-it-support" class="mob-link" role="menuitem">Business IT Support</a>
-  <a href="/quiz"                class="mob-link" role="menuitem">Free PC Diagnostic</a>
-  <a href="/blog"                class="mob-link" role="menuitem">Tech Tips</a>
-  <a href="/reviews"             class="mob-link" role="menuitem">Reviews &amp; FAQ</a>
+  <a href="/quiz" class="mob-link" role="menuitem">Free PC Diagnostic</a>
+  <a href="/blog" class="mob-link" role="menuitem">Tech Tips</a>
+  <a href="/reviews" class="mob-link" role="menuitem">Reviews &amp; FAQ</a>
 </div>
 
 <!-- ============================================================
@@ -1427,7 +1428,7 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
         <div class="mq-success" id="mqSuccess">
           <div class="mq-success-icon" aria-hidden="true">✓</div>
           <div class="mq-success-title">Request received!</div>
-          <p class="mq-success-body">We will be in touch shortly, usually within the hour.</p>
+          <p class="mq-success-body">Our tech team will be in touch shortly, usually within the hour.</p>
         </div>
 
       </div>
@@ -1530,7 +1531,7 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
         <div class="svc-name">Virus &amp; Malware Removal Perth</div>
         <div class="svc-desc">Full scan, removal, browser cleanup and antivirus setup. Most infections cleared same day. Covers viruses, spyware, ransomware &amp; browser hijackers.</div>
         <div class="svc-price-row">
-          <span class="svc-price">From $80</span>
+          <span class="svc-price">$99</span>
           <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20virus%20removal." target="_blank" class="svc-cta" rel="noopener" aria-label="Book virus removal in Perth" onclick="trackWAClick()">Book now</a>
         </div>
       </div>
@@ -1547,7 +1548,7 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
         <div class="svc-name">Gaming PC Build &amp; Upgrade Perth</div>
         <div class="svc-desc">Custom gaming PC builds, GPU &amp; RAM installs, PBO performance tuning. Fully benchmarked before pickup. Your parts or ours.</div>
         <div class="svc-price-row">
-          <span class="svc-price">From $80</span>
+          <span class="svc-price">From $149</span>
           <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20a%20gaming%20PC%20build." target="_blank" class="svc-cta" rel="noopener" aria-label="Book gaming PC build in Perth" onclick="trackWAClick()">Book now</a>
         </div>
       </div>
@@ -1912,7 +1913,7 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
       <h3>Computer Virus Removal Perth: Signs Your PC Is Infected</h3>
       <p>Searches for <strong>computer virus removal Perth</strong> and "how do I know if my computer has a virus" spike constantly, and for good reason — modern malware is designed to stay hidden while it works. Common signs include: your browser homepage or search engine changed without you doing it, new toolbars or extensions you didn't install, pop-ups appearing even when you're not browsing, programs opening or closing on their own, your antivirus being disabled without your permission, and friends receiving strange messages or emails "from you" that you never sent.</p>
       <p><strong>Every day an infection stays on your machine, it keeps working.</strong> Modern malware logs keystrokes, harvests saved passwords, captures banking and card details, and quietly spreads to other devices on your home or office network. Ransomware variants sit dormant for weeks before encrypting everything at once. If you're seeing any of the signs above, the machine should be looked at now — not after the weekend.</p>
-      <p>Our virus and malware removal service in Perth starts from <strong>$80</strong> and covers a full system scan, removal of viruses, spyware, ransomware and browser hijackers, a full browser cleanup, and setting up proper antivirus protection so it doesn't come straight back. Most infections are cleared the same day you drop the computer off in Canning Vale.</p>
+      <p>Our virus and malware removal service in Perth starts from <strong>$99</strong> and covers a full system scan, removal of viruses, spyware, ransomware and browser hijackers, a full browser cleanup, and setting up proper antivirus protection so it doesn't come straight back. Most infections are cleared the same day you drop the computer off in Canning Vale.</p>
 
       <h3>Laptop Repair Perth: Screens, Batteries and Hinges</h3>
       <p>For <strong>laptop repair Perth</strong> and <strong>laptop repairs Perth</strong> searches, the most common jobs are cracked or dead screens, swollen or dead batteries, broken hinges, and laptops that won't charge. Laptop screen replacement starts from $120 in labour, with parts quoted separately and upfront once we've identified the exact panel your model needs — laptop screens vary a lot between manufacturers and even between different revisions of the same model, so we always confirm the part before ordering. The good news is that laptop screen and battery replacements are usually same-day jobs once the part is in stock.</p>
@@ -1930,12 +1931,12 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
       <p>This is one of the most searched questions we see — "how much does computer repair cost," "computer repair rates," "PC repair rates" — and the honest answer is that it depends entirely on what's wrong. That said, here's a realistic breakdown of typical pricing in the Perth market based on what we charge:</p>
       <ul>
         <li><strong>PC diagnostic and repair:</strong> from $120, includes a written report before any work starts</li>
-        <li><strong>Virus and malware removal:</strong> from $80, most done same day</li>
+        <li><strong>Virus and malware removal:</strong> $99, most done same day</li>
         <li><strong>SSD upgrade (labour):</strong> from $65, you can supply the SSD or we can source one</li>
         <li><strong>Data recovery:</strong> from $149, no fix no fee, includes free $89 system cleanup</li>
         <li><strong>Laptop screen replacement (labour):</strong> from $120, parts quoted separately</li>
         <li><strong>Windows reinstall with data backup:</strong> from $120</li>
-        <li><strong>Gaming PC build/upgrade (labour):</strong> from $80–120 depending on complexity</li>
+        <li><strong>Gaming PC build/upgrade (labour):</strong> $149 Essential, $199 Performance, $249 Elite — all include a free Windows 11 key</li>
         <li><strong>Complete PC Overhaul Package:</strong> $180 — combines virus removal, Windows 11 reinstall, cable management, thermal paste, driver updates, performance tuning, free cleanup and a benchmark report</li>
         <li><strong>Used Laptop Revival Package:</strong> $140 — a 16-point service for second-hand laptops including a full hardware health check, battery test, secure wipe of the previous owner's data, Windows 11 clean reinstall and thermal service</li>
       </ul>
@@ -1960,7 +1961,7 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
     <div class="offer-text">
       <div class="offer-tag">First-time customers</div>
       <div class="offer-title">$10 off your first repair with FixMyPC Perth</div>
-      <p class="offer-desc">Mention this page when you book. Applies to any repair over $80 &mdash; stacks with the free system cleanup on jobs $149 and over.</p>
+      <p class="offer-desc">Mention this page when you book. Applies to any repair over $99 &mdash; stacks with the free system cleanup on jobs $149 and over.</p>
     </div>
     <div class="offer-btn">
       <a href="#top-quote" class="btn-blue" aria-label="Claim your first-time customer discount">Claim my $10 off &nbsp;&rarr;</a>
@@ -2021,7 +2022,7 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
           How much does computer repair cost in Perth?
           <span class="faq-q-arrow" aria-hidden="true">+</span>
         </button>
-        <div class="faq-a" id="faq-a-1" role="region">Computer repair at FixMyPC Perth starts from $49. Virus removal starts from $80, full diagnostic and repair from $120, data recovery from $149, SSD upgrades from $65, our Complete PC Overhaul Package is $180 and our Used Laptop Revival Package is $140. All prices include GST with no hidden fees — you get a written quote before we start. Onsite jobs $149 and over also include a free system cleanup worth $89.</div>
+        <div class="faq-a" id="faq-a-1" role="region">Computer repair at FixMyPC Perth starts from $49. Virus removal starts from $99, full diagnostic and repair from $120, data recovery from $149, SSD upgrades from $65, our Complete PC Overhaul Package is $180 and our Used Laptop Revival Package is $140. All prices include GST with no hidden fees — you get a written quote before we start. Onsite jobs $149 and over also include a free system cleanup worth $89.</div>
       </div>
 
       <div class="faq-item" role="listitem">
@@ -2061,7 +2062,7 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
           Can you remove a virus from my computer in Perth?
           <span class="faq-q-arrow" aria-hidden="true">+</span>
         </button>
-        <div class="faq-a" id="faq-a-6" role="region">Yes. Our virus and malware removal service costs $80 and most infections are cleared the same day. We run a full system scan, remove all viruses, spyware, ransomware and browser hijackers, clean your browser, and set up antivirus protection before you collect your PC.</div>
+        <div class="faq-a" id="faq-a-6" role="region">Yes. Our virus and malware removal service costs $99 and most infections are cleared the same day. We run a full system scan, remove all viruses, spyware, ransomware and browser hijackers, clean your browser, and set up antivirus protection before you collect your PC.</div>
       </div>
 
       <div class="faq-item" role="listitem">
@@ -2109,7 +2110,7 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
           Do I need an appointment to drop off my PC?
           <span class="faq-q-arrow" aria-hidden="true">+</span>
         </button>
-        <div class="faq-a" id="faq-a-12" role="region">No appointment needed. Just message us on WhatsApp beforehand for a free quote, then drop your PC or laptop off in Canning Vale any time between 7am and 10pm. Drop-offs before 2pm are usually ready for pickup by 6pm the same day.</div>
+        <div class="faq-a" id="faq-a-12" role="region">No appointment needed. Just message us on WhatsApp beforehand for a free quote, then drop your PC or laptop off in Canning Vale any time, day or night — we're open 24 hours. Drop-offs before 2pm are usually ready for pickup by 6pm the same day.</div>
       </div>
 
     </div>
@@ -2173,11 +2174,11 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
           Opening Hours
         </div>
         <div>
-          <div class="hours-row"><span>Monday – Sunday, Open 7 Days a Week</span><strong>7:00am – 10:00pm</strong></div>
+          <div class="hours-row"><span>Monday – Sunday, Open 7 Days a Week</span><strong>Open 24 Hours</strong></div>
         </div>
         <div class="cutoff-note">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          <span><strong>Same-day cutoff:</strong> drop off before 2pm and your PC or laptop is usually ready for pickup by 6pm. Drop-offs after after 6pm are completed the next day unless the same day fee has been applied.</span>
+          <span><strong>Open 24 hours, 7 days.</strong> Drop off before 2pm and your PC or laptop is usually ready for pickup by 6pm the same day. Later drop-offs are completed the next day unless a same-day fee is applied.</span>
         </div>
 
         <div class="visit-card-title" style="margin-top:0.5rem;">
@@ -2245,13 +2246,11 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
   <div class="footer-inner">
     <a href="/" class="footer-logo" aria-label="FixMyPC Perth – Home">
       <div class="logo-mark">
-        <img src="logo.png" alt="FixMyPC Perth Computer Repair Logo" width="40" height="40" loading="lazy">
+        <img src="logo.png" alt="FixMyPC Perth Computer Repair Logo" width="38" height="38" loading="lazy">
       </div>
-      <span class="logo-name" style="font-size:14px">FixMyPC <em>Perth</em></span>
+      <span class="logo-name logo-name--mob">FixMyPC <em>Perth</em></span>
     </a>
-    <div class="footer-copy">
-      © 2026 FixMyPC Perth · ABN 67 645 153 359 · All Prices Include GST · Canning Vale WA 6155
-    </div>
+    <div class="footer-copy">&copy; 2026 FixMyPC Perth &middot; ABN 67 645 153 359 &middot; All Prices Include GST &middot; Canning Vale WA 6155</div>
     <div class="footer-links">
       <a href="/terms">Terms and Conditions</a>
     </div>
@@ -2298,7 +2297,7 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
     'Free quote in minutes',
     "Perth's most trusted tech specialist",
     'Gaming PC builds &amp; upgrades',
-    'Virus &amp; malware removal from $80',
+    'Virus &amp; malware removal $99',
     'Laptop screen replacement Perth',
     'SSD upgrades from $65',
     'Business IT support from $149/mo',
@@ -2401,7 +2400,7 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
         text.innerHTML = 'Book within <span class="mq-countdown-time">' + left + '</span> for same-day pickup today';
       } else {
         box.classList.add('closed');
-        text.textContent = "Today's same-day cutoff has passed — book now for first slot tomorrow";
+        text.innerHTML = 'Open 24 hours &mdash; drop off tonight for first slot tomorrow';
       }
     }
     tick();
