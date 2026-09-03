@@ -5,71 +5,498 @@ layout: default
 {%- assign svc = site.data.services -%}
 {%- assign biz = site.data.site -%}
 
-<!-- Suburb pages render from _data/suburbs.yml. Adding a suburb = one data row
-     plus a 5-line stub file. Prices come from _data/services.yml so they can
-     never drift out of sync with /pricing again. -->
+<!-- Generated suburb page. Same markup and stylesheet as the hand-written
+     suburb pages, so all 19 look identical. Content varies by _data/suburbs.yml.
+     Adding a suburb = one data row + a 5-line stub. -->
 
-<section class="sub-hero">
-  <div class="sub-wrap">
-    <p class="sub-eyebrow">{{ s.distance_km }} km from our Canning Vale workshop &middot; about {{ s.drive_minutes }} minutes</p>
-    <h1>Computer Repair {{ s.name }} &mdash; Same Day Service</h1>
-    <p class="sub-lede">
-      Laptop and desktop repair for {{ s.name }} {{ s.postcode }}. Drop off at our
-      {{ biz.suburb }} workshop, or we collect. Most jobs are back the same day,
-      every repair carries a {{ biz.warranty_days }}-day warranty.
-    </p>
-    <p class="sub-cta">
-      <a href="tel:{{ biz.phone | remove: ' ' }}" class="btn-primary">Call {{ biz.phone }}</a>
-      <a href="{{ biz.whatsapp }}" rel="noopener noreferrer" class="btn-outline">WhatsApp us</a>
-    </p>
+<!-- MOBILE NAV -->
+<span class="logo-name" style="font-size:14px">FixMyPC <em>Perth</em></span>
+  </a>
+  <button class="mob-hamburger" id="mob-hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mob-menu">
+    <span></span><span></span><span></span>
+  </button>
+</div>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">
+    <span class="hero-badge-dot"></span>
+    Serving {{ s.name }} from Canning Vale
+  </div>
+  <h1>Computer Repair in<br><span>{{ s.name }}</span></h1>
+  <p class="hero-sub">Your local computer repair technician serving {{ s.name }}. Drop off at our nearby Canning Vale workshop, just {{ s.drive_minutes }} minutes away. Same-day service from $49 on virus removal, data recovery, SSD upgrades, screen replacements and more. Free diagnostic and 30-day warranty on every job.</p>
+  <div class="hero-btns">
+    <a href="https://wa.me/61452573701?text=Hi%21%20I%20need%20computer%20repair%20in%20{{ s.name | url_encode }}%20and%20would%20like%20a%20free%20quote." target="_blank" rel="noopener" class="btn-wa">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>
+      WhatsApp Us
+    </a>
+    <a href="../quote-request.html" class="btn-outline">Get a Free Quote</a>
+  </div>
+  <div class="hero-trust">
+    <div class="trust-item"><span class="trust-dot"></span> {{ s.drive_minutes }} min from {{ s.name }}</div>
+    <div class="trust-item"><span class="trust-dot"></span> Same-day service</div>
+    <div class="trust-item"><span class="trust-dot"></span> 30-day warranty</div>
   </div>
 </section>
 
-<section class="sub-wrap">
-  <h2>Repairs we handle for {{ s.name }} customers</h2>
-  <p>{{ s.note }}</p>
+<!-- MAIN CONTENT -->
 
-  <table class="sub-price-table">
-    <caption>Fixed prices, including GST. Same prices for every suburb we serve.</caption>
-    <thead><tr><th scope="col">Repair</th><th scope="col">Price</th></tr></thead>
-    <tbody>
-      <tr><td><a href="{{ svc.diagnostic.slug }}">Diagnostic and repair, all-in</a></td><td>${{ svc.diagnostic.price }}</td></tr>
-      <tr><td><a href="{{ svc.virus_removal.slug }}">{{ svc.virus_removal.name }}</a></td><td>${{ svc.virus_removal.price }}</td></tr>
-      <tr><td><a href="{{ svc.data_recovery_failing.slug }}">Data recovery, failing drive</a></td><td>${{ svc.data_recovery_failing.price }}</td></tr>
-      <tr><td><a href="{{ svc.screen_standard.slug }}">Laptop screen replacement</a></td><td>${{ svc.screen_standard.price }}</td></tr>
-      <tr><td><a href="{{ svc.ssd_labour.slug }}">SSD upgrade, labour only</a></td><td>${{ svc.ssd_labour.price }}</td></tr>
-      <tr><td><a href="{{ svc.windows_reinstall.slug }}">Windows reinstall and data backup</a></td><td>${{ svc.windows_reinstall.price }}</td></tr>
-      <tr><td><a href="{{ svc.battery.slug }}">Laptop battery replacement, labour</a></td><td>${{ svc.battery.price }}</td></tr>
-    </tbody>
-  </table>
 
-  <h2>Getting to us from {{ s.name }}</h2>
-  <p>
-    We are at {{ biz.street }}, {{ biz.suburb }} {{ biz.postcode }} &mdash; about
-    {{ s.drive_minutes }} minutes and {{ s.distance_km }} km from {{ s.name }}.
-    If you know {{ s.landmarks }}, you are only a short drive away.
-  </p>
+  <!-- PROBLEMS -->
+  <section class="section" aria-labelledby="problems-title">
+    <div class="section-kicker">Sound Familiar?</div>
+    <h2 class="section-title" id="problems-title">Common Computer Problems We Fix for {{ s.name }} Residents</h2>
+    <div class="section-body">
+      <p>{{ s.name }} is one of Perth's most established south-eastern suburbs — a large, family-oriented community with a strong mix of long-term homeowners, tradespeople, and small business operators. With a population that depends heavily on computers and laptops for work, study, and staying in touch with family, a broken or slow PC can bring everyday life to a halt. We are based in Canning Vale — about {{ s.drive_minutes }} minutes from {{ s.name }} — and we repair computers for your neighbours every day.</p>
+      <p>Whether your laptop screen has cracked, your PC is riddled with viruses, or your hard drive has given up without warning, we diagnose and fix the issue the same day in most cases. No week-long wait times, no vague quotes, and no inflated prices. Just straightforward, reliable computer repair for {{ s.name }} residents at a fair and fixed price.</p>
+    </div>
+    <div class="signs-grid">
+      <div class="sign-card">
+        <div class="sign-title">Computer Running Extremely Slow</div>
+        <div class="sign-desc">Takes five minutes to open a browser, freezes mid-task, or gets noticeably slower every week. Usually caused by malware, a full or failing hard drive, or not enough RAM for current Windows demands.</div>
+      </div>
+      <div class="sign-card">
+        <div class="sign-title">Virus, Pop-Ups or Browser Hijacked</div>
+        <div class="sign-desc">Constant ads appearing, homepage changed without your input, searches redirected, or a security warning locking your screen. Your machine almost certainly has malware and needs a professional clean.</div>
+      </div>
+      <div class="sign-card">
+        <div class="sign-title">Computer Will Not Turn On</div>
+        <div class="sign-desc">Pressing the power button does nothing, the screen stays black, or the machine shuts off immediately after starting. Could be a power supply, battery, motherboard, or overheating fault.</div>
+      </div>
+      <div class="sign-card">
+        <div class="sign-title">Laptop Screen Cracked or Dead</div>
+        <div class="sign-desc">Cracked panel, lines running through the display, half the screen dark, or the backlight gone completely. Most laptop screens can be replaced same-day with the right part in stock.</div>
+      </div>
+      <div class="sign-card">
+        <div class="sign-title">Files Lost or Drive Not Detected</div>
+        <div class="sign-desc">Accidentally deleted photos, a drive showing as unformatted, or a hard drive that clicks on startup. Data recovery with a no fix, no fee guarantee starting from $120.</div>
+      </div>
+      <div class="sign-card">
+        <div class="sign-title">Windows Crashing or Blue Screens</div>
+        <div class="sign-desc">Frequent blue screen errors, error messages at startup, or Windows stuck in a repair loop. Often caused by a failing drive, corrupted system files, or a problematic Windows update.</div>
+      </div>
+      <div class="sign-card">
+        <div class="sign-title">Computer Overheating or Fan Very Loud</div>
+        <div class="sign-desc">Fan running at full speed constantly, laptop burning hot to the touch, or the machine shutting itself down from heat. Dust buildup inside the case is one of the most common issues we see from {{ s.name }} homes.</div>
+      </div>
+      <div class="sign-card">
+        <div class="sign-title">Locked Out of Windows</div>
+        <div class="sign-desc">Cannot access your own computer after a Windows update, PIN stopped working, or a Microsoft account is no longer accessible. We recover access the same day in almost all cases.</div>
+      </div>
+    </div>
 
-  <h3>Nearby suburbs we also cover</h3>
-  <ul class="sub-neighbours">
-    {%- for n in s.neighbours %}
-    {%- assign nb = site.data.suburbs | where: "name", n | first %}
-    {%- if nb %}<li><a href="/suburbs/{{ nb.slug }}">Computer repair {{ n }}</a></li>
-    {%- else %}<li>{{ n }}</li>{% endif %}
-    {%- endfor %}
-  </ul>
+    <div class="local-box">
+      <div class="local-box-title">A faster, more personal alternative to big-box tech stores</div>
+      <div class="local-box-body">
+        {{ s.name }} residents looking for computer repair often consider driving to a larger shopping centre, only to be told the turnaround is 7 to 14 business days. Our Canning Vale workshop is approximately {{ s.drive_minutes }} minutes from {{ s.name }} and turns most repairs around the same day. You drop off, speak directly to the technician doing the work, and collect your computer the same afternoon in most cases. No ticket numbers, no call centres, no waiting.
+      </div>
+    </div>
+  </section>
 
-  <h2>Common questions from {{ s.name }}</h2>
-  <h3>Do you come to {{ s.name }}?</h3>
-  <p>We are a workshop, not a mobile service. Drop-off gets your machine on the
-     bench fastest. If you cannot travel, call us and we will arrange collection.</p>
+  <hr class="divider">
 
-  <h3>How long will my repair take?</h3>
-  <p>Most standard repairs booked in before midday are ready the same day.
-     Data recovery and screen replacements usually take one to three days
-     depending on parts.</p>
+  <!-- PROCESS -->
+  <section class="section" aria-labelledby="process-title">
+    <div class="section-kicker">How It Works</div>
+    <h2 class="section-title" id="process-title">What to Expect When You Drop Off Your Computer</h2>
+    <div class="section-body">
+      <p>We keep the process simple and completely transparent for {{ s.name }} customers. No booking fees, no hidden charges, no vague timelines. Here is exactly what happens from drop-off at our Canning Vale workshop to same-day collection.</p>
+    </div>
+    <div class="steps-list">
+      <div class="step-row">
+        <div class="step-num" aria-hidden="true">1</div>
+        <div class="step-body">
+          <div class="step-title">Free Diagnostic on Drop-Off</div>
+          <div class="step-desc">We run a full diagnostic at no charge the moment your computer arrives. This tells us exactly what is wrong and what parts or work are needed to fix it. For most common problems we identify the fault within 30 minutes of receiving the machine. No guessing, no assumptions.</div>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-num" aria-hidden="true">2</div>
+        <div class="step-body">
+          <div class="step-title">Fixed Price Quote Before We Start</div>
+          <div class="step-desc">We call or message you with a plain-language quote you can understand. You know exactly what you are paying before we touch anything. If you decide not to proceed, there is no charge for the diagnostic — ever.</div>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-num" aria-hidden="true">3</div>
+        <div class="step-body">
+          <div class="step-title">Repair Completed</div>
+          <div class="step-desc">With your approval we complete the repair. Most jobs are finished within 2 to 4 hours. We never carry out additional work without calling you first if something unexpected comes up mid-repair.</div>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-num" aria-hidden="true">4</div>
+        <div class="step-body">
+          <div class="step-title">Your Files Protected Throughout</div>
+          <div class="step-desc">We never delete or modify your personal files, photos, or documents. If a Windows reinstall is the best solution, we back up your data first and confirm with you before proceeding. Your files are returned intact with your computer.</div>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-num" aria-hidden="true">5</div>
+        <div class="step-body">
+          <div class="step-title">Tested Before You Collect</div>
+          <div class="step-desc">Before calling you to collect, we test the repair under real-world conditions. For virus removal this means a clean final scan confirming zero threats. For hardware we stress test under normal operating loads. We do not hand back a machine we are not fully confident in.</div>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-num" aria-hidden="true">6</div>
+        <div class="step-body">
+          <div class="step-title">Collection and Walkthrough</div>
+          <div class="step-desc">When you collect we walk you through what was done and how to prevent the same issue from happening again. Your 30-day warranty starts from collection. Same problem within 30 days — we fix it again free of charge.</div>
+        </div>
+      </div>
+    </div>
 
-  <h3>What does it cost to look at my computer?</h3>
-  <p>Diagnostic and repair is ${{ svc.diagnostic.price }} all-in for most jobs.
-     Full pricing is on our <a href="/pricing">pricing page</a>.</p>
-</section>
+    <div class="included-box">
+      <div class="included-kicker">Standard inclusions on every repair</div>
+      <div class="included-grid">
+        <div class="included-item"><div class="check-circle"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2,6 5,9 10,3"/></svg></div><span class="included-text">Free diagnostic on drop-off</span></div>
+        <div class="included-item"><div class="check-circle"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2,6 5,9 10,3"/></svg></div><span class="included-text">Fixed price quote before work starts</span></div>
+        <div class="included-item"><div class="check-circle"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2,6 5,9 10,3"/></svg></div><span class="included-text">Your files protected throughout</span></div>
+        <div class="included-item"><div class="check-circle"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2,6 5,9 10,3"/></svg></div><span class="included-text">Same-day turnaround on most jobs</span></div>
+        <div class="included-item"><div class="check-circle"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2,6 5,9 10,3"/></svg></div><span class="included-text">Thorough testing before return</span></div>
+        <div class="included-item"><div class="check-circle"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2,6 5,9 10,3"/></svg></div><span class="included-text">Repair walkthrough on collection</span></div>
+        <div class="included-item"><div class="check-circle"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2,6 5,9 10,3"/></svg></div><span class="included-text">Honest advice, no upselling</span></div>
+        <div class="included-item"><div class="check-circle"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2,6 5,9 10,3"/></svg></div><span class="included-text">30-day warranty on every job</span></div>
+      </div>
+      <div class="included-footer">
+        <div class="included-price">From $49 <sub>inc. GST</sub></div>
+        <div class="included-note">Fixed price quoted before we start. No hidden charges. No surprise extras when you collect.</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- SERVICES -->
+  <section class="section" aria-labelledby="services-title">
+    <div class="section-kicker">What We Fix</div>
+    <h2 class="section-title" id="services-title">Computer Repair Services Available to {{ s.name }} Residents</h2>
+    <div class="section-body">
+      <p>We handle the full range of computer repair and IT support needs for {{ s.name }} homes and small businesses. Every service is available via drop-off at our nearby Canning Vale workshop. Most jobs are completed same-day. Below is a full breakdown of what we offer and what to expect for each service.</p>
+    </div>
+
+    <div class="services-table">
+      <div class="services-row featured">
+        <div class="services-name">
+          <strong>Virus and Malware Removal {{ s.name }}</strong>
+          Full diagnostic scan, complete removal of all threats, browser cleanup, antivirus setup, performance check and 30-day re-infection warranty. One of the most common repairs we carry out for {{ s.name }} residents.
+        </div>
+        <span class="services-badge">$140 flat</span>
+      </div>
+      <div class="services-row">
+        <div class="services-name">
+          <strong>SSD Upgrade {{ s.name }}</strong>
+          Replace your old spinning hard drive with a fast solid state drive. Your computer will boot in seconds instead of minutes. All data transferred across with no data loss. Same-day completion in most cases.
+        </div>
+        <span class="services-badge">From $150</span>
+      </div>
+      <div class="services-row featured">
+        <div class="services-name">
+          <strong>Data Recovery {{ s.name }}</strong>
+          Recover deleted files, photos from a failed hard drive, or data from a crashed laptop. No fix, no fee guarantee on every data recovery job. Free assessment on drop-off.
+        </div>
+        <span class="services-badge">$120 to $300</span>
+      </div>
+      <div class="services-row">
+        <div class="services-name">
+          <strong>Laptop Screen Replacement {{ s.name }}</strong>
+          Cracked, broken, or backlight-failed laptop screens replaced with quality panels. Most common laptop models sourced quickly. Same-day where parts are available.
+        </div>
+        <span class="services-badge">From $150</span>
+      </div>
+      <div class="services-row featured">
+        <div class="services-name">
+          <strong>Windows Reinstall {{ s.name }}</strong>
+          Full clean reinstall of Windows 10 or 11 for machines beyond repair through software fixes alone. Data backed up first, all drivers installed, files returned clean and ready to use.
+        </div>
+        <span class="services-badge">$120</span>
+      </div>
+      <div class="services-row">
+        <div class="services-name">
+          <strong>PC Diagnostic and Repair {{ s.name }}</strong>
+          Full hardware and software diagnostic covering slow PCs, blue screens, boot failures, overheating and random shutdowns. Written report before we start any work.
+        </div>
+        <span class="services-badge">From $49</span>
+      </div>
+      <div class="services-row featured">
+        <div class="services-name">
+          <strong>Gaming PC Builds and Upgrades {{ s.name }}</strong>
+          Custom gaming PC builds, GPU and RAM installs, PBO performance tuning. Fully benchmarked before handover. Your parts or ours — we advise on the best value options for your budget.
+        </div>
+        <span class="services-badge">Quoted per build</span>
+      </div>
+      <div class="services-row">
+        <div class="services-name">
+          <strong>Business IT Support {{ s.name }}</strong>
+          Managed IT for {{ s.name }} small businesses. Antivirus, cloud backup, monitoring and on-demand support from $149 per month with no lock-in contracts.
+        </div>
+        <span class="services-badge">From $149/month</span>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- WHY CHOOSE -->
+  <section class="section" aria-labelledby="why-title">
+    <div class="section-kicker">Why Choose Us</div>
+    <h2 class="section-title" id="why-title">Why {{ s.name }} Residents Choose FixMyPC Over the Big Stores</h2>
+    <div class="section-body">
+      <p>You have a choice when your computer breaks down. You can drive to a large retail tech store and wait up to two weeks, or you can drop your PC or laptop at our workshop about ten minutes from {{ s.name }} and collect it the same afternoon. Here is why {{ s.name }} locals keep coming back.</p>
+    </div>
+    <ul class="check-list">
+      <li><span class="check-icon" aria-hidden="true">&#10003;</span><div><strong>About {{ s.drive_minutes }} minutes from {{ s.name }}.</strong> Our Canning Vale workshop is a quick and straightforward drive from {{ s.name }} via Spencer Road or {{ s.name }} Avenue. No shopping centre parking hassles, no queuing at a service counter.</div></li>
+      <li><span class="check-icon" aria-hidden="true">&#10003;</span><div><strong>Same-day service on most jobs.</strong> Drop off in the morning, collect in the afternoon. Virus removal, SSD upgrades, Windows reinstalls and screen replacements all completed same-day in most cases.</div></li>
+      <li><span class="check-icon" aria-hidden="true">&#10003;</span><div><strong>Free diagnostic, fixed prices.</strong> The diagnostic is always free. The price we quote is the price you pay. No hourly rates that blow out unexpectedly, no vague estimates, no extras added at collection.</div></li>
+      <li><span class="check-icon" aria-hidden="true">&#10003;</span><div><strong>Your files are safe.</strong> We never delete your photos, documents, or personal data during a repair. If a reinstall is needed we back everything up first and confirm with you before touching the drive.</div></li>
+      <li><span class="check-icon" aria-hidden="true">&#10003;</span><div><strong>30-day warranty on every repair.</strong> Every job comes with a 30-day warranty. Same fault within 30 days of collection — we fix it again at no charge, no questions asked.</div></li>
+      <li><span class="check-icon" aria-hidden="true">&#10003;</span><div><strong>Honest advice on repair vs replace.</strong> We tell you directly if a repair is not worth the cost. No upselling, no unnecessary work. You get a straight answer on what the best option is for your situation.</div></li>
+      <li><span class="check-icon" aria-hidden="true">&#10003;</span><div><strong>All major brands serviced.</strong> Dell, HP, Lenovo, ASUS, Acer, MSI, Toshiba, Samsung, and custom builds all welcome. Laptops, desktops, and gaming PCs all repaired. No job turned away on the basis of brand.</div></li>
+    </ul>
+  </section>
+
+  <hr class="divider">
+
+  <!-- PRICING -->
+  <section class="section" aria-labelledby="pricing-title">
+    <div class="section-kicker">Clear Pricing</div>
+    <h2 class="section-title" id="pricing-title">Computer Repair Prices for {{ s.name }} Residents</h2>
+    <div class="section-body">
+      <p>Every price below is a fixed price, not an estimate. You receive a written quote before we start any work. No hourly rates, no diagnostic charge, and no extras added at collection without your prior approval.</p>
+    </div>
+    <div class="pricing-table">
+      <div class="pricing-row featured">
+        <div class="pricing-row-name"><strong>Virus and Malware Removal</strong>Full scan, complete removal, browser cleanup, antivirus setup and 30-day re-infection warranty.</div>
+        <span class="pricing-row-price">$140</span>
+      </div>
+      <div class="pricing-row">
+        <div class="pricing-row-name"><strong>PC Diagnostic and Repair</strong>Full hardware and software diagnostic, written report, repair included. Starting price.</div>
+        <span class="pricing-row-price">From $49</span>
+      </div>
+      <div class="pricing-row featured">
+        <div class="pricing-row-name"><strong>SSD Upgrade</strong>SSD supplied and fitted, data transferred, Windows optimised. All-in price.</div>
+        <span class="pricing-row-price">From $150</span>
+      </div>
+      <div class="pricing-row">
+        <div class="pricing-row-name"><strong>Windows Reinstall</strong>Clean Windows install, all drivers updated, data backed up and returned. Flat fee.</div>
+        <span class="pricing-row-price">$120</span>
+      </div>
+      <div class="pricing-row featured">
+        <div class="pricing-row-name"><strong>Laptop Screen Replacement</strong>Quality replacement panel fitted. Most brands and sizes covered. Labour only.</div>
+        <span class="pricing-row-price">From $150</span>
+      </div>
+      <div class="pricing-row">
+        <div class="pricing-row-name"><strong>Data Recovery</strong>No fix, no fee guarantee. Free assessment. Priced by complexity after assessment.</div>
+        <span class="pricing-row-price">$120 to $300</span>
+      </div>
+      <div class="pricing-row featured">
+        <div class="pricing-row-name"><strong>Business IT Support</strong>Managed antivirus, backup, monitoring and on-demand support. No lock-in contracts.</div>
+        <span class="pricing-row-price">From $149/month</span>
+      </div>
+    </div>
+    <div class="callout callout-blue">
+      <strong>All prices include GST.</strong> Free diagnostic on every drop-off. Fixed price quoted before we start. No surprises at collection. View our full <a href="../pricing.html">pricing page</a> for the complete list of services and prices.
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- REVIEWS -->
+  <section class="section" aria-labelledby="reviews-title">
+    <div class="section-kicker">{{ s.name }} and Surrounding Suburbs</div>
+    <h2 class="section-title" id="reviews-title">What Our Customers Say</h2>
+    <div class="section-body">
+      <p>We have been serving {{ s.name }} and the surrounding south-eastern suburbs since 2024. Here is what a few of our customers say about the service.</p>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">Drove over from {{ s.name }} with a laptop full of pop-ups and dodgy redirects. Got it back the same afternoon, completely clean. Faster and cheaper than anything I was quoted locally. Will absolutely be back.</p>
+        <div class="review-author">Karen W. &mdash; <span>{{ s.name }}</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">My old desktop was taking ten minutes to boot. Ali fitted a new SSD and it starts in seconds now. The difference is unbelievable. Great value, same day, and he explained exactly what he did. Highly recommend.</p>
+        <div class="review-author">Steve M. &mdash; <span>{{ s.name }}</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">Dropped off my son's laptop with a cracked screen in the morning. Ready by lunchtime. Looks brand new and the price was very fair. Much easier than I expected and no waiting around at all.</p>
+        <div class="review-author">Rachel T. &mdash; <span>{{ s.name }}</span></div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="review-text">My hard drive died and I thought all my photos were gone for good. FixMyPC recovered everything and didn't charge me until they had the files back. Honest, fast and genuinely stress-free. Thank you.</p>
+        <div class="review-author">David L. &mdash; <span>Huntingdale</span></div>
+      </div>
+    </div>
+    <div class="callout callout-blue" style="margin-top:1.5rem;">
+      <strong>Read more reviews from Perth locals</strong> on our <a href="../reviews.html">Reviews and FAQ page</a>.
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- SERVICE AREA -->
+  <section class="section" aria-labelledby="area-title">
+    <div class="section-kicker">Local Service Area</div>
+    <h2 class="section-title" id="area-title">Serving {{ s.name }} and All Nearby Suburbs</h2>
+    <div class="section-body">
+      <p>Our workshop in Canning Vale is ideally positioned to serve {{ s.name }} and the surrounding south-eastern suburbs of Perth. Whether you are coming from Huntingdale, Kenwick, Lynwood, or Maddington, the drive to our workshop is short and easy. We are the closest dedicated computer repair workshop to {{ s.name }} residents who want fast, personal service without the turnaround times of a chain store.</p>
+    </div>
+    <div class="suburb-grid">
+      <span class="suburb-pill primary">{{ s.name }}</span>
+      <span class="suburb-pill primary"><a href="canning-vale.html">Canning Vale</a></span>
+      <span class="suburb-pill primary">Huntingdale</span>
+      <span class="suburb-pill primary">Kenwick</span>
+      <span class="suburb-pill">Maddington</span>
+      <span class="suburb-pill">Lynwood</span>
+      <span class="suburb-pill">Langford</span>
+      <span class="suburb-pill">Southern River</span>
+      <span class="suburb-pill"><a href="gosnells.html">Gosnells</a></span>
+      <span class="suburb-pill"><a href="willetton.html">Willetton</a></span>
+      <span class="suburb-pill"><a href="cannington.html">Cannington</a></span>
+      <span class="suburb-pill">Beckenham</span>
+      <span class="suburb-pill">Ferndale</span>
+      <span class="suburb-pill">Parkwood</span>
+      <span class="suburb-pill">Riverton</span>
+    </div>
+    <div class="callout callout-blue" style="margin-top:1.5rem;">
+      <strong>{{ s.name }} residents get same-day priority slots.</strong> Message us on WhatsApp before dropping off to confirm availability and we will hold a spot for you.
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- LOCAL KNOWLEDGE -->
+  <section class="section" aria-labelledby="local-title">
+    <div class="section-kicker">Your Local Technician</div>
+    <h2 class="section-title" id="local-title">Computer Repair That Understands {{ s.name }}</h2>
+    <div class="section-body">
+      <p>{{ s.name }} is one of the largest residential suburbs in Perth's south-east. Established largely from the 1960s onwards, it is a well-settled community made up predominantly of families, trades workers, and small business operators. The suburb has its own train station on the {{ s.name }} line, a strong sense of local identity, and a population that relies on computers and laptops for everything from remote work and small business administration to online schooling and keeping in contact with family.</p>
+
+      <p>One of the most common issues we see from {{ s.name }} residents is a machine that has picked up malware over time — often through free software downloads, suspicious email attachments, or a browser extension that turned out to be more than it claimed. These infections slow computers down significantly, redirect internet searches, and in some cases generate fake security alerts designed to scare people into paying for unnecessary software. A thorough virus removal, proper antivirus setup, and a full browser cleanup resolves this in most cases the same day.</p>
+
+      <p>We also see a high volume of older computers from {{ s.name }} households that are not broken — they are simply exhausted by age. An ageing spinning hard drive is the single biggest performance bottleneck in any machine manufactured before 2018. Replacing it with a modern SSD is one of the most cost-effective repairs we offer. A machine that used to take eight minutes to start up will boot in under fifteen seconds after an SSD upgrade, and the transformation is immediate. Many {{ s.name }} customers tell us the upgrade felt like buying a new computer at a fraction of the price.</p>
+
+      <p>{{ s.name }} also has a solid population of tradies and small business owners who cannot afford extended downtime. If you run your invoicing, quoting, and scheduling from a single laptop or desktop, a week without it is a real problem. We understand that and we build our entire service around speed. Message us on WhatsApp, describe what your computer is doing, and we will tell you what the likely cause is and what it will cost before you leave home.</p>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- FAQ -->
+  <section class="section" aria-labelledby="faq-title">
+    <div class="section-kicker">Common Questions</div>
+    <h2 class="section-title" id="faq-title">Frequently Asked Questions — Computer Repair {{ s.name }}</h2>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-btn" aria-expanded="false">Is there a computer repair service near {{ s.name }}?<span class="faq-icon" aria-hidden="true">+</span></button>
+        <div class="faq-answer">Yes. FixMyPC Perth is based in Canning Vale, approximately {{ s.drive_minutes }} minutes by car from {{ s.name }}. We offer drop-off computer repair with same-day service on most jobs. Bring your PC or laptop to us in the morning and collect it the same afternoon in most cases. No need to travel far or wait at a large retail store.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" aria-expanded="false">How much does computer repair cost for {{ s.name }} residents?<span class="faq-icon" aria-hidden="true">+</span></button>
+        <div class="faq-answer">Computer repair starts from $49. Virus removal is $140 flat. SSD upgrades start from $150 all-in including the drive and data transfer. Laptop screen replacements start from $150. Windows reinstalls are $120. Data recovery is $120 to $300 with a no fix, no fee guarantee. All prices include GST. The diagnostic is free and you receive a fixed quote before we start any work.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" aria-expanded="false">How far is your workshop from {{ s.name }}?<span class="faq-icon" aria-hidden="true">+</span></button>
+        <div class="faq-answer">Our workshop is in Canning Vale, approximately {{ s.drive_minutes }} minutes by car from {{ s.name }}. The most direct route is via Spencer Road or {{ s.name }} Avenue connecting through to Nicholson Road and into Canning Vale. Easy parking is available at the workshop. Most {{ s.name }} customers find the drive straightforward and the workshop easy to find.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" aria-expanded="false">Do you offer same-day computer repair for {{ s.name }} customers?<span class="faq-icon" aria-hidden="true">+</span></button>
+        <div class="faq-answer">Yes. Same-day service is available for {{ s.name }} customers on most jobs including virus removal, SSD upgrades, Windows reinstalls, and many laptop screen replacements. Drop off in the morning and collect in the afternoon in most cases. Message us on WhatsApp before coming to confirm same-day availability for your specific job.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" aria-expanded="false">Will I lose my files during a computer repair?<span class="faq-icon" aria-hidden="true">+</span></button>
+        <div class="faq-answer">No. We never delete or modify your personal files, photos, music, or documents during a repair. If a Windows reinstall is required, we back up all your data first, confirm with you before proceeding, and return every file on collection. Your data is treated as irreplaceable — because for most people, it is.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" aria-expanded="false">Do you repair both laptops and desktop computers from {{ s.name }}?<span class="faq-icon" aria-hidden="true">+</span></button>
+        <div class="faq-answer">Yes. We repair all Windows laptops and desktop computers regardless of brand. Dell, HP, Lenovo, ASUS, Acer, Toshiba, MSI, Samsung, and custom builds all serviced. We also handle basic Mac diagnostics and software issues. Contact us to confirm before dropping off a Mac.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" aria-expanded="false">What warranty do you offer on repairs for {{ s.name }} customers?<span class="faq-icon" aria-hidden="true">+</span></button>
+        <div class="faq-answer">Every repair includes a 30-day warranty. If the same fault returns within 30 days of collection, we fix it again at no charge. Virus removal includes a 30-day re-infection warranty. Data recovery carries a no fix, no fee guarantee — you pay nothing if we cannot recover your files.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" aria-expanded="false">My computer is old. Is it worth repairing or should I replace it?<span class="faq-icon" aria-hidden="true">+</span></button>
+        <div class="faq-answer">We give you an honest answer on this every time. If the repair would cost more than the machine is worth, we tell you directly. In many cases an SSD upgrade gives an older computer three to four more useful years for a fraction of what a new machine would cost. The free diagnostic means you find out what is actually wrong before spending anything — then you can make an informed decision.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- RELATED SERVICES -->
+  <section class="section" aria-labelledby="related-title">
+    <div class="section-kicker">Specialist Pages</div>
+    <h2 class="section-title" id="related-title">Detailed Information on Each Service We Offer</h2>
+    <div class="section-body">
+      <p>Each service has its own dedicated page with full pricing, process details, and answers to the most common questions. Browse the service most relevant to what you need.</p>
+    </div>
+    <div class="related-grid">
+      <a href="../virus-removal-perth.html" class="related-card">
+        <div><div class="related-card-name">Virus and Malware Removal</div><div class="related-card-price">$140 flat fee, 30-day warranty</div></div>
+        <span class="related-arrow" aria-hidden="true">&#8594;</span>
+      </a>
+      <a href="../data-recovery-perth.html" class="related-card">
+        <div><div class="related-card-name">Data Recovery Perth</div><div class="related-card-price">$120 to $300, no fix no fee</div></div>
+        <span class="related-arrow" aria-hidden="true">&#8594;</span>
+      </a>
+      <a href="../ssd-upgrade-perth.html" class="related-card">
+        <div><div class="related-card-name">SSD Upgrade Perth</div><div class="related-card-price">From $150 all-in, same day</div></div>
+        <span class="related-arrow" aria-hidden="true">&#8594;</span>
+      </a>
+      <a href="../laptop-repair-perth.html" class="related-card">
+        <div><div class="related-card-name">Laptop Repair Perth</div><div class="related-card-price">From $150, same day</div></div>
+        <span class="related-arrow" aria-hidden="true">&#8594;</span>
+      </a>
+    </div>
+
+    <div style="margin-top:1.25rem;">
+      <p style="font-size:14px;color:var(--muted);margin-bottom:0.75rem;font-weight:600;">Other nearby suburbs we serve:</p>
+      <div class="suburb-grid">
+        <span class="suburb-pill primary"><a href="canning-vale.html">Canning Vale</a></span>
+        <span class="suburb-pill"><a href="cannington.html">Cannington</a></span>
+        <span class="suburb-pill"><a href="willetton.html">Willetton</a></span>
+        <span class="suburb-pill"><a href="gosnells.html">Gosnells</a></span>
+        <span class="suburb-pill"><a href="jandakot.html">Jandakot</a></span>
+      </div>
+    </div>
+
+    <div class="callout callout-blue" style="margin-top:1.25rem;">
+      <strong>Small business in {{ s.name }}?</strong> Our <a href="../business-it-support.html">managed IT support packages</a> cover antivirus, cloud backup, proactive monitoring, and on-demand support for local businesses from $149 per month with no lock-in contracts.
+    </div>
+  </section>
+
+  <!-- BOTTOM CTA -->
+  <div class="bottom-cta">
+    <div class="bottom-cta-title">Computer repair for {{ s.name }} residents — just {{ s.drive_minutes }} minutes away</div>
+    <p class="bottom-cta-sub">Same-day service from $49. Free diagnostic. Fixed prices. 30-day warranty. Drop off this morning and collect tonight. No appointment needed.</p>
+    <div class="bottom-cta-btns">
+      <a href="https://wa.me/61452573701?text=Hi%21%20I%20need%20computer%20repair%20in%20{{ s.name | url_encode }}%20and%20would%20like%20a%20free%20quote." target="_blank" rel="noopener" class="cta-wa">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>
+        WhatsApp Us Now
+      </a>
+      <a href="../quote-request.html" class="cta-ghost">Get a Free Quote &#8594;</a>
+    </div>
+  </div>
+
+
+
+<!-- FOOTER -->
+
+
+<!-- WA FLOAT -->
+<a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20computer%20repair%20near%20{{ s.name | url_encode }}." target="_blank" rel="noopener noreferrer" class="wa-float" aria-label="Chat with FixMyPC Perth on WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>
+</a>

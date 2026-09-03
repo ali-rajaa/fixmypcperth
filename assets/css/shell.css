@@ -1,59 +1,17 @@
-/* shell.css  VERSION 1
-   Design tokens, header, nav and footer for the whole site.
-   Sourced from index.html. Loaded AFTER page CSS so the shell always wins.
-   Change a brand colour here and it changes on all 43 pages. */
+/* shell.css  VERSION 2
+   Header, mobile nav, hamburger, sticky CTA and footer for every page.
+   Contains NO :root, no body and no html rules, so it cannot override a
+   page's own design tokens. Every colour is a literal, so the shell looks
+   identical regardless of what tokens a page defines.
+   Loaded after the page stylesheet so the chrome always wins. */
 
-
-
-
-:root {
-  --blue:      #1560FF;
-  --blue-lt:   #EEF3FF;
-  --blue-mid:  #C7D8FF;
-  --blue-dk:   #0A3ACC;
-  --ink:       #0F172A;
-  --ink2:      #1E293B;
-  --muted:     #64748B;
-  --muted2:    #94A3B8;
-  --border:    #E2E8F0;
-  --border2:   #CBD5E1;
-  --bg:        #FFFFFF;
-  --bg2:       #F8FAFC;
-  --bg3:       #F1F5F9;
-  --wa:        #22C55E;
-  --wa-dk:     #16A34A;
-  --fb:        #1877F2;
-  --fb-dk:     #1565D8;
-  --red:       #EF4444;
-  --display:   'Sora', sans-serif;
-  --body:      'DM Sans', sans-serif;
-  --radius:    14px;
-  --radius-sm: 8px;
-  --nav-h:     64px;
-  --mob-nav-h: 60px;
-}
-
-
-*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-
-html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-
-
-::-webkit-scrollbar { width: 10px; }
-
-::-webkit-scrollbar-track { background: var(--bg2); }
-
-::-webkit-scrollbar-thumb { background: linear-gradient(180deg, var(--blue) 0%, var(--blue-dk) 100%); border-radius: 10px; border: 2px solid var(--bg2); }
-
-::-webkit-scrollbar-thumb:hover { background: var(--blue-dk); }
 
 
 
 .desk-nav {
   position: fixed; top: 3px; left: 0; right: 0; z-index: 200;
   display: flex; align-items: center;
-  padding: 0 2rem; height: var(--nav-h);
+  padding: 0 2rem; height: 64px;
   background: rgba(255,255,255,0.88);
   backdrop-filter: blur(30px) saturate(200%);
   -webkit-backdrop-filter: blur(30px) saturate(200%);
@@ -70,39 +28,87 @@ html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-fo
 
 .logo-mark img { width: 100%; height: 100%; object-fit: contain; }
 
-.logo-name { font-family: var(--display); font-size: 16px; font-weight: 700; color: var(--ink); letter-spacing: -0.3px; white-space: nowrap; }
+.logo-name { font-family: 'Sora', sans-serif; font-size: 16px; font-weight: 700; color: #0F172A; letter-spacing: -0.3px; white-space: nowrap; }
 
 .logo-name--mob { font-size: 14px; }
 
-.logo-name em { color: var(--blue); font-style: normal; }
+.logo-name em { color: #1560FF; font-style: normal; }
 
 .nav-right { display: flex; align-items: center; gap: 8px; margin-left: auto; }
 
-.nav-pill { display: inline-flex; align-items: center; gap: 6px; font-family: var(--body); font-size: 13px; font-weight: 600; padding: 9px 18px; border-radius: 50px; text-decoration: none; border: none; cursor: pointer; transition: transform 0.15s, opacity 0.15s; white-space: nowrap; }
+.nav-pill { display: inline-flex; align-items: center; gap: 6px; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600; padding: 9px 18px; border-radius: 50px; text-decoration: none; border: none; cursor: pointer; transition: transform 0.15s, opacity 0.15s; white-space: nowrap; }
 
 .nav-pill:hover { transform: translateY(-1px); opacity: 0.92; }
 
-.pill-ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--border2); padding: 8px 16px; }
+.pill-ghost { background: transparent; color: #0F172A; border: 1.5px solid #CBD5E1; padding: 8px 16px; }
 
-.pill-ghost:hover { border-color: var(--blue); color: var(--blue); transform: none; opacity: 1; }
+.pill-ghost:hover { border-color: #1560FF; color: #1560FF; transform: none; opacity: 1; }
 
-.nav-pill.active { background: var(--blue-lt); border-color: var(--blue-mid); color: var(--blue-dk); }
+.nav-pill.active { background: #EEF3FF; border-color: #C7D8FF; color: #0A3ACC; }
 
 
 
-footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75rem 2rem; }
+.mob-nav { display:none; position:fixed; top:0; left:0; right:0; z-index:300; height:60px; background:rgba(255,255,255,0.97); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border-bottom:1.5px solid #E2E8F0; padding:0 1.25rem; align-items:center; justify-content:space-between; box-shadow:0 4px 20px rgba(0,0,0,0.07); }
+
+.mob-hamburger { display:flex; flex-direction:column; justify-content:center; align-items:center; gap:5px; width:42px; height:42px; background:#F1F5F9; border:1.5px solid #CBD5E1; border-radius:10px; cursor:pointer; flex-shrink:0; transition:background 0.15s,border-color 0.15s; }
+
+.mob-hamburger:hover { background:#EEF3FF; border-color:#C7D8FF; }
+
+.mob-hamburger span { display:block; width:16px; height:2px; background:#0F172A; border-radius:2px; transition:transform 0.3s ease,opacity 0.3s ease; }
+
+.mob-hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+
+.mob-hamburger.open span:nth-child(2) { opacity:0; }
+
+.mob-hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+
+.mob-menu { display:none; position:fixed; top:60px; left:0; right:0; z-index:299; background:rgba(255,255,255,0.98); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border-bottom:1.5px solid #E2E8F0; padding:0.75rem 1.25rem 1.5rem; flex-direction:column; gap:4px; box-shadow:0 8px 30px rgba(0,0,0,0.1); border-radius:0 0 20px 20px; }
+
+.mob-menu.open { display:flex; }
+
+.mob-link { font-family:'DM Sans', sans-serif; font-size:15px; font-weight:600; color:#0F172A; text-decoration:none; padding:0.9rem 1rem; border-radius:10px; display:block; transition:background 0.15s,color 0.15s; }
+
+.mob-link:hover { background:#EEF3FF; color:#1560FF; }
+
+.mob-link.active { background:#EEF3FF; color:#0A3ACC; }
+
+
+
+.sticky-cta {
+  display:none; position:fixed; bottom:0; left:0; right:0; z-index:400;
+  background:rgba(255,255,255,0.97); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+  border-top:1.5px solid #E2E8F0; box-shadow:0 -4px 24px rgba(15,23,42,0.1);
+  padding:10px 12px calc(10px + env(safe-area-inset-bottom)); gap:8px;
+  transform:translateY(110%); transition:transform 0.3s cubic-bezier(.22,.68,0,1.2);
+}
+
+.sticky-cta.show { transform:translateY(0); }
+
+.sticky-cta a {
+  flex:1; display:flex; align-items:center; justify-content:center; gap:7px;
+  font-family:'DM Sans', sans-serif; font-size:14px; font-weight:700; padding:13px 10px;
+  border-radius:50px; text-decoration:none; white-space:nowrap;
+}
+
+.sticky-cta svg { width:17px; height:17px; flex-shrink:0; }
+
+.sticky-cta .sc-quote { background:#1560FF; color:#fff; box-shadow:0 4px 14px rgba(21,96,255,0.35); }
+
+
+
+footer { background:#FFFFFF; border-top:1px solid #E2E8F0; padding:1.75rem 2rem; }
 
 .footer-inner { max-width:1100px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; }
 
 .footer-logo { display:flex; align-items:center; gap:8px; text-decoration:none; flex-shrink:0; }
 
-.footer-copy { font-size:12px; color:var(--muted2); line-height:1.6; }
+.footer-copy { font-size:12px; color:#94A3B8; line-height:1.6; }
 
 .footer-links { display:flex; gap:1.25rem; }
 
-.footer-links a { font-size:12px; color:var(--muted2); text-decoration:none; transition:color 0.15s; }
+.footer-links a { font-size:12px; color:#94A3B8; text-decoration:none; transition:color 0.15s; }
 
-.footer-links a:hover { color:var(--blue); }
+.footer-links a:hover { color:#1560FF; }
 
 
 
@@ -110,7 +116,7 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
 
   .desk-nav .pill-fb { display:none; }
 
-  body { padding-top:var(--mob-nav-h); }
+  .mob-nav  { display:flex; }
 
   footer { padding:1.5rem 1.25rem; }
 
@@ -118,4 +124,4 @@ footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75r
 
   .footer-copy  { font-size:11px; }
 
-  body { padding-bottom:76px; }
+  .sticky-cta { display:flex; }

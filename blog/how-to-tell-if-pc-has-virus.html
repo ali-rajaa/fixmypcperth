@@ -36,23 +36,9 @@ schema: >
 
 
 
-<div class="mob-top-nav">
-  <a href="/" class="mob-top-logo">
-    <div class="logo-mark"><img src="/logo.png" alt="FixMyPC Perth logo"></div>
-    <span class="logo-name" style="font-size:14px">FixMyPC <em>Perth</em></span>
+<span class="logo-name" style="font-size:14px">FixMyPC <em>Perth</em></span>
   </a>
-  <button class="mob-top-hamburger" id="mob-top-hamburger" aria-label="Open menu">
-    <span></span><span></span><span></span>
-  </button>
-</div>
-
-<div class="mob-drop-menu" id="mob-drop-menu">
-  <a href="/pricing" class="mob-link">Pricing</a>
-  <a href="/business-it-support" class="mob-link">Business IT Support</a>
-  <a href="/quiz" class="mob-link">Free PC Diagnostic</a>
-  <a href="/blog" class="mob-link">Tech Tips</a>
-  <a href="/reviews" class="mob-link">Reviews &amp; FAQ</a>
-</div>
+  </div>
 
 <div class="article-wrap">
 
@@ -366,43 +352,3 @@ schema: >
   <svg width="30" height="30" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>
 </a>
 
-<script>
-  // Mobile nav
-  const hamburger = document.getElementById('mob-top-hamburger');
-  const mobMenu = document.getElementById('mob-drop-menu');
-  hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('open');
-    mobMenu.classList.toggle('open');
-  });
-  mobMenu.querySelectorAll('.mob-link').forEach(link => {
-    link.addEventListener('click', () => {
-      hamburger.classList.remove('open');
-      mobMenu.classList.remove('open');
-    });
-  });
-
-  /* Scroll progress bar */
-const progressBar = document.createElement('div');
-progressBar.style.cssText = 'position:fixed;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#1560FF,#00CFFF,#22C55E);transform:scaleX(0);transform-origin:left;z-index:99999;';
-document.body.appendChild(progressBar);
-window.addEventListener('scroll', () => {
-  const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-  const scrolled = window.scrollY / scrollHeight;
-  progressBar.style.transform = `scaleX(${scrolled})`;
-}, { passive: true });
-
-  // FAQ accordion
-  document.querySelectorAll('.faq-q').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const answer = btn.nextElementSibling;
-      const isOpen = answer.classList.contains('open');
-      document.querySelectorAll('.faq-a.open').forEach(a => a.classList.remove('open'));
-      document.querySelectorAll('.faq-q.open').forEach(b => { b.classList.remove('open'); b.setAttribute('aria-expanded','false'); });
-      if (!isOpen) {
-        answer.classList.add('open');
-        btn.classList.add('open');
-        btn.setAttribute('aria-expanded','true');
-      }
-    });
-  });
-</script>

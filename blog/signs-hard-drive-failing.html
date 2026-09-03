@@ -20,25 +20,11 @@ schema: >
 
  
 <!-- MOBILE TOP NAV -->
-<div class="mob-top-nav">
-  <a href="/" class="mob-top-logo">
-    <div class="logo-mark"><img src="/logo.png" alt="FixMyPC Perth"></div>
-    <span class="logo-name" style="font-size:14px">FixMyPC <em>Perth</em></span>
+<span class="logo-name" style="font-size:14px">FixMyPC <em>Perth</em></span>
   </a>
-  <button class="mob-top-hamburger" id="mob-top-hamburger" aria-label="Open menu">
-    <span></span><span></span><span></span>
-  </button>
-</div>
+  </div>
  
 <!-- MOBILE DROPDOWN MENU -->
-<div class="mob-drop-menu" id="mob-drop-menu">
-  <a href="/pricing" class="mob-link">Pricing</a>
-  <a href="/quiz" class="mob-link">Free PC Diagnostic</a>
-  <a href="/blog" class="mob-link">Tech Tips</a>
-  <a href="/reviews" class="mob-link">Reviews &amp; FAQ</a>
-</div>
- 
- 
 <!-- ARTICLE -->
 <div class="article-wrap">
  
@@ -120,21 +106,6 @@ schema: >
 
 
 
- 
-<script>
-  const hamburger = document.getElementById('mob-top-hamburger');
-const mobMenu = document.getElementById('mob-drop-menu');
-hamburger.addEventListener('click', () => {
-  hamburger.classList.toggle('open');
-  mobMenu.classList.toggle('open');
-});
-mobMenu.querySelectorAll('.mob-link').forEach(link => {
-  link.addEventListener('click', () => {
-    hamburger.classList.remove('open');
-    mobMenu.classList.remove('open');
-  });
-});
-</script>
  
 <!-- WhatsApp Bubble -->
 <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair."

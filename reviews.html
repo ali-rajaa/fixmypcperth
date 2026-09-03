@@ -69,25 +69,11 @@ schema: >
 
 
 <!-- MOBILE TOP NAV -->
-<div class="mob-top-nav">
-  <a href="/" class="mob-top-logo">
-    <div class="logo-mark"><img src="logo.png" alt="FixMyPC Perth"></div>
-    <span class="logo-name" style="font-size:14px">FixMyPC <em>Perth</em></span>
+<span class="logo-name" style="font-size:14px">FixMyPC <em>Perth</em></span>
   </a>
-  <button class="mob-top-hamburger" id="mob-top-hamburger" aria-label="Open menu">
-    <span></span><span></span><span></span>
-  </button>
-</div>
+  </div>
 
 <!-- MOBILE DROPDOWN -->
-<div class="mob-drop-menu" id="mob-drop-menu">
-  <a href="/pricing" class="mob-link">Pricing</a>
-  <a href="/business-it-support" class="mob-link">Business IT Support</a>
-  <a href="/quiz" class="mob-link">Free PC Diagnostic</a>
-  <a href="/blog" class="mob-link">Tech Tips</a>
-  <a href="/reviews" class="mob-link">Reviews &amp; FAQ</a>
-</div>
-
 <!-- PAGE HERO -->
 <div class="page-hero" style="margin-top:10px;">
   <span class="s-eyebrow">Verified customer reviews</span>
@@ -512,94 +498,6 @@ schema: >
 
 
 
-
-<script>
-  // PROGRESS BAR
-  const pb = document.getElementById('progress-bar');
-  window.addEventListener('scroll', () => {
-    const h = document.documentElement.scrollHeight - window.innerHeight;
-    pb.style.transform = 'scaleX(' + (window.scrollY / h) + ')';
-  }, { passive: true });
-
-  // TRUST TICKER
-  const items = [
-    'Same or next day turnaround',
-    'Local drop off in Canning Vale',
-    '30 day warranty on all work',
-    'Upfront pricing, no surprises',
-    'Flat $120 diagnostic and repair fee',
-    '5 star rated local service',
-    'Free quote in minutes',
-    'Perth trusted PC repair specialist'
-  ];
-  const doubled = [...items, ...items].map(t =>
-    '<div class="trust-item"><div class="trust-dot"></div>' + t + '</div>'
-  ).join('');
-  document.getElementById('trust-track').innerHTML = doubled;
-
-  // MOBILE NAV
-  const hamburger = document.getElementById('mob-top-hamburger');
-  const mobMenu = document.getElementById('mob-drop-menu');
-  hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('open');
-    mobMenu.classList.toggle('open');
-  });
-  mobMenu.querySelectorAll('.mob-link').forEach(link => {
-    link.addEventListener('click', () => {
-      hamburger.classList.remove('open');
-      mobMenu.classList.remove('open');
-    });
-  });
-
-  // CAROUSEL
-  const track = document.getElementById('carousel-track');
-  const slides = track.querySelectorAll('.carousel-slide');
-  const dotsWrap = document.getElementById('carousel-dots');
-  let current = 0;
-  const total = slides.length;
-
-  slides.forEach((_, i) => {
-    const d = document.createElement('button');
-    d.className = 'c-dot' + (i === 0 ? ' active' : '');
-    d.setAttribute('aria-label', 'Reviews page ' + (i + 1));
-    d.addEventListener('click', () => goTo(i));
-    dotsWrap.appendChild(d);
-  });
-
-  function goTo(n) {
-    current = (n + total) % total;
-    track.style.transform = 'translateX(-' + (current * 100) + '%)';
-    dotsWrap.querySelectorAll('.c-dot').forEach((d, i) => d.classList.toggle('active', i === current));
-  }
-
-  document.getElementById('carousel-prev').addEventListener('click', () => goTo(current - 1));
-  document.getElementById('carousel-next').addEventListener('click', () => goTo(current + 1));
-
-  let autoplay = setInterval(() => goTo(current + 1), 5500);
-  track.parentElement.addEventListener('mouseenter', () => clearInterval(autoplay));
-  track.parentElement.addEventListener('mouseleave', () => {
-    autoplay = setInterval(() => goTo(current + 1), 5500);
-  });
-
-  // Touch swipe
-  let touchStart = 0;
-  track.addEventListener('touchstart', e => { touchStart = e.touches[0].clientX; }, { passive: true });
-  track.addEventListener('touchend', e => {
-    const diff = touchStart - e.changedTouches[0].clientX;
-    if (Math.abs(diff) > 50) goTo(diff > 0 ? current + 1 : current - 1);
-  }, { passive: true });
-
-  // SCROLL ANIMATIONS
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('in'), i * 60);
-        obs.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.06 });
-  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
-</script>
 
 <!-- WhatsApp Bubble -->
 <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair."

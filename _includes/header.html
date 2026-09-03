@@ -23,3 +23,25 @@
     </div>
   </div>
 </nav>
+
+<!-- Mobile nav. Was duplicated across 36 pages in 22 different
+     variants, and missing entirely from 19 others. Now one copy. -->
+<div class="mob-nav" role="navigation" aria-label="Mobile navigation">
+  <a href="/" class="nav-logo" aria-label="FixMyPC Perth – Home">
+    <div class="logo-mark">
+      <img src="logo.png" alt="FixMyPC Perth Computer & Laptop Repair Logo" width="38" height="38" loading="eager" fetchpriority="high">
+    </div>
+    <span class="logo-name logo-name--mob">FixMyPC <em>Perth</em></span>
+  </a>
+  <button type="button" class="mob-hamburger" id="mob-hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mob-menu">
+    <span></span><span></span><span></span>
+  </button>
+</div>
+
+<div class="mob-menu" id="mob-menu" role="menu">
+  <a href="/pricing" class="mob-link" role="menuitem">Pricing</a>
+  <a href="/business-it-support" class="mob-link" role="menuitem">Business IT Support</a>
+  <a href="/quiz" class="mob-link" role="menuitem">Free PC Diagnostic</a>
+  <a href="/blog" class="mob-link" role="menuitem">Tech Tips</a>
+  <a href="/reviews" class="mob-link" role="menuitem">Reviews &amp; FAQ</a>
+</div>
