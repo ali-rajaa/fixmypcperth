@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /terms
+
+Sitemap: https://www.fixmypcperth.com/sitemap.xml

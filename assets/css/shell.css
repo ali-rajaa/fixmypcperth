@@ -1,0 +1,121 @@
+/* shell.css  VERSION 1
+   Design tokens, header, nav and footer for the whole site.
+   Sourced from index.html. Loaded AFTER page CSS so the shell always wins.
+   Change a brand colour here and it changes on all 43 pages. */
+
+
+
+
+:root {
+  --blue:      #1560FF;
+  --blue-lt:   #EEF3FF;
+  --blue-mid:  #C7D8FF;
+  --blue-dk:   #0A3ACC;
+  --ink:       #0F172A;
+  --ink2:      #1E293B;
+  --muted:     #64748B;
+  --muted2:    #94A3B8;
+  --border:    #E2E8F0;
+  --border2:   #CBD5E1;
+  --bg:        #FFFFFF;
+  --bg2:       #F8FAFC;
+  --bg3:       #F1F5F9;
+  --wa:        #22C55E;
+  --wa-dk:     #16A34A;
+  --fb:        #1877F2;
+  --fb-dk:     #1565D8;
+  --red:       #EF4444;
+  --display:   'Sora', sans-serif;
+  --body:      'DM Sans', sans-serif;
+  --radius:    14px;
+  --radius-sm: 8px;
+  --nav-h:     64px;
+  --mob-nav-h: 60px;
+}
+
+
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+
+::-webkit-scrollbar { width: 10px; }
+
+::-webkit-scrollbar-track { background: var(--bg2); }
+
+::-webkit-scrollbar-thumb { background: linear-gradient(180deg, var(--blue) 0%, var(--blue-dk) 100%); border-radius: 10px; border: 2px solid var(--bg2); }
+
+::-webkit-scrollbar-thumb:hover { background: var(--blue-dk); }
+
+
+
+.desk-nav {
+  position: fixed; top: 3px; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center;
+  padding: 0 2rem; height: var(--nav-h);
+  background: rgba(255,255,255,0.88);
+  backdrop-filter: blur(30px) saturate(200%);
+  -webkit-backdrop-filter: blur(30px) saturate(200%);
+  border-bottom: 1px solid rgba(226,232,240,0.5);
+  border-top: 1px solid rgba(255,255,255,0.8);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.05);
+}
+
+.desk-nav-inner { display:flex; align-items:center; justify-content:space-between; width:100%; max-width:1100px; margin:0 auto; }
+
+.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
+
+.logo-mark { width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+
+.logo-mark img { width: 100%; height: 100%; object-fit: contain; }
+
+.logo-name { font-family: var(--display); font-size: 16px; font-weight: 700; color: var(--ink); letter-spacing: -0.3px; white-space: nowrap; }
+
+.logo-name--mob { font-size: 14px; }
+
+.logo-name em { color: var(--blue); font-style: normal; }
+
+.nav-right { display: flex; align-items: center; gap: 8px; margin-left: auto; }
+
+.nav-pill { display: inline-flex; align-items: center; gap: 6px; font-family: var(--body); font-size: 13px; font-weight: 600; padding: 9px 18px; border-radius: 50px; text-decoration: none; border: none; cursor: pointer; transition: transform 0.15s, opacity 0.15s; white-space: nowrap; }
+
+.nav-pill:hover { transform: translateY(-1px); opacity: 0.92; }
+
+.pill-ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--border2); padding: 8px 16px; }
+
+.pill-ghost:hover { border-color: var(--blue); color: var(--blue); transform: none; opacity: 1; }
+
+.nav-pill.active { background: var(--blue-lt); border-color: var(--blue-mid); color: var(--blue-dk); }
+
+
+
+footer { background:var(--bg); border-top:1px solid var(--border); padding:1.75rem 2rem; }
+
+.footer-inner { max-width:1100px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; }
+
+.footer-logo { display:flex; align-items:center; gap:8px; text-decoration:none; flex-shrink:0; }
+
+.footer-copy { font-size:12px; color:var(--muted2); line-height:1.6; }
+
+.footer-links { display:flex; gap:1.25rem; }
+
+.footer-links a { font-size:12px; color:var(--muted2); text-decoration:none; transition:color 0.15s; }
+
+.footer-links a:hover { color:var(--blue); }
+
+
+
+#scroll-bar { position:fixed; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,#1560FF,#00CFFF,#22C55E); transform:scaleX(0); transform-origin:left; z-index:9999; }
+
+  .desk-nav .pill-fb { display:none; }
+
+  body { padding-top:var(--mob-nav-h); }
+
+  footer { padding:1.5rem 1.25rem; }
+
+  .footer-inner { flex-direction:column; align-items:flex-start; gap:0.75rem; }
+
+  .footer-copy  { font-size:11px; }
+
+  body { padding-bottom:76px; }

@@ -1,0 +1,75 @@
+---
+layout: default
+---
+{%- assign s = site.data.suburbs | where: "slug", page.suburb | first -%}
+{%- assign svc = site.data.services -%}
+{%- assign biz = site.data.site -%}
+
+<!-- Suburb pages render from _data/suburbs.yml. Adding a suburb = one data row
+     plus a 5-line stub file. Prices come from _data/services.yml so they can
+     never drift out of sync with /pricing again. -->
+
+<section class="sub-hero">
+  <div class="sub-wrap">
+    <p class="sub-eyebrow">{{ s.distance_km }} km from our Canning Vale workshop &middot; about {{ s.drive_minutes }} minutes</p>
+    <h1>Computer Repair {{ s.name }} &mdash; Same Day Service</h1>
+    <p class="sub-lede">
+      Laptop and desktop repair for {{ s.name }} {{ s.postcode }}. Drop off at our
+      {{ biz.suburb }} workshop, or we collect. Most jobs are back the same day,
+      every repair carries a {{ biz.warranty_days }}-day warranty.
+    </p>
+    <p class="sub-cta">
+      <a href="tel:{{ biz.phone | remove: ' ' }}" class="btn-primary">Call {{ biz.phone }}</a>
+      <a href="{{ biz.whatsapp }}" rel="noopener noreferrer" class="btn-outline">WhatsApp us</a>
+    </p>
+  </div>
+</section>
+
+<section class="sub-wrap">
+  <h2>Repairs we handle for {{ s.name }} customers</h2>
+  <p>{{ s.note }}</p>
+
+  <table class="sub-price-table">
+    <caption>Fixed prices, including GST. Same prices for every suburb we serve.</caption>
+    <thead><tr><th scope="col">Repair</th><th scope="col">Price</th></tr></thead>
+    <tbody>
+      <tr><td><a href="{{ svc.diagnostic.slug }}">Diagnostic and repair, all-in</a></td><td>${{ svc.diagnostic.price }}</td></tr>
+      <tr><td><a href="{{ svc.virus_removal.slug }}">{{ svc.virus_removal.name }}</a></td><td>${{ svc.virus_removal.price }}</td></tr>
+      <tr><td><a href="{{ svc.data_recovery_failing.slug }}">Data recovery, failing drive</a></td><td>${{ svc.data_recovery_failing.price }}</td></tr>
+      <tr><td><a href="{{ svc.screen_standard.slug }}">Laptop screen replacement</a></td><td>${{ svc.screen_standard.price }}</td></tr>
+      <tr><td><a href="{{ svc.ssd_labour.slug }}">SSD upgrade, labour only</a></td><td>${{ svc.ssd_labour.price }}</td></tr>
+      <tr><td><a href="{{ svc.windows_reinstall.slug }}">Windows reinstall and data backup</a></td><td>${{ svc.windows_reinstall.price }}</td></tr>
+      <tr><td><a href="{{ svc.battery.slug }}">Laptop battery replacement, labour</a></td><td>${{ svc.battery.price }}</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Getting to us from {{ s.name }}</h2>
+  <p>
+    We are at {{ biz.street }}, {{ biz.suburb }} {{ biz.postcode }} &mdash; about
+    {{ s.drive_minutes }} minutes and {{ s.distance_km }} km from {{ s.name }}.
+    If you know {{ s.landmarks }}, you are only a short drive away.
+  </p>
+
+  <h3>Nearby suburbs we also cover</h3>
+  <ul class="sub-neighbours">
+    {%- for n in s.neighbours %}
+    {%- assign nb = site.data.suburbs | where: "name", n | first %}
+    {%- if nb %}<li><a href="/suburbs/{{ nb.slug }}">Computer repair {{ n }}</a></li>
+    {%- else %}<li>{{ n }}</li>{% endif %}
+    {%- endfor %}
+  </ul>
+
+  <h2>Common questions from {{ s.name }}</h2>
+  <h3>Do you come to {{ s.name }}?</h3>
+  <p>We are a workshop, not a mobile service. Drop-off gets your machine on the
+     bench fastest. If you cannot travel, call us and we will arrange collection.</p>
+
+  <h3>How long will my repair take?</h3>
+  <p>Most standard repairs booked in before midday are ready the same day.
+     Data recovery and screen replacements usually take one to three days
+     depending on parts.</p>
+
+  <h3>What does it cost to look at my computer?</h3>
+  <p>Diagnostic and repair is ${{ svc.diagnostic.price }} all-in for most jobs.
+     Full pricing is on our <a href="/pricing">pricing page</a>.</p>
+</section>
