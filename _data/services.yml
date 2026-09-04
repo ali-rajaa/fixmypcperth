@@ -1,97 +1,18 @@
-# Authoritative prices. Taken from pricing.html.
-# Every page must reference these, never hard-code a number.
-# Changing a price here changes it everywhere on the site.
-
-diagnostic:
-  name: Diagnostic & Repair
-  slug: /pricing
-  price: 120
-  note: all-in, most common starting point
-
-virus_removal:
-  name: Virus & Malware Removal
-  slug: /virus-removal-perth
-  price: 99
-
-data_recovery_failing:
-  name: Data Recovery, Failing Drive
-  slug: /data-recovery-perth
-  price: 149
-data_recovery_dead:
-  name: Data Recovery, Dead Drive
-  slug: /data-recovery-perth
-  price: 249
-  note: no fix no fee
-data_recovery_external:
-  name: External Drive & USB Recovery
-  slug: /data-recovery-perth
-  price: 99
-
-screen_standard:
-  name: Laptop Screen Replacement, Standard
-  slug: /laptop-screen-repair-perth
-  price: 145
-screen_touch:
-  name: Laptop Screen Replacement, Touchscreen
-  slug: /laptop-screen-repair-perth
-  price: 175
-screen_oled:
-  name: Laptop Screen Replacement, OLED
-  slug: /laptop-screen-repair-perth
-  price: 199
-
-battery:
-  name: Laptop Battery Replacement
-  slug: /laptop-battery-replacement-perth
-  price: 89
-  note: labour only
-
-ssd_labour:
-  name: SSD Upgrade, Labour Only
-  slug: /ssd-upgrade-perth
-  price: 65
-ssd_supplied:
-  name: SSD Upgrade, Drive Supplied
-  slug: /ssd-upgrade-perth
-  price: 150
-  from: true
-
-ram_labour:
-  name: RAM Upgrade, Labour Only
-  price: 55
-
-windows_reinstall:
-  name: Windows Reinstall & Data Backup
-  slug: /windows-reinstall-perth
-  price: 120
-windows_11_upgrade:
-  name: Windows 11 Upgrade with Key
-  slug: /windows-11-upgrade-perth
-  price: 120
-
-overheating:
-  name: Overheating Fix & Deep Clean
-  price: 89
-
-gaming_build_essential:
-  name: Gaming PC Build, Essential
-  slug: /gaming-pc-build-perth
-  price: 149
-gaming_build_performance:
-  name: Gaming PC Build, Performance
-  price: 199
-gaming_build_elite:
-  name: Gaming PC Build, Elite
-  price: 249
-
-business_it:
-  name: Business IT Support
-  slug: /business-it-support
-  price: 149
-  per: month
-  from: true
-
-remote_session:
-  name: Remote Support Session
-  price: 45
-  per: hour
+# Authoritative prices, taken from pricing.html.
+diagnostic:            { name: Diagnostic & Repair,              price: 120 }
+virus_removal:         { name: Virus & Malware Removal,          price: 99 }
+data_recovery_failing: { name: Data Recovery, Failing Drive,     price: 149 }
+data_recovery_dead:    { name: Data Recovery, Dead Drive,        price: 249 }
+data_recovery_external:{ name: External Drive & USB Recovery,    price: 99 }
+screen_standard:       { name: Laptop Screen, Standard,          price: 145 }
+screen_touch:          { name: Laptop Screen, Touch,             price: 175 }
+screen_oled:           { name: Laptop Screen, OLED,              price: 199 }
+battery:               { name: Laptop Battery, labour,           price: 89 }
+ssd_labour:            { name: SSD Upgrade, labour only,         price: 65 }
+ssd_supplied:          { name: SSD Upgrade, drive supplied,      price: 150 }
+ram_labour:            { name: RAM Upgrade, labour only,         price: 55 }
+windows_reinstall:     { name: Windows Reinstall & Backup,       price: 120 }
+windows_11_upgrade:    { name: Windows 11 Upgrade with Key,      price: 120 }
+overheating:           { name: Overheating Fix & Deep Clean,     price: 89 }
+business_it:           { name: Business IT Support,              price: 149, per: month }
+remote_session:        { name: Remote Support Session,           price: 45, per: hour }

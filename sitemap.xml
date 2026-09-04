@@ -49,7 +49,7 @@
   </url>
 
   <url>
-    <loc>https://www.fixmypcperth.com/blog</loc>
+    <loc>https://www.fixmypcperth.com/techtips</loc>
     <lastmod>2026-06-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -57,6 +57,12 @@
 
   <url>
     <loc>https://www.fixmypcperth.com/terms</loc>
+    <lastmod>2026-05-27</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.fixmypcperth.com/privacy</loc>
     <lastmod>2026-05-27</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
@@ -107,13 +113,7 @@
   </url>
 
   <url>
-    <loc>https://www.fixmypcperth.com/laptop-screen-repair-perth</loc>
-    <lastmod>2026-06-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://www.fixmypcperth.com/laptop-battery-replacement-perth</loc>
+    <loc>https://www.fixmypcperth.com/laptop-repair-perth</loc>
     <lastmod>2026-06-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -144,72 +144,6 @@
 
   <url>
     <loc>https://www.fixmypcperth.com/suburbs/canning-vale</loc>
-    <lastmod>2026-06-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.fixmypcperth.com/suburbs/gosnells</loc>
-    <lastmod>2026-06-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.fixmypcperth.com/suburbs/armadale</loc>
-    <lastmod>2026-06-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.fixmypcperth.com/suburbs/byford</loc>
-    <lastmod>2026-06-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.fixmypcperth.com/suburbs/piara-waters</loc>
-    <lastmod>2026-06-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.fixmypcperth.com/suburbs/southern-river</loc>
-    <lastmod>2026-06-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.fixmypcperth.com/suburbs/riverton</loc>
-    <lastmod>2026-06-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.fixmypcperth.com/suburbs/parkwood</loc>
-    <lastmod>2026-06-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.fixmypcperth.com/suburbs/queens-park</loc>
-    <lastmod>2026-06-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.fixmypcperth.com/suburbs/maddington</loc>
-    <lastmod>2026-06-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.fixmypcperth.com/suburbs/leeming</loc>
-    <lastmod>2026-06-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.fixmypcperth.com/suburbs/atwell</loc>
     <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -325,56 +259,56 @@
   <!-- =================== BLOG POSTS =================== -->
 
   <url>
-    <loc>https://www.fixmypcperth.com/blog/why-is-my-pc-so-slow</loc>
+    <loc>https://www.fixmypcperth.com/techtips/why-is-my-pc-so-slow</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://www.fixmypcperth.com/blog/how-to-tell-if-pc-has-virus</loc>
+    <loc>https://www.fixmypcperth.com/techtips/how-to-tell-if-pc-has-virus</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://www.fixmypcperth.com/blog/how-to-fix-a-slow-computer</loc>
+    <loc>https://www.fixmypcperth.com/techtips/how-to-fix-a-slow-computer</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://www.fixmypcperth.com/blog/how-much-does-pc-repair-cost-perth</loc>
+    <loc>https://www.fixmypcperth.com/techtips/how-much-does-pc-repair-cost-perth</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://www.fixmypcperth.com/blog/data-recovery-perth-guide</loc>
+    <loc>https://www.fixmypcperth.com/techtips/data-recovery-perth-guide</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://www.fixmypcperth.com/blog/ssd-upgrade-perth-guide</loc>
+    <loc>https://www.fixmypcperth.com/techtips/ssd-upgrade-perth-guide</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://www.fixmypcperth.com/blog/signs-hard-drive-failing</loc>
+    <loc>https://www.fixmypcperth.com/techtips/signs-hard-drive-failing</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://www.fixmypcperth.com/blog/laptop-screen-replacement-physical-repairs</loc>
+    <loc>https://www.fixmypcperth.com/techtips/laptop-screen-replacement-physical-repairs</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

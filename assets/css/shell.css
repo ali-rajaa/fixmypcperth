@@ -1,9 +1,7 @@
-/* shell.css  VERSION 2
-   Header, mobile nav, hamburger, sticky CTA and footer for every page.
-   Contains NO :root, no body and no html rules, so it cannot override a
-   page's own design tokens. Every colour is a literal, so the shell looks
-   identical regardless of what tokens a page defines.
-   Loaded after the page stylesheet so the chrome always wins. */
+/* shell.css  VERSION 1
+   Header, mobile nav, sticky bar and footer for every converted page.
+   No :root, no body, no html rules and no var() references, so it can
+   never override a page's own design tokens. */
 
 
 

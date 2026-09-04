@@ -1,42 +1,31 @@
-# Cloudflare rules — add these the same time you push
+# Cloudflare rules for this deploy
 
-Search Console shows 1,018 impressions split across duplicate URLs. These rules
-consolidate them. Add all four before purging cache.
+## 1. blog -> techtips  (REQUIRED — 9 URLs, 232+ impressions)
 
-## 1. Strip .html  (biggest win)
-Rules > Redirect Rules > Create
+Rules > Redirect Rules > Create > Dynamic redirect, 301
 
-    Field:    URI Path
-    Operator: ends with
-    Value:    .html
-    Then:     Dynamic redirect, 301
-    Expression: concat("https://www.fixmypcperth.com",
-                regex_replace(http.request.uri.path, "\\.html$", ""))
+    When: (starts_with(http.request.uri.path, "/blog"))
+    Then: concat("https://www.fixmypcperth.com/techtips",
+          substring(http.request.uri.path, 5))
 
-Consolidates: /pricing.html, /reviews.html, /blog.html, /quiz.html, /terms.html,
-/business-it-support.html, /quote-request.html, /blog/how-to-fix-a-slow-computer.html,
-/blog/why-is-my-pc-so-slow.html, /blog/how-to-tell-if-pc-has-virus.html
+Covers /blog and all 8 posts, e.g.
+  /blog/how-much-does-pc-repair-cost-perth  ->  /techtips/how-much-does-pc-repair-cost-perth
+  (351 impressions, 6 clicks in the last 12 months — do not skip this)
 
-## 2. Force https + www
-Rules > Settings > enable "Always Use HTTPS", then a redirect rule:
+## 2. Strip .html  (1,018 impressions currently split across duplicates)
 
-    Field:    Hostname
-    Operator: equals
-    Value:    fixmypcperth.com
-    Then:     301 to https://www.fixmypcperth.com/$1
+    When:  ends_with(http.request.uri.path, ".html")
+    Then:  concat("https://www.fixmypcperth.com",
+           regex_replace(http.request.uri.path, "\.html$", ""))
 
-## 3. Renamed page
-    /laptop-repair-perth  ->  /laptop-screen-repair-perth   (301)
+## 3. Force https + www
 
-Required. That file has been renamed. Without this rule the old URL 404s.
-It had 420 impressions in the last 12 months.
+Rules > Settings > enable "Always Use HTTPS", then:
 
-## 4. Historic suburb URL
-    /computer-repair-canning-vale  ->  /suburbs/canning-vale   (301)
-
-Still earning 2 clicks and 45 impressions with no file behind it.
+    When: http.host eq "fixmypcperth.com"
+    Then: 301 to https://www.fixmypcperth.com + path
 
 ## After deploying
-- Purge everything in Caching > Configuration
-- Submit sitemap.xml in Search Console
-- Request indexing for /laptop-screen-repair-perth
+- Purge everything under Caching > Configuration
+- Resubmit sitemap.xml in Search Console
+- Request indexing for /techtips and /privacy

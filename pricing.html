@@ -1,58 +1,433 @@
 ---
-layout: service
+layout: default
 title: "Computer Repair Prices Perth | Upfront Pricing | FixMyPC Perth"
 description: "Every computer repair price upfront. Diagnostic & repair $120 all-in, virus removal $99, data recovery from $149, SSD upgrades from $65. Open 24 hours in Canning Vale, Perth. 30-day warranty on all work."
 page_css: "/assets/css/pages/pricing.css"
-schema: >
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "@id": "https://www.fixmypcperth.com/#business",
-    "name": "FixMyPC Perth",
-    "image": "https://www.fixmypcperth.com/facebook-cover.png",
-    "logo": "https://www.fixmypcperth.com/logo.png",
-    "description": "Perth computer repair specialist based in Canning Vale. Upfront pricing for diagnostic and repair, virus removal, SSD upgrades, data recovery, Windows reinstall, gaming PC builds and laptop screen replacement. 24 hours Monday to Saturday, 2:30am to 10pm Sunday.",
-    "url": "https://www.fixmypcperth.com/",
-    "telephone": "+61452573701",
-    "priceRange": "$$",
-    "currenciesAccepted": "AUD",
-    "paymentAccepted": "Cash, Bank Transfer, PayID",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "7 Barraberry Retreat",
-      "addressLocality": "Canning Vale",
-      "addressRegion": "WA",
-      "postalCode": "6155",
-      "addressCountry": "AU"
-    },
-    "geo": { "@type": "GeoCoordinates", "latitude": -32.0697802, "longitude": 115.9245929 },
-    "openingHoursSpecification": [
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-        "opens": "00:00",
-        "closes": "23:59"
-      }
-    ],
-    "sameAs": [
-      "https://www.facebook.com/profile.php?id=61588810785733",
-      "https://www.google.com/maps/place/FixMyPC+Perth/@-32.0697802,115.922018,17z/data=!3m1!4b1!4m6!3m5!1s0x2a32972020981243:0x3d33799da9010e17!8m2!3d-32.0697802!4d115.9245929"
-    ],
-    "areaServed": [
-      {"@type": "City", "name": "Perth"},
-      {"@type": "AdministrativeArea", "name": "Canning Vale"},
-      {"@type": "AdministrativeArea", "name": "Willetton"},
-      {"@type": "AdministrativeArea", "name": "Thornlie"},
-      {"@type": "AdministrativeArea", "name": "Cannington"},
-      {"@type": "AdministrativeArea", "name": "Gosnells"},
-      {"@type": "AdministrativeArea", "name": "Bentley"},
-      {"@type": "AdministrativeArea", "name": "Murdoch"},
-      {"@type": "AdministrativeArea", "name": "Jandakot"},
-      {"@type": "AdministrativeArea", "name": "Cockburn"}
-    ]
-  }
+schemas:
+  - >
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "@id": "https://www.fixmypcperth.com/#business",
+      "name": "FixMyPC Perth",
+      "image": "https://www.fixmypcperth.com/facebook-cover.png",
+      "logo": "https://www.fixmypcperth.com/logo.png",
+      "description": "Perth computer repair specialist based in Canning Vale. Upfront pricing for diagnostic and repair, virus removal, SSD upgrades, data recovery, Windows reinstall, gaming PC builds and laptop screen replacement. Open 24 hours, 7 days.",
+      "url": "https://www.fixmypcperth.com/",
+      "telephone": "+61452573701",
+      "priceRange": "$$",
+      "currenciesAccepted": "AUD",
+      "paymentAccepted": "Cash, Bank Transfer, PayID",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "7 Barraberry Retreat",
+        "addressLocality": "Canning Vale",
+        "addressRegion": "WA",
+        "postalCode": "6155",
+        "addressCountry": "AU"
+      },
+      "geo": { "@type": "GeoCoordinates", "latitude": -32.0697802, "longitude": 115.9245929 },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+          "opens": "00:00",
+          "closes": "23:59"
+        }
+      ],
+      "sameAs": [
+        "https://www.facebook.com/profile.php?id=61588810785733",
+        "https://www.google.com/maps/place/FixMyPC+Perth/@-32.0697802,115.922018,17z/data=!3m1!4b1!4m6!3m5!1s0x2a32972020981243:0x3d33799da9010e17!8m2!3d-32.0697802!4d115.9245929"
+      ],
+      "areaServed": [
+        {"@type": "City", "name": "Perth"},
+        {"@type": "AdministrativeArea", "name": "Canning Vale"},
+        {"@type": "AdministrativeArea", "name": "Willetton"},
+        {"@type": "AdministrativeArea", "name": "Thornlie"},
+        {"@type": "AdministrativeArea", "name": "Cannington"},
+        {"@type": "AdministrativeArea", "name": "Gosnells"},
+        {"@type": "AdministrativeArea", "name": "Bentley"},
+        {"@type": "AdministrativeArea", "name": "Murdoch"},
+        {"@type": "AdministrativeArea", "name": "Jandakot"},
+        {"@type": "AdministrativeArea", "name": "Cockburn"}
+      ]
+    }
+  - >
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Service",
+          "serviceType": "Computer Diagnostic and Repair",
+          "name": "Diagnostic and Repair Perth",
+          "description": "All-in diagnostic and repair for blue screens, boot loops, random restarts, freezing, crashes on startup, no POST, stuck on logo and driver conflicts. Covers the full diagnostic, all repair labour and a 30-day labour warranty.",
+          "provider": { "@type": "LocalBusiness", "@id": "https://www.fixmypcperth.com/#business" },
+          "areaServed": { "@type": "City", "name": "Perth" },
+          "offers": { "@type": "Offer", "price": "120", "priceCurrency": "AUD", "availability": "https://schema.org/InStock" }
+        },
+        {
+          "@type": "Service",
+          "serviceType": "Virus and Malware Removal",
+          "name": "Virus and Malware Removal Perth",
+          "description": "Full system scan, complete threat removal, browser cleanup and antivirus setup. Most infections cleared same day.",
+          "provider": { "@type": "LocalBusiness", "@id": "https://www.fixmypcperth.com/#business" },
+          "areaServed": { "@type": "City", "name": "Perth" },
+          "offers": { "@type": "Offer", "price": "99", "priceCurrency": "AUD", "availability": "https://schema.org/InStock" }
+        },
+        {
+          "@type": "Service",
+          "serviceType": "Data Recovery",
+          "name": "Data Recovery Perth",
+          "description": "Recovery from failing drives from $149. Advanced recovery from completely dead drives $249 on a no fix, no fee basis.",
+          "provider": { "@type": "LocalBusiness", "@id": "https://www.fixmypcperth.com/#business" },
+          "areaServed": { "@type": "City", "name": "Perth" },
+          "offers": { "@type": "Offer", "price": "149", "priceCurrency": "AUD", "availability": "https://schema.org/InStock" }
+        },
+        {
+          "@type": "Service",
+          "serviceType": "SSD Upgrade",
+          "name": "SSD Upgrade Perth",
+          "description": "SSD fitted with full data transfer. Labour only $65 if you supply the drive, or from $150 with a Samsung or Crucial drive supplied.",
+          "provider": { "@type": "LocalBusiness", "@id": "https://www.fixmypcperth.com/#business" },
+          "areaServed": { "@type": "City", "name": "Perth" },
+          "offers": { "@type": "Offer", "price": "65", "priceCurrency": "AUD", "availability": "https://schema.org/InStock" }
+        },
+        {
+          "@type": "Service",
+          "serviceType": "Gaming PC Assembly",
+          "name": "Gaming PC Assembly Perth",
+          "description": "Custom gaming PC assembly using your own parts, across three tiers: Essential $149, Performance $199 and Elite $249. Every tier includes a free Windows 11 key.",
+          "provider": { "@type": "LocalBusiness", "@id": "https://www.fixmypcperth.com/#business" },
+          "areaServed": { "@type": "City", "name": "Perth" },
+          "offers": { "@type": "Offer", "price": "149", "priceCurrency": "AUD", "availability": "https://schema.org/InStock" }
+        },
+        {
+          "@type": "Service",
+          "serviceType": "Laptop Screen Replacement",
+          "name": "Laptop Screen Replacement Perth",
+          "description": "Screen replacement labour from $145 standard, $175 touchscreen or high refresh, $199 OLED and premium panels. Parts quoted separately.",
+          "provider": { "@type": "LocalBusiness", "@id": "https://www.fixmypcperth.com/#business" },
+          "areaServed": { "@type": "City", "name": "Perth" },
+          "offers": { "@type": "Offer", "price": "145", "priceCurrency": "AUD", "availability": "https://schema.org/InStock" }
+        },
+        {
+          "@type": "Service",
+          "serviceType": "Complete PC Overhaul Package",
+          "name": "Complete PC Overhaul Package Perth",
+          "description": "Twelve services in one drop off: virus removal, Windows 11 reinstall with data backup, cable management, thermal paste, driver updates, PBO tuning, benchmark report and 30-day labour warranty.",
+          "provider": { "@type": "LocalBusiness", "@id": "https://www.fixmypcperth.com/#business" },
+          "areaServed": { "@type": "City", "name": "Perth" },
+          "offers": { "@type": "Offer", "price": "180", "priceCurrency": "AUD", "availability": "https://schema.org/InStock" }
+        },
+        {
+          "@type": "Service",
+          "serviceType": "Used Laptop Servicing",
+          "name": "Used Laptop Revival Package Perth",
+          "description": "Sixteen point service for used and second-hand laptops. Hardware health check, battery test, secure wipe of previous owner data, Windows 11 clean reinstall, malware scan and thermal service.",
+          "provider": { "@type": "LocalBusiness", "@id": "https://www.fixmypcperth.com/#business" },
+          "areaServed": { "@type": "City", "name": "Perth" },
+          "offers": { "@type": "Offer", "price": "140", "priceCurrency": "AUD", "availability": "https://schema.org/InStock" }
+        }
+      ]
+    }
+  - >
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much does computer repair cost in Perth?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our all-in diagnostic and repair fee is $120, which covers the full diagnostic, all repair labour and a 30-day labour warranty. Fixed-scope jobs are priced separately: virus removal is $99, password reset $79, overheating deep clean $89 and data recovery from $149. All prices include GST with no hidden fees added at collection."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does the $120 all-in diagnostic and repair fee cover?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It covers any fault where we need to diagnose the cause before we can fix it. That includes blue screens, random restarts, boot loops, computers stuck on the manufacturer logo, freezing, crashes on startup, no POST, no power and driver conflicts. The $120 includes the diagnostic, all repair labour and a 30-day labour warranty. Parts are quoted separately and only if your machine actually needs them."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I pay if you cannot fix my computer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For dead drive data recovery we operate a strict no fix, no fee policy. If we cannot recover your files you pay nothing. For general repairs we tell you the likely outcome and cost before starting work, so there are never surprises at collection."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does virus removal cost in Perth?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Virus and malware removal is $99. This covers a full deep scan, complete threat removal, browser cleanup and security setup to prevent reinfection. Most infections are cleared the same day you drop off at our Canning Vale workshop."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does a gaming PC build cost in Perth?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Gaming PC assembly using your own parts comes in three tiers. Essential is $149, Performance is $199 and Elite is $249. Every tier includes a free Windows 11 key, full assembly, driver installation and benchmark testing before handover."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are your opening hours?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "FixMyPC Perth is open 24 hours a day, 7 days a week, including public holidays. We are based at 7 Barraberry Retreat, Canning Vale WA 6155. Drop off before 2pm and most repairs are ready for pickup by 6pm the same day."
+          }
+        }
+      ]
+    }
+  - >
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type":"ListItem","position":1,"name":"Home","item":"https://www.fixmypcperth.com/"},
+        {"@type":"ListItem","position":2,"name":"Computer Repair Pricing Perth","item":"https://www.fixmypcperth.com/pricing"}
+      ]
+    }
 ---
-<div class="sb-cta-block">
+<div id="scroll-progress" aria-hidden="true"></div>
+
+<div class="page-body">
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="pricing-hero" aria-label="Computer repair pricing Perth">
+  <div class="hero-inner">
+
+    <div class="fade-up">
+      <div class="hero-tag">
+        <span class="hero-dot" aria-hidden="true"></span>
+        Canning Vale · Perth WA · Open 24 Hours
+      </div>
+
+      <h1 class="hero-h1">Computer Repair Prices Perth.<br><span>Every price upfront.</span></h1>
+
+      <p class="hero-p">Transparent pricing for PC and laptop repair, virus removal, SSD upgrades, data recovery and gaming PC builds. Every job includes a 30-day labour warranty, and you get a fixed price in writing before we touch your machine.</p>
+
+      <div class="hero-pills">
+        <div class="hero-pill"><span class="hpill-check" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> 30-day labour warranty</div>
+        <div class="hero-pill"><span class="hpill-check" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> No fix, no fee on data recovery</div>
+        <div class="hero-pill"><span class="hpill-check" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Same or next day turnaround</div>
+      </div>
+    </div>
+
+    <div class="fade-up">
+      <div class="diag-card" role="complementary" aria-label="All-in diagnostic and repair fee">
+        <div class="dc-body">
+          <div class="dc-top">
+            <div>
+              <div class="dc-label">Most common starting point</div>
+              <div class="dc-title">Diagnostic &amp; Repair</div>
+            </div>
+            <div class="dc-price-badge">
+              <span class="dc-price-num">$120</span>
+              <span class="dc-price-note">all-in</span>
+            </div>
+          </div>
+
+          <div class="dc-countdown" id="dcCountdown">
+            <span class="dc-countdown-dot" aria-hidden="true"></span>
+            <span id="dcCountdownText"></span>
+          </div>
+
+          <div class="dc-list">
+            <div class="dc-row"><div class="dc-tick" aria-hidden="true"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><path d="M1 3.5l2.5 2.5 4.5-5" stroke="#00CFFF" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="dc-row-text">Full diagnostic and written root cause report</span></div>
+            <div class="dc-row"><div class="dc-tick" aria-hidden="true"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><path d="M1 3.5l2.5 2.5 4.5-5" stroke="#00CFFF" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="dc-row-text">All repair labour included, never charged on top</span></div>
+            <div class="dc-row"><div class="dc-tick" aria-hidden="true"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><path d="M1 3.5l2.5 2.5 4.5-5" stroke="#00CFFF" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="dc-row-text">30-day labour warranty from collection</span></div>
+            <div class="dc-row"><div class="dc-tick" aria-hidden="true"><svg width="9" height="7" viewBox="0 0 9 7" fill="none"><path d="M1 3.5l2.5 2.5 4.5-5" stroke="#00CFFF" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="dc-row-text">Parts quoted separately, only if actually needed</span></div>
+          </div>
+
+          <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener noreferrer" class="dc-cta" aria-label="Get a free quote on WhatsApp" onclick="trackWAClick()">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>
+            Get a free quote now
+          </a>
+        </div>
+        <div class="dc-footer">
+          <p class="dc-footer-text">24 hours Monday to Saturday, 2:30am to 10pm Sunday &middot; Canning Vale, Perth &middot; 30-day warranty</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     PRICE RANGE ORIENTATION STRIP
+     ============================================================ -->
+<section class="range-strip" aria-label="Price ranges at a glance">
+  <div class="range-inner fade-up">
+    <div class="range-item"><span class="range-val">$79–$149</span><span class="range-lbl">Most repairs</span></div>
+    <div class="range-divider" aria-hidden="true"></div>
+    <div class="range-item"><span class="range-val">$120</span><span class="range-lbl">All-in diagnostic &amp; repair</span></div>
+    <div class="range-divider" aria-hidden="true"></div>
+    <div class="range-item"><span class="range-val">from $55</span><span class="range-lbl">Upgrades</span></div>
+    <div class="range-divider" aria-hidden="true"></div>
+    <div class="range-item"><span class="range-val">from $149</span><span class="range-lbl">Data recovery</span></div>
+    <div class="range-note">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+      All prices include GST
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     $10 OFF OFFER BANNER
+     ============================================================ -->
+<section class="offer-banner" aria-label="First time customer offer">
+  <div class="offer-inner fade-up">
+    <div class="offer-text">
+      <div class="offer-tag">First-time customers</div>
+      <div class="offer-title">$10 off your first repair with FixMyPC Perth</div>
+      <p class="offer-desc">Mention this page when you book. Applies to any repair over $99 &mdash; stacks with the free system cleanup on jobs $149 and over.</p>
+    </div>
+    <div class="offer-btn">
+      <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20to%20claim%20the%20%2410%20off%20first%20repair%20offer." target="_blank" rel="noopener noreferrer" class="btn-blue" aria-label="Claim your first-time customer discount" onclick="trackWAClick()">Claim my $10 off &nbsp;&rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SEARCH
+     ============================================================ -->
+<div class="price-search-wrap" id="price-search-wrap">
+  <div class="price-search-inner">
+    <div class="price-search-box" id="priceSearchBox">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" id="priceSearch" placeholder="Search services, e.g. virus removal, SSD, gaming PC..." autocomplete="off" aria-label="Search pricing">
+      <button type="button" class="psearch-clear" id="psearchClear" aria-label="Clear search">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     MOBILE CATEGORY TABS
+     ============================================================ -->
+<div class="mob-tabs" role="tablist" aria-label="Pricing categories" id="mob-tabs">
+  <button type="button" class="mtab active" data-target="sec-repairs">Repairs</button>
+  <button type="button" class="mtab" data-target="sec-performance">Performance</button>
+  <button type="button" class="mtab" data-target="sec-upgrades">Upgrades</button>
+  <button type="button" class="mtab" data-target="sec-gaming">Gaming PC</button>
+  <button type="button" class="mtab" data-target="sec-network">Networking</button>
+  <button type="button" class="mtab" data-target="sec-software">Software</button>
+  <button type="button" class="mtab" data-target="sec-addons">Add Ons</button>
+  <button type="button" class="mtab" data-target="sec-packages">Packages</button>
+  <button type="button" class="mtab" data-target="sec-referral">Referral</button>
+</div>
+
+<!-- ============================================================
+     PRICING BODY
+     ============================================================ -->
+<div class="pricing-body-wrapper">
+  <div class="pricing-body">
+
+    <!-- SIDEBAR -->
+    <aside class="pricing-sidebar" aria-label="Pricing categories">
+      <div class="sidebar-card">
+        <div class="sb-header">
+          <div class="sb-header-eyebrow">Browse services</div>
+          <div class="sb-header-title">Full price list</div>
+        </div>
+        <nav class="sb-nav" aria-label="Category navigation">
+
+          <button type="button" class="sb-item active" data-target="sec-repairs">
+            <div class="sb-item-accent"></div>
+            <div class="sb-item-inner">
+              <div class="sb-item-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+              <div class="sb-item-text"><div class="sb-item-name">PC &amp; Laptop Repairs</div></div>
+              <span class="sb-item-count" data-count-for="sec-repairs">18</span>
+            </div>
+          </button>
+
+          <button type="button" class="sb-item" data-target="sec-performance">
+            <div class="sb-item-accent"></div>
+            <div class="sb-item-inner">
+              <div class="sb-item-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 2 13 9 20 9"/><path d="M4 12a8 8 0 1 0 8 -8"/><polyline points="4 4 4 12 12 12"/></svg></div>
+              <div class="sb-item-text"><div class="sb-item-name">Performance Boost</div></div>
+              <span class="sb-item-count" data-count-for="sec-performance">3</span>
+            </div>
+          </button>
+
+          <button type="button" class="sb-item" data-target="sec-upgrades">
+            <div class="sb-item-accent"></div>
+            <div class="sb-item-inner">
+              <div class="sb-item-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+              <div class="sb-item-text"><div class="sb-item-name">Upgrades</div></div>
+              <span class="sb-item-count" data-count-for="sec-upgrades">11</span>
+            </div>
+          </button>
+
+          <button type="button" class="sb-item" data-target="sec-gaming">
+            <div class="sb-item-accent"></div>
+            <div class="sb-item-inner">
+              <div class="sb-item-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h4M8 10v4M15 13h.01M18 11h.01"/></svg></div>
+              <div class="sb-item-text"><div class="sb-item-name">Gaming PC Assembly</div></div>
+              <span class="sb-item-count" data-count-for="sec-gaming">14</span>
+            </div>
+          </button>
+
+          <button type="button" class="sb-item" data-target="sec-network">
+            <div class="sb-item-accent"></div>
+            <div class="sb-item-inner">
+              <div class="sb-item-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.59 16.11a6 6 0 0 1 6.82 0M12 20h.01"/></svg></div>
+              <div class="sb-item-text"><div class="sb-item-name">Networking &amp; Setup</div></div>
+              <span class="sb-item-count" data-count-for="sec-network">9</span>
+            </div>
+          </button>
+
+          <button type="button" class="sb-item" data-target="sec-software">
+            <div class="sb-item-accent"></div>
+            <div class="sb-item-inner">
+              <div class="sb-item-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="2" y1="20" x2="22" y2="20"/></svg></div>
+              <div class="sb-item-text"><div class="sb-item-name">Software &amp; Remote</div></div>
+              <span class="sb-item-count" data-count-for="sec-software">8</span>
+            </div>
+          </button>
+
+          <div class="sb-divider"></div>
+
+          <button type="button" class="sb-item" data-target="sec-addons">
+            <div class="sb-item-accent"></div>
+            <div class="sb-item-inner">
+              <div class="sb-item-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+              <div class="sb-item-text"><div class="sb-item-name">Add Ons</div></div>
+              <span class="sb-item-count">6</span>
+            </div>
+          </button>
+
+          <button type="button" class="sb-item" data-target="sec-packages">
+            <div class="sb-item-accent"></div>
+            <div class="sb-item-inner">
+              <div class="sb-item-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
+              <div class="sb-item-text"><div class="sb-item-name">Packages</div></div>
+              <span class="sb-item-count" style="background:var(--wa);color:#fff;border-color:var(--wa);">2</span>
+            </div>
+          </button>
+
+          <button type="button" class="sb-item" data-target="sec-referral">
+            <div class="sb-item-accent"></div>
+            <div class="sb-item-inner">
+              <div class="sb-item-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="4"/><path d="M2 21v-2a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v2"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+              <div class="sb-item-text"><div class="sb-item-name">Referral Rewards</div></div>
+              <span class="sb-item-count" style="background:var(--wa);color:#fff;border-color:var(--wa);">$20</span>
+            </div>
+          </button>
+
+        </nav>
+
+        <div class="sb-cta-block">
           <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener noreferrer" class="sb-cta-wa" onclick="trackWAClick()">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>
             Free quote on WhatsApp
@@ -63,7 +438,7 @@ schema: >
     </aside>
 
     <!-- MAIN -->
-    
+    <main class="pricing-main">
 
       <div class="pricing-intro-block">
         <h2>Computer Repair Pricing in Perth. No Surprises.</h2>
@@ -883,7 +1258,7 @@ schema: >
         </div>
       </div>
 
-    
+    </main>
   </div>
 </div>
 <!-- ============================================================
@@ -1109,16 +1484,297 @@ schema: >
   </div>
 </div>
 
-<!-- ============================================================
-     FOOTER
-     ============================================================ -->
-
-
 </div><!-- .page-body -->
 
-' +
+<!-- WHATSAPP FLOATING BUBBLE -->
+<a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener noreferrer" class="wa-bubble" aria-label="Chat with FixMyPC Perth on WhatsApp" onclick="trackWAClick()">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>
+</a>
+
+<!-- ============================================================
+     JAVASCRIPT
+     ============================================================ -->
+<script>
+(function () {
+  'use strict';
+
+  /* ---- Scroll progress ---- */
+  const progressBar = document.getElementById('scroll-progress');
+  window.addEventListener('scroll', function() {
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    progressBar.style.transform = 'scaleX(' + (h > 0 ? window.scrollY / h : 0) + ')';
+  }, { passive: true });
+
+  /* ---- Fade up ---- */
+  const fadeEls = document.querySelectorAll('.fade-up');
+  if ('IntersectionObserver' in window) {
+    const obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e, i) {
+        if (e.isIntersecting) {
+          setTimeout(function(){ e.target.classList.add('in'); }, i * 55);
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.05 });
+    fadeEls.forEach(function(el){ obs.observe(el); });
+  } else {
+    fadeEls.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* ---- Mobile hamburger ---- */
+  const hamburger = document.getElementById('mob-hamburger');
+  const mobMenu   = document.getElementById('mob-menu');
+  hamburger.addEventListener('click', function() {
+    const isOpen = mobMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+    hamburger.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+  });
+  mobMenu.querySelectorAll('.mob-link').forEach(function(link) {
+    link.addEventListener('click', function() {
+      mobMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
+  document.addEventListener('click', function(e) {
+    if (mobMenu.classList.contains('open') && !mobMenu.contains(e.target) && !hamburger.contains(e.target)) {
+      mobMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  /* ---- Same-day cutoff countdown (2pm Perth time) ---- */
+  (function() {
+    const box  = document.getElementById('dcCountdown');
+    const text = document.getElementById('dcCountdownText');
+    if (!box || !text) return;
+    function tick() {
+      const nowUtc = new Date();
+      const perth  = new Date(nowUtc.getTime() + (8 * 60 + nowUtc.getTimezoneOffset()) * 60000);
+      const cutoff = new Date(perth);
+      cutoff.setHours(14, 0, 0, 0);
+      const diff = cutoff - perth;
+      if (diff > 0) {
+        const h = Math.floor(diff / 3600000);
+        const m = Math.floor((diff % 3600000) / 60000);
+        const s = Math.floor((diff % 60000) / 1000);
+        const left = h > 0 ? (h + 'h ' + m + 'm') : (m + 'm ' + s + 's');
+        text.innerHTML = 'Book within <span class="dc-countdown-time">' + left + '</span> for same-day pickup today';
+      } else {
+        text.innerHTML = 'Open 24 hours &mdash; drop off tonight for first slot tomorrow';
+      }
+    }
+    tick();
+    box.classList.add('ready');
+    setInterval(tick, 1000);
+  })();
+
+  /* ---- Sticky mobile CTA ---- */
+  (function() {
+    const bar = document.getElementById('stickyCta');
+    if (!bar) return;
+    const hero = document.querySelector('.pricing-hero');
+    window.addEventListener('scroll', function() {
+      const past = hero ? (window.scrollY > hero.offsetHeight * 0.8) : (window.scrollY > 500);
+      bar.classList.toggle('show', past);
+    }, { passive: true });
+  })();
+
+  /* ---- Package carousel dots ---- */
+  (function() {
+    const duo  = document.getElementById('pkgDuo');
+    const dots = document.getElementById('pkgDots');
+    if (!duo || !dots) return;
+    const buttons = Array.prototype.slice.call(dots.querySelectorAll('.pkg-dot'));
+    const cards   = Array.prototype.slice.call(duo.querySelectorAll('.pkg-card'));
+    function sync() {
+      if (window.getComputedStyle(duo).overflowX !== 'auto') return;
+      const mid = duo.scrollLeft + duo.clientWidth / 2;
+      let active = 0, best = Infinity;
+      cards.forEach(function(card, i) {
+        const d = Math.abs((card.offsetLeft + card.offsetWidth / 2) - mid);
+        if (d < best) { best = d; active = i; }
+      });
+      buttons.forEach(function(b, i) { b.classList.toggle('active', i === active); });
+    }
+    duo.addEventListener('scroll', function(){ window.requestAnimationFrame(sync); }, { passive: true });
+    buttons.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        const card = cards[parseInt(btn.dataset.i, 10)];
+        if (card) duo.scrollTo({ left: card.offsetLeft - duo.offsetLeft, behavior: 'smooth' });
+      });
+    });
+    sync();
+  })();
+
+  /* ---- Section navigation + scroll spy ---- */
+  function getNavOffset() {
+    const searchWrap = document.getElementById('price-search-wrap');
+    const navH = window.innerWidth <= 720 ? 60 : 64;
+    return navH + (searchWrap ? searchWrap.offsetHeight : 0) + 20;
+  }
+  function scrollToSection(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - getNavOffset(), behavior: 'smooth' });
+  }
+  function setActive(id) {
+    document.querySelectorAll('.sb-item').forEach(function(b){ b.classList.toggle('active', b.dataset.target === id); });
+    document.querySelectorAll('.mtab').forEach(function(b){ b.classList.toggle('active', b.dataset.target === id); });
+  }
+  document.querySelectorAll('.sb-item, .mtab').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      setActive(btn.dataset.target);
+      scrollToSection(btn.dataset.target);
+    });
+  });
+
+  /* Section list derived from the DOM so it can never fall out of sync */
+  const sectionIds = Array.prototype.slice
+    .call(document.querySelectorAll('.pricing-section[id]'))
+    .map(function(s){ return s.id; })
+    .filter(function(id){ return id !== 'search-results-area'; });
+
+  function onScroll() {
+    const threshold = getNavOffset() + 20;
+    let current = sectionIds[0];
+    sectionIds.forEach(function(id) {
+      const el = document.getElementById(id);
+      if (el && el.offsetParent !== null && el.getBoundingClientRect().top <= threshold) current = id;
+    });
+    setActive(current);
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* ---- Sidebar counts read straight from the tables ---- */
+  document.querySelectorAll('[data-count-for]').forEach(function(badge) {
+    const sec = document.getElementById(badge.dataset.countFor);
+    if (sec) badge.textContent = sec.querySelectorAll('.prow').length;
+  });
+
+  /* ============================================================
+     PRICE SEARCH — index built from the DOM, never hardcoded.
+     Prices in the search results are the same nodes rendered in
+     the tables, so they cannot drift out of sync.
+     ============================================================ */
+  const searchInput = document.getElementById('priceSearch');
+  const searchClear = document.getElementById('psearchClear');
+  const searchBox   = document.getElementById('priceSearchBox');
+
+  if (searchInput) {
+    const main  = document.querySelector('.pricing-main');
+    const intro = document.querySelector('.pricing-intro-block');
+
+    const results = document.createElement('section');
+    results.id = 'search-results-area';
+    results.className = 'pricing-section';
+    results.style.display = 'none';
+    main.prepend(results);
+
+    /* Build the index once, from what is actually on the page */
+    const index = [];
+    document.querySelectorAll('.pricing-section[id] .prow').forEach(function(rowEl) {
+      const section = rowEl.closest('.pricing-section');
+      const heading = section ? section.querySelector('.psec-title') : null;
+      const cat = heading ? heading.textContent.trim() : '';
+
+      if (rowEl.classList.contains('prow-multi')) {
+        const baseName = rowEl.querySelector('.prow-name');
+        const base = baseName ? baseName.childNodes[0].textContent.trim() : '';
+        rowEl.querySelectorAll('.option-card').forEach(function(card) {
+          const n = card.querySelector('.option-name');
+          const p = card.querySelector('.option-price');
+          const pre = card.querySelector('.option-price-pre');
+          const link = card.querySelector('.option-book');
+          if (!n || !p) return;
+          index.push({
+            name: base + ' — ' + n.textContent.trim(),
+            cat: cat,
+            price: (pre ? pre.textContent.trim() + ' ' : '') + p.textContent.trim(),
+            href: link ? link.href : '#'
+          });
+        });
+        return;
+      }
+
+      const nameEl  = rowEl.querySelector('.prow-name');
+      const priceEl = rowEl.querySelector('.prow-price');
+      const linkEl  = rowEl.querySelector('.prow-book');
+      if (!nameEl || !priceEl) return;
+      const badge = nameEl.querySelector('.badge');
+      const name = Array.prototype.slice.call(nameEl.childNodes)
+        .filter(function(n){ return n !== badge; })
+        .map(function(n){ return n.textContent; })
+        .join('').trim();
+      const small = priceEl.querySelector('small');
+      index.push({
+        name: name,
+        cat: cat,
+        price: small ? priceEl.firstChild.textContent.trim() + ' ' + small.textContent.trim()
+                     : priceEl.textContent.trim(),
+        href: linkEl ? linkEl.href : '#'
+      });
+    });
+
+    function escapeHtml(s) {
+      return s.replace(/[&<>"']/g, function(c) {
+        return { '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c];
+      });
+    }
+
+    function showAll() {
+      results.style.display = 'none';
+      results.innerHTML = '';
+      document.querySelectorAll('.pricing-section:not(#search-results-area)').forEach(function(s){ s.style.display = ''; });
+      if (intro) intro.style.display = '';
+    }
+
+    searchInput.addEventListener('input', function() {
+      const raw = this.value.trim();
+      const q = raw.toLowerCase();
+      if (searchBox) searchBox.classList.toggle('has-value', raw.length > 0);
+
+      if (!q) { showAll(); onScroll(); return; }
+
+      document.querySelectorAll('.pricing-section:not(#search-results-area)').forEach(function(s){ s.style.display = 'none'; });
+      if (intro) intro.style.display = 'none';
+      results.style.display = 'block';
+
+      const matches = index.filter(function(r) {
+        return r.name.toLowerCase().indexOf(q) !== -1 || r.cat.toLowerCase().indexOf(q) !== -1;
+      });
+
+      if (!matches.length) {
+        results.innerHTML =
+          '<div class="psec-head"><h2 class="psec-title">No results for &ldquo;' + escapeHtml(raw) + '&rdquo;</h2></div>' +
+          '<div style="background:var(--bg2);border:1.5px solid var(--border);border-radius:16px;padding:2.5rem 1.5rem;text-align:center;">' +
+          '<p style="color:var(--muted);margin-bottom:1rem;">Nothing matched that. Try a broader word like &ldquo;screen&rdquo;, &ldquo;SSD&rdquo; or &ldquo;recovery&rdquo;.</p>' +
+          '<button type="button" class="btn-outline" id="searchReset">Show all services</button></div>';
+        const reset = document.getElementById('searchReset');
+        if (reset) reset.addEventListener('click', function() {
+          searchInput.value = '';
+          if (searchBox) searchBox.classList.remove('has-value');
+          showAll();
+        });
+        return;
+      }
+
+      const re = new RegExp('(' + raw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
+      results.innerHTML =
+        '<div class="psec-head"><h2 class="psec-title">Results for &ldquo;' + escapeHtml(raw) + '&rdquo;</h2>' +
+        '<span class="psec-note">' + matches.length + ' service' + (matches.length === 1 ? '' : 's') + ' found</span></div>' +
+        '<div class="ptable" data-accent="blue">' +
+        '<div class="ptable-head" aria-hidden="true"><span>Service</span><span class="ph-price">Price</span><span class="ph-action">Book</span></div>' +
+        matches.map(function(r) {
+          return '<div class="prow">' +
+            '<div class="prow-name-wrap"><div class="prow-name">' +
+              escapeHtml(r.name).replace(re, '<mark style="background:rgba(21,96,255,0.12);color:var(--blue);border-radius:3px;padding:0 2px;font-weight:800;">$1</mark>') +
+              ' <span class="badge badge-pop">' + escapeHtml(r.cat) + '</span></div></div>' +
             '<div class="prow-price">' + escapeHtml(r.price) + '</div>' +
-            '<a href="/' + r.href + '" target="_blank" rel="noopener" class="prow-book">Book now</a>' +
+            '<a href="' + r.href + '" target="_blank" rel="noopener" class="prow-book">Book now</a>' +
           '</div>';
         }).join('') + '</div>';
     });

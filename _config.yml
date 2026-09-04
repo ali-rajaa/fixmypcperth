@@ -1,22 +1,14 @@
-# FixMyPC Perth — Jekyll config
+# FixMyPC Perth
 title: FixMyPC Perth
 url: https://www.fixmypcperth.com
 description: Computer and laptop repair in Canning Vale, Perth.
 
-# CRITICAL: do NOT set `permalink: pretty`.
-# Default keeps page.html -> /page (no trailing slash), which is exactly what
-# Google has indexed. Changing this rewrites every URL on the site.
+# DO NOT set `permalink: pretty`. Jekyll's default keeps page.html serving at
+# /page with no trailing slash, which is what Google has indexed.
 
-# jekyll-sitemap is deliberately NOT enabled: sitemap.xml is hand-maintained
-# and the plugin would sit inert behind it. Pick one owner, not both.
-# jekyll-seo-tag is not used either: the layout writes richer tags directly.
 plugins: []
 
 exclude:
-  - AUDIT.md
-  - PRICES.md
-  - HANDOVER.md
+  - CLOUDFLARE.md
   - README.md
-
-sass:
-  style: compressed
+  - Gemfile

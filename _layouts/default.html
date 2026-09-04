@@ -7,34 +7,30 @@
   <title>{{ page.title }}</title>
   <meta name="description" content="{{ page.description }}">
   <link rel="canonical" href="{{ site.url }}{{ page.url | remove: '.html' }}">
-
-  <!-- Crawl directives: full indexing, large image previews for the local pack -->
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-
-  <!-- Resource hints: cuts font round-trips, protects FCP -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <meta property="og:type" content="{{ page.og_type | default: 'website' }}">
   <meta property="og:site_name" content="{{ site.title }}">
-  <meta property="og:title" content="{{ page.og_title | default: page.title }}">
+  <meta property="og:title" content="{{ page.title }}">
   <meta property="og:description" content="{{ page.description }}">
   <meta property="og:url" content="{{ site.url }}{{ page.url | remove: '.html' }}">
-  <meta property="og:image" content="{{ site.url }}/facebook-cover.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
+  <meta property="og:image" content="{{ site.url }}/logo.png">
   <meta name="twitter:card" content="summary_large_image">
 
   <link rel="icon" href="/favicon.png">
   <meta name="theme-color" content="#0F172A">
 
-  <!-- Page-specific rules first, shared shell last so header/footer always win -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Page stylesheet first, shared chrome last so the header always wins -->
   {% if page.page_css %}<link rel="stylesheet" href="{{ page.page_css }}">{% endif %}
   <link rel="stylesheet" href="/assets/css/shell.css">
 
-  {% if page.schema %}<script type="application/ld+json">{{ page.schema }}</script>{% endif %}
+  {%- if page.schemas %}{% for sc in page.schemas %}
+  <script type="application/ld+json">{{ sc }}</script>
+  {%- endfor %}{% endif %}
 
-  <!-- Google Analytics 4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-S0CW1QXBDY"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -47,16 +43,12 @@
 
 {% include header.html %}
 
-<!-- Single primary content region. One <main> per page, per WCAG landmark rules. -->
-<main id="main-content" role="main">
+<main id="main-content">
 {{ content }}
 </main>
 
 {% include footer.html %}
-
 {% include sticky-cta.html %}
-
-{% include nav-script.html %}
 
 </body>
 </html>
