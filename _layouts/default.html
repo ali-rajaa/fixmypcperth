@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Page identity. Every converted page sets these in its front matter. -->
+  <title>{{ page.title }}</title>
+  <meta name="description" content="{{ page.description }}">
+  <link rel="canonical" href="{{ site.url }}{{ page.url | remove: '.html' }}">
+  <meta name="author" content="Ali Raja – FixMyPC Perth">
+  {% if page.keywords %}<meta name="keywords" content="{{ page.keywords }}">{% endif %}
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+
+  <!-- Social preview -->
+  <meta property="og:type" content="{{ page.og_type | default: 'website' }}">
+  <meta property="og:site_name" content="{{ site.title }}">
+  <meta property="og:title" content="{{ page.title }}">
+  <meta property="og:description" content="{{ page.description }}">
+  <meta property="og:url" content="{{ site.url }}{{ page.url | remove: '.html' }}">
+  <meta property="og:image" content="{{ site.url }}/logo.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <meta name="theme-color" content="#0F172A">
+
+  <!-- Local geo signals, carried over from the original head -->
+  <meta name="geo.region" content="AU-WA">
+  <meta name="geo.placename" content="Canning Vale, Perth, Western Australia">
+  <meta name="geo.position" content="-32.0697802;115.9245929">
+  <meta name="ICBM" content="-32.0697802, 115.9245929">
+
+  <!-- Cuts a round trip on the font request, protects First Contentful Paint -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Sora + DM Sans. Loaded async via media="print" then swapped to all,
+       so the fonts never block first paint. -->
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet"></noscript>
+
+  <!-- Load order matters. The page's own stylesheet first, the shared header
+       and footer styles last, so the chrome always wins and a page can never
+       accidentally restyle the nav. -->
+  {% if page.page_css %}<link rel="stylesheet" href="{{ page.page_css }}">{% endif %}
+  <link rel="stylesheet" href="/assets/css/shell.css">
+
+  <!-- Every JSON-LD block the page carries, not just the first -->
+  {%- if page.schemas %}{% for sc in page.schemas %}
+  <script type="application/ld+json">{{ sc }}</script>
+  {%- endfor %}{% endif %}
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-S0CW1QXBDY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-S0CW1QXBDY');
+  </script>
+</head>
+<body>
+
+{% include header.html %}
+
+<main id="main-content">
+{{ content }}
+</main>
+
+{% include footer.html %}
+{% include sticky-cta.html %}
+{% include scripts.html %}
+
+</body>
+</html>

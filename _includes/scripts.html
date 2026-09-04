@@ -1,0 +1,289 @@
+<!-- Shared behaviour: scroll bar, hamburger toggle, GA4 click tracking. -->
+<script>
+(function () {
+  'use strict';
+
+  /* ---- Scroll Progress Bar ---- */
+  const bar = document.getElementById('scroll-bar');
+  window.addEventListener('scroll', function() {
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.transform = 'scaleX(' + (window.scrollY / h) + ')';
+  }, { passive: true });
+
+  /* ---- Trust Ticker ---- */
+  const items = [
+    'Same or next day turnaround',
+    'Local drop off in Canning Vale',
+    '30-day warranty on all work',
+    'Upfront pricing, no surprises',
+    'No fix, no fee on data recovery',
+    '5/5 rated local service',
+    'Free quote in minutes',
+    "Perth's most trusted tech specialist",
+    'Gaming PC builds &amp; upgrades',
+    'Virus &amp; malware removal $99',
+    'Laptop screen replacement Perth',
+    'SSD upgrades from $65',
+    'Business IT support from $149/mo',
+    'Free coffee or tea while you wait',
+    'Free $89 cleanup on jobs $149+',
+  ];
+  const track = document.getElementById('trust-track');
+  const doubled = [...items, ...items];
+  track.innerHTML = doubled.map(function(t) {
+    return '<div class="trust-item"><div class="trust-dot" aria-hidden="true"></div>' + t + '</div>';
+  }).join('');
+
+  /* ---- Fade-up on scroll ---- */
+  const fadeEls = document.querySelectorAll('.fade-up');
+  if ('IntersectionObserver' in window) {
+    const obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry, i) {
+        if (entry.isIntersecting) {
+          setTimeout(function() { entry.target.classList.add('in'); }, i * 60);
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    fadeEls.forEach(function(el) { obs.observe(el); });
+  } else {
+    fadeEls.forEach(function(el) { el.classList.add('in'); });
+  }
+
+  /* ---- Mobile Hamburger ---- */
+  const hamburger = document.getElementById('mob-hamburger');
+  const mobMenu   = document.getElementById('mob-menu');
+
+  hamburger.addEventListener('click', function() {
+    var isOpen = mobMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+    hamburger.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+  });
+
+  mobMenu.querySelectorAll('.mob-link').forEach(function(link) {
+    link.addEventListener('click', function() {
+      mobMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      hamburger.setAttribute('aria-label', 'Open navigation menu');
+    });
+  });
+
+  document.addEventListener('click', function(e) {
+    if (mobMenu.classList.contains('open') && !mobMenu.contains(e.target) && !hamburger.contains(e.target)) {
+      mobMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      hamburger.setAttribute('aria-label', 'Open navigation menu');
+    }
+  });
+
+  /* ---- FAQ Accordion ---- */
+  document.querySelectorAll('.faq-q').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var item = btn.closest('.faq-item');
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function(i) {
+        i.classList.remove('open');
+        i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  /* ---- Phone click tracking ---- */
+  document.querySelectorAll('a[href^="tel:"]').forEach(function(el) {
+    el.addEventListener('click', function() { if(typeof trackPhoneClick==='function') trackPhoneClick(); });
+  });
+
+  /* ---- Same-day cutoff countdown (2pm Perth time) ---- */
+  (function() {
+    const box  = document.getElementById('mqCountdown');
+    const text = document.getElementById('mqCountdownText');
+    if (!box || !text) return;
+
+    function tick() {
+      // Perth is UTC+8, no DST — compute local Perth time regardless of visitor timezone
+      const nowUtc = new Date();
+      const perth  = new Date(nowUtc.getTime() + (8 * 60 + nowUtc.getTimezoneOffset()) * 60000);
+      const cutoff = new Date(perth);
+      cutoff.setHours(14, 0, 0, 0);
+
+      const diff = cutoff - perth;
+
+      if (diff > 0) {
+        const h = Math.floor(diff / 3600000);
+        const m = Math.floor((diff % 3600000) / 60000);
+        const s = Math.floor((diff % 60000) / 1000);
+        const left = h > 0 ? (h + 'h ' + m + 'm') : (m + 'm ' + s + 's');
+        box.classList.remove('closed');
+        text.innerHTML = 'Book within <span class="mq-countdown-time">' + left + '</span> for same-day pickup today';
+      } else {
+        box.classList.add('closed');
+        text.innerHTML = 'Open 24 hours &mdash; drop off tonight for first slot tomorrow';
+      }
+    }
+    tick();
+    box.classList.add('ready');
+    setInterval(tick, 1000);
+  })();
+
+  /* ---- Sticky mobile CTA bar ---- */
+  (function() {
+    const bar = document.getElementById('stickyCta');
+    if (!bar) return;
+    const hero = document.querySelector('.hero');
+    window.addEventListener('scroll', function() {
+      const past = hero ? (window.scrollY > hero.offsetHeight * 0.85) : (window.scrollY > 600);
+      bar.classList.toggle('show', past);
+    }, { passive: true });
+  })();
+
+  /* ---- Package carousel dots (mobile) ---- */
+  (function() {
+    const duo  = document.getElementById('pkgDuo');
+    const dots = document.getElementById('pkgDots');
+    if (!duo || !dots) return;
+
+    const buttons = Array.from(dots.querySelectorAll('.pkg-dot'));
+    const cards   = Array.from(duo.querySelectorAll('.pkg-card'));
+
+    function sync() {
+      if (window.getComputedStyle(duo).overflowX !== 'auto') return;
+      const mid = duo.scrollLeft + duo.clientWidth / 2;
+      let active = 0, best = Infinity;
+      cards.forEach(function(card, i) {
+        const c = card.offsetLeft + card.offsetWidth / 2;
+        const d = Math.abs(c - mid);
+        if (d < best) { best = d; active = i; }
+      });
+      buttons.forEach(function(b, i) { b.classList.toggle('active', i === active); });
+    }
+
+    duo.addEventListener('scroll', function() {
+      window.requestAnimationFrame(sync);
+    }, { passive: true });
+
+    buttons.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        const card = cards[parseInt(btn.dataset.i, 10)];
+        if (card) duo.scrollTo({ left: card.offsetLeft - duo.offsetLeft, behavior: 'smooth' });
+      });
+    });
+
+    sync();
+  })();
+
+  /* ---- Instant Quote Mini Form (Web3Forms, 2-step) ---- */
+  (function() {
+    const form = document.getElementById('miniQuoteForm');
+    if (!form) return;
+
+    const success   = document.getElementById('mqSuccess');
+    const submitBtn = document.getElementById('mqSubmitBtn');
+    const nextBtn   = document.getElementById('mqNextBtn');
+    const backBtn   = document.getElementById('mqBackBtn');
+    const step1     = document.getElementById('mqStep1');
+    const step2     = document.getElementById('mqStep2');
+    const fill      = document.getElementById('mqProgressFill');
+    const label     = document.getElementById('mqProgressLabel');
+    const selName   = document.getElementById('mqSelectedName');
+    const trust     = document.querySelector('.mq-trust');
+
+    const SUBMIT_HTML = 'Get My Free Quote <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>';
+
+    function selectedService() {
+      const el = form.querySelector('input[name="Service"]:checked');
+      return el ? el.value : '';
+    }
+
+    function goStep(n) {
+      const toTwo = (n === 2);
+      step1.classList.toggle('active', !toTwo);
+      step2.classList.toggle('active', toTwo);
+      fill.style.width = toTwo ? '100%' : '50%';
+      label.textContent = 'Step ' + n + ' of 2';
+      if (toTwo) selName.textContent = selectedService();
+    }
+
+    /* Tapping a service card advances automatically */
+    form.querySelectorAll('.mq-service-radio').forEach(function(radio) {
+      radio.addEventListener('change', function() {
+        document.getElementById('mqServiceErr').classList.remove('show');
+      });
+    });
+
+    nextBtn.addEventListener('click', function() {
+      if (!selectedService()) {
+        document.getElementById('mqServiceErr').classList.add('show');
+        return;
+      }
+      goStep(2);
+    });
+
+    backBtn.addEventListener('click', function() { goStep(1); });
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      let ok = true;
+
+      form.querySelectorAll('.mq-err').forEach(function(el) { el.classList.remove('show'); });
+      form.querySelectorAll('.err').forEach(function(el) { el.classList.remove('err'); });
+
+      const device = document.getElementById('mqDevice');
+      const desc   = document.getElementById('mqDesc');
+      const name   = document.getElementById('mqName');
+      const phone  = document.getElementById('mqPhone');
+      const email  = document.getElementById('mqEmail');
+
+      if (!selectedService()) { document.getElementById('mqServiceErr').classList.add('show'); goStep(1); return; }
+      if (!device.value)      { document.getElementById('mqDeviceErr').classList.add('show'); device.classList.add('err'); ok = false; }
+      if (!desc.value.trim()) { document.getElementById('mqDescErr').classList.add('show'); desc.classList.add('err'); ok = false; }
+      if (!name.value.trim()) { document.getElementById('mqNameErr').classList.add('show'); name.classList.add('err'); ok = false; }
+
+      const phoneVal = phone.value.replace(/[\s\-()]/g, '');
+      const phoneRe = /^(\+?61\s?|0)[2-9](\s?\d){8}$/;
+      if (!phoneRe.test(phoneVal)) { document.getElementById('mqPhoneErr').classList.add('show'); phone.classList.add('err'); ok = false; }
+
+      const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRe.test(email.value.trim())) { document.getElementById('mqEmailErr').classList.add('show'); email.classList.add('err'); ok = false; }
+
+      if (!ok) {
+        const firstErr = form.querySelector('.mq-err.show');
+        if (firstErr) firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+
+      try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: new FormData(form)
+        });
+        const result = await response.json();
+        if (result.success) {
+          if (typeof trackQuoteForm === 'function') trackQuoteForm();
+          form.style.display = 'none';
+          if (trust) trust.style.display = 'none';
+          success.classList.add('show');
+        } else {
+          alert('Submission failed. Please try again or contact us on WhatsApp.');
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = SUBMIT_HTML;
+        }
+      } catch (err) {
+        alert('An error occurred. Please try again.');
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = SUBMIT_HTML;
+      }
+    });
+  })();
+
+})();
+</script>
