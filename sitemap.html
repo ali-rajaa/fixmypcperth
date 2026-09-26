@@ -1,0 +1,66 @@
+---
+layout: default
+css: service
+title: "Sitemap | FixMyPC Perth"
+description: "Every page on the FixMyPC Perth website, grouped by category: repair services, pricing, business IT support, suburbs, Tech Tips and legal pages."
+permalink: /sitemap.html
+heading: "Sitemap"
+---
+{%- comment -%}
+  /sitemap   every page on the site, for people. Built from the same list
+  as sitemap.xml (_includes/site-pages.html), so the two always match and
+  a new page appears here without editing this file. Linked from the
+  footer.
+{%- endcomment -%}
+{%- include site-pages.html -%}
+{%- assign _groups = "Main pages|Repair services|Business IT support|Computer repairs by suburb|Tech Tips|Legal|Other pages" | split: "|" -%}
+{%- capture _arrow %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>{% endcapture -%}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.fixmypcperth.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Sitemap", "item": "https://www.fixmypcperth.com/sitemap"}
+  ]
+}
+</script>
+
+<article class="sv">
+  <header class="sv-head">
+    <nav class="sv-crumbs" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="{{ '/' | relative_url }}">Home</a></li>
+        <li><span aria-current="page">Sitemap</span></li>
+      </ol>
+    </nav>
+    <h1 class="sv-h1">Sitemap</h1>
+    <p class="sv-lede">Every page on the site, grouped by what it covers.</p>
+  </header>
+
+  {%- for _gname in _groups %}
+  {%- case forloop.index -%}
+    {%- when 1 -%}{%- assign _g = _sm_main -%}
+    {%- when 2 -%}{%- assign _g = _sm_services -%}
+    {%- when 3 -%}{%- assign _g = _sm_business -%}
+    {%- when 4 -%}{%- assign _g = _sm_suburbs -%}
+    {%- when 5 -%}{%- assign _g = _sm_tips -%}
+    {%- when 6 -%}{%- assign _g = _sm_legal -%}
+    {%- else -%}{%- assign _g = _sm_other -%}
+  {%- endcase -%}
+  {%- if _g.size > 0 %}
+  <section class="sv-more" aria-labelledby="sm-{{ forloop.index }}">
+    <h2 class="sv-h2" id="sm-{{ forloop.index }}">{{ _gname }}</h2>
+    <ul class="sv-links">
+      {%- for _p in _g %}
+      {%- include page-label.html p=_p %}
+      {%- assign _u = _p.url | remove: ".html" %}
+      {%- if _u == "/index" %}{% assign _u = "/" %}{% endif %}
+      <li><a href="{{ _u | relative_url }}"{% if _p.url == page.url %} aria-current="page"{% endif %}><span>{{ _lbl | escape }}</span>{{ _arrow }}</a></li>
+      {%- endfor %}
+    </ul>
+  </section>
+  {%- endif %}
+  {%- endfor %}
+</article>

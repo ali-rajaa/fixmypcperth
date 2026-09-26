@@ -3,25 +3,48 @@ layout: none
 permalink: /sitemap.xml
 ---
 {%- comment -%}
-  Built from the pages themselves, so a new page is listed the moment it
-  exists. Left out: any page with `sitemap: false` or `noindex: true` in
-  its front matter (the 404 page), and anything that is not an HTML page.
-  URLs are the clean form the site links to: no .html, no trailing slash.
-  lastmod is the page's `updated` or `date` where it has one, otherwise
-  the build date.
+  The XML sitemap for Google. Pages and their grouping come from
+  _includes/site-pages.html (the same list /sitemap shows people), in
+  category order: main, repair services, business IT, suburbs, Tech Tips,
+  legal, then anything new that fits no group yet.
+
+  lastmod is the date the page's own file last changed, from git history,
+  written to _data/lastmod.yml by the build workflow just before Jekyll
+  runs. Without that file (a local build) it falls back to the page's
+  `updated` or `date`, and otherwise leaves lastmod out, rather than
+  stamping every page with the build date, which tells Google nothing.
 {%- endcomment -%}
+{%- include site-pages.html -%}
+{%- assign _groups = "Main pages|Repair services|Business IT support|Suburbs|Tech Tips|Legal and site|Other" | split: "|" -%}
+{%- capture _nl %}
+{% endcapture -%}
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-{%- assign _pages = site.pages | sort: "url" -%}
-{%- for _p in _pages -%}
-  {%- unless _p.url contains ".html" or _p.url == "/" -%}{%- continue -%}{%- endunless -%}
-  {%- if _p.sitemap == false or _p.noindex -%}{%- continue -%}{%- endif -%}
-  {%- assign _u = _p.url | remove: ".html" -%}
-  {%- if _u == "/index" -%}{%- assign _u = "/" -%}{%- endif -%}
-  {%- assign _mod = _p.updated | default: _p.date | default: site.time -%}
+{%- for _gname in _groups -%}
+  {%- case forloop.index -%}
+    {%- when 1 -%}{%- assign _g = _sm_main -%}
+    {%- when 2 -%}{%- assign _g = _sm_services -%}
+    {%- when 3 -%}{%- assign _g = _sm_business -%}
+    {%- when 4 -%}{%- assign _g = _sm_suburbs -%}
+    {%- when 5 -%}{%- assign _g = _sm_tips -%}
+    {%- when 6 -%}{%- assign _g = _sm_legal -%}
+    {%- else -%}{%- assign _g = _sm_other -%}
+  {%- endcase -%}
+  {%- if _g.size > 0 %}
+
+  <!-- {{ _gname }} ({{ _g.size }}) -->
+  {%- for _p in _g -%}
+    {%- assign _u = _p.url | remove: ".html" -%}
+    {%- if _u == "/index" -%}{%- assign _u = "/" -%}{%- endif -%}
+    {%- assign _mod = site.data.lastmod[_p.path] | default: _p.updated | default: _p.date %}
   <url>
     <loc>https://www.fixmypcperth.com{{ _u }}</loc>
+    {%- if _mod %}
     <lastmod>{{ _mod | date: "%Y-%m-%d" }}</lastmod>
+    {%- endif %}
   </url>
+  {%- endfor -%}
+  {%- endif -%}
 {%- endfor %}
+
 </urlset>

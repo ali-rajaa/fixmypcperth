@@ -1,0 +1,53 @@
+{%- comment -%}
+  site-pages.html   Every page that belongs in a sitemap, grouped by
+  category, in display order. Used by sitemap.xml and /sitemap, so the two
+  always list exactly the same pages. Sets (Jekyll includes share the
+  caller's variables):
+    _sm_main _sm_services _sm_business _sm_suburbs _sm_tips _sm_legal
+    _sm_other   arrays of page objects
+  Left out: pages with `sitemap: false` or `noindex: true` (the 404), and
+  anything that is not an HTML page. _sm_other is the safety net: any new
+  page that fits no rule below still gets listed, so nothing is ever
+  missed. Order inside groups: main and legal as listed here; services in
+  _data/suburbs.yml order (search demand); business hub first then A-Z by name;
+  suburbs A-Z by name; Tech Tips hub first then _data/techtips.yml order.
+{%- endcomment -%}
+{%- assign _sm_pool = "" | split: "" -%}
+{%- for _p in site.pages -%}
+  {%- unless _p.url contains ".html" or _p.url == "/" -%}{%- continue -%}{%- endunless -%}
+  {%- if _p.sitemap == false or _p.noindex -%}{%- continue -%}{%- endif -%}
+  {%- assign _sm_pool = _sm_pool | push: _p -%}
+{%- endfor -%}
+{%- assign _sm_done = "" | split: "" -%}
+
+{%- assign _sm_main = "" | split: "" -%}
+{%- assign _urls = "/,/services.html,/pricing.html,/pc-health-check-perth.html,/reviews.html,/quote-request.html" | split: "," -%}
+{%- for _u in _urls -%}{%- assign _p = _sm_pool | where: "url", _u | first -%}{%- if _p -%}{%- assign _sm_main = _sm_main | push: _p -%}{%- assign _sm_done = _sm_done | push: _u -%}{%- endif -%}{%- endfor -%}
+
+{%- assign _sm_services = "" | split: "" -%}
+{%- assign _svc = site.data.suburbs.service_links | where: "kind", "service" | where: "built", true -%}
+{%- for _v in _svc -%}{%- assign _u = "/" | append: _v.slug | append: ".html" -%}{%- assign _p = _sm_pool | where: "url", _u | first -%}{%- if _p -%}{%- assign _sm_services = _sm_services | push: _p -%}{%- assign _sm_done = _sm_done | push: _u -%}{%- endif -%}{%- endfor -%}
+
+{%- assign _sm_business = "" | split: "" -%}
+{%- assign _p = _sm_pool | where: "url", "/business-it-support.html" | first -%}
+{%- if _p -%}{%- assign _sm_business = _sm_business | push: _p -%}{%- assign _sm_done = _sm_done | push: _p.url -%}{%- endif -%}
+{%- assign _ind = _sm_pool | sort: "title" -%}
+{%- for _p in _ind -%}{%- if _p.url contains "/it-support-" -%}{%- assign _sm_business = _sm_business | push: _p -%}{%- assign _sm_done = _sm_done | push: _p.url -%}{%- endif -%}{%- endfor -%}
+
+{%- assign _sm_suburbs = "" | split: "" -%}
+{%- assign _subs = _sm_pool | where: "layout", "suburb" | sort: "suburb" -%}
+{%- for _p in _subs -%}{%- assign _sm_suburbs = _sm_suburbs | push: _p -%}{%- assign _sm_done = _sm_done | push: _p.url -%}{%- endfor -%}
+
+{%- assign _sm_tips = "" | split: "" -%}
+{%- assign _p = _sm_pool | where: "url", "/tech-tips.html" | first -%}
+{%- if _p -%}{%- assign _sm_tips = _sm_tips | push: _p -%}{%- assign _sm_done = _sm_done | push: _p.url -%}{%- endif -%}
+{%- assign _posts = site.data.techtips.posts | where: "built", true -%}
+{%- for _t in _posts -%}{%- assign _u = "/tech-tips/" | append: _t.slug | append: ".html" -%}{%- assign _p = _sm_pool | where: "url", _u | first -%}{%- if _p -%}{%- assign _sm_tips = _sm_tips | push: _p -%}{%- assign _sm_done = _sm_done | push: _u -%}{%- endif -%}{%- endfor -%}
+
+{%- assign _sm_legal = "" | split: "" -%}
+{%- assign _urls = "/terms.html,/privacy.html,/sitemap.html" | split: "," -%}
+{%- for _u in _urls -%}{%- assign _p = _sm_pool | where: "url", _u | first -%}{%- if _p -%}{%- assign _sm_legal = _sm_legal | push: _p -%}{%- assign _sm_done = _sm_done | push: _u -%}{%- endif -%}{%- endfor -%}
+
+{%- assign _sm_other = "" | split: "" -%}
+{%- assign _rest = _sm_pool | sort: "url" -%}
+{%- for _p in _rest -%}{%- unless _sm_done contains _p.url -%}{%- assign _sm_other = _sm_other | push: _p -%}{%- endunless -%}{%- endfor -%}

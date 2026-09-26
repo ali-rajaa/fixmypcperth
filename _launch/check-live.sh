@@ -21,6 +21,9 @@ urls=$(echo "$sm" | grep -o '<loc>[^<]*' | sed 's/<loc>//')
 count=$(echo "$urls" | grep -c .)
 [ "$count" -ge 50 ] && ok "sitemap lists $count pages" || bad "sitemap lists only $count pages"
 echo "$urls" | grep -q '\.html' && bad "sitemap contains .html addresses" || ok "sitemap has clean addresses only"
+nlm=$(grep -c "<lastmod>" <<<"$sm"); [ "$nlm" -eq "$count" ] && ok "every sitemap page has a real lastmod date" || bad "only $nlm of $count sitemap pages have a lastmod"
+grep -q "<!-- Repair services" <<<"$sm" && ok "sitemap is grouped by category" || bad "sitemap is not grouped"
+sp=$(curl -s -o /dev/null -w "%{http_code}" --max-time 20 "$BASE/sitemap"); [ "$sp" = "200" ] && ok "/sitemap page loads" || bad "/sitemap returned $sp"
 nf=0
 for u in $urls; do
   c=$(curl -s -o /dev/null -w "%{http_code}" --max-time 20 "$u")

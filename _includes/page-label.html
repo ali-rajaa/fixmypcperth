@@ -1,0 +1,26 @@
+{%- comment -%}
+  page-label.html   A short display name for page `include.p`, for the
+  /sitemap page. Sets _lbl. Fixed names for the main and legal pages
+  (their titles carry price tokens or taglines); service pages use their
+  short label from _data/suburbs.yml; otherwise the page's heading, then its suburb name, then the part of its title before " | ".
+{%- endcomment -%}
+{%- assign _q = include.p -%}
+{%- case _q.url -%}
+  {%- when "/" -%}{%- assign _lbl = "Home" -%}
+  {%- when "/services.html" -%}{%- assign _lbl = "All services" -%}
+  {%- when "/pricing.html" -%}{%- assign _lbl = "Pricing" -%}
+  {%- when "/pc-health-check-perth.html" -%}{%- assign _lbl = "Free PC Health Check" -%}
+  {%- when "/reviews.html" -%}{%- assign _lbl = "Reviews and FAQ" -%}
+  {%- when "/quote-request.html" -%}{%- assign _lbl = "Get a quote" -%}
+  {%- when "/business-it-support.html" -%}{%- assign _lbl = "Business IT Support" -%}
+  {%- when "/tech-tips.html" -%}{%- assign _lbl = "All Tech Tips" -%}
+  {%- when "/terms.html" -%}{%- assign _lbl = "Terms and Conditions" -%}
+  {%- when "/privacy.html" -%}{%- assign _lbl = "Privacy Policy" -%}
+  {%- when "/sitemap.html" -%}{%- assign _lbl = "Sitemap" -%}
+  {%- else -%}
+    {%- assign _svl = site.data.suburbs.service_links | where: "slug", _q.slug | where: "kind", "service" | first -%}
+    {%- if _svl -%}{%- assign _lbl = _svl.label -%}{%- else -%}
+    {%- assign _lbl = _q.heading | default: _q.suburb -%}
+    {%- unless _lbl -%}{%- assign _lbl = _q.title | split: " | " | first -%}{%- endunless -%}
+    {%- endif -%}
+{%- endcase -%}

@@ -27,6 +27,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Full history, so _tools/lastmod.sh can date every page for the
+          # sitemap from its last real change.
+          fetch-depth: 0
 
       - uses: ruby/setup-ruby@v1
         with:
@@ -34,6 +38,9 @@ jobs:
           bundler-cache: true
 
       - uses: actions/configure-pages@v5
+
+      - name: Page dates for the sitemap
+        run: bash _tools/lastmod.sh
 
       - name: Build
         run: bundle exec jekyll build --trace
