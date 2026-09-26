@@ -1,13 +1,19 @@
 # STATUS
 
-Where the staging rebuild is up to. Kept in the repo so any new chat can
-read one file instead of being re-told everything.
+Where the site is up to. Kept in the repo so any new chat can read one
+file instead of being re-told everything.
+
+**Live only.** The staging repo and staging.fixmypcperth.com were deleted
+on purpose (26 Sep 2026). All work happens in `ali-rajaa/fixmypcperth` and
+is pushed straight to `main`, which deploys www.fixmypcperth.com. There is
+no preview, so verify locally (build, verify_page.py, screenshots) before
+every push, and show the owner screenshots first for bigger changes.
 
 **Read this first, then work from the live repo.** The house rules live in
 the `fixmypcperth-jekyll` skill, which loads on its own. Do not re-decide
 anything listed under "Locked decisions" there or here.
 
-Last updated: 25 September 2026.
+Last updated: 26 September 2026.
 
 ---
 
@@ -15,17 +21,17 @@ Last updated: 25 September 2026.
 
 Say this:
 
-> Working on fixmypcperth-staging. Pull the live repo and read STATUS.md,
-> then continue with <the task>.
+> Working on fixmypcperth (live only). Read STATUS.md, then continue
+> with <the task>.
 
 Pull files raw, with a cache-buster, not the codeload tarball: the tarball
 serves a cached archive and has reported a finished push as missing.
 
-    https://raw.githubusercontent.com/ali-rajaa/fixmypcperth-staging/main/<path>?x=<random>
+    https://raw.githubusercontent.com/ali-rajaa/fixmypcperth/main/<path>?x=<random>
 
 Run `scripts/verify_page.py` from the skill on every page touched, before
-delivering anything. Staging is the only preview, so that script is the
-only safety net.
+delivering anything. There is no staging preview any more, so that script
+and a local build are the only safety net.
 
 ---
 
@@ -501,9 +507,9 @@ options. No phone call option, on any form.
 bulk list `fixmypcperth_launch` holds the 73 redirects and is live.
 "Verify live site" (Actions, run on demand): 9 of 9 live checks and 73 of
 73 redirects pass; 15 old .html addresses take two hops because a
-Cloudflare .html rule runs first, which is fine. Staging stays as the
-private preview (noindex). Keep both repos identical except CNAME and
-`staging`.
+Cloudflare .html rule runs first, which is fine. Staging was later deleted on
+purpose; the live repo is the only one (`staging: false` stays in
+_config.yml).
 
 **After launch (SEO audit, applied 26 Sep 2026):**
 
