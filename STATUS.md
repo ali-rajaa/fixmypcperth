@@ -513,6 +513,10 @@ classes added to its stylesheet's block; never a one-off number.
 Exempt: the trust ticker strip, and chips (their own 8 gap).
 `shell.css` cannot use `var()`, so its phone button block writes 48px.
 
+Check it on the live site: Actions > Verify live site > Run workflow. The
+"Mobile standard" step (`_launch/mobile-check.js`) measures every page in
+the sitemap at 390px and 360px and fails on anything off the standard.
+
 ---
 
 ## Tech Tips rules

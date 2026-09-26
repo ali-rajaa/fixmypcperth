@@ -1,7 +1,8 @@
 # Run by hand (Actions > Verify live site > Run workflow) after launch, or
 # any time. It runs on GitHub's servers, so it can reach the live site from
 # anywhere. Checks all 72 redirects, robots.txt, the sitemap and every page
-# in it, the 404 page, the apex redirect.
+# in it, the 404 page, the apex redirect, and the mobile standard (every
+# page on a 390px and a 360px phone, _launch/mobile-check.js).
 name: Verify live site
 
 on:
@@ -20,3 +21,9 @@ jobs:
       - name: Redirects
         if: always()
         run: bash _launch/test-redirects.sh
+      - name: Mobile standard
+        if: always()
+        run: |
+          npm install --no-save --no-audit --no-fund playwright@1
+          npx playwright install --with-deps chromium
+          node _launch/mobile-check.js

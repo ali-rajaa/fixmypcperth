@@ -126,6 +126,7 @@ The old site is back as it was within a few minutes.
 | `_launch/cloudflare-bulk-redirects.csv` | The 72 redirects, ready to upload |
 | `_launch/test-redirects.sh` | Checks every redirect after launch |
 | `_launch/check-live.sh` | Checks robots, sitemap pages, 404, apex, staging noindex |
+| `_launch/mobile-check.js` | Measures every live page on a 390px and 360px phone against the mobile standard |
 | `.github/workflows/verify-live.yml` | Runs both checks on GitHub's servers, on demand |
 | `robots.txt` | Allows crawling on both; names the sitemap only when `staging: false`. Staging stays out of Google by noindex |
 | `sitemap.xml` | Built from the pages; add `sitemap: false` to a page to leave it out |
