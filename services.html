@@ -1,0 +1,100 @@
+---
+layout: default
+css: service
+title: "Computer Repair Services Perth | All Repairs | FixMyPC Perth"
+description: "Every computer and laptop repair we do in Perth, with fixed prices: laptops, screens, viruses, data recovery, slow PCs, Windows, gaming PCs and upgrades."
+slug: services
+heading: "Computer Repair Services in Perth"
+---
+{%- comment -%}
+  /services   the hub for the nine service pages.
+
+  Built from _data/suburbs.yml service_links (kind: service, built: true),
+  in the order listed there, so a new service page appears here the moment
+  its flag is set. The "from" price on each card is that entry's from_key,
+  chosen as the page's lowest core repair (add-ons excluded).
+
+  Keyword targeting (GSC, 16 months): computer repairs services (46, pos
+  32), computer repair services, computer repair shop (47), pc repair shop
+  (78). Not "computer repair perth": the homepage owns that.
+
+  Styles: service.css (the sv- design), plus the .sv-hub rules in it.
+{%- endcomment -%}
+{%- assign _R = site.data.reviews.meta -%}
+{%- assign _svcs = site.data.suburbs.service_links | where: "kind", "service" | where: "built", true -%}
+{%- assign _url = "https://www.fixmypcperth.com/services" -%}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Computer repair services in Perth",
+  "itemListElement": [
+    {%- for _v in _svcs -%}
+    {%- unless forloop.first %},{% endunless %}
+    { "@type": "ListItem", "position": {{ forloop.index }}, "name": {{ _v.label | jsonify }}, "url": "https://www.fixmypcperth.com/{{ _v.slug }}" }
+    {%- endfor %}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.fixmypcperth.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Services", "item": "{{ _url }}"}
+  ]
+}
+</script>
+
+<article class="sv">
+  <header class="sv-head">
+    <nav class="sv-crumbs" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="{{ '/' | relative_url }}">Home</a></li>
+        <li><span aria-current="page">Services</span></li>
+      </ol>
+    </nav>
+    <span class="sv-eyebrow">Services</span>
+    <h1 class="sv-h1">{{ page.heading | escape }}</h1>
+    <p class="sv-lede">Every computer and laptop repair we do, from our workshop in Canning Vale. Each one is a fixed price agreed before we start, most jobs are ready the same day, and every repair carries a 30-day warranty. Choose the one that sounds like yours, or message us and we will tell you.</p>
+    {%- capture _tick %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>{% endcapture %}
+    <ul class="sv-promise" aria-label="Every repair includes">
+      <li>{{ _tick }}Fixed price first</li>
+      <li>{{ _tick }}Same day on most jobs</li>
+      <li>{{ _tick }}30-day warranty</li>
+      {%- if _R.rating %}<li>{{ _tick }}Rated {{ _R.rating }} on Google</li>{% endif %}
+    </ul>
+  </header>
+
+  <ul class="sv-hub" aria-label="Our repair services">
+    {%- for _v in _svcs %}
+    <li class="sv-hub-item">
+      <a class="sv-hub-link" href="{{ '/' | append: _v.slug | relative_url }}">
+        <span class="sv-hub-name">{{ _v.label | escape }}</span>
+        <span class="sv-hub-sum">{{ _v.summary | escape }}</span>
+        <span class="sv-hub-foot">
+          {%- if _v.from_key %}<span class="sv-hub-price">From {% include price.html key=_v.from_key bare=true %}</span>{% endif %}
+          <span class="sv-hub-go">Details<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></span>
+        </span>
+      </a>
+    </li>
+    {%- endfor %}
+  </ul>
+
+  <section class="sv-more sv-hub-help" aria-labelledby="unsure-h">
+    <h2 class="sv-h2" id="unsure-h">Not sure which one it is?</h2>
+    <div class="sv-prose">
+      <p>That is normal. Most people only know what the computer is doing, not why. The all-in diagnostic is a flat {% include price.html key="diagnostic-repair-all-in" bare=true %} that finds the fault and covers the repair labour, never an hourly rate. Or try the <a href="{{ '/pc-health-check-perth' | relative_url }}">Free PC Health Check</a>, which tells you what a symptom usually means and how urgent it is.</p>
+      <p>Every price is on the <a href="{{ '/pricing' | relative_url }}">full price list</a>, and businesses have their own page for <a href="{{ '/business-it-support' | relative_url }}">Business IT Support</a>.</p>
+    </div>
+    <div class="sv-act">
+      <a href="https://wa.me/61452573701?text={{ "Hi! I'd like a quote for a computer repair." | uri_escape }}" target="_blank" rel="noopener noreferrer" class="sv-btn sv-btn-wa" onclick="trackWAClick()">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>
+        Get a quote on WhatsApp
+      </a>
+      <a href="{{ '/quote-request' | relative_url }}" class="sv-act-link">Or use the quote form</a>
+    </div>
+  </section>
+</article>

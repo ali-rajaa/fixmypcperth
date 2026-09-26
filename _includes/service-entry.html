@@ -1,0 +1,35 @@
+{%- comment -%}
+  service-entry.html   Looks up one priced entry by key for the service
+  layout. Sets:
+    _s       the entry itself (services, add-ons, or a per-service option)
+    _e_name  display name
+    _e_desc  the note shown with the price
+    _e_num   the bare number for schema.org, empty for text prices ("Free")
+    _e_from  true when the price is a starting price
+
+  Order: services, then add-ons, then the per-service options lists (the
+  laptop screen tiers). An option has no name that reads well alone, so it
+  borrows its parent's: "Laptop Screen Replacement, Touchscreen". Jekyll
+  includes share the caller's variables, which is how these get back out.
+{%- endcomment -%}
+{%- assign _s = site.data.services.services | where: "key", include.key | first -%}
+{%- unless _s -%}{%- assign _s = site.data.services.addons | where: "key", include.key | first -%}{%- endunless -%}
+{%- if _s -%}
+  {%- assign _e_name = _s.name -%}
+  {%- assign _e_desc = _s.desc -%}
+  {%- assign _e_from = false -%}{%- if _s.prefix == "from" -%}{%- assign _e_from = true -%}{%- endif -%}
+{%- else -%}
+  {%- for _parent in site.data.services.services -%}
+    {%- if _parent.options -%}
+      {%- assign _opt = _parent.options | where: "key", include.key | first -%}
+      {%- if _opt -%}
+        {%- assign _s = _opt -%}
+        {%- capture _e_name -%}{{ _parent.name }}, {{ _opt.name }}{%- endcapture -%}
+        {%- assign _e_desc = _opt.note -%}
+        {%- assign _e_from = false -%}
+        {%- break -%}
+      {%- endif -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endif -%}
+{%- assign _e_num = _s.price -%}

@@ -1,0 +1,485 @@
+---
+layout: default
+css: industry
+title: "IT Support for Warehousing Perth | From [[business-it-essential]] a Month"
+description: "Managed IT support for Perth warehousing and logistics. Scanner wifi that reaches the racking, despatch uptime and tested backups. Canning Vale based."
+---
+{%- comment -%}
+  Industry page, built on the allied-health pattern.
+  Shares assets/css/pages/industry.css with the whole cluster.
+
+  Fixed from the live page: 27 broken ../ links (these pages sit at the site
+  root, so every one resolved above it), the "Why Perth <industry> Choose
+  FixMyPC Perth" and "problems we see in" claims (there are no clients in this
+  sector), "no obligation" phrasing, hardcoded plan prices now pulled from
+  _data/services.yml, and FAQ schema generated from the visible FAQ so the two
+  cannot drift apart.
+
+  Added: the compliance section, and an on-page audit form so the CTAs stop
+  sending people to the hub to convert. No WhatsApp route on these pages.
+{%- endcomment -%}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": "https://www.fixmypcperth.com/it-support-warehousing-logistics-perth#service",
+  "serviceType": "Managed IT Support for Warehousing and Logistics",
+  "name": "IT Support for Warehousing and Logistics Businesses in Perth",
+  "description": "Managed IT support for Perth warehouses, wholesalers and distributors. Warehouse wifi coverage, barcode scanners and label printers, despatch uptime and tested backups.",
+  "url": "https://www.fixmypcperth.com/it-support-warehousing-logistics-perth",
+  "provider": {
+    "@type": "LocalBusiness",
+    "@id": "https://www.fixmypcperth.com/#business",
+    "name": "FixMyPC Perth",
+    "telephone": "+61452573701",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "7 Barraberry Retreat",
+      "addressLocality": "Canning Vale",
+      "addressRegion": "WA",
+      "postalCode": "6155",
+      "addressCountry": "AU"
+    },
+    "geo": { "@type": "GeoCoordinates", "latitude": -32.0697802, "longitude": 115.9245929 }
+  },
+  "areaServed": [
+    {"@type": "City", "name": "Perth"},
+    {"@type": "AdministrativeArea", "name": "Canning Vale"},
+    {"@type": "AdministrativeArea", "name": "Willetton"},
+    {"@type": "AdministrativeArea", "name": "Thornlie"},
+    {"@type": "AdministrativeArea", "name": "Cannington"},
+    {"@type": "AdministrativeArea", "name": "Jandakot"},
+    {"@type": "AdministrativeArea", "name": "Cockburn"},
+    {"@type": "AdministrativeArea", "name": "Harrisdale"},
+    {"@type": "AdministrativeArea", "name": "Huntingdale"}
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Managed IT Support Plans",
+    "itemListElement": [
+      {%- assign first = true -%}
+      {%- for pl in site.data.services.plans -%}
+      {%- unless first %},{% endunless %}{%- assign first = false -%}
+      {
+        "@type": "Offer",
+        "name": {{ pl.name | append: " managed IT plan" | jsonify }},
+        "description": {{ pl.covers | jsonify }},
+        "price": "{{ pl.price }}",
+        "priceCurrency": "{{ site.data.services.meta.currency }}",
+        "availability": "https://schema.org/InStock",
+        "seller": {"@id": "https://www.fixmypcperth.com/#business"}
+      }
+      {%- endfor -%}
+    ]
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.fixmypcperth.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Business IT Support", "item": "https://www.fixmypcperth.com/business-it-support"},
+    {"@type": "ListItem", "position": 3, "name": "Warehousing and Logistics", "item": "https://www.fixmypcperth.com/it-support-warehousing-logistics-perth"}
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What IT support do warehousing and wholesale businesses in Perth need?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Warehouse operations depend on a handful of systems that have to stay up during picking and despatch: the warehouse or inventory management system, barcode scanners and label printers, site wifi that reaches the full floor, and the accounting or ERP package behind it. FixMyPC Perth covers all of these under one fixed monthly plan starting at {% include price.html key='business-it-essential' bare=true raw=true %} a month, with no lock-in contract."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does IT support for a warehouse cost in Perth?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Plans start at {% include price.html key='business-it-essential' bare=true raw=true %} a month for up to 5 PCs, {% include price.html key='business-it-business' bare=true raw=true %} for up to 10 and {% include price.html key='business-it-premium' bare=true raw=true %} for up to 20. Extra devices beyond the plan limit are {% include price.html key='business-it-essential' extra=true raw=true %}, {% include price.html key='business-it-business' extra=true raw=true %} or {% include price.html key='business-it-premium' extra=true raw=true %} a month depending on the plan. Scanners, label printers and tablets on the floor are counted as devices, so tell us the real number and we will price it properly rather than guessing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Our scanners keep dropping off the wifi. Can you fix that?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Usually yes, and it is the most common problem we are called about in a warehouse. Racking is effectively a wall of metal, so a wifi setup that tested fine in an empty shed often fails once the racks are full and stock is moving. It is generally an access point placement and coverage problem rather than a broken scanner, and it is fixable."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you support warehouse and inventory management systems?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We support the machines, network and connectivity those systems run on, and we work with your software vendor when the issue is inside the application itself. That covers the workstations, the scanners, the label printers, the site network and the backups. We are not a WMS vendor and we do not customise the software."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens if the despatch PC dies mid-shift?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "That is exactly what a managed plan is for. We monitor drive health and disk space so failing hardware is usually caught before it stops, we keep a documented picture of how your setup is configured so a replacement can be built quickly, and backups are tested so the data comes back. Emergency on-site attendance is within 4 hours on weekdays and 3 on weekends across the southern Perth corridor."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you cover warehouses in the Canning Vale industrial area?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, and it is close to home for us. Our workshop is in Canning Vale, so the industrial precinct around Bannister Road, Kewdale, Welshpool, Jandakot and Forrestdale is a short drive rather than a call-out across the city. Remote support covers anywhere in Perth."
+      }
+    }
+  ]
+}
+</script>
+
+<div class="article-wrap">
+  <div class="post-breadcrumb">
+    <a href="/business-it-support">Business IT Support</a>
+    <span>/</span>
+    <span>Warehousing &amp; Logistics</span>
+  </div>
+  <span class="post-cat">Industry IT Support</span>
+  <h1 class="post-h1">IT Support for Warehousing and Logistics Businesses in Perth</h1>
+  <div class="post-meta">
+    <span class="post-meta-author">FixMyPC Perth</span>
+    <span>&middot;</span>
+    <span>Canning Vale, Perth WA</span>
+    <span>&middot;</span>
+    <span>From {% include price.html key='business-it-essential' bare=true raw=true %} per month</span>
+  </div>
+
+  <div class="summary-box">
+    <div class="summary-box-title">What this page covers</div>
+    <ul>
+      <li>Why warehouse and wholesale operations need proactive IT support</li>
+      <li>The failures that stop picking and despatch, and what causes them</li>
+      <li>What we cover, and what we do not</li>
+      <li>Plan pricing, monthly, with no lock-in</li>
+    </ul>
+  </div>
+
+  <div class="post-body">
+    <p>
+      We are based in Canning Vale, which means the businesses closest to our
+      workshop are warehouses, wholesalers and distributors. It is one of
+      Perth's two main industrial precincts, and the pattern in there is
+      consistent: an operation that runs perfectly well until one specific thing
+      fails, and then nothing moves at all.
+    </p>
+    <p>
+      A warehouse is different from an office. In an office a failed PC is one
+      person having a bad morning. In a warehouse, a scanner that will not
+      connect stops the whole pick, and a label printer that goes offline stops
+      despatch entirely. The work does not slow down, it stops, and it stays
+      stopped until someone fixes the thing.
+    </p>
+
+    <div class="stat-row">
+      <div class="stat-box"><span class="stat-val">{% include price.html key='business-it-essential' bare=true raw=true %}</span><span class="stat-lbl">Starting from per month</span></div>
+      <div class="stat-box"><span class="stat-val">4 hrs</span><span class="stat-lbl">Emergency on-site response</span></div>
+      <div class="stat-box"><span class="stat-val">0</span><span class="stat-lbl">Lock-in contracts</span></div>
+    </div>
+
+    <h2>What goes wrong in a warehouse</h2>
+    <p>
+      The failures in this sector are specific and they repeat. Almost all of
+      them are preventable with the right arrangement in place.
+    </p>
+    <ul class="check-list">
+      <li><span class="check-icon">!</span><strong>Scanners dropping off the wifi mid-pick</strong> because racking is a wall of metal and a network that tested fine in an empty shed stops reaching the back aisles once the racks are full</li>
+      <li><span class="check-icon">!</span><strong>Label and despatch printers going offline</strong> after a driver update or an IP change, usually at the worst possible point in the afternoon run</li>
+      <li><span class="check-icon">!</span><strong>The warehouse management system slowing to a crawl</strong> when the database sits on an ageing server under a desk that nobody has looked at in three years</li>
+      <li><span class="check-icon">!</span><strong>One despatch PC that everything depends on</strong> with no documented build, no spare, and no recent backup, so a failed drive costs a day rather than an hour</li>
+      <li><span class="check-icon">!</span><strong>Office and floor on the same flat network</strong> so anything that gets onto the guest or staff wifi has a clear path to the systems running the operation</li>
+      <li><span class="check-icon">!</span><strong>Stock and sales history living only on the system that generated it</strong> with backup retention set to whatever the software defaulted to, which is usually well short of what the ATO expects</li>
+    </ul>
+
+    <h2>Records, retention and what the ATO expects</h2>
+    <p>
+      The <strong>ATO</strong> requires most business records to be kept for
+      <strong>5 years</strong>, and if you trade through a company, section 286
+      of the <strong>Corporations Act 2001</strong> requires financial records
+      for <strong>7 years</strong>. For a distribution business that means stock
+      movements, invoices, despatch records and the reports your system
+      generates, all of which usually live in one place.
+    </p>
+    <p>
+      If you handle food, the retention question gets sharper. Traceability
+      records under the Food Standards Code have to show one step back and one
+      step forward for every consignment, and that only works if the system
+      holding them is still readable. Dangerous goods and freight documentation
+      carries its own record requirements too.
+    </p>
+    <div class="callout callout-blue">
+      <strong>The question worth asking:</strong> if the server running your
+      warehouse system failed tonight, how long until you could despatch again,
+      and could you still produce five years of stock records? For a lot of
+      operations the honest answer is that nobody has tested it. That is a
+      different problem from not having a backup, and it is the one that hurts.
+    </div>
+    <p>
+      We set retention to match the obligation rather than the default, test that
+      the data actually restores, and keep a documented picture of how the
+      operation is put together so a rebuild is a few hours rather than a guess.
+      We are not accountants or food safety auditors, and we do not certify
+      compliance. We make sure the systems holding your records are not the
+      weak point.
+    </p>
+
+    <h2>What we cover for a warehouse</h2>
+    <ul class="check-list">
+      <li><span class="check-icon">&#10003;</span><strong>Site wifi that reaches the whole floor</strong>, surveyed with the racks full rather than empty, so scanners hold their connection down every aisle</li>
+      <li><span class="check-icon">&#10003;</span><strong>Scanners, label printers and floor tablets</strong> kept connected, patched and replaced before they fail rather than after</li>
+      <li><span class="check-icon">&#10003;</span><strong>The machines your WMS and accounting run on</strong>, monitored for drive health and disk space so failures are caught early</li>
+      <li><span class="check-icon">&#10003;</span><strong>Network separation</strong> so the office, the floor systems and any guest access are not all sharing one flat network</li>
+      <li><span class="check-icon">&#10003;</span><strong>Backup with a tested restore</strong> and retention set to your actual record keeping obligation</li>
+      <li><span class="check-icon">&#10003;</span><strong>Your setup documented</strong>, so the answer to how despatch is configured is never "the last guy knew"</li>
+      <li><span class="check-icon">&#10003;</span><strong>New starters and leavers</strong> set up or locked out, which matters more in an operation with seasonal and casual staff</li>
+    </ul>
+
+    <div class="inline-cta">
+      <p class="inline-cta-title">Get your warehouse IT sorted, starting with a free audit</p>
+      <p class="inline-cta-desc">
+        We walk the floor, check your coverage where the racks actually are, look
+        at what happens if the despatch machine dies, and tell you what a plan
+        would cost. Most operations managers find it useful regardless of whether
+        they sign up.
+      </p>
+      <div class="inline-cta-btns">
+        <a href="#audit" class="inline-cta-btn">Book free IT audit</a>
+        <a href="/business-it-support#plans" class="inline-cta-btn-outline">View plans and pricing</a>
+      </div>
+    </div>
+
+    <h2>Why a local provider matters here</h2>
+    <p>
+      Our workshop is in Canning Vale. The industrial area around Bannister Road,
+      and out through Kewdale, Welshpool, Jandakot and Forrestdale, is a short
+      drive rather than a trip across the city. When despatch has stopped and the
+      trucks are waiting, the difference between a technician arriving in forty
+      minutes and one arriving after lunch is the difference between a delayed
+      run and a lost day.
+    </p>
+    <p>
+      It also means we know the buildings. Tilt-up concrete, high racking and
+      long spans are a genuinely hard wifi environment, and a lot of warehouse
+      network problems are the result of a setup designed for an office being
+      installed in a shed.
+    </p>
+
+    <h2>Other services we offer warehouses</h2>
+    <div class="service-links">
+      {%- assign _sl = site.data.suburbs.service_links | where: "slug", "data-recovery-perth" | first -%}
+      {%- if _sl.built %}
+      <a class="service-link-card" href="{{ '/data-recovery-perth' | relative_url }}">
+        <div><div class="service-link-label">Data Recovery Perth</div><div class="service-link-price">From {% include price.html key='data-recovery-failing-drive' bare=true raw=true %}</div></div>
+        <span class="service-link-arrow">&rarr;</span>
+      </a>
+      {%- endif %}
+      {%- assign _sl = site.data.suburbs.service_links | where: "slug", "computer-upgrades-perth" | first -%}
+      {%- if _sl.built %}
+      <a class="service-link-card" href="{{ '/computer-upgrades-perth' | relative_url }}">
+        <div><div class="service-link-label">Computer Upgrades Perth</div><div class="service-link-price">Speed up an ageing despatch PC</div></div>
+        <span class="service-link-arrow">&rarr;</span>
+      </a>
+      {%- endif %}
+      {%- assign _sl = site.data.suburbs.service_links | where: "slug", "data-recovery-perth" | first -%}
+      {%- if _sl.built %}
+      <a class="service-link-card" href="{{ '/data-recovery-perth#backup' | relative_url }}">
+        <div><div class="service-link-label">Computer Backup Setup</div><div class="service-link-price">One-off backup configuration</div></div>
+        <span class="service-link-arrow">&rarr;</span>
+      </a>
+      {%- endif %}
+      <a class="service-link-card" href="/pricing">
+        <div><div class="service-link-label">All repair prices</div><div class="service-link-price">Flat pricing, published</div></div>
+        <span class="service-link-arrow">&rarr;</span>
+      </a>
+    </div>
+
+    <h2>Other industries we work with</h2>
+    <div class="industry-links">
+      <a class="industry-pill" href="/it-support-accountants-perth">Accountants and Bookkeepers</a>
+      <a class="industry-pill" href="/it-support-allied-health-perth">Allied Health and Medical</a>
+      <a class="industry-pill" href="/it-support-childcare-perth">Childcare Centres</a>
+      <a class="industry-pill" href="/it-support-hospitality-perth">Cafes and Restaurants</a>
+      <a class="industry-pill" href="/it-support-legal-perth">Legal and Conveyancing</a>
+      <a class="industry-pill" href="/it-support-real-estate-perth">Real Estate</a>
+      <a class="industry-pill" href="/it-support-retail-perth">Retail</a>
+      <a class="industry-pill" href="/it-support-trades-perth">Trades and Construction</a>
+    </div>
+
+<div class="audit-block" id="audit">
+  <p class="audit-block-title">Book a free IT audit for your warehouse</p>
+  <p class="audit-block-desc">Tell us what your operation runs on and we will look at your floor coverage, what happens if the despatch machine dies, and what a plan would cost.</p>
+  <form id="auditForm" action="https://api.web3forms.com/submit" method="POST" class="audit-grid">
+    <input type="hidden" name="access_key" value="b00c2b06-22d4-4924-af92-5143e83ab186">
+    <input type="hidden" name="subject" value="Free IT Audit Request, Warehousing. FixMyPC Perth">
+    <input type="hidden" name="from_page" value="it-support-warehousing-logistics-perth">
+    <input type="hidden" name="botcheck" value="">
+
+    <div class="audit-input-group">
+      <label class="audit-label" for="af-business">Business name</label>
+      <input class="audit-input" id="af-business" name="business_name" type="text" placeholder="e.g. Bannister Road Distribution" autocomplete="organization" required>
+    </div>
+    <div class="audit-input-group">
+      <label class="audit-label" for="af-suburb">Your suburb</label>
+      <input class="audit-input" id="af-suburb" name="suburb" type="text" placeholder="e.g. Canning Vale, Willetton" autocomplete="address-level2" required>
+    </div>
+    <div class="audit-input-group">
+      <label class="audit-label" for="af-pcs">How many PCs?</label>
+      <select class="audit-select" id="af-pcs" name="pc_count">
+        <option value="1 to 5">1 to 5</option>
+        <option value="6 to 10">6 to 10</option>
+        <option value="11 to 20">11 to 20</option>
+        <option value="more than 20">More than 20</option>
+      </select>
+    </div>
+    <div class="audit-input-group">
+      <label class="audit-label" for="af-software">Warehouse or stock system</label>
+      <input class="audit-input" id="af-software" name="software" type="text" placeholder="e.g. Unleashed, Cin7, MYOB Advanced">
+    </div>
+    <div class="audit-input-group">
+      <label class="audit-label" for="af-email">Your email</label>
+      <input class="audit-input" id="af-email" name="email" type="email" placeholder="you@yourbusiness.com.au" autocomplete="email" required>
+    </div>
+    <div class="audit-input-group">
+      <label class="audit-label" for="af-phone">Your phone number</label>
+      <input class="audit-input" id="af-phone" name="phone" type="tel" placeholder="e.g. 0412 345 678" autocomplete="tel">
+    </div>
+    <div class="audit-input-group full">
+      <label class="audit-label" for="af-msg">What is giving you trouble? (optional)</label>
+      <input class="audit-input" id="af-msg" name="message" type="text" placeholder="e.g. scanners drop out in the back aisles">
+    </div>
+
+    <button class="audit-submit" type="submit">Request the audit</button>
+    <p class="audit-err" id="auditErr" hidden>That did not send. Please try again, or call 0452 573 701.</p>
+    <p class="audit-note">We will get back to you as fast as we can. Your details are used to answer your enquiry and nothing else.</p>
+  </form>
+  <div class="audit-done" id="auditDone" hidden>
+    <div class="audit-done-tick" aria-hidden="true">&#10003;</div>
+    <p class="audit-done-title">Request received.</p>
+    <p class="audit-done-text">We will come back to you as fast as we can, usually the same day. If it is urgent, call 0452 573 701.</p>
+  </div>
+</div>
+
+    <div class="faq-section">
+      <div class="faq-section-title">Frequently Asked Questions</div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          What IT support do warehousing and wholesale businesses in Perth need?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Warehouse operations depend on a handful of systems that have to stay up during picking and despatch: the warehouse or inventory management system, barcode scanners and label printers, site wifi that reaches the full floor, and the accounting or ERP package behind it. FixMyPC Perth covers all of these under one fixed monthly plan starting at {% include price.html key='business-it-essential' bare=true raw=true %} a month, with no lock-in contract.
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          How much does IT support for a warehouse cost in Perth?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Plans start at {% include price.html key='business-it-essential' bare=true raw=true %} a month for up to 5 PCs, {% include price.html key='business-it-business' bare=true raw=true %} for up to 10 and {% include price.html key='business-it-premium' bare=true raw=true %} for up to 20. Extra devices beyond the plan limit are {% include price.html key='business-it-essential' extra=true raw=true %}, {% include price.html key='business-it-business' extra=true raw=true %} or {% include price.html key='business-it-premium' extra=true raw=true %} a month depending on the plan. Scanners, label printers and tablets on the floor are counted as devices, so tell us the real number and we will price it properly rather than guessing.
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Our scanners keep dropping off the wifi. Can you fix that?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Usually yes, and it is the most common problem we are called about in a warehouse. Racking is effectively a wall of metal, so a wifi setup that tested fine in an empty shed often fails once the racks are full and stock is moving. It is generally an access point placement and coverage problem rather than a broken scanner, and it is fixable.
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Do you support warehouse and inventory management systems?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          We support the machines, network and connectivity those systems run on, and we work with your software vendor when the issue is inside the application itself. That covers the workstations, the scanners, the label printers, the site network and the backups. We are not a WMS vendor and we do not customise the software.
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          What happens if the despatch PC dies mid-shift?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          That is exactly what a managed plan is for. We monitor drive health and disk space so failing hardware is usually caught before it stops, we keep a documented picture of how your setup is configured so a replacement can be built quickly, and backups are tested so the data comes back. Emergency on-site attendance is within 4 hours on weekdays and 3 on weekends across the southern Perth corridor.
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Do you cover warehouses in the Canning Vale industrial area?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Yes, and it is close to home for us. Our workshop is in Canning Vale, so the industrial precinct around Bannister Road, Kewdale, Welshpool, Jandakot and Forrestdale is a short drive rather than a call-out across the city. Remote support covers anywhere in Perth.
+        </div>
+      </div>
+    </div>
+
+    <div class="post-footer-nav">
+      <a class="post-footer-link" href="/business-it-support">&larr; All business IT support</a>
+      <a class="post-footer-link" href="/pricing">Repair pricing &rarr;</a>
+    </div>
+  </div>
+</div>
+
+<script>
+/* Web3Forms redirects to its own branded success page by default, which drops
+   the visitor off the site entirely. Submit over fetch instead and show the
+   panel above, the same pattern the homepage and quote-request form use. */
+(function () {
+  var form = document.getElementById('auditForm');
+  if (!form) return;
+  var btn  = form.querySelector('.audit-submit');
+  var done = document.getElementById('auditDone');
+  var errEl = document.getElementById('auditErr');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (errEl) errEl.hidden = true;
+    btn.disabled = true;
+    var label = btn.textContent;
+    btn.textContent = 'Sending...';
+
+    var data = {};
+    new FormData(form).forEach(function (v, k) { data[k] = v; });
+
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify(data)
+    }).then(function (r) { return r.json(); }).then(function (res) {
+      if (!res.success) throw new Error(res.message || 'failed');
+      form.hidden = true;
+      /* The intro copy is asking for details that have now been given, so it
+         goes too. The title stays as context for the confirmation. */
+      var desc = document.querySelector('.audit-block-desc');
+      if (desc) desc.hidden = true;
+      done.hidden = false;
+      done.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }).catch(function () {
+      btn.disabled = false;
+      btn.textContent = label;
+      if (errEl) errEl.hidden = false;
+    });
+  });
+})();
+</script>

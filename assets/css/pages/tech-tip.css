@@ -1,0 +1,263 @@
+/* ==========================================================
+   tech-tip.css   VERSION 5
+   Page stylesheet for the /tech-tips/<slug> cluster
+   (_layouts/tech-tip.html).
+
+   v4: brought into line with industry.css so the guides and the
+   industry pages read as one site.
+   - Same frame: a 740px centred column, 16px body at 1.85 line
+     height, 1.45rem H2s, H1 capped at 2.7rem. v3 ran a 56px H1
+     and 17px body, which read oversized next to the rest.
+   - Same dark on-page form as the industry audit panel, with
+     the same .audit-* class names, so it looks and behaves the
+     same. Two fixes over the industry version: inputs are 16px
+     (under 16px, iPhones zoom the whole page when a field is
+     tapped), and fields validate when you leave them, not only
+     on submit.
+   - Two-column sticky index dropped for a contents box at the
+     top, like the industry pages. Urgency is a small status dot
+     plus coloured text, never a pill or capsule.
+   - Per-cause prices removed (see the layout's header comment);
+     one cost table.
+
+   Apple-derived rules kept throughout: tracking tightens as type
+   grows and sits near zero on body; hierarchy from weight first;
+   press feedback on :active, hover only where hover exists; 44px
+   touch targets on phones; reduced motion, contrast and
+   transparency preferences respected. No element selectors
+   inside a class scope: prose is ".tip-prose > p".
+   ========================================================== */
+
+:root {
+  --blue:    #1560FF;
+  --blue-lt: #EEF3FF;
+  --blue-dk: #0A3ACC;
+  --ink:     #0F172A;
+  --ink2:    #1E293B;
+  --ink3:    #334155;
+  --muted:   #64748B;
+  --muted2:  #94A3B8;
+  --border:  #E2E8F0;
+  --border2: #CBD5E1;
+  --bg:      #FFFFFF;
+  --bg2:     #F8FAFC;
+  --teal:    #00CFFF;
+  --wa:      #22C55E;
+  --lvl-1:   #15803D;
+  --lvl-2:   #B45309;
+  --lvl-3:   #B91C1C;
+  --display: 'Sora', 'Sora Fallback', system-ui, sans-serif;
+  --body:    'DM Sans', 'DM Sans Fallback', system-ui, sans-serif;
+  --nav-h:     64px;
+  --mob-nav-h: 60px;
+  --ease-settle: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-press:  cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-h) + 1.25rem); }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; border-radius: 4px; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+/* ---------- frame (matches .article-wrap on the industry pages) ---------- */
+.tip { max-width: 740px; margin: 0 auto; padding: calc(var(--nav-h) + 3px + 2.5rem) 2rem 5rem; }
+
+/* ---------- head ---------- */
+.tip-crumbs ol:where(:not([class])) { list-style: none; margin: 0 0 1.5rem; padding: 0; display: flex; flex-wrap: wrap; font-size: 13px; color: var(--muted2); }
+.tip-crumbs li:where(:not([class])) { display: flex; align-items: center; }
+.tip-crumbs li + li::before { content: '/'; margin: 0 0.55rem; color: var(--border2); }
+.tip-crumbs a:where(:not([class])) { color: var(--blue); text-decoration: none; font-weight: 600; }
+
+.tip-h1 { font-family: var(--display); font-size: clamp(1.8rem, 4vw, 2.7rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.035em; color: var(--ink); margin: 0 0 1rem; text-wrap: balance; }
+.tip-lede { font-size: 1.0625rem; line-height: 1.75; color: var(--ink2); margin: 0 0 1.5rem; text-wrap: pretty; }
+
+.tip-act { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1.25rem; margin: 0 0 1.75rem; }
+.tip-act-link { font-size: 0.9375rem; font-weight: 600; color: var(--blue); text-decoration: none; min-height: 44px; display: inline-flex; align-items: center; }
+
+.tip-byline { display: flex; flex-wrap: wrap; gap: 0.3rem 1.25rem; margin: 0 0 2rem; padding-bottom: 1.5rem; border-bottom: 1.5px solid var(--border); font-size: 13px; font-weight: 500; color: var(--muted); }
+.tip-byline span:where(:not([class])):first-child { color: var(--ink2); font-weight: 700; }
+
+/* ---------- buttons (normal rounded button shape) ---------- */
+.tip-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: 0 1.4rem; border-radius: 50px; font-family: var(--body); font-size: 0.9375rem; font-weight: 700; text-decoration: none; -webkit-tap-highlight-color: transparent; transition: background-color 0.15s var(--ease-settle), transform 0.1s var(--ease-press); }
+.tip-btn:active { transform: scale(0.97); }
+.tip-btn-primary { background: var(--blue); color: #fff; box-shadow: 0 4px 14px rgba(21,96,255,0.28); }
+
+/* ---------- urgency dot ---------- */
+.tip-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+.tip-dot.tip-lvl-1 { background: var(--lvl-1); }
+.tip-dot.tip-lvl-2 { background: var(--lvl-2); }
+.tip-dot.tip-lvl-3 { background: var(--lvl-3); }
+
+/* ---------- contents + urgency key ---------- */
+.tip-index { background: var(--bg2); border: 1px solid var(--border); border-radius: 16px; padding: 1.35rem 1.5rem 1.25rem; margin: 0 0 2.5rem; }
+.tip-index-title { font-family: var(--display); font-size: 0.9375rem; font-weight: 700; letter-spacing: -0.01em; color: var(--ink); margin: 0 0 0.5rem; }
+.tip-index-list { list-style: none; margin: 0; padding: 0; }
+.tip-index-list a:where(:not([class])) { display: flex; align-items: center; gap: 0.65rem; padding: 0.4rem 0; font-size: 0.9375rem; line-height: 1.4; color: var(--ink3); text-decoration: none; }
+.tip-key { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem 1.25rem; margin: 1rem 0 0; padding-top: 1rem; border-top: 1px solid var(--border); }
+.tip-key > div { display: flex; flex-direction: column; gap: 0.2rem; }
+.tip-key dt { display: inline-flex; align-items: center; gap: 0.45rem; font-size: 13px; font-weight: 700; }
+.tip-key dt.tip-lvl-1 { color: var(--lvl-1); }
+.tip-key dt.tip-lvl-2 { color: var(--lvl-2); }
+.tip-key dt.tip-lvl-3 { color: var(--lvl-3); }
+.tip-key dd { margin: 0; padding-left: calc(7px + 0.45rem); font-size: 13px; line-height: 1.45; color: var(--muted); }
+
+/* ---------- body ---------- */
+.tip-cause { margin: 0 0 2.25rem; }
+.tip-h2 { font-family: var(--display); font-size: 1.45rem; font-weight: 800; line-height: 1.2; letter-spacing: -0.02em; color: var(--ink); margin: 0 0 0.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border); text-wrap: balance; }
+.tip-urgency { display: flex; align-items: center; gap: 0.5rem; margin: 0 0 0.9rem; font-size: 13.5px; font-weight: 700; }
+.tip-urgency.tip-lvl-1 { color: var(--lvl-1); }
+.tip-urgency.tip-lvl-2 { color: var(--lvl-2); }
+.tip-urgency.tip-lvl-3 { color: var(--lvl-3); }
+
+.tip-prose > p { margin: 0 0 1.35rem; font-size: 16px; line-height: 1.85; color: var(--ink2); text-wrap: pretty; }
+.tip-prose > p:last-child { margin-bottom: 0; }
+.tip-prose a:not([class]) { color: var(--blue); text-decoration: underline; text-underline-offset: 0.18em; }
+
+/* The one nudge on a stop-now cause: the most urgent moment on the page
+   gets an action right beside it. Text link, not a second button. */
+.tip-nudge { margin: 1rem 0 0; padding-left: 0.9rem; border-left: 2px solid var(--lvl-3); }
+.tip-nudge a:where(:not([class])) { font-size: 0.9375rem; font-weight: 600; line-height: 1.55; color: var(--ink); text-decoration: underline; text-decoration-color: var(--lvl-3); text-decoration-thickness: 1.5px; text-underline-offset: 0.22em; }
+
+/* ---------- cost table ---------- */
+.tip-costs { margin: 0 0 1rem; }
+.tip-table { width: 100%; border-collapse: collapse; margin: 1.25rem 0 0; font-size: 0.9375rem; }
+.tip-table thead th { text-align: left; font-size: 12.5px; font-weight: 600; color: var(--muted); padding: 0 0.75rem 0.5rem 0; border-bottom: 1.5px solid var(--border2); }
+.tip-table tbody th:where(:not([class])), .tip-table td { text-align: left; vertical-align: top; padding: 0.8rem 0.75rem 0.8rem 0; border-bottom: 1px solid var(--border); line-height: 1.45; }
+.tip-table tbody th:where(:not([class])) { font-weight: 600; color: var(--ink); }
+.tip-table td { color: var(--muted); }
+.tip-table td a:where(:not([class])) { color: var(--ink3); text-decoration: underline; text-decoration-color: var(--border2); text-underline-offset: 0.18em; }
+.tip-table .tip-num { text-align: right; padding-right: 0; white-space: nowrap; font-family: var(--display); font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; }
+.tip-table thead .tip-num { font-family: var(--body); font-weight: 600; color: var(--muted); }
+.tip-row-lead th:where(:not([class])), .tip-row-lead .tip-num { color: var(--blue-dk); }
+
+/* ---------- quote form ----------
+   The panel (.audit-block, title, description, done state) matches the
+   industry audit form. The fields inside are this page's own (.tq-*):
+   - filled, borderless fields that gain a soft blue glow on focus, rather
+     than a hard border swap (the iOS/macOS text field treatment)
+   - one-tap choices for device and reply method: a segmented set of
+     buttons, all options visible, no dropdown to open
+   - 16px inputs, so iPhones never zoom the page when a field is tapped
+   - hierarchy from weight, not size: labels 600, values 400 */
+.audit-block { background: var(--ink); border-radius: 16px; padding: 2rem; margin: 2.5rem 0; position: relative; overflow: hidden; scroll-margin-top: calc(var(--nav-h) + 1rem); }
+.audit-block::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--blue), var(--teal), var(--wa)); }
+.audit-block-title { font-family: var(--display); font-size: 1.3rem; font-weight: 800; letter-spacing: -0.3px; color: #fff; margin: 0 0 0.4rem; }
+.audit-block-desc { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.7; margin: 0 0 1.5rem; }
+
+.tq-form { display: flex; flex-direction: column; gap: 1.25rem; }
+.tq-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.tq-field { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+.tq-group { border: 0; margin: 0; padding: 0; min-width: 0; }
+.tq-group > legend { padding: 0; margin: 0 0 0.55rem; }
+.tq-label { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.75); letter-spacing: 0.02em; }
+.tq-opt { font-weight: 400; color: rgba(255,255,255,0.45); margin-left: 0.25rem; }
+
+.tq-input { width: 100%; font-family: var(--body); font-size: 16px; line-height: 1.4; color: #fff; background: rgba(255,255,255,0.06); border: 1.5px solid rgba(255,255,255,0.16); border-radius: 10px; padding: 11px 14px; min-height: 48px; transition: border-color 0.18s var(--ease-settle), background 0.18s var(--ease-settle); }
+textarea.tq-input { resize: vertical; min-height: 88px; }
+.tq-input::placeholder { color: rgba(255,255,255,0.32); }
+.tq-input:focus { outline: none; border-color: var(--blue); background: rgba(255,255,255,0.1); }
+.tq-input[aria-invalid="true"] { border-color: #F87171; box-shadow: 0 0 0 4px rgba(248,113,113,0.18); }
+
+/* Segmented choices. Each option is a real radio, visually hidden but
+   still focusable and announced; the visible face is the span. */
+.tq-seg { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.tq-seg-opt { position: relative; }
+.tq-seg-opt input { position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer; }
+.tq-seg-opt span:where(:not([class])) { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 1rem; border-radius: 10px; background: rgba(255,255,255,0.06); border: 1.5px solid rgba(255,255,255,0.16); font-size: 14.5px; font-weight: 500; color: rgba(255,255,255,0.82); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; transition: background-color 0.15s var(--ease-settle), border-color 0.15s var(--ease-settle), color 0.15s var(--ease-settle); }
+.tq-seg-opt input:checked + span { background: rgba(21,96,255,0.22); border-color: var(--blue); color: #fff; font-weight: 600; }
+.tq-seg-opt input:focus-visible + span { outline: 2px solid #fff; outline-offset: 2px; }
+.tq-seg-opt input:active + span { transform: scale(0.97); }
+.tq-group[aria-invalid="true"] .tq-seg-opt span:where(:not([class])) { border-color: rgba(248,113,113,0.6); }
+
+.tq-err { margin: 0.35rem 0 0; font-size: 13px; font-weight: 500; color: #FCA5A5; }
+.tq-err-form { margin: 0; padding: 10px 14px; border-radius: 12px; background: rgba(239,68,68,0.12); border: 1px solid rgba(239,68,68,0.35); font-weight: 600; }
+.tq-hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+
+.tq-submit { width: 100%; min-height: 48px; margin-top: 4px; font-family: var(--body); font-size: 15px; font-weight: 700; color: #fff; background: var(--blue); border: 0; border-radius: 50px; padding: 14px 24px; cursor: pointer; -webkit-tap-highlight-color: transparent; transition: background 0.18s var(--ease-settle), transform 0.1s var(--ease-press); }
+.tq-submit:active { transform: scale(0.98); }
+.tq-submit:disabled { opacity: 0.6; cursor: default; }
+.tq-submit:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+.tq-trust { margin: 2px 0 0; text-align: center; font-size: 12.5px; line-height: 1.55; color: rgba(255,255,255,0.45); }
+.tq-stars { color: #FBBF24; margin-right: 0.15rem; }
+
+.audit-done { text-align: center; padding: 1.25rem 0 0.75rem; outline: none; }
+.audit-done-tick { width: 52px; height: 52px; margin: 0 auto 1rem; border-radius: 50%; background: rgba(34,197,94,0.15); border: 1.5px solid rgba(34,197,94,0.4); display: flex; align-items: center; justify-content: center; color: #4ADE80; }
+.audit-done-tick svg { width: 24px; height: 24px; }
+.audit-done-title { font-family: var(--display); font-size: 1.15rem; font-weight: 800; color: #fff; margin: 0 0 0.4rem; }
+.audit-done-text { font-size: 14.5px; color: rgba(255,255,255,0.72); line-height: 1.7; max-width: 46ch; margin: 0 auto; }
+
+/* ---------- FAQ ---------- */
+.tip-faq { margin: 0 0 3rem; }
+.tip-faq .tip-h2 { margin-bottom: 0.5rem; }
+.tip-faq-item { border-bottom: 1px solid var(--border); }
+.tip-faq-h { margin: 0; font: inherit; }
+.tip-faq-q { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 3.25rem; padding: 0.9rem 0; border: 0; background: none; cursor: pointer; text-align: left; font-family: var(--body); font-size: 15.5px; font-weight: 700; line-height: 1.4; color: var(--ink); -webkit-tap-highlight-color: transparent; }
+.tip-faq-q:active { color: var(--blue); }
+.tip-faq-icon { width: 0.9rem; height: 0.9rem; flex-shrink: 0; color: var(--muted); transition: transform 0.3s var(--ease-settle); }
+.tip-faq-item.open .tip-faq-icon { transform: rotate(180deg); color: var(--blue); }
+.tip-faq-a { display: grid; grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows 0.32s var(--ease-settle), opacity 0.2s var(--ease-settle); }
+.tip-faq-a > div { overflow: hidden; min-height: 0; }
+.tip-faq-a p:where(:not([class])) { margin: 0 0 1.1rem; font-size: 15px; line-height: 1.8; color: var(--ink3); }
+.tip-faq-item.open .tip-faq-a { grid-template-rows: 1fr; opacity: 1; }
+
+/* ---------- more guides (renders only once another is built) ---------- */
+.tip-more ul:where(:not([class])) { list-style: none; margin: 1rem 0 0; padding: 0; }
+.tip-more li:where(:not([class])) { border-bottom: 1px solid var(--border); }
+.tip-more a:where(:not([class])) { display: block; padding: 0.9rem 0; text-decoration: none; }
+.tip-more-cat { display: block; font-size: 12.5px; color: var(--muted); margin-bottom: 0.15rem; }
+.tip-more-title { font-family: var(--display); font-size: 1rem; font-weight: 700; color: var(--ink); }
+
+/* The site's sticky quote bar (phones) steps aside while this page's own
+   form is on screen, so two quote buttons never compete. Class is set by
+   the layout script; !important because shell.css drives the bar's
+   transform from its own scroll script. */
+.sticky-cta.tip-form-visible { transform: translateY(110%) !important; }
+
+/* ---------- hover, only where hover exists ---------- */
+@media (hover: hover) {
+  .tip-crumbs a:where(:not([class])):hover, .tip-act-link:hover { color: var(--blue-dk); text-decoration: underline; }
+  .tip-btn-primary:hover { background: var(--blue-dk); }
+  .tip-index-list a:where(:not([class])):hover { color: var(--blue); }
+  .tip-nudge a:where(:not([class])):hover { text-decoration-thickness: 2px; }
+  .tip-table td a:where(:not([class])):hover { color: var(--blue); }
+  .tq-submit:hover { background: var(--blue-dk); }
+  .tq-seg-opt:hover span:where(:not([class])) { background: rgba(255,255,255,0.12); }
+  .tip-faq-q:hover { color: var(--blue); }
+  .tip-more a:hover .tip-more-title { color: var(--blue); }
+}
+
+/* ---------- phones ---------- */
+@media (max-width: 640px) {
+  html { scroll-padding-top: calc(var(--mob-nav-h) + 1rem); }
+  .tip { padding: calc(var(--mob-nav-h) + 1.75rem) 1.25rem 6rem; }
+  .tip-crumbs li:where(:not([class])):last-child { display: none; }
+  .tip-lede { font-size: 1rem; }
+  .tip-act .tip-btn { width: 100%; }
+  .tip-act-link { width: 100%; justify-content: center; }
+  .tip-index { padding: 1.15rem 1.15rem 1rem; }
+  .tip-index-list a:where(:not([class])) { min-height: 44px; padding: 0.3rem 0; }
+  .tip-key { grid-template-columns: 1fr; gap: 0.6rem; }
+  .tip-h2 { font-size: 1.3rem; }
+  .tip-table thead th:nth-child(2), .tip-table td:nth-child(2) { display: none; }
+  .audit-block { padding: 1.5rem 1.25rem; border-radius: 16px; }
+  .tq-row { grid-template-columns: 1fr; }
+  .tq-seg-opt span:where(:not([class])) { padding: 0 0.85rem; }
+}
+
+/* ---------- user preferences ---------- */
+@media (prefers-contrast: more) {
+  :root { --muted: #334155; --muted2: #475569; --ink3: #1E293B; --border: #94A3B8; --border2: #64748B; }
+  .tq-input, .tq-seg-opt span:where(:not([class])) { border-color: rgba(255,255,255,0.6); }
+  .tq-label, .audit-block-desc, .tq-trust, .audit-done-text { color: #fff; }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .tq-input, .tq-seg-opt span:where(:not([class])) { background: #1E293B; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .tip-faq-a { transition: opacity 0.15s ease; }
+  .tip-faq-icon, .tip-btn, .tq-submit, .tq-input, .tq-seg-opt span:where(:not([class])) { transition: none; }
+  .tip-btn:active, .tq-submit:active, .tq-seg-opt input:active + span { transform: none; }
+}

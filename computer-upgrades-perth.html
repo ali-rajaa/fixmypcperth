@@ -1,0 +1,213 @@
+---
+layout: service
+css: service
+title: "Computer Upgrades Perth | SSD, RAM & GPU | FixMyPC Perth"
+description: "PC and laptop upgrades in Perth: SSD, RAM, graphics cards and cooling, fitted and set up at a fixed price. Free upgrade advice first. Canning Vale workshop."
+slug: computer-upgrades-perth
+heading: "Computer Upgrades in Perth"
+eyebrow: "Computer upgrades"
+service_name: "Computer and laptop upgrades"
+quote_service: "SSD or RAM Upgrade"
+wa_text: "Hi! I'd like a quote for a computer upgrade."
+index_heading: "Every upgrade we fit"
+costs_heading: "Computer upgrade prices"
+faq_heading: "Computer upgrade questions"
+near_heading: "Computer upgrades near you"
+near_text: "Our workshop is in Canning Vale, open around the clock for drop-offs. Most of our upgrade customers come from the suburbs around it."
+topic: "computer upgrade"
+costs_intro: "Every upgrade has a supplied price, which includes the part, and a labour-only price for parts you have bought yourself. Advice on what to upgrade is free."
+
+# ---- Keyword targeting (see the service page SEO plan in STATUS.md) -----
+# GSC, 16 months. Renamed from the planned ssd-upgrade-perth: SSD alone had
+# thin demand (ssd upgrade 9), the wider upgrade terms have more.
+# Old /ssd-upgrade-perth 301s here at launch.
+# Primary:    computer upgrades perth (20, pos 41), pc upgrade service (43,
+#             pos 25)
+# Secondary:  computer upgrade near me (19, pos 29), computer upgrades near
+#             me (15, pos 20), computer upgrade services near me (10),
+#             computer upgrade services (4), pc upgrade service near me (2,
+#             pos 6.5), computer upgrades and repairs (6), cpu replacement
+#             near me (7), laptop repair & upgrade (7, pos 18), ssd upgrade
+#             (9), ssd hard drive upgrade (3)
+# Not this:   "how much faster is an SSD" belongs to the Tech Tips guide
+#             (ssd-upgrade-perth-guide). Gaming-specific tuning lives on
+#             gaming-pc-build-perth. Windows 11 lives on windows-reinstall.
+#
+# No prices typed anywhere on this page. Every figure comes from
+# services.yml through the layout; written copy uses [[key]] tokens.
+
+short_answer: "Computer and laptop upgrades in Perth, from our workshop in Canning Vale. SSDs, RAM, graphics cards, coolers and fans, fitted, set up and tested at a fixed price. Tell us your computer and your budget first, and we tell you which upgrade will make the biggest difference before you spend anything."
+
+intro: |
+  <p>Most computers that feel too slow are not worn out. They are held back by one or two parts: an old mechanical hard drive, not enough memory for how it is used now, or a graphics card that can no longer keep up with the games. Upgrading the right part costs a fraction of a new computer, and everything you have on it stays where it is.</p>
+  <p>The trick is knowing which part. An upgrade in the wrong place does nothing, and a computer that is slow because it is overheating or infected will not be fixed by more memory. So we start with what you use it for, what it has now and what it can take, and recommend the upgrade that makes the biggest difference for your money.</p>
+  <p>Upgrade advice is free: message us your specs and budget and we tell you what is worth doing before you spend anything. Fitting is a fixed price, whether you buy the part yourself or we supply it.</p>
+
+group_intros:
+  "Storage upgrades": "<p>The single biggest speed difference for most older computers.</p>"
+  "Memory upgrades": "<p>More memory means more open at once without the computer grinding to a halt.</p>"
+  "Graphics, cooling and power": "<p>For gaming, video editing and 3D work, and for computers that run too hot to perform.</p>"
+  "Before and after an upgrade": "<p>Advice before you buy, and the software side after the parts go in.</p>"
+
+repairs:
+  # ---- Storage upgrades --------------------------------------------------
+  - id: ssd
+    group: "Storage upgrades"
+    title: "SSD upgrade"
+    price_key: hdd-to-ssd-full-migration
+    also_keys:
+      - ssd-upgrade-labour-only
+    signs:
+      - "Minutes to start up"
+      - "Programs take ages to open"
+      - "Drive light on constantly"
+      - "Still has a mechanical hard drive"
+    text: |
+      <p>Plenty of computers sold only a few years ago still shipped with a mechanical hard drive. Everything waits on it: starting up, opening programs, saving files, loading games. Replacing it with an SSD makes the same computer feel several times faster at almost everything, and it is the upgrade we recommend first for any computer that still has one.</p>
+      <p>We supply every type, SATA and NVMe, sized to what you actually need, and clone your whole system across, so it starts up just as before with every file and program in place. If you already have the drive, the labour-only price covers fitting it and moving your data across. Our <a href="/tech-tips/ssd-upgrade-perth-guide">SSD upgrade guide</a> explains how much faster the same computer gets.</p>
+
+  - id: more-storage
+    group: "Storage upgrades"
+    title: "Extra storage and a second drive"
+    price_key: ssd-upgrade-labour-only
+    text: |
+      <p>Running out of space for photos, videos or games? Most desktops and some laptops have room for a second drive. We fit it, set it up in Windows, and move the large folders across so the main drive has space to breathe. A full drive also slows a computer down, so this often helps speed as well.</p>
+
+  # ---- Memory upgrades ---------------------------------------------------
+  - id: ram
+    group: "Memory upgrades"
+    title: "RAM upgrade"
+    price_key: ram-upgrade-supplied
+    also_keys:
+      - ram-upgrade-labour-only
+    signs:
+      - "Slows right down with several tabs open"
+      - "Freezes when switching between programs"
+      - "Video calls stutter"
+      - "Fine after a restart, slow again later"
+    text: |
+      <p>Browsers, video calls and modern programs use far more memory than they did a few years ago. With too little, the computer falls back on the drive and everything slows down. More RAM lets it keep more open at once without struggling.</p>
+      <p>We check how much memory your computer has, how much it actually uses, and the maximum and type it takes, then supply and fit the right RAM, DDR4 or DDR5, with XMP or EXPO switched on in the BIOS so it runs at its full rated speed. If you have already bought the RAM, the labour-only price covers fitting and configuring it.</p>
+      <p>Some thin laptops have memory soldered to the board. We check yours first and tell you if that is the case, rather than sell an upgrade that cannot be fitted.</p>
+
+  # ---- Graphics, cooling and power ---------------------------------------
+  - id: gpu
+    group: "Graphics, cooling and power"
+    title: "Graphics card upgrade"
+    price_key: gpu-install-driver-setup
+    text: |
+      <p>For gaming and creative work, the graphics card makes the biggest difference. We seat and power the new card, fully remove the old drivers, install the latest Nvidia or AMD drivers and check it is stable under load.</p>
+      <p>Before you buy, we check the card fits the case and that the power supply can run it, since those are the two most common reasons a new graphics card will not fit or keeps crashing. For gaming tuning and builds, see our <a href="/gaming-pc-build-perth">gaming PC</a> page.</p>
+
+  - id: cooling
+    group: "Graphics, cooling and power"
+    title: "CPU cooler, fans and thermal paste"
+    price_key: cpu-cooler-installation
+    also_keys:
+      - cpu-thermal-paste-replacement
+      - case-fan-installation-per-fan
+    text: |
+      <p>A computer that runs hot slows itself down to protect itself. An aftermarket air cooler or AIO, fresh thermal paste, or extra case fans for better airflow bring temperatures down, and with them noise. Better cooling is also what lets a processor hold its boost speed through a long task or game.</p>
+
+  - id: cpu
+    group: "Graphics, cooling and power"
+    title: "Processor upgrades"
+    price_key: upgrade-consultation
+    text: |
+      <p>A processor upgrade is possible when the motherboard supports a faster chip, and on some desktops it is a good-value way to add years of life. On others the board, the memory and the processor would all need to change together, which is closer to a new build.</p>
+      <p>Tell us the motherboard or the computer's model and we tell you what it can take and whether it is worth doing, before you spend anything. Laptop processors are soldered to the board and cannot be upgraded.</p>
+
+  # ---- Before and after an upgrade ---------------------------------------
+  - id: advice
+    group: "Before and after an upgrade"
+    title: "Free upgrade advice"
+    price_key: upgrade-consultation
+    text: |
+      <p>Message us your computer's specs, or the make and model, what you use it for and your budget. We tell you what is actually worth upgrading, in order of the difference it makes, and what it will cost fitted. If an upgrade will not help, or the computer is better replaced, we say so.</p>
+
+  - id: tuneup
+    group: "Before and after an upgrade"
+    title: "Tune up alongside an upgrade"
+    price_key: basic-tune-up
+    text: |
+      <p>New parts on a cluttered system only go so far. Pair an upgrade with a tune up to clear junk files and bloatware, trim startup programs and update drivers, and the computer gets the full benefit of the new hardware. For more on speed, see the <a href="/slow-computer-repair-perth">slow computer repair</a> page.</p>
+
+  - id: windows-11
+    group: "Before and after an upgrade"
+    title: "Windows 11 upgrade"
+    price_key: windows-11-upgrade
+    text: |
+      <p>Windows 10 no longer gets security updates. An SSD and more memory are often what an older computer needs to run Windows 11 well, and doing both at once saves a trip. The <a href="/windows-reinstall-perth">Windows reinstall and upgrade</a> page has the detail.</p>
+
+sections:
+  - id: what-to-upgrade
+    title: "Which upgrade will help most?"
+    html: |
+      <ul>
+        <li><strong>Slow at everything, especially starting up:</strong> an SSD, if it still has a mechanical hard drive.</li>
+        <li><strong>Slows down with lots open, or on video calls:</strong> more RAM.</li>
+        <li><strong>Games run at low frame rates:</strong> the graphics card, usually, then the processor.</li>
+        <li><strong>Fast at first, then slows down, or very loud:</strong> better cooling, or a clean and repaste.</li>
+        <li><strong>Out of space:</strong> a larger SSD or a second drive.</li>
+      </ul>
+      <p>If it has become slow suddenly rather than gradually, an upgrade is probably not the answer. That is more often malware, a failing drive or a Windows problem, and we would check for those first.</p>
+
+  - id: upgrade-or-replace
+    title: "Upgrade or buy a new computer?"
+    html: |
+      <p>Upgrade when the computer is basically sound and one or two parts are holding it back. An SSD and more memory can make a computer from several years ago feel new again for a fraction of the price of a replacement.</p>
+      <p>Replace when it is old enough that it cannot take an SSD or more memory, when the processor is the bottleneck on a laptop, or when it is also failing in other ways. If yours is at that point, we tell you, and can move your files across to the new one for [[pc-to-pc-data-transfer]].</p>
+
+  - id: laptops
+    title: "Laptop upgrades"
+    html: |
+      <p>Laptops can be upgraded too, but what is possible depends on the model. Most can take an SSD. Many can take more memory, though some thin laptops have it soldered in place. The processor and graphics are almost always fixed. We check your exact model before recommending anything, and for laptop repairs as well as upgrades, see the <a href="/laptop-repair-perth">laptop repair</a> page.</p>
+
+  - id: before-drop-off
+    title: "Before you drop your computer off"
+    html: |
+      <ul>
+        <li>Message us the make and model, or the specs, and your budget, so we can confirm the parts and price.</li>
+        <li>If you bought the parts yourself, bring them in their boxes.</li>
+        <li>Back up anything important first. Upgrades do not touch your files, but a backup is always worth having.</li>
+        <li>Bring the charger if it is a laptop.</li>
+      </ul>
+      <p>No appointment is needed. Message us first and we give you a fixed price before you make the trip.</p>
+
+faqs:
+  - q: "How much does a computer upgrade cost in Perth?"
+    a: "It depends on the upgrade. An SSD with the drive supplied and your system cloned across is from [[hdd-to-ssd-full-migration]], or [[ssd-upgrade-labour-only]] labour only. A RAM upgrade supplied and fitted is from [[ram-upgrade-supplied]], or [[ram-upgrade-labour-only]] if you bring the RAM. A graphics card install is [[gpu-install-driver-setup]]."
+  - q: "What upgrade will make my computer faster?"
+    a: "For most older computers, an SSD, if it still has a mechanical hard drive. After that, more RAM. For games, the graphics card. Message us your specs and we tell you which will help most before you spend anything."
+  - q: "Is upgrade advice really free?"
+    a: "Yes. Message us your computer's specs or model, what you use it for and your budget, and we tell you what is worth upgrading and what it costs fitted."
+  - q: "Will I lose my files with an SSD upgrade?"
+    a: "No. We clone your whole system to the new SSD, so it starts up exactly as before with all your files and programs, only faster."
+  - q: "Can I bring my own parts?"
+    a: "Yes. Labour-only prices cover fitting parts you have bought yourself, such as an SSD for [[ssd-upgrade-labour-only]] or RAM for [[ram-upgrade-labour-only]]. We check they are compatible before fitting."
+  - q: "Can you upgrade a laptop?"
+    a: "Usually the SSD, and often the RAM. Some thin laptops have memory soldered to the board, and laptop processors and graphics cannot be changed. We check your model first."
+  - q: "How long does an upgrade take?"
+    a: "Most upgrades are done the same day. Drop it off before 2pm and it is usually ready by 6pm. If a part has to be ordered, we tell you how long when we quote."
+  - q: "Is it worth upgrading an old computer?"
+    a: "Usually, if it can take an SSD and more memory. If it is too old for either, or failing in other ways, we tell you honestly and can move your files to a new one."
+  - q: "Do you upgrade gaming PCs?"
+    a: "Yes. Graphics cards, coolers, memory and storage, plus BIOS tuning and overclocking. The gaming PC page covers the gaming-specific work."
+  - q: "Do you supply the parts?"
+    a: "Yes. We supply SSDs and RAM specced to what your computer takes and what you need, and graphics cards and coolers on request. Supplied prices include the part. Labour-only prices are for parts you bring."
+
+suburbs:
+  - canning-vale
+  - willetton
+  - thornlie
+  - harrisdale
+  - huntingdale
+  - cannington
+  - jandakot
+  - southern-river
+
+guides:
+  - ssd-upgrade-perth-guide
+  - why-is-my-pc-so-slow
+  - how-much-does-pc-repair-cost-perth
+---

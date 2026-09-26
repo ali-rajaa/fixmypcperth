@@ -1,0 +1,112 @@
+---
+layout: tech-tip
+css: tech-tip
+title: "How Much Does PC Repair Cost? Flat vs Hourly | FixMyPC Perth"
+description: "Real Perth prices, from a flat [[diagnostic-repair-all-in]] all-in diagnostic, and why hourly billing costs more than it looks. What a flat fee covers."
+slug: how-much-does-pc-repair-cost-perth
+heading: "How Much Does PC Repair Cost in Perth?"
+category: "Pricing & Advice"
+date: "2026-04-20"
+updated: "2026-09-24"
+index_heading: "The 7 most common repairs"
+read_min: 7
+quote_service: "Slow Computer or PC Diagnostic"
+
+# ---- Keyword targeting (see the Tech Tips SEO plan) --------------------
+# Primary:    how much does pc repair cost, how much does computer
+#             repair cost
+# Secondary:  hourly vs flat rate computer repair, is it worth repairing
+#             a computer, laptop repair cost
+# Not this:   "computer repair prices Perth" belongs to /pricing, the price
+#             list itself. This guide explains the pricing; /pricing lists
+#             it, and the cost section here links straight to it.
+# Local:      Perth, Canning Vale (title tail, short answer, costs only)
+# Hands off:  /pricing directly, since this guide already is the pricing
+#             explainer; and the Health Check for anyone unsure which
+#             category applies.
+# Absorbs:    production's equivalent live /blog post on this topic
+#             (301 here once the exact URL is confirmed; the live version
+#             carried 81 typed prices scattered through the text, all of
+#             which now live in the one table below, sourced from
+#             services.yml, instead of being retyped by hand)
+#
+# Editorial rule: explain each job category, never how to attempt the
+# repair yourself. Prices come only from the causes/price_key table below,
+# never typed directly into this text.
+
+short_answer: "Most PC repairs in Perth cost a lot less than a new computer, and the bigger factor in the final number is usually not the fault itself but whether the shop charges by the hour or quotes one flat fee before starting. Hourly billing means the price depends on how long the work takes, which is hard to know in advance and does not reward getting the job done quickly. Every price below is flat: what we quote is what you pay, whether the job takes twenty minutes or two hours."
+
+causes:
+  - id: diagnostic
+    title: "You know something is wrong but not what"
+    urgency: book-this-week
+    urgency_label: "Book this week"
+    price_key: diagnostic-repair-all-in
+    text: |
+      <p>This is the most common job we do, and it covers a lot of ground: a computer that is slow, one that will not turn on, random crashes, or anything else where the cause is not obvious from the outside. Several different faults can look identical to someone who is not a technician, so the first job is always finding out what is actually wrong.</p>
+      <p>We charge one flat fee that covers the diagnostic itself, the repair once the cause is known, and a 30-day warranty on the work. There is no separate charge for the time spent finding the fault, so it costs the same whether the cause turns out to be simple or takes longer to track down. If it will not turn on at all, our <a href="/computer-wont-turn-on-perth">computer won't turn on</a> page explains what each symptom usually means.</p>
+
+  - id: virus-removal
+    title: "Removing a virus or other malware"
+    urgency: stop-now
+    urgency_label: "Stop using it now"
+    price_key: virus-malware-removal
+    text: |
+      <p>A full removal covers a deep scan of the whole system, removing whatever is found, cleaning up the browser if it has been affected, and setting up antivirus software so the same thing does not happen again straight after. Most infections are fully cleared the same day.</p>
+      <p>How urgent this is depends on what the infection is actually doing, which our <a href="/tech-tips/how-to-tell-if-pc-has-virus">guide to virus signs</a> covers in more detail. Some infections are a nuisance; others are actively exposing accounts or files while the machine keeps running, which is why we would not leave this one for a convenient week. The <a href="/virus-removal-perth">virus removal</a> page covers what a clean-up includes.</p>
+
+  - id: tune-up
+    title: "General slowness, with no sign of a hardware fault"
+    urgency: can-wait
+    urgency_label: "Can wait"
+    price_key: basic-tune-up
+    text: |
+      <p>When a diagnostic finds nothing physically wrong, the machine is often just carrying years of clutter: too many programs starting with Windows, temporary files that were never cleared out, and drivers that have not been updated. A tune-up clears all of that out along with a quick malware check, without touching any hardware.</p>
+      <p>This is the cheapest fix on this page and the right one when the machine genuinely just needs a clean-up, but it is worth knowing it is also the fix most often sold to people whose real problem is hardware. If a tune-up has already been tried and the machine is still slow, the cause is more likely one covered in our <a href="/tech-tips/why-is-my-pc-so-slow">slow computer guide</a>. The <a href="/slow-computer-repair-perth">slow computer repair</a> page covers each tune-up level.</p>
+
+  - id: ssd-upgrade
+    title: "Replacing an old mechanical drive with an SSD"
+    urgency: can-wait
+    urgency_label: "Can wait"
+    price_key: hdd-to-ssd-full-migration
+    text: |
+      <p>A solid-state drive has no moving parts and reads data far faster than a mechanical hard drive, which is why this is one of the biggest speed improvements you can make to an older machine. The price below covers the drive itself along with cloning everything across so nothing is lost in the move.</p>
+      <p>If you already own the SSD, or would rather choose and buy it yourself, we also offer a labour-only fitting and data transfer at a lower price. Either way the drive is sized to genuinely suit how the machine is used, not just whatever is cheapest to stock. The <a href="/computer-upgrades-perth">computer upgrades</a> page covers SSDs and every other upgrade we fit.</p>
+
+  - id: ram-upgrade
+    title: "Adding more memory"
+    urgency: can-wait
+    urgency_label: "Can wait"
+    price_key: ram-upgrade-supplied
+    text: |
+      <p>Memory is the short-term workspace a computer uses for whatever is currently open, and machines bought a few years ago often shipped with less of it than everyday use now needs. The price below covers sourcing the right RAM for your machine, fitting it, and configuring it in the BIOS so it runs at its full rated speed rather than a default, slower setting.</p>
+      <p>If you supply your own RAM, DDR4 or DDR5, we also offer a labour-only fitting and configuration at a lower price. Either way, we check first that memory is genuinely the bottleneck before recommending it, since it will not help a machine whose real problem is somewhere else.</p>
+
+  - id: screen-repair
+    title: "Replacing a cracked or dead laptop screen"
+    urgency: book-this-week
+    urgency_label: "Book this week"
+    price_key: laptop-screen-replacement
+    text: |
+      <p>The price below includes the panel and the labour. Laptop screens are not one universal part, so the exact price depends on the panel your model takes, and the quote lists the panel and the labour separately once we have confirmed it, which usually only takes a few minutes to check.</p>
+      <p>A screen that is cracked but still displaying an image can be used carefully in the meantime. One that has gone dark, is showing lines through the display, or has come loose from the hinge is worth booking in sooner, since continuing to open and close a laptop with a damaged hinge or screen can turn a straightforward repair into a more expensive one. The <a href="/laptop-screen-repair-perth">laptop screen repair</a> page lists every screen type and price.</p>
+
+  - id: data-recovery
+    title: "Recovering files from a drive that has already failed"
+    urgency: stop-now
+    urgency_label: "Stop using it now"
+    price_key: data-recovery-failing-drive
+    text: |
+      <p>This is a different job from an upgrade or a repair: rather than fixing the machine, the goal is pulling files off a drive that is already struggling before it fails completely. The price below applies to drives that are still partially accessible; a drive that will no longer spin up or mount at all needs a more advanced recovery, quoted separately once we have looked at it.</p>
+      <p>Our <a href="/tech-tips/signs-hard-drive-failing">guide to failing hard drives</a> covers the warning signs in detail, and the short version is the same: the earlier a failing drive is brought in, the better the odds the files on it can still be recovered in full. The <a href="/data-recovery-perth">data recovery</a> page explains how recovery works.</p>
+
+faqs:
+  - q: "Why do some repair shops quote so much lower than others for the same job?"
+    a: "Usually it comes down to how the job is billed. A low hourly rate can end up costing more than a higher flat fee once the actual time is added up, and it also means you do not know the final number until the work is already done. A flat fee is set before anything starts, so there is nothing left to add up afterwards."
+  - q: "Is the price on this page exactly what I will pay?"
+    a: "For a job that fits cleanly into one category, yes. Machines with more than one thing wrong, such as a slow computer that also turns out to have a failing drive, are quoted as the combination of the relevant flat fees, and you are told that number before any work begins."
+  - q: "Do you charge more if a repair takes longer than expected?"
+    a: "No. That is the entire point of a flat fee: once a job is quoted, the price does not change if it takes another hour than we planned for. The risk of a job running long sits with us, not with you."
+  - q: "What if my problem does not fit into any of the categories above?"
+    a: "Most repairs do fit into one of these, or a combination of two. For anything genuinely unusual, the diagnostic fee above covers working out what is actually needed, and you get a specific price for that before anything is repaired."
+---

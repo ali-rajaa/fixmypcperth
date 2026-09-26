@@ -1,0 +1,49 @@
+---
+layout: default
+css: service
+title: "Page Not Found | FixMyPC Perth"
+description: "That page has moved or no longer exists. Every repair we do, and how to get a fixed price."
+permalink: /404.html
+noindex: true
+sitemap: false
+---
+{%- comment -%}
+  404.html   GitHub Pages serves this for any address that does not exist.
+  Old addresses from the previous site are redirected in Cloudflare
+  (_launch/cloudflare-bulk-redirects.csv); this page catches anything that
+  slips past. noindex, and left out of the sitemap. Links use absolute
+  paths so they work at any depth.
+{%- endcomment -%}
+{%- assign _svcs = site.data.suburbs.service_links | where: "kind", "service" | where: "built", true -%}
+<article class="sv">
+  <header class="sv-head">
+    <span class="sv-eyebrow">Page not found</span>
+    <h1 class="sv-h1">That page has moved</h1>
+    <p class="sv-lede">The page you were after has moved or no longer exists. Everything we fix is below, or message us and we will point you to the right place.</p>
+    <div class="sv-act">
+      <a href="https://wa.me/61452573701?text={{ "Hi! I'd like a quote for a computer repair." | uri_escape }}" target="_blank" rel="noopener noreferrer" class="sv-btn sv-btn-wa" onclick="trackWAClick()">Message us on WhatsApp</a>
+      <a href="/" class="sv-act-link">Go to the home page</a>
+    </div>
+  </header>
+
+  <section class="sv-more" aria-labelledby="nf-svc-h">
+    <h2 class="sv-h2" id="nf-svc-h">Repairs we do</h2>
+    <ul class="sv-links">
+      {%- for _v in _svcs %}
+      <li><a href="/{{ _v.slug }}"><span>{{ _v.label | escape }}</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></a></li>
+      {%- endfor %}
+    </ul>
+  </section>
+
+  <section class="sv-more" aria-labelledby="nf-more-h">
+    <h2 class="sv-h2" id="nf-more-h">Also on the site</h2>
+    <ul class="sv-links">
+      <li><a href="/services"><span>All services</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></a></li>
+      <li><a href="/pricing"><span>Full price list</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></a></li>
+      <li><a href="/pc-health-check-perth"><span>Free PC Health Check</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></a></li>
+      <li><a href="/tech-tips"><span>Tech Tips</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></a></li>
+      <li><a href="/business-it-support"><span>Business IT Support</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></a></li>
+      <li><a href="/quote-request"><span>Get a quote</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></a></li>
+    </ul>
+  </section>
+</article>

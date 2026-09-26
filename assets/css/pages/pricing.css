@@ -1,0 +1,409 @@
+/* ==========================================================
+   pricing.css   VERSION 6
+   v6: adds prefers-contrast, kills the iOS tap flash, em tracking on the
+   fluid section title, and fixes stacked translucency - .pr-tools was a
+   translucent blurred bar sticking directly under the equally translucent
+   .desk-nav, which collapses legibility. It is opaque now.
+   (v5 below)
+   Apple-design pass: critically damped hover, instant press
+   feedback, reduced-motion sweep. Also fixes a real bug found
+   in audit: .pr-row-main had no rule at all (see below).
+   Page stylesheet for /pricing. Self-contained, with its own
+   :root, exactly like index.css. Design tokens are never
+   shared between page stylesheets: a page that does not
+   define a token it uses renders dark text on dark panels,
+   which is how this site broke once before.
+   Loads before shell.css, so the header and footer chrome
+   always wins over anything here.
+   ========================================================== */
+
+:root {
+  --blue:      #1560FF;
+  --blue-lt:   #EEF3FF;
+  --blue-mid:  #C7D8FF;
+  --blue-dk:   #0A3ACC;
+  --ink:       #0F172A;
+  --ink2:      #1E293B;
+  --muted:     #64748B;
+  --muted2:    #94A3B8;
+  --border:    #E2E8F0;
+  --border2:   #CBD5E1;
+  --bg:        #FFFFFF;
+  --bg2:       #F8FAFC;
+  --bg3:       #F1F5F9;
+  --wa:        #22C55E;
+  --green:     #16A34A;
+  --display:   'Sora', 'Sora Fallback', sans-serif;
+  --body:      'DM Sans', 'DM Sans Fallback', sans-serif;
+  --nav-h:     64px;
+  --mob-nav-h: 60px;
+  /* Critically damped (no overshoot) - the default for hover/reveal motion
+     that isn't carrying momentum from a drag or flick. */
+  --ease-settle: cubic-bezier(0.16, 1, 0.3, 1);
+  /* Fast, for the instant press feedback itself. */
+  --ease-press:  cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* { box-sizing: border-box; }
+body { background:var(--bg); color:var(--ink); font-family:var(--body); font-size:16px; line-height:1.6; overflow-x:hidden; }
+.wrap { max-width:1100px; margin:0 auto; padding:0 2rem; }
+
+/* shared bits that match the homepage exactly */
+.s-eyebrow { display:block; font-size:12px; font-weight:700; letter-spacing:0.09em; text-transform:uppercase; color:var(--blue); margin-bottom:0.9rem; }
+.accent { color:var(--blue); }
+.btn-outline {
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  font-family:var(--body); font-size:15px; font-weight:700; text-decoration:none;
+  color:var(--ink); background:var(--bg); border:1.5px solid var(--border2);
+  padding:13px 26px; border-radius:50px; max-width:100%;
+  transition:border-color 0.2s,color 0.2s,transform 0.1s var(--ease-press);
+}
+@media (hover: hover) { .btn-outline:hover { border-color:var(--blue); color:var(--blue); } }
+.btn-outline:active { transform:scale(0.97); }
+
+/* ---------- hero ---------- */
+.pr-hero { background:var(--bg2); padding:96px 2rem 2.5rem; overflow:hidden; }
+/* Two columns: the copy on the left, the illustration on the right. Keeping the
+   text to one column stops the h1 running the full 1100px and cuts enough
+   height that the search bar is visible without scrolling on a laptop. */
+/* Two columns, two rows. Row one is the headline block and the artwork, row
+   two is the body copy on both sides. Because both copy blocks are grid items
+   on the same row, their top edges line up exactly whatever height the
+   illustration turns out to be. */
+.pr-hero-inner {
+  max-width:1100px; margin:0 auto; display:grid;
+  grid-template-columns:minmax(0,1.1fr) minmax(0,0.9fr);
+  grid-template-rows:auto auto; column-gap:2.75rem; row-gap:1.9rem;
+  align-items:start;
+}
+.pr-hero-top      { grid-column:1; grid-row:1; min-width:0; }
+.pr-hero-copy     { grid-column:1; grid-row:2; min-width:0; }
+.pr-hero-copy-alt { grid-column:2; grid-row:2; min-width:0; }
+/* Top aligned rather than centred, with the closing paragraph sitting under
+   the artwork. Centring left a large gap beneath the illustration because the
+   text column is taller. */
+.pr-hero-art { grid-column:2; grid-row:1; min-width:0; display:flex; align-items:center; justify-content:center; align-self:stretch; }
+.pr-art { width:100%; max-width:400px; height:auto; display:block; margin:0 auto; }
+.pr-hero-copy .pr-intro:last-child, .pr-hero-copy-alt .pr-intro:last-child { margin-bottom:0; }
+
+/* Three prices people actually look for, before any prose. */
+.pr-quick { display:flex; flex-wrap:wrap; gap:10px; margin:0 0 1.6rem; }
+.pr-quick-item { background:var(--bg); border:1.5px solid var(--border); border-radius:12px; padding:0.6rem 0.95rem; }
+.pr-quick-price { display:block; font-family:var(--display); font-size:1.25rem; font-weight:800; letter-spacing:-0.6px; color:var(--blue); line-height:1.1; }
+.pr-quick-lbl { display:block; font-family:var(--body); font-size:12px; font-weight:600; color:var(--muted); margin-top:2px; }
+.pr-hero h1:where(:not([class])) {
+  font-family:var(--display); font-size:clamp(1.9rem,3.6vw,2.85rem); font-weight:800;
+  line-height:1.1; letter-spacing:-1.4px; color:var(--ink); margin:0 0 1.1rem;
+}
+.pr-anchor { font-family:var(--body); font-size:19px; color:var(--ink2); margin:0 0 0.4rem; }
+.pr-anchor strong:where(:not([class])) { font-family:var(--display); font-size:24px; font-weight:800; color:var(--blue); }
+.pr-sub { font-size:15px; font-weight:700; color:var(--blue); margin:0 0 1.4rem; }
+.pr-intro { font-size:15px; color:var(--muted); line-height:1.72; margin:0 0 0.8rem; }
+.pr-intro strong:where(:not([class])) { color:var(--ink2); font-weight:700; }
+
+/* ---------- search and category bar ---------- */
+/* This bar sticks directly beneath .desk-nav, which is itself a translucent
+   blurred surface. Two light translucent layers stacked on each other is the
+   one thing that reliably destroys legibility - whatever scrolls under this
+   bar showed through it and then through the nav above it. Since this is
+   never the topmost layer, it is opaque and the nav keeps the blur. */
+.pr-tools { position:sticky; top:var(--nav-h); z-index:40; background:var(--bg); border-bottom:1px solid var(--border); }
+.pr-tools-inner { padding-top:0.9rem; padding-bottom:0.9rem; }
+/* The input carried its own focus outline on top of the wrapper's border,
+   which is where the thick double ring came from. The input's ring is off and
+   the wrapper shows a single soft halo instead. */
+.pr-search { display:flex; align-items:center; gap:10px; background:var(--bg2); border:1px solid var(--border); border-radius:12px; padding:0 14px; height:46px; transition:border-color 0.2s,background 0.2s,box-shadow 0.2s; }
+@media (hover: hover) { .pr-search:hover { border-color:var(--border2); } }
+.pr-search:focus-within { border-color:var(--blue); background:var(--bg); box-shadow:0 0 0 3px rgba(21,96,255,0.13); }
+.pr-search:focus-within svg { color:var(--blue); }
+.pr-search svg { width:17px; height:17px; color:var(--muted2); flex-shrink:0; transition:color 0.2s; }
+.pr-search input { flex:1; min-width:0; border:0; background:none; outline:none; font-family:var(--body); font-size:16px; color:var(--ink); }
+.pr-search input::-webkit-search-cancel-button { display:none; }
+.pr-search-clear { display:flex; align-items:center; justify-content:center; width:28px; height:28px; border:0; background:none; padding:0; cursor:pointer; color:var(--muted); border-radius:50%; transition:background 0.15s,color 0.15s,transform 0.1s var(--ease-press); }
+@media (hover: hover) { .pr-search-clear:hover { background:var(--bg3); color:var(--ink); } }
+.pr-search-clear:active { transform:scale(0.88); }
+
+/* Phone and small tablet only. From 1000px the sidebar rail replaces it. */
+.pr-chips { display:none; gap:8px; margin-top:0.8rem; overflow-x:auto; scrollbar-width:none; scroll-behavior:smooth; }
+.pr-chips::-webkit-scrollbar { display:none; }
+.pr-chip {
+  flex:0 0 auto; font-family:var(--body); font-size:13px; font-weight:600; white-space:nowrap;
+  color:var(--ink2); background:var(--bg); border:1px solid var(--border);
+  border-radius:10px; padding:9px 15px; cursor:pointer;
+  transition:background 0.18s,border-color 0.18s,color 0.18s,transform 0.1s var(--ease-press);
+}
+@media (hover: hover) { .pr-chip:hover { border-color:var(--blue-mid); color:var(--blue); } }
+.pr-chip:active { transform:scale(0.95); }
+.pr-chip.is-active { background:var(--blue); border-color:var(--blue); color:#fff; }
+.pr-chip:focus-visible { outline:2px solid var(--blue); outline-offset:2px; }
+.pr-search input:focus, .pr-search input:focus-visible { outline:none; }
+
+.pr-count { font-size:13.5px; font-weight:600; color:var(--muted); margin:0 0 1.25rem; }
+.pr-count[hidden] { display:none; }
+
+/* ==========================================================
+   Two-column layout: sticky category rail plus the price list.
+   ========================================================== */
+.pr-layout { display:grid; grid-template-columns:300px 1fr; gap:2.5rem; align-items:start; padding-top:2.25rem; }
+.pr-side { position:sticky; top:calc(var(--nav-h) + 96px); }
+.pr-side-card { background:var(--bg); border:1.5px solid var(--border); border-radius:18px; overflow:hidden; }
+.pr-side-head { background:var(--ink); padding:1.15rem 1.35rem; position:relative; }
+.pr-side-head::after { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--blue),#00CFFF); }
+.pr-side-eyebrow { display:block; font-size:10px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.42); margin-bottom:3px; }
+.pr-side-title { display:block; font-family:var(--display); font-size:16px; font-weight:800; color:#fff; letter-spacing:-0.3px; }
+.pr-side-nav { padding:0.6rem; }
+.pr-side-item {
+  display:flex; align-items:center; gap:0; width:100%; background:none; border:0;
+  cursor:pointer; border-radius:11px; overflow:hidden; margin-bottom:3px; text-align:left;
+  transition:background 0.16s;
+}
+.pr-side-item:last-child { margin-bottom:0; }
+@media (hover: hover) { .pr-side-item:hover { background:var(--bg2); } }
+.pr-side-item:active { background:var(--border); transition:background 0.1s var(--ease-press); }
+.pr-side-item.is-active { background:var(--blue-lt); }
+.pr-side-item:focus-visible { outline:2px solid var(--blue); outline-offset:-2px; }
+.pr-side-accent { width:3px; height:42px; border-radius:0 2px 2px 0; background:transparent; flex-shrink:0; transition:background 0.16s; }
+.pr-side-item.is-active .pr-side-accent { background:var(--blue); }
+.pr-side-ico { display:flex; align-items:center; justify-content:center; width:35px; height:35px; border-radius:10px; background:var(--bg3); color:var(--muted); flex-shrink:0; margin:0 11px 0 10px; transition:background 0.16s,color 0.16s; }
+.pr-side-ico svg { width:18px; height:18px; }
+@media (hover: hover) { .pr-side-item:hover .pr-side-ico { color:var(--ink2); } }
+.pr-side-item.is-active .pr-side-ico { background:var(--blue); color:#fff; }
+.pr-side-label { flex:1; min-width:0; font-family:var(--body); font-size:14.5px; font-weight:600; color:var(--ink2); padding:0.72rem 0; }
+.pr-side-item.is-active .pr-side-label { color:var(--blue-dk); font-weight:700; }
+.pr-side-n { font-family:var(--body); font-size:12px; font-weight:700; color:var(--muted); background:var(--bg3); border-radius:20px; padding:3px 9px; margin-right:0.8rem; }
+.pr-side-item.is-active .pr-side-n { background:var(--blue); color:#fff; }
+.pr-side-cta {
+  display:block; text-align:center; margin-top:0.85rem; text-decoration:none;
+  font-family:var(--body); font-size:13px; font-weight:700; color:var(--muted);
+  border:1.5px dashed var(--border2); border-radius:12px; padding:0.8rem;
+  transition:border-color 0.18s,color 0.18s,transform 0.1s var(--ease-press);
+}
+@media (hover: hover) { .pr-side-cta:hover { border-color:var(--blue); color:var(--blue); } }
+.pr-side-cta:active { transform:scale(0.97); }
+
+.pr-wide { padding-top:3.25rem; }
+
+/* ---------- sections ---------- */
+.pr-main { min-width:0; padding-bottom:2rem; }
+.pr-sec { padding:0 0 2.5rem; }
+.pr-sec:first-of-type { padding-top:0; }
+.pr-sec-title { font-family:var(--display); font-size:clamp(1.25rem,2.4vw,1.6rem); font-weight:800; letter-spacing:-0.027em; color:var(--ink); margin:0 0 0.4rem; display:flex; align-items:center; gap:10px; }
+.pr-sec-count { font-family:var(--body); font-size:12px; font-weight:700; color:var(--muted); background:var(--bg3); border-radius:6px; padding:3px 8px; }
+.pr-sec-blurb { font-size:14.5px; color:var(--muted); line-height:1.65; max-width:64ch; margin:0 0 1.2rem; }
+
+/* Sub-headings inside a section. 18 repairs in one run reads as a dump; four
+   named groups of four or five reads as a list you can scan. */
+.pr-group { display:flex; align-items:center; gap:9px; font-family:var(--body); font-size:11.5px; font-weight:700;
+  letter-spacing:0.09em; text-transform:uppercase; color:var(--muted); margin:1.6rem 0 0.7rem; }
+.pr-group:first-of-type { margin-top:0; }
+.pr-group[hidden], .pr-rows[hidden] { display:none; }
+.pr-group::after { content:''; flex:1; height:1px; background:var(--border); }
+.pr-group-n { font-size:11px; font-weight:700; color:var(--muted); background:var(--bg3); border-radius:20px; padding:2px 7px; letter-spacing:0; }
+
+/* ---------- price rows ---------- */
+.pr-rows { display:flex; flex-direction:column; gap:8px; }
+/* Tightened: the rows were reading as cards rather than as a price list. */
+.pr-row {
+  display:grid; grid-template-columns:1fr auto; gap:1.25rem; align-items:center;
+  background:var(--bg); border:1px solid var(--border); border-radius:13px;
+  padding:0.9rem 1.1rem; transition:border-color 0.18s,box-shadow 0.3s var(--ease-settle);
+}
+@media (hover: hover) { .pr-row:hover { border-color:var(--blue-mid); box-shadow:0 6px 22px rgba(15,23,42,0.05); } }
+.pr-row[hidden] { display:none; }
+/* Had no rule at all. In a 1fr grid column that means this can't shrink
+   below its content's natural width, so a long service name or description
+   pushes the row wider than its container instead of wrapping inside it. */
+.pr-row-main { min-width:0; }
+.pr-name { font-family:var(--display); font-size:15px; font-weight:700; color:var(--ink); margin:0 0 0.2rem; line-height:1.35; }
+.pr-badge { display:inline-block; font-family:var(--body); font-size:10px; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; color:var(--green); margin-left:6px; vertical-align:middle; }
+.pr-desc { font-size:13.5px; color:var(--muted); line-height:1.6; margin:0; max-width:62ch; }
+.pr-note { font-size:13px; color:var(--ink2); line-height:1.6; margin:0.5rem 0 0; padding-top:0.5rem; border-top:1px solid var(--border); max-width:62ch; }
+.pr-note strong:where(:not([class])) { color:var(--blue-dk); }
+
+/* Symptom chips under the diagnostic row. They are the words people actually
+   search: blue screen, boot loop, won't turn on. Carried over from the live
+   page, where they were the only place those phrases appeared. */
+.pr-symptoms { display:flex; flex-wrap:wrap; gap:6px; margin-top:0.75rem; }
+.pr-symptom { font-family:var(--body); font-size:12px; font-weight:600; color:var(--ink2); background:var(--bg3); border-radius:6px; padding:4px 9px; white-space:nowrap; }
+
+/* Price and Book sit on one line rather than stacked. Stacking put a small
+   outlined button directly under a large number, which read as two separate
+   things rather than one price with an action beside it. */
+.pr-row-price { display:flex; flex-direction:row; align-items:center; justify-content:flex-end; gap:14px; }
+.pr-price-wrap { display:flex; flex-direction:column; align-items:flex-end; gap:2px; }
+.pr-price { font-family:var(--display); font-size:1.25rem; font-weight:800; letter-spacing:-0.7px; color:var(--ink); white-space:nowrap; line-height:1; }
+.pr-price-alt { font-family:var(--body); font-size:12px; font-weight:600; color:var(--muted); white-space:nowrap; line-height:1.3; }
+.pr-book {
+  display:inline-flex; align-items:center; justify-content:center;
+  font-family:var(--body); font-size:13px; font-weight:700; text-decoration:none;
+  color:var(--blue); background:var(--bg); border:1px solid var(--blue-mid);
+  padding:7px 16px; border-radius:50px; white-space:nowrap;
+  transition:background 0.18s,border-color 0.18s,transform 0.1s var(--ease-press);
+}
+@media (hover: hover) { .pr-book:hover { background:var(--blue-lt); border-color:var(--blue); } }
+.pr-book:active { transform:scale(0.94); }
+.pr-book-wide { width:100%; padding:12px 18px; font-size:14px; }
+
+/* tiered options inside a row */
+.pr-opts { grid-column:1 / -1; display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:8px; margin-top:0.9rem; padding-top:0.9rem; border-top:1px solid var(--border); }
+.pr-opt { background:var(--bg2); border:1px solid var(--border); border-radius:11px; padding:0.75rem 0.85rem; }
+.pr-opt-name { display:block; font-family:var(--body); font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--muted); }
+.pr-opt-price { display:block; font-family:var(--display); font-size:1.15rem; font-weight:800; color:var(--ink); letter-spacing:-0.5px; margin:2px 0 3px; }
+.pr-opt-desc { display:block; font-size:12.5px; color:var(--muted); line-height:1.5; }
+
+/* ---------- packages ---------- */
+.pr-packs { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+.pr-pack { background:var(--blue-lt); border:1.5px solid var(--blue-mid); border-radius:18px; padding:1.5rem 1.4rem; display:flex; flex-direction:column; }
+.pr-pack[hidden] { display:none; }
+.pr-pack-title { font-family:var(--display); font-size:1.2rem; font-weight:800; color:var(--ink); margin:0 0 0.5rem; }
+.pr-pack-desc { font-size:14px; color:var(--ink2); line-height:1.7; margin:0 0 1.1rem; flex:1; }
+.pr-pack-price { font-family:var(--display); font-size:2rem; font-weight:800; letter-spacing:-1px; color:var(--blue-dk); margin:0 0 1rem; }
+.pr-pack-was { font-family:var(--body); font-size:13px; font-weight:600; color:var(--muted); text-decoration:line-through; margin-left:8px; letter-spacing:0; }
+
+/* ---------- business IT ---------- */
+.pr-plans { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:1.5rem; }
+.pr-plan { background:var(--bg); border:1.5px solid var(--border); border-radius:16px; padding:1.35rem; }
+.pr-plan[hidden] { display:none; }
+.pr-plan-name { display:block; font-size:11px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--blue); margin-bottom:0.5rem; }
+.pr-plan-price { font-family:var(--display); font-size:1.85rem; font-weight:800; letter-spacing:-1px; color:var(--ink); margin:0 0 0.5rem; }
+.pr-plan-per { font-family:var(--body); font-size:13px; font-weight:600; color:var(--muted); letter-spacing:0; }
+.pr-plan-cov { font-size:13.5px; font-weight:600; color:var(--ink2); margin:0 0 0.35rem; }
+.pr-plan-who { font-size:13px; color:var(--muted); line-height:1.6; margin:0; }
+
+/* ---------- rules ---------- */
+.pr-rules-sec { background:var(--bg2); padding:3.75rem 0; margin-top:3.5rem; }
+.pr-rules { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem 2.5rem; margin-top:1.5rem; }
+.pr-rule h3:where(:not([class])) { font-family:var(--display); font-size:1.02rem; font-weight:700; color:var(--ink); margin:0 0 0.45rem; }
+.pr-rule p:where(:not([class])) { font-size:14.5px; color:var(--muted); line-height:1.75; margin:0; }
+
+/* ---------- links out to the service detail pages ---------- */
+.pr-links { display:flex; flex-wrap:wrap; gap:8px; }
+.pr-link-pill {
+  display:inline-flex; align-items:center; font-family:var(--body); font-size:13.5px;
+  font-weight:600; color:var(--blue); text-decoration:none;
+  background:var(--bg); border:1.5px solid var(--blue-mid);
+  padding:8px 16px; border-radius:50px; min-height:44px;
+  -webkit-tap-highlight-color:transparent;
+  transition:background 0.15s,border-color 0.15s,transform 0.1s var(--ease-press);
+}
+@media (hover: hover) { .pr-link-pill:hover { background:var(--blue-lt); border-color:var(--blue); } }
+.pr-link-pill:active { transform:scale(0.95); }
+
+/* ---------- faq ---------- */
+.pr-faq-sec { padding:3.75rem 0 4rem; }
+.pr-faq { display:flex; flex-direction:column; gap:8px; margin-top:1.5rem; max-width:840px; }
+.faq-item { background:var(--bg); border:1.5px solid var(--border); border-radius:var(--radius); overflow:hidden; transition:border-color 0.18s; }
+@media (hover: hover) { .faq-item:hover { border-color:var(--blue-mid); } }
+.faq-item.open { border-color:var(--blue-mid); }
+.faq-q {
+  width:100%; display:flex; align-items:center; justify-content:space-between; gap:1rem;
+  background:none; border:0; text-align:left; cursor:pointer;
+  font-family:var(--display); font-size:15px; font-weight:700; color:var(--ink);
+  padding:1.25rem 1.5rem; line-height:1.3; transition:background 0.15s,color 0.15s;
+}
+@media (hover: hover) { .faq-q:hover { color:var(--blue); } }
+.faq-q:active { background:var(--bg2); }
+/* A touch of overshoot on the rotation (Apple's own spec value for rotation
+   is damping 0.8) so the tap feels answered rather than merely obeyed. */
+.faq-q svg { width:18px; height:18px; flex-shrink:0; color:var(--muted); transition:transform 0.35s cubic-bezier(0.34,1.35,0.64,1); }
+.faq-item.open .faq-q svg { transform:rotate(180deg); color:var(--blue); }
+.faq-q:focus-visible { outline:2px solid var(--blue); outline-offset:-3px; }
+.faq-a { display:grid; grid-template-rows:0fr; overflow:hidden; transition:grid-template-rows 0.4s var(--ease-settle); }
+.faq-item.open .faq-a { grid-template-rows:1fr; }
+.faq-a p:where(:not([class])) { min-height:0; font-size:14px; color:var(--muted); line-height:1.75; margin:0; padding:0 1.5rem; transition:padding 0.4s var(--ease-settle); }
+.faq-item.open .faq-a p:where(:not([class])) { padding:0 1.5rem 1.25rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  .faq-a, .faq-a p:where(:not([class])), .faq-q svg, .pr-chips, .pr-side-item { transition:none; scroll-behavior:auto; }
+  .pr-chip:active, .pr-book:active, .pr-side-cta:active, .btn-outline:active, .pr-search-clear:active, .pr-link-pill:active { transform:none; }
+}
+
+/* High contrast. Muted greys darkened, and the tinted panels given a
+   defined border rather than relying on fill alone. */
+@media (prefers-contrast: more) {
+  .pr-intro, .pr-desc, .pr-sec-blurb, .pr-opt-desc, .pr-rule p:where(:not([class])),
+  .faq-a p:where(:not([class])), .pr-plan-who, .pr-quick-lbl { color:#334155; }
+  .pr-row, .pr-opt, .pr-plan, .faq-item, .pr-side-card, .pr-quick-item { border-color:#0F172A; }
+  .pr-book, .pr-link-pill { border-color:#0A3ACC; }
+  .btn-outline, .pr-side-cta { border-color:#0F172A; }
+  .pr-tools { border-bottom-color:#0F172A; }
+}
+
+/* The grey iOS tap flash paints over the press-scale feedback above. */
+.pr-chip, .pr-book, .pr-side-item, .pr-side-cta, .pr-search-clear,
+.btn-outline, .faq-q {
+  -webkit-tap-highlight-color:transparent;
+}
+
+/* ==========================================================
+   Tablet and phone. The nav switches to the hamburger at
+   900px, so the sticky offset has to move with it.
+   ========================================================== */
+@media (max-width:1000px) {
+  /* Single column: headline, artwork, then both copy blocks in reading order. */
+  .pr-hero-inner { grid-template-columns:1fr; grid-template-rows:none; row-gap:1.5rem; }
+  .pr-hero-top, .pr-hero-art, .pr-hero-copy, .pr-hero-copy-alt { grid-column:1; grid-row:auto; }
+  .pr-hero-art { order:2; }
+  .pr-hero-copy { order:3; }
+  .pr-hero-copy-alt { order:4; }
+  .pr-art { max-width:340px; }
+  /* Not enough width for a rail and a readable list side by side. */
+  .pr-layout { grid-template-columns:1fr; gap:0; padding-top:1.5rem; }
+  .pr-side { display:none; }
+  .pr-chips { display:flex; }
+  .pr-wide { padding-top:2.5rem; }
+}
+
+@media (max-width:900px) {
+  body { padding-top:var(--mob-nav-h); }
+  .pr-hero { padding-top:2.25rem; }
+  .pr-tools { top:var(--mob-nav-h); }
+  .pr-plans { grid-template-columns:1fr; }
+  .pr-rules { grid-template-columns:1fr; gap:1.35rem; }
+}
+
+@media (max-width:720px) {
+  .wrap { padding:0 1.25rem; }
+  .pr-hero { padding:1.5rem 1.25rem 2.25rem; }
+  /* The illustration is decoration. On a phone the screen is better spent on
+     the prices, so it goes rather than eating a third of the first view. */
+  .pr-hero-art { display:none; }
+  .pr-quick { gap:8px; margin-bottom:1.35rem; }
+  .pr-quick-item { flex:1; min-width:0; padding:0.55rem 0.7rem; }
+  .pr-quick-price { font-size:1.1rem; }
+  .pr-quick-lbl { font-size:12px; }
+  .pr-hero h1:where(:not([class])) { font-size:1.85rem; letter-spacing:-1px; }
+  .pr-anchor { font-size:17px; }
+  .pr-anchor strong:where(:not([class])) { font-size:21px; }
+  .pr-intro { font-size:15px; line-height:1.75; }
+  .pr-sec { padding-bottom:2rem; }
+  .pr-tools-inner { padding-top:0.75rem; padding-bottom:0.75rem; }
+  .pr-chips { margin:0.7rem -1.25rem 0; padding:0 1.25rem; }
+
+  /* The two-column row collapses. Price and Book sit on one
+     line under the text instead of in a right-hand column,
+     which is what keeps the rows short enough to scan. */
+  .pr-row { grid-template-columns:1fr; gap:0.75rem; padding:0.9rem 1rem; }
+  /* Wraps rather than overflowing when a price string is long, for example
+     a tier that carries an alternative figure alongside it. */
+  .pr-row-price { flex-direction:row; flex-wrap:wrap; align-items:center; justify-content:space-between; width:100%; gap:8px 12px; padding-top:0.85rem; border-top:1px solid var(--border); }
+  .pr-price { font-size:1.2rem; }
+  .pr-price-alt { margin-left:-4px; }
+  .pr-book { margin-left:auto; }
+  .pr-name { font-size:15.5px; }
+  .pr-desc { font-size:13.5px; }
+  .pr-opts { grid-template-columns:1fr; }
+  .pr-packs { grid-template-columns:1fr; }
+  .pr-pack-price { font-size:1.7rem; }
+  .pr-rules-sec, .pr-faq-sec { padding:2.75rem 0; }
+  .faq-q { font-size:14.5px; padding:1rem 1.15rem; }
+  .faq-a p:where(:not([class])) { padding:0 1.15rem; font-size:14px; }
+  .faq-item.open .faq-a p:where(:not([class])) { padding:0 1.15rem 1.15rem; }
+}
+
+@media (max-width:380px) {
+  .pr-hero h1:where(:not([class])) { font-size:1.6rem; }
+  .pr-price { font-size:1.2rem; }
+  .pr-book { padding:8px 14px; font-size:12.5px; }
+  .pr-sec-title { font-size:1.25rem; }
+}

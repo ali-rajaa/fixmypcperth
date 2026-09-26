@@ -1,0 +1,422 @@
+---
+layout: default
+---
+{%- comment -%}
+  tech-tip.html   layout for the /tech-tips/<slug> cluster   VERSION 3
+
+  Built to match the industry pages (single centred column, the same dark
+  on-page form, the same type scale) so the site reads as one design.
+
+  Front matter, all required unless noted:
+    Facts      slug (must match the file name), heading (H1, breadcrumb and
+               schema headline; title is the SEO tag only), category, date
+               (first published), updated, read_min
+    Optional   index_heading: the contents box heading. Defaults to
+               "The N causes, by urgency"; signs, repairs and damage
+               guides set their own so the H2 names what they list.
+    Written    short_answer, causes (each: id, title, urgency,
+               urgency_label, text, price_key), faqs (each: q and a)
+    Optional   quote_service: the service name the quote email is tagged
+               with, from services.yml quote_options values
+    Optional   service_page: slug of the service page that sells this
+               job. Linked from the costs section only once its
+               service_links entry in _data/suburbs.yml is built: true.
+
+  Editorial rule. A guide says what a cause is, why it happens, how urgent
+  it is and what it costs. It never helps the reader diagnose their own
+  machine: no "if it does X, it is Y", no signs that tell one cause from
+  another, no checks, tools, settings or steps. Only testing tells the
+  causes apart. That is also why prices are NOT shown per cause: a price
+  under each cause invites the reader to pick their own and price it. The
+  single cost table names the cause each fix is for, never the services.yml
+  description, which describes symptoms and would hand over a diagnostic
+  sign.
+
+  Conversion path: quote button in the header, a nudge on every stop-now
+  cause, then the on-page quote form. The form posts to Web3Forms over
+  fetch with the same field names as /quote-request, so enquiries land in
+  the same shape in the inbox.
+
+  No Liquid inside front matter; every price comes from services.yml and
+  the rating from reviews.yml.
+{%- endcomment -%}
+
+{%- assign _S = site.data.services -%}
+{%- assign _R = site.data.reviews.meta -%}
+{%- assign _diag = _S.services | where: "key", "diagnostic-repair-all-in" | first -%}
+{%- assign _svc = nil -%}
+{%- if page.service_page -%}{%- assign _svc = site.data.suburbs.service_links | where: "slug", page.service_page | where: "built", true | first -%}{%- endif -%}
+{%- assign _updated = page.updated | default: page.date -%}
+{%- assign _url = "https://www.fixmypcperth.com/tech-tips/" | append: page.slug -%}
+{%- capture _desc -%}{% include resolve-prices.html text=page.description %}{%- endcapture -%}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "@id": "{{ _url }}#article",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "{{ _url }}" },
+  "headline": {{ page.heading | jsonify }},
+  "description": {{ _desc | jsonify }},
+  "url": "{{ _url }}",
+  "image": { "@type": "ImageObject", "url": "https://www.fixmypcperth.com/og-tech-tips.png", "width": 1200, "height": 630 },
+  "inLanguage": "en-AU",
+  "datePublished": "{{ page.date }}T09:00:00+08:00",
+  "dateModified": "{{ _updated }}T09:00:00+08:00",
+  "articleSection": {{ page.category | jsonify }},
+  "author": { "@type": "Organization", "name": "FixMyPC Perth", "url": "https://www.fixmypcperth.com/" },
+  "publisher": {
+    "@type": "LocalBusiness",
+    "@id": "https://www.fixmypcperth.com/#business",
+    "name": "FixMyPC Perth",
+    "logo": "https://www.fixmypcperth.com/logo.png",
+    "telephone": "+61452573701",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "7 Barraberry Retreat",
+      "addressLocality": "Canning Vale",
+      "addressRegion": "WA",
+      "postalCode": "6155",
+      "addressCountry": "AU"
+    }
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.fixmypcperth.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Tech Tips", "item": "https://www.fixmypcperth.com/tech-tips"},
+    {"@type": "ListItem", "position": 3, "name": {{ page.heading | jsonify }}, "item": "{{ _url }}"}
+  ]
+}
+</script>
+
+{%- if page.faqs %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {%- for _f in page.faqs -%}{%- unless forloop.first %},{% endunless %}
+    { "@type": "Question", "name": {{ _f.q | jsonify }}, "acceptedAnswer": { "@type": "Answer", "text": {{ _f.a | jsonify }} } }
+    {%- endfor %}
+  ]
+}
+</script>
+{%- endif %}
+
+<article class="tip">
+
+  <header class="tip-head">
+    <nav class="tip-crumbs" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><a href="/tech-tips">Tech Tips</a></li>
+        <li><span aria-current="page">{{ page.heading | escape }}</span></li>
+      </ol>
+    </nav>
+
+    <h1 class="tip-h1">{{ page.heading | escape | replace: "? ", "?<br> " }}</h1>
+
+    <p class="tip-lede">{{ page.short_answer | escape }}</p>
+
+    <div class="tip-act">
+      <a href="#quote" class="tip-btn tip-btn-primary" data-track="hero_quote">Get a fixed price</a>
+      <a href="/pc-health-check-perth" class="tip-act-link">Or run the Free PC Health Check</a>
+    </div>
+
+    <p class="tip-byline">
+      <span>By FixMyPC Perth</span>
+      <span>Updated <time datetime="{{ _updated }}">{{ _updated | date: "%-d %B %Y" }}</time></span>
+      <span>{{ page.read_min }} minute read</span>
+      {%- if _R.rating %}<span>Rated {{ _R.rating }} on Google</span>{%- endif %}
+    </p>
+  </header>
+
+  {%- comment -%} Contents and urgency key in one box, like the contents
+  panel on the industry pages. Each cause carries a status dot. {%- endcomment %}
+  <nav class="tip-index" aria-labelledby="tip-index-title">
+    <h2 class="tip-index-title" id="tip-index-title">{% if page.index_heading %}{{ page.index_heading | escape }}{% else %}The {{ page.causes.size }} causes, by urgency{% endif %}</h2>
+    <ul class="tip-index-list">
+      {%- for _c in page.causes %}
+      {%- case _c.urgency -%}{%- when "stop-now" -%}{%- assign _lvl = 3 -%}{%- when "book-this-week" -%}{%- assign _lvl = 2 -%}{%- else -%}{%- assign _lvl = 1 -%}{%- endcase %}
+      <li><a href="#{{ _c.id }}"><span class="tip-dot tip-lvl-{{ _lvl }}" aria-hidden="true"></span><span>{{ _c.title | escape }}</span><span class="sr-only">, {{ _c.urgency_label | escape }}</span></a></li>
+      {%- endfor %}
+    </ul>
+    <dl class="tip-key">
+      <div><dt class="tip-lvl-1"><span class="tip-dot tip-lvl-1" aria-hidden="true"></span>Can wait</dt><dd>Annoying rather than risky.</dd></div>
+      <div><dt class="tip-lvl-2"><span class="tip-dot tip-lvl-2" aria-hidden="true"></span>Book this week</dt><dd>Gets worse, and dearer, with time.</dd></div>
+      <div><dt class="tip-lvl-3"><span class="tip-dot tip-lvl-3" aria-hidden="true"></span>Stop using it now</dt><dd>Files at risk that can still be saved.</dd></div>
+    </dl>
+  </nav>
+
+  <div class="tip-body">
+
+    {%- for _c in page.causes %}
+    {%- case _c.urgency -%}{%- when "stop-now" -%}{%- assign _lvl = 3 -%}{%- when "book-this-week" -%}{%- assign _lvl = 2 -%}{%- else -%}{%- assign _lvl = 1 -%}{%- endcase %}
+    <section class="tip-cause" id="{{ _c.id }}" aria-labelledby="{{ _c.id }}-h">
+      <h2 class="tip-h2" id="{{ _c.id }}-h">{{ _c.title | escape }}</h2>
+      <p class="tip-urgency tip-lvl-{{ _lvl }}"><span class="tip-dot tip-lvl-{{ _lvl }}" aria-hidden="true"></span>{{ _c.urgency_label | escape }}</p>
+      <div class="tip-prose">
+        {{ _c.text }}
+      </div>
+      {%- if _lvl == 3 %}
+      <p class="tip-nudge"><a href="#quote" data-track="urgent_quote">Could it be this one? Stop using the machine and ask us first.</a></p>
+      {%- endif %}
+    </section>
+    {%- endfor %}
+
+    <section class="tip-costs" id="costs" aria-labelledby="costs-h">
+      <h2 class="tip-h2" id="costs-h">What each fix costs</h2>
+      <div class="tip-prose">
+        <p>Every price is fixed and includes GST. If you do not know which cause it is, the diagnostic finds it and fixes it in the same visit for one flat fee, never an hourly rate. Everything else is on the <a href="/pricing">full price list</a>.{% if _svc %} Booking the repair itself? See <a href="/{{ _svc.slug }}">{{ _svc.label | downcase }} in Perth</a>.{% endif %}</p>
+      </div>
+      <table class="tip-table">
+        <caption class="sr-only">What each fix on this page costs</caption>
+        <thead><tr><th scope="col">Fix</th><th scope="col">For</th><th scope="col" class="tip-num">Price</th></tr></thead>
+        <tbody>
+          <tr class="tip-row-lead">
+            <th scope="row">{{ _diag.name | escape }}</th>
+            <td>Not sure which one it is</td>
+            <td class="tip-num">{% include price.html key="diagnostic-repair-all-in" %}</td>
+          </tr>
+          {%- for _c in page.causes %}
+          {%- assign _svc = _S.services | where: "key", _c.price_key | first %}
+          <tr>
+            <th scope="row">{{ _svc.name | escape }}</th>
+            <td><a href="#{{ _c.id }}">{{ _c.title | escape }}</a></td>
+            <td class="tip-num">{% include price.html key=_c.price_key %}</td>
+          </tr>
+          {%- endfor %}
+        </tbody>
+      </table>
+    </section>
+
+    {%- comment -%} Quote form. Same panel as the industry audit form, same
+    field names as /quote-request so enquiries arrive in the same shape.
+    Order is deliberate: the machine first (easy, no commitment), contact
+    details last. Device and reply method are one-tap choices rather than
+    menus. Inputs are 16px: anything smaller makes iPhones zoom on focus.
+    No review count anywhere; it changes, and a stale figure is a wrong
+    claim. The rating comes from reviews.yml. {%- endcomment %}
+    <section class="audit-block tq" id="quote" aria-labelledby="quote-h">
+      <h2 class="audit-block-title" id="quote-h">Get a fixed price for your PC</h2>
+      <p class="audit-block-desc">Tell us what it is doing. We reply with a fixed price, usually {{ site.reply_time }}.</p>
+      <form id="tipQuote" class="tq-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+        <input type="hidden" name="access_key" value="{{ _S.form.access_key }}">
+        <input type="hidden" name="subject" value="Quote request from Tech Tips: {{ page.heading | escape }}">
+        <input type="hidden" name="Services" value="{{ page.quote_service | default: 'Something Else' | escape }}">
+        <input type="hidden" name="from_page" value="tech-tips/{{ page.slug }}">
+        <input type="checkbox" name="botcheck" class="tq-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+        <fieldset class="tq-group" id="tq-device" aria-describedby="tq-device-err">
+          <legend class="tq-label">What kind of computer?</legend>
+          <div class="tq-seg">
+            {%- for _d in _S.device_types %}
+            <label class="tq-seg-opt"><input type="radio" name="Device Type" value="{{ _d | escape }}"><span>{{ _d | escape }}</span></label>
+            {%- endfor %}
+          </div>
+          <p class="tq-err" id="tq-device-err" hidden>Choose the closest one.</p>
+        </fieldset>
+
+        <div class="tq-field">
+          <label class="tq-label" for="tq-desc">What is it doing? <span class="tq-opt">Optional</span></label>
+          <textarea class="tq-input" id="tq-desc" name="Description" rows="3" placeholder="In your own words, and roughly when it started"></textarea>
+        </div>
+
+        <div class="tq-row">
+          <div class="tq-field">
+            <label class="tq-label" for="tq-name">Your name</label>
+            <input class="tq-input" id="tq-name" name="Name" type="text" autocomplete="name" required aria-describedby="tq-name-err">
+            <p class="tq-err" id="tq-name-err" hidden>Please enter your name.</p>
+          </div>
+          <div class="tq-field">
+            <label class="tq-label" for="tq-phone">Phone number</label>
+            <input class="tq-input" id="tq-phone" name="Phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="04xx xxx xxx" required aria-describedby="tq-phone-err">
+            <p class="tq-err" id="tq-phone-err" hidden>Please enter an Australian phone number.</p>
+          </div>
+        </div>
+
+        <div class="tq-field">
+          <label class="tq-label" for="tq-email">Email <span class="tq-opt">Optional</span></label>
+          <input class="tq-input" id="tq-email" name="Email" type="email" autocomplete="email">
+        </div>
+
+        <fieldset class="tq-group">
+          <legend class="tq-label">How should we reply?</legend>
+          <div class="tq-seg">
+            <label class="tq-seg-opt"><input type="radio" name="Preferred Contact" value="WhatsApp" checked><span>WhatsApp</span></label>
+            <label class="tq-seg-opt"><input type="radio" name="Preferred Contact" value="Email"><span>Email</span></label>
+          </div>
+        </fieldset>
+
+        <button class="tq-submit" type="submit">Send quote request</button>
+        <p class="tq-err tq-err-form" id="tqErr" role="alert" hidden>That did not send. Please try again, or message us on WhatsApp on 0452 573 701.</p>
+        <p class="tq-trust">
+          {%- if _R.rating %}<span class="tq-stars" aria-hidden="true">&#9733;</span> Rated {{ _R.rating }} on Google. {% endif %}Your details are only used to answer this quote.
+        </p>
+      </form>
+      <div class="audit-done" id="tqDone" role="status" aria-live="polite" hidden>
+        <div class="audit-done-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <p class="audit-done-title">Quote request sent.</p>
+        <p class="audit-done-text">A member of our team will come back to you with a fixed price, usually {{ site.reply_time }}. If it is urgent, message us on WhatsApp on 0452 573 701.</p>
+      </div>
+    </section>
+
+    {%- if page.faqs %}
+    <section class="tip-faq" id="faq" aria-labelledby="faq-h">
+      <h2 class="tip-h2" id="faq-h">Questions we get asked</h2>
+      {%- for _f in page.faqs %}
+      <div class="tip-faq-item">
+        <h3 class="tip-faq-h">
+          <button type="button" class="tip-faq-q" aria-expanded="false" aria-controls="faq-a-{{ forloop.index }}" id="faq-q-{{ forloop.index }}">
+            <span>{{ _f.q | escape }}</span>
+            <svg class="tip-faq-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </h3>
+        <div class="tip-faq-a" id="faq-a-{{ forloop.index }}" role="region" aria-labelledby="faq-q-{{ forloop.index }}"><div><p>{{ _f.a | escape }}</p></div></div>
+      </div>
+      {%- endfor %}
+    </section>
+    {%- endif %}
+
+    {%- comment -%}
+      More Tech Tips: the guides listed under this guide's related: key in
+      _data/techtips.yml, chosen by topic. A guide with no related: list
+      falls back to the three newest. By date alone the oldest guide was
+      never linked from any other guide.
+    {%- endcomment -%}
+    {%- assign _me = site.data.techtips.posts | where: "slug", page.slug | first -%}
+    {%- assign _n = 0 -%}
+    {%- capture _items -%}
+      {%- if _me.related -%}
+        {%- for _rs in _me.related -%}
+          {%- assign _o = site.data.techtips.posts | where: "slug", _rs | first -%}
+          {%- if _o and _o.slug != page.slug and _n < 3 -%}
+            {%- assign _n = _n | plus: 1 %}
+        <li><a href="/tech-tips/{{ _o.slug }}"><span class="tip-more-cat">{{ _o.category | escape }}</span><span class="tip-more-title">{{ _o.title | escape }}</span></a></li>
+          {%- endif -%}
+        {%- endfor -%}
+      {%- else -%}
+        {%- assign _built = site.data.techtips.posts | sort: "date" | reverse -%}
+        {%- for _o in _built -%}
+          {%- if _o.slug != page.slug and _n < 3 -%}
+            {%- assign _n = _n | plus: 1 %}
+        <li><a href="/tech-tips/{{ _o.slug }}"><span class="tip-more-cat">{{ _o.category | escape }}</span><span class="tip-more-title">{{ _o.title | escape }}</span></a></li>
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endif -%}
+    {%- endcapture -%}
+    {%- if _n > 0 %}
+    <section class="tip-more" aria-labelledby="more-h">
+      <h2 class="tip-h2" id="more-h">More Tech Tips</h2>
+      <ul>{{ _items }}
+      </ul>
+    </section>
+    {%- endif %}
+
+  </div>
+</article>
+
+<script>
+/* FAQ: grid-template-rows transition, so a second tap mid-animation
+   reverses from where it is rather than jumping. */
+document.querySelectorAll('.tip-faq-q').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var open = btn.getAttribute('aria-expanded') !== 'true';
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.closest('.tip-faq-item').classList.toggle('open', open);
+  });
+});
+
+/* Quote form. Validates each field when the person leaves it (not only on
+   submit), submits over fetch so nobody is sent to Web3Forms' own page,
+   and replaces the form with a confirmation on success. gtag exists on
+   every page (it only reports from the live domain), so the lead event is
+   safe on staging. */
+(function () {
+  var form = document.getElementById('tipQuote');
+  if (!form) return;
+  var btn = form.querySelector('.tq-submit');
+  var done = document.getElementById('tqDone');
+  var errEl = document.getElementById('tqErr');
+  var phoneRe = /^(\+?61|0)[2-478]\d{8}$/;
+  var checks = {
+    'tq-device': function () { return !!form.querySelector('input[name="Device Type"]:checked'); },
+    'tq-name':   function (v) { return v.trim().length > 0; },
+    'tq-phone':  function (v) { return phoneRe.test(v.replace(/[\s().-]/g, '')); }
+  };
+  function check(id) {
+    var el = document.getElementById(id);
+    var ok = checks[id](el.value);
+    el.setAttribute('aria-invalid', ok ? 'false' : 'true');
+    document.getElementById(id + '-err').hidden = ok;
+    return ok;
+  }
+  ['tq-name', 'tq-phone'].forEach(function (id) {
+    var el = document.getElementById(id);
+    el.addEventListener('blur', function () { if (el.value) check(id); });
+    el.addEventListener('input', function () { if (el.getAttribute('aria-invalid') === 'true') check(id); });
+  });
+  form.querySelectorAll('input[name="Device Type"]').forEach(function (r) {
+    r.addEventListener('change', function () { check('tq-device'); });
+  });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    errEl.hidden = true;
+    var bad = Object.keys(checks).filter(function (id) { return !check(id); });
+    if (bad.length) {
+      var first = document.getElementById(bad[0]);
+      (first.tagName === 'FIELDSET' ? first.querySelector('input') : first).focus();
+      return;
+    }
+    btn.disabled = true;
+    var label = btn.textContent;
+    btn.textContent = 'Sending...';
+    var data = {};
+    new FormData(form).forEach(function (v, k) { data[k] = v; });
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify(data)
+    }).then(function (r) { return r.json(); }).then(function (res) {
+      if (!res.success) throw new Error(res.message || 'failed');
+      form.hidden = true;
+      var desc = document.querySelector('#quote .audit-block-desc');
+      if (desc) desc.hidden = true;
+      done.hidden = false;
+      done.setAttribute('tabindex', '-1');
+      done.focus();
+      if (typeof gtag === 'function') gtag('event', 'generate_lead', { form: 'tech_tip_quote', page: '{{ page.slug }}' });
+    }).catch(function () {
+      btn.disabled = false;
+      btn.textContent = label;
+      errEl.hidden = false;
+    });
+  });
+
+  /* Hide the site's sticky quote bar while this form is on screen. The
+     bar is rendered after this article (sticky-cta.html sits below the
+     footer), so look it up once the document has finished parsing. */
+  document.addEventListener('DOMContentLoaded', function () {
+    var bar = document.getElementById('stickyCta');
+    var block = document.getElementById('quote');
+    if (!bar || !block || !('IntersectionObserver' in window)) return;
+    new IntersectionObserver(function (entries) {
+      bar.classList.toggle('tip-form-visible', entries[0].isIntersecting);
+    }).observe(block);
+  });
+
+  /* Which button brought them to the form. */
+  document.querySelectorAll('[data-track]').forEach(function (a) {
+    a.addEventListener('click', function () {
+      if (typeof gtag === 'function') gtag('event', 'quote_form_click', { event_label: a.getAttribute('data-track') });
+    });
+  });
+})();
+</script>

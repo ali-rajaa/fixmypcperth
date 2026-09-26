@@ -1,0 +1,392 @@
+<!-- Shared behaviour: scroll bar, hamburger toggle, GA4 click tracking. -->
+<script>
+/* ============================================================
+   GA4 conversion helpers.
+   These three are called from onclick attributes throughout the
+   site but were defined nowhere, so every WhatsApp tap threw
+   "trackWAClick is not defined" and no conversion has ever been
+   recorded. Declared globally and ahead of everything else so
+   they exist before the first click can happen. Guarded on gtag
+   so they stay harmless if the tag is blocked.
+   ============================================================ */
+function trackPhoneClick() {
+  if (typeof gtag === 'function') {
+    gtag('event', 'phone_call_click', { event_category: 'engagement', event_label: 'phone' });
+  }
+}
+function trackWAClick() {
+  if (typeof gtag === 'function') {
+    gtag('event', 'whatsapp_click', { event_category: 'engagement', event_label: 'whatsapp' });
+  }
+}
+function trackQuoteForm() {
+  if (typeof gtag === 'function') {
+    gtag('event', 'quote_form_click', { event_category: 'engagement', event_label: 'quote_form' });
+  }
+}
+
+(function () {
+  'use strict';
+
+  /* ---- Reveal on scroll ----
+     Runs FIRST, before anything else can throw. It adds the `js` class
+     itself, so the hidden state is only ever applied once the observer
+     that undoes it is confirmed working. If this block fails, the page
+     stays fully visible. */
+  try {
+    const fadeEls = document.querySelectorAll('.fade-up');
+    if (fadeEls.length && 'IntersectionObserver' in window) {
+      const obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry, i) {
+          if (entry.isIntersecting) {
+            setTimeout(function() { entry.target.classList.add('in'); }, i * 60);
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08 });
+      document.documentElement.classList.add('js');
+      fadeEls.forEach(function(el) { obs.observe(el); });
+    }
+  } catch (e) {
+    document.documentElement.classList.remove('js');
+  }
+
+  /* ---- Scroll Progress Bar ---- */
+  const bar = document.getElementById('scroll-bar');
+  if (bar) {
+    window.addEventListener('scroll', function() {
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.transform = 'scaleX(' + (window.scrollY / h) + ')';
+    }, { passive: true });
+  }
+
+  /* ---- Trust Ticker ---- */
+  const items = [
+    'Same or next day turnaround',
+    'Local drop off in Canning Vale',
+    '30-day warranty on all work',
+    'Upfront pricing, no surprises',
+    'No fix, no fee on data recovery',
+    '5/5 rated local service',
+    'Free quote in minutes',
+    "Perth's most trusted tech specialist",
+    'Gaming PC builds &amp; upgrades',
+    'Virus &amp; malware removal {% include price.html key="virus-malware-removal" bare=true raw=true %}',
+    'Laptop screen replacement Perth',
+    'SSD upgrades from {% include price.html key="ssd-upgrade-labour-only" bare=true raw=true %}',
+    'Business IT support from {% include price.html key="business-it-essential" bare=true raw=true %}/mo',
+    'Free cleanup on every larger job',
+  ];
+  const track = document.getElementById('trust-track');
+  if (track) {
+    const doubled = [...items, ...items];
+    track.innerHTML = doubled.map(function(t) {
+      return '<div class="trust-item"><div class="trust-dot" aria-hidden="true"></div>' + t + '</div>';
+    }).join('');
+  }
+
+
+  /* ---- Mobile Hamburger ---- */
+  const hamburger = document.getElementById('mob-hamburger');
+  const mobMenu   = document.getElementById('mob-menu');
+
+  if (hamburger && mobMenu) {
+
+  /* One place that sets the state, so the class, the ARIA and the label can
+     never drift apart. Previously each of the three close paths repeated the
+     same four lines, and a fourth path (Escape) was missing entirely. */
+  function setMenu(isOpen) {
+    mobMenu.classList.toggle('open', isOpen);
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+    hamburger.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+  }
+
+  hamburger.addEventListener('click', function() {
+    setMenu(!mobMenu.classList.contains('open'));
+  });
+
+  mobMenu.querySelectorAll('.mob-link').forEach(function(link) {
+    link.addEventListener('click', function() { setMenu(false); });
+  });
+
+  document.addEventListener('click', function(e) {
+    if (mobMenu.classList.contains('open') && !mobMenu.contains(e.target) && !hamburger.contains(e.target)) {
+      setMenu(false);
+    }
+  });
+
+  /* Escape closes the menu and returns focus to the button that opened it.
+     Without this a keyboard user who opened the menu had no way to dismiss it. */
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && mobMenu.classList.contains('open')) {
+      setMenu(false);
+      hamburger.focus();
+    }
+  });
+
+  /* The hamburger is hidden above 900px. If the menu was open and the viewport
+     crossed that breakpoint (rotating a phone to landscape, resizing a window),
+     the panel was left on screen with no control able to close it. */
+  var deskQuery = window.matchMedia('(min-width: 901px)');
+  var onBreakpoint = function(e) { if (e.matches) setMenu(false); };
+  if (deskQuery.addEventListener) { deskQuery.addEventListener('change', onBreakpoint); }
+  else if (deskQuery.addListener) { deskQuery.addListener(onBreakpoint); }
+
+  }
+
+  /* ---- FAQ Accordion ---- */
+  document.querySelectorAll('.faq-q').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var item = btn.closest('.faq-item');
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function(i) {
+        i.classList.remove('open');
+        i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  /* ---- FAQ Accordion, industry pages ---- */
+  /* Those pages use .faq-question / .faq-answer rather than the .faq-q and
+     .faq-item.open markup above, so the handler before this one never bound to
+     them and the accordions did not open at all.
+     max-height is set from the panel's own scrollHeight rather than a fixed
+     value, because several of the compliance answers are long enough to be
+     clipped by a hard 500px cap. */
+  document.querySelectorAll('.faq-question').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var panel  = btn.nextElementSibling;
+      if (!panel) return;
+      var isOpen = panel.classList.contains('open');
+
+      document.querySelectorAll('.faq-answer').forEach(function(p) {
+        p.classList.remove('open');
+        p.style.maxHeight = null;
+      });
+      document.querySelectorAll('.faq-question').forEach(function(b) {
+        b.setAttribute('aria-expanded', 'false');
+      });
+
+      if (!isOpen) {
+        panel.classList.add('open');
+        panel.style.maxHeight = panel.scrollHeight + 'px';
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  /* ---- Phone click tracking ---- */
+  document.querySelectorAll('a[href^="tel:"]').forEach(function(el) {
+    el.addEventListener('click', function() { if(typeof trackPhoneClick==='function') trackPhoneClick(); });
+  });
+
+  /* ---- Same-day cutoff countdown (2pm Perth time) ---- */
+  (function() {
+    const box  = document.getElementById('mqCountdown');
+    const text = document.getElementById('mqCountdownText');
+    if (!box || !text) return;
+
+    function tick() {
+      // Perth is UTC+8 with no daylight saving, so work out Perth local time
+      // regardless of where the visitor is.
+      const nowUtc = new Date();
+      const perth  = new Date(nowUtc.getTime() + (8 * 60 + nowUtc.getTimezoneOffset()) * 60000);
+
+      // 2pm Perth on the same day. If we are past it, the cutoff has gone.
+      const cutoff = new Date(perth.getTime());
+      cutoff.setHours(14, 0, 0, 0);
+      const diff = cutoff.getTime() - perth.getTime();
+
+      if (diff > 0) {
+        const h = Math.floor(diff / 3600000);
+        const m = Math.floor((diff % 3600000) / 60000);
+        const s = Math.floor((diff % 60000) / 1000);
+        // Hours and minutes while there is over an hour left, minutes and
+        // seconds inside the last hour, so it reads as live without spending
+        // all day counting seconds nobody is watching.
+        const left = h > 0 ? (h + 'h ' + m + 'm') : (m + 'm ' + s + 's');
+        box.classList.remove('closed');
+        text.innerHTML = 'Drop off within <span class="mq-notice-time">' + left + '</span> for same day pickup.';
+      } else {
+        box.classList.add('closed');
+        text.textContent = 'Drop off tonight, first on the bench tomorrow.';
+      }
+    }
+    tick();
+    box.classList.add('ready');
+    setInterval(tick, 1000);
+  })();
+
+  /* ---- Sticky mobile CTA bar ---- */
+  (function() {
+    const bar = document.getElementById('stickyCta');
+    if (!bar) return;
+    const hero = document.querySelector('.hero');
+    window.addEventListener('scroll', function() {
+      const past = hero ? (window.scrollY > hero.offsetHeight * 0.85) : (window.scrollY > 600);
+      bar.classList.toggle('show', past);
+    }, { passive: true });
+
+    /* Slide the bar away once the footer scrolls into view, and back when
+       it leaves. A separate class rather than toggling .show, so it cannot
+       fight the page-level scroll handlers that also set .show (the health
+       check has its own). */
+    const footer = document.querySelector('footer');
+    if (footer && 'IntersectionObserver' in window) {
+      new IntersectionObserver(function(entries) {
+        const atFooter = entries[0].isIntersecting;
+        bar.classList.toggle('at-footer', atFooter);
+        bar.inert = atFooter;
+      }).observe(footer);
+    }
+  })();
+
+  /* ---- Package carousel dots (mobile) ---- */
+  (function() {
+    const duo  = document.getElementById('pkgDuo');
+    const dots = document.getElementById('pkgDots');
+    if (!duo || !dots) return;
+
+    const buttons = Array.from(dots.querySelectorAll('.pkg-dot'));
+    const cards   = Array.from(duo.querySelectorAll('.pkg-card'));
+
+    function sync() {
+      if (window.getComputedStyle(duo).overflowX !== 'auto') return;
+      const mid = duo.scrollLeft + duo.clientWidth / 2;
+      let active = 0, best = Infinity;
+      cards.forEach(function(card, i) {
+        const c = card.offsetLeft + card.offsetWidth / 2;
+        const d = Math.abs(c - mid);
+        if (d < best) { best = d; active = i; }
+      });
+      buttons.forEach(function(b, i) { b.classList.toggle('active', i === active); });
+    }
+
+    duo.addEventListener('scroll', function() {
+      window.requestAnimationFrame(sync);
+    }, { passive: true });
+
+    buttons.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        const card = cards[parseInt(btn.dataset.i, 10)];
+        if (card) duo.scrollTo({ left: card.offsetLeft - duo.offsetLeft, behavior: 'smooth' });
+      });
+    });
+
+    sync();
+  })();
+
+  /* ---- Instant Quote Mini Form (Web3Forms, 2-step) ---- */
+  (function() {
+    const form = document.getElementById('miniQuoteForm');
+    if (!form) return;
+
+    const success   = document.getElementById('mqSuccess');
+    const submitBtn = document.getElementById('mqSubmitBtn');
+    const nextBtn   = document.getElementById('mqNextBtn');
+    const backBtn   = document.getElementById('mqBackBtn');
+    const step1     = document.getElementById('mqStep1');
+    const step2     = document.getElementById('mqStep2');
+    const fill      = document.getElementById('mqProgressFill');
+    const label     = document.getElementById('mqProgressLabel');
+    const selName   = document.getElementById('mqSelectedName');
+    const trust     = document.querySelector('.mq-trust');
+
+    const SUBMIT_HTML = 'Get My Free Quote <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>';
+
+    function selectedService() {
+      const el = form.querySelector('input[name="Service"]:checked');
+      return el ? el.value : '';
+    }
+
+    function goStep(n) {
+      const toTwo = (n === 2);
+      step1.classList.toggle('active', !toTwo);
+      step2.classList.toggle('active', toTwo);
+      fill.style.width = toTwo ? '100%' : '50%';
+      label.textContent = 'Step ' + n + ' of 2';
+      if (toTwo) selName.textContent = selectedService();
+    }
+
+    /* Tapping a service card advances automatically */
+    form.querySelectorAll('.mq-service-radio').forEach(function(radio) {
+      radio.addEventListener('change', function() {
+        document.getElementById('mqServiceErr').classList.remove('show');
+      });
+    });
+
+    nextBtn.addEventListener('click', function() {
+      if (!selectedService()) {
+        document.getElementById('mqServiceErr').classList.add('show');
+        return;
+      }
+      goStep(2);
+    });
+
+    backBtn.addEventListener('click', function() { goStep(1); });
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      let ok = true;
+
+      form.querySelectorAll('.mq-err').forEach(function(el) { el.classList.remove('show'); });
+      form.querySelectorAll('.err').forEach(function(el) { el.classList.remove('err'); });
+
+      const device = document.getElementById('mqDevice');
+      const desc   = document.getElementById('mqDesc');
+      const name   = document.getElementById('mqName');
+      const phone  = document.getElementById('mqPhone');
+      const email  = document.getElementById('mqEmail');
+
+      if (!selectedService()) { document.getElementById('mqServiceErr').classList.add('show'); goStep(1); return; }
+      if (!device.value)      { document.getElementById('mqDeviceErr').classList.add('show'); device.classList.add('err'); ok = false; }
+      if (!desc.value.trim()) { document.getElementById('mqDescErr').classList.add('show'); desc.classList.add('err'); ok = false; }
+      if (!name.value.trim()) { document.getElementById('mqNameErr').classList.add('show'); name.classList.add('err'); ok = false; }
+
+      const phoneVal = phone.value.replace(/[\s\-()]/g, '');
+      const phoneRe = /^(\+?61\s?|0)[2-9](\s?\d){8}$/;
+      if (!phoneRe.test(phoneVal)) { document.getElementById('mqPhoneErr').classList.add('show'); phone.classList.add('err'); ok = false; }
+
+      const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRe.test(email.value.trim())) { document.getElementById('mqEmailErr').classList.add('show'); email.classList.add('err'); ok = false; }
+
+      if (!ok) {
+        const firstErr = form.querySelector('.mq-err.show');
+        if (firstErr) firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+
+      try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: new FormData(form)
+        });
+        const result = await response.json();
+        if (result.success) {
+          if (typeof trackQuoteForm === 'function') trackQuoteForm();
+          form.style.display = 'none';
+          if (trust) trust.style.display = 'none';
+          success.classList.add('show');
+        } else {
+          alert('Submission failed. Please try again or contact us on WhatsApp.');
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = SUBMIT_HTML;
+        }
+      } catch (err) {
+        alert('An error occurred. Please try again.');
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = SUBMIT_HTML;
+      }
+    });
+  })();
+
+})();
+</script>

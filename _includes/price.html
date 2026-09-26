@@ -1,0 +1,58 @@
+{% assign _d = site.data.services -%}
+{%- assign _s = _d.services | where: "key", include.key | first -%}
+{%- if _s == nil -%}{%- assign _s = _d.addons   | where: "key", include.key | first -%}{%- endif -%}
+{%- if _s == nil -%}{%- assign _s = _d.packages | where: "key", include.key | first -%}{%- endif -%}
+{%- if _s == nil -%}{%- assign _s = _d.plans    | where: "key", include.key | first -%}{%- endif -%}
+{%- if _s == nil -%}{%- assign _s = _d.offers   | where: "key", include.key | first -%}{%- endif -%}
+{%- comment -%}
+  Last resort: look inside the per-service options arrays, so a single tier
+  (laptop screen standard / touchscreen / OLED) can be quoted inside a
+  sentence. Those three keys were referenced on /pricing before the options
+  carried keys, and rendered as blanks in the copy and in the FAQ schema.
+{%- endcomment -%}
+{%- if _s == nil -%}
+  {%- for _svc in _d.services -%}
+    {%- if _svc.options -%}
+      {%- assign _opt = _svc.options | where: "key", include.key | first -%}
+      {%- if _opt -%}{%- assign _s = _opt -%}{%- break -%}{%- endif -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endif -%}
+{%- if _s -%}
+{%- if include.numeric -%}
+{{ _s.price }}
+{%- elsif include.was -%}
+{{ _s.was | escape }}
+{%- else -%}
+{%- unless include.raw %}<span class="price" data-price="{{ include.key }}">{% endunless -%}
+{%- if include.extra -%}${{ _s.extra_price }}
+{%- elsif _s.text -%}{{ _s.text | escape }}
+{%- else -%}
+{%- unless include.bare -%}{%- if _s.prefix %}{{ _s.prefix | escape }} {% endif -%}{%- if _s.plus %}+{% endif -%}{%- endunless -%}
+${{ _s.price }}
+{%- unless include.bare -%}{%- if _s.suffix %} {{ _s.suffix | escape }}{% endif -%}{%- if _s.per %}/{{ _s.per }}{% endif -%}{%- endunless -%}
+{%- endif -%}
+{%- unless include.raw %}</span>{% endunless -%}
+{%- endif -%}
+{%- endif -%}
+{% comment -%}
+  Price lookup. Use this anywhere on the site instead of typing a figure.
+
+    {% include price.html key="diagnostic-repair-all-in" %}   ->  $120 all-in
+    {% include price.html key="virus-malware-removal" bare=true %}  ->  $99
+    {% include price.html key="business-it-essential" extra=true %} -> $35
+  extra=true gives a business plan's per-device price (extra_price), always
+  bare, since it only ever sits inside a sentence.
+
+  It searches services, then add-ons, then packages, then plans, so any key in
+  services.yml resolves. bare=true drops the prefix and suffix, for use inside
+  a sentence. raw=true also drops the wrapping span, for places a span is not
+  valid, such as inside an SVG <text> element. numeric=true outputs the bare
+  digits only, no $ and no span even without raw=true: for a schema.org
+  "price" field, which must be a plain number, not a formatted string.
+  was=true outputs a package's own was: field verbatim (e.g. "Was $340" or
+  "Shop price $549+"), the same field pricing.html already reads as p.was
+  in its loop; use it outside a loop, on a single hand-written card.
+  If a key does not exist the include renders nothing rather than
+  a broken figure, so a typo is visible as a gap rather than a wrong price.
+{%- endcomment -%}

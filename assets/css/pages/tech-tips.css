@@ -1,0 +1,347 @@
+/* ==========================================================
+   tech-tips.css   VERSION 2
+   Page stylesheet for /tech-tips, the article index.
+
+   v2: cleanup pass. This file was lifted from the old blog
+   index's inline <style> and had been edited by appending new
+   blocks to the end rather than editing in place, which is the
+   exact anti-pattern the architecture notes warn against. Result:
+   - .page-hero, .blog-section, .blog-grid, .cta-bar, .btn-outline,
+     .feat-title, .feat-meta, .hero-stats, .tt-copy-toggle and
+     .tt-show-btn/.tt-show-wrap were each defined two or three
+     times, with later blocks silently overriding earlier ones.
+     Collapsed to one definition each, keeping the values that
+     were actually winning.
+   - prefers-reduced-motion appeared four times and prefers-contrast
+     three times. Collapsed to one block each.
+   - Removed the old blog's search box, filter bar, "SEO content"
+     block (topic grid, suburb pills, second CTA bar), WhatsApp
+     button and show-more button: none of these exist in the
+     current /tech-tips markup, so the rules were dead weight.
+   - Removed .footer, .footer-inner, .wa-bubble, .mob-nav,
+     nav.desk-nav and .logo-name: shell.css owns these and loads
+     after this file, so these copies were always overridden and
+     never did anything.
+   - :root was missing --teal even though .post-featured::before
+     and two other rules used var(--teal). An undefined custom
+     property makes the whole declaration invalid, so the gradient
+     accent bar on the featured guide card was never rendering.
+     Added the token (matches tech-tip.css and industry.css).
+   - The mobile .page-body rule used var(--mob-h), which is not a
+     token anywhere in the site. Fixed to --mob-nav-h, so the page
+     sits flush under the shorter mobile nav bar instead of
+     carrying 4px of leftover desktop offset.
+   - Category label colours (.cat-data, .cat-pricing) had already
+     been corrected to AA-contrast values in a later block; that
+     value is now the only one, built straight into the base rule.
+
+   Category labels (.feat-cat, .post-cat) and .suburb-pill were
+   capsules with a fill. Plain uppercase text now.
+
+   :root carries the page's complete token set so nothing here
+   depends on another stylesheet loading first.
+   ========================================================== */
+
+:root {
+  --blue:    #1560FF;
+  --blue-lt: #EEF3FF;
+  --blue-mid:#C7D8FF;
+  --blue-dk: #0A3ACC;
+  --ink:     #0F172A;
+  --ink2:    #1E293B;
+  --muted:   #64748B;
+  --muted2:  #94A3B8;
+  --border:  #E2E8F0;
+  --border2: #CBD5E1;
+  --bg:      #FFFFFF;
+  --bg2:     #F8FAFC;
+  --bg3:     #F1F5F9;
+  --wa:      #22C55E;
+  --wa-dk:   #15803D;
+  --wa-deep:   #166534;
+  --teal:    #00CFFF;
+  --display: 'Sora', 'Sora Fallback', sans-serif;
+  --body:    'DM Sans', 'DM Sans Fallback', sans-serif;
+  --radius:  14px;
+  --nav-h:     64px;
+  --mob-nav-h: 60px;
+  --ease-settle: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-press:  cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-h) + 16px); }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+img { max-width: 100%; height: auto; }
+
+/* ---------- category colour tokens ---------- */
+.cat-speed    { --cat-c: #1560FF; --cat-bg: #EEF3FF; --cat-bd: #C7D8FF; }
+.cat-virus    { --cat-c: #DC2626; --cat-bg: #FEF2F2; --cat-bd: #FECACA; }
+.cat-upgrades { --cat-c: #7C3AED; --cat-bg: #F5F3FF; --cat-bd: #DDD6FE; }
+.cat-data     { --cat-c: #B45309; --cat-bg: #FFFBEB; --cat-bd: #FDE68A; } /* darkened from the original amber: 3.19:1 on white failed AA at 11px */
+.cat-pricing  { --cat-c: #15803D; --cat-bg: #F0FDF4; --cat-bd: #BBF7D0; } /* darkened from the original green: 3.30:1 on white failed AA at 11px */
+.cat-default  { --cat-c: #1560FF; --cat-bg: #EEF3FF; --cat-bd: #C7D8FF; }
+
+.page-body { padding-top: var(--nav-h); }
+
+/* ==========================================================
+   Hero
+   Two columns: the pitch and the two actions on the left, a
+   visual on the right. The supporting paragraph is collapsed
+   behind a toggle so it still informs search without being the
+   first thing a visitor has to scroll past.
+   ========================================================== */
+.page-hero {
+  padding: 3.25rem 2rem; text-align: left;
+  background: var(--bg); position: relative; overflow: hidden;
+}
+.page-hero::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 800px 400px at 50% 70%, rgba(21,96,255,0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+.tt-hero-grid {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: 1.15fr 0.85fr;
+  gap: 3rem; align-items: center;
+}
+.tt-hero-copy { min-width: 0; }
+
+.s-eyebrow { display: block; font-size: 12px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.9rem; }
+
+.page-title {
+  font-family: var(--display); font-size: clamp(2rem, 4.5vw, 3rem);
+  font-weight: 800; letter-spacing: -1.5px; color: var(--ink);
+  line-height: 1.1; text-align: left; margin: 0 0 0.9rem;
+}
+
+.page-sub { font-size: 15.5px; color: var(--muted); max-width: 54ch; margin: 0 0 1.5rem; line-height: 1.75; }
+/* Links inside body copy: a component class always outranks
+   ".page-sub a" / ".tt-more-copy a", so prose links are scoped to
+   unclassed anchors rather than every <a> in the container. */
+.page-sub a:not([class]), .tt-more-copy a:not([class]) {
+  color: var(--blue); font-weight: 600; text-decoration: none;
+  border-bottom: 1px solid var(--blue-mid);
+  transition: color 0.15s var(--ease-settle), border-color 0.15s var(--ease-settle);
+}
+.page-sub a:not([class]):visited, .tt-more-copy a:not([class]):visited { color: var(--blue); }
+
+.tt-hero-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1.25rem; }
+
+.hero-stats { display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem 1.25rem; font-size: 13px; color: var(--muted); font-weight: 600; margin-top: 1.75rem; }
+.hero-stats span { display: flex; align-items: center; gap: 5px; }
+.hero-stats .dot { width: 3px; height: 3px; border-radius: 50%; background: var(--border2); }
+
+/* Supporting copy, collapsed by default. */
+.tt-more-copy { max-width: 62ch; font-size: 14.5px; color: var(--muted); line-height: 1.8; margin: 1.25rem 0 0; }
+.tt-more-copy[hidden] { display: none; }
+.tt-copy-toggle {
+  margin-top: 1.1rem; background: none; border: 0; padding: 0; cursor: pointer;
+  font-family: var(--body); font-size: 13.5px; font-weight: 700; color: var(--blue);
+  -webkit-tap-highlight-color: transparent;
+  transition: color 0.15s var(--ease-settle);
+}
+
+/* Hero visual: inline SVG so there is no image request and nothing to lazy-load. */
+.tt-hero-art { display: flex; justify-content: center; align-items: center; }
+.tt-hero-art svg { width: 100%; max-width: 330px; height: auto; }
+
+/* ==========================================================
+   Buttons
+   The old blog sheet defined a hover, an active and a
+   tap-highlight rule for .btn-blue but no base rule at all, so
+   both primary buttons rendered as plain underlined links,
+   purple once visited. These are the base rules.
+   ========================================================== */
+.btn-blue {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  background: var(--blue); color: #fff;
+  font-family: var(--body); font-size: 15px; font-weight: 700;
+  padding: 13px 26px; border-radius: 50px;
+  text-decoration: none; border: 1.5px solid var(--blue);
+  box-shadow: 0 4px 16px rgba(21,96,255,0.28);
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.18s var(--ease-settle), border-color 0.18s var(--ease-settle),
+              transform 0.25s var(--ease-settle), box-shadow 0.25s var(--ease-settle);
+}
+.btn-blue:visited { color: #fff; }
+@media (hover: hover) { .btn-blue:hover { background: var(--blue-dk); border-color: var(--blue-dk); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(21,96,255,0.4); } }
+.btn-blue:active { transform: translateY(0) scale(0.97); box-shadow: 0 2px 8px rgba(21,96,255,0.35); transition: transform 0.1s var(--ease-press), box-shadow 0.1s var(--ease-press); }
+
+.btn-outline {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: transparent; color: var(--ink);
+  font-family: var(--body); font-size: 15px; font-weight: 600;
+  padding: 13px 24px; border-radius: 50px;
+  text-decoration: none; border: 1.5px solid var(--border2);
+  -webkit-tap-highlight-color: transparent;
+  transition: border-color 0.15s var(--ease-settle), color 0.15s var(--ease-settle);
+}
+.btn-outline:visited { color: var(--ink); }
+@media (hover: hover) { .btn-outline:hover { border-color: var(--blue); color: var(--blue); } }
+.btn-outline:active { transform: translateY(0) scale(0.97); box-shadow: 0 2px 8px rgba(21,96,255,0.35); transition: transform 0.1s var(--ease-press), box-shadow 0.1s var(--ease-press); }
+
+.btn-blue:focus-visible, .btn-outline:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+
+/* ---------- article grid ---------- */
+.blog-section { padding: 0 2rem 3.5rem; }
+.blog-grid {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 18px;
+}
+.post-card[hidden] { display: none; }
+
+/* ---------- featured guide ---------- */
+.post-featured {
+  grid-column: 1 / -1;
+  background: var(--ink); border-radius: 20px; padding: 2.25rem 2.5rem;
+  position: relative; overflow: hidden;
+  display: grid; grid-template-columns: 1fr auto;
+  gap: 2rem; align-items: center;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: border-color 0.2s var(--ease-settle), transform 0.3s var(--ease-settle), box-shadow 0.3s var(--ease-settle);
+}
+.post-featured::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--blue), var(--teal), var(--wa));
+}
+.post-featured::after {
+  content: ''; position: absolute; bottom: -60px; right: -60px;
+  width: 220px; height: 220px;
+  background: radial-gradient(circle, rgba(21,96,255,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+@media (hover: hover) { .post-featured:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(15,23,42,0.09); } }
+.post-featured:active { transform: translateY(0) scale(0.985); box-shadow: 0 2px 6px rgba(15,23,42,0.1); transition: transform 0.1s var(--ease-press), box-shadow 0.1s var(--ease-press); }
+.post-featured:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 8px; }
+
+.feat-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #7FA9FF; display: flex; align-items: center; gap: 6px; margin-bottom: 0.75rem; }
+.feat-title { font-family: var(--display); font-size: clamp(1.3rem, 2.5vw, 1.9rem); font-weight: 800; color: #fff; letter-spacing: -0.8px; line-height: 1.25; margin-bottom: 0.65rem; }
+.feat-excerpt {
+  font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.7; max-width: 62ch;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.feat-meta { display: flex; align-items: center; gap: 0.75rem; margin-top: 1.25rem; font-size: 12px; color: rgba(255,255,255,0.35); font-weight: 500; }
+.feat-cat { font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: #A9C5FF; }
+.feat-read-btn {
+  flex-shrink: 0; background: var(--blue); color: #fff;
+  font-family: var(--body); font-size: 14px; font-weight: 700;
+  padding: 12px 22px; border-radius: 50px; white-space: nowrap; z-index: 1;
+  box-shadow: 0 4px 16px rgba(21,96,255,0.4);
+  transition: transform 0.2s var(--ease-settle);
+}
+@media (hover: hover) { .post-featured:hover .feat-read-btn { transform: translateX(3px); } }
+.post-featured:active .feat-read-btn { transform: translateX(2px); }
+
+/* ---------- post cards ---------- */
+.post-card {
+  background: var(--bg); border: 1.5px solid var(--border);
+  border-radius: 14px; padding: 1.5rem;
+  display: flex; flex-direction: column; gap: 0.65rem;
+  text-decoration: none; position: relative; overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+  transition: border-color 0.2s var(--ease-settle), transform 0.3s var(--ease-settle), box-shadow 0.3s var(--ease-settle);
+}
+.post-card-accent { position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--cat-c, var(--blue)); opacity: 0; transition: opacity 0.2s var(--ease-settle); }
+@media (hover: hover) { .post-card:hover { border-color: var(--cat-c, var(--blue)); transform: translateY(-3px); box-shadow: 0 10px 28px rgba(15,23,42,0.09); } }
+.post-card:hover .post-card-accent, .post-card:focus-visible .post-card-accent { opacity: 1; }
+.post-card:active { transform: translateY(0) scale(0.985); box-shadow: 0 2px 6px rgba(15,23,42,0.1); transition: transform 0.1s var(--ease-press), box-shadow 0.1s var(--ease-press); }
+.post-card:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 8px; }
+
+.post-cat { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--cat-c, var(--blue)); margin-bottom: 0.5rem; }
+.post-title { font-family: var(--display); font-size: 15px; font-weight: 700; color: var(--ink); letter-spacing: -0.3px; line-height: 1.35; }
+.post-excerpt {
+  font-size: 13px; color: var(--muted); line-height: 1.7; flex: 1;
+  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+}
+.post-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 12px; color: var(--muted2); font-weight: 500;
+  border-top: 1px solid var(--border); padding-top: 0.75rem; margin-top: 0.25rem;
+}
+.read-time-badge { display: flex; align-items: center; gap: 4px; }
+.read-time-badge svg { color: var(--cat-c, var(--muted2)); opacity: 0.7; }
+.post-read-more { font-size: 12px; font-weight: 700; color: var(--cat-c, var(--blue)); display: flex; align-items: center; gap: 3px; transition: transform 0.2s var(--ease-settle); }
+@media (hover: hover) { .post-card:hover .post-read-more { transform: translateX(3px); } }
+.post-card:active .post-read-more { transform: translateX(2px); }
+
+/* ---------- show more / show fewer ----------
+   The one control on this page that must not read as a pill.
+   A full-width rule with the label sitting on it reads as a
+   divider between what has been seen and what is left. */
+.tt-show-wrap { max-width: 1100px; margin: 2rem auto 0; padding: 0 2rem; position: relative; text-align: center; }
+.tt-show-wrap::before { content: ''; position: absolute; left: 2rem; right: 2rem; top: 50%; height: 1px; background: var(--border); }
+.tt-show-btn {
+  position: relative; display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--body); font-size: 14px; font-weight: 700; letter-spacing: 0.01em;
+  color: var(--ink2); background: var(--bg); border: 1.5px solid var(--border2);
+  border-radius: 8px; padding: 11px 22px; cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.18s var(--ease-settle), border-color 0.18s var(--ease-settle), transform 0.25s var(--ease-settle);
+}
+@media (hover: hover) { .tt-show-btn:hover { background: var(--bg2); border-color: var(--blue); color: var(--blue); } }
+.tt-show-btn:active { transform: scale(0.98); transition: transform 0.1s var(--ease-press); }
+.tt-show-btn:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+.tt-show-btn svg { transition: transform 0.25s var(--ease-settle); }
+.tt-show-btn[aria-expanded="true"] svg { transform: rotate(180deg); }
+
+/* ---------- closing CTA bar ---------- */
+.cta-bar { background: var(--bg2); border-top: 1px solid var(--border); padding: 3.25rem 2rem; text-align: center; }
+.cta-bar-inner { max-width: 620px; margin: 0 auto; }
+.cta-kicker { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.75rem; }
+.cta-bar-inner p:where(:not([class])) { font-size: 15px; color: var(--muted); line-height: 1.75; margin: 0 0 1.75rem; }
+.cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+/* ==========================================================
+   Responsive
+   ========================================================== */
+@media (max-width: 880px) {
+  .tt-hero-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .tt-hero-art { order: -1; }
+  .tt-hero-art svg { max-width: 220px; }
+}
+
+@media (max-width: 720px) {
+  .page-body { padding-top: var(--mob-nav-h); }
+  .page-hero { padding: 2.5rem 1.25rem 2rem; }
+  .page-title { font-size: clamp(1.7rem, 7vw, 2.2rem); letter-spacing: -1px; }
+  .blog-section { padding: 1.5rem 1.25rem 2.5rem; }
+  .blog-grid { grid-template-columns: 1fr; gap: 1rem; }
+  .post-featured { grid-template-columns: 1fr; gap: 1.5rem; padding: 1.75rem; }
+  .feat-read-btn { align-self: flex-start; }
+  .feat-title { font-size: 1.2rem; }
+  .cta-bar { padding: 3rem 1.25rem; }
+  .cta-btns { flex-direction: column; }
+  .cta-btns .btn-blue, .cta-btns .btn-outline { width: 100%; justify-content: center; }
+}
+
+@media (max-width: 560px) {
+  .page-hero { padding-top: 2.25rem; }
+  .tt-hero-cta .btn-blue, .tt-hero-cta .btn-outline { width: 100%; justify-content: center; }
+}
+
+/* ---------- user preferences ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .post-card, .post-featured { transition-duration: 0.15s; }
+  .post-card:hover, .post-featured:hover, .post-card:active, .post-featured:active,
+  .btn-blue:hover, .btn-blue:active, .btn-outline:active,
+  .feat-read-btn, .post-read-more,
+  .post-featured:hover .feat-read-btn, .post-card:hover .post-read-more,
+  .tt-show-btn:active { transform: none; }
+  .tt-show-btn, .tt-show-btn svg, .tt-copy-toggle { transition: none; }
+}
+@media (prefers-contrast: more) {
+  .post-excerpt, .feat-excerpt, .page-sub, .read-time-badge, .tt-more-copy, .hero-stats { color: #334155; }
+  .post-card, .post-featured { border-color: #0F172A; }
+  .btn-outline { border-color: #0F172A; }
+  .tt-show-btn { border-color: #0A3ACC; }
+  .cta-bar-inner p:where(:not([class])) { color: #334155; }
+}
+/* The hero illustration is decorative. Reduced motion leaves it alone, but
+   forced-colors strips its thin strokes, so give it a floor. */
+@media (forced-colors: active) {
+  .tt-hero-art svg { forced-color-adjust: none; }
+}

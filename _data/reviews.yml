@@ -1,0 +1,164 @@
+# Customer reviews and the headline rating.
+#
+# The rating lives here, not in any page. The old reviews page hardcoded
+# "5.0 across 200+ verified reviews" into the copy, the title tag and an
+# AggregateRating schema block. The Google Business Profile is 4.8 from
+# about 37, so the page was claiming something checkable in one click.
+#
+# Update meta.rating and meta.review_count here when the profile changes.
+# No page should ever contain a hardcoded rating or review count.
+#
+# Prices in the FAQ are written as [[service-key]] tokens, never as figures.
+# The page resolves them through _includes/resolve-prices.html, so every
+# number comes from _data/services.yml and cannot go stale in the copy.
+#
+# They used to be written as {% include price.html %} calls. Jekyll does not
+# run Liquid inside _data, so those rendered as literal characters on the
+# page and inside the FAQ schema. Do not put Liquid in this file.
+
+meta:
+  rating: 4.8
+  review_count: 37
+  source: Google Business Profile
+  note: Rating and count are the live Google Business Profile figures. Update them here only; every page reads from
+    this file.
+reviews:
+- name: Sarah M.
+  suburb: Canning Vale
+  date: May 2025
+  service: SSD Upgrade
+  initials: SM
+  stars: 5
+  text: My laptop had been running like a snail for months. Dropped it off in the morning and had it back by afternoon
+    running faster than the day I bought it. Could not believe the difference.
+- name: Dave T.
+  suburb: Thornlie
+  date: Apr 2025
+  service: Virus Removal
+  initials: DT
+  stars: 5
+  text: Got hit with ransomware and thought I had lost everything. He recovered all my files and had Windows reinstalled
+    same day. Absolute legend, will recommend to everyone.
+- name: Priya K.
+  suburb: Willetton
+  date: Apr 2025
+  service: BSOD Fix
+  initials: PK
+  stars: 5
+  text: Called about a blue screen issue, got a quote within 20 minutes on WhatsApp and the repair was done next
+    morning. Pricing was exactly what was quoted. No surprises at all.
+- name: Jake R.
+  suburb: Armadale
+  date: Mar 2025
+  service: Gaming PC Build
+  initials: JR
+  stars: 5
+  text: Built my first gaming PC and completely botched the cable management. He tidied the whole thing up, reseated
+    my RAM properly, and it actually posts now. Great service.
+- name: Fiona and Mark L.
+  suburb: Rossmoyne
+  date: Mar 2025
+  service: Networking
+  initials: FL
+  stars: 5
+  text: Our home WiFi had dead spots all through the back of the house. He came out, repositioned the router and
+    added a mesh node. Now we have full signal everywhere. Worth every cent.
+- name: Chris B.
+  suburb: Gosnells
+  date: Feb 2025
+  service: PC Won't Boot
+  initials: CB
+  stars: 5
+  text: PC completely died on me the night before a huge work deadline. He answered on WhatsApp at 8pm, came first
+    thing next morning and had it running again by 10am. An absolute lifesaver.
+- name: Angela W.
+  suburb: Beckenham
+  date: Feb 2025
+  service: Virus Removal
+  initials: AW
+  stars: 5
+  text: Mum's computer was covered in viruses, browser hijacked, the lot. He cleaned everything, set up proper antivirus
+    and even showed her how to spot dodgy emails. Really patient and kind.
+- name: Tom S.
+  suburb: Cannington
+  date: Jan 2025
+  service: Windows Reinstall
+  initials: TS
+  stars: 5
+  text: Transparent, fast, and actually explains what he did. Did not feel like I was being upsold anything I did
+    not need. Already booked him again for a RAM upgrade.
+# The six quotes shown on the homepage, moved here word for word from
+# index.html. They are NOT the same set as `reviews:` above. The owner
+# still needs to confirm each one is a genuine Google review; remove any
+# that are not. No source, date or suburb is shown because none was
+# recorded for these.
+homepage:
+- name: "Sarah"
+  stars: 5
+  text: "Dropped my laptop off in the morning thinking it was dead for good, had it back the same afternoon running better than when I bought it. Genuinely didn't expect that turnaround."
+- name: "James"
+  stars: 5
+  text: "Told me exactly what was wrong before touching anything, no upsell, no confusing jargon. Price matched the quote to the dollar. Will be back for the next PC upgrade."
+- name: "Abdullah"
+  stars: 5
+  text: "Thought I'd lost every photo of my kids when the hard drive died. They recovered everything and didn't charge me a cent extra for the extra time it took. Can't thank them enough."
+- name: "Daniel"
+  stars: 5
+  text: "Had them build a gaming PC from scratch. Cable management alone was worth it, looks better than anything I could've done myself. Followed up on WhatsApp weeks later with a settings question and they answered straight away."
+- name: "Harrison"
+  stars: 5
+  text: "Can't thank Ali enough. My PC had a few problems but he sorted them all and kept me updated throughout the whole process through WhatsApp. Will be coming back in the future."
+- name: "Karl-Kristjan"
+  stars: 5
+  text: "Excellent service! They quickly found the problem with my laptop and fixed the loud fan noise that had been driving me crazy. The staff were friendly, professional, and explained everything clearly."
+
+faqs:
+- q: How much does a repair cost?
+  a: It is a flat [[diagnostic-repair-all-in]] diagnostic and repair
+    fee for most jobs. That covers diagnosing the problem, fixing it, and giving you a 30 day labour warranty on
+    the work. No hidden extras and no nasty surprises. If parts are needed such as an SSD or RAM, those are quoted
+    separately and you approve before anything is ordered.
+- q: What is included in the [[diagnostic-repair-all-in]] fee?
+  a: The [[diagnostic-repair-all-in]] flat fee includes a full diagnosis
+    of your PC, the actual repair itself, and a 30 day labour warranty on everything done. You are not paying separately
+    for diagnosis and then again for the repair. One price, job done. If the fix turns out to need parts, we will
+    let you know the total cost before touching anything.
+- q: Do you come to me, or do I drop my PC off?
+  a: Both options are available. For most PC repairs, upgrades and builds, you drop your machine off in Canning
+    Vale. It is quicker and means we can work on it properly. For networking, printer setup and on-site jobs, we
+    come to you anywhere in the Perth metro area. A a flat fee callout fee applies for on-site visits.
+- q: How long does a repair take?
+  a: Most repairs are done same day or next day. Simple jobs like virus removal, SSD upgrades and password resets
+    are often sorted within a few hours. More involved work like data recovery or a full Windows reinstall may take
+    a full day. We will always give you a time estimate before you book so there are no surprises.
+- q: Will you wipe my files or data?
+  a: Never without your permission. We always back up your files before doing anything that could affect them, including
+    Windows reinstalls. You will be told exactly what will happen to your data before we proceed.
+- q: Is there a warranty on your work?
+  a: Yes. All services come with a 30 day labour warranty. If the same issue comes back within 30 days of the repair,
+    we will look at it again at no extra labour cost. Hardware components like SSDs and RAM also carry their manufacturer
+    warranty on top of that.
+- q: Do you work on laptops as well as desktop PCs?
+  a: Yes. Most software repairs, virus removal, Windows reinstalls, data recovery and SSD upgrades can be done on
+    laptops as well as desktops. Hardware upgrades like RAM and storage are possible on many laptops too depending
+    on the model. Message us with your laptop model and we will let you know what is possible before you book.
+- q: What areas in Perth do you service?
+  a: We are based in Canning Vale and customers drop off from all across Perth. For on-site visits including networking,
+    printer setup and smart TV, we travel across the greater Perth metro area including the southern suburbs, eastern
+    suburbs and the CBD. Not sure if we cover your area? Just message us and we will confirm straight away.
+- q: My PC will not turn on at all. Can you still help?
+  a: Absolutely. A PC that will not turn on is one of the most common things we work on. It could be a failed power
+    supply, a faulty component, or something simpler. Drop it off and we will diagnose exactly what is going on.
+    The flat [[diagnostic-repair-all-in]] fee covers the diagnosis
+    and the repair, so you will know the full picture before paying anything extra.
+- q: How do I pay?
+  a: Payment is accepted via bank transfer or cash on collection. Payment is based on the quote you received before
+    work started. No payment is required upfront. You pay when you are happy with the work.
+- q: Can you help me choose parts for a new PC build?
+  a: 100%. If you are building a gaming PC or upgrading and do not know where to start, message us with your budget
+    and what you will be using it for and we will put together a parts list. We always recommend the best value
+    for your budget. No inflated margins, just honest advice. Assembly is a flat fee with full benchmarking included.
+- q: Do you offer remote support?
+  a: Yes. For software issues, settings, troubleshooting and general guidance, we offer remote support via AnyDesk
+    at a flat fee per hour. Great for smaller issues that do not need a physical drop-off, or if you just need a
+    quick second opinion. Message us and we will set up a session at a time that suits you.

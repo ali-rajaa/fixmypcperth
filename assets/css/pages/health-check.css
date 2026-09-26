@@ -1,0 +1,803 @@
+/* ==========================================================
+   health-check.css   VERSION 4
+   Page stylesheet for /pc-health-check-perth, the seven
+   question PC health check.
+
+   v4: consolidation and debug pass. Versions 1 to 3 were
+   stacked in one file, with v2 and v3 appended after v1
+   rather than merged into it, so .question-card, .option-btn,
+   .next-area, .step-bar and others were each defined two or
+   three times and the value that actually rendered depended
+   on which block came last. Every component is now defined
+   once, in page order. What was fixed, measured in a real
+   browser before and after:
+
+   - Desktop never cleared the fixed nav. Mobile had a
+     body padding-top; desktop had nothing, so the top 67px of
+     the page sat under the nav. That hid the hero eyebrow on
+     load and the step circles after "Start" scrolled the quiz
+     into view. The body now clears the nav at every width,
+     and the quiz section carries its own scroll margin.
+   - Headings and paragraphs had no margin reset, so the
+     browser's default h3 and p margins added 44px of dead
+     space between each symptom card title and its text, and
+     the card text started at a different height on every card
+     depending on whether its title ran to one line or two.
+     Margins are reset once and set explicitly; card titles
+     reserve two lines so the text lines up across the row.
+   - The empty quiz section rendered as a bare grey band with
+     borders between the trust strip and the offer banner
+     before the check was started. It now stays hidden until
+     there is a question or result in it.
+   - The offer banner had no top padding and sat flush
+     against whatever came before it.
+   - The trust strip wrapped one item onto a second line at
+     desktop widths. It now fits on one line down to tablet.
+   - The pricing section used half the width and left the
+     other half empty. It is now a two-column block, with its
+     two actions as real buttons rather than small pill links.
+   - Type moved onto the site standard in STATUS.md: H1, H2,
+     H3, panel title, lede, small, label, eyebrow and button
+     sizes, with tracking in em rather than px.
+   - Hover lift is limited to devices that can hover, so a
+     tap on a phone no longer leaves a card stuck lifted.
+   - Removed: rules shell.css owns (nav, mobile nav, sticky
+     bar, WhatsApp bubble, footer), the old pricing table
+     (the page links to /pricing instead), .btn-wa,
+     .btn-outline, .btn-skip-q and .cta-icon-btn.fb, none of
+     which the page renders, and var(--fb), which was never
+     defined anywhere.
+
+   v4.1: symptom cards become a contained 3 x 2 grid on desktop, pricing
+   is one full-width panel, the long-form guide is laid out as numbered
+   question and answer rows, and the Perth links are suburb pages only,
+   as a four-column grid.
+
+   Pills: eyebrows, the question tag and the severity label
+   are plain uppercase text with no fill. Severity is carried
+   by colour and weight alone.
+
+   :root carries the page's complete token set so nothing here
+   depends on another stylesheet loading first.
+   ========================================================== */
+
+:root {
+  --blue:    #1560FF;
+  --blue-lt: #EEF3FF;
+  --blue-mid:#C7D8FF;
+  --blue-dk: #0A3ACC;
+  --ink:     #0F172A;
+  --ink2:    #1E293B;
+  --muted:   #64748B;
+  --muted2:  #94A3B8;
+  --border:  #E2E8F0;
+  --border2: #CBD5E1;
+  --bg:      #FFFFFF;
+  --bg2:     #F8FAFC;
+  --bg3:     #F1F5F9;
+  --wa:      #22C55E;
+  --wa-dk:   #15803D;
+  --wa-deep:   #166534;
+  --gold:    #F59E0B;
+  --red:     #EF4444;
+  --teal:    #00CFFF;
+  --green:   #16A34A;
+  --display: 'Sora', 'Sora Fallback', sans-serif;
+  --body:    'DM Sans', 'DM Sans Fallback', sans-serif;
+  --radius:  14px;
+  --nav-h:     64px;
+  --mob-nav-h: 60px;
+  /* Critically damped, no overshoot: hover and reveal motion. */
+  --ease-settle: cubic-bezier(0.16, 1, 0.3, 1);
+  /* Fast, for the instant press feedback itself. */
+  --ease-press:  cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ---------- base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-h) + 16px); }
+body {
+  margin: 0; padding-top: var(--nav-h);
+  background: var(--bg); color: var(--ink);
+  font-family: var(--body); font-size: 16px; line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4, p { margin: 0; }
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; border-radius: 4px; }
+
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--bg2); }
+::-webkit-scrollbar-thumb { background: linear-gradient(180deg, var(--blue) 0%, var(--blue-dk) 100%); border-radius: 10px; border: 2px solid var(--bg2); }
+@media (hover: hover) { ::-webkit-scrollbar-thumb:hover { background: var(--blue-dk); } }
+
+@keyframes qEnter { from { opacity: 0; transform: translateX(28px) scale(0.985); } to { opacity: 1; transform: none; } }
+@keyframes qExit  { from { opacity: 1; transform: none; } to { opacity: 0; transform: translateX(-20px) scale(0.985); } }
+
+.wrap { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+.fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s var(--ease-settle), transform 0.6s var(--ease-settle); }
+.fade-up.in { opacity: 1; transform: none; }
+.accent { color: var(--blue); }
+
+/* ---------- shared type (site standard) ---------- */
+.s-eyebrow {
+  display: block; font-size: 11px; font-weight: 700; line-height: 1.4;
+  letter-spacing: 0.09em; text-transform: uppercase; color: var(--blue);
+  margin-bottom: 0.75rem;
+}
+.s-title {
+  font-family: var(--display); font-size: 1.45rem; font-weight: 800;
+  line-height: 1.2; letter-spacing: -0.02em; color: var(--ink);
+  margin-bottom: 0.6rem; text-wrap: balance;
+}
+.s-sub { font-size: 1.0625rem; line-height: 1.75; color: var(--muted); max-width: 60ch; }
+
+/* ---------- buttons ---------- */
+.btn-blue {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  background: var(--blue); color: #fff;
+  font-family: var(--body); font-size: 15px; font-weight: 700; line-height: 1;
+  padding: 14px 24px; border-radius: 50px; border: none; cursor: pointer;
+  text-decoration: none; white-space: nowrap;
+  box-shadow: 0 4px 16px rgba(21,96,255,0.35);
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.2s var(--ease-settle), box-shadow 0.2s var(--ease-settle), background 0.2s var(--ease-settle);
+}
+.btn-ghost {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  background: var(--bg); color: var(--ink);
+  font-family: var(--body); font-size: 15px; font-weight: 700; line-height: 1;
+  padding: 13px 22px; border-radius: 50px; border: 1.5px solid var(--border2); cursor: pointer;
+  text-decoration: none; white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
+  transition: border-color 0.15s var(--ease-settle), color 0.15s var(--ease-settle);
+}
+
+/* ==========================================================
+   Hero
+   ========================================================== */
+.quiz-hero { padding: 3.5rem 2rem 3rem; background: var(--bg); position: relative; overflow: hidden; }
+.quiz-hero::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(ellipse 800px 500px at 70% 40%, rgba(21,96,255,0.06) 0%, transparent 70%),
+              radial-gradient(ellipse 400px 300px at 10% 80%, rgba(34,197,94,0.05) 0%, transparent 60%);
+}
+.quiz-hero-inner { max-width: 760px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
+.quiz-hero-eyebrow {
+  display: block; font-size: 11px; font-weight: 700; line-height: 1.4;
+  letter-spacing: 0.09em; text-transform: uppercase; color: var(--blue);
+  margin-bottom: 1rem;
+}
+.eyebrow-dot, .hc-dot { display: none; }
+.quiz-hero h1:where(:not([class])) {
+  font-family: var(--display); font-size: clamp(1.8rem, 4vw, 2.7rem); font-weight: 800;
+  line-height: 1.1; letter-spacing: -0.035em; color: var(--ink);
+  margin-bottom: 1rem; text-wrap: balance;
+}
+.quiz-hero-sub { font-size: 1.0625rem; line-height: 1.75; color: var(--muted); max-width: 56ch; margin: 0 auto 1.25rem; }
+
+/* The countdown is filled in by the script; hidden until it has text so it
+   never flashes an empty line. */
+.hero-countdown {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 20px; margin-bottom: 1.25rem;
+  font-size: 13px; font-weight: 700; line-height: 1.5; color: #B45309;
+  visibility: hidden;
+}
+.hero-countdown.ready { visibility: visible; }
+.hc-time { font-variant-numeric: tabular-nums; }
+
+.trust-pills { display: flex; align-items: center; justify-content: center; gap: 0.5rem 1.25rem; flex-wrap: wrap; margin-bottom: 1.75rem; }
+.trust-pill { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 600; line-height: 1.5; color: var(--ink2); }
+.tp-icon {
+  width: 18px; height: 18px; border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(34,197,94,0.12); border: 1px solid rgba(34,197,94,0.3); color: var(--wa-dk);
+}
+.tp-icon svg { width: 10px; height: 10px; }
+
+.btn-start-quiz {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  background: var(--blue); color: #fff;
+  font-family: var(--body); font-size: 15px; font-weight: 700; line-height: 1;
+  padding: 18px 36px; border-radius: 50px; border: none; cursor: pointer;
+  box-shadow: 0 4px 24px rgba(21,96,255,0.4);
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.2s var(--ease-settle), box-shadow 0.2s var(--ease-settle);
+}
+.btn-start-quiz svg { transition: transform 0.2s var(--ease-settle); }
+
+.hero-social-proof { display: flex; align-items: center; justify-content: center; gap: 0.5rem 1.5rem; flex-wrap: wrap; margin-top: 1.5rem; }
+.proof-item { display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; line-height: 1.5; color: var(--muted); }
+.proof-stars { display: flex; gap: 2px; }
+.proof-stars span:where(:not([class])) { font-size: 12px; color: var(--gold); }
+
+/* ---------- trust strip ---------- */
+.trust-strip { background: var(--ink); padding: 1.1rem 2rem; }
+.trust-strip-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: center;
+  gap: 0.6rem 1.75rem; flex-wrap: wrap;
+}
+.trust-item { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; line-height: 1.5; color: rgba(255,255,255,0.85); white-space: nowrap; }
+.trust-item svg { width: 14px; height: 14px; color: var(--teal); flex-shrink: 0; }
+
+/* ==========================================================
+   The health check itself
+   ========================================================== */
+.quiz-section {
+  background: var(--bg2); padding: 2.25rem 2rem 2.75rem;
+  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  scroll-margin-top: 1rem;
+}
+/* Nothing in it until "Start" is pressed; without this it rendered as an
+   empty bordered band. */
+.quiz-section:not(:has(.question-card, .result-card)) { display: none; }
+.quiz-wrap { max-width: 720px; margin: 0 auto; }
+
+/* Step bar */
+.step-bar { display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem; }
+.step-node { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.step-circle {
+  width: 36px; height: 36px; border-radius: 50%; position: relative; z-index: 1;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--display); font-size: 13px; font-weight: 800;
+  border: 2px solid var(--border2); background: var(--bg); color: var(--muted2);
+  transition: background 0.35s var(--ease-settle), border-color 0.35s var(--ease-settle),
+              color 0.35s var(--ease-settle), box-shadow 0.35s var(--ease-settle), transform 0.35s var(--ease-settle);
+}
+.step-circle.active { background: var(--blue); border-color: var(--blue); color: #fff; box-shadow: 0 0 0 5px rgba(21,96,255,0.15); transform: scale(1.1); }
+.step-circle.done { background: var(--ink2); border-color: var(--ink2); color: #fff; }
+.step-circle.done .step-num { display: none; }
+.step-circle.done::after { content: '\2713'; position: absolute; font-size: 13px; font-weight: 800; }
+.step-label { font-size: 11px; font-weight: 700; line-height: 1.4; letter-spacing: 0.09em; text-transform: uppercase; color: var(--muted2); white-space: nowrap; }
+.step-label.active { color: var(--blue); }
+.step-label.done { color: var(--ink2); }
+.step-connector { width: 44px; height: 2px; margin: 0 4px 22px; border-radius: 2px; background: var(--border); overflow: hidden; flex-shrink: 0; }
+.step-connector .conn-fill { height: 100%; width: 0%; background: var(--ink2); transition: width 0.5s var(--ease-settle); }
+.step-connector.done .conn-fill { width: 100%; }
+
+/* Question card. overflow: clip rather than hidden: hidden creates a scroll
+   container, which silently disabled the sticky Next button inside it. */
+.question-card {
+  background: var(--bg); border: 1.5px solid var(--border); border-radius: 20px;
+  padding: 1.5rem 1.6rem; position: relative; overflow: clip;
+  box-shadow: 0 4px 32px rgba(15,23,42,0.07);
+}
+.question-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--blue), var(--teal)); }
+.q-enter { animation: qEnter 0.4s var(--ease-settle) forwards; }
+.q-exit  { animation: qExit 0.25s var(--ease-press) forwards; }
+
+.q-meta { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: 0.8rem; }
+.q-tag { display: block; font-size: 11px; font-weight: 700; line-height: 1.4; letter-spacing: 0.09em; text-transform: uppercase; color: var(--muted); }
+.btn-back-q {
+  display: inline-flex; align-items: center; gap: 5px; flex-shrink: 0;
+  font-family: var(--body); font-size: 12px; font-weight: 700; letter-spacing: 0.02em;
+  color: var(--muted2); background: none; border: none; cursor: pointer;
+  padding: 4px 2px; margin: -4px -2px;
+  -webkit-tap-highlight-color: transparent;
+  transition: color 0.15s var(--ease-settle);
+}
+.btn-back-q svg { flex-shrink: 0; }
+
+.q-text { font-family: var(--display); font-size: 1.3rem; font-weight: 800; line-height: 1.25; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 0.3rem; text-wrap: balance; }
+.q-hint { font-size: 13px; font-weight: 500; line-height: 1.5; color: var(--muted); margin-bottom: 1rem; }
+
+.options-list { display: flex; flex-direction: column; gap: 8px; }
+.options-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.option-btn {
+  display: flex; align-items: center; gap: 12px; width: 100%;
+  background: var(--bg2); border: 1.5px solid var(--border); border-radius: 14px;
+  padding: 0.75rem 0.9rem; cursor: pointer; text-align: left;
+  font-family: var(--body); position: relative; overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+  transition: border-color 0.15s var(--ease-settle), background 0.15s var(--ease-settle),
+              transform 0.15s var(--ease-settle), box-shadow 0.15s var(--ease-settle);
+}
+.option-btn::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+  background: var(--blue); border-radius: 0 2px 2px 0;
+  transform: scaleY(0); transition: transform 0.2s var(--ease-settle);
+}
+.option-btn[aria-checked="true"] { border-color: var(--blue); background: var(--blue-lt); box-shadow: 0 0 0 3px rgba(21,96,255,0.12); }
+.option-btn[aria-checked="true"]::before { transform: scaleY(1); }
+/* A chosen option is locked while the card animates out, so a double tap
+   cannot land on the next question. */
+.option-btn:disabled { cursor: default; }
+.option-btn[aria-checked="true"]:disabled { border-color: var(--blue); background: var(--blue-lt); }
+
+.opt-icon {
+  width: 36px; height: 36px; border-radius: 10px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--bg); border: 1.5px solid var(--border); color: var(--blue);
+  transition: background 0.15s var(--ease-settle), border-color 0.15s var(--ease-settle);
+}
+.opt-icon svg { width: 17px; height: 17px; }
+.option-btn[aria-checked="true"] .opt-icon { background: rgba(21,96,255,0.08); border-color: var(--blue-mid); }
+.opt-text { flex: 1; min-width: 0; }
+.opt-label { display: block; font-size: 14px; font-weight: 700; line-height: 1.3; color: var(--ink); }
+.opt-sub { display: block; margin-top: 2px; font-size: 13px; font-weight: 500; line-height: 1.4; color: var(--muted); }
+.opt-check {
+  width: 22px; height: 22px; border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  border: 2px solid var(--border2);
+  transition: background 0.2s var(--ease-settle), border-color 0.2s var(--ease-settle);
+}
+.option-btn[aria-checked="true"] .opt-check { background: var(--blue); border-color: var(--blue); }
+.option-btn[aria-checked="true"] .opt-check::after { content: ''; width: 8px; height: 8px; background: #fff; border-radius: 50%; display: block; }
+.option-btn.multi .opt-check { border-radius: 7px; }
+.option-btn.multi[aria-checked="true"] .opt-check::after { content: '\2713'; width: auto; height: auto; background: none; border-radius: 0; color: #fff; font-size: 12px; font-weight: 900; }
+
+/* Only the one multi-answer question renders this; single answers advance on
+   the tap. */
+.next-area { margin-top: 1rem; display: flex; flex-direction: column; gap: 0.55rem; }
+.btn-next {
+  width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px;
+  background: var(--blue); color: #fff;
+  font-family: var(--body); font-size: 15px; font-weight: 700; line-height: 1;
+  padding: 16px 28px; border-radius: 50px; border: none; cursor: pointer;
+  box-shadow: 0 4px 20px rgba(21,96,255,0.35);
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.15s var(--ease-settle), box-shadow 0.15s var(--ease-settle), opacity 0.15s var(--ease-settle);
+}
+.btn-next:disabled { opacity: 0.35; cursor: not-allowed; }
+
+/* ---------- result ---------- */
+.result-card { background: var(--ink); border-radius: 24px; padding: 2.25rem; position: relative; overflow: hidden; animation: qEnter 0.5s var(--ease-settle); }
+.result-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; }
+.result-card.sev-high::before   { background: linear-gradient(90deg, #EF4444, #F97316); }
+.result-card.sev-medium::before { background: linear-gradient(90deg, #EAB308, #F97316); }
+.result-card.sev-low::before    { background: linear-gradient(90deg, #16A34A, #00CFFF); }
+.result-glow { position: absolute; bottom: -100px; right: -80px; width: 300px; height: 300px; border-radius: 50%; background: radial-gradient(circle, rgba(21,96,255,0.14) 0%, transparent 70%); pointer-events: none; }
+.result-top { display: flex; align-items: flex-start; gap: 1.15rem; margin-bottom: 1rem; position: relative; z-index: 1; }
+.result-icon { width: 56px; height: 56px; border-radius: 16px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); }
+.result-icon svg { width: 28px; height: 28px; }
+.result-eyebrow { font-size: 11px; font-weight: 700; line-height: 1.4; letter-spacing: 0.09em; text-transform: uppercase; color: var(--teal); margin-bottom: 6px; position: relative; z-index: 1; }
+.result-title { font-family: var(--display); font-size: 1.3rem; font-weight: 800; line-height: 1.25; letter-spacing: -0.02em; color: #fff; text-wrap: balance; }
+.sev-badge { display: block; font-size: 11px; font-weight: 700; line-height: 1.4; letter-spacing: 0.09em; text-transform: uppercase; margin: 0 0 1rem; position: relative; z-index: 1; }
+.sev-badge .badge-dot { display: none; }
+.sev-badge.high   { color: #F87171; }
+.sev-badge.medium { color: #FBBF24; }
+.sev-badge.low    { color: #4ADE80; }
+.result-desc { font-size: 15px; line-height: 1.75; color: rgba(255,255,255,0.7); margin-bottom: 1.35rem; position: relative; z-index: 1; }
+.result-points { display: flex; flex-direction: column; gap: 10px; margin-bottom: 1.5rem; position: relative; z-index: 1; }
+.rp-item { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; font-weight: 500; line-height: 1.6; color: rgba(255,255,255,0.8); }
+/* Sits on the first line of text rather than floating at the top of it. */
+.rp-dot { width: 5px; height: 5px; margin-top: 0.62em; border-radius: 50%; background: var(--teal); flex-shrink: 0; }
+.result-urgency { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 1.5rem; padding: 1rem 1.15rem; border-radius: 12px; background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.25); position: relative; z-index: 1; }
+.urg-icon svg { width: 18px; height: 18px; color: #FCA5A5; flex-shrink: 0; }
+.urg-text { font-size: 14px; line-height: 1.6; color: rgba(255,255,255,0.7); }
+.urg-text strong:where(:not([class])) { color: #FCA5A5; font-weight: 700; }
+.result-ctas { display: flex; flex-direction: column; gap: 10px; position: relative; z-index: 1; }
+.btn-wa-result {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  background: var(--wa-dk); color: #fff; text-decoration: none;
+  font-family: var(--body); font-size: 15px; font-weight: 700; line-height: 1;
+  padding: 17px 28px; border-radius: 50px;
+  box-shadow: 0 4px 20px rgba(34,197,94,0.4);
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.15s var(--ease-settle), box-shadow 0.15s var(--ease-settle);
+}
+.btn-quote-result {
+  display: flex; align-items: center; justify-content: center; gap: 9px;
+  background: rgba(255,255,255,0.1); color: #fff; text-decoration: none;
+  font-family: var(--body); font-size: 15px; font-weight: 700; line-height: 1;
+  padding: 15px 28px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.18);
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.15s var(--ease-settle);
+}
+.btn-retake {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  background: none; border: none; cursor: pointer;
+  font-family: var(--body); font-size: 13px; font-weight: 600;
+  color: rgba(255,255,255,0.55); padding: 10px 28px; border-radius: 50px;
+  -webkit-tap-highlight-color: transparent;
+  transition: color 0.15s var(--ease-settle);
+}
+/* Four items as a 2x2 grid: as a wrapping row they broke 3 + 1 and left one
+   item stranded on its own line. */
+.result-trust-row { display: grid; grid-template-columns: repeat(2, max-content); justify-content: center; gap: 0.6rem 2rem; margin-top: 1.25rem; padding: 1.1rem; background: var(--bg2); border: 1.5px solid var(--border); border-radius: 16px; }
+.rt-item { display: flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 600; line-height: 1.5; color: var(--muted); }
+.rt-icon { width: 20px; height: 20px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: var(--blue-lt); border: 1px solid var(--blue-mid); color: var(--blue); }
+.rt-icon svg { width: 10px; height: 10px; }
+
+/* ==========================================================
+   Offer banner
+   ========================================================== */
+.offer-banner { padding: 3rem 2rem; background: var(--bg); }
+.offer-inner {
+  max-width: 1100px; margin: 0 auto; position: relative; overflow: hidden;
+  display: flex; align-items: center; gap: 1.25rem 2rem; flex-wrap: wrap;
+  padding: 1.6rem 1.9rem; border-radius: 18px;
+  background: linear-gradient(135deg, var(--ink) 0%, #1B2A4A 100%);
+}
+.offer-inner::after { content: ''; position: absolute; top: -60px; right: -60px; width: 220px; height: 220px; background: radial-gradient(circle, rgba(21,96,255,0.22) 0%, transparent 70%); pointer-events: none; }
+.offer-text { flex: 1; min-width: 230px; position: relative; z-index: 1; }
+.offer-tag { font-size: 11px; font-weight: 700; line-height: 1.4; letter-spacing: 0.09em; text-transform: uppercase; color: var(--teal); margin-bottom: 0.4rem; }
+.offer-title { font-family: var(--display); font-size: 1.3rem; font-weight: 800; line-height: 1.25; letter-spacing: -0.02em; color: #fff; margin-bottom: 0.3rem; }
+.offer-desc { font-size: 13px; font-weight: 500; line-height: 1.5; color: rgba(255,255,255,0.7); }
+.offer-btn { position: relative; z-index: 1; flex-shrink: 0; }
+
+/* ==========================================================
+   Content sections
+   ========================================================== */
+.section { padding: 4.5rem 2rem; }
+.section-alt { background: var(--bg2); }
+
+/* Why waiting costs more */
+.process-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 2rem; }
+.process-step { background: var(--bg); border: 1.5px solid var(--border); border-radius: 18px; padding: 1.6rem 1.4rem; transition: border-color 0.2s var(--ease-settle), transform 0.2s var(--ease-settle); }
+.ps-num { font-family: var(--display); font-size: 2.25rem; font-weight: 800; line-height: 1; margin-bottom: 0.75rem; -webkit-text-stroke: 2px var(--blue-mid); color: transparent; }
+.ps-title { font-family: var(--display); font-size: 1.05rem; font-weight: 700; line-height: 1.3; letter-spacing: -0.01em; color: var(--ink); margin-bottom: 0.5rem; }
+.ps-desc { font-size: 14px; line-height: 1.65; color: var(--muted); }
+
+/* Symptom carousel */
+.scroll-section { padding: 4.5rem 0; border-top: 1px solid var(--border); }
+.scroll-section.section-alt { background: var(--bg2); }
+.section + .scroll-section, .section-alt + .scroll-section.section-alt { border-top: none; }
+.scroll-section-head { max-width: 1100px; margin: 0 auto 2rem; padding: 0 2rem; }
+.scroll-track-outer { position: relative; overflow: hidden; }
+.scroll-track-outer::before, .scroll-track-outer::after { content: ''; position: absolute; top: 0; bottom: 0; width: 40px; z-index: 2; pointer-events: none; }
+.scroll-track-outer::before { left: 0; background: linear-gradient(to right, var(--bg), transparent); }
+.scroll-track-outer::after  { right: 0; background: linear-gradient(to left, var(--bg), transparent); }
+.scroll-track-outer.alt-bg::before { background: linear-gradient(to right, var(--bg2), transparent); }
+.scroll-track-outer.alt-bg::after  { background: linear-gradient(to left, var(--bg2), transparent); }
+.scroll-track {
+  display: flex; gap: 14px; overflow-x: auto;
+  padding: 0.5rem max(2rem, calc((100vw - 1100px) / 2 + 2rem)) 1.25rem;
+  scroll-padding-left: max(2rem, calc((100vw - 1100px) / 2 + 2rem));
+  scroll-snap-type: x proximity; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+}
+.scroll-track::-webkit-scrollbar { display: none; }
+.info-card {
+  flex: 0 0 264px; min-width: 264px; scroll-snap-align: start;
+  display: flex; flex-direction: column; gap: 0.75rem;
+  background: var(--bg); border: 1.5px solid var(--border); border-radius: 18px; padding: 1.75rem;
+  position: relative; overflow: hidden;
+  transition: border-color 0.2s var(--ease-settle), transform 0.2s var(--ease-settle), box-shadow 0.2s var(--ease-settle);
+}
+.info-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--blue), var(--teal)); opacity: 0; transition: opacity 0.2s var(--ease-settle); }
+.info-card-icon { width: 42px; height: 42px; border-radius: 11px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: var(--blue-lt); border: 1.5px solid var(--blue-mid); color: var(--blue); margin-bottom: 0.25rem; }
+.info-card-icon svg { width: 20px; height: 20px; }
+/* Two lines reserved, so the body text starts at the same height on every
+   card whether its title wraps or not. */
+.info-card h3:where(:not([class])) { font-family: var(--display); font-size: 1.05rem; font-weight: 700; line-height: 1.3; letter-spacing: -0.01em; color: var(--ink); min-height: 2.6em; }
+.info-card p:where(:not([class])) { font-size: 14px; line-height: 1.65; color: var(--muted); flex: 1; }
+.scroll-dots { display: flex; justify-content: center; gap: 6px; padding-top: 0.5rem; }
+.scroll-dot {
+  width: 6px; height: 6px; border-radius: 50%; border: none; padding: 0; cursor: pointer;
+  background: var(--border2);
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.2s var(--ease-settle), width 0.2s var(--ease-settle), transform 0.1s var(--ease-press);
+}
+.scroll-dot.active { background: var(--blue); width: 18px; border-radius: 3px; }
+
+/* Desktop: the six cards sit in a 3 x 2 grid inside the same 1100px column
+   as the heading, so there is equal space on both sides. As a carousel they
+   started at the left edge of the column and ran off the right edge of the
+   screen. Each card is a subgrid of the track's rows, so icon, title and text
+   line up across a row without reserving an empty second line under
+   one-line titles. Below 961px it is a swipeable carousel again. */
+@media (min-width: 961px) {
+  .scroll-track-outer { overflow: visible; }
+  .scroll-track-outer::before, .scroll-track-outer::after, .scroll-dots { display: none; }
+  .scroll-track {
+    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 16px; row-gap: 16px;
+    max-width: 1100px; margin: 0 auto; padding: 0.5rem 2rem 0;
+    overflow: visible; scroll-snap-type: none;
+  }
+  .info-card {
+    min-width: 0; display: grid; grid-row: span 3; grid-template-rows: subgrid;
+    row-gap: 0.75rem; align-content: start;
+  }
+  .info-card h3:where(:not([class])) { min-height: 0; }
+}
+
+/* Stats */
+.stats-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin-top: 2rem; background: var(--border); border: 1px solid var(--border); border-radius: 18px; overflow: hidden; }
+.stat-cell { background: var(--bg); padding: 1.6rem 1.25rem; text-align: center; }
+.stat-val { display: block; font-family: var(--display); font-size: clamp(1.6rem, 2.5vw, 2rem); font-weight: 800; line-height: 1; letter-spacing: -0.035em; color: var(--blue); margin-bottom: 0.45rem; }
+.stat-lbl { font-size: 13px; font-weight: 500; line-height: 1.5; color: var(--muted); }
+
+/* Pricing: one full-width panel across the whole column, heading on the
+   left and the explanation and both actions on the right, so the block
+   reads as a single unit rather than two loose columns on the background. */
+.hc-pricing {
+  display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: 1.25rem 4rem; align-items: center;
+  background: var(--bg); border: 1.5px solid var(--border); border-radius: 20px;
+  padding: 2.5rem 3rem; position: relative; overflow: hidden;
+  box-shadow: 0 4px 32px rgba(15,23,42,0.05);
+}
+.hc-pricing::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--blue), var(--teal)); }
+.hc-pricing .s-title { margin-bottom: 0; }
+.hc-pricing .s-sub { max-width: none; }
+.hc-pricing-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 1.5rem; }
+
+/* Long-form guide. Six topics, each one heading and two paragraphs, laid
+   out as numbered rows: the question on the left, the answer on the right,
+   a rule between topics. Read as one unbroken column of text it was a wall;
+   this way a reader can scan the six questions and stop at theirs. Pure
+   layout, the text and its order are unchanged, so nothing is lost for
+   search. */
+.intro-section { padding: 4.5rem 2rem; }
+.intro-prose {
+  display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  column-gap: 4rem; counter-reset: topic;
+  font-size: 16px; line-height: 1.85; color: var(--ink2);
+}
+.intro-prose h2:where(:not([class])) {
+  grid-column: 1; grid-row: span 2; align-self: start;
+  counter-increment: topic;
+  font-family: var(--display); font-size: 1.3rem; font-weight: 800; line-height: 1.25; letter-spacing: -0.02em;
+  color: var(--ink); text-wrap: balance;
+  padding-top: 2rem; border-top: 1px solid var(--border);
+}
+.intro-prose h2:where(:not([class]))::before {
+  content: counter(topic, decimal-leading-zero);
+  display: block; margin-bottom: 0.6rem;
+  font-family: var(--body); font-size: 11px; font-weight: 700; line-height: 1.4; letter-spacing: 0.09em;
+  color: var(--blue);
+}
+.intro-prose p:where(:not([class])) { grid-column: 2; margin-bottom: 1rem; }
+.intro-prose h2 + p { padding-top: 2rem; border-top: 1px solid var(--border); }
+/* Desktop: the rule runs unbroken across both columns; the question's rule
+   is extended through the gap. (Not sticky: a sticky heading is bounded by
+   the whole grid, not its own row, so each one stayed pinned over the
+   next.) */
+@media (min-width: 721px) {
+  .intro-prose h2:where(:not([class])) { margin-right: -4rem; padding-right: 4rem; }
+}
+.intro-prose h2 + p + p { margin-bottom: 2rem; }
+.intro-prose h2:where(:not([class])):first-child, .intro-prose h2:first-child + p { padding-top: 0; border-top: 0; }
+.intro-prose p:where(:not([class])):last-child { margin-bottom: 0; }
+.intro-prose strong:where(:not([class])) { color: var(--ink); font-weight: 700; }
+.intro-prose a:not([class]) { color: var(--blue); font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--blue-mid); transition: border-color 0.15s var(--ease-settle); }
+
+/* FAQ */
+.faq-list { display: flex; flex-direction: column; gap: 10px; margin-top: 2rem; }
+.faq-item { background: var(--bg); border: 1.5px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: border-color 0.2s; }
+@media (hover: hover) { .faq-item:hover { border-color: var(--blue-mid); } }
+.faq-item.open { border-color: var(--blue-mid); }
+.faq-q {
+  width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  padding: 1.25rem 1.5rem; border: none; background: transparent; cursor: pointer; text-align: left;
+  font-family: var(--display); font-size: 15px; font-weight: 700; line-height: 1.3; color: var(--ink);
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.15s var(--ease-settle), color 0.15s;
+}
+@media (hover: hover) { .faq-q:hover { color: var(--blue); } }
+.faq-q svg { flex-shrink: 0; width: 18px; height: 18px; color: var(--muted); transition: transform 0.35s cubic-bezier(0.34,1.35,0.64,1), color 0.2s; }
+.faq-item.open .faq-q svg { transform: rotate(180deg); color: var(--blue); }
+.faq-a { display: grid; grid-template-rows: 0fr; overflow: hidden; transition: grid-template-rows 0.4s var(--ease-settle); }
+.faq-item.open .faq-a { grid-template-rows: 1fr; }
+.faq-a p:where(:not([class])) { min-height: 0; margin: 0; padding: 0 1.5rem; font-size: 14px; line-height: 1.75; color: var(--muted); transition: padding 0.4s var(--ease-settle); }
+.faq-item.open .faq-a p:where(:not([class])) { padding: 0 1.5rem 1.25rem; }
+
+/* Suburb pages under the FAQ: a tidy four-column grid of real suburb pages
+   only, in the same bordered-cell style as the stats strip, rather than a
+   loose run of pills mixing suburbs with service pages. */
+.area-block { margin-top: 2.5rem; }
+.area-label { font-size: 11px; font-weight: 700; line-height: 1.4; letter-spacing: 0.09em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.9rem; }
+.area-links {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px;
+  background: var(--border); border: 1px solid var(--border); border-radius: 14px; overflow: hidden;
+}
+.area-link {
+  display: flex; align-items: center; justify-content: space-between; gap: 0.75rem;
+  padding: 0.95rem 1.15rem; background: var(--bg); text-decoration: none;
+  font-size: 15px; font-weight: 600; line-height: 1.4; color: var(--ink);
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.15s var(--ease-settle), color 0.15s var(--ease-settle);
+}
+.area-link::after {
+  content: ''; width: 7px; height: 7px; flex-shrink: 0; margin-right: 2px;
+  border-top: 2px solid var(--blue); border-right: 2px solid var(--blue);
+  transform: rotate(45deg); transition: transform 0.2s var(--ease-settle);
+}
+
+/* Closing call to action */
+.cta-section { background: var(--bg2); padding: 4.5rem 2rem; border-top: 1px solid var(--border); }
+.cta-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto; gap: 2rem 3rem; align-items: center; }
+.cta-kicker { font-size: 11px; font-weight: 700; line-height: 1.4; letter-spacing: 0.09em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.75rem; }
+.cta-title { font-family: var(--display); font-size: 1.45rem; font-weight: 800; line-height: 1.2; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 0.6rem; text-wrap: balance; }
+.cta-desc { font-size: 1.0625rem; line-height: 1.75; color: var(--muted); max-width: 60ch; }
+.cta-actions { display: flex; flex-direction: column; gap: 10px; min-width: 220px; }
+.cta-icon-row { display: flex; gap: 8px; }
+.cta-icon-btn { flex: 1; height: 50px; border-radius: 50px; display: flex; align-items: center; justify-content: center; text-decoration: none; -webkit-tap-highlight-color: transparent; transition: transform 0.15s var(--ease-settle); }
+.cta-icon-btn.wa { background: var(--wa); box-shadow: 0 4px 16px rgba(34,197,94,0.35); }
+
+/* ==========================================================
+   Hover: only where there is a real pointer, so a tap on a
+   phone never leaves a card stuck in its lifted state.
+   ========================================================== */
+@media (hover: hover) {
+  .btn-blue:hover { background: var(--blue-dk); transform: translateY(-2px); box-shadow: 0 10px 28px rgba(21,96,255,0.45); }
+  .btn-ghost:hover { border-color: var(--blue); color: var(--blue); }
+  .btn-start-quiz:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(21,96,255,0.5); }
+  .btn-start-quiz:hover svg { transform: translateX(4px); }
+  .btn-back-q:hover { color: var(--blue); }
+  .option-btn:not(:disabled):hover { border-color: var(--blue); background: var(--blue-lt); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(21,96,255,0.1); }
+  .option-btn:not(:disabled):hover::before { transform: scaleY(1); }
+  .option-btn:not(:disabled):hover .opt-icon { background: rgba(21,96,255,0.08); border-color: var(--blue-mid); }
+  .btn-next:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(21,96,255,0.45); }
+  .btn-wa-result:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(34,197,94,0.5); }
+  .btn-quote-result:hover { background: rgba(255,255,255,0.16); }
+  .btn-retake:hover { color: rgba(255,255,255,0.85); }
+  .process-step:hover { border-color: var(--blue); transform: translateY(-2px); }
+  .info-card:hover { border-color: var(--blue); transform: translateY(-3px); box-shadow: 0 8px 28px rgba(21,96,255,0.1); }
+  .info-card:hover::before { opacity: 1; }
+  .scroll-dot:hover { background: var(--blue-mid); }
+  .area-link:hover { background: var(--blue-lt); color: var(--blue); }
+  .area-link:hover::after { transform: translateX(3px) rotate(45deg); }
+  .faq-q:hover { background: var(--bg2); }
+  .intro-prose a:not([class]):hover { border-bottom-color: var(--blue); }
+  .cta-icon-btn:hover { transform: translateY(-2px); }
+}
+
+/* ==========================================================
+   Press feedback: on pointer-down, not release, so a tap is
+   acknowledged immediately. The lift collapses and the shadow
+   pulls in, so a press reads as pushed rather than resized.
+   ========================================================== */
+.btn-blue:active, .btn-start-quiz:active, .btn-next:active:not(:disabled),
+.btn-wa-result:active, .btn-quote-result:active {
+  transform: translateY(0) scale(0.97);
+  transition: transform 0.1s var(--ease-press), box-shadow 0.1s var(--ease-press);
+}
+.btn-start-quiz:active, .btn-next:active:not(:disabled) { box-shadow: 0 2px 8px rgba(21,96,255,0.4); }
+.btn-start-quiz:active svg { transform: translateX(2px); }
+.btn-ghost:active { transform: scale(0.97); transition: transform 0.1s var(--ease-press); }
+.option-btn:not(:disabled):active {
+  transform: scale(0.97);
+  background: var(--blue-mid); border-color: var(--blue);
+  box-shadow: inset 0 1px 3px rgba(15,23,42,0.12);
+  transition: transform 0.1s var(--ease-press), background 0.1s var(--ease-press), box-shadow 0.1s var(--ease-press);
+}
+.option-btn:not(:disabled):active::before { transform: scaleY(1); }
+.btn-back-q:active { color: var(--ink2); transform: scale(0.96); transition: transform 0.1s var(--ease-press); }
+.btn-retake:active { color: #fff; transform: scale(0.96); transition: transform 0.1s var(--ease-press); }
+.faq-q:active { background: var(--bg3); }
+.scroll-dot:active { transform: scale(0.8); }
+.area-link:active { background: var(--blue-mid); transition: background 0.1s var(--ease-press); }
+.cta-icon-btn:active { transform: translateY(0) scale(0.94); transition: transform 0.1s var(--ease-press); }
+
+/* ==========================================================
+   Responsive
+   ========================================================== */
+@media (max-width: 1164px) {
+  /* The wrap has no spare margin below this, so the track uses the same flat
+     2rem inset as the heading above it. */
+  .scroll-track { padding-left: 2rem; padding-right: 2rem; scroll-padding-left: 2rem; }
+}
+
+@media (max-width: 960px) {
+  .process-steps { grid-template-columns: 1fr 1fr; }
+  .hc-pricing { grid-template-columns: 1fr; padding: 2rem; }
+  .intro-prose { column-gap: 2.5rem; }
+  .intro-prose h2:where(:not([class])) { margin-right: -2.5rem; padding-right: 2.5rem; }
+}
+
+@media (max-width: 900px) {
+  .cta-inner { grid-template-columns: 1fr; }
+  .cta-actions { flex-direction: row; flex-wrap: wrap; min-width: 0; width: 100%; }
+  .cta-icon-row { flex: 1; }
+  .stats-strip { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 720px) {
+  body { padding-top: var(--mob-nav-h); }
+  html { scroll-padding-top: calc(var(--mob-nav-h) + 12px); }
+  .wrap { padding: 0 1.25rem; }
+
+  .s-title, .intro-prose h2:where(:not([class])), .cta-title { font-size: 1.3rem; }
+  .s-sub, .quiz-hero-sub, .cta-desc { font-size: 1rem; }
+
+  .quiz-hero { padding: 2rem 1.25rem 2.25rem; }
+  .trust-pills { gap: 0.5rem 1rem; }
+  .btn-start-quiz { width: 100%; padding: 16px 28px; }
+  .hero-social-proof { gap: 0.5rem 1rem; }
+  .trust-strip { padding: 0.9rem 1.25rem; }
+  .trust-strip-inner { gap: 0.5rem 1.25rem; }
+  .trust-item { font-size: 12px; }
+
+  /* Question card: every row trimmed so the options clear the fold. */
+  .quiz-section { padding: 1.5rem 1rem 2rem; }
+  .step-bar { margin-bottom: 1.15rem; max-width: 100%; }
+  /* 7 circles + 6 connectors = 292px, inside a 335px phone. */
+  .step-circle { width: 28px; height: 28px; font-size: 11px; }
+  .step-circle.active { box-shadow: 0 0 0 3px rgba(21,96,255,0.15); transform: scale(1.06); }
+  .step-circle.done::after { font-size: 11px; }
+  .step-connector { width: 12px; margin: 0 2px; }
+  .step-label { display: none; }
+  .question-card { padding: 1.15rem 1.1rem; border-radius: 16px; }
+  .q-meta { margin-bottom: 0.7rem; }
+  .q-text { font-size: 1.15rem; }
+  .options-two-col { grid-template-columns: 1fr; }
+  .option-btn { padding: 0.72rem 0.85rem; gap: 10px; border-radius: 12px; }
+  .opt-icon { width: 34px; height: 34px; }
+  .opt-check { width: 20px; height: 20px; }
+  /* Pinned clear of the sticky call bar so it is reachable without
+     scrolling to the end of the list. */
+  .next-area {
+    position: sticky; bottom: calc(76px + env(safe-area-inset-bottom, 0px)); z-index: 3;
+    background: var(--bg); border-top: 1px solid var(--border);
+    margin: 1rem -1.1rem -1.15rem;
+    padding: 0.8rem 1.1rem calc(0.8rem + env(safe-area-inset-bottom, 0px));
+  }
+  .btn-next { padding: 14px 24px; }
+
+  .result-card { padding: 1.5rem; }
+  .result-top { flex-direction: column; gap: 0.75rem; }
+
+  .offer-banner { padding: 2.25rem 1.25rem; }
+  .offer-inner { padding: 1.35rem; }
+  .offer-btn, .offer-btn .btn-blue { width: 100%; }
+
+  .section, .cta-section, .intro-section { padding: 3rem 1.25rem; }
+  .scroll-section { padding: 3rem 0; }
+  .scroll-section-head { padding: 0 1.25rem; margin-bottom: 1.5rem; }
+  .info-card { flex: 0 0 244px; min-width: 244px; padding: 1.4rem; }
+  .process-steps { grid-template-columns: 1fr; }
+  .stat-cell { padding: 1.15rem 0.9rem; }
+  .stat-val { font-size: 1.6rem; }
+  .hc-pricing { padding: 1.6rem 1.35rem; border-radius: 16px; }
+  .hc-pricing-actions .btn-blue, .hc-pricing-actions .btn-ghost { flex: 1 1 auto; }
+  /* Topics stack on phones: number, question, then the answer. */
+    .intro-prose h2:where(:not([class])) { grid-column: 1; grid-row: auto; font-size: 1.15rem; padding-top: 1.75rem; margin-bottom: 0.75rem; }
+  .intro-prose h2:where(:not([class])):first-child { padding-top: 0; }
+  .intro-prose p:where(:not([class])) { grid-column: 1; }
+  .intro-prose h2 + p { padding-top: 0; border-top: 0; }
+  .intro-prose { grid-template-columns: 1fr; font-size: 15px; }
+  .area-links { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .area-link { font-size: 14px; padding: 0.85rem 1rem; }
+  .faq-q { padding: 1rem 1.1rem; }
+  .faq-a p:where(:not([class])) { padding: 0 1.1rem; }
+  .faq-item.open .faq-a p:where(:not([class])) { padding: 0 1.1rem 1rem; }
+  .cta-actions { flex-direction: column; align-items: stretch; }
+  .cta-actions .btn-blue, .cta-icon-row { width: 100%; }
+}
+
+@media (max-width: 640px) {
+  .scroll-track { padding-left: 1.25rem; padding-right: 1.25rem; scroll-padding-left: 1.25rem; }
+}
+
+@media (max-width: 540px) {
+  .section, .cta-section, .intro-section { padding: 2.5rem 1.25rem; }
+  .result-trust-row { grid-template-columns: 1fr; justify-content: start; }
+}
+
+/* Small phones: the step bar is the first thing to run out of room. */
+@media (max-width: 400px) {
+  .step-circle { width: 24px; height: 24px; font-size: 10px; }
+  .step-connector { width: 8px; margin: 0 1px; }
+  .opt-label { font-size: 13px; }
+  .opt-sub { font-size: 12px; }
+  .question-card { padding: 1rem 0.9rem; }
+}
+
+/* ==========================================================
+   User preferences
+   ========================================================== */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  .fade-up { opacity: 1 !important; transform: none !important; }
+  .q-enter, .q-exit { animation: none; }
+  .btn-blue:active, .btn-ghost:active, .btn-start-quiz:active, .btn-next:active,
+  .option-btn:active, .btn-back-q:active, .btn-retake:active,
+  .btn-wa-result:active, .btn-quote-result:active, .scroll-dot:active, .cta-icon-btn:active,
+  .btn-blue:hover, .btn-start-quiz:hover, .btn-next:hover, .option-btn:hover,
+  .btn-wa-result:hover, .info-card:hover, .process-step:hover, .cta-icon-btn:hover { transform: none; }
+  .btn-start-quiz:hover svg, .btn-start-quiz:active svg { transform: none; }
+}
+
+@media (prefers-contrast: more) {
+  .q-hint, .opt-sub, .s-sub, .info-card p:where(:not([class])), .ps-desc, .faq-a, .stat-lbl, .proof-item, .cta-desc { color: #334155; }
+  .option-btn, .question-card, .info-card, .process-step, .faq-list, .stats-strip { border-color: #0F172A; }
+  .btn-ghost { border-color: #0A3ACC; }
+  .area-links { background: #0F172A; border-color: #0F172A; }
+  .result-desc, .rp-item, .urg-text { color: rgba(255,255,255,0.9); }
+}

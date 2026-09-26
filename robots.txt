@@ -1,0 +1,17 @@
+---
+layout: none
+permalink: /robots.txt
+---
+{%- comment -%}
+  Driven by `staging` in _config.yml. Staging blocks everything; the live
+  site allows everything and points crawlers at the sitemap.
+{%- endcomment -%}
+{%- if site.staging -%}
+User-agent: *
+Disallow: /
+{%- else -%}
+User-agent: *
+Allow: /
+
+Sitemap: https://www.fixmypcperth.com/sitemap.xml
+{%- endif %}

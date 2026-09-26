@@ -1,0 +1,689 @@
+# ==========================================================
+# services.yml   THE MASTER PRICE LIST
+#
+# This file is the single source of truth for every price on
+# the site. Change a number here and it changes on the pricing
+# page, in the schema Google reads, and on any other page that
+# pulls the same key. Nothing is hardcoded anywhere else.
+#
+# ----------------------------------------------------------
+# ADDING A NEW SERVICE
+#
+#   - key:      a unique slug, lowercase and hyphenated.
+#               This is the handle other pages use, so once a
+#               key is live do not rename it.
+#     category: must match a category id below. If it does
+#               not match one, the service will not appear.
+#     group:    must match one of that category's groups. Use
+#               ~ for no group.
+#     name:     what the customer sees.
+#     desc:     one or two sentences.
+#     price:    a plain number. No dollar sign, no quotes.
+#
+# Optional on any service:
+#     prefix:   "from"      renders as "from $150"
+#     plus:     true        renders as "+$40"
+#     suffix:   "all-in"    renders as "$120 all-in"
+#     alt:      second line under the price
+#     badge:    small label beside the name
+#     text:     use instead of price for "Free" or "Custom"
+#     chips:    list of symptom words, shown as tags
+#     options:  list of tiers, each with name and price
+#
+# ----------------------------------------------------------
+# CHANGING A PRICE
+#
+#   Edit the number. That is the whole job. Counts, totals,
+#   the category rail and the JSON-LD offers are all derived,
+#   so nothing else needs touching.
+#
+# ----------------------------------------------------------
+# ADDING A CATEGORY
+#
+#   Add an entry under categories with a new id, then add an
+#   icon of the same name to _includes/svc-icon.html.
+#
+# ----------------------------------------------------------
+# THE ONLY THREE PLACES A PRICE IS STILL TYPED BY HAND
+#
+# Jekyll cannot run an include inside front matter, so these
+# three strings do not follow this file. If you change the
+# diagnostic fee, edit them too:
+#
+#   index.html      title:        "... Flat $120 All-In ..."
+#   index.html      description:  "... flat $120 covering ..."
+#   pricing.html    description:  "... $120 flat, virus $99 ..."
+#
+# Everything else on the site updates itself.
+# ----------------------------------------------------------
+#
+# Never rename this file to site.yml, page.yml, layout.yml or
+# content.yml. Those names collide with Jekyll's own objects.
+# ==========================================================
+
+meta:
+  currency: AUD
+  gst_included: true
+  callout_fee: 35
+  same_day_cutoff: 2pm
+  priority_fee: 20
+  warranty_days: 30
+  quote_valid_months: 6
+  competitor_hourly: 205   # what a typical Perth mobile tech charges, used in the comparison
+categories:
+  - id: repairs
+    label: PC & Laptop Repairs
+    nav: Repairs
+    icon: repairs
+    blurb: Laptop repair Perth and desktop repair, all fixed price. If we need to find the fault before we can fix it, that is the all-in diagnostic and repair fee below.
+    groups:
+      - Most common faults
+      - Laptop hardware
+      - Data services
+      - Before you buy
+  - id: performance
+    label: Performance Enhancement
+    nav: Performance
+    icon: performance
+    blurb: For a machine that works but crawls. Three depths of tune-up depending on how far gone it is.
+    groups: []
+  - id: upgrades
+    label: PC & Laptop Upgrades
+    nav: Upgrades
+    icon: upgrades
+    blurb: SSD upgrade Perth, RAM, graphics and Windows. Labour is fixed. Parts are yours or ours, your choice.
+    groups:
+      - Storage and memory
+      - Components and cooling
+      - Software and advice
+  - id: gaming
+    label: Gaming PC Build Perth
+    nav: Gaming
+    icon: gaming
+    blurb: Assembly with your parts, plus the tuning and finishing work. Three build tiers and everything that goes around them.
+    groups:
+      - Build tiers
+      - Assembly extras
+      - Tuning and testing
+      - Creators and consoles
+  - id: networking
+    label: Home & Business Networking
+    nav: Networking
+    icon: networking
+    blurb: On site across the southern suburbs. Same price on site as in the workshop, plus the call-out fee listed under add-ons.
+    groups:
+      - Internet and wifi
+      - Devices and security
+  - id: software
+    label: Software & Remote Support
+    nav: Remote & software
+    icon: software
+    blurb: Remote support Perth wide for anything that does not need a bench. The first half hour is the minimum charge.
+    groups:
+      - Remote help and setup
+      - Data and maintenance
+services:
+  - key: diagnostic-repair-all-in
+    category: repairs
+    group: Most common faults
+    name: Diagnostic & Repair, All-In
+    desc: One flat fee covering the full diagnostic, all repair labour and a 30-day warranty. If we need to find the fault before we can fix it, this is the price.
+    price: 120
+    suffix: all-in
+    badge: Most Popular
+    chips:
+      - Blue screens
+      - Won't turn on
+      - Boot loops
+      - Stuck on logo
+      - Random restarts
+      - Freezing
+      - Crashes on startup
+      - No POST
+      - Driver conflicts
+  - key: virus-malware-removal
+    category: repairs
+    group: Most common faults
+    name: Virus & Malware Removal
+    desc: Full deep scan, complete threat removal, browser cleanup and antivirus setup. Most infections cleared same day.
+    price: 99
+    badge: Most Popular
+  - key: windows-reinstall-data-backup
+    category: repairs
+    group: Most common faults
+    name: Windows Reinstall & Data Backup
+    desc: Fresh Windows 10 or 11 install with all files and data safely backed up and transferred across.
+    price: 120
+  - key: overheating-fix-deep-clean
+    category: repairs
+    group: Most common faults
+    name: Overheating Fix & Deep Clean
+    desc: Full internal clean, thermal paste replaced, fan inspection and airflow optimised.
+    price: 89
+  - key: password-reset-account-recovery
+    category: repairs
+    group: Most common faults
+    name: Password Reset & Account Recovery
+    desc: Regain access to a locked Windows login, Microsoft or local account. No data loss.
+    price: 79
+  - key: laptop-screen-replacement
+    category: repairs
+    group: Laptop hardware
+    name: Laptop Screen Replacement
+    desc: Panel and labour included. Your quote lists the panel and the labour separately once we confirm your exact model.
+    price: 145
+    prefix: from
+    options:
+      # Each option carries its own key so the price include can resolve a
+      # single tier inside a sentence, e.g. the laptop screen FAQ on /pricing.
+      # Without these keys those three figures rendered blank on the page and
+      # in its FAQ schema.
+      - key: laptop-screen-standard
+        name: Standard
+        price: 145
+        note: Non-touch, the most common panel type. Panel and labour included.
+      - key: laptop-screen-touchscreen
+        name: Touchscreen
+        price: 170
+        note: Touchscreen or gaming high-refresh panels. Panel and labour included.
+      - key: laptop-screen-oled-premium
+        name: OLED / Premium
+        price: 190
+        note: OLED or premium 2-in-1 displays. Panel and labour included.
+  - key: laptop-battery-replacement
+    category: repairs
+    group: Laptop hardware
+    name: Laptop Battery Replacement
+    desc: Labour only. Battery quoted separately, most major brands supported. Tested after fitting.
+    price: 89
+  - key: laptop-keyboard-replacement
+    category: repairs
+    group: Laptop hardware
+    name: Laptop Keyboard Replacement
+    desc: Labour for individual key repairs or full keyboard swaps on most laptop models.
+    price: 89
+  - key: charging-port-repair
+    category: repairs
+    group: Laptop hardware
+    name: Charging Port Repair
+    desc: Loose, damaged or non-charging ports repaired or replaced on laptops and 2-in-1 devices.
+    price: 99
+  - key: laptop-hinge-repair
+    category: repairs
+    group: Laptop hardware
+    name: Laptop Hinge Repair
+    desc: Loose, cracked or snapped hinges repaired so the lid opens and closes properly again.
+    price: 99
+  - key: screen-flicker-or-line-repair
+    category: repairs
+    group: Laptop hardware
+    name: Screen Flicker or Line Repair
+    desc: Flex cable or connection repair for flickering, lines or dead areas. Often cheaper than a full screen swap.
+    price: 99
+  - key: trackpad-replacement
+    category: repairs
+    group: Laptop hardware
+    name: Trackpad Replacement
+    desc: Unresponsive, clicking or drifting trackpads replaced and calibrated.
+    price: 89
+  - key: liquid-spill-clean-repair
+    category: repairs
+    group: Laptop hardware
+    name: Liquid Spill Clean & Repair
+    desc: Full strip down, internal clean and corrosion treatment after a spill. Component-level repair quoted separately if needed.
+    price: 129
+    prefix: from
+    badge: Specialist
+  - key: data-recovery-failing-drive
+    category: repairs
+    group: Data services
+    name: Data Recovery, Failing Drive
+    desc: Recover files from slow, clicking or partially accessible drives. The sooner you bring it in, the better the odds.
+    price: 149
+    badge: No fix no fee
+  - key: data-recovery-dead-drive
+    category: repairs
+    group: Data services
+    name: Data Recovery, Dead Drive
+    desc: Advanced recovery from drives that will not spin or mount. You pay nothing if we cannot recover your files.
+    price: 249
+    badge: No Fix No Fee
+  - key: external-drive-usb-recovery
+    category: repairs
+    group: Data services
+    name: External Drive & USB Recovery
+    desc: Recovery from external hard drives, USB sticks and memory cards.
+    price: 99
+  - key: secure-data-wipe-certified-erase
+    category: repairs
+    group: Data services
+    name: Secure Data Wipe & Certified Erase
+    desc: Full secure erase before selling, donating or disposing of a PC or laptop.
+    price: 59
+  - key: pre-purchase-used-pc-inspection
+    category: repairs
+    group: Before you buy
+    name: Pre-Purchase Used PC Inspection
+    desc: Buying second-hand off Marketplace or Gumtree? We check it over before you hand over any cash.
+    price: 49
+    badge: Smart Buy
+  - key: basic-tune-up
+    category: performance
+    group: null
+    name: Basic Tune Up
+    desc: Junk file and bloatware cleanup, startup program cleanup, driver updates and a quick malware scan.
+    price: 79
+  - key: advanced-performance-boost
+    category: performance
+    group: null
+    name: Advanced Performance Boost
+    desc: Everything in Basic, plus thermal paste replacement, full browser and registry optimisation and a before/after benchmark.
+    price: 129
+    badge: Most Chosen
+  - key: pro-performance-overhaul
+    category: performance
+    group: null
+    name: Pro Performance Overhaul
+    desc: Everything in Advanced, plus a full internal clean, RAM and SSD tuning, a written performance report and a 3-month follow-up check.
+    price: 189
+  - key: ssd-upgrade-labour-only
+    category: upgrades
+    group: Storage and memory
+    name: SSD Upgrade, Labour Only
+    desc: We fit the SSD and transfer all your data across. We supply every type, SATA and NVMe, specced to what you actually need, or we fit one you have already bought.
+    price: 65
+  - key: hdd-to-ssd-full-migration
+    category: upgrades
+    group: Storage and memory
+    name: HDD to SSD Full Migration
+    desc: Drive supplied, your entire system cloned across so nothing is lost. Ideal for older machines.
+    price: 175
+    prefix: from
+  - key: ram-upgrade-labour-only
+    category: upgrades
+    group: Storage and memory
+    name: RAM Upgrade, Labour Only
+    desc: You supply the RAM, DDR4 or DDR5. We install it and configure XMP or EXPO in BIOS for full rated speed.
+    price: 55
+  - key: ram-upgrade-supplied
+    category: upgrades
+    group: Storage and memory
+    name: RAM Upgrade, Supplied
+    desc: Sourced, installed and fully configured with XMP or EXPO enabled. DDR4 sits at the lower end of each range, DDR5 at the higher end.
+    price: 130
+    prefix: from
+    options:
+      - name: 8GB
+        price: 130
+        prefix: from
+        note: Light browsing and basic tasks
+      - name: 16GB
+        price: 160
+        prefix: from
+        note: Best all-rounder for most PCs
+      - name: 32GB
+        price: 230
+        prefix: from
+        note: Gaming, streaming and multitasking
+      - name: 64GB
+        price: 340
+        prefix: from
+        note: Video editing and heavy workloads
+  - key: gpu-install-driver-setup
+    category: upgrades
+    group: Components and cooling
+    name: GPU Install & Driver Setup
+    desc: Seated in PCIe, power connected, latest Nvidia or AMD drivers installed and verified stable.
+    price: 60
+  - key: cpu-thermal-paste-replacement
+    category: upgrades
+    group: Components and cooling
+    name: CPU Thermal Paste Replacement
+    desc: Cooler removed, surfaces cleaned, premium compound applied. Dramatically lowers temperatures.
+    price: 60
+  - key: gaming-laptop-repaste-clean
+    category: upgrades
+    group: Components and cooling
+    name: Gaming Laptop Repaste & Clean
+    desc: Full strip down, repaste and fan and vent clean for gaming laptops running hot or throttling.
+    price: 99
+    badge: Specialist
+  - key: case-fan-installation-per-fan
+    category: upgrades
+    group: Components and cooling
+    name: Case Fan Installation, Per Fan
+    desc: Labour only, you supply the fans. Mounted, connected and routed for clean airflow.
+    price: 40
+  - key: windows-11-upgrade
+    category: upgrades
+    group: Software and advice
+    name: Windows 11 Upgrade
+    desc: Upgrade to the latest Windows. We supply a genuine activation key, or bring your own and pay $70.
+    price: 120
+    alt: or $70 without a key
+  - key: upgrade-consultation
+    category: upgrades
+    group: Software and advice
+    name: Upgrade Consultation
+    desc: Message us your specs and budget and we will tell you what is actually worth upgrading before you spend anything.
+    text: Free
+  - key: essential-assembly
+    category: gaming
+    group: Build tiers
+    name: Essential Assembly
+    desc: Full assembly, basic cable tidy, OS and driver install, benchmark check, 30-day warranty and a free Windows 11 key.
+    price: 149
+  - key: performance-assembly
+    category: gaming
+    group: Build tiers
+    name: Performance Assembly
+    desc: Everything in Essential, plus full professional cable management, PBO and XMP/EXPO tuning, a written benchmark report and RGB sync setup.
+    price: 199
+    badge: Most Chosen
+  - key: elite-assembly
+    category: gaming
+    group: Build tiers
+    name: Elite Assembly
+    desc: Everything in Performance, plus a 24-hour stress test burn-in, premium thermal compound, airflow and dust filter optimisation, priority same-day slot where parts allow, and an extended 60-day warranty.
+    price: 249
+  - key: cpu-cooler-installation
+    category: gaming
+    group: Assembly extras
+    name: CPU Cooler Installation
+    desc: Stock removed, aftermarket air or AIO mounted with premium paste. Temperatures verified.
+    price: 80
+  - key: cable-management-basic-tidy
+    category: gaming
+    group: Assembly extras
+    name: Cable Management, Basic Tidy
+    desc: Cables bundled and routed. Before and after photos provided.
+    price: 70
+  - key: cable-management-full-pro
+    category: gaming
+    group: Assembly extras
+    name: Cable Management, Full Pro
+    desc: Behind-tray routing, velcro throughout, airflow optimised. Show-build finish.
+    price: 120
+  - key: rgb-software-setup-sync
+    category: gaming
+    group: Assembly extras
+    name: RGB Software Setup & Sync
+    desc: iCUE, Armoury Crate, Mystic Light and ARGB synced across all components. No brand conflicts.
+    price: 69
+  - key: pbo-bios-performance-tuning
+    category: gaming
+    group: Tuning and testing
+    name: PBO & BIOS Performance Tuning
+    desc: PBO, XMP or EXPO and BIOS power limits optimised. Typically 10-15% more CPU performance.
+    price: 60
+  - key: overclocking-cpu-or-gpu
+    category: gaming
+    group: Tuning and testing
+    name: Overclocking, CPU or GPU
+    desc: Safe, stability-tested overclock with temperature and voltage limits set correctly.
+    price: 89
+  - key: benchmark-testing-report
+    category: gaming
+    group: Tuning and testing
+    name: Benchmark Testing & Report
+    desc: Cinebench, 3DMark and FurMark with logged temperatures. Full written performance report.
+    price: 99
+  - key: streaming-creator-setup
+    category: gaming
+    group: Creators and consoles
+    name: Streaming & Creator Setup
+    desc: OBS configuration, capture card setup and dual-PC streaming rigs configured and tested.
+    price: 129
+    badge: Specialist
+  - key: creator-workstation-optimisation
+    category: gaming
+    group: Creators and consoles
+    name: Creator Workstation Optimisation
+    desc: Render and export speed tuning for video editing and 3D workloads.
+    price: 99
+  - key: console-repair-ps5-or-xbox
+    category: gaming
+    group: Creators and consoles
+    name: Console Repair, PS5 or Xbox
+    desc: HDMI port, disc drive, overheating and fan noise issues diagnosed and repaired.
+    price: 99
+    prefix: from
+    badge: New
+  - key: nbn-router-setup-optimisation
+    category: networking
+    group: Internet and wifi
+    name: NBN Router Setup & Optimisation
+    desc: Router configured, WiFi channels set, QoS enabled, security hardened and all devices tested.
+    price: 79
+  - key: wifi-dead-spot-diagnosis-fix
+    category: networking
+    group: Internet and wifi
+    name: WiFi Dead Spot Diagnosis & Fix
+    desc: Find coverage gaps, reposition equipment or recommend the right solution for your layout.
+    price: 89
+  - key: mesh-wifi-setup-per-node
+    category: networking
+    group: Internet and wifi
+    name: Mesh WiFi Setup, Per Node
+    desc: Eero, Google Nest, Orbi and all major brands. Optimal placement and full configuration.
+    price: 65
+  - key: gaming-network-optimisation
+    category: networking
+    group: Internet and wifi
+    name: Gaming Network Optimisation
+    desc: Router QoS tuned for low ping and a stable connection during online gaming.
+    price: 89
+    badge: Gamers
+  - key: full-home-network-setup
+    category: networking
+    group: Internet and wifi
+    name: Full Home Network Setup
+    desc: Router, printer and all devices connected and secured. Everything working before we leave.
+    price: 149
+    badge: Most Popular
+  - key: wireless-printer-setup
+    category: networking
+    group: Devices and security
+    name: Wireless Printer Setup
+    desc: Connected to network, drivers on all devices, test print confirmed on every machine.
+    price: 69
+  - key: usb-printer-setup
+    category: networking
+    group: Devices and security
+    name: USB Printer Setup
+    desc: Driver install, test print and any error troubleshooting sorted on the spot.
+    price: 55
+  - key: smart-tv-streaming-setup
+    category: networking
+    group: Devices and security
+    name: Smart TV & Streaming Setup
+    desc: WiFi connected, apps installed, accounts logged in. Chromecast, Apple TV, Fire Stick and more.
+    price: 59
+  - key: home-network-security-audit
+    category: networking
+    group: Devices and security
+    name: Home Network Security Audit
+    desc: Router security, firewall, device inventory and WiFi encryption reviewed and tightened.
+    price: 79
+  - key: remote-support-session
+    category: software
+    group: Remote help and setup
+    name: Remote Support Session
+    desc: Screen sharing for anything that does not need a bench. $45 covers the first half hour, then $45 per half hour after that.
+    price: 45
+    alt: per half hour
+  - key: software-install-configuration
+    category: software
+    group: Remote help and setup
+    name: Software Install & Configuration
+    desc: Any application installed, configured and tested for your specific workflow.
+    price: 55
+  - key: microsoft-office-setup
+    category: software
+    group: Remote help and setup
+    name: Microsoft Office Setup
+    desc: Word, Excel and Outlook installed, activated and OneDrive synced. Ready to use.
+    price: 65
+  - key: email-setup-outlook-or-gmail
+    category: software
+    group: Remote help and setup
+    name: Email Setup, Outlook or Gmail
+    desc: Accounts configured across all devices with signatures, forwarding and sync all working.
+    price: 55
+  - key: pc-to-pc-data-transfer
+    category: software
+    group: Data and maintenance
+    name: PC to PC Data Transfer
+    desc: All files, photos, documents and bookmarks moved from old to new PC. Verified complete.
+    price: 65
+  - key: cloud-backup-setup
+    category: software
+    group: Data and maintenance
+    name: Cloud Backup Setup
+    desc: Google Drive or OneDrive auto-backup configured with folder selection and storage management.
+    price: 55
+  - key: driver-updates-optimisation
+    category: software
+    group: Data and maintenance
+    name: Driver Updates & Optimisation
+    desc: All drivers updated, startup trimmed, junk cleared. Noticeably faster on the same hardware.
+    price: 60
+  - key: business-pc-setup-migration
+    category: software
+    group: Data and maintenance
+    name: New PC Setup and Migration
+    desc: Full configuration of a new business PC including data transfer and application setup from the previous machine.
+    price: 149
+    suffix: one-off per device
+  - key: business-fleet-setup
+    category: software
+    group: Data and maintenance
+    name: Business Fleet Setup
+    desc: Multiple computers configured, imaged and deployed for a small office. Ties in with our Business IT Support plans.
+    text: Custom
+addons:
+  - key: antivirus-setup-1-year
+    name: Antivirus setup, 1 year
+    price: 40
+    plus: true
+  - key: usb-windows-recovery-drive
+    name: USB Windows recovery drive
+    price: 15
+    plus: true
+  - key: follow-up-check-3-month
+    name: 3 month follow-up check
+    price: 25
+    plus: true
+  - key: priority-same-day-booking
+    name: Priority same-day booking
+    price: 20
+    plus: true
+  - key: on-site-call-out
+    name: On-site call-out fee
+    price: 35
+    suffix: per visit
+  - key: home-pc-care-plan
+    name: Home PC Care Plan, monthly
+    price: 35
+    plus: true
+
+# ----------------------------------------------------------
+# BUSINESS IT BOLT-ONS
+# Added to a managed plan, never sold on their own. Kept in
+# addons so the price include resolves them like any other
+# key. The old site also advertised "extra PC coverage
+# $25 to $29 per PC" here, which contradicted the +$35/$45/$60
+# per-device figures on the plans themselves. Removed: the
+# per-device price belongs to the plan, in one place only.
+# ----------------------------------------------------------
+  - key: biz-backup-audit
+    name: Backup audit and restore test
+    price: 99
+    suffix: per year
+  - key: biz-extra-onsite
+    name: Extra on-site visit
+    price: 89
+    suffix: per visit
+  - key: biz-afterhours-callout
+    name: After-hours emergency call-out
+    price: 99
+    suffix: flat
+packages:
+  - key: complete-pc-overhaul
+    name: Complete PC Overhaul
+    price: 180
+    was: Shop price $549+
+    desc: For a desktop that has slowed down, overheats or has not been serviced in years. Labour only, parts supplied by you.
+  - key: used-laptop-revival
+    name: Used Laptop Revival
+    price: 140
+    was: Was $340
+    was_price: 340
+    desc: Just bought a second-hand laptop, or dusting off an old one? The full health check and clean slate it needs. 16 checks and services included.
+offers:
+  # Offer figures and thresholds. Not services, but still the business's
+  # own dollar amounts, so they live here and pages read them through
+  # price.html like any other price.
+  - key: first-time-discount
+    name: First-time customer discount
+    price: 10
+  - key: first-time-min-spend
+    name: Minimum repair value for the first-time discount
+    price: 99
+  - key: free-cleanup-threshold
+    name: Repair value that includes a free system cleanup
+    price: 149
+plans:
+  - key: business-it-essential
+    name: Essential
+    price: 149
+    per: month
+    covers: Up to 5 PCs
+    extra: +$35 per extra device
+    extra_price: 35
+    who: Cafes, salons, small retail, sole trader tradies
+  - key: business-it-business
+    name: Business
+    price: 199
+    per: month
+    covers: Up to 10 PCs
+    extra: +$45 per extra device
+    extra_price: 45
+    who: Real estate, medical clinics, restaurants, retail
+  - key: business-it-premium
+    name: Premium
+    price: 299
+    per: month
+    covers: Up to 20 PCs
+    extra: +$60 per extra device
+    extra_price: 60
+    who: Dental and medical, accounting and law, multi-PC retail
+
+# ----------------------------------------------------------
+# QUOTE FORM
+# The options on the quote form and the homepage card. Both
+# read this list, so they can never drift apart. "service"
+# points at a key above, used for wording and future linking.
+# No price is shown on the form by design.
+# ----------------------------------------------------------
+quote_options:
+  - {key: virus,    label: Virus Removal,        value: Virus and Malware Removal,        service: virus-malware-removal}
+  - {key: slow,     label: Slow PC / Diagnostic, value: Slow Computer or PC Diagnostic,   service: diagnostic-repair-all-in}
+  - {key: data,     label: Data Recovery,        value: Data Recovery,                    service: data-recovery-failing-drive}
+  - {key: upgrade,  label: SSD / RAM Upgrade,    value: SSD or RAM Upgrade,               service: ssd-upgrade-labour-only}
+  - {key: screen,   label: Screen / Battery,     value: Laptop Screen or Battery Replacement, service: laptop-screen-replacement}
+  - {key: nopower,  label: Won't Turn On,        value: Computer Will Not Turn On,        service: diagnostic-repair-all-in}
+  - {key: gaming,   label: Gaming PC Build,      value: Gaming PC Build or Upgrade,       service: essential-assembly}
+  - {key: other,    label: Something Else,       value: Something Else,                   service: ~}
+
+device_types:
+  - Desktop PC
+  - Laptop
+  - All in One
+  - MacBook or Surface
+  - Other
+
+form:
+  provider: web3forms
+  access_key: b00c2b06-22d4-4924-af92-5143e83ab186
+  subject: New quote request from fixmypcperth.com

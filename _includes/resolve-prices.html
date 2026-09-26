@@ -1,0 +1,52 @@
+{%- comment -%}
+  Resolves [[service-key]] tokens inside a string into a live price.
+
+  Why this exists: Jekyll does not run Liquid inside _data files. Putting
+  {% include price.html %} in a YAML value does not
+  render a price, it renders those characters, and they end up on the page
+  and inside the JSON-LD. /reviews was shipping that in three FAQ entries.
+
+  So data files write a token instead:
+
+      a: It is a flat [[diagnostic-repair-all-in]] fee covering...
+
+  and the page resolves it at the point of output:
+
+      {%- capture a %}{% include resolve-prices.html text=f.a %}{% endcapture -%}
+
+  Keys resolve against services, then add-ons, then packages, then plans,
+  the same order price.html uses, so any key in services.yml works. The
+  price is bare, with no prefix or suffix, because a token is always sitting
+  inside a sentence.
+
+  An unknown key is left alone, so a typo shows up as a visible
+  [[like-this]] rather than a silent gap where a number should be.
+{%- endcomment -%}
+{%- assign _t = include.text -%}
+{%- if _t contains '[[' -%}
+  {%- assign _d = site.data.services -%}
+  {%- assign _all = _d.services | concat: _d.addons | concat: _d.packages | concat: _d.plans -%}
+  {%- for _s in _all -%}
+    {%- assign _tok = '[[' | append: _s.key | append: ']]' -%}
+    {%- if _t contains _tok -%}
+      {%- if _s.text -%}
+        {%- assign _v = _s.text -%}
+      {%- else -%}
+        {%- capture _v -%}${{ _s.price }}{%- endcapture -%}
+      {%- endif -%}
+      {%- assign _t = _t | replace: _tok, _v -%}
+    {%- endif -%}
+    {%- comment -%} Single tiers inside a service's options list, such as
+    laptop-screen-standard, resolve the same way price.html resolves them. {%- endcomment -%}
+    {%- if _s.options and _t contains '[[' -%}
+      {%- for _o in _s.options -%}
+        {%- assign _tok = '[[' | append: _o.key | append: ']]' -%}
+        {%- if _t contains _tok -%}
+          {%- capture _v -%}${{ _o.price }}{%- endcapture -%}
+          {%- assign _t = _t | replace: _tok, _v -%}
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endif -%}
+{{- _t -}}

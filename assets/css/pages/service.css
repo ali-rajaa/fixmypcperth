@@ -1,0 +1,353 @@
+/* ==========================================================
+   service.css   VERSION 1
+   Page stylesheet for the service page cluster
+   (_layouts/service.html): /laptop-repair-perth and the other
+   eight planned service pages.
+
+   Built on tech-tip.css so the service pages, the Tech Tips
+   guides and the industry pages read as one site: the same
+   740px centred column, the same type scale (H1 capped at
+   2.7rem, 1.45rem H2s, 16px body at 1.85), the same contents
+   box, the same dark on-page quote form (.audit-block / .tq-*)
+   and the same FAQ. What is new here is only what a service
+   page needs and a guide does not:
+   - .sv-promise  the promise line under the header actions
+   - .sv-price    the price line under each repair, from
+                  services.yml (the page never types a price)
+   - .sv-steps    the three-step "how it works"
+   - .sv-links    plain link lists for suburbs, guides and
+                  other services (plain rows, never pills)
+
+   Rules carried over: tracking tightens as type grows; hierarchy
+   from weight first; press feedback on :active, hover only
+   where hover exists; 44px touch targets; 16px inputs; reduced
+   motion, contrast and transparency preferences respected. No
+   element selectors inside a class scope: prose is
+   ".sv-prose > p", links are "a:where(:not([class]))".
+   ========================================================== */
+
+:root {
+  --blue:    #1560FF;
+  --blue-lt: #EEF3FF;
+  --blue-dk: #0A3ACC;
+  --blue-mid: #C7D8FF;
+  --ink:     #0F172A;
+  --ink2:    #1E293B;
+  --ink3:    #334155;
+  --muted:   #64748B;
+  --muted2:  #94A3B8;
+  --border:  #E2E8F0;
+  --border2: #CBD5E1;
+  --bg:      #FFFFFF;
+  --bg2:     #F8FAFC;
+  --teal:    #00CFFF;
+  --wa:      #22C55E;
+  --wa-dk:   #15803D;
+  --wa-deep: #166534;
+  --display: 'Sora', 'Sora Fallback', system-ui, sans-serif;
+  --body:    'DM Sans', 'DM Sans Fallback', system-ui, sans-serif;
+  --radius:  14px;
+  --nav-h:     64px;
+  --mob-nav-h: 60px;
+  --ease-settle: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-press:  cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-h) + 1.25rem); }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; border-radius: 4px; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+/* ---------- frame (matches .tip on the guides) ---------- */
+.sv { max-width: 740px; margin: 0 auto; padding: calc(var(--nav-h) + 3px + 2.5rem) 2rem 5rem; }
+
+/* ---------- head ---------- */
+.sv-crumbs ol:where(:not([class])) { list-style: none; margin: 0 0 1.5rem; padding: 0; display: flex; flex-wrap: wrap; font-size: 13px; color: var(--muted2); }
+.sv-crumbs li:where(:not([class])) { display: flex; align-items: center; }
+.sv-crumbs li + li::before { content: '/'; margin: 0 0.55rem; color: var(--border2); }
+/* The current page is muted, not the lighter --muted2, which only reached
+   2.6:1 against white. --muted is 4.8:1. */
+.sv-crumbs [aria-current] { color: var(--muted); }
+.sv-crumbs a:where(:not([class])) { color: var(--blue); text-decoration: none; font-weight: 600; }
+
+.sv-eyebrow { display: block; margin: 0 0 0.6rem; font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--blue); }
+.sv-h1 { font-family: var(--display); font-size: clamp(1.8rem, 4vw, 2.7rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.035em; color: var(--ink); margin: 0 0 1rem; text-wrap: balance; }
+.sv-lede { font-size: 1.0625rem; line-height: 1.75; color: var(--ink2); margin: 0 0 1.5rem; text-wrap: pretty; }
+
+.sv-act { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1.25rem; margin: 0 0 1.25rem; }
+.sv-act-link { font-size: 0.9375rem; font-weight: 600; color: var(--ink2); text-decoration: underline; text-decoration-color: var(--border2); text-underline-offset: 4px; min-height: 44px; display: inline-flex; align-items: center; gap: 6px; }
+.sv-act-link svg { width: 15px; height: 15px; flex-shrink: 0; }
+
+/* The promise line: the three facts every job carries, as plain text
+   with a small tick, never as badges. */
+.sv-promise { list-style: none; display: flex; flex-wrap: wrap; gap: 0.4rem 1.25rem; margin: 0 0 2rem; padding: 0 0 1.5rem; border-bottom: 1.5px solid var(--border); }
+.sv-promise > li { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 13px; font-weight: 600; color: var(--ink3); }
+.sv-promise svg { width: 14px; height: 14px; flex-shrink: 0; color: var(--wa-dk); }
+
+/* ---------- buttons (normal rounded button shape) ---------- */
+.sv-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 1.5rem; border-radius: 50px; font-family: var(--body); font-size: 0.9375rem; font-weight: 700; text-decoration: none; -webkit-tap-highlight-color: transparent; transition: background-color 0.15s var(--ease-settle), transform 0.1s var(--ease-press); }
+.sv-btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+.sv-btn:active { transform: scale(0.97); }
+/* #15803D keeps white text at 5:1; the brand #22C55E is 2.3:1. */
+.sv-btn-wa { background: var(--wa-dk); color: #fff; box-shadow: 0 4px 14px rgba(21,128,61,0.28); }
+.sv-btn-sm { min-height: 44px; padding: 0 1.2rem; font-size: 0.875rem; }
+
+/* ---------- mid-page call to action ---------- */
+.sv-mid { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem 1.25rem; margin: 0.5rem 0 2.5rem; padding: 1.1rem 1.25rem; background: var(--blue-lt); border: 1px solid var(--blue-mid); border-radius: var(--radius); }
+.sv-mid-text { margin: 0; flex: 1 1 18rem; font-size: 15px; line-height: 1.6; color: var(--ink2); }
+.sv-mid-text > strong:where(:not([class])) { color: var(--ink); }
+.sv-mid-act { display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem 1rem; }
+
+/* ---------- contents ---------- */
+.sv-index { background: var(--bg2); border: 1px solid var(--border); border-radius: 16px; padding: 1.35rem 1.5rem 1.25rem; margin: 0 0 2.5rem; }
+.sv-index-title { font-family: var(--display); font-size: 0.9375rem; font-weight: 700; letter-spacing: -0.01em; color: var(--ink); margin: 0 0 0.5rem; }
+.sv-index-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 1.5rem; }
+.sv-index-list a:where(:not([class])) { display: flex; align-items: center; gap: 0.55rem; min-height: 40px; padding: 0.25rem 0; font-size: 0.9375rem; line-height: 1.4; color: var(--ink3); text-decoration: none; }
+.sv-index-list svg { width: 13px; height: 13px; flex-shrink: 0; color: var(--blue); }
+/* Grouped contents: one block per group, two columns of blocks. */
+/* Columns rather than a grid, so groups of different lengths pack into two
+   balanced columns instead of leaving a gap beside every short group. */
+.sv-index-groups { columns: 2; column-gap: 1.5rem; margin: 0.35rem 0 0; }
+.sv-index-group { min-width: 0; break-inside: avoid; margin: 0 0 1.1rem; }
+.sv-index-group .sv-index-list { grid-template-columns: minmax(0, 1fr); }
+.sv-index-gtitle { margin: 0 0 0.15rem; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.sv-index-gtitle a:where(:not([class])) { display: inline-flex; align-items: center; min-height: 44px; margin: -6px 0; color: inherit; text-decoration: none; }
+.sv-index-extra { margin: 1rem 0 0; padding: 0.75rem 0 0; border-top: 1px solid var(--border); }
+
+/* ---------- body ---------- */
+.sv-intro { margin: 0 0 2.5rem; }
+.sv-repair { margin: 0 0 2.25rem; }
+.sv-h2 { font-family: var(--display); font-size: 1.45rem; font-weight: 800; line-height: 1.2; letter-spacing: -0.02em; color: var(--ink); margin: 0 0 0.9rem; padding-top: 1.5rem; border-top: 1px solid var(--border); text-wrap: balance; }
+
+/* Grouped repairs: the group is the H2, each repair an H3 under it. */
+.sv-group { margin: 0 0 1rem; }
+.sv-group-h { font-size: 1.6rem; margin-bottom: 0.75rem; }
+.sv-group-intro { margin: 0 0 1.75rem; }
+.sv-group .sv-repair { margin: 0 0 2.25rem; }
+.sv-h3 { font-family: var(--display); font-size: 1.2rem; font-weight: 700; line-height: 1.3; letter-spacing: -0.015em; color: var(--ink); margin: 0 0 0.7rem; text-wrap: balance; }
+.sv-extra { margin: 0 0 2.5rem; }
+
+.sv-prose > ul { list-style: none; margin: 0 0 1.35rem; padding: 0; }
+.sv-prose > ul > li { position: relative; margin: 0 0 0.55rem; padding-left: 1.1rem; font-size: 16px; line-height: 1.75; color: var(--ink2); }
+.sv-prose > ul > li::before { content: ''; position: absolute; left: 0; top: 0.72em; width: 6px; height: 6px; border-radius: 2px; background: var(--blue); }
+.sv-prose > h3 { font-family: var(--display); font-size: 1.1rem; font-weight: 700; letter-spacing: -0.01em; color: var(--ink); margin: 1.75rem 0 0.5rem; }
+
+/* Common signs: plain list with a small blue marker, never badges. */
+.sv-signs { margin: 1.1rem 0 0; }
+.sv-signs-label { margin: 0 0 0.4rem; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.sv-signs-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.3rem 1.5rem; }
+.sv-signs-list > li { position: relative; padding-left: 1rem; font-size: 14.5px; line-height: 1.55; color: var(--ink3); }
+.sv-signs-list > li::before { content: ''; position: absolute; left: 0; top: 0.6em; width: 6px; height: 6px; border-radius: 2px; background: var(--blue); }
+
+.sv-prose > p { margin: 0 0 1.35rem; font-size: 16px; line-height: 1.85; color: var(--ink2); text-wrap: pretty; }
+.sv-prose > p:last-child { margin-bottom: 0; }
+.sv-prose a:not([class]) { color: var(--blue); text-decoration: underline; text-underline-offset: 0.18em; }
+
+/* One price per repair, straight from services.yml, with that entry's own
+   note (for example "Labour only. Battery quoted separately") so the price
+   is never shown without what it covers. */
+.sv-price { display: flex; align-items: baseline; flex-wrap: wrap; gap: 0.3rem 0.9rem; margin: 1.25rem 0 0; padding: 0.9rem 1.1rem; background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; }
+.sv-price-val { font-family: var(--display); font-size: 1.15rem; font-weight: 800; letter-spacing: -0.02em; color: var(--ink); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.sv-price-name { font-size: 13px; font-weight: 700; color: var(--ink3); }
+.sv-price-note { flex-basis: 100%; font-size: 13.5px; line-height: 1.55; color: var(--muted); }
+/* A price already shown in full earlier on the page: one line, no box. */
+.sv-price-compact { padding: 0.55rem 0 0; background: none; border: 0; border-radius: 0; border-top: 1px dashed var(--border); }
+.sv-price-compact .sv-price-val { font-size: 1rem; }
+.sv-price-more { margin-left: auto; display: inline-flex; align-items: center; min-height: 44px; font-size: 13px; font-weight: 600; color: var(--blue); text-decoration: underline; text-underline-offset: 0.18em; }
+
+/* ---------- how it works ---------- */
+.sv-steps-wrap { margin: 0 0 2.5rem; }
+.sv-steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; counter-reset: sv-step; }
+.sv-steps > li { counter-increment: sv-step; background: var(--bg); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 1.1rem 1.1rem 1.2rem; }
+.sv-steps > li::before { content: counter(sv-step, decimal-leading-zero); display: block; margin: 0 0 0.5rem; font-family: var(--display); font-size: 12px; font-weight: 800; letter-spacing: 0.04em; color: var(--blue); }
+.sv-step-title { display: block; margin: 0 0 0.35rem; font-family: var(--display); font-size: 1.05rem; font-weight: 700; line-height: 1.3; letter-spacing: -0.01em; color: var(--ink); }
+.sv-step-text { display: block; font-size: 13.5px; line-height: 1.6; color: var(--muted); }
+
+/* ---------- cost table ---------- */
+.sv-costs { margin: 0 0 1rem; }
+.sv-table { width: 100%; border-collapse: collapse; margin: 1.25rem 0 0; font-size: 0.9375rem; }
+.sv-table thead th { text-align: left; font-size: 12.5px; font-weight: 600; color: var(--muted); padding: 0 0.75rem 0.5rem 0; border-bottom: 1.5px solid var(--border2); }
+.sv-table tbody th:where(:not([class])), .sv-table td { text-align: left; vertical-align: top; padding: 0.8rem 0.75rem 0.8rem 0; border-bottom: 1px solid var(--border); line-height: 1.45; }
+.sv-table tbody th:where(:not([class])) { font-weight: 600; color: var(--ink); }
+.sv-table td { color: var(--muted); }
+.sv-table td a:where(:not([class])) { color: var(--ink3); text-decoration: underline; text-decoration-color: var(--border2); text-underline-offset: 0.18em; }
+.sv-table .sv-num { text-align: right; padding-right: 0; white-space: nowrap; font-family: var(--display); font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; }
+.sv-table thead .sv-num { font-family: var(--body); font-weight: 600; color: var(--muted); }
+.sv-row-lead th:where(:not([class])), .sv-row-lead .sv-num { color: var(--blue-dk); }
+.sv-row-note { display: none; }
+.sv-table-note { margin: 0.9rem 0 0; font-size: 13px; line-height: 1.55; color: var(--muted); }
+
+/* ---------- quote form (same panel as the guides and industry pages) ---------- */
+.audit-block { background: var(--ink); border-radius: 16px; padding: 2rem; margin: 2.5rem 0; position: relative; overflow: hidden; scroll-margin-top: calc(var(--nav-h) + 1rem); }
+.audit-block::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--blue), var(--teal), var(--wa)); }
+.audit-block-title { font-family: var(--display); font-size: 1.3rem; font-weight: 800; letter-spacing: -0.3px; color: #fff; margin: 0 0 0.4rem; }
+.audit-block-desc { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.7; margin: 0 0 1.5rem; }
+
+.tq-form { display: flex; flex-direction: column; gap: 1.25rem; }
+.tq-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.tq-field { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+.tq-group { border: 0; margin: 0; padding: 0; min-width: 0; }
+.tq-group > legend { padding: 0; margin: 0 0 0.55rem; }
+.tq-label { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.75); letter-spacing: 0.02em; }
+.tq-opt { font-weight: 400; color: rgba(255,255,255,0.62); margin-left: 0.25rem; }
+
+.tq-input { width: 100%; font-family: var(--body); font-size: 16px; line-height: 1.4; color: #fff; background: rgba(255,255,255,0.06); border: 1.5px solid rgba(255,255,255,0.16); border-radius: 10px; padding: 11px 14px; min-height: 48px; transition: border-color 0.18s var(--ease-settle), background 0.18s var(--ease-settle); }
+textarea.tq-input { resize: vertical; min-height: 88px; }
+.tq-input::placeholder { color: rgba(255,255,255,0.32); }
+.tq-input:focus { outline: none; border-color: var(--blue); background: rgba(255,255,255,0.1); }
+.tq-input[aria-invalid="true"] { border-color: #F87171; box-shadow: 0 0 0 4px rgba(248,113,113,0.18); }
+
+.tq-seg { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.tq-seg-opt { position: relative; }
+.tq-seg-opt input { position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer; }
+.tq-seg-opt span:where(:not([class])) { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 1rem; border-radius: 10px; background: rgba(255,255,255,0.06); border: 1.5px solid rgba(255,255,255,0.16); font-size: 14.5px; font-weight: 500; color: rgba(255,255,255,0.82); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; transition: background-color 0.15s var(--ease-settle), border-color 0.15s var(--ease-settle), color 0.15s var(--ease-settle); }
+.tq-seg-opt input:checked + span { background: rgba(21,96,255,0.22); border-color: var(--blue); color: #fff; font-weight: 600; }
+.tq-seg-opt input:focus-visible + span { outline: 2px solid #fff; outline-offset: 2px; }
+.tq-seg-opt input:active + span { transform: scale(0.97); }
+.tq-group[aria-invalid="true"] .tq-seg-opt span:where(:not([class])) { border-color: rgba(248,113,113,0.6); }
+
+.tq-err { margin: 0.35rem 0 0; font-size: 13px; font-weight: 500; color: #FCA5A5; }
+.tq-err-form { margin: 0; padding: 10px 14px; border-radius: 12px; background: rgba(239,68,68,0.12); border: 1px solid rgba(239,68,68,0.35); font-weight: 600; }
+.tq-hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+
+.tq-submit { width: 100%; min-height: 48px; margin-top: 4px; font-family: var(--body); font-size: 15px; font-weight: 700; color: #fff; background: var(--blue); border: 0; border-radius: 50px; padding: 14px 24px; cursor: pointer; -webkit-tap-highlight-color: transparent; transition: background 0.18s var(--ease-settle), transform 0.1s var(--ease-press); }
+.tq-submit:active { transform: scale(0.98); }
+.tq-submit:disabled { opacity: 0.6; cursor: default; }
+.tq-submit:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+.tq-trust { margin: 2px 0 0; text-align: center; font-size: 12.5px; line-height: 1.55; color: rgba(255,255,255,0.62); }
+.tq-stars { color: #FBBF24; margin-right: 0.15rem; }
+
+.audit-done { text-align: center; padding: 1.25rem 0 0.75rem; outline: none; }
+.audit-done-tick { width: 52px; height: 52px; margin: 0 auto 1rem; border-radius: 50%; background: rgba(34,197,94,0.15); border: 1.5px solid rgba(34,197,94,0.4); display: flex; align-items: center; justify-content: center; color: #4ADE80; }
+.audit-done-tick svg { width: 24px; height: 24px; }
+.audit-done-title { font-family: var(--display); font-size: 1.15rem; font-weight: 800; color: #fff; margin: 0 0 0.4rem; }
+.audit-done-text { font-size: 14.5px; color: rgba(255,255,255,0.72); line-height: 1.7; max-width: 46ch; margin: 0 auto; }
+
+/* ---------- FAQ (bordered cards, the same as the homepage FAQ) ---------- */
+.sv-faq { margin: 0 0 3rem; }
+.sv-faq .sv-h2 { margin-bottom: 1.25rem; }
+.sv-faq-list { display: flex; flex-direction: column; gap: 10px; }
+.sv-faq-item { background: var(--bg); border: 1.5px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: border-color 0.2s var(--ease-settle); }
+.sv-faq-item.open { border-color: var(--blue-mid); }
+.sv-faq-h { margin: 0; font: inherit; }
+.sv-faq-q { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 3.25rem; padding: 1.1rem 1.4rem; border: 0; background: none; cursor: pointer; text-align: left; font-family: var(--display); font-size: 15px; font-weight: 700; line-height: 1.4; color: var(--ink); -webkit-tap-highlight-color: transparent; transition: color 0.15s, background 0.15s; }
+.sv-faq-q:active { background: var(--bg2); }
+.sv-faq-q:focus-visible { outline: 2px solid var(--blue); outline-offset: -2px; }
+.sv-faq-icon { width: 18px; height: 18px; flex-shrink: 0; color: var(--blue); transition: transform 0.35s var(--ease-settle); }
+.sv-faq-item.open .sv-faq-icon { transform: rotate(180deg); }
+.sv-faq-a { display: grid; grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows 0.4s var(--ease-settle), opacity 0.2s var(--ease-settle); }
+.sv-faq-a > div { overflow: hidden; min-height: 0; }
+.sv-faq-a p:where(:not([class])) { margin: 0; padding: 0 1.4rem 1.25rem; font-size: 14.5px; line-height: 1.8; color: var(--muted); }
+.sv-faq-item.open .sv-faq-a { grid-template-rows: 1fr; opacity: 1; }
+
+/* ---------- /services hub: one card per service page ---------- */
+.sv-hub { list-style: none; margin: 0 0 3rem; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.sv-hub-item { min-width: 0; }
+/* An odd last card spans both columns rather than sitting alone. */
+.sv-hub-item:last-child:nth-child(odd) { grid-column: 1 / -1; }
+.sv-hub-link { display: flex; flex-direction: column; gap: 0.35rem; height: 100%; padding: 1.15rem 1.25rem 1.2rem; background: var(--bg); border: 1.5px solid var(--border); border-radius: var(--radius); text-decoration: none; transition: border-color 0.15s var(--ease-settle), transform 0.1s var(--ease-press); }
+.sv-hub-link:active { transform: scale(0.99); }
+.sv-hub-name { font-family: var(--display); font-size: 1.1rem; font-weight: 700; line-height: 1.3; letter-spacing: -0.015em; color: var(--ink); }
+.sv-hub-sum { margin-bottom: 0.4rem; font-size: 14.5px; line-height: 1.6; color: var(--ink3); }
+/* Price and "Details" share a row pinned to the bottom of the card, over a
+   hairline, so cards of different lengths still line up and each one reads
+   as a link. */
+.sv-hub-foot { margin-top: auto; padding-top: 0.75rem; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; }
+.sv-hub-price { font-family: var(--display); font-size: 0.95rem; font-weight: 700; color: var(--blue); }
+.sv-hub-go { display: inline-flex; align-items: center; gap: 4px; font-size: 13px; font-weight: 700; color: var(--ink3); }
+.sv-hub-go svg { width: 14px; height: 14px; flex-shrink: 0; transition: transform 0.2s var(--ease-settle); }
+/* "Not sure" block: room between the text and the buttons, and no extra
+   space below it before the footer. */
+.sv-hub-help { margin-bottom: 0; }
+.sv-hub-help .sv-act { margin: 1.5rem 0 0; }
+
+/* ---------- link lists: suburbs, guides, other services ---------- */
+.sv-more { margin: 0 0 2.5rem; }
+.sv-links { list-style: none; margin: 1rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 1.5rem; }
+.sv-links > li { border-bottom: 1px solid var(--border); min-width: 0; }
+.sv-links a:where(:not([class])) { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; min-height: 48px; padding: 0.55rem 0; font-size: 0.9375rem; font-weight: 600; line-height: 1.4; color: var(--ink2); text-decoration: none; }
+.sv-links svg { width: 14px; height: 14px; flex-shrink: 0; color: var(--muted2); transition: transform 0.2s var(--ease-settle), color 0.15s; }
+.sv-links-sub { display: block; font-size: 12.5px; font-weight: 500; color: var(--muted); }
+.sv-links-wide { grid-template-columns: minmax(0, 1fr); }
+
+/* The site's sticky quote bar (phones) steps aside while this page's own
+   form is on screen, so two quote buttons never compete. Class is set by
+   the layout script; !important because shell.css drives the bar's
+   transform from its own scroll script. */
+.sticky-cta.sv-form-visible { transform: translateY(110%) !important; }
+
+/* ---------- hover, only where hover exists ---------- */
+@media (hover: hover) {
+  .sv-crumbs a:where(:not([class])):hover { color: var(--blue-dk); text-decoration: underline; }
+  .sv-act-link:hover { color: var(--blue); text-decoration-color: var(--blue); }
+  .sv-btn-wa:hover { background: var(--wa-deep); }
+  .sv-index-list a:where(:not([class])):hover { color: var(--blue); }
+  .sv-table td a:where(:not([class])):hover { color: var(--blue); }
+  .tq-submit:hover { background: var(--blue-dk); }
+  .tq-seg-opt:hover span:where(:not([class])) { background: rgba(255,255,255,0.12); }
+  .sv-faq-q:hover { color: var(--blue); }
+  .sv-faq-item:hover { border-color: var(--blue-mid); }
+  .sv-links a:where(:not([class])):hover { color: var(--blue); }
+  .sv-hub-link:hover { border-color: var(--blue); }
+  .sv-hub-link:hover .sv-hub-name, .sv-hub-link:hover .sv-hub-go { color: var(--blue); }
+  .sv-hub-link:hover .sv-hub-go svg { transform: translateX(3px); }
+  .sv-links a:where(:not([class])):hover svg { color: var(--blue); transform: translateX(3px); }
+}
+
+/* ---------- phones ---------- */
+@media (max-width: 640px) {
+  html { scroll-padding-top: calc(var(--mob-nav-h) + 1rem); }
+  .sv { padding: calc(var(--mob-nav-h) + 1.75rem) 1.25rem 6rem; }
+  .sv-crumbs li:where(:not([class])):last-child { display: none; }
+  .sv-crumbs a:where(:not([class])) { display: inline-block; padding: 13px 6px; margin: -13px -6px; }
+  .sv-lede { font-size: 1rem; }
+  .sv-act .sv-btn { width: 100%; }
+  .sv-act-link { width: 100%; justify-content: center; }
+  .sv-promise { justify-content: center; }
+  .sv-index { padding: 1.15rem 1.15rem 1rem; }
+  .sv-index-list { grid-template-columns: minmax(0, 1fr); }
+  /* Phones: the contents box lists the groups only, so it stays one
+     screen tall; each group heading jumps to its repairs. */
+  .sv-index-groups { columns: 1; }
+  .sv-index-group { margin: 0; }
+  .sv-h1 { font-size: 1.7rem; }
+  .sv-mid-act { width: 100%; }
+  .sv-mid-act .sv-btn { flex: 1 1 auto; }
+  .sv-index-group .sv-index-list { display: none; }
+  .sv-index-gtitle { margin: 0; font-size: 0.9375rem; font-weight: 400; letter-spacing: 0; text-transform: none; color: var(--ink3); }
+  .sv-index-gtitle a:where(:not([class])) { display: flex; gap: 0.55rem; margin: 0; padding: 0.25rem 0; }
+  .sv-index-gtitle a:where(:not([class]))::before { content: ''; width: 7px; height: 7px; margin: 0 3px; flex-shrink: 0; border-right: 2px solid var(--blue); border-top: 2px solid var(--blue); transform: rotate(45deg); }
+  .sv-group-h { font-size: 1.4rem; }
+  .sv-h3 { font-size: 1.125rem; }
+  .sv-signs-list { grid-template-columns: minmax(0, 1fr); }
+  .sv-faq-q { font-size: 14.5px; padding: 1rem 1.15rem; }
+  .sv-faq-a p:where(:not([class])) { padding: 0 1.15rem 1.1rem; font-size: 14px; }
+  .sv-index-list a:where(:not([class])) { min-height: 44px; }
+  .sv-h2 { font-size: 1.3rem; }
+  .sv-steps { grid-template-columns: minmax(0, 1fr); }
+  .sv-table thead th:nth-child(2), .sv-table td:nth-child(2) { display: none; }
+  .sv-row-note { display: block; margin-top: 0.2rem; font-size: 13px; font-weight: 400; line-height: 1.5; color: var(--muted); }
+  .sv-links { grid-template-columns: minmax(0, 1fr); }
+  .sv-hub { grid-template-columns: minmax(0, 1fr); }
+  .audit-block { padding: 1.5rem 1.25rem; border-radius: 16px; }
+  .tq-row { grid-template-columns: 1fr; }
+  .tq-seg-opt span:where(:not([class])) { padding: 0 0.85rem; }
+}
+
+/* ---------- user preferences ---------- */
+@media (prefers-contrast: more) {
+  :root { --muted: #334155; --muted2: #475569; --ink3: #1E293B; --border: #94A3B8; --border2: #64748B; }
+  .tq-input, .tq-seg-opt span:where(:not([class])) { border-color: rgba(255,255,255,0.6); }
+  .tq-label, .audit-block-desc, .tq-trust, .audit-done-text { color: #fff; }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .tq-input, .tq-seg-opt span:where(:not([class])) { background: #1E293B; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .sv-faq-a { transition: opacity 0.15s ease; }
+  .sv-hub-link, .sv-faq-icon, .sv-btn, .tq-submit, .tq-input, .tq-seg-opt span:where(:not([class])), .sv-links svg { transition: none; }
+  .sv-hub-link:active, .sv-btn:active, .tq-submit:active, .tq-seg-opt input:active + span { transform: none; }
+}

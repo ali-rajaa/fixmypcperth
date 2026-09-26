@@ -1,0 +1,229 @@
+/* ==========================================================
+   quote.css   VERSION 4
+   v4: adds prefers-contrast, kills the iOS tap flash, em tracking on the
+   fluid h1. (v3 below)
+   Page stylesheet for /quote-request. Self-contained with its
+   own :root, like every page CSS here. Tokens are never
+   shared between page stylesheets.
+
+   v3: Apple-design pass. Audited clean - no undefined vars, no HTML
+   classes missing a rule, JS class hooks (is-err, show, qr-opt-input)
+   all match. Real press feedback added to the option tiles, the submit
+   button (was a barely visible 1px nudge), the two sidebar CTA buttons,
+   and the clear-draft link (had no hover/active state at all). Critically
+   damped easing tokens added, matching the rest of the site.
+   ========================================================== */
+
+:root {
+  --blue:#1560FF; --blue-lt:#EEF3FF; --blue-mid:#C7D8FF; --blue-dk:#0A3ACC;
+  --ink:#0F172A; --ink2:#1E293B; --muted:#64748B; --muted2:#94A3B8;
+  --border:#E2E8F0; --border2:#CBD5E1;
+  --bg:#FFFFFF; --bg2:#F8FAFC; --bg3:#F1F5F9;
+  --wa:#22C55E; --wa-dk:#15803D; --wa-deep:#166534; --red:#DC2626; --green:#16A34A;
+  --display:'Sora', 'Sora Fallback', sans-serif; --body:'DM Sans', 'DM Sans Fallback', sans-serif;
+  --nav-h:64px; --mob-nav-h:60px;
+  /* Critically damped (no overshoot) - the default for hover/reveal motion
+     that isn't carrying momentum from a drag or flick. */
+  --ease-settle: cubic-bezier(0.16, 1, 0.3, 1);
+  /* Fast, for the instant press feedback itself. */
+  --ease-press:  cubic-bezier(0.4, 0, 0.2, 1);
+}
+* { box-sizing:border-box; }
+body { background:var(--bg); color:var(--ink); font-family:var(--body); font-size:16px; line-height:1.6; overflow-x:hidden; }
+.wrap { max-width:1100px; margin:0 auto; padding:0 2rem; }
+
+/* ---------- hero ---------- */
+/* Tight by design. On a conversion page the job is to get the first field
+   on screen, not to give the headline room to breathe. */
+.qr-hero { background:var(--bg2); padding:88px 0 2rem; border-bottom:1px solid var(--border); }
+.qr-hero-inner { max-width:1100px; margin:0 auto; padding:0 2rem; }
+.qr-hero h1:where(:not([class])) { font-family:var(--display); font-size:clamp(1.8rem,3.2vw,2.4rem); font-weight:800; letter-spacing:-0.036em; line-height:1.12; color:var(--ink); margin:0 0 0.6rem; }
+.qr-sub { font-size:15.5px; color:var(--muted); line-height:1.7; margin:0; max-width:64ch; }
+
+/* ---------- layout ---------- */
+.qr-layout { display:grid; grid-template-columns:minmax(0,1fr) 300px; gap:2.5rem; align-items:start; padding-top:2.25rem; padding-bottom:3rem; }
+.qr-main { min-width:0; }
+
+/* ---------- progress ---------- */
+.qr-progress { display:flex; align-items:center; gap:14px; margin-bottom:1.5rem; }
+.qr-progress-bar { flex:1; height:3px; border-radius:3px; background:var(--border); overflow:hidden; }
+.qr-progress-fill { height:100%; width:0; background:var(--blue); border-radius:3px; transition:width 0.3s var(--ease-press); }
+.qr-progress-label { font-size:11.5px; font-weight:600; color:var(--muted); white-space:nowrap; font-variant-numeric:tabular-nums; }
+
+/* ---------- blocks ---------- */
+.qr-form { margin:0; }
+.qr-block { border:0; margin:0 0 1.75rem; padding:0; min-width:0; }
+.qr-block legend { display:flex; align-items:center; gap:10px; font-family:var(--display); font-size:1rem; font-weight:800; letter-spacing:-0.3px; color:var(--ink); padding:0; margin-bottom:0.9rem; }
+.qr-num { display:flex; align-items:center; justify-content:center; width:26px; height:26px; border-radius:8px; background:var(--blue-lt); color:var(--blue); font-family:var(--display); font-size:13px; font-weight:800; flex-shrink:0; }
+
+/* ---------- service options ---------- */
+.qr-opts { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:8px; margin-bottom:0.4rem; }
+.qr-opt { position:relative; display:block; cursor:pointer; }
+/* Visually hidden rather than display:none, so it stays keyboard reachable. */
+.qr-opt-input { position:absolute; width:1px; height:1px; padding:0; margin:0; border:0; opacity:0; }
+/* Icon beside the label rather than a badge stacked above it: a plain
+   coloured glyph reads as part of the text, not a separate decoration
+   bolted on top of it, which is what made the old grey badge squares
+   look generic. Left-aligned row layout throughout. */
+.qr-opt-face {
+  display:flex; flex-direction:row; align-items:center;
+  gap:12px; text-align:left; min-height:56px; padding:0.8rem 1rem; border-radius:12px;
+  border:1.5px solid var(--border); background:var(--bg2);
+  transition:border-color 0.16s var(--ease-settle),background 0.16s var(--ease-settle),box-shadow 0.16s var(--ease-settle),transform 0.1s var(--ease-press);
+}
+.qr-opt-ico { display:flex; align-items:center; justify-content:center; width:22px; height:22px; color:var(--blue); flex-shrink:0; transition:color 0.16s var(--ease-settle); }
+.qr-opt-ico svg { width:22px; height:22px; }
+.qr-opt-text { font-family:var(--display); font-size:13px; font-weight:700; letter-spacing:-0.1px; line-height:1.25; color:var(--ink2); }
+@media (hover: hover) { .qr-opt:hover .qr-opt-face { border-color:var(--blue-mid); background:var(--bg); } }
+.qr-opt:active .qr-opt-face { transform:scale(0.97); }
+.qr-opt-input:checked + .qr-opt-face { border-color:var(--blue); background:var(--blue-lt); box-shadow:0 0 0 1px var(--blue); }
+.qr-opt-input:checked + .qr-opt-face .qr-opt-ico { color:var(--blue-dk); }
+.qr-opt-input:checked + .qr-opt-face .qr-opt-text { color:var(--blue-dk); }
+.qr-opt-input:focus-visible + .qr-opt-face { outline:2px solid var(--blue); outline-offset:2px; }
+
+/* ---------- fields ---------- */
+.qr-field { display:block; margin-bottom:0.85rem; }
+.qr-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+.qr-label { display:block; font-family:var(--display); font-size:13px; font-weight:700; letter-spacing:-0.1px; color:var(--ink2); margin-bottom:0.45rem; }
+.req { color:var(--red); }
+.qr-opt-note { font-weight:500; color:var(--muted2); text-transform:none; letter-spacing:0; }
+.qr-field input, .qr-field select, .qr-field textarea {
+  width:100%; font-family:var(--body); font-size:16px; color:var(--ink);
+  background:var(--bg2); border:1px solid var(--border); border-radius:11px;
+  padding:11px 14px; transition:border-color 0.18s,background 0.18s,box-shadow 0.18s;
+}
+.qr-field textarea { resize:vertical; min-height:96px; line-height:1.6; }
+.qr-field input:focus, .qr-field select:focus, .qr-field textarea:focus {
+  outline:none; border-color:var(--blue); background:var(--bg); box-shadow:0 0 0 3px rgba(21,96,255,0.13);
+}
+.qr-field .is-err { border-color:var(--red); background:#FEF2F2; }
+.qr-err { display:none; font-size:12.5px; font-weight:600; color:var(--red); margin:-0.55rem 0 1rem; }
+.qr-err.show { display:block; }
+.qr-err-form { margin-top:0.9rem; }
+
+/* ---------- contact preference ---------- */
+.qr-contact { border:0; padding:0; margin:0.5rem 0 0; min-width:0; }
+.qr-contact legend { display:block; margin-bottom:0.55rem; font-family:var(--body); font-size:13px; font-weight:700; color:var(--ink2); }
+.qr-radio { display:inline-flex; align-items:center; gap:7px; margin:0 8px 8px 0; cursor:pointer; }
+.qr-radio input { accent-color:var(--blue); width:17px; height:17px; }
+.qr-radio span:where(:not([class])) { font-family:var(--display); font-size:13.5px; font-weight:600; color:var(--ink2); }
+
+/* ---------- draft, privacy, submit ---------- */
+.qr-hp { position:absolute; left:-9999px; opacity:0; }
+.qr-saved { display:flex; align-items:center; gap:10px; font-size:12.5px; font-weight:600; color:var(--muted); background:var(--bg3); border-radius:9px; padding:9px 13px; margin-bottom:1rem; }
+.qr-saved button { background:none; border:0; padding:0; font-family:var(--body); font-size:12.5px; font-weight:700; color:var(--blue); cursor:pointer; text-decoration:underline; transition:color 0.15s,opacity 0.1s var(--ease-press); }
+@media (hover: hover) { .qr-saved button:hover { color:var(--blue-dk); } }
+.qr-saved button:active { opacity:0.6; }
+.qr-privacy { font-size:12.5px; color:var(--muted); line-height:1.65; margin:0 0 1.1rem; }
+.qr-privacy a:where(:not([class])) { color:var(--blue); text-decoration:none; border-bottom:1px solid var(--blue-mid); }
+.qr-submit {
+  width:100%; font-family:var(--display); font-size:16px; font-weight:700; letter-spacing:-0.2px; color:#fff;
+  background:var(--blue); border:0; border-radius:50px; padding:15px 28px; cursor:pointer;
+  transition:background 0.18s,transform 0.15s var(--ease-settle);
+}
+@media (hover: hover) { .qr-submit:hover { background:var(--blue-dk); } }
+.qr-submit:active:not(:disabled) { transform:scale(0.98); transition:transform 0.1s var(--ease-press); }
+.qr-submit:disabled { background:var(--muted2); cursor:default; transform:none; }
+.qr-submit:focus-visible { outline:2px solid var(--blue); outline-offset:3px; }
+.qr-note { text-align:center; font-size:12.5px; color:var(--muted); margin:0.85rem 0 0; }
+
+/* ---------- success ---------- */
+.qr-done { text-align:center; background:var(--bg2); border:1px solid var(--border); border-radius:18px; padding:3rem 2rem; }
+.qr-done-icon { display:flex; align-items:center; justify-content:center; width:58px; height:58px; border-radius:50%; background:var(--green); color:#fff; margin:0 auto 1.35rem; }
+.qr-done-icon svg { width:26px; height:26px; }
+.qr-done h2:where(:not([class])) { font-family:var(--display); font-size:1.6rem; font-weight:800; letter-spacing:-0.6px; color:var(--ink); margin:0 0 0.65rem; }
+.qr-done p:where(:not([class])) { font-size:15px; color:var(--muted); line-height:1.8; margin:0 auto 1.75rem; max-width:52ch; }
+.qr-done-actions { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; }
+
+/* ---------- aside ---------- */
+.qr-aside { position:sticky; top:calc(var(--nav-h) + 24px); display:flex; flex-direction:column; gap:14px; }
+.qr-card { background:var(--bg); border:1px solid var(--border); border-radius:16px; padding:1.35rem; }
+.qr-card-alt { background:var(--bg2); }
+.qr-card-head { margin-bottom:0.9rem; }
+.qr-card-eyebrow { display:block; font-size:10.5px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:4px; }
+.qr-card-title { display:block; font-family:var(--display); font-size:15px; font-weight:800; color:var(--ink); letter-spacing:-0.2px; line-height:1.35; }
+.qr-list { list-style:none; margin:0; padding:0; }
+.qr-list li:where(:not([class])) { position:relative; font-size:13.5px; color:var(--ink2); line-height:1.65; padding:0 0 0.7rem 1.55rem; }
+.qr-list li:where(:not([class])):last-child { padding-bottom:0; }
+.qr-list li:where(:not([class]))::before { content:''; position:absolute; left:1px; top:7px; width:11px; height:6px; border-left:2px solid var(--green); border-bottom:2px solid var(--green); transform:rotate(-45deg); }
+.qr-phone { display:block; font-family:var(--display); font-size:1.35rem; font-weight:800; letter-spacing:-0.5px; color:var(--ink); text-decoration:none; margin:0.35rem 0 0.5rem; }
+@media (hover: hover) { .qr-phone:hover { color:var(--blue); } }
+.qr-addr { font-size:13px; color:var(--muted); line-height:1.65; margin:0 0 1.1rem; }
+.qr-btn {
+  display:inline-flex; align-items:center; justify-content:center;
+  font-family:var(--body); font-size:14.5px; font-weight:700; text-decoration:none;
+  padding:12px 22px; border-radius:50px; max-width:100%; white-space:nowrap;
+  transition:background 0.18s,border-color 0.18s,color 0.18s,transform 0.1s var(--ease-press);
+}
+.qr-btn:active { transform:scale(0.96); }
+.qr-btn-wide { width:100%; }
+.qr-btn-wa { background:var(--wa-dk); color:#fff; border:1.5px solid var(--wa-dk); }
+@media (hover: hover) { .qr-btn-wa:hover { background:var(--wa-deep); border-color:var(--wa-deep); } }
+.qr-btn-ghost { background:var(--bg); color:var(--ink); border:1.5px solid var(--border2); }
+@media (hover: hover) { .qr-btn-ghost:hover { border-color:var(--blue); color:var(--blue); } }
+
+/* ==========================================================
+   The nav switches to the hamburger at 900px, so the body
+   offset and the sticky top move with it.
+   ========================================================== */
+@media (max-width:1180px) {
+  .qr-layout { grid-template-columns:minmax(0,1fr) 270px; gap:2rem; }
+}
+@media (max-width:1000px) {
+  /* The aside becomes a footer to the form rather than disappearing: on a
+     form page those reassurances are worth more after the fields than beside
+     them. */
+  .qr-layout { grid-template-columns:1fr; gap:2rem; padding-top:2.25rem; }
+  .qr-aside { position:static; flex-direction:row; flex-wrap:wrap; }
+  .qr-card { flex:1 1 260px; }
+}
+@media (max-width:900px) {
+  body { padding-top:var(--mob-nav-h); }
+  .qr-hero { padding-top:2.5rem; }
+  .qr-aside { top:calc(var(--mob-nav-h) + 16px); }
+}
+@media (max-width:720px) {
+  .wrap { padding:0 1.25rem; }
+  .qr-hero { padding:2rem 0 2.25rem; }
+  .qr-hero-inner { padding:0 1.25rem; }
+  .qr-hero h1:where(:not([class])) { font-size:1.8rem; letter-spacing:-1px; }
+  .qr-sub { font-size:15px; }
+  .qr-layout { padding-bottom:2.5rem; }
+  /* Icon-beside-label needs more width per tile than the old stacked
+     layout did, so this drops straight to two columns instead of three. */
+  .qr-opts { grid-template-columns:repeat(2,minmax(0,1fr)); gap:7px; }
+  .qr-opt-face { min-height:52px; padding:0.7rem 0.85rem; }
+  .qr-opt-text { font-size:12.5px; }
+
+  .qr-row { grid-template-columns:1fr; gap:0; }
+  .qr-aside { flex-direction:column; }
+  .qr-done { padding:2.25rem 1.25rem; }
+  .qr-done h2:where(:not([class])) { font-size:1.4rem; }
+  .qr-btn { width:100%; }
+}
+@media (max-width:380px) {
+  .qr-opts { gap:6px; }
+  .qr-opt-face { min-height:48px; padding:0.6rem 0.7rem; gap:9px; }
+  .qr-opt-ico, .qr-opt-ico svg { width:19px; height:19px; }
+  .qr-opt-text { font-size:11.5px; }
+  .qr-hero h1:where(:not([class])) { font-size:1.6rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .qr-progress-fill, .qr-opt-face, .qr-submit, .qr-btn, .qr-saved button { transition:none; }
+  .qr-opt:active .qr-opt-face, .qr-submit:active, .qr-btn:active { transform:none; }
+  html { scroll-behavior:auto; }
+}
+
+/* High contrast. Muted greys darkened, panels and form fields given a
+   defined border rather than relying on a tinted fill alone. */
+@media (prefers-contrast: more) {
+  .qr-sub, .qr-privacy, .qr-note, .qr-addr, .qr-card-eyebrow { color:#334155; }
+  .qr-opt-face, .qr-card, .qr-field input, .qr-field select, .qr-field textarea { border-color:#0F172A; }
+  .qr-btn-ghost { border-color:#0F172A; }
+  .qr-list li:where(:not([class]))::before { border-color:#15803D; }
+}
+
+/* The grey iOS tap flash paints over the press-scale feedback above. */
+.qr-opt, .qr-submit, .qr-btn, .qr-saved button, .qr-radio {
+  -webkit-tap-highlight-color:transparent;
+}

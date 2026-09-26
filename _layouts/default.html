@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  {%- comment -%} Titles and descriptions live in front matter, which cannot
+  run Liquid, so they were the one place prices had to be typed in. They
+  carry [[service-key]] tokens instead, resolved here from services.yml.
+  A title without tokens passes through unchanged. {%- endcomment -%}
+  {%- capture _title -%}{% include resolve-prices.html text=page.title %}{%- endcapture -%}
+  {%- capture _desc -%}{% include resolve-prices.html text=page.description %}{%- endcapture %}
+  <title>{{ _title }}</title>
+  <meta name="description" content="{{ _desc }}">
+  <meta name="author" content="FixMyPC Perth">
+  {%- comment -%} page.url keeps the .html extension, but every link on the
+  site drops it. Without this the canonical named a second address for
+  each page, splitting its search signals between the two. {%- endcomment -%}
+  {%- assign _clean_url = page.url | replace: "/index.html", "/" | replace: ".html", "" -%}
+  <link rel="canonical" href="https://www.fixmypcperth.com{{ _clean_url }}">
+  {%- if site.staging or page.noindex %}
+  <meta name="robots" content="noindex, nofollow">
+  {%- else %}
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  {%- endif %}
+
+  {%- if page.layout == "tech-tip" %}
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="{{ page.date }}T09:00:00+08:00">
+  <meta property="article:modified_time" content="{{ page.updated | default: page.date }}T09:00:00+08:00">
+  <meta property="article:section" content="{{ page.category | escape }}">
+  <meta property="article:author" content="FixMyPC Perth">
+  {%- else %}
+  <meta property="og:type" content="website">
+  {%- endif %}
+  <meta property="og:site_name" content="FixMyPC Perth">
+  <meta property="og:title" content="{{ _title }}">
+  <meta property="og:description" content="{{ _desc }}">
+  <meta property="og:url" content="https://www.fixmypcperth.com{{ _clean_url }}">
+  {%- comment -%} Suburb pages share one 1200x630 card, so adding a suburb
+  never needs an image. The Tech Tips hub and every guide share a second one,
+  the same card with a Tech Tips label, which is also the BlogPosting image
+  in the guide schema (Google wants articles to carry a wide image, not the
+  square logo). Every other page keeps the square logo, and the card type
+  follows the image: a square logo in a wide "large image" preview is
+  cropped badly, so it gets the small summary card instead. {%- endcomment -%}
+  {%- if page.layout == "suburb" -%}
+    {%- assign _og_img = "/og-suburbs.png" -%}
+    {%- assign _og_card = "summary_large_image" -%}
+    {%- assign _og_alt = "FixMyPC Perth: computer and laptop repairs across Perth's southern suburbs" -%}
+  {%- elsif page.layout == "tech-tip" or page.css == "tech-tips" -%}
+    {%- assign _og_img = "/og-tech-tips.png" -%}
+    {%- assign _og_card = "summary_large_image" -%}
+    {%- assign _og_alt = "FixMyPC Perth Tech Tips: computer and laptop repair guides from our Canning Vale workshop" -%}
+  {%- else -%}
+    {%- assign _og_img = "/logo.png" -%}
+    {%- assign _og_card = "summary" -%}
+  {%- endif %}
+  <meta property="og:image" content="https://www.fixmypcperth.com{{ _og_img }}">
+  {%- if _og_card == "summary_large_image" %}
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="{{ _og_alt }}">
+  {%- endif %}
+  <meta name="twitter:card" content="{{ _og_card }}">
+  <meta name="twitter:image" content="https://www.fixmypcperth.com{{ _og_img }}">
+
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <meta name="theme-color" content="#0F172A">
+
+  <meta name="geo.region" content="AU-WA">
+  <meta name="geo.placename" content="Canning Vale, Perth, Western Australia">
+  <meta name="geo.position" content="-32.0697802;115.9245929">
+  <meta name="ICBM" content="-32.0697802, 115.9245929">
+
+  <!-- Size-matched fallbacks. Fonts load asynchronously, so text first
+       paints in a system font and swaps to Sora / DM Sans when they arrive.
+       These faces scale the system font to the real fonts' measured width
+       and line metrics (from the woff2 files, Arial as the base), so the
+       swap no longer shifts the layout. -->
+  <style>
+    @font-face { font-family:'Sora Fallback'; src:local('Arial Bold'), local('Arial-BoldMT'), local('Helvetica Neue Bold'), local('Liberation Sans Bold'), local('Roboto Bold'); size-adjust:108.07%; ascent-override:89.75%; descent-override:26.83%; line-gap-override:0%; }
+    @font-face { font-family:'DM Sans Fallback'; src:local('Arial'), local('ArialMT'), local('Helvetica Neue'), local('Liberation Sans'), local('Roboto'); size-adjust:104.6%; ascent-override:94.85%; descent-override:29.65%; line-gap-override:0%; }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet"></noscript>
+
+  <!-- Each page loads its own stylesheet. Set "css:" in a page's front matter
+       to pick one, for example "css: pricing" loads pages/pricing.css. Pages
+       without it fall back to index.css. Design tokens are never shared
+       between page stylesheets, so every page CSS carries its own :root. -->
+  <link rel="stylesheet" href="/assets/css/pages/{{ page.css | default: "index" }}.css?v={{ site.time | date: "%s" }}">
+  <link rel="stylesheet" href="/assets/css/shell.css?v={{ site.time | date: "%s" }}">
+
+  <script>
+    /* Analytics reports from the live site only. Staging runs this same code,
+       so without the hostname check every staging visit landed in the real
+       traffic figures.
+
+       gtag() is still defined everywhere, on purpose: phone, WhatsApp and
+       quote clicks and the health check call it directly, and those calls
+       must not throw on staging. There they just queue up and go nowhere,
+       because the Google script that would send them is never loaded. */
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    if (location.hostname === 'www.fixmypcperth.com' || location.hostname === 'fixmypcperth.com') {
+      var ga = document.createElement('script');
+      ga.async = true;
+      ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-S0CW1QXBDY';
+      document.head.appendChild(ga);
+      gtag('js', new Date());
+      gtag('config', 'G-S0CW1QXBDY');
+    }
+  </script>
+</head>
+<body>
+
+{% include header.html %}
+
+<main id="main-content">
+{{ content }}
+</main>
+
+{% include footer.html %}
+{% include sticky-cta.html %}
+{% include scripts.html %}
+
+</body>
+</html>

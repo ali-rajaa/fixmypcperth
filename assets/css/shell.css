@@ -1,0 +1,522 @@
+/* ==========================================================
+   shell.css   VERSION 7
+   v7: mobile nav audit. The menu now emerges from the hamburger that opens
+   it (transform-origin top right) and materialises its blur rather than
+   plain-fading, and is hidden entirely above 901px - it had no such rule, so
+   crossing the breakpoint with the menu open stranded it on screen with no
+   control able to close it. Paired with scripts.html, which gains Escape-to-
+   close (there was no keyboard dismissal at all) and a breakpoint listener.
+   (v6 below)
+   v6: adds prefers-reduced-transparency and prefers-contrast (the site has
+   four translucent chrome surfaces and had neither), and suppresses the iOS
+   tap flash that painted over the press feedback. (v5 below)
+   Header, mobile nav, hamburger, sticky bar and footer.
+   Desktop and mobile, media queries included.
+
+   Deliberately contains no :root, body, html or * rules and
+   no var() references, so it can never override a page's own
+   design tokens. Loaded AFTER the page stylesheet so the
+   chrome always wins.
+
+   v5: Apple-design pass plus an audit that found three real bugs, now
+   fixed:
+   1. .wa-bubble (the floating WhatsApp button) ships in the shared
+      sticky-cta.html include and renders on every page, but was only
+      ever styled in index.css - so it appeared as a bare unstyled link
+      on pricing, terms, privacy and quote-request. Moved here.
+   2. .pill-fb hid a nav item with no matching class anywhere in the
+      markup - dead CSS from a removed Facebook pill. Removed.
+   3. .sc-quote, the primary sticky mobile CTA, had no hover or active
+      state at all. Added press feedback.
+   Also: critically damped hover easing throughout (was a mix of ad hoc
+   bounce curves), real press-scale feedback on every tappable element,
+   a proper open/close transition on the mobile menu (was an instant
+   display:none/flex swap), and a reduced-motion pass - previously only
+   the scroll-driven nav condense respected it.
+
+   v2: header polish only. Pill and logo hover states reworked,
+   focus-visible rings added, and a scroll-reactive condense on
+   the desktop bar using animation-timeline. That block is wrapped
+   in @supports, so browsers without scroll-driven animations
+   simply keep the static header. No markup or JavaScript changes.
+
+   v4: nav hover toned down. A light wash instead of a blue glow, a 1px lift
+   instead of 2, and the logo no longer tilts.
+
+   v3: footer shortened on phones. The blurb is hidden below 760px and
+   the vertical rhythm tightened. Both link columns are kept, and the brand
+   and contact blocks are laid out in two columns rather than stacked. Desktop nav
+   tightened below 900px so the last pill is no longer pushed off screen.
+   ========================================================== */
+
+/* The hidden attribute is silently overridden by any rule that sets its own
+   display on the same element (a plain CSS gotcha: author-origin display
+   beats the browser default for [hidden] regardless of specificity). Every
+   quote/audit form on the site sets form.hidden = true on success, and most
+   of those forms carry their own display: flex/grid class, so without this
+   the form stayed on screen - disabled, stuck on "Sending..." - right next
+   to its own success message. Loaded on every page, so this is the one
+   fix for all of them. (industry.css already carried a local copy of this
+   before shell.css did; harmless to have both.) */
+[hidden] { display: none !important; }
+
+.desk-nav {
+  position: fixed; top: 3px; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center;
+  padding: 0 2rem; height: 64px;
+  background: rgba(255,255,255,0.88);
+  backdrop-filter: blur(30px) saturate(200%);
+  -webkit-backdrop-filter: blur(30px) saturate(200%);
+  border-bottom: 1px solid rgba(226,232,240,0.5);
+  border-top: 1px solid rgba(255,255,255,0.8);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.05);
+  transition: height 0.25s cubic-bezier(0.4,0,0.2,1), background 0.25s ease, box-shadow 0.25s ease;
+}
+.desk-nav-inner { display:flex; align-items:center; justify-content:space-between; width:100%; max-width:1100px; margin:0 auto; }
+.nav-logo { display: flex; align-items: center; gap: 10px; min-height: 44px; text-decoration: none; flex-shrink: 0; border-radius: 12px; }
+.logo-mark { width: 38px; height: 38px; border-radius: 9px; overflow: hidden; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: transform 0.25s cubic-bezier(0.16,1,0.3,1), box-shadow 0.25s ease; }
+@media (hover: hover) { .nav-logo:hover .logo-mark { transform: scale(1.03); box-shadow: 0 3px 10px rgba(21,96,255,0.18); } }
+.nav-logo:active .logo-mark { transform: scale(0.96); transition: transform 0.1s cubic-bezier(0.4,0,0.2,1); }
+.logo-mark img:where(:not([class])) { width: 100%; height: 100%; object-fit: cover; display: block; }
+.logo-name { font-family: 'Sora', 'Sora Fallback', sans-serif; font-size: 16px; font-weight: 700; color: #0F172A; letter-spacing: -0.3px; white-space: nowrap; transition: color 0.2s ease; }
+.logo-name--mob { font-size: 14px; }
+.logo-name em:where(:not([class])) { color: #1560FF; font-style: normal; transition: color 0.2s ease; }
+@media (hover: hover) { .nav-logo:hover .logo-name em:where(:not([class])) { color: #0A3ACC; } }
+.nav-right { display: flex; align-items: center; gap: 8px; margin-left: auto; }
+.nav-pill { display: inline-flex; align-items: center; gap: 6px; font-family: 'DM Sans', 'DM Sans Fallback', sans-serif; font-size: 13px; font-weight: 600; padding: 9px 18px; border-radius: 50px; text-decoration: none; border: none; cursor: pointer; white-space: nowrap; position: relative;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.22s ease, transform 0.25s cubic-bezier(0.16,1,0.3,1); }
+@media (hover: hover) { .nav-pill:hover { transform: translateY(-1px); } }
+.nav-pill:active { transform: translateY(0) scale(0.96); transition: transform 0.1s cubic-bezier(0.4,0,0.2,1); }
+.pill-ghost { background: transparent; color: #0F172A; border: 1.5px solid #CBD5E1; padding: 8px 16px; }
+/* A light wash and a slightly warmer border is enough to show which pill is
+   under the cursor. The glow and the 2px jump were doing too much for a nav. */
+@media (hover: hover) { .pill-ghost:hover { background: #F4F8FF; border-color: #CBDDFF; color: #1560FF; } }
+.nav-pill.active { background: #EEF3FF; border-color: #C7D8FF; color: #0A3ACC; }
+.nav-pill.active::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: #1560FF; flex-shrink: 0; }
+
+/* Keyboard focus. Previously there was no visible ring at all. */
+.nav-pill:focus-visible,
+.nav-logo:focus-visible,
+.nav-cta:focus-visible { outline: 2px solid #1560FF; outline-offset: 3px; }
+/* Header WhatsApp button. Solid and rounded like every other button, so it
+   reads as the one action in a row of plain navigation links. */
+.nav-cta { display:none; align-items:center; gap:7px; margin-left:6px; font-family:'DM Sans', 'DM Sans Fallback', sans-serif; font-size:13px; font-weight:700; color:#fff; background:#15803D; padding:10px 17px; border-radius:50px; text-decoration:none; white-space:nowrap; box-shadow:0 3px 12px rgba(21,128,61,0.28); transition:transform 0.25s cubic-bezier(0.16,1,0.3,1), background 0.15s; }
+.nav-cta svg { width:15px; height:15px; flex-shrink:0; }
+@media (hover: hover) { .nav-cta:hover { background:#166534; transform:translateY(-1px); } }
+.nav-cta:active { transform:scale(0.96); transition:transform 0.1s cubic-bezier(0.4,0,0.2,1); }
+@media (min-width:1121px) {
+  .nav-cta { display:inline-flex; }
+}
+.mob-link:focus-visible,
+.mob-hamburger:focus-visible { outline: 2px solid #1560FF; outline-offset: 2px; }
+.mob-nav { display:none; position:fixed; top:0; left:0; right:0; z-index:300; height:60px; background:rgba(255,255,255,0.97); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border-bottom:1.5px solid #E2E8F0; padding:0 1.25rem; align-items:center; justify-content:space-between; box-shadow:0 4px 20px rgba(0,0,0,0.07); }
+.mob-hamburger { display:flex; flex-direction:column; justify-content:center; align-items:center; gap:5px; width:44px; height:44px; background:#F1F5F9; border:1.5px solid #CBD5E1; border-radius:10px; cursor:pointer; flex-shrink:0; transition:background 0.15s,border-color 0.15s,transform 0.2s cubic-bezier(0.16,1,0.3,1); }
+.mob-hamburger:active { transform:scale(0.9); transition:transform 0.1s cubic-bezier(0.4,0,0.2,1); }
+@media (hover: hover) { .mob-hamburger:hover { background:#EEF3FF; border-color:#C7D8FF; } }
+.mob-hamburger span:where(:not([class])) { display:block; width:16px; height:2px; background:#0F172A; border-radius:2px; transition:transform 0.3s ease,opacity 0.3s ease; }
+.mob-hamburger.open span:where(:not([class])):nth-child(1) { transform:translateY(7px) rotate(45deg); }
+.mob-hamburger.open span:where(:not([class])):nth-child(2) { opacity:0; }
+.mob-hamburger.open span:where(:not([class])):nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+/* Anchored to the hamburger that opens it, per the spatial-consistency rule:
+   a menu should emerge from the control that triggered it, so transform-origin
+   is the top-right corner where that button sits, not the element's centre.
+   The blur and scale animate together so the panel reads as a real material
+   arriving rather than a rectangle being cross-faded in. */
+.mob-menu {
+  display:flex; position:fixed; top:60px; left:0; right:0; z-index:299;
+  background:rgba(255,255,255,0.98);
+  backdrop-filter:blur(0px); -webkit-backdrop-filter:blur(0px);
+  border-bottom:1.5px solid #E2E8F0; padding:0.75rem 1.25rem 1.5rem;
+  flex-direction:column; gap:4px; box-shadow:0 8px 30px rgba(0,0,0,0.1); border-radius:0 0 20px 20px;
+  transform-origin:top right;
+  opacity:0; transform:translateY(-8px) scale(0.97); visibility:hidden; pointer-events:none;
+  transition:opacity 0.22s cubic-bezier(0.16,1,0.3,1),
+             transform 0.22s cubic-bezier(0.16,1,0.3,1),
+             backdrop-filter 0.22s cubic-bezier(0.16,1,0.3,1),
+             -webkit-backdrop-filter 0.22s cubic-bezier(0.16,1,0.3,1),
+             visibility 0s linear 0.22s;
+}
+.mob-menu.open {
+  opacity:1; transform:none; visibility:visible; pointer-events:auto;
+  backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+  transition:opacity 0.22s cubic-bezier(0.16,1,0.3,1),
+             transform 0.22s cubic-bezier(0.16,1,0.3,1),
+             backdrop-filter 0.22s cubic-bezier(0.16,1,0.3,1),
+             -webkit-backdrop-filter 0.22s cubic-bezier(0.16,1,0.3,1);
+}
+.mob-link { font-family:'DM Sans', 'DM Sans Fallback', sans-serif; font-size:15px; font-weight:600; color:#0F172A; text-decoration:none; padding:0.9rem 1rem; border-radius:10px; display:block; transition:background 0.18s,color 0.18s,transform 0.25s cubic-bezier(0.16,1,0.3,1); }
+@media (hover: hover) { .mob-link:hover { background:#EEF3FF; color:#1560FF; transform:translateX(3px); } }
+.mob-link:active { background:#E4EEFF; transform:translateX(3px) scale(0.98); transition:transform 0.1s cubic-bezier(0.4,0,0.2,1),background 0.1s; }
+.mob-link.active { background:#EEF3FF; color:#0A3ACC; }
+.sticky-cta {
+  display:none; position:fixed; bottom:0; left:0; right:0; z-index:400;
+  background:rgba(255,255,255,0.97); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+  border-top:1.5px solid #E2E8F0; box-shadow:0 -4px 24px rgba(15,23,42,0.1);
+  padding:10px 12px calc(10px + env(safe-area-inset-bottom)); gap:8px;
+  transform:translateY(110%); transition:transform 0.3s cubic-bezier(0.16,1,0.3,1);
+}
+.sticky-cta.show { transform:translateY(0); }
+/* Slides away while the footer is on screen, so it never covers the footer
+   (it hid the last line on 21 pages) and does not repeat the footer's own
+   contact details. Set by _includes/scripts.html. Two classes, so it beats
+   .show whatever the order; inert in the script stops the hidden buttons
+   taking keyboard focus. */
+.sticky-cta.show.at-footer, .sticky-cta.at-footer { transform:translateY(110%); box-shadow:none; }
+.sticky-cta a {
+  flex:1; display:flex; align-items:center; justify-content:center; gap:7px;
+  font-family:'DM Sans', 'DM Sans Fallback', sans-serif; font-size:14px; font-weight:700; padding:13px 10px;
+  border-radius:50px; text-decoration:none; white-space:nowrap;
+  transition:transform 0.1s cubic-bezier(0.4,0,0.2,1), filter 0.15s;
+}
+.sticky-cta a:active { transform:scale(0.96); filter:brightness(0.95); }
+.sticky-cta svg { width:17px; height:17px; flex-shrink:0; }
+/* WhatsApp first (solid, the wider of the two), quote form second (outline).
+   #15803D keeps white text at 5:1; the old #22C55E fill was 2.3:1. */
+.sticky-cta .sc-wa { flex:1.35; background:#15803D; color:#fff; box-shadow:0 4px 14px rgba(21,128,61,0.3); }
+.sticky-cta .sc-quote { background:#fff; color:#0F172A; border:1.5px solid #CBD5E1; }
+
+/* WhatsApp floating bubble. Ships in the shared sticky-cta.html include, so
+   it renders on every page - it belongs here, not in a page stylesheet.
+   It previously had no rule outside index.css, so on every other page
+   (pricing, terms, privacy, quote-request) it rendered as a bare, unstyled
+   link with a giant raw SVG icon sitting in the document flow. */
+.wa-bubble {
+  position:fixed; bottom:24px; right:24px; z-index:9999; width:58px; height:58px;
+  background:#22C55E; border-radius:50%; display:flex; align-items:center; justify-content:center;
+  box-shadow:0 4px 20px rgba(34,197,94,0.45); text-decoration:none;
+  transition:transform 0.25s cubic-bezier(0.16,1,0.3,1), box-shadow 0.25s cubic-bezier(0.16,1,0.3,1);
+}
+@media (hover: hover) { .wa-bubble:hover { transform:scale(1.1); box-shadow:0 6px 28px rgba(34,197,94,0.55); } }
+.wa-bubble:active { transform:scale(0.95); transition:transform 0.1s cubic-bezier(0.4,0,0.2,1); }
+/* The bubble only shows where nothing else on screen offers WhatsApp:
+   phones get it in the sticky bar, wide desktops in the header button. */
+@media (max-width:720px) {
+  .wa-bubble { display:none; }
+}
+@media (min-width:1121px) {
+  .wa-bubble { display:none; }
+}
+/* ==========================================================
+   TOUCH TARGETS
+   Every tap target is at least 44px on phones, tablets and any
+   device with a finger for a pointer (house rule). One block, in
+   the one stylesheet every page loads, because the selectors span
+   several page stylesheets and a page file cannot fix another's.
+   Three treatments, chosen so nothing visibly jumps:
+   - chips, tabs and buttons: min-height 44px
+   - text links: padding plus an equal negative margin, which grows
+     the tap area without moving the layout
+   - carousel dots: an invisible 44px hit area around the dot
+   ========================================================== */
+@media (max-width: 900px), (pointer: coarse) {
+  .industry-pill, .pr-book, .lg-toc a:where(:not([class])), .post-footer-link,
+  .footer-logo, .industry-card, .svc-cta, .svc-link-pill, .pr-chip, .guide-tab,
+  .plan-tab, .btn-blue, .btn-ghost, .mq-rating, .svc-links-more, .tt-show-btn,
+  .audit-inner > a, .biz-svc-links > a, .audit-direct > a, #addon-toggle { min-height: 44px; }
+  .industry-pill { min-width: 44px; justify-content: center; }
+  .qr-phone { display: flex; align-items: center; min-height: 44px; }
+  .footer-area-link { min-width: 44px; justify-content: center; }
+  .price-foot a:where(:not([class])), .tip-crumbs a,
+  .sub-breadcrumb a:where(:not([class])), .post-breadcrumb a:where(:not([class])) {
+    display: inline-block; padding: 13px 6px; margin: -13px -6px;
+  }
+  .tt-copy-toggle { display: inline-block; padding: 14px 6px; margin: -14px -6px; }
+  .scroll-dot, .carousel-dot, .pkg-dot { position: relative; }
+  .scroll-dot::after, .carousel-dot::after, .pkg-dot::after {
+    content: ''; position: absolute; inset: -19px -8px;
+  }
+}
+
+/* Scroll-reactive header. Progressive enhancement: the whole block is
+   ignored by browsers that do not support scroll-driven animations, and
+   is skipped for anyone who has asked for reduced motion. Nothing here
+   affects layout, because .desk-nav is fixed. */
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) and (min-width: 721px) {
+    .desk-nav {
+      animation: nav-condense linear both;
+      animation-timeline: scroll(root block);
+      animation-range: 0 160px;
+    }
+    @keyframes nav-condense {
+      from { height:64px; background:rgba(255,255,255,0.88); box-shadow:0 8px 32px rgba(0,0,0,0.05); }
+      to   { height:56px; background:rgba(255,255,255,0.97); box-shadow:0 10px 28px rgba(15,23,42,0.13); }
+    }
+  }
+}
+
+#scroll-bar { position:fixed; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,#1560FF,#00CFFF,#22C55E); transform:scaleX(0); transform-origin:left; z-index:9999; }
+/* The wordmark plus five pills needs roughly 890px. Squeezing them into a
+   tablet meant 11px text, so the switch to the hamburger now happens at 900
+   rather than 720. Between 901 and 1120 the chrome is tightened slightly to
+   keep real headroom, since Sora is wider than the fallback font. */
+@media (max-width:1120px) {
+.desk-nav { padding: 0 1rem; }
+.desk-nav-inner { gap: 10px; }
+.nav-right { gap: 5px; }
+.nav-pill { font-size: 12px; padding: 8px 12px; }
+.pill-ghost { padding: 7px 11px; }
+}
+@media (max-width:900px) {
+.desk-nav { display:none; }
+.mob-nav  { display:flex; }
+}
+/* Above 900px the hamburger is gone, so nothing can close this menu. Without
+   this rule, opening the menu on a phone and then rotating to landscape (or
+   resizing a window across the breakpoint) left the panel stranded on screen
+   with no control to dismiss it. Also stops an always-rendered blurred
+   surface costing compositor work on desktop. */
+@media (min-width:901px) {
+.mob-menu { display:none; }
+}
+@media (max-width:720px) {
+.sticky-cta { display:flex; }
+}
+
+
+/* ==========================================================
+   FOOTER
+   Four columns: brand, repairs, company, contact.
+   The contact column carries the full NAP block, which Google
+   uses as a local ranking signal, so it is real markup rather
+   than an image.
+   ========================================================== */
+footer {
+  background: #F8FAFC;
+  border-top: 1px solid #E2E8F0;
+  padding: 4rem 2rem 0;
+  font-family: 'DM Sans', 'DM Sans Fallback', sans-serif;
+}
+.footer-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: 1.6fr 1fr 1fr 1.2fr;
+  gap: 3rem; align-items: start;
+}
+
+.footer-logo { display:flex; align-items:center; gap:10px; text-decoration:none; margin-bottom:1.1rem; }
+.footer-logo .logo-mark { width:38px; height:38px; border-radius:9px; overflow:hidden; flex-shrink:0; }
+.footer-logo .logo-mark img:where(:not([class])) { width:100%; height:100%; object-fit:cover; display:block; }
+.footer-logo .logo-name { font-family:'Sora', 'Sora Fallback', sans-serif; font-size:17px; font-weight:800; color:#0F172A; letter-spacing:-0.4px; }
+.footer-logo .logo-name em:where(:not([class])) { font-style:normal; color:#1560FF; }
+
+.footer-tag { font-size:15.5px; font-weight:700; color:#1E293B; line-height:1.7; margin-bottom:1rem; }
+.footer-blurb { font-size:14px; color:#64748B; line-height:1.75; max-width:330px; margin-bottom:1.5rem; }
+
+.footer-social a:where(:not([class])) {
+  display:inline-flex; align-items:center; justify-content:center;
+  width:42px; height:42px; border-radius:11px;
+  border:1px solid #E2E8F0; background:#FFFFFF; color:#1E293B;
+  transition:border-color .18s, color .18s, transform .25s cubic-bezier(0.16,1,0.3,1);
+}
+@media (hover: hover) { .footer-social a:where(:not([class])):hover { border-color:#1877F2; color:#1877F2; transform:translateY(-2px); } }
+.footer-social a:where(:not([class])):active { transform:translateY(0) scale(0.92); transition:transform 0.1s cubic-bezier(0.4,0,0.2,1); }
+
+.footer-head {
+  font-family:'Sora', 'Sora Fallback', sans-serif; font-size:12px; font-weight:700;
+  letter-spacing:.09em; text-transform:uppercase; color:#0F172A; margin-bottom:1.1rem;
+}
+.footer-col a {
+  display:block; font-size:14.5px; color:#64748B;
+  text-decoration:none; margin-bottom:.8rem; transition:color .15s;
+}
+@media (hover: hover) { .footer-col a:hover { color:#1560FF; } }
+
+.footer-contact address {
+  font-style: normal; font-size: 14.5px; color: #64748B;
+  line-height: 1.75; margin-bottom: 1rem;
+}
+/* Same family and size as the links above it, just weighted up. */
+/* 44px tall so it meets the touch-target minimum; the extra height is
+   taken out of the margin so the column keeps its rhythm. */
+.footer-phone {
+  display: flex; align-items: center; min-height: 44px; font-size: 15.5px; font-weight: 700;
+  color: #0F172A; text-decoration: none; margin: -0.6rem 0 0.4rem;
+  transition: color .15s;
+}
+@media (hover: hover) { .footer-phone:hover { color: #1560FF; } }
+.footer-hours { font-size: 14px; color: #94A3B8; line-height: 1.75; }
+
+/* Computer Repairs by Suburb: a full-width row under the four columns rather
+   than a fifth column. The four-column grid above is deliberately balanced,
+   and a column that grows to eighteen links would make the footer far taller
+   than everything beside it. A wrapping row takes any number of suburbs. */
+.footer-areas {
+  max-width: 1100px; margin: 2.5rem auto 0; padding-top: 2rem;
+  border-top: 1px solid #E2E8F0;
+}
+.footer-areas-list { display: flex; flex-wrap: wrap; gap: .25rem 1.6rem; }
+.footer-area-link {
+  font-size: 14.5px; color: #64748B; text-decoration: none;
+  padding: .3rem 0; transition: color .15s;
+}
+@media (hover: hover) { .footer-area-link:hover { color: #1560FF; } }
+.footer-area-link:focus-visible { outline: 2px solid #1560FF; outline-offset: 3px; border-radius: 3px; }
+/* The suburb page you are on, shown as where you are rather than a link out. */
+.footer-area-link[aria-current="page"] { color: #0F172A; font-weight: 700; }
+/* The bar already has its own top rule, so it sits closer under the row. */
+.footer-areas + .footer-bar { margin-top: 2rem; }
+
+.footer-bar {
+  max-width:1100px; margin:3.25rem auto 0; padding:1.5rem 0 2rem;
+  border-top:1px solid #E2E8F0;
+  display:flex; justify-content:space-between; align-items:center;
+  gap:1rem; flex-wrap:wrap;
+}
+.footer-copy, .footer-note { font-size:13px; color:#94A3B8; }
+
+/* Previously this dropped to three columns and pushed Visit or Call onto a
+   second row spanning columns 2 and 3. Because the brand column is the tallest,
+   that left a large empty block under the two link columns. Staying at four
+   columns with a tighter gap keeps everything on one row instead. */
+/* Tablets: four columns became too narrow once the Repairs column carried
+   the nine service names, which wrapped onto two and three lines. The brand
+   block now spans the top and the three link and contact columns sit
+   beneath it, so nothing wraps and no column is left with an empty block. */
+@media (max-width: 1000px) {
+  .footer-inner { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem 1.5rem; }
+  .footer-brand { grid-column: 1 / -1; }
+  .footer-blurb { max-width: 36rem; }
+}
+
+@media (max-width: 760px) {
+  footer { padding: 2.25rem 1.5rem 0; }
+  /* Brand across the top, the two link columns side by side beneath it, then
+     contact across the bottom. Both link columns are kept: they are the only
+     internal links to Pricing, Business IT, Tech Tips and Reviews from this
+     part of the page, and the site needs the internal linking.
+     The blurb is dropped instead. It repeats the hero almost word for word,
+     and on a phone it was the single tallest thing in the footer. */
+  .footer-inner { grid-template-columns: 1fr 1fr; gap: 1.35rem 1.25rem; }
+  .footer-blurb { display: none; }
+
+  /* Logo and the social button share one row instead of stacking, which is
+     worth about 45px on its own. No markup change: the four children are
+     placed explicitly. */
+  .footer-brand { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr auto; align-items: center; column-gap: 1rem; }
+  .footer-logo { grid-column: 1; grid-row: 1; margin-bottom: 0; }
+  .footer-social { grid-column: 2; grid-row: 1; margin-top: 0; }
+  .footer-tag { grid-column: 1 / -1; grid-row: 2; font-size: 14.5px; line-height: 1.5; margin: .7rem 0 0; }
+  .footer-social a:where(:not([class])) { width: 44px; height: 44px; border-radius: 12px; }
+
+  .footer-head { margin-bottom: .6rem; }
+  /* Phone tap targets: each link a full 44px row instead of a 22px line. */
+  .footer-col a { display: flex; align-items: center; min-height: 44px; margin-bottom: 0; }
+
+  /* Address and opening hours sit side by side rather than one under the
+     other. Nothing is dropped, it is the same five lines in two columns. */
+  .footer-contact { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; column-gap: 1.25rem; row-gap: .5rem; }
+  .footer-contact .footer-head { grid-column: 1 / -1; }
+  .footer-contact address { grid-column: 1; grid-row: 2; margin: 0; }
+  .footer-hours { grid-column: 2; grid-row: 2; margin: 0; }
+  .footer-phone { grid-column: 1 / -1; grid-row: 3; margin: 0; }
+
+  .footer-areas { margin-top: 1.5rem; padding-top: 1.25rem; }
+  .footer-areas .footer-head { margin-bottom: .35rem; }
+  .footer-areas-list { gap: 0 1.25rem; }
+  .footer-area-link { display: inline-flex; align-items: center; min-height: 44px; padding: 0; }
+  .footer-bar { margin-top: 1.35rem; padding: .85rem 0 1.25rem; }
+  /* Matches the base rule's two-class weight, or the desktop gap wins here. */
+  .footer-areas + .footer-bar { margin-top: 1.1rem; }
+}
+
+@media (max-width: 420px) {
+  footer { padding: 2rem 1.25rem 0; }
+  .footer-inner { gap: 1.35rem 1rem; }
+  .footer-tag { font-size: 14.5px; }
+  .footer-col a { font-size: 14px; }
+  .footer-area-link { font-size: 14px; }
+  .footer-contact address, .footer-hours { display: block; margin-right: 0; }
+  .footer-phone { margin-right: 0; }
+  .footer-bar { flex-direction: column; align-items: flex-start; gap: .35rem; margin-top: 1.5rem; padding-bottom: 1.25rem; }
+  .footer-copy, .footer-note { font-size: 12px; }
+}
+
+/* Reduced motion for the header and footer chrome. Previously only the
+   scroll-driven nav condense checked for this; every hover lift and press
+   scale added above needs the same courtesy. Kept as short opacity/color
+   feedback rather than silence. */
+@media (prefers-reduced-motion: reduce) {
+  .nav-logo:hover .logo-mark, .nav-logo:active .logo-mark,
+  .nav-pill:hover, .nav-pill:active,
+  .mob-hamburger:active,
+  .mob-link:hover, .mob-link:active,
+  .sticky-cta a:active,
+  .wa-bubble:hover, .wa-bubble:active, .nav-cta:hover, .nav-cta:active,
+  .footer-social a:where(:not([class])):hover, .footer-social a:where(:not([class])):active {
+    transform:none;
+  }
+  .mob-menu {
+    transform:none;
+    backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+    transition:opacity 0.15s ease, visibility 0s linear 0.15s;
+  }
+  .mob-menu.open { transform:none; transition:opacity 0.15s ease; }
+}
+
+/* Reduced transparency. Every translucent surface here goes solid and drops
+   its blur. The backgrounds were already 0.88-0.97 alpha, so going opaque
+   barely changes the look but removes the blur cost and the see-through. */
+@media (prefers-reduced-transparency: reduce) {
+  .desk-nav, .mob-nav, .mob-menu, .sticky-cta {
+    background:#FFFFFF;
+    backdrop-filter:none;
+    -webkit-backdrop-filter:none;
+  }
+  .mob-menu.open { backdrop-filter:none; -webkit-backdrop-filter:none; }
+}
+
+/* High contrast. Near-solid backgrounds with a defined, contrasting border,
+   and the muted greys darkened to carry real contrast against the footer's
+   light background. */
+@media (prefers-contrast: more) {
+  .desk-nav, .mob-nav, .mob-menu, .sticky-cta {
+    background:#FFFFFF;
+    backdrop-filter:none;
+    -webkit-backdrop-filter:none;
+    border-bottom:1px solid #0F172A;
+  }
+  .sticky-cta { border-bottom:0; border-top:1px solid #0F172A; }
+  .mob-menu.open { backdrop-filter:none; -webkit-backdrop-filter:none; }
+  .pill-ghost { border-color:#0F172A; }
+  .footer-col a, .footer-area-link, .footer-contact address, .footer-copy, .footer-note { color:#334155; }
+  .footer-hours { color:#475569; }
+  .footer-social a:where(:not([class])) { border-color:#0F172A; }
+}
+
+/* The grey iOS tap flash paints over the press-scale feedback defined above,
+   so the two fight each other. Suppressed on the chrome's tappable elements;
+   the scale and colour change are the feedback now. */
+.nav-pill, .nav-logo, .mob-link, .mob-hamburger,
+.sticky-cta a, .wa-bubble, .nav-cta, .footer-social a:where(:not([class])), .footer-phone, .footer-col a, .footer-area-link {
+  -webkit-tap-highlight-color:transparent;
+}
+
+/* ==========================================================
+   Page scrollbar
+   Lives here rather than in the page stylesheets because it is
+   browser chrome: it should look the same on every page, and
+   it did not. index, business-it and industry each carried
+   their own copy; pricing, legal and quote had none at all,
+   so those three showed the default grey bar.
+
+   Firefox ignores ::-webkit-scrollbar entirely, so the
+   standard scrollbar-color and scrollbar-width are set too.
+   Neither was anywhere on the site before.
+   ========================================================== */
+html {
+  /* Stops iOS enlarging body text when the phone is turned to landscape. */
+  -webkit-text-size-adjust: 100%; text-size-adjust: 100%;
+  scrollbar-width: thin;
+  scrollbar-color: #1560FF #F8FAFC;
+}
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: #F8FAFC; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #1560FF 0%, #0A3ACC 100%);
+  border-radius: 10px;
+  border: 2px solid #F8FAFC;
+}
+@media (hover: hover) { ::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #0A3ACC 0%, #1560FF 100%);
+} }
+::-webkit-scrollbar-corner { background: #F8FAFC; }

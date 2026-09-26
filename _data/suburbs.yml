@@ -1,0 +1,90 @@
+# ----------------------------------------------------------
+# suburbs.yml
+# The suburb cluster. One row per suburb the site claims to
+# cover, matching the 18 pills in the homepage areas grid.
+#
+# built: true means the page exists at /suburbs/<slug>.
+# Pages only link to siblings marked built, so the cluster
+# never ships links to 404s and no page has to be edited by
+# hand when the next one lands. Flip the flag, every page
+# picks it up on the next build.
+#
+# drive_min and drive_km are the trip from the Canning Vale
+# workshop. Verify each against Google Maps before flipping
+# built to true; these are checkable claims on the page.
+# ----------------------------------------------------------
+
+# The suburb list that used to sit here has been removed. Nothing read it:
+# suburb pages are found automatically by _layouts/suburb.html and
+# _includes/footer.html, which look for any page using the suburb layout.
+# Adding a suburb page is the whole job. The list of suburbs still to
+# build lives in STATUS.md at the repo root.
+
+# kind: service marks the nine service pages. The homepage "Explore our
+# services" row, the footer and /services list only those; the suburb
+# pages list all. Listed in order of search demand (Search Console, 16
+# months), since every list of them follows this order. summary is the
+# one line shown on /services; it must not type a price. from_key is the
+# services.yml key whose price /services shows as "From ...": the lowest
+# core repair on that page, never an add-on.
+service_links:
+  - slug: laptop-repair-perth
+    kind: service
+    from_key: laptop-battery-replacement
+    label: "Laptop repair"
+    summary: "Batteries, charging ports, keyboards, hinges, blue screens, SSDs and spills on Windows laptops."
+    built: true
+  - slug: virus-removal-perth
+    kind: service
+    from_key: virus-malware-removal
+    label: "Virus removal"
+    summary: "Viruses, pop-ups, scam callers, hacked accounts and ransomware, cleaned up and protected."
+    built: true
+  - slug: data-recovery-perth
+    kind: service
+    from_key: external-drive-usb-recovery
+    label: "Data recovery"
+    summary: "Files back from failing and dead hard drives, SSDs, external drives, USB sticks and memory cards."
+    built: true
+  - slug: laptop-screen-repair-perth
+    kind: service
+    from_key: screen-flicker-or-line-repair
+    label: "Laptop screen repair"
+    summary: "Cracked, black, flickering and touchscreen laptop screens, panel and labour included."
+    built: true
+  - slug: slow-computer-repair-perth
+    kind: service
+    from_key: basic-tune-up
+    label: "Slow computer repair"
+    summary: "Tune ups, deep cleans and the fixes that make a slow computer fast again."
+    built: true
+  - slug: windows-reinstall-perth
+    kind: service
+    from_key: windows-reinstall-data-backup
+    label: "Windows reinstall"
+    summary: "Windows reinstalls and repairs, stuck updates, and Windows 11 upgrades, files backed up first."
+    built: true
+  - slug: gaming-pc-build-perth
+    kind: service
+    from_key: cpu-thermal-paste-replacement
+    label: "Gaming PC repair and builds"
+    summary: "Gaming PCs that crash, stutter or overheat, plus custom PC assembly, upgrades and tuning."
+    built: true
+  - slug: computer-upgrades-perth
+    kind: service
+    from_key: ram-upgrade-labour-only
+    label: "Computer upgrades"
+    summary: "SSD, RAM, graphics card and cooling upgrades, fitted, set up and tested."
+    built: true
+  - slug: computer-wont-turn-on-perth
+    kind: service
+    from_key: diagnostic-repair-all-in
+    label: "Computer won't turn on"
+    summary: "No power, no picture, or stuck before Windows starts, on desktops and laptops."
+    built: true
+  - slug: pc-health-check-perth
+    label: Free health check
+    built: true
+  - slug: pricing
+    label: Full pricing
+    built: true

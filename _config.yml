@@ -1,0 +1,27 @@
+title: FixMyPC Perth
+description: Computer and laptop repair in Canning Vale, Perth.
+
+# Jekyll's default permalink style keeps page.html serving at /page with
+# no trailing slash, which is what Google has indexed. Do not change it.
+
+plugins: []
+
+# The one reply-time promise. Every page that states how fast we reply
+# reads it from here, so the quote card and the closing CTA cannot drift
+# apart again (they said "within the hour" and "within 2 hours").
+reply_time: within 2 hours
+
+# staging: true on staging.fixmypcperth.com, false on the live site. It is
+# the one switch between them: true makes robots.txt block every crawler
+# and adds noindex to every page, so staging can never be indexed. Set it
+# to false at launch (LAUNCH.md step 3), along with the CNAME file.
+staging: false
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - CHECKLIST.md
+  - STATUS.md
+  - LAUNCH.md
+  - .github

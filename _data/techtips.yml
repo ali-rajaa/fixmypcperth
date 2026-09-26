@@ -1,0 +1,113 @@
+# Tech Tips post index.
+# Drives /tech-tips. Jekyll renders real anchors from this at build time;
+# the old blog built its list in JavaScript, so no post link was crawlable.
+#
+# EDITORIAL RULE FOR EVERY POST HERE:
+# explain what a symptom means, how urgent it is and what it costs.
+# Never explain how to fix it. No tool names to download, no settings to
+# change, no steps to follow. A reader who is walked through the repair does
+# not book, and on a failing drive the DIY attempt usually destroys data that
+# was still recoverable.
+#
+# REMOVED: how-to-fix-a-slow-computer. It was the explicit DIY guide (10
+# self-fix steps) and it targeted the same query as why-is-my-pc-so-slow,
+# so the two competed for the same rankings. Needs a 301 to
+# /tech-tips/why-is-my-pc-so-slow.
+#
+# MERGED: data-recovery-perth-guide. It targeted "data recovery Perth",
+# the data recovery service page's own keyword, so the two would compete.
+# Its content folds into signs-hard-drive-failing. Needs a 301 to
+# /tech-tips/signs-hard-drive-failing.
+#
+# EDITORIAL RULE, tightened: a guide never helps the reader diagnose their
+# own machine. It explains what a cause is, how urgent it is and what it
+# costs. No signs that tell one cause from another, no checks, no steps.
+
+meta:
+  base: /tech-tips
+# built: true means the page exists at /tech-tips/<slug>. The hub lists
+# every post here whether or not it is built.
+#
+# related: the three guides shown under "More Tech Tips" at the foot of
+# this guide, in order. Chosen by topic, not date, so every guide is linked
+# from at least two others (by date the oldest guide was never linked from
+# any). Without it the layout falls back to the three newest guides.
+posts:
+- slug: why-is-my-pc-so-slow
+  title: Why Is My PC So Slow? The 7 Real Causes
+  excerpt: The seven real reasons a PC slows down, how urgent each one is, and what each costs to fix
+    in Perth. Most are cheaper than a new computer.
+  category: Speed & Performance
+  date: '2026-05-21'
+  read_min: 7
+  featured: true
+  built: true
+  related:
+    - how-to-tell-if-pc-has-virus
+    - signs-hard-drive-failing
+    - ssd-upgrade-perth-guide
+- slug: how-to-tell-if-pc-has-virus
+  title: 9 Signs Your PC Has a Virus (And What It Costs)
+  excerpt: The nine warning signs of an infection, what each one means about how deep it has gone, and
+    what removal costs in Perth.
+  category: Virus & Security
+  date: '2026-05-10'
+  read_min: 8
+  featured: false
+  built: true
+  related:
+    - why-is-my-pc-so-slow
+    - how-much-does-pc-repair-cost-perth
+    - signs-hard-drive-failing
+- slug: signs-hard-drive-failing
+  title: 5 Signs Your Hard Drive Is Failing in Perth
+  excerpt: Drives rarely fail without warning. These are the five signs that come first, why each one
+    matters, and why waiting turns a repair into a recovery job.
+  category: Data Recovery
+  date: '2026-04-12'
+  read_min: 6
+  featured: false
+  built: true
+  related:
+    - ssd-upgrade-perth-guide
+    - why-is-my-pc-so-slow
+    - how-much-does-pc-repair-cost-perth
+- slug: how-much-does-pc-repair-cost-perth
+  title: How Much Does PC Repair Cost in Perth?
+  excerpt: Real Perth prices for the repairs people actually need, why hourly billing costs more than
+    it looks, and what our flat all-in fee covers.
+  category: Pricing & Advice
+  date: '2026-04-20'
+  read_min: 7
+  featured: false
+  built: true
+  related:
+    - why-is-my-pc-so-slow
+    - laptop-screen-replacement-physical-repairs
+    - how-to-tell-if-pc-has-virus
+- slug: ssd-upgrade-perth-guide
+  title: 'SSD Upgrade Guide: How Much Faster Is It Really?'
+  excerpt: Real before and after numbers on boot times and app loading, which machines are worth upgrading,
+    and what it costs fitted in Perth.
+  category: Upgrades
+  date: '2026-05-05'
+  read_min: 6
+  featured: false
+  built: true
+  related:
+    - why-is-my-pc-so-slow
+    - signs-hard-drive-failing
+    - laptop-screen-replacement-physical-repairs
+- slug: laptop-screen-replacement-physical-repairs
+  title: 'Cracked Laptop Screen: What It Costs and How Urgent It Is'
+  excerpt: What a cracked screen actually costs to replace, how panel type changes the price, and when
+    a damaged laptop is worth repairing rather than replacing.
+  category: Repairs
+  date: '2026-03-16'
+  read_min: 6
+  featured: false
+  built: true
+  related:
+    - how-much-does-pc-repair-cost-perth
+    - ssd-upgrade-perth-guide
+    - why-is-my-pc-so-slow

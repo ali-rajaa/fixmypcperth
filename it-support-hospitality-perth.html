@@ -1,443 +1,147 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-S0CW1QXBDY"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-S0CW1QXBDY');
-</script>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+---
+layout: default
+css: industry
+title: "IT Support for Cafes and Restaurants Perth | From [[business-it-essential]]/mo"
+description: "Managed IT support for Perth cafes, restaurants and bars. POS and EFTPOS uptime, separated payment networks and reliable venue wifi. From [[business-it-essential]] a month."
+---
+{%- comment -%}
+  Industry page, built on the allied-health pattern.
+  Shares assets/css/pages/industry.css with the whole cluster.
 
-<title>IT Support for Cafes and Restaurants Perth | FixMyPC Perth</title>
-<meta name="description" content="Managed IT support for Perth cafes, restaurants and hospitality businesses. Keep your POS system, EFTPOS and reservation software running. From $149 per month. No lock-in contracts.">
-<meta name="keywords" content="IT support cafes Perth, IT support restaurants Perth, POS system support Perth, hospitality IT support Perth, EFTPOS IT support Perth, managed IT hospitality Perth, computer support cafe Perth, business IT support Canning Vale">
+  Fixed from the live page: 27 broken ../ links (these pages sit at the site
+  root, so every one resolved above it), the "Why Perth <industry> Choose
+  FixMyPC Perth" and "problems we see in" claims (there are no clients in this
+  sector), "no obligation" phrasing, hardcoded plan prices now pulled from
+  _data/services.yml, and FAQ schema generated from the visible FAQ so the two
+  cannot drift apart.
 
-<link rel="canonical" href="https://www.fixmypcperth.com/it-support-hospitality-perth">
-<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
-<meta name="author" content="Ali Raja · FixMyPC Perth">
-
-<meta property="og:type" content="website">
-<meta property="og:locale" content="en_AU">
-<meta property="og:site_name" content="FixMyPC Perth">
-<meta property="og:title" content="IT Support for Cafes and Restaurants Perth | FixMyPC Perth">
-<meta property="og:description" content="Managed IT support for Perth cafes, restaurants and hospitality businesses. Keep your POS system, EFTPOS and reservation software running. From $149 per month. No lock-in contracts.">
-<meta property="og:url" content="https://www.fixmypcperth.com/it-support-hospitality-perth">
-<meta property="og:image" content="https://fixmypcperth.com/facebook-cover.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="geo.region" content="AU-WA">
-<meta name="geo.placename" content="Canning Vale, Perth, Western Australia">
-<link rel="icon" type="image/png" href="../favicon.png">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+  Added: the compliance section, and an on-page audit form so the CTAs stop
+  sending people to the hub to convert. No WhatsApp route on these pages.
+{%- endcomment -%}
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@graph": [
+  "@type": "Service",
+  "@id": "https://www.fixmypcperth.com/it-support-hospitality-perth#service",
+  "serviceType": "Managed IT Support for Hospitality Venues",
+  "name": "IT Support for Cafes, Restaurants and Bars in Perth",
+  "description": "Managed IT support for Perth hospitality venues. POS and EFTPOS reliability, payment network separation, venue wifi and back office systems.",
+  "url": "https://www.fixmypcperth.com/it-support-hospitality-perth",
+  "provider": {
+    "@type": "LocalBusiness",
+    "@id": "https://www.fixmypcperth.com/#business",
+    "name": "FixMyPC Perth",
+    "telephone": "+61452573701",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "7 Barraberry Retreat",
+      "addressLocality": "Canning Vale",
+      "addressRegion": "WA",
+      "postalCode": "6155",
+      "addressCountry": "AU"
+    },
+    "geo": { "@type": "GeoCoordinates", "latitude": -32.0697802, "longitude": 115.9245929 }
+  },
+  "areaServed": [
+    {"@type": "City", "name": "Perth"},
+    {"@type": "AdministrativeArea", "name": "Canning Vale"},
+    {"@type": "AdministrativeArea", "name": "Willetton"},
+    {"@type": "AdministrativeArea", "name": "Thornlie"},
+    {"@type": "AdministrativeArea", "name": "Cannington"},
+    {"@type": "AdministrativeArea", "name": "Jandakot"},
+    {"@type": "AdministrativeArea", "name": "Cockburn"},
+    {"@type": "AdministrativeArea", "name": "Harrisdale"},
+    {"@type": "AdministrativeArea", "name": "Huntingdale"}
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Managed IT Support Plans",
+    "itemListElement": [
+      {%- assign first = true -%}
+      {%- for pl in site.data.services.plans -%}
+      {%- unless first %},{% endunless %}{%- assign first = false -%}
+      {
+        "@type": "Offer",
+        "name": {{ pl.name | append: " managed IT plan" | jsonify }},
+        "description": {{ pl.covers | jsonify }},
+        "price": "{{ pl.price }}",
+        "priceCurrency": "{{ site.data.services.meta.currency }}",
+        "availability": "https://schema.org/InStock",
+        "seller": {"@id": "https://www.fixmypcperth.com/#business"}
+      }
+      {%- endfor -%}
+    ]
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.fixmypcperth.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Business IT Support", "item": "https://www.fixmypcperth.com/business-it-support"},
+    {"@type": "ListItem", "position": 3, "name": "Cafes and Restaurants", "item": "https://www.fixmypcperth.com/it-support-hospitality-perth"}
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
     {
-      "@type": "WebPage",
-      "name": "IT Support for Cafes and Restaurants Perth",
-      "description": "Managed IT support for Perth cafes, restaurants and hospitality businesses. Keep your POS system, EFTPOS and reservation software running. From $149 per month. No lock-in contracts.",
-      "url": "https://www.fixmypcperth.com/it-support-hospitality-perth",
-      "breadcrumb": {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.fixmypcperth.com" },
-          { "@type": "ListItem", "position": 2, "name": "Business IT Support", "item": "https://www.fixmypcperth.com/business-it-support" },
-          { "@type": "ListItem", "position": 3, "name": "IT Support for Cafes and Restaurants Perth", "item": "https://www.fixmypcperth.com/it-support-hospitality-perth" }
-        ]
+      "@type": "Question",
+      "name": "What IT support do cafes and restaurants in Perth need?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Cafes, restaurants and hospitality businesses in Perth typically need IT support for point-of-sale systems such as Square, Lightspeed, Kounta and Impos, EFTPOS and payment terminal connectivity, reservation and booking platforms such as ResDiary and OpenTable, kitchen display systems, back-office computers handling payroll and supplier invoices, and the wifi network that every one of these systems depends on. FixMyPC Perth covers all of these under a single fixed monthly plan with no lock-in contracts."
       }
     },
     {
-      "@type": "LocalBusiness",
-      "name": "FixMyPC Perth",
-      "description": "Perth IT support specialist for cafes, restaurants and hospitality businesses. Managed IT for POS systems, EFTPOS, reservation platforms, kitchen display systems and back-office computers. Same day service from $149 per month.",
-      "url": "https://www.fixmypcperth.com",
-      "telephone": "+61452573701",
-      "priceRange": "$$",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "7 Barraberry Retreat",
-        "addressLocality": "Canning Vale",
-        "addressRegion": "WA",
-        "postalCode": "6155",
-        "addressCountry": "AU"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": -32.0742,
-        "longitude": 115.9239
-      },
-      "areaServed": [
-        "Canning Vale","Cockburn","Willetton","Thornlie","Gosnells",
-        "Armadale","Jandakot","Harrisdale","Atwell","Cannington"
-      ]
+      "@type": "Question",
+      "name": "How much does IT support for a cafe or restaurant cost in Perth?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Managed IT support for hospitality businesses starts from {% include price.html key='business-it-essential' bare=true raw=true %} per month base plus {% include price.html key='business-it-essential' extra=true raw=true %} per device per month on the Essential plan covering up to 5 devices. The Business plan is {% include price.html key='business-it-business' bare=true raw=true %} base plus {% include price.html key='business-it-business' extra=true raw=true %} per device for up to 10 devices. The Premium plan is {% include price.html key='business-it-premium' bare=true raw=true %} base plus {% include price.html key='business-it-premium' extra=true raw=true %} per device for up to 20 devices. All plans are month to month with no lock-in contracts and include unlimited remote support available seven days a week, managed antivirus, cloud backup and scheduled onsite visits timed around your service hours."
+      }
     },
     {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What IT support do cafes and restaurants in Perth need?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Cafes, restaurants and hospitality businesses in Perth typically need IT support for point-of-sale systems such as Square, Lightspeed, Kounta and Impos, EFTPOS and payment terminal connectivity, reservation and booking platforms such as ResDiary and OpenTable, kitchen display systems, back-office accounting software, and the wifi network that every one of these systems depends on. FixMyPC Perth covers all of these under a single fixed monthly plan with no lock-in contracts."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How much does IT support for a cafe or restaurant cost in Perth?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Managed IT support for hospitality businesses starts from $149 per month base plus $35 per device per month on the Essential plan covering up to 5 devices. The Business plan is $199 base plus $45 per device for up to 10 devices. The Premium plan is $299 base plus $60 per device for up to 20 devices. All plans are month to month with no lock-in contracts and include unlimited remote support, managed antivirus and scheduled onsite visits."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can you support Square, Lightspeed and other POS systems used by Perth hospitality businesses?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. FixMyPC Perth supports all major POS platforms used by Perth cafes and restaurants including Square, Lightspeed, Kounta, Impos, TouchBistro and H&L. We handle device configuration, network setup, connectivity troubleshooting and ongoing maintenance so that your front-of-house and kitchen systems stay operational during service."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What happens if our POS or EFTPOS system goes down during a busy service period?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Business and Premium plan clients receive priority remote support with most connectivity and software issues resolved within the hour. Premium clients receive a guaranteed same day onsite response within 4 hours for emergencies. For a cafe or restaurant, a POS or EFTPOS failure during a Saturday morning service or a Friday dinner sitting means lost revenue and frustrated customers in real time. Fast response during service hours is built into every plan we offer for exactly this reason."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Do you offer onsite IT support for hospitality businesses in southern Perth?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. All managed IT plans include scheduled onsite visits at no additional travel charge for hospitality businesses in southern Perth suburbs including Canning Vale, Cockburn, Jandakot, Harrisdale, Armadale, Gosnells, Thornlie and Willetton. Remote support is available for issues that can be resolved without a site visit, which covers the majority of POS and connectivity problems we see."
-          }
-        }
-      ]
+      "@type": "Question",
+      "name": "Can you support Square, Lightspeed and other POS systems used by Perth venues?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. FixMyPC Perth supports all major POS platforms used by Perth cafes and restaurants including Square, Lightspeed, Kounta, Impos, TouchBistro and H&L. We manage the devices and network environment your POS runs on, handle operating system and firmware updates to prevent conflicts, and troubleshoot connectivity issues so your front-of-house and kitchen systems stay operational throughout service."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens if our POS or EFTPOS system goes down during a busy service?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Business and Premium plan clients receive priority remote support with most connectivity and software issues resolved within the hour. This applies on weekends and public holidays as much as it does on weekday afternoons. For a cafe or restaurant, a POS or EFTPOS failure during a busy service means lost revenue and frustrated customers in real time. Fast response during service hours is a genuine commitment in every plan we offer, not a business-hours caveat."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you offer onsite IT support for hospitality businesses in southern Perth?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. All managed IT plans include scheduled onsite visits at no additional travel charge for venues in southern Perth suburbs including Canning Vale, Cockburn, Jandakot, Harrisdale, Armadale, Gosnells, Thornlie and Willetton. Visits are scheduled around your service times so we are not arriving during a busy sitting. Remote support handles the majority of issues without needing a site visit at all."
+      }
     }
   ]
 }
 </script>
 
-<style>
-:root {
-  --blue:      #1560FF;
-  --blue-lt:   #EEF3FF;
-  --blue-mid:  #C7D8FF;
-  --blue-dk:   #0A3ACC;
-  --teal:      #00CFFF;
-  --ink:       #0F172A;
-  --ink2:      #1E293B;
-  --muted:     #64748B;
-  --muted2:    #94A3B8;
-  --border:    #E2E8F0;
-  --border2:   #CBD5E1;
-  --bg:        #FFFFFF;
-  --bg2:       #F8FAFC;
-  --bg3:       #F1F5F9;
-  --green:     #16A34A;
-  --wa:        #22C55E;
-  --wa-dk:     #16A34A;
-  --display:   'Sora', sans-serif;
-  --body:      'DM Sans', sans-serif;
-  --nav-h:     64px;
-  --mob-nav-h: 60px;
-}
-
-*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
-
-::-webkit-scrollbar { width: 10px; }
-::-webkit-scrollbar-track { background: var(--bg2); }
-::-webkit-scrollbar-thumb { background: linear-gradient(180deg, var(--blue) 0%, var(--blue-dk) 100%); border-radius: 10px; border: 2px solid var(--bg2); }
-::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, var(--blue-dk) 0%, var(--blue) 100%); }
-
-body {
-  background: var(--bg);
-  color: var(--ink);
-  font-family: var(--body);
-  font-size: 16px;
-  line-height: 1.7;
-  overflow-x: hidden;
-}
-
-img { display: block; max-width: 100%; }
-a { color: inherit; }
-
-.desk-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0 2rem; height: var(--nav-h);
-  background: rgba(255,255,255,0.88);
-  backdrop-filter: blur(30px) saturate(200%);
-  -webkit-backdrop-filter: blur(30px) saturate(200%);
-  border-bottom: 1px solid rgba(226,232,240,0.5);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.05);
-}
-.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
-.logo-mark { width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-.logo-mark img { width: 100%; height: 100%; object-fit: contain; }
-.logo-name { font-family: var(--display); font-size: 16px; font-weight: 700; color: var(--ink); letter-spacing: -0.3px; white-space: nowrap; }
-.logo-name em { color: var(--blue); font-style: normal; }
-.nav-right { display: flex; align-items: center; gap: 8px; }
-.nav-pill { display: inline-flex; align-items: center; gap: 6px; font-family: var(--body); font-size: 13px; font-weight: 600; padding: 9px 18px; border-radius: 50px; text-decoration: none; border: none; cursor: pointer; transition: transform 0.15s, opacity 0.15s; white-space: nowrap; }
-.nav-pill:hover { transform: translateY(-1px); opacity: 0.92; }
-.pill-ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--border2); padding: 8px 16px; }
-.pill-ghost:hover { border-color: var(--blue); color: var(--blue); transform: none; opacity: 1; }
-.pill-active { background: var(--blue-lt); color: var(--blue); border: 1.5px solid var(--blue-mid); }
-
-.mob-nav {
-  display: none; position: fixed; top: 0; left: 0; right: 0; z-index: 300;
-  height: var(--mob-nav-h); background: rgba(255,255,255,0.97);
-  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1.5px solid var(--border); padding: 0 1.25rem;
-  align-items: center; justify-content: space-between;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.07);
-}
-.mob-hamburger {
-  display: flex; flex-direction: column; justify-content: center; align-items: center;
-  gap: 5px; width: 42px; height: 42px;
-  background: var(--bg3); border: 1.5px solid var(--border2);
-  border-radius: 10px; cursor: pointer; flex-shrink: 0;
-  transition: background 0.15s, border-color 0.15s;
-}
-.mob-hamburger:hover { background: var(--blue-lt); border-color: var(--blue-mid); }
-.mob-hamburger span { display: block; width: 16px; height: 2px; background: var(--ink); border-radius: 2px; transition: transform 0.3s ease, opacity 0.3s ease; }
-.mob-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.mob-hamburger.open span:nth-child(2) { opacity: 0; }
-.mob-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-.mob-menu {
-  display: none; position: fixed; top: var(--mob-nav-h); left: 0; right: 0; z-index: 299;
-  background: rgba(255,255,255,0.98); backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px); border-bottom: 1.5px solid var(--border);
-  padding: 0.75rem 1.25rem 1.5rem; flex-direction: column; gap: 4px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.1); border-radius: 0 0 20px 20px;
-}
-.mob-menu.open { display: flex; }
-.mob-link { font-family: var(--body); font-size: 15px; font-weight: 600; color: var(--ink); text-decoration: none; padding: 0.9rem 1rem; border-radius: 10px; display: block; transition: background 0.15s, color 0.15s; }
-.mob-link:hover { background: var(--blue-lt); color: var(--blue); }
-
-.article-wrap {
-  max-width: 740px;
-  margin: 0 auto;
-  padding: calc(var(--nav-h) + 40px) 2rem 5rem;
-}
-
-.post-breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--muted2); margin-bottom: 1.25rem; }
-.post-breadcrumb a { color: var(--blue); text-decoration: none; font-weight: 600; }
-.post-breadcrumb a:hover { text-decoration: underline; }
-.post-cat { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue); background: var(--blue-lt); border: 1px solid var(--blue-mid); padding: 4px 12px; border-radius: 50px; margin-bottom: 1rem; }
-.post-h1 { font-family: var(--display); font-size: clamp(1.8rem, 4vw, 2.7rem); font-weight: 800; letter-spacing: -1.5px; color: var(--ink); line-height: 1.1; margin-bottom: 1rem; }
-.post-meta { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; font-size: 13px; color: var(--muted2); font-weight: 500; padding-bottom: 1.5rem; border-bottom: 1.5px solid var(--border); margin-bottom: 2rem; }
-.post-meta-author { color: var(--ink); font-weight: 700; }
-
-.post-body { font-size: 16px; color: var(--ink2); line-height: 1.85; }
-.post-body p { margin-bottom: 1.35rem; }
-.post-body h2 { font-family: var(--display); font-size: 1.45rem; font-weight: 800; color: var(--ink); letter-spacing: -0.5px; margin: 2.75rem 0 0.8rem; border-top: 1px solid var(--border); padding-top: 1.5rem; }
-.post-body strong { color: var(--ink); font-weight: 700; }
-.post-body a { color: var(--blue); text-decoration: underline; }
-.post-body a:hover { color: var(--blue-dk); }
-
-.callout { background: var(--blue-lt); border: 1.5px solid var(--blue-mid); border-left: 4px solid var(--blue); border-radius: 12px; padding: 1.25rem 1.5rem; margin: 1.75rem 0; font-size: 14.5px; color: var(--ink2); line-height: 1.75; }
-.callout strong { color: var(--blue); }
-.callout-green { background: #F0FDF4; border-color: #BBF7D0; border-left-color: var(--wa); }
-.callout-green strong { color: var(--green); }
-.callout-amber { background: #FFFBEB; border-color: #FDE68A; border-left-color: #D97706; }
-.callout-amber strong { color: #92400E; }
-
-.summary-box {
-  background: var(--ink); border-radius: 16px; padding: 1.5rem 1.75rem;
-  margin: 0 0 2.5rem; position: relative; overflow: hidden;
-}
-.summary-box::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--blue), var(--teal), var(--wa)); }
-.summary-box-title { font-family: var(--display); font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); margin-bottom: 0.75rem; }
-.summary-box ul { padding-left: 0; list-style: none; }
-.summary-box ul li { font-size: 13.5px; color: rgba(255,255,255,0.78); padding: 0.3rem 0; display: flex; align-items: center; gap: 8px; }
-.summary-box ul li::before { content: ''; width: 5px; height: 5px; background: var(--teal); border-radius: 50%; flex-shrink: 0; }
-
-.stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 1.75rem 0; }
-.stat-box { background: var(--bg2); border: 1.5px solid var(--border); border-radius: 12px; padding: 1rem; text-align: center; }
-.stat-val { font-family: var(--display); font-size: 2rem; font-weight: 800; color: var(--blue); letter-spacing: -1px; display: block; }
-.stat-lbl { font-size: 11.5px; color: var(--muted); font-weight: 500; margin-top: 3px; display: block; }
-
-.coverage-list,
-.problem-list {
-  list-style: none;
-  padding: 0;
-  margin: 1.5rem 0 1.75rem;
-  display: flex;
-  flex-direction: column;
-  border: 1.5px solid var(--border);
-  border-radius: 14px;
-  overflow: hidden;
-}
-
-.coverage-item,
-.problem-item {
-  display: grid;
-  grid-template-columns: 260px 1fr;
-  border-bottom: 1px solid var(--border);
-}
-
-.coverage-item:last-child,
-.problem-item:last-child { border-bottom: none; }
-
-.coverage-label,
-.problem-label {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  padding: 1rem 1.25rem;
-  background: var(--bg2);
-  border-right: 1px solid var(--border);
-}
-
-.coverage-icon {
-  width: 22px; height: 22px; border-radius: 50%;
-  background: rgba(34,197,94,0.12); border: 1px solid rgba(34,197,94,0.3);
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0; font-size: 11px; color: var(--wa-dk); font-weight: 800; margin-top: 1px;
-}
-
-.problem-icon {
-  width: 22px; height: 22px; border-radius: 50%;
-  background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.25);
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0; font-size: 11px; color: #DC2626; font-weight: 800; margin-top: 1px;
-}
-
-.coverage-label-text,
-.problem-label-text { font-size: 14px; font-weight: 700; color: var(--ink); line-height: 1.45; }
-
-.coverage-desc,
-.problem-desc {
-  padding: 1rem 1.25rem; font-size: 14px;
-  color: var(--ink2); line-height: 1.65; background: var(--bg);
-}
-
-.inline-cta { background: var(--ink); border-radius: 16px; padding: 1.75rem 2rem; margin: 2.5rem 0; position: relative; overflow: hidden; }
-.inline-cta::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--blue), var(--teal), var(--wa)); }
-.inline-cta-title { font-family: var(--display); font-size: 1.15rem; font-weight: 800; color: #fff; margin-bottom: 0.4rem; letter-spacing: -0.3px; }
-.inline-cta-desc { font-size: 13.5px; color: rgba(255,255,255,0.52); margin-bottom: 1.25rem; line-height: 1.65; }
-.inline-cta-btns { display: flex; gap: 10px; flex-wrap: wrap; }
-.inline-cta-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--wa); color: #fff; font-family: var(--body); font-size: 14px; font-weight: 700; padding: 12px 22px; border-radius: 50px; text-decoration: none; box-shadow: 0 4px 14px rgba(34,197,94,0.4); transition: transform 0.15s; }
-.inline-cta-btn:hover { transform: translateY(-2px); }
-.inline-cta-btn-outline { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: rgba(255,255,255,0.75); font-family: var(--body); font-size: 14px; font-weight: 600; padding: 12px 22px; border-radius: 50px; text-decoration: none; border: 1.5px solid rgba(255,255,255,0.2); transition: border-color 0.15s, color 0.15s; }
-.inline-cta-btn-outline:hover { border-color: rgba(255,255,255,0.5); color: #fff; }
-
-.service-links { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 2rem 0; }
-.service-link-card { background: var(--bg2); border: 1.5px solid var(--border); border-radius: 12px; padding: 1rem 1.25rem; text-decoration: none; display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; transition: border-color 0.15s, background 0.15s; }
-.service-link-card:hover { border-color: var(--blue); background: var(--blue-lt); }
-.service-link-label { font-size: 13.5px; font-weight: 700; color: var(--ink); line-height: 1.35; }
-.service-link-price { font-size: 12px; color: var(--muted); font-weight: 500; white-space: nowrap; }
-.service-link-arrow { color: var(--blue); font-size: 16px; flex-shrink: 0; }
-
-.faq-section { margin: 3rem 0 0; }
-.faq-section-title { font-family: var(--display); font-size: 1.45rem; font-weight: 800; color: var(--ink); letter-spacing: -0.5px; margin-bottom: 1.25rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
-.faq-item { border: 1.5px solid var(--border); border-radius: 12px; margin-bottom: 10px; overflow: hidden; }
-.faq-question { width: 100%; text-align: left; font-family: var(--body); font-size: 15px; font-weight: 700; color: var(--ink); background: var(--bg2); padding: 1rem 1.25rem; border: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 1rem; transition: background 0.15s, color 0.15s; }
-.faq-question:hover { background: var(--blue-lt); color: var(--blue); }
-.faq-question[aria-expanded="true"] { background: var(--blue-lt); color: var(--blue); }
-.faq-icon { flex-shrink: 0; width: 22px; height: 22px; background: var(--border); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; transition: background 0.15s, transform 0.25s; }
-.faq-question[aria-expanded="true"] .faq-icon { background: var(--blue); color: #fff; transform: rotate(45deg); }
-.faq-answer { font-size: 14.5px; color: var(--ink2); line-height: 1.75; padding: 0 1.25rem; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; }
-.faq-answer.open { max-height: 400px; padding: 1rem 1.25rem 1.25rem; }
-
-.industry-links { display: flex; flex-wrap: wrap; gap: 10px; margin: 1.5rem 0; }
-.industry-pill { display: inline-flex; align-items: center; gap: 8px; background: var(--bg2); border: 1.5px solid var(--border); border-radius: 50px; padding: 0.55rem 1rem; text-decoration: none; font-size: 13px; font-weight: 700; color: var(--ink); transition: border-color 0.15s, background 0.15s, color 0.15s; }
-.industry-pill:hover { border-color: var(--blue); background: var(--blue-lt); color: var(--blue); }
-.industry-pill svg { flex-shrink: 0; color: var(--muted); transition: color 0.15s; }
-.industry-pill:hover svg { color: var(--blue); }
-
-.post-footer-nav { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 3rem; padding-top: 2rem; border-top: 1.5px solid var(--border); flex-wrap: wrap; }
-.post-footer-link { font-size: 13px; font-weight: 700; color: var(--blue); text-decoration: none; display: flex; align-items: center; gap: 4px; }
-.post-footer-link:hover { text-decoration: underline; }
-
-footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.75rem 2rem; }
-.footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
-.footer-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; flex-shrink: 0; }
-.footer-copy { font-size: 12px; color: var(--muted2); line-height: 1.6; }
-.footer-links { display: flex; gap: 1.25rem; }
-.footer-links a { font-size: 12px; color: var(--muted2); text-decoration: none; transition: color 0.15s; }
-.footer-links a:hover { color: var(--blue); }
-
-.wa-bubble { position: fixed; bottom: 24px; right: 24px; z-index: 9999; width: 58px; height: 58px; background: var(--wa); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(34,197,94,0.45); transition: transform 0.2s, box-shadow 0.2s; text-decoration: none; }
-.wa-bubble:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(34,197,94,0.55); }
-
-#scroll-bar { position: fixed; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #1560FF, #00CFFF, #22C55E); transform: scaleX(0); transform-origin: left; z-index: 99999; }
-
-@media (max-width: 720px) {
-  .desk-nav { display: none; }
-  .mob-nav { display: flex; }
-  body { padding-top: var(--mob-nav-h); }
-  .article-wrap { padding: 1.5rem 1.25rem 4rem; }
-  .post-h1 { font-size: clamp(1.55rem, 6.5vw, 2rem); letter-spacing: -1px; }
-  .stat-row { grid-template-columns: 1fr 1fr; }
-  .inline-cta { padding: 1.4rem 1.25rem; }
-  .inline-cta-btns { flex-direction: column; }
-  .inline-cta-btn, .inline-cta-btn-outline { width: 100%; justify-content: center; }
-  .service-links { grid-template-columns: 1fr; }
-  .coverage-item, .problem-item { grid-template-columns: 1fr; }
-  .coverage-label, .problem-label { border-right: none; border-bottom: 1px solid var(--border); }
-  .coverage-desc, .problem-desc { padding: 0.85rem 1.25rem; }
-  footer { padding: 1.5rem 1.25rem; }
-  .footer-inner { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
-  .wa-bubble { bottom: 20px; right: 16px; width: 52px; height: 52px; }
-}
-@media (max-width: 480px) {
-  .stat-row { grid-template-columns: 1fr; }
-  .stat-val { font-size: 1.75rem; }
-}
-</style>
-</head>
-<body>
-
-<div id="scroll-bar" aria-hidden="true"></div>
-
-<nav class="desk-nav" aria-label="Main navigation">
-  <a href="../index.html" class="nav-logo" aria-label="FixMyPC Perth Home">
-    <div class="logo-mark"><img src="../logo.png" alt="FixMyPC Perth" width="38" height="38" loading="lazy"></div>
-    <span class="logo-name">FixMyPC <em>Perth</em></span>
-  </a>
-  <div class="nav-right">
-    <a href="../pricing.html"             class="nav-pill pill-ghost">Pricing</a>
-    <a href="../business-it-support.html" class="nav-pill pill-active">Business IT Support</a>
-    <a href="../quiz.html"                class="nav-pill pill-ghost">Free Diagnostic</a>
-    <a href="../blog.html"                class="nav-pill pill-ghost">Tech Tips</a>
-    <a href="../reviews.html"             class="nav-pill pill-ghost">Reviews &amp; FAQ</a>
-  </div>
-</nav>
-
-<div class="mob-nav" role="navigation" aria-label="Mobile navigation">
-  <a href="../index.html" class="nav-logo" aria-label="FixMyPC Perth Home">
-    <div class="logo-mark"><img src="../logo.png" alt="FixMyPC Perth" width="38" height="38" loading="lazy"></div>
-    <span class="logo-name" style="font-size:14px">FixMyPC <em>Perth</em></span>
-  </a>
-  <button class="mob-hamburger" id="mob-hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mob-menu">
-    <span></span><span></span><span></span>
-  </button>
-</div>
-<div class="mob-menu" id="mob-menu" role="menu">
-  <a href="../pricing.html"             class="mob-link" role="menuitem">Pricing</a>
-  <a href="../business-it-support.html" class="mob-link" role="menuitem">Business IT Support</a>
-  <a href="../quiz.html"                class="mob-link" role="menuitem">Free PC Diagnostic</a>
-  <a href="../blog.html"                class="mob-link" role="menuitem">Tech Tips</a>
-  <a href="../reviews.html"             class="mob-link" role="menuitem">Reviews &amp; FAQ</a>
-</div>
-
 <div class="article-wrap">
 
   <div class="post-breadcrumb">
-    <a href="../business-it-support.html">Business IT Support</a>
+    <a href="/business-it-support">Business IT Support</a>
     <span>/</span>
     <span>Cafes &amp; Restaurants</span>
   </div>
@@ -446,11 +150,11 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
   <h1 class="post-h1">IT Support for Cafes and Restaurants in Perth</h1>
 
   <div class="post-meta">
-    <span class="post-meta-author">Ali Raja · FixMyPC Perth</span>
+    <span class="post-meta-author">FixMyPC Perth</span>
     <span>·</span>
     <span>Canning Vale, Perth WA</span>
     <span>·</span>
-    <span>From $149 per month</span>
+    <span>From {% include price.html key='business-it-essential' bare=true raw=true %} per month</span>
   </div>
 
   <div class="summary-box">
@@ -471,7 +175,7 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
     <p>The hospitality industry manages IT reactively more than almost any other sector. Technology gets set up at opening, rarely maintained, and then called about when it fails during the worst possible moment. By the time an outside technician arrives, the lunch rush has passed and the revenue it would have generated is gone. FixMyPC Perth provides Perth cafes and restaurants with a different model: proactive, fixed-price IT support from a local technician who understands the rhythm of hospitality operations and knows that a problem during service is not the same as a problem at 2pm on a Tuesday.</p>
 
     <div class="stat-row">
-      <div class="stat-box"><span class="stat-val">$149</span><span class="stat-lbl">Starting from per month</span></div>
+      <div class="stat-box"><span class="stat-val">{% include price.html key='business-it-essential' bare=true raw=true %}</span><span class="stat-lbl">Starting from per month</span></div>
       <div class="stat-box"><span class="stat-val">Same day</span><span class="stat-lbl">Remote support response</span></div>
       <div class="stat-box"><span class="stat-val">0</span><span class="stat-lbl">Lock-in contracts</span></div>
     </div>
@@ -488,7 +192,7 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
       <strong>Note on POS support:</strong> FixMyPC Perth manages the IT infrastructure that your POS and EFTPOS systems run on, including the network, devices, connectivity and operating environment. For issues that originate within the POS software itself, we work alongside the platform's own support team and ensure the underlying IT environment is not contributing to the problem, which in our experience it frequently is.
     </div>
 
-    <h2>The Most Common IT Problems We See in Perth Hospitality Venues</h2>
+    <h2>What goes wrong in a hospitality venue</h2>
 
     <p>After working with cafes, restaurants and hospitality businesses across Perth and the southern suburbs, the same IT failures appear repeatedly. These are the problems that carry the highest cost and the highest frequency for venues that are managing IT without a proper support arrangement in place.</p>
 
@@ -536,6 +240,45 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
         <div class="problem-desc">The back-office computer that runs payroll, supplier invoicing, inventory management and reporting is often the oldest and least maintained device in the venue. When it fails, payroll processing stalls, purchase orders cannot be raised and end-of-week reporting cannot be completed on time.</div>
       </li>
     </ul>
+<h2>Card payments, and what a venue is actually responsible for</h2>
+<p>
+  Any venue taking card payments sits inside the
+  <strong>Payment Card Industry Data Security Standard</strong>, PCI DSS. It is
+  not legislation, it is a condition of your merchant agreement with the bank,
+  which in practice means the same thing: fail it after a breach and you can be
+  liable for the fraud, the forensic investigation and the card scheme fines.
+</p>
+<p>
+  The good news for most Perth venues is that modern terminals from
+  <strong>Tyro</strong> or <strong>Square</strong> encrypt the card in the
+  terminal itself, so the card number never reaches your POS or your network.
+  That reduces your obligation substantially. It does not remove it. You are
+  still responsible for the network the terminal sits on, for keeping the POS
+  patched, and for not having a staff wifi password taped to the till that also
+  gets the customer network onto the same segment as your payment devices.
+</p>
+<p>
+  The rule that catches venues out is simple: you must never store the full card
+  number or the security code, anywhere. Not in a spreadsheet of regulars, not
+  in the notes field of a booking, not in an email from a customer confirming a
+  function deposit. That last one is the common failure, because it arrives
+  without anyone deciding to do it.
+</p>
+<div class="callout callout-blue">
+  <strong>Where venues get caught:</strong> one flat network with the POS, the
+  office PC, the staff phones and the guest wifi all on it. A compromised device
+  on the guest network then has a clear path to the till. Separating the
+  payment network from the guest one is inexpensive and it is the single most
+  useful thing a small venue can do.
+</div>
+<p>
+  We set up the network separation, keep the POS and office machines patched,
+  and make sure the systems that take your money are not sharing a segment with
+  the tablet the kids are watching videos on. We are not a QSA and we do not
+  certify PCI compliance. We make the parts you are responsible for hold up.
+</p>
+
+
 
     <h2>What We Cover for Cafes and Restaurants</h2>
 
@@ -596,7 +339,7 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
           <span class="coverage-icon">&#10003;</span>
           <span class="coverage-label-text">Unlimited remote support</span>
         </div>
-        <div class="coverage-desc">Available seven days a week, including weekends and public holidays when hospitality businesses are at their busiest. You reach Ali directly, there is no call queue and response during service hours is a genuine commitment, not a target that gets deprioritised.</div>
+        <div class="coverage-desc">Available seven days a week, including weekends and public holidays when hospitality businesses are at their busiest. You reach the technician who looks after your venue directly, with no call queue, and response during service hours is a genuine commitment, not a target that gets deprioritised.</div>
       </li>
       <li class="coverage-item">
         <div class="coverage-label">
@@ -617,10 +360,10 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
     <!-- MID-PAGE CTA -->
     <div class="inline-cta">
       <div class="inline-cta-title">Ready to stop IT failures costing your venue revenue during service?</div>
-      <div class="inline-cta-desc">Book a free 30-minute IT audit. We assess every system your venue depends on and tell you exactly what needs to be in place, at no cost and no obligation.</div>
+      <div class="inline-cta-desc">Book a free 30-minute IT audit. We assess every system your venue depends on and tell you exactly what needs to be in place, at no cost and.</div>
       <div class="inline-cta-btns">
-        <a href="../business-it-support.html#audit-section" class="inline-cta-btn">Book a free IT audit</a>
-        <a href="../pricing.html" class="inline-cta-btn-outline">View full pricing</a>
+        <a href="#audit" class="inline-cta-btn">Book a free IT audit</a>
+        <a href="/pricing" class="inline-cta-btn-outline">View full pricing</a>
       </div>
     </div>
 
@@ -639,41 +382,41 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
     <p>All plans are month to month with no lock-in contracts. You can cancel or change plans at any time with 14 days notice. Every plan includes unlimited remote support, managed antivirus, cloud backup and scheduled onsite visits timed around your service hours.</p>
 
     <div class="service-links">
-      <a href="../business-it-support.html#plans" class="service-link-card">
+      <a href="/business-it-support#plans" class="service-link-card">
         <div>
           <div class="service-link-label">Essential Plan</div>
-          <div class="service-link-price">From $149 base per month · Up to 5 devices</div>
+          <div class="service-link-price">From {% include price.html key='business-it-essential' bare=true raw=true %} base per month · Up to 5 devices</div>
         </div>
         <span class="service-link-arrow">&#8594;</span>
       </a>
-      <a href="../business-it-support.html#plans" class="service-link-card">
+      <a href="/business-it-support#plans" class="service-link-card">
         <div>
           <div class="service-link-label">Business Plan</div>
-          <div class="service-link-price">From $199 base per month · Up to 10 devices</div>
+          <div class="service-link-price">From {% include price.html key='business-it-business' bare=true raw=true %} base per month · Up to 10 devices</div>
         </div>
         <span class="service-link-arrow">&#8594;</span>
       </a>
-      <a href="../business-it-support.html#plans" class="service-link-card">
+      <a href="/business-it-support#plans" class="service-link-card">
         <div>
           <div class="service-link-label">Premium Plan</div>
-          <div class="service-link-price">From $299 base per month · Up to 20 devices</div>
+          <div class="service-link-price">From {% include price.html key='business-it-premium' bare=true raw=true %} base per month · Up to 20 devices</div>
         </div>
         <span class="service-link-arrow">&#8594;</span>
       </a>
-      <a href="../business-it-support.html#audit-section" class="service-link-card">
+      <a href="#audit" class="service-link-card">
         <div>
           <div class="service-link-label">Free IT Audit</div>
-          <div class="service-link-price">30 minutes · No obligation</div>
+          <div class="service-link-price">30 minutes</div>
         </div>
         <span class="service-link-arrow">&#8594;</span>
       </a>
     </div>
 
-    <h2>Why Perth Hospitality Venues Choose FixMyPC Perth</h2>
+    <h2>What a hospitality venue should expect from IT support</h2>
 
     <p>Most IT providers are structured for business-hours support of office environments. Hospitality venues are busiest on weekends, public holidays and evenings, which are exactly the times that a standard IT support arrangement treats as out-of-scope or subject to penalty rates. FixMyPC Perth operates differently. Unlimited remote support is available seven days a week as a genuine commitment, not a marketing claim with a 48-hour response caveat attached to it.</p>
 
-    <p>When your venue contacts us, you reach Ali directly. There is no ticket system, no helpdesk queue and no escalation path. Ali knows your network layout, knows your POS setup and knows what the fastest path to resolution looks like for your specific configuration. Most remote issues are resolved within the hour. For venues on Business and Premium plans, that applies during a Saturday morning service as much as it does on a Wednesday afternoon.</p>
+    <p>When your venue contacts us, you reach the technician who looks after your venue, the same one every time. There is no ticket system, no helpdesk queue and no escalation path. That technician knows your network layout, knows your POS setup and knows what the fastest path to resolution looks like for your specific configuration. Most remote issues are resolved within the hour. For venues on Business and Premium plans, that applies during a Saturday morning service as much as it does on a Wednesday afternoon.</p>
 
     <p>Onsite visits are scheduled around your service times. We do not arrive during a busy lunch sitting or at the start of a dinner session. Visits are planned during your quiet periods, typically late morning on a weekday or before opening on a Saturday, so the work does not add pressure to an already demanding environment.</p>
 
@@ -687,19 +430,73 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
 
     <p>The right plan depends on the number of devices your venue operates and the level of coverage that matches your service model. A small cafe with a single POS terminal, a back-office computer and a shared tablet will be well covered by the Essential plan. A restaurant with multiple POS stations, a kitchen display system, a reservation tablet, a back-office computer and a manager's laptop will typically suit the Business plan. Larger venues with multiple service areas, a full front and back-office setup, a need for guaranteed weekend response and 10 or more connected devices will find the Premium plan is the correct fit.</p>
 
-    <p>If you are not sure which plan suits your venue, the free 30-minute IT audit is the right starting point. We assess every device and system your venue depends on, map your network configuration, identify any reliability or security gaps and give you a clear recommendation with no obligation. Most venue operators find the audit produces useful documentation regardless of whether they sign up. Full plan details including per-device pricing, visit schedules and response commitments are on the <a href="../business-it-support.html#plans">Business IT Support page</a>.</p>
+    <p>If you are not sure which plan suits your venue, the free 30-minute IT audit is the right starting point. We assess every device and system your venue depends on, map your network configuration, identify any reliability or security gaps and give you a clear recommendation with. Most venue operators find the audit produces useful documentation regardless of whether they sign up. Full plan details including per-device pricing, visit schedules and response commitments are on the <a href="/business-it-support#plans">Business IT Support page</a>.</p>
 
     <!-- BOTTOM CTA -->
     <div class="inline-cta">
       <div class="inline-cta-title">Get your venue's IT sorted before the next busy service</div>
       <div class="inline-cta-desc">Book a free 30-minute IT audit. We assess every system your venue depends on and show you exactly what needs to be in place to keep service running without IT interruptions.</div>
       <div class="inline-cta-btns">
-        <a href="../business-it-support.html#audit-section" class="inline-cta-btn">Book a free IT audit</a>
-        <a href="../business-it-support.html#plans" class="inline-cta-btn-outline">View plans and pricing</a>
+        <a href="#audit" class="inline-cta-btn">Book a free IT audit</a>
+        <a href="/business-it-support#plans" class="inline-cta-btn-outline">View plans and pricing</a>
       </div>
     </div>
 
-    <!-- FAQ -->
+    <div class="audit-block" id="audit">
+  <p class="audit-block-title">Book a free IT audit for your venue</p>
+  <p class="audit-block-desc">Tell us what your venue runs on and we will go through your POS, your payment network and your wifi, and what a plan would cost.</p>
+  <form id="auditForm" action="https://api.web3forms.com/submit" method="POST" class="audit-grid">
+    <input type="hidden" name="access_key" value="b00c2b06-22d4-4924-af92-5143e83ab186">
+    <input type="hidden" name="subject" value="Free IT Audit Request, Hospitality. FixMyPC Perth">
+    <input type="hidden" name="from_page" value="it-support-hospitality-perth">
+    <input type="hidden" name="botcheck" value="">
+
+    <div class="audit-input-group">
+      <label class="audit-label" for="af-business">Venue name</label>
+      <input class="audit-input" id="af-business" name="business_name" type="text" placeholder="e.g. The Corner Cafe" autocomplete="organization" required>
+    </div>
+    <div class="audit-input-group">
+      <label class="audit-label" for="af-suburb">Your suburb</label>
+      <input class="audit-input" id="af-suburb" name="suburb" type="text" placeholder="e.g. Canning Vale, Willetton" autocomplete="address-level2" required>
+    </div>
+    <div class="audit-input-group">
+      <label class="audit-label" for="af-pcs">How many PCs?</label>
+      <select class="audit-select" id="af-pcs" name="pc_count">
+        <option value="1 to 5">1 to 5</option>
+        <option value="6 to 10">6 to 10</option>
+        <option value="11 to 20">11 to 20</option>
+        <option value="more than 20">More than 20</option>
+      </select>
+    </div>
+    <div class="audit-input-group">
+      <label class="audit-label" for="af-software">POS system</label>
+      <input class="audit-input" id="af-software" name="software" type="text" placeholder="e.g. Square, Kounta, Tyro">
+    </div>
+    <div class="audit-input-group">
+      <label class="audit-label" for="af-email">Your email</label>
+      <input class="audit-input" id="af-email" name="email" type="email" placeholder="you@yourbusiness.com.au" autocomplete="email" required>
+    </div>
+    <div class="audit-input-group">
+      <label class="audit-label" for="af-phone">Your phone number</label>
+      <input class="audit-input" id="af-phone" name="phone" type="tel" placeholder="e.g. 0412 345 678" autocomplete="tel">
+    </div>
+    <div class="audit-input-group full">
+      <label class="audit-label" for="af-msg">What is giving you trouble? (optional)</label>
+      <input class="audit-input" id="af-msg" name="message" type="text" placeholder="e.g. the EFTPOS drops out at lunch rush">
+    </div>
+
+    <button class="audit-submit" type="submit">Request the audit</button>
+    <p class="audit-err" id="auditErr" hidden>That did not send. Please try again, or call 0452 573 701.</p>
+    <p class="audit-note">We will get back to you as fast as we can. Your details are used to answer your enquiry and nothing else.</p>
+  </form>
+  <div class="audit-done" id="auditDone" hidden>
+    <div class="audit-done-tick" aria-hidden="true">&#10003;</div>
+    <p class="audit-done-title">Request received.</p>
+    <p class="audit-done-text">We will come back to you as fast as we can, usually the same day. If it is urgent, call 0452 573 701.</p>
+  </div>
+</div>
+
+<!-- FAQ -->
     <div class="faq-section">
       <div class="faq-section-title">Frequently Asked Questions</div>
 
@@ -719,7 +516,7 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-answer">
-          Managed IT support for hospitality businesses starts from $149 per month base plus $35 per device per month on the Essential plan covering up to 5 devices. The Business plan is $199 base plus $45 per device for up to 10 devices. The Premium plan is $299 base plus $60 per device for up to 20 devices. All plans are month to month with no lock-in contracts and include unlimited remote support available seven days a week, managed antivirus, cloud backup and scheduled onsite visits timed around your service hours.
+          Managed IT support for hospitality businesses starts from {% include price.html key='business-it-essential' bare=true raw=true %} per month base plus {% include price.html key='business-it-essential' extra=true raw=true %} per device per month on the Essential plan covering up to 5 devices. The Business plan is {% include price.html key='business-it-business' bare=true raw=true %} base plus {% include price.html key='business-it-business' extra=true raw=true %} per device for up to 10 devices. The Premium plan is {% include price.html key='business-it-premium' bare=true raw=true %} base plus {% include price.html key='business-it-premium' extra=true raw=true %} per device for up to 20 devices. All plans are month to month with no lock-in contracts and include unlimited remote support available seven days a week, managed antivirus, cloud backup and scheduled onsite visits timed around your service hours.
         </div>
       </div>
 
@@ -760,33 +557,37 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
       <div style="font-family: var(--display); font-size: 1rem; font-weight: 800; color: var(--ink); margin-bottom: 0.5rem;">IT support for other Perth industries</div>
       <p style="font-size: 14px; color: var(--muted); margin-bottom: 1.25rem;">We provide industry-specific managed IT support across Perth. Find your sector below.</p>
       <div class="industry-links">
-        <a href="it-support-trades-perth" class="industry-pill">
+        <a href="/it-support-trades-perth" class="industry-pill">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
           Trades &amp; Construction
         </a>
-        <a href="it-support-real-estate-perth" class="industry-pill">
+        <a href="/it-support-real-estate-perth" class="industry-pill">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
           Real Estate Agencies
         </a>
-        <a href="it-support-accountants-perth" class="industry-pill">
+        <a href="/it-support-accountants-perth" class="industry-pill">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
           Accountants &amp; Bookkeepers
         </a>
-        <a href="it-support-allied-health-perth" class="industry-pill">
+        <a href="/it-support-allied-health-perth" class="industry-pill">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
           Allied Health &amp; Medical
         </a>
-        <a href="it-support-legal-perth" class="industry-pill">
+        <a href="/it-support-legal-perth" class="industry-pill">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           Legal &amp; Conveyancing
         </a>
-        <a href="it-support-retail-perth" class="industry-pill">
+        <a href="/it-support-retail-perth" class="industry-pill">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
           Retail Businesses
         </a>
-        <a href="it-support-childcare-perth" class="industry-pill">
+        <a href="/it-support-childcare-perth" class="industry-pill">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
           Childcare Centres
+        </a>
+        <a href="/it-support-warehousing-logistics-perth" class="industry-pill">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-6 9 6v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+          Warehousing &amp; Logistics
         </a>
       </div>
     </div>
@@ -794,82 +595,52 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 1.
   </div>
 
   <div class="post-footer-nav">
-    <a href="../business-it-support.html" class="post-footer-link">&#8592; Back to Business IT Support</a>
-    <a href="../pricing.html" class="post-footer-link">View full pricing &#8594;</a>
+    <a href="/business-it-support" class="post-footer-link">&#8592; Back to Business IT Support</a>
+    <a href="/pricing" class="post-footer-link">View full pricing &#8594;</a>
   </div>
 
 </div>
 
-<footer>
-  <div class="footer-inner">
-    <a href="../index.html" class="footer-logo" aria-label="FixMyPC Perth Home">
-      <div class="logo-mark"><img src="../logo.png" alt="FixMyPC Perth" width="38" height="38" loading="lazy"></div>
-      <span class="logo-name" style="font-size:14px">FixMyPC <em>Perth</em></span>
-    </a>
-    <div class="footer-copy">© 2026 FixMyPC Perth · ABN 67 645 153 359 · All Prices Include GST · Canning Vale WA 6155</div>
-    <div class="footer-links">
-      <a href="../terms.html">Terms and Conditions</a>
-    </div>
-  </div>
-</footer>
-
-<a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20IT%20support." target="_blank" rel="noopener noreferrer" class="wa-bubble" aria-label="Chat with FixMyPC Perth on WhatsApp">
-  <svg width="28" height="28" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>
-</a>
 
 <script>
-(function() {
-  'use strict';
+/* Web3Forms redirects to its own branded success page by default, which drops
+   the visitor off the site entirely. Submit over fetch instead and show the
+   panel above, the same pattern the homepage and quote-request form use. */
+(function () {
+  var form = document.getElementById('auditForm');
+  if (!form) return;
+  var btn  = form.querySelector('.audit-submit');
+  var done = document.getElementById('auditDone');
+  var errEl = document.getElementById('auditErr');
 
-  var bar = document.getElementById('scroll-bar');
-  window.addEventListener('scroll', function() {
-    var h = document.documentElement.scrollHeight - window.innerHeight;
-    bar.style.transform = 'scaleX(' + (window.scrollY / h) + ')';
-  }, { passive: true });
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (errEl) errEl.hidden = true;
+    btn.disabled = true;
+    var label = btn.textContent;
+    btn.textContent = 'Sending...';
 
-  var hamburger = document.getElementById('mob-hamburger');
-  var mobMenu   = document.getElementById('mob-menu');
+    var data = {};
+    new FormData(form).forEach(function (v, k) { data[k] = v; });
 
-  hamburger.addEventListener('click', function() {
-    var isOpen = mobMenu.classList.toggle('open');
-    hamburger.classList.toggle('open', isOpen);
-    hamburger.setAttribute('aria-expanded', String(isOpen));
-    hamburger.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
-  });
-
-  mobMenu.querySelectorAll('.mob-link').forEach(function(link) {
-    link.addEventListener('click', function() {
-      mobMenu.classList.remove('open');
-      hamburger.classList.remove('open');
-      hamburger.setAttribute('aria-expanded', 'false');
-      hamburger.setAttribute('aria-label', 'Open navigation menu');
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify(data)
+    }).then(function (r) { return r.json(); }).then(function (res) {
+      if (!res.success) throw new Error(res.message || 'failed');
+      form.hidden = true;
+      /* The intro copy is asking for details that have now been given, so it
+         goes too. The title stays as context for the confirmation. */
+      var desc = document.querySelector('.audit-block-desc');
+      if (desc) desc.hidden = true;
+      done.hidden = false;
+      done.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }).catch(function () {
+      btn.disabled = false;
+      btn.textContent = label;
+      if (errEl) errEl.hidden = false;
     });
   });
-
-  document.addEventListener('click', function(e) {
-    if (mobMenu.classList.contains('open') && !mobMenu.contains(e.target) && !hamburger.contains(e.target)) {
-      mobMenu.classList.remove('open');
-      hamburger.classList.remove('open');
-      hamburger.setAttribute('aria-expanded', 'false');
-      hamburger.setAttribute('aria-label', 'Open navigation menu');
-    }
-  });
-
-  document.querySelectorAll('.faq-question').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      var answer = btn.nextElementSibling;
-      var isOpen = answer.classList.contains('open');
-      document.querySelectorAll('.faq-answer').forEach(function(a) { a.classList.remove('open'); });
-      document.querySelectorAll('.faq-question').forEach(function(b) { b.setAttribute('aria-expanded', 'false'); });
-      if (!isOpen) {
-        answer.classList.add('open');
-        btn.setAttribute('aria-expanded', 'true');
-      }
-    });
-  });
-
 })();
 </script>
-
-</body>
-</html>

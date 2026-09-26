@@ -1,0 +1,38 @@
+{%- comment -%}
+  FAQPage JSON-LD for /reviews, built from _data/reviews.yml.
+
+  It lives in an include rather than inline for one practical reason:
+  editors parse <script type="application/ld+json"> as JSON and validate
+  it, so every Liquid tag inside that block is reported as a syntax error.
+  Twelve of them here. In a plain include there is no ld+json block to
+  parse, so the file is treated as ordinary markup and the warnings go.
+  The page keeps one wrapper line:
+
+    <script type="application/ld+json">{% include faq-schema.html %}</script>
+
+  Prices come through resolve-prices.html, because the answers in the data
+  file carry [[service-key]] tokens rather than figures. strip_html is
+  applied because schema answers are plain text; the on-page version keeps
+  its markup.
+
+  Worth knowing: Google restricted FAQ rich results to government and
+  health sites in 2023, so this will not produce stars or an accordion in
+  the results. It is kept because it is still the cleanest way for AI
+  search and answer engines to read the page.
+{%- endcomment -%}
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {%- for f in site.data.reviews.faqs -%}
+    {%- capture _q %}{% include resolve-prices.html text=f.q %}{% endcapture -%}
+    {%- capture _a %}{% include resolve-prices.html text=f.a %}{% endcapture -%}
+    {%- unless forloop.first %},{% endunless %}
+    {
+      "@type": "Question",
+      "name": {{ _q | strip_html | strip_newlines | jsonify }},
+      "acceptedAnswer": { "@type": "Answer", "text": {{ _a | strip_html | strip_newlines | jsonify }} }
+    }
+    {%- endfor %}
+  ]
+}

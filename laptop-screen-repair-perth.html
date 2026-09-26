@@ -1,0 +1,235 @@
+---
+layout: service
+css: service
+title: "Laptop Screen Repair & Replacement Perth | FixMyPC Perth"
+description: "Laptop screen repair and replacement in Perth. Cracked, black, flickering and touchscreens, fixed price agreed first. Canning Vale workshop, no appointment."
+slug: laptop-screen-repair-perth
+heading: "Laptop Screen Repair and Replacement in Perth"
+eyebrow: "Laptop screen repair"
+service_name: "Laptop screen repair and replacement"
+quote_service: "Laptop Screen or Battery Replacement"
+default_device: "Laptop"
+wa_text: "Hi! I'd like a quote for a laptop screen repair."
+index_heading: "Every screen problem we fix"
+costs_heading: "Laptop screen replacement prices"
+faq_heading: "Laptop screen repair questions"
+near_heading: "Laptop screen repair near you"
+near_text: "Our workshop is in Canning Vale, open around the clock for drop-offs. Most of our laptop screen customers come from the suburbs around it."
+topic: "laptop screen repair"
+costs_intro: "Screen replacement is priced by panel type, from [[laptop-screen-standard]], and every price includes the panel and the labour. Cable and hinge faults cost less than a new screen."
+
+# ---- Keyword targeting (see the service page SEO plan in STATUS.md) -----
+# GSC, 16 months. New page (replaces the planned Wi-Fi page).
+# Primary:    laptop screen repair perth (60, pos 31), laptop screen
+#             replacement perth (40, pos 51)
+# Secondary:  laptop screen repair (76, pos 42), laptop screen replacement
+#             (76, pos 75), laptop screen repair cost (22), broken laptop
+#             screen repair cost (17), laptop screen repair near me (6, pos
+#             3.7), computer screen repair perth (8), computer screen repair
+#             near me (9), laptop screen replacement near me (4), repair
+#             touch screen laptop (3, pos 2.3), touch screen laptop repair
+#             cost (3), laptop screen repair price (3)
+# Not this:   "cracked laptop screen repair cost" and "is it worth fixing"
+#             belong to the Tech Tips guide; this page sells the repair and
+#             links to it. MacBook and Surface screens are NOT offered (terms
+#             and /pricing), so "macbook screen repair" is answered honestly
+#             in the FAQ, not targeted. Desktop monitors are not claimed.
+# Prices:     the three panel tiers are options of laptop-screen-replacement
+#             in services.yml, written as [[laptop-screen-standard]] etc.
+#             Panel and labour are both included (owner confirmed); the
+#             quote itemises the panel and the labour.
+#
+# No prices typed anywhere on this page. Every figure comes from
+# services.yml through the layout; written copy uses [[key]] tokens.
+
+short_answer: "Laptop screen repair and replacement in Perth, from our workshop in Canning Vale. Cracked screens, black screens, lines and flickering, and touchscreens that have stopped responding, on Windows laptops from every common brand. We test first, so you never pay for a new panel when the fault is a cable, and you get a fixed price before we start."
+
+intro: |
+  <p>A broken laptop screen is one of the most common repairs we do, and one of the most worthwhile. The rest of the laptop is usually fine, and a new screen costs far less than a new laptop. Your files, programs and settings stay exactly where they are.</p>
+  <p>Not every screen fault needs a new screen, though. A display that flickers, shows lines or cuts out when you move the lid is often the cable that runs through the hinge, not the panel itself, and that is a smaller, cheaper repair. So we test before we quote. You get told what has actually failed and what it costs to fix, then you decide.</p>
+  <p>Screen replacement starts from [[laptop-screen-standard]] for a standard panel, [[laptop-screen-touchscreen]] for a touchscreen or high-refresh gaming panel, and [[laptop-screen-oled-premium]] for OLED and premium 2-in-1 displays. Every price includes the panel and the labour, and your quote lists the two separately, so you can see exactly what you are paying for. We confirm the exact panel your laptop takes and the final price before any work starts.</p>
+
+group_intros:
+  "Screen damage": "<p>Physical damage to the panel itself, usually from a drop, a knock or pressure on the lid. The panel needs replacing, and the type of damage tells you how soon.</p>"
+  "Screen faults that are not the panel": "<p>These look like a broken screen but often are not. Testing first is what keeps these repairs cheap.</p>"
+
+repairs:
+  # ---- Screen damage -----------------------------------------------------
+  - id: cracked
+    group: "Screen damage"
+    title: "Cracked laptop screen replacement"
+    price_key: laptop-screen-standard
+    also_keys:
+      - laptop-screen-touchscreen
+      - laptop-screen-oled-premium
+    signs:
+      - "Cracked glass with the image still showing"
+      - "A crack that has grown since it happened"
+      - "Spider-web cracks from one point"
+      - "Loose or lifting glass at the edge"
+    text: |
+      <p>Most cracked screens happen in a bag, a drop off a desk, or when the lid is closed on a pen or earbuds left on the keyboard. The crack may be in the top layer only, with the image clear behind it, or right through the panel.</p>
+      <p>A cracked screen with a clear image can usually wait for a convenient time, used carefully. A crack that is spreading, glass that is lifting, or damage creeping across the image is worth booking in sooner, since it tends to reach the point where the screen stops working altogether.</p>
+      <p>We fit a new panel made for your model and test it for brightness, colour and dead pixels before you collect the laptop. Our <a href="/tech-tips/laptop-screen-replacement-physical-repairs">cracked screen guide</a> explains each kind of damage and how urgent it is.</p>
+
+  - id: black-screen
+    group: "Screen damage"
+    title: "Black or dead laptop screen"
+    price_key: laptop-screen-standard
+    signs:
+      - "Screen black but the laptop is running"
+      - "Keyboard lights and fans on, no picture"
+      - "Faint image visible with a torch"
+      - "Works on an external monitor"
+    text: |
+      <p>A screen that has gone completely dark while the laptop is still running can be a failed panel, a failed backlight, the display cable or, less often, the graphics. A faint image visible under a torch usually points to the backlight, and a laptop that works fine on an external monitor rules out most other causes.</p>
+      <p>We test which it is before quoting. If the panel has failed, it is a screen replacement. If it is the cable or a connection, it is the smaller flicker and cable repair further down this page.</p>
+
+  - id: lines-colour
+    group: "Screen damage"
+    title: "Lines, black patches and colour bleeding"
+    price_key: laptop-screen-standard
+    signs:
+      - "Vertical or horizontal lines across the image"
+      - "Black patches or ink-blot marks"
+      - "Colours bleeding or smearing"
+      - "Area of the screen that has gone white or grey"
+    text: |
+      <p>Lines that stay in place whatever you do, black or ink-like patches, and colours bleeding across the image usually mean the panel itself was damaged, often by pressure or an impact that did not crack the glass. This kind of damage tends to spread across the screen over days or weeks.</p>
+      <p>If the lines change or disappear when you move the lid, it is more likely the cable, and that is a cheaper repair. We check which before recommending a new screen.</p>
+
+  - id: touchscreen
+    group: "Screen damage"
+    title: "Touchscreen laptop repair"
+    price_key: laptop-screen-touchscreen
+    signs:
+      - "Touch stopped working, display still fine"
+      - "Phantom touches or the pointer jumping"
+      - "Only part of the screen responds"
+      - "Cracked touchscreen on a 2-in-1"
+    text: |
+      <p>On most touchscreen laptops and 2-in-1s, the touch layer is bonded to the display, so a cracked or failed touchscreen means replacing the whole screen assembly. That is the touchscreen tier, from [[laptop-screen-touchscreen]].</p>
+      <p>Touch that has stopped working without any damage is sometimes a driver or setting rather than hardware, and we check that first. Phantom touches, where the laptop reacts to touches you did not make, usually mean the touch layer has failed.</p>
+
+  - id: gaming-screen
+    group: "Screen damage"
+    title: "Gaming laptop and high-refresh screens"
+    price_key: laptop-screen-touchscreen
+    text: |
+      <p>Gaming laptops often use high-refresh panels, 120Hz, 144Hz or faster, and fitting a standard panel instead would lose that. We match the refresh rate, resolution and connector to the original, so the laptop performs the way it did when it was new. High-refresh panels are the touchscreen and gaming tier, from [[laptop-screen-touchscreen]].</p>
+
+  # ---- Screen faults that are not the panel ------------------------------
+  - id: flicker
+    group: "Screen faults that are not the panel"
+    title: "Screen flickering or cutting out"
+    price_key: screen-flicker-or-line-repair
+    signs:
+      - "Flickers when the lid is moved"
+      - "Goes black at certain angles"
+      - "Lines that come and go"
+      - "Fine when the lid is held still"
+    text: |
+      <p>The display cable runs from the laptop's base up through the hinge to the screen, and it flexes every time the lid opens. Over time it wears, or its connector works loose, and the picture starts to flicker, cut out or show lines at certain angles.</p>
+      <p>That is a cable or connection repair rather than a new screen, and usually cheaper. We test it by moving the lid through its range and checking the connection, then repair or replace the cable. If it turns out the panel has failed after all, we tell you before going further.</p>
+
+  - id: hinge
+    group: "Screen faults that are not the panel"
+    title: "Loose or broken hinges"
+    price_key: laptop-hinge-repair
+    signs:
+      - "Lid flops back or will not stay up"
+      - "Screen bezel coming away"
+      - "Case cracking near the hinge"
+      - "Creaking or grinding when opened"
+    text: |
+      <p>A broken hinge puts strain on the screen every time the lid moves, and it is one of the most common reasons display cables wear out and screens crack. Fixing the hinge early can save the screen. We repair or replace the hinge and check the mounts and cable while the laptop is open. Every other laptop fault we fix is on the <a href="/laptop-repair-perth">laptop repair</a> page.</p>
+
+  - id: dim
+    group: "Screen faults that are not the panel"
+    title: "Dim screen or no display at all"
+    price_key: diagnostic-repair-all-in
+    signs:
+      - "Very dim even at full brightness"
+      - "No picture on the screen or an external monitor"
+      - "Picture only appears after a few minutes"
+      - "Brightness keys do nothing"
+    text: |
+      <p>A screen that is very dim, or no picture at all even on an external monitor, is not always the screen. It can be the backlight circuit, the graphics, the memory or a setting. This is one to diagnose rather than guess at.</p>
+      <p>The all-in diagnostic finds the cause and covers the repair labour. If a new screen or a part is needed, we tell you what it is and what it costs before fitting it.</p>
+
+sections:
+  - id: screen-types
+    title: "Screen types and what they cost"
+    html: |
+      <p>Laptop screens are not one universal part. The size, resolution, refresh rate, connector, touch layer and even the mounting brackets vary between models, and sometimes between two versions of the same model. That is why we confirm the exact panel first.</p>
+      <ul>
+        <li><strong>Standard panel</strong>, from [[laptop-screen-standard]]. Non-touch, the most common type, fitted to most everyday laptops.</li>
+        <li><strong>Touchscreen or high-refresh panel</strong>, from [[laptop-screen-touchscreen]]. Touchscreen laptops, 2-in-1s, and gaming laptops with 120Hz and faster screens.</li>
+        <li><strong>OLED or premium panel</strong>, from [[laptop-screen-oled-premium]]. OLED displays and premium 2-in-1 screens.</li>
+      </ul>
+      <p>Send us the make and model, or a photo of the sticker underneath the laptop, and we confirm which one yours takes and the final price before you bring it in.</p>
+
+  - id: how-it-works-screen
+    title: "How a laptop screen replacement works"
+    html: |
+      <ul>
+        <li>We test the screen, the cable and the graphics, so you only pay for what has actually failed.</li>
+        <li>We confirm the exact panel for your model, and the final price, before any work starts.</li>
+        <li>The bezel and damaged panel come off, and the new panel is fitted and connected.</li>
+        <li>We test brightness, colour, dead pixels and touch where it has it, and check the hinge and cable while it is apart.</li>
+        <li>The laptop is reassembled and tested again before you collect it.</li>
+      </ul>
+      <p>Where the panel for your model is on hand, many screen replacements are done the same day. Where it has to be ordered in, we tell you how long when we quote.</p>
+
+  - id: macbook-surface
+    title: "MacBook and Surface screens"
+    html: |
+      <p>We do not replace screens on MacBook or Surface devices. We still take MacBooks and Surface devices for diagnostics, virus removal, data recovery and software work, and if a MacBook or Surface screen has failed, we can recover your files from it while you arrange the screen elsewhere. The <a href="/data-recovery-perth">data recovery</a> page explains how that works.</p>
+
+  - id: before-drop-off
+    title: "Before you drop your laptop off"
+    html: |
+      <ul>
+        <li>Send us the make and model, or a photo of the label underneath, so we can confirm the panel and price.</li>
+        <li>If the screen is cracked, avoid pressing on it or closing the lid on anything, and carry it flat.</li>
+        <li>If you can, connect it to a TV or monitor and back up anything important before you bring it in.</li>
+        <li>Bring the charger, so we can test it fully.</li>
+      </ul>
+      <p>No appointment is needed. Message us first and we give you a fixed price before you make the trip.</p>
+
+faqs:
+  - q: "How much does laptop screen replacement cost in Perth?"
+    a: "It depends on the panel. Screen replacement starts from [[laptop-screen-standard]] for a standard panel, [[laptop-screen-touchscreen]] for a touchscreen or high-refresh gaming panel, and [[laptop-screen-oled-premium]] for OLED and premium 2-in-1 displays. The price includes the panel and the labour, and the quote lists both separately. We confirm the exact panel and the final price before starting."
+  - q: "How long does a laptop screen repair take?"
+    a: "If the panel for your model is on hand, often the same day. If it has to be ordered in, we tell you how long when we quote. A flicker or cable repair is often a same-day job."
+  - q: "Is it worth replacing a laptop screen?"
+    a: "Usually, yes. If the rest of the laptop runs well, a new screen costs far less than a new laptop and brings it back to full working order. It is worth thinking twice only when the laptop was already slow or failing in other ways."
+  - q: "Can you repair a flickering laptop screen without replacing it?"
+    a: "Often, yes. Flickering that changes as you move the lid is usually the display cable, not the panel. That repair is [[screen-flicker-or-line-repair]], and we test before recommending a new screen."
+  - q: "Can I keep using a laptop with a cracked screen?"
+    a: "If the image is clear and the crack is stable, careful use is usually fine for a while. If the crack is spreading, the glass is lifting or the image is being affected, get it booked in, since it tends to get worse."
+  - q: "Do you replace touchscreen laptop screens?"
+    a: "Yes. On most touchscreen laptops and 2-in-1s the touch layer is bonded to the display, so the whole screen is replaced. That is the touchscreen tier, from [[laptop-screen-touchscreen]]."
+  - q: "Do you replace gaming laptop screens?"
+    a: "Yes, and we match the refresh rate, resolution and connector to the original, so a 144Hz screen stays a 144Hz screen. High-refresh panels are from [[laptop-screen-touchscreen]]."
+  - q: "Do you replace MacBook or Surface screens?"
+    a: "No. We do not replace screens on MacBook or Surface devices. We can still diagnose them, recover your files and do software work on them."
+  - q: "My laptop screen is black but the laptop is on. Is it the screen?"
+    a: "Not always. It can be the panel, the backlight, the cable or the graphics. If it works on an external monitor, the screen or cable is the likely cause. We test before quoting."
+  - q: "Can I use my laptop with an external monitor while I wait?"
+    a: "Yes. Plug it into a TV or monitor and it works as normal, which is also a good moment to back up anything important before you bring it in."
+
+suburbs:
+  - canning-vale
+  - willetton
+  - thornlie
+  - harrisdale
+  - huntingdale
+  - cannington
+  - jandakot
+  - southern-river
+
+guides:
+  - laptop-screen-replacement-physical-repairs
+  - how-much-does-pc-repair-cost-perth
+---

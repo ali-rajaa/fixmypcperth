@@ -1,0 +1,922 @@
+/* index.css   VERSION 8 - contact card redesign: WhatsApp-only, email row, turnaround panel (.vc-*), old .contact-link/.visit-status rules removed.
+/* index.css   VERSION 7 - adds prefers-reduced-transparency + prefers-contrast, kills the iOS tap flash that fought the press feedback, and converts fluid-heading tracking from px to em so it scales with the clamp().
+/* index.css   VERSION 6 - Apple-design pass: critically damped hover, instant press feedback, reduced-motion sweep. .wa-bubble moved to shell.css (was duplicated, and shell.css is where it belongs since it ships in a shared include). :root tokens intact. */
+
+:root {
+  --blue:      #1560FF;
+  --blue-lt:   #EEF3FF;
+  --blue-mid:  #C7D8FF;
+  --blue-dk:   #0A3ACC;
+  --ink:       #0F172A;
+  --ink2:      #1E293B;
+  --muted:     #64748B;
+  --muted2:    #94A3B8;
+  --border:    #E2E8F0;
+  --border2:   #CBD5E1;
+  --bg:        #FFFFFF;
+  --bg2:       #F8FAFC;
+  --bg3:       #F1F5F9;
+  --wa:        #22C55E;
+  --wa-dk:     #15803D;
+  --wa-deep:   #166534;
+  --fb:        #1877F2;
+  --fb-dk:     #1565D8;
+  --red:       #EF4444;
+  --gold:      #F59E0B;
+  --display:   'Sora', 'Sora Fallback', sans-serif;
+  --body:      'DM Sans', 'DM Sans Fallback', sans-serif;
+  --radius:    14px;
+  --radius-sm: 8px;
+  --nav-h:     64px;
+  --mob-nav-h: 60px;
+  /* Critically damped (no overshoot) - the default for anything that isn't
+     carrying momentum from a drag or flick. Used on hover lifts and reveals. */
+  --ease-settle: cubic-bezier(0.16, 1, 0.3, 1);
+  /* Fast and linear-ish, for the instant press feedback itself. */
+  --ease-press:  cubic-bezier(0.4, 0, 0.2, 1);
+}
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+@keyframes pulse   {
+0%,100%{opacity:1}
+50%{opacity:0.3}
+}
+@keyframes ticker  {
+from{transform:translateX(0)}
+to{transform:translateX(-50%)}
+}
+@keyframes fadeUp  {
+from{opacity:0;transform:translateY(20px)}
+to{opacity:1;transform:none}
+}
+body { background:var(--bg); color:var(--ink); font-family:var(--body); font-size:16px; line-height:1.6; overflow-x:hidden; }
+img  { display:block; max-width:100%; }
+a    { color:inherit; }
+.wrap { max-width:1100px; margin:0 auto; padding:0 2rem; }
+/* Content is visible by default. The reveal animation only applies once the
+   <html class="js"> flag is set by the head script, so if JavaScript fails
+   for any reason the page still renders instead of going blank. */
+.fade-up { opacity:1; transform:none; }
+/* Critically damped, per the Apple-design pass: it used to overshoot past its
+   end point (cubic-bezier(.22,.68,0,1.2)) and bounce back. */
+.js .fade-up { opacity:0; transform:translateY(24px); transition:opacity 0.6s var(--ease-settle),transform 0.6s var(--ease-settle); }
+.js .fade-up.in { opacity:1; transform:none; }
+.accent { color:var(--blue); }
+.svg-sprite { position:absolute; width:0; height:0; overflow:hidden; }
+/* Plain uppercase text rather than an outlined pill, matching .cta-kicker
+   in the closing section. Used 11 times across the page. */
+.s-eyebrow { display:block; font-size:11px; font-weight:700; letter-spacing:0.09em; text-transform:uppercase; color:var(--blue); margin-bottom:0.9rem; }
+.s-title { font-family:var(--display); font-size:1.45rem; font-weight:800; letter-spacing:-0.02em; line-height:1.2; color:var(--ink); margin-bottom:0.75rem; }
+.s-sub { font-size:1.0625rem; color:var(--muted); max-width:60ch; line-height:1.75; }
+.btn-blue { display:inline-flex; align-items:center; justify-content:center; gap:8px; background:var(--blue); color:#fff; font-family:var(--body); font-size:15px; font-weight:700; padding:14px 26px; border-radius:50px; text-decoration:none; box-shadow:0 4px 16px rgba(21,96,255,0.35); transition:transform 0.25s var(--ease-settle),box-shadow 0.25s var(--ease-settle),filter 0.2s; white-space:nowrap; }
+@media (hover: hover) { .btn-blue:hover { transform:translateY(-3px); box-shadow:0 12px 32px rgba(21,96,255,0.5); filter:brightness(1.1); } }
+/* Feedback on press, not release - the instant a finger or cursor is down,
+   the button visibly compresses, so the tap never feels unacknowledged. */
+.btn-blue:active { transform:translateY(-1px) scale(0.97); box-shadow:0 4px 14px rgba(21,96,255,0.4); filter:brightness(1.05); transition:transform 0.1s var(--ease-press),box-shadow 0.1s var(--ease-press); }
+.btn-wa { display:inline-flex; align-items:center; justify-content:center; gap:8px; background:var(--wa-dk); color:#fff; font-family:var(--body); font-size:15px; font-weight:700; padding:14px 26px; border-radius:50px; text-decoration:none; box-shadow:0 4px 16px rgba(34,197,94,0.35); transition:transform 0.25s var(--ease-settle),box-shadow 0.25s var(--ease-settle); white-space:nowrap; }
+@media (hover: hover) { .btn-wa:hover { transform:translateY(-3px); background:var(--wa-deep); box-shadow:0 12px 32px rgba(21,128,61,0.4); } }
+.btn-wa:active { transform:translateY(-1px) scale(0.97); box-shadow:0 4px 14px rgba(21,128,61,0.35); transition:transform 0.1s var(--ease-press),box-shadow 0.1s var(--ease-press); }
+.btn-outline { display:inline-flex; align-items:center; justify-content:center; gap:8px; background:transparent; color:var(--ink); font-family:var(--body); font-size:15px; font-weight:600; padding:13px 24px; border-radius:50px; text-decoration:none; border:1.5px solid var(--border2); transition:border-color 0.15s,color 0.15s,transform 0.1s var(--ease-press); white-space:nowrap; }
+@media (hover: hover) { .btn-outline:hover { border-color:var(--blue); color:var(--blue); } }
+.btn-outline:active { transform:scale(0.97); border-color:var(--blue); color:var(--blue); }
+/* Safety net. All three button styles carry white-space:nowrap, so a long
+   label could grow wider than its column and push the whole page sideways.
+   This caps them without changing anything on desktop. */
+.btn-blue, .btn-wa, .btn-outline { max-width:100%; }
+.hero { padding:132px 2rem 64px; background:var(--bg); position:relative; overflow:hidden; }
+.hero::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 800px 500px at 70% 40%,rgba(21,96,255,0.06) 0%,transparent 70%),radial-gradient(ellipse 400px 300px at 10% 80%,rgba(34,197,94,0.05) 0%,transparent 60%); pointer-events:none; }
+.hero-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 420px; gap:3.5rem; align-items:stretch; }
+/* The copy column is centred against the quote card so the two read as one
+   band of equal height, instead of the copy stopping well short of the card. */
+.hero-copy { display:flex; flex-direction:column; justify-content:center; min-width:0; }
+.hero-lead { display:none; }
+/* Phone-only title for the quote card: centred over the card it introduces,
+   balanced so neither line is left with a stray word. */
+.hero-lead > strong { display:block; font-family:var(--display); font-size:clamp(1.05rem,4.6vw,1.25rem); font-weight:800; line-height:1.25; letter-spacing:-0.02em; color:var(--ink); text-wrap:balance; }
+.hero-lead-sub { display:block; margin-top:5px; font-size:13px; line-height:1.45; color:var(--muted); text-wrap:balance; }
+/* Homepage hero is the one page allowed a display-size H1 (STATUS.md type
+   scale). Capped at 3.4rem so it sits on three lines beside the quote card
+   instead of four, and balanced so no word is left alone on the last line. */
+.hero h1:where(:not([class])) { font-family:var(--display); font-size:clamp(2.2rem,4.2vw,3.4rem); font-weight:800; letter-spacing:-0.04em; line-height:1.06; color:var(--ink); margin-bottom:1.1rem; text-wrap:balance; }
+.hero-desc { font-size:16px; color:var(--muted); line-height:1.7; margin-bottom:0.8rem; max-width:490px; }
+/* Supporting detail for search: the services and areas in plain prose.
+   Same style as the lede above it, so the two read as one block of copy. */
+.hero-more { font-size:16px; color:var(--muted); line-height:1.7; margin-bottom:1.75rem; max-width:490px; }
+.hero-more a:not([class]) { color:var(--ink2); font-weight:500; text-decoration:underline; text-decoration-color:var(--border2); text-underline-offset:3px; transition:color 0.15s,text-decoration-color 0.15s; }
+@media (hover: hover) { .hero-more a:not([class]):hover { color:var(--blue); text-decoration-color:var(--blue); } }
+.hero-nobr { white-space:nowrap; }
+/* One solid button, one quiet text link. Two equal pills read as two
+   primary actions, so neither one led. */
+.hero-actions { display:flex; align-items:flex-start; gap:10px 22px; flex-wrap:wrap; }
+.hero-wa { display:flex; flex-direction:column; align-items:center; gap:7px; }
+.hero-actions .btn-wa { padding:15px 28px; }
+.hero-alt-link { margin-top:5px; display:inline-flex; align-items:center; gap:6px; min-height:44px; font-size:15px; font-weight:600; color:var(--ink2); text-decoration:underline; text-decoration-color:var(--border2); text-underline-offset:4px; transition:color 0.15s,text-decoration-color 0.15s; -webkit-tap-highlight-color:transparent; }
+.hero-alt-link svg { width:15px; height:15px; flex-shrink:0; transition:transform 0.25s var(--ease-settle); }
+@media (hover: hover) { .hero-alt-link:hover { color:var(--blue); text-decoration-color:var(--blue); } }
+@media (hover: hover) { .hero-alt-link:hover svg { transform:translateX(3px); } }
+.hero-alt-link:focus-visible { outline:2px solid var(--blue); outline-offset:3px; border-radius:4px; }
+.hero-note { font-size:13px; line-height:1.4; color:var(--muted); }
+.hero-card { align-self:start; background:var(--bg); border:1px solid var(--border); border-radius:var(--radius); box-shadow:0 8px 40px rgba(15,23,42,0.1); overflow:hidden; }
+.hc-dot { width:10px; height:10px; border-radius:50%; }
+.hc-url { font-size:12px; font-weight:600; color:rgba(255,255,255,0.6); margin-left:6px; white-space:nowrap; }
+.hc-body { padding:1.35rem 1.4rem 1.3rem; }
+
+/* ---- Instant quote card, collapse toggle ----
+   Mobile only. Everything that does the collapsing lives in the 720px
+   block below, so above that breakpoint the toggle is not rendered and
+   the is-collapsed class does nothing at all. That is what makes a
+   rotation or a resize safe: no JavaScript is needed to undo it. */
+.hc-header { background:var(--ink2); padding:14px 18px; display:flex; align-items:center; gap:6px; position:relative; }
+.hc-hint { display:none; white-space:nowrap; font-size:12px; font-weight:600; color:rgba(255,255,255,0.62); margin-left:auto; margin-right:26px; letter-spacing:0.01em; }
+.hc-toggle { display:none; }
+.hc-chevron { width:18px; height:18px; }
+.mq-form { display:flex; flex-direction:column; gap:11px; }
+.mq-field { display:flex; flex-direction:column; gap:5px; }
+.mq-row { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.mq-field label { font-size:12px; font-weight:600; color:var(--ink2); }
+.mq-field label .req { color:var(--red); margin-left:2px; }
+.mq-field input,
+.mq-field select,
+.mq-field textarea {
+  width:100%; padding:10px 12px; background:var(--bg2); border:1.5px solid var(--border);
+  border-radius:10px; font-family:var(--body); font-size:13px; color:var(--ink);
+  outline:none; transition:border-color 0.15s,box-shadow 0.15s,background 0.15s;
+  -webkit-appearance:none; appearance:none;
+}
+.mq-field select {
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2364748B' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat; background-position:right 12px center; padding-right:32px; cursor:pointer;
+}
+.mq-field textarea { resize:vertical; min-height:64px; line-height:1.55; }
+.mq-field input:focus,
+.mq-field select:focus,
+.mq-field textarea:focus { border-color:var(--blue); box-shadow:0 0 0 3px rgba(21,96,255,0.1); background:var(--bg); }
+.mq-field input.err,
+.mq-field select.err,
+.mq-field textarea.err { border-color:var(--red); }
+.mq-err { font-size:11px; color:var(--red); display:none; }
+.mq-err.show { display:block; }
+.mq-group-label { font-size:10.5px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--muted); margin:2px 0 -2px; }
+.mq-divider { height:1px; background:var(--border); margin:2px 0; border:none; }
+.mq-pref-group { display:flex; gap:8px; }
+.mq-pref-radio { position:absolute; opacity:0; width:1px; height:1px; pointer-events:none; }
+.mq-pref-btn {
+  flex:1; min-width:0; display:flex; align-items:center; justify-content:center; gap:6px;
+  padding:10px 10px; border-radius:10px; border:1.5px solid var(--border); background:var(--bg2);
+  font-family:var(--body); font-size:12.5px; font-weight:700; color:var(--ink2);
+  cursor:pointer; transition:border-color 0.15s,background 0.15s,color 0.15s,box-shadow 0.15s,transform 0.1s var(--ease-press);
+  user-select:none;
+}
+.mq-pref-btn svg { width:15px; height:15px; flex-shrink:0; }
+.mq-pref-radio:active + .mq-pref-btn { transform:scale(0.96); }
+.mq-pref-radio:checked + .mq-pref-btn {
+  border-color:var(--blue); background:var(--blue-lt); color:var(--blue-dk);
+  box-shadow:0 0 0 3px rgba(21,96,255,0.08);
+}
+.mq-pref-radio:focus-visible + .mq-pref-btn { outline:2px solid var(--blue); outline-offset:1px; }
+.mq-submit {
+  margin-top:4px; width:100%; display:flex; align-items:center; justify-content:center; gap:8px;
+  background:var(--blue); color:#fff; font-family:var(--body); font-size:15px; font-weight:700;
+  padding:14px 20px; border-radius:50px; border:none; cursor:pointer;
+  box-shadow:0 4px 16px rgba(21,96,255,0.35); transition:transform 0.25s var(--ease-settle),box-shadow 0.25s var(--ease-settle),filter 0.2s;
+}
+@media (hover: hover) { .mq-submit:hover { transform:translateY(-3px); box-shadow:0 12px 32px rgba(21,96,255,0.5); filter:brightness(1.1); } }
+.mq-submit:active:not(:disabled) { transform:translateY(-1px) scale(0.97); box-shadow:0 4px 14px rgba(21,96,255,0.4); filter:brightness(1.05); transition:transform 0.1s var(--ease-press),box-shadow 0.1s var(--ease-press); }
+.mq-submit:disabled { opacity:0.7; cursor:not-allowed; transform:none; }
+.mq-note { font-size:12px; color:var(--muted); text-align:center; margin-top:2px; }
+.mq-success { display:none; text-align:center; padding:1rem 0.25rem; }
+.mq-success.show { display:block; }
+.mq-success-icon { width:46px; height:46px; border-radius:50%; background:linear-gradient(135deg,var(--blue) 0%,#00CFFF 100%); color:#fff; font-size:20px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0 auto 0.85rem; box-shadow:0 6px 20px rgba(21,96,255,0.3); }
+.mq-success-icon svg { width:22px; height:22px; }
+.mq-success-title { font-family:var(--display); font-size:17px; font-weight:800; color:var(--ink); margin-bottom:0.4rem; }
+.mq-success-body { font-size:13px; color:var(--muted); line-height:1.6; }
+/* Was an amber alert box with a pulsing dot and a live countdown. It is now
+   a quiet informational line in the card's own palette. */
+.mq-notice {
+  background:var(--bg2); border:1px solid var(--border);
+  border-radius:10px; padding:8px 12px; margin-bottom:11px;
+  font-size:12px; font-weight:500; color:var(--ink2); line-height:1.5;
+  min-height:34px; visibility:hidden;
+}
+.mq-notice.ready { visibility:visible; }
+.mq-notice.closed { color:var(--muted); }
+/* tabular-nums keeps the digits a fixed width, so the line does not twitch
+   as the clock runs down. */
+.mq-notice-time { font-weight:700; color:var(--ink); font-variant-numeric:tabular-nums; }
+.mq-trust { display:grid; grid-template-columns:repeat(2,1fr); gap:6px; margin-top:11px; padding-top:11px; border-top:1px solid var(--border); }
+.mq-trust-item { display:flex; align-items:center; gap:6px; font-size:12px; font-weight:600; color:var(--ink2); }
+.mq-trust-item svg { width:13px; height:13px; color:var(--wa-dk); flex-shrink:0; }
+/* Left aligned, on the same edge as the form labels below it. */
+.mq-rating { display:flex; align-items:center; gap:8px; margin-bottom:10px; padding:8px 12px; background:var(--bg2); border:1px solid var(--border); border-radius:10px; text-decoration:none; transition:border-color 0.15s,background 0.15s; }
+@media (hover: hover) { .mq-rating:hover { border-color:var(--blue-mid); background:var(--blue-lt); } }
+.mq-rating-text { font-size:12px; font-weight:600; color:var(--ink2); }
+.mq-rating-text span:where(:not([class])) { font-weight:500; color:var(--muted); }
+.mq-response { display:flex; align-items:center; justify-content:center; gap:6px; font-size:11px; font-weight:600; color:var(--wa-dk); margin-top:9px; }
+.mq-response-dot { width:6px; height:6px; border-radius:50%; background:var(--wa); animation:pulse 2s infinite; flex-shrink:0; }
+.mq-step { display:none; }
+.mq-step.active { display:flex; flex-direction:column; gap:13px; }
+.mq-progress { display:flex; align-items:center; gap:7px; margin-bottom:2px; }
+.mq-progress-bar { flex:1; height:3px; border-radius:3px; background:var(--border); overflow:hidden; }
+/* Solid brand blue. The blue to cyan gradient was doing a lot of work for a
+   3px bar and it is the kind of detail that reads as decoration. */
+.mq-progress-fill { height:100%; width:50%; background:var(--blue); border-radius:3px; transition:width 0.3s cubic-bezier(0.4,0,0.2,1); }
+.mq-progress-label { font-size:12px; font-weight:600; color:var(--muted); white-space:nowrap; letter-spacing:0.03em; }
+.mq-service-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:8px; }
+/* .mq-field input (below) sets width:100% and has higher specificity than a
+   bare class, so these radios were rendering at full viewport width and
+   absolutely positioned against the viewport. Matched on type as well so the
+   intended 1px wins. */
+.mq-field input.mq-service-radio,
+.mq-service-radio { position:absolute; opacity:0; width:1px; height:1px; min-height:0; padding:0; margin:0; border:0; background:none; pointer-events:none; appearance:none; -webkit-appearance:none; }
+.mq-service-btn {
+  display:flex; flex-direction:row; align-items:center; justify-content:flex-start; gap:8px; text-align:left;
+  padding:9px 10px; min-height:44px; border:1.5px solid var(--border); border-radius:10px; background:var(--bg2);
+  font-family:var(--body); font-size:12px; font-weight:600; color:var(--ink2); line-height:1.25;
+  cursor:pointer; transition:border-color 0.15s,background 0.15s,color 0.15s,transform 0.15s,box-shadow 0.15s;
+}
+.mq-service-btn svg { width:17px; height:17px; color:var(--blue); flex-shrink:0; }
+@media (hover: hover) { .mq-service-btn:hover { border-color:var(--blue-mid); transform:translateY(-1px); } }
+.mq-service-radio:active + .mq-service-btn { transform:scale(0.96); transition:transform 0.1s var(--ease-press); }
+.mq-service-radio:checked + .mq-service-btn { border-color:var(--blue); background:var(--blue-lt); color:var(--blue-dk); box-shadow:0 0 0 3px rgba(21,96,255,0.08); }
+.mq-service-radio:focus-visible + .mq-service-btn { outline:2px solid var(--blue); outline-offset:1px; }
+.mq-back {
+  background:none; border:none; cursor:pointer; font-family:var(--body); font-size:12px; font-weight:600;
+  color:var(--muted); display:inline-flex; align-items:center; gap:5px; padding:0; align-self:flex-start;
+  transition:color 0.15s;
+}
+@media (hover: hover) { .mq-back:hover { color:var(--blue); } }
+.mq-back svg { width:13px; height:13px; }
+.mq-selected-note { font-size:11.5px; color:var(--muted); background:var(--bg2); border:1px solid var(--border); border-radius:var(--radius-sm); padding:7px 10px; }
+.mq-selected-note strong:where(:not([class])) { color:var(--blue-dk); }
+.brand-strip { padding:2.25rem 2rem; background:var(--bg); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+.brand-inner { max-width:1100px; margin:0 auto; text-align:center; }
+.brand-label { font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:1.1rem; }
+.brand-row { display:flex; flex-wrap:wrap; justify-content:center; gap:9px; }
+.brand-badge { font-family:var(--display); font-size:13px; font-weight:700; color:var(--muted); border:1.5px solid var(--border); background:var(--bg2); border-radius:9px; padding:8px 16px; letter-spacing:-0.015em; transition:color 0.2s,border-color 0.2s; }
+@media (hover: hover) { .brand-badge:hover { color:var(--ink2); border-color:var(--border2); } }
+.offer-banner { padding:0 2rem; background:var(--bg); }
+.offer-inner {
+  max-width:1100px; margin:0 auto;
+  display:flex; align-items:center; gap:1.25rem; flex-wrap:wrap;
+  background:linear-gradient(135deg,var(--ink) 0%,#1B2A4A 100%);
+  border-radius:18px; padding:1.5rem 1.75rem; position:relative; overflow:hidden;
+}
+.offer-inner::after { content:''; position:absolute; top:-60px; right:-60px; width:220px; height:220px; background:radial-gradient(circle,rgba(21,96,255,0.22) 0%,transparent 70%); pointer-events:none; }
+.offer-tag { font-size:10px; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; color:#00CFFF; margin-bottom:0.4rem; }
+.offer-text { flex:1; min-width:230px; position:relative; z-index:1; }
+.offer-title { font-family:var(--display); font-size:1.15rem; font-weight:800; color:#fff; letter-spacing:-0.022em; margin-bottom:0.3rem; }
+.offer-desc { font-size:13px; color:rgba(255,255,255,0.7); line-height:1.6; }
+.offer-btn { position:relative; z-index:1; flex-shrink:0; }
+.hero-info-strip { padding:0 2rem 2.25rem; background:var(--bg); position:relative; }
+.his-inner {
+  background:var(--bg2); border:1.5px solid var(--border); border-radius:16px;
+  padding:1.1rem 1.5rem; display:flex; align-items:center; gap:1.5rem; flex-wrap:wrap;
+}
+.his-stats { display:flex; gap:1.5rem; flex-wrap:wrap; }
+.his-stat { display:flex; flex-direction:column; align-items:flex-start; }
+.his-val { font-family:var(--display); font-size:1.35rem; font-weight:800; color:var(--blue); letter-spacing:-0.037em; line-height:1; white-space:nowrap; }
+.his-lbl { font-size:12px; color:var(--muted); font-weight:500; margin-top:3px; white-space:nowrap; }
+.his-divider { width:1px; align-self:stretch; background:var(--border2); }
+.his-checks { list-style:none; display:grid; grid-template-columns:repeat(2,auto); gap:0.5rem 1.5rem; flex:1; min-width:220px; }
+.his-checks li:where(:not([class])) { display:flex; align-items:center; gap:7px; font-size:12.5px; color:var(--ink2); font-weight:500; white-space:nowrap; }
+.his-check-icon { width:16px; height:16px; border-radius:50%; background:rgba(34,197,94,0.12); border:1px solid rgba(34,197,94,0.3); display:inline-flex; align-items:center; justify-content:center; flex-shrink:0; color:var(--wa-dk); }
+/* Ticks are SVG, not the text glyph: DM Sans has no U+2713, so the browser
+   was borrowing one from a fallback system font. */
+.his-check-icon svg { width:9px; height:9px; }
+.trust-strip { background:var(--ink); padding:14px 0; overflow:hidden; position:relative; }
+.trust-track { display:flex; white-space:nowrap; animation:ticker 16s linear infinite; }
+@media (hover: hover) { .trust-track:hover { animation-play-state:paused; } }
+.trust-item { display:inline-flex; align-items:center; gap:8px; padding:0 2.5rem; font-size:13px; font-weight:600; color:rgba(255,255,255,0.85); white-space:nowrap; }
+.trust-dot { width:4px; height:4px; background:var(--blue); border-radius:50%; flex-shrink:0; }
+.section { padding:6rem 2rem; }
+.section-alt { background:var(--bg2); }
+.included-banner { display:flex; align-items:center; gap:14px; background:linear-gradient(135deg,var(--blue-lt) 0%,#fff 100%); border:1.5px solid var(--blue-mid); border-radius:16px; padding:1.1rem 1.4rem; margin-bottom:2rem; flex-wrap:wrap; }
+.included-banner-icon { width:42px; height:42px; border-radius:12px; background:var(--blue); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.included-banner-icon svg { width:22px; height:22px; }
+.included-banner-text { font-size:14px; color:var(--ink2); line-height:1.6; flex:1; min-width:220px; }
+.included-banner-text strong:where(:not([class])) { color:var(--blue-dk); }
+.svc-header, .sec-head-gap { margin-bottom:2.5rem; }
+.svc-header-row { display:flex; align-items:flex-end; justify-content:space-between; gap:1.5rem; flex-wrap:wrap; }
+.services-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:16px; }
+.svc-card { background:var(--bg); border:1.5px solid var(--border); border-radius:var(--radius); padding:1.75rem; position:relative; display:flex; flex-direction:column; transition:border-color 0.2s,box-shadow 0.3s var(--ease-settle),transform 0.3s var(--ease-settle); overflow:hidden; }
+.svc-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--blue),#00CFFF); opacity:0; transition:opacity 0.2s; }
+@media (hover: hover) { .svc-card:hover { border-color:var(--blue); box-shadow:0 8px 24px rgba(21,96,255,0.08); transform:translateY(-3px); } }
+@media (hover: hover) { .svc-card:hover::before { opacity:1; } }
+.svc-card.popular { border-color:var(--blue); background:var(--blue-lt); }
+.svc-card.popular::before { opacity:1; }
+.svc-top { display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:1.25rem; gap:8px; }
+.svc-icon-wrap { width:52px; height:52px; border-radius:var(--radius); background:var(--bg2); border:1.5px solid var(--border); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.svc-card.popular .svc-icon-wrap { background:rgba(255,255,255,0.75); border-color:var(--blue-mid); }
+.svc-icon-wrap svg { width:24px; height:24px; }
+.svc-badge-col { display:flex; flex-direction:column; align-items:flex-end; gap:6px; }
+/* Plain uppercase text, like .s-eyebrow. No capsule. */
+.svc-badge { font-size:10px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--blue); white-space:nowrap; align-self:flex-start; }
+.svc-badge.nofee { color:var(--wa-dk); }
+.svc-badge.spec  { color:var(--ink2); }
+.svc-badge.perk  { color:#B45309; }
+.svc-name  { font-family:var(--display); font-size:1.05rem; font-weight:700; line-height:1.3; letter-spacing:-0.01em; color:var(--ink); margin-bottom:0.5rem; }
+/* Card titles link to the matching service page once it is built. The
+   padding with matching negative margin gives a 44px tap area without
+   moving the text; the chevron says it is a link, and sits in a nowrap
+   span with the last word so it never wraps onto a line of its own. */
+.svc-name-link { display:inline-block; padding:12px 0; margin:-12px 0; color:inherit; text-decoration:none; }
+.svc-name-end { white-space:nowrap; }
+.svc-name-end::after { content:''; display:inline-block; width:7px; height:7px; margin:0 0 2px 8px; border-right:2px solid var(--blue); border-top:2px solid var(--blue); transform:rotate(45deg); }
+.svc-name-link:focus-visible { outline:2px solid var(--blue); outline-offset:2px; border-radius:4px; }
+.svc-desc  { font-size:13px; font-weight:500; color:var(--muted); line-height:1.5; flex:1; margin-bottom:1.25rem; }
+.svc-price-row { display:flex; align-items:center; justify-content:space-between; padding-top:1rem; border-top:1px solid var(--border); gap:0.5rem; margin-top:auto; }
+.svc-card.popular .svc-price-row { border-top-color:var(--blue-mid); }
+.svc-price { font-family:var(--display); font-size:1.4rem; font-weight:800; color:var(--blue); letter-spacing:-0.022em; }
+.svc-cta { font-size:12.5px; font-weight:700; color:var(--blue); display:inline-flex; align-items:center; gap:5px; text-decoration:none; background:var(--blue-lt); padding:6px 14px; border-radius:50px; border:1px solid var(--blue-mid); transition:background 0.15s,transform 0.1s var(--ease-press); white-space:nowrap; flex-shrink:0; }
+@media (hover: hover) { .svc-cta:hover { background:var(--blue-mid); } .svc-name-link:hover { color:var(--blue); } }
+.svc-cta:active { transform:scale(0.94); }
+.svc-links-section { background:var(--bg3); border-top:1px solid var(--border); padding:2rem; }
+.svc-links-inner { max-width:1100px; margin:0 auto; }
+.svc-links-title { font-family:var(--display); font-size:14px; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:1rem; }
+.svc-links-grid { display:flex; flex-wrap:wrap; gap:8px; }
+/* Mobile only: see the 720px block. All 13 fit on one screen above that. */
+.svc-links-more { display:none; }
+.svc-link-pill { display:inline-flex; align-items:center; gap:6px; font-size:13px; font-weight:600; color:var(--blue); background:var(--bg); border:1.5px solid var(--blue-mid); padding:6px 14px; border-radius:50px; text-decoration:none; transition:background 0.15s,border-color 0.15s,transform 0.1s var(--ease-press); }
+@media (hover: hover) { .svc-link-pill:hover { background:var(--blue-lt); border-color:var(--blue); } }
+.svc-link-pill:active { transform:scale(0.94); }
+.how-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:14px; margin-top:2.5rem; }
+.how-card { background:var(--bg); border:1.5px solid var(--border); border-radius:var(--radius); padding:1.75rem 1.5rem; transition:border-color 0.2s,transform 0.3s var(--ease-settle),box-shadow 0.3s var(--ease-settle); }
+@media (hover: hover) { .how-card:hover { border-color:var(--blue); transform:translateY(-3px); box-shadow:0 8px 24px rgba(21,96,255,0.08); } }
+.how-num   { font-family:var(--display); font-size:3rem; font-weight:800; color:var(--blue-lt); letter-spacing:-0.042em; line-height:1; margin-bottom:0.75rem; border-bottom:2px solid var(--border); padding-bottom:0.75rem; }
+.how-title { font-family:var(--display); font-size:1.05rem; font-weight:700; line-height:1.3; letter-spacing:-0.01em; color:var(--ink); margin-bottom:0.4rem; margin-top:0.75rem; }
+.how-desc  { font-size:13px; font-weight:500; color:var(--muted); line-height:1.5; }
+.pkg-duo { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; align-items:stretch; }
+.pkg-swipe-bar { display:none; align-items:center; justify-content:space-between; gap:1rem; margin-bottom:0.85rem; }
+.pkg-swipe-count { display:inline-flex; align-items:center; gap:7px; font-size:12px; font-weight:700; color:var(--ink2); }
+.pkg-swipe-count .pkg-count-pill { font-size:11px; font-weight:800; letter-spacing:0.08em; text-transform:uppercase; color:var(--blue-dk); }
+.pkg-swipe-hint { display:inline-flex; align-items:center; gap:5px; font-size:12px; font-weight:600; color:var(--muted); }
+.pkg-swipe-hint svg { width:14px; height:14px; animation:swipeNudge 1.8s ease-in-out infinite; }
+@keyframes swipeNudge {
+0%,100%{transform:translateX(0)}
+50%{transform:translateX(4px)}
+}
+.pkg-dots { display:none; justify-content:center; gap:7px; margin-top:1rem; }
+.pkg-dot { width:7px; height:7px; border-radius:50%; background:var(--border2); border:none; padding:0; cursor:pointer; transition:width 0.25s,background 0.25s; }
+.pkg-dot.active { width:22px; border-radius:50px; background:var(--blue); }
+/* Light card system, matching .svc-card: white background, thin border,
+   gradient hairline on hover. Was a dark "pricing table" template with a
+   diagonal ribbon and star-glyph eyebrows that matched nothing else on the
+   page. Price and CTA now sit right under the tagline instead of at the
+   bottom of a long checklist, and the checklist itself is split into two
+   labelled groups instead of one flat stack. */
+.pkg-card {
+  background:var(--bg); border:1.5px solid var(--border); border-radius:var(--radius); padding:1.6rem 1.5rem;
+  display:flex; flex-direction:column; position:relative; overflow:hidden;
+  transition:border-color 0.2s,box-shadow 0.3s var(--ease-settle);
+}
+.pkg-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--blue),#00CFFF); opacity:0; transition:opacity 0.2s; }
+@media (hover: hover) { .pkg-card:hover { border-color:var(--blue); box-shadow:0 8px 24px rgba(21,96,255,0.08); } }
+@media (hover: hover) { .pkg-card:hover::before { opacity:1; } }
+.pkg-icon-wrap { width:40px; height:40px; border-radius:10px; background:var(--bg2); border:1.5px solid var(--border); display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-bottom:0.75rem; }
+.pkg-icon-wrap svg { width:19px; height:19px; }
+.pkg-head { position:relative; z-index:1; }
+.pkg-eyebrow { font-size:10.5px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--blue); margin-bottom:0.4rem; }
+.pkg-title { font-family:var(--display); font-size:clamp(1.25rem,2.2vw,1.55rem); font-weight:800; color:var(--ink); letter-spacing:-0.033em; margin-bottom:0.4rem; line-height:1.15; }
+.pkg-tagline { font-size:12.5px; color:var(--muted); line-height:1.55; }
+.pkg-price-block { border-top:1px solid var(--border); margin-top:1rem; padding-top:1rem; }
+.pkg-price-row { display:flex; align-items:baseline; gap:8px; flex-wrap:wrap; }
+.pkg-price { font-family:var(--display); font-size:2.25rem; font-weight:800; color:var(--ink); line-height:1; letter-spacing:-0.04em; }
+.pkg-was   { font-size:12px; color:var(--muted); text-decoration:line-through; }
+.pkg-save  { font-size:10.5px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; color:var(--blue); }
+.pkg-lbl   { font-size:12px; color:var(--muted); display:block; margin:5px 0 0.9rem; }
+.pkg-price-block .btn-wa { width:100%; padding:12px 22px; font-size:14px; }
+.pkg-groups { display:flex; flex-direction:column; gap:0.9rem; flex:1; margin-top:1.1rem; }
+.pkg-group-label { display:block; font-size:10.5px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); margin-bottom:0.45rem; }
+.pkg-list { display:flex; flex-direction:column; gap:0.4rem; }
+.pkg-item  { font-size:12.5px; color:var(--ink2); display:flex; align-items:flex-start; gap:7px; font-weight:500; line-height:1.45; }
+.pkg-item::before { content:''; width:12px; height:12px; margin-top:3px; background:var(--blue); -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center / contain no-repeat; mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center / contain no-repeat; flex-shrink:0; }
+.payment-strip { display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap; margin-top:1.5rem; font-size:13px; color:var(--muted); }
+.payment-strip strong:where(:not([class])) { color:var(--ink2); }
+.payment-pill { font-size:11px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; color:var(--ink2); }
+.payment-pill.preferred { color:var(--blue-dk); }
+.its-grid  { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:14px; margin-top:2.5rem; }
+/* Column layout with the description flexing, so the price and CTA sit on the
+   same line in every card regardless of how long the copy is. .svc-card already
+   did this; these did not, which is why the Business IT row looked ragged. */
+.its-card  { background:var(--bg); border:1.5px solid var(--border); border-radius:var(--radius); padding:1.75rem; transition:border-color 0.2s,transform 0.3s var(--ease-settle),box-shadow 0.3s var(--ease-settle); position:relative; overflow:hidden; display:flex; flex-direction:column; }
+.its-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; opacity:0; transition:opacity 0.2s; }
+.its-card:nth-child(1)::before { background:linear-gradient(90deg,var(--blue),#00CFFF); }
+.its-card:nth-child(2)::before { background:linear-gradient(90deg,var(--wa),#00CFFF); }
+.its-card:nth-child(3)::before { background:linear-gradient(90deg,#F59E0B,#FF6B6B); }
+@media (hover: hover) { .its-card:hover { border-color:var(--blue); transform:translateY(-3px); box-shadow:0 8px 24px rgba(21,96,255,0.08); } }
+@media (hover: hover) { .its-card:hover::before { opacity:1; } }
+.its-tag   { display:block; font-size:10px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--blue); margin-bottom:0.9rem; }
+.its-title { font-family:var(--display); font-size:1.05rem; font-weight:700; line-height:1.3; letter-spacing:-0.01em; color:var(--ink); margin-bottom:0.5rem; }
+.its-desc  { font-size:13px; font-weight:500; color:var(--muted); line-height:1.5; margin-bottom:1.25rem; flex:1; }
+.its-price-row { display:flex; align-items:center; justify-content:space-between; padding-top:1rem; border-top:1px solid var(--border); gap:0.5rem; margin-top:auto; }
+.its-price { font-family:var(--display); font-size:1.25rem; font-weight:800; color:var(--blue); }
+.why-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(290px,1fr)); gap:14px; margin-top:2.5rem; }
+.why-card { background:var(--bg); border:1.5px solid var(--border); border-radius:var(--radius); padding:1.75rem 1.5rem; transition:border-color 0.2s,transform 0.3s var(--ease-settle),box-shadow 0.3s var(--ease-settle); position:relative; overflow:hidden; }
+.why-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--blue),#00CFFF); opacity:0; transition:opacity 0.2s; }
+@media (hover: hover) { .why-card:hover { border-color:var(--blue); transform:translateY(-3px); box-shadow:0 8px 24px rgba(21,96,255,0.08); } }
+@media (hover: hover) { .why-card:hover::before { opacity:1; } }
+.why-icon-wrap { width:44px; height:44px; border-radius:12px; background:var(--blue-lt); border:1.5px solid var(--blue-mid); display:flex; align-items:center; justify-content:center; margin-bottom:1rem; }
+.why-icon-wrap svg { width:20px; height:20px; color:var(--blue); }
+.why-title { font-family:var(--display); font-size:1.05rem; font-weight:700; line-height:1.3; letter-spacing:-0.01em; color:var(--ink); margin-bottom:0.4rem; }
+.why-desc  { font-size:13px; font-weight:500; color:var(--muted); line-height:1.5; }
+.testi-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:14px; margin-top:2.5rem; }
+.testi-card { background:var(--bg); border:1.5px solid var(--border); border-radius:var(--radius); padding:1.6rem; display:flex; flex-direction:column; gap:0.85rem; transition:border-color 0.2s,transform 0.3s var(--ease-settle),box-shadow 0.3s var(--ease-settle); }
+@media (hover: hover) { .testi-card:hover { border-color:var(--blue-mid); transform:translateY(-3px); box-shadow:0 8px 24px rgba(21,96,255,0.08); } }
+.testi-quote { font-size:14px; color:var(--ink2); line-height:1.75; }
+.testi-name { font-family:var(--display); font-size:13.5px; font-weight:700; color:var(--ink); }
+.testi-more { text-align:center; margin-top:1.75rem; font-size:13px; color:var(--muted); }
+.testi-more a:not([class]) { color:var(--blue); font-weight:600; text-decoration:none; }
+@media (hover: hover) { .testi-more a:not([class]):hover { text-decoration:underline; text-underline-offset:3px; } }
+
+/* Star rating, same component as reviews.css (_includes/stars.html). A grey
+   row with a gold row on top clipped to the rating, so 4.8 draws as four and
+   four fifths instead of five full stars. */
+.stars { --s-whole:0; --s-tenth:0; position:relative; display:inline-flex; flex-shrink:0; }
+.stars-bg, .stars-fg { display:flex; align-items:center; gap:2px; flex-wrap:nowrap; }
+.stars-fg { position:absolute; top:0; left:0; bottom:0; overflow:hidden; width:calc((var(--s-whole) * 20%) + (var(--s-tenth) * 2%)); }
+.sw-0 { --s-whole:0; } .sw-1 { --s-whole:1; } .sw-2 { --s-whole:2; }
+.sw-3 { --s-whole:3; } .sw-4 { --s-whole:4; } .sw-5 { --s-whole:5; }
+.st-0 { --s-tenth:0; } .st-1 { --s-tenth:1; } .st-2 { --s-tenth:2; }
+.st-3 { --s-tenth:3; } .st-4 { --s-tenth:4; } .st-5 { --s-tenth:5; }
+.st-6 { --s-tenth:6; } .st-7 { --s-tenth:7; } .st-8 { --s-tenth:8; }
+.st-9 { --s-tenth:9; }
+.star { width:13px; height:13px; flex:0 0 auto; display:block; }
+.stars-bg .star { fill:var(--border2); }
+.stars-fg .star { fill:var(--gold); }
+.faq-section { background:var(--bg); padding:6rem 2rem; }
+.faq-list { margin-top:2.5rem; display:grid; grid-template-columns:1fr 1fr; gap:0 20px; max-width:1000px; align-items:start; }
+.faq-col { display:flex; flex-direction:column; gap:10px; }
+.faq-item { background:var(--bg); border:1.5px solid var(--border); border-radius:var(--radius); overflow:hidden; transition:border-color 0.2s; }
+@media (hover: hover) { .faq-item:hover { border-color:var(--blue-mid); } }
+.faq-item.open { border-color:var(--blue-mid); }
+.faq-q { width:100%; background:none; border:none; text-align:left; cursor:pointer; font-family:var(--display); font-size:15px; font-weight:700; color:var(--ink); padding:1.25rem 1.5rem; display:flex; justify-content:space-between; align-items:center; gap:1rem; transition:color 0.15s,background 0.15s; }
+@media (hover: hover) { .faq-q:hover { color:var(--blue); } }
+.faq-q:active { background:var(--bg2); }
+.faq-q:focus-visible { outline:2px solid var(--blue); outline-offset:-2px; }
+/* Rotation gets a touch of overshoot (Apple's own value for rotation is
+   damping 0.8) so the tap feels answered rather than merely obeyed. */
+.faq-q svg { width:18px; height:18px; flex-shrink:0; color:var(--blue); transition:transform 0.35s var(--ease-settle); }
+.faq-item.open .faq-q svg { transform:rotate(180deg); }
+/* grid-template-rows 0fr/1fr rather than a fixed max-height: the panel sizes
+   itself to whatever the answer needs, so no answer can ever be clipped. */
+.faq-a { display:grid; grid-template-rows:0fr; overflow:hidden; transition:grid-template-rows 0.4s var(--ease-settle); }
+.faq-item.open .faq-a { grid-template-rows:1fr; }
+.faq-a p:where(:not([class])) { min-height:0; font-size:14px; color:var(--muted); line-height:1.75; margin:0; padding:0 1.5rem; transition:padding 0.4s var(--ease-settle); }
+.faq-item.open .faq-a p:where(:not([class])) { padding:0 1.5rem 1.25rem; }
+.area-pill,
+a.area-pill--link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  transition: border-color 0.2s, box-shadow 0.3s var(--ease-settle), transform 0.3s var(--ease-settle);
+}
+a.area-pill--link {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+@media (hover: hover) { a.area-pill--link:hover {
+  border-color: var(--blue);
+  box-shadow: 0 2px 12px rgba(21, 96, 255, 0.12);
+  transform: translateY(-2px);
+} }
+a.area-pill--link:active {
+  transform: scale(0.96);
+  transition: transform 0.1s var(--ease-press);
+}
+@media (hover: hover) { a.area-pill--link:hover .area-dot {
+  background: var(--blue);
+} }
+@media (hover: hover) { a.area-pill--link:hover .area-name {
+  color: var(--blue);
+} }
+a.area-pill--link.has-page .area-dot {
+  background: var(--blue);
+  box-shadow: 0 0 0 3px var(--blue-lt);
+}
+.area-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--blue-mid);
+  flex-shrink: 0;
+  transition: background 0.2s;
+}
+.area-name {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--ink);
+  transition: color 0.2s;
+}
+.areas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 10px;
+  margin-top: 2.5rem;
+}
+.visit-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:2.5rem; align-items:stretch; }
+/* Contact card. Three stacked zones: hours, same-day turnaround, contact
+   rows. WhatsApp is the only messaging channel, so it gets the green icon
+   and the one solid button. Labels are plain uppercase text, no pills. */
+.visit-card { background:var(--bg); border:1.5px solid var(--border); border-radius:var(--radius); padding:1.75rem; display:flex; flex-direction:column; gap:1.25rem; box-shadow:0 8px 24px rgba(15,23,42,0.06); }
+.vc-label { display:block; font-size:11px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); line-height:1.3; }
+.vc-label--open { color:var(--wa-dk); }
+.vc-hours { display:flex; align-items:flex-start; gap:14px; }
+.vc-hours-icon { width:48px; height:48px; border-radius:12px; background:var(--ink); color:#fff; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.vc-hours-icon svg { width:22px; height:22px; }
+.vc-hours-text { min-width:0; }
+.vc-hours-title { font-family:var(--display); font-size:1.2rem; font-weight:600; letter-spacing:-0.02em; color:var(--ink); line-height:1.25; margin-top:4px; }
+.vc-hours-sub { font-size:0.875rem; color:var(--muted); margin-top:2px; }
+.vc-turnaround { display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:10px 12px; background:var(--bg2); border:1px solid var(--border); border-radius:12px; padding:1rem 1.1rem; }
+.vc-step { min-width:0; }
+.vc-step-time { display:block; font-family:var(--display); font-size:1.5rem; font-weight:600; letter-spacing:-0.03em; color:var(--ink); line-height:1.15; margin-top:3px; }
+.vc-step-time small:where(:not([class])) { display:block; margin-top:2px; font-family:var(--body); font-size:0.8rem; font-weight:600; letter-spacing:0; color:var(--muted); }
+.vc-step--done .vc-step-time { color:var(--blue); }
+.vc-step-arrow { width:20px; height:20px; color:var(--muted2); }
+.vc-turnaround-note { grid-column:1 / -1; font-size:0.8rem; color:var(--muted); line-height:1.55; border-top:1px solid var(--border); padding-top:0.7rem; }
+.vc-rows { list-style:none; display:flex; flex-direction:column; border-top:1px solid var(--border); }
+.vc-rows > li { border-bottom:1px solid var(--border); }
+.vc-row { display:flex; align-items:center; gap:14px; min-height:64px; padding:0.8rem 0.5rem; margin:0 -0.5rem; border-radius:10px; text-decoration:none; transition:background 0.15s; -webkit-tap-highlight-color:transparent; }
+@media (hover: hover) { .vc-row:hover { background:var(--bg2); } }
+.vc-row:focus-visible { outline:2px solid var(--blue); outline-offset:2px; }
+.vc-row-icon { width:40px; height:40px; border-radius:10px; background:var(--blue-lt); color:var(--blue); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.vc-row-icon svg { width:18px; height:18px; }
+.vc-row-icon--wa { background:rgba(34,197,94,0.12); color:var(--wa-dk); }
+.vc-row-text { display:flex; flex-direction:column; gap:2px; flex:1; min-width:0; }
+.vc-row-value { font-family:var(--display); font-size:0.95rem; font-weight:600; color:var(--ink); line-height:1.35; }
+.vc-row-value--wrap { overflow-wrap:break-word; }
+.vc-row-arrow { width:16px; height:16px; color:var(--muted2); flex-shrink:0; transition:transform 0.2s var(--ease-settle),color 0.15s; }
+@media (hover: hover) { .vc-row:hover .vc-row-arrow { transform:translateX(3px); color:var(--blue); } }
+.vc-actions { display:flex; flex-direction:column; align-items:stretch; gap:0.4rem; margin-top:auto; }
+.vc-actions .btn-wa { width:100%; min-height:52px; }
+.vc-quote-link { display:flex; align-items:center; justify-content:center; min-height:44px; font-size:0.875rem; font-weight:600; color:var(--muted); text-decoration:underline; text-decoration-color:var(--border2); text-underline-offset:3px; transition:color 0.15s,text-decoration-color 0.15s; }
+@media (hover: hover) { .vc-quote-link:hover { color:var(--blue); text-decoration-color:var(--blue); } }
+.map-embed { width:100%; height:100%; min-height:320px; border:0; border-radius:var(--radius); display:block; }
+.map-card { background:var(--bg); border:1.5px solid var(--border); border-radius:var(--radius); overflow:hidden; min-height:320px; position:relative; box-shadow:0 8px 24px rgba(15,23,42,0.06); }
+.map-chip { position:absolute; left:14px; bottom:14px; display:inline-flex; align-items:center; gap:8px; background:var(--bg); border:1.5px solid var(--border); border-radius:var(--radius-sm); padding:0.7rem 1rem; font-family:var(--display); font-size:13.5px; font-weight:700; color:var(--ink); text-decoration:none; box-shadow:0 4px 16px rgba(15,23,42,0.14); transition:border-color 0.15s,color 0.15s,transform 0.2s var(--ease-settle); }
+.map-chip svg { width:16px; height:16px; color:var(--blue); flex-shrink:0; }
+@media (hover: hover) { .map-chip:hover { border-color:var(--blue-mid); color:var(--blue); transform:translateY(-2px); } }
+.cta-section { background:var(--bg2); padding:6rem 2rem; border-top:1px solid var(--border); }
+.cta-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr auto; gap:3rem; align-items:center; }
+.cta-kicker { font-size:11px; font-weight:700; color:var(--blue); letter-spacing:0.09em; text-transform:uppercase; margin-bottom:0.75rem; }
+.cta-title { font-family:var(--display); font-size:1.45rem; font-weight:800; color:var(--ink); letter-spacing:-0.02em; line-height:1.2; margin-bottom:0.6rem; }
+.cta-desc  { font-size:15px; color:var(--muted); }
+.cta-actions { display:flex; flex-direction:column; gap:10px; flex-shrink:0; min-width:220px; }
+.cta-actions .btn-wa, .cta-actions .btn-outline { width:100%; }
+/* .wa-bubble moved to shell.css - it ships in the shared sticky-cta.html
+   include and renders on every page, so it belongs with the shared chrome,
+   not a single page's stylesheet. Was duplicated here before; removing the
+   duplicate avoids the two copies drifting apart. */
+.guide-block { max-width:760px; margin-top:2.5rem; }
+.guide-panel > h3 { font-family:var(--display); font-size:1.35rem; font-weight:800; letter-spacing:-0.023em; color:var(--ink); margin:2.5rem 0 0.85rem; }
+/* Every panel is now the top of its own view, so the first heading in any of
+   them takes the reduced top margin. */
+.guide-panel > h3:first-of-type { margin-top:0.5rem; }
+
+/* Tabbed guide, desktop and mobile alike. One panel shown at a time, the rest
+   stay in the DOM. The strip wraps on desktop where there is room; the mobile
+   block turns it into a single scrolling row. */
+.guide-panel { display:none; }
+.guide-panel.is-active { display:block; }
+.guide-tabs { display:flex; flex-wrap:wrap; gap:8px; margin:0 0 1.85rem; }
+.guide-tab {
+  flex:0 0 auto; font-family:var(--body); font-size:13.5px; font-weight:600;
+  color:var(--ink2); background:var(--bg); border:1px solid var(--border);
+  border-radius:10px; padding:10px 16px; cursor:pointer; white-space:nowrap;
+  transition:background 0.18s,border-color 0.18s,color 0.18s,transform 0.1s var(--ease-press);
+}
+@media (hover: hover) { .guide-tab:hover { border-color:var(--blue-mid); color:var(--blue); } }
+.guide-tab:active { transform:scale(0.96); }
+.guide-tab.is-active { background:var(--blue); border-color:var(--blue); color:#fff; }
+@media (hover: hover) { .guide-tab.is-active:hover { color:#fff; } }
+.guide-tab:focus-visible { outline:2px solid var(--blue); outline-offset:2px; }
+.slide-hint { display:none; }
+.guide-panel > h4 { font-family:var(--display); font-size:1.05rem; font-weight:700; color:var(--ink2); margin:1.5rem 0 0.5rem; }
+.guide-panel > p { font-size:15.5px; color:var(--ink2); line-height:1.85; margin-bottom:1rem; }
+.guide-panel > ul { margin:0 0 1.25rem 1.25rem; }
+.guide-panel > ul > li { font-size:15.5px; color:var(--ink2); line-height:1.85; margin-bottom:0.4rem; }
+.guide-panel strong:not([class]) { color:var(--ink); }
+.guide-block a:not([class]) { color:var(--blue); font-weight:600; text-decoration:none; border-bottom:1.5px solid var(--blue-mid); }
+@media (hover: hover) { .guide-block a:not([class]):hover { border-color:var(--blue); } }
+/* ============================================================
+   Workshop vs on-site comparison.
+   Added with the flat-$120 positioning. Uses only the tokens
+   declared in :root above, so a brand change flows through.
+   ============================================================ */
+/* Same shell as .section: the inner div now carries .wrap, so the content
+   sits on exactly the same left and right edges as every other section.
+   It was 32px wider on each side, which is why this block looked misaligned. */
+/* Left aligned and 1100px wide, like every other section header on the page.
+   Centred text was the main reason this block read as imported from
+   somewhere else. */
+
+/* Same shell as .svc-card: 18px radius, 1.5px border, gradient hairline on
+   the featured one, lift on hover. Previously this block had its own radius,
+   its own shadow and a dimmed losing card, none of which appear anywhere
+   else on the site. */
+
+
+/* No rules between rows. Nothing else on the site uses a divider list, and
+   they were what made this read as a stock pricing table. */
+
+
+
+
+/* Flat-fee proof line, sits directly under the H1 so the price is the
+   first thing read after the headline without being the headline itself. */
+.hero-price { font-family:var(--body); font-size:19px; color:var(--ink2); margin-bottom:0.8rem; }
+.hero-price > strong { font-family:var(--display); font-size:23px; font-weight:800; letter-spacing:-0.02em; color:var(--ink); }
+
+/* Info strip: stats and checks only fit on one row once the wrap is at its
+   full width. Below 1080px the checks take a full row of their own instead
+   of being crushed. (The rating used to sit here too; it duplicated the
+   "4.8 on Google" line in the quote card directly above, so it was removed.)
+   Below 720px the mobile block stacks everything instead. */
+@media (max-width:1080px) {
+.his-checks { min-width:0; flex:1 1 100%; order:2; }
+.his-checks li:where(:not([class])) { white-space:normal; }
+.his-divider { display:none; }
+}
+@media (max-width:900px) {
+/* The mobile nav takes over at 900, so the body offset has to move with it.
+   Kept here rather than in shell.css, which is deliberately free of body rules. */
+body { padding-top:var(--mob-nav-h); }
+/* With the body offset in place the fixed bar no longer overlaps the hero,
+   so the 132px desktop clearance is not needed here. */
+.hero { padding-top:2.5rem; }
+.hero-inner { grid-template-columns:1fr; gap:2.5rem; }
+/* The quote card used to be display:none here, so tablets (721 to 900px,
+   iPad portrait) had no quote form at all. It now sits under the copy. */
+.hero-card  { width:100%; max-width:560px; }
+.pkg-duo    { grid-template-columns:1fr; gap:14px; }
+.pkg-card   { padding:1.75rem 1.6rem; }
+.cta-inner  { grid-template-columns:1fr; gap:2rem; }
+.cta-actions { flex-direction:row; flex-wrap:wrap; min-width:unset; width:100%; }
+.cta-actions .btn-wa, .cta-actions .btn-outline { flex:1; min-width:180px; }
+.visit-grid { grid-template-columns:1fr; }
+.his-inner { padding:1.1rem 1.35rem; gap:1.25rem; }
+}
+@media (max-width:720px) {
+.hero { padding:1rem 1.25rem 2.25rem; }
+.hero-lead { display:block; order:-2; text-align:center; margin:0.6rem auto -1.4rem; max-width:34ch; }
+.hero-card { display:block; order:-1; max-width:none; margin-bottom:1.75rem; box-shadow:0 6px 28px rgba(15,23,42,0.12); }
+.hero h1:where(:not([class])) { font-size:clamp(1.9rem,8vw,2.8rem); letter-spacing:-0.040em; line-height:1.08; max-width:300px; }
+.hero-desc { font-size:1rem; line-height:1.7; }
+.hero-more { font-size:1rem; line-height:1.7; margin-bottom:1.5rem; }
+.hero-actions { flex-direction:column; align-items:stretch; gap:0.75rem; }
+.hero-wa { align-items:stretch; }
+.hero-actions .btn-wa { width:100%; }
+.hero-alt-link { justify-content:center; margin-top:0; }
+.hero-note { text-align:center; }
+.section,.section-alt,.cta-section,.faq-section{ padding:3.5rem 1.25rem; }
+/* The three card grids become swipe carousels, reusing the .pkg-duo pattern
+   already on the page: 87% wide cards so the next one peeks in, snap points,
+   and a full bleed to the screen edge. */
+.services-grid, .testi-grid, .its-grid {
+    display:flex; grid-template-columns:none; gap:12px;
+    overflow-x:auto; scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch; scrollbar-width:none;
+    /* .wrap insets content by 2rem on top of the section's 1.25rem, which left
+       the cards needlessly narrow. Pulling the scroller out past the wrap gains
+       37px of card width without moving any of the text around it.
+       Side margins only: a margin shorthand here reset the 2.5rem top gap
+       and left the cards touching the section intro on phones. */
+    margin-left:-2rem; margin-right:-2rem; padding:0 0.75rem 4px;
+  }
+.services-grid::-webkit-scrollbar,
+.testi-grid::-webkit-scrollbar,
+.its-grid::-webkit-scrollbar { display:none; }
+.services-grid > *, .testi-grid > *, .its-grid > * { flex:0 0 91%; scroll-snap-align:center; }
+/* One card width, one padding and one type scale across every carousel on the
+   page, so a service card, a review and a package all read the same on a
+   phone instead of each section having its own sizing. */
+.svc-card, .testi-card, .its-card, .pkg-card, .how-card { padding:1.4rem 1.3rem; }
+.svc-name, .its-title, .pkg-title, .how-title { font-size:16px; line-height:1.35; }
+.svc-desc, .its-desc, .testi-quote, .pkg-tagline, .pkg-item, .how-desc { font-size:14px; line-height:1.65; }
+.slide-hint { display:flex; justify-content:flex-end; margin-top:0.85rem; }
+.svc-card { padding:1.4rem; }
+.svc-header-row { flex-direction:column; align-items:flex-start; }
+.svc-header-row .btn-outline { width:100%; justify-content:center; }
+.included-banner { padding:1rem 1.1rem; }
+.how-grid { grid-template-columns:1fr; gap:10px; }
+.how-card { padding:1.4rem 1.25rem; }
+.pkg-swipe-bar { display:flex; }
+.pkg-dots { display:flex; }
+.pkg-duo {
+    display:flex; grid-template-columns:none; gap:12px;
+    overflow-x:auto; scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch; scrollbar-width:none;
+    margin:0 -2rem; padding:0 0.75rem 4px;
+  }
+.pkg-duo::-webkit-scrollbar { display:none; }
+.pkg-duo > .pkg-card { flex:0 0 91%; scroll-snap-align:center; }
+.pkg-tagline { font-size:12.5px; }
+.pkg-item  { font-size:12.5px; }
+.payment-strip { flex-direction:column; align-items:center; }
+.its-card  { padding:1.4rem; }
+.why-grid  { grid-template-columns:1fr; gap:10px; }
+.areas-grid { grid-template-columns:repeat(2,1fr); gap:8px; }
+.area-pill { padding:0.75rem 0.85rem; }
+.area-name { font-size:12.5px; }
+.visit-grid { grid-template-columns:1fr; gap:12px; }
+.visit-card { padding:1.4rem; gap:1.1rem; }
+.vc-hours-title { font-size:1.1rem; }
+.vc-step-time { font-size:1.3rem; }
+.vc-actions .btn-wa { padding:14px 18px; font-size:14.5px; }
+.map-card { min-height:260px; }
+.map-embed { min-height:260px; }
+.cta-inner  { grid-template-columns:1fr; }
+.cta-title  { font-size:1.3rem; }
+.cta-actions { flex-direction:column; align-items:stretch; width:100%; }
+.cta-actions .btn-wa, .cta-actions .btn-outline { width:100%; min-width:0; }
+.faq-list { max-width:100%; grid-template-columns:1fr; gap:10px; }
+.faq-q { font-size:14px; padding:1rem 1.25rem; }
+.faq-a p:where(:not([class])) { font-size:13.5px; padding:0 1.25rem; }
+.faq-item.open .faq-a p:where(:not([class])) { padding:0 1.25rem 1rem; }
+.svc-links-section { padding:1.5rem 1.25rem; }
+.svc-links-grid { gap:6px; }
+/* First eight pills only, which is about three rows, then a toggle. */
+.svc-links-grid > :nth-child(n+7) { display:none; }
+.svc-links-grid.is-expanded > :nth-child(n+7) { display:inline-flex; }
+.svc-links-more {
+    display:inline-flex; align-items:center; gap:6px; margin-top:1.1rem;
+    font-family:var(--body); font-size:13px; font-weight:600; color:var(--blue);
+    background:var(--bg); border:1.5px solid var(--border2); border-radius:50px;
+    padding:9px 16px; cursor:pointer; line-height:1;
+    transition:border-color 0.15s,color 0.15s,transform 0.1s var(--ease-press);
+  }
+@media (hover: hover) { .svc-links-more:hover { border-color:var(--blue); } }
+.svc-links-more:active { transform:scale(0.96); }
+.svc-links-more svg { width:14px; height:14px; transition:transform 0.22s cubic-bezier(0.4,0,0.2,1); }
+.svc-links-grid.is-expanded ~ .svc-links-more svg { transform:rotate(180deg); }
+.svc-links-more:focus-visible { outline:2px solid var(--blue); outline-offset:3px; }
+.svc-link-pill { font-size:12px; padding:5px 12px; }
+/* Cleared above the sticky call bar, which is fixed to the bottom and about
+   70px tall. The two were overlapping. */
+/* .wa-bubble mobile sizing also moved to shell.css alongside the base rule. */
+/* Long button labels wrap instead of forcing the page wider than the screen. */
+.btn-blue, .btn-wa, .btn-outline { white-space:normal; text-align:center; }
+.svc-links-section .btn-outline, .section .btn-outline { width:100%; }
+.hero-price { font-size:17px; }
+.hero-price > strong { font-size:21px; }
+/* No room to wrap on a phone, so the strip becomes one scrolling row that
+   bleeds to the screen edge. */
+.guide-tabs {
+    flex-wrap:nowrap; overflow-x:auto; scrollbar-width:none;
+    margin:0 -2rem 1.5rem; padding:0 0.75rem 2px; scroll-behavior:smooth;
+  }
+.guide-tabs::-webkit-scrollbar { display:none; }
+.guide-tab { font-size:13px; border-radius:9px; padding:9px 14px; }
+.guide-panel > h3 { font-size:1.2rem; }
+.guide-panel > p, .guide-panel > ul > li { font-size:14.5px; }
+.hero-info-strip { padding:0 1.25rem 2.5rem; }
+.his-inner { flex-direction:column; align-items:stretch; gap:0.9rem; padding:1.1rem 1.15rem; }
+/* Three equal columns so "Same day" never pushes into its neighbours; the
+   figure scales with the screen instead of wrapping. */
+.his-stats { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:0.75rem; width:100%; }
+.his-stat { min-width:0; }
+.his-val { font-size:clamp(1rem,5vw,1.25rem); }
+.his-lbl { white-space:normal; line-height:1.3; }
+.his-checks { grid-template-columns:1fr 1fr; gap:0.5rem 0.75rem; }
+.his-checks li:where(:not([class])) { font-size:12px; white-space:normal; line-height:1.35; }
+.brand-strip { padding:1.75rem 1.25rem; }
+.brand-badge { font-size:12px; padding:7px 13px; }
+.offer-banner { padding:0 1.25rem; }
+.offer-inner { padding:1.35rem 1.35rem; gap:1rem; }
+.offer-title { font-size:1.05rem; }
+.offer-btn { width:100%; }
+.offer-btn .btn-wa { width:100%; }
+.mq-service-btn { flex-direction:column; justify-content:center; align-items:center; text-align:center; gap:5px; min-height:66px; padding:11px 7px; font-size:12px; }
+.mq-service-btn svg { width:19px; height:19px; }
+.hc-body { padding:1.35rem; padding:1.35rem; }
+
+/* The toggle covers the whole header bar, so the tap target is the full
+   card width rather than just the chevron. Transparent, so the dots and
+   the label underneath still read normally. */
+.hc-toggle {
+  display:flex; align-items:center; justify-content:flex-end;
+  position:absolute; inset:0; width:100%;
+  padding:0 16px; margin:0; border:0; background:none;
+  color:rgba(255,255,255,0.65); cursor:pointer; -webkit-tap-highlight-color:transparent;
+}
+.hc-toggle:focus-visible { outline:2px solid #fff; outline-offset:-3px; border-radius:20px 20px 0 0; }
+.hero-card.is-collapsed .hc-toggle:focus-visible { border-radius:20px; }
+/* Points up while open, down while collapsed. Slight overshoot on the
+   rotation so the tap feels answered rather than merely obeyed. */
+.hc-chevron { transform:rotate(180deg); transition:transform 0.34s var(--ease-settle); }
+/* Press feedback on the bar itself, since the button is transparent and
+   there is no other sign that the tap registered. */
+.hc-toggle:active { background:rgba(255,255,255,0.07); }
+
+/* Animating grid-template-rows rather than max-height. The card changes
+   height between step 1 and step 2 of the form, so any fixed max-height
+   would either clip it or leave a pause at the end of the animation.
+   0fr to 1fr needs no guessed number. */
+/* overflow:hidden must sit on the grid container, not the item. The body
+   carries 1.35rem of padding, and with box-sizing:border-box that padding
+   is its floor, so at 0fr the row is 0 but the item still measured 43px
+   until the container clipped it. */
+.hc-collapse { display:grid; grid-template-rows:1fr; overflow:hidden; transition:grid-template-rows 0.32s cubic-bezier(0.4,0,0.2,1); }
+.hc-collapse > .hc-body { min-height:0; transition:padding 0.32s cubic-bezier(0.4,0,0.2,1); }
+/* box-sizing is border-box, so the body's padding is its height floor. At 0fr
+   the row is 0 but the item still measured 43px, which left a stub under the
+   bar. The padding animates out with the row so the card really does close to
+   just the bar. */
+
+.hero-card.is-collapsed .hc-collapse { grid-template-rows:0fr; }
+.hero-card.is-collapsed .hc-chevron { transform:rotate(0deg); }
+/* One label always showing, and it names what the next tap does. Both spans
+   live in the same flex slot, so only one is ever in flow and there is no
+   layout shift. display cannot be transitioned, so the incoming label fades
+   in with a keyframe instead. */
+.hero-card:not(.is-collapsed) .hc-hint-close { display:inline-block; animation:hcHintIn 0.3s ease both; }
+.hero-card.is-collapsed .hc-hint-open { display:inline-block; animation:hcHintIn 0.3s ease both; }
+@keyframes hcHintIn { from { opacity:0; transform:translateX(5px); } to { opacity:1; transform:none; } }
+.hero-card.is-collapsed { margin-bottom:1.25rem; }
+/* Hidden only once the animation has finished, otherwise it disappears
+   mid-collapse. Without this a keyboard or screen reader user tabs
+   straight into an invisible form. */
+.hero-card.is-collapsed .hc-collapse > .hc-body { padding-top:0; padding-bottom:0; visibility:hidden; transition:visibility 0s 0.32s; }
+@media (prefers-reduced-motion: reduce) {
+  .hc-collapse, .hc-chevron, .hc-collapse > .hc-body { transition:none; }
+  .hc-hint { animation:none; }
+  .hero-card.is-collapsed .hc-collapse > .hc-body { transition:none; }
+}
+}
+/* Reduced motion: gentler equivalents, not silence. Ambient loops that never
+   stop (pulse, ticker, the swipe nudge) come off entirely since they carry no
+   information. The scroll reveal keeps a quick opacity cross-fade instead of
+   the slide-and-fade, so content still announces itself without motion. The
+   FAQ arrow drops its overshoot and rotates plainly. Hover lifts lose their
+   translateY - the border/shadow/color change alone still signals "hovered". */
+@media (prefers-reduced-motion: reduce) {
+  .mq-response-dot, .trust-track, .pkg-swipe-hint svg { animation:none; }
+  .js .fade-up { transition:opacity 0.2s ease; transform:none; }
+  .faq-q-arrow { transition:transform 0.2s ease; }
+  @media (hover: hover) { .btn-blue:hover, .btn-wa:hover, .mq-submit:hover,
+  .svc-card:hover, .how-card:hover, .its-card:hover, .why-card:hover,
+  .testi-card:hover, a.area-pill--link:hover,
+ .mq-service-btn:hover, .vc-row:hover .vc-row-arrow, .hero-alt-link:hover svg { transform:none; } }
+  .btn-blue, .btn-wa, .btn-outline, .mq-submit,
+  .svc-card, .how-card, .its-card, .why-card,
+  .testi-card, a.area-pill--link, .mq-service-btn,
+  .mq-pref-btn, .guide-tab, .svc-links-more, .svc-cta, .svc-link-pill {
+    transition-duration:0.15s;
+  }
+}
+/* Reduced transparency. The homepage's own translucent surfaces go solid. */
+@media (prefers-reduced-transparency: reduce) {
+  .his-check-icon { background:var(--bg3); border-color:var(--border2); }
+}
+
+/* High contrast. Muted greys darkened to carry real contrast, and the
+   tinted panels given a defined border rather than relying on fill alone. */
+@media (prefers-contrast: more) {
+  .s-sub, .svc-desc, .how-desc, .why-desc, .its-desc, .testi-text,
+ .area-count { color:#334155; }
+  .svc-card, .how-card, .its-card, .why-card, .testi-card,
+  .area-pill { border-color:#0F172A; }
+  .btn-outline { border-color:#0F172A; }
+  .hero-alt-link, .hero-note, .hero-more { color:#0F172A; }
+  .visit-card, .vc-turnaround { border-color:#0F172A; }
+  .vc-label, .vc-hours-sub, .vc-turnaround-note, .vc-quote-link { color:#334155; }
+  .svc-cta, .svc-link-pill { border-color:#0A3ACC; }
+}
+
+/* The grey iOS tap flash paints over the press-scale feedback above, so the
+   two fight each other. The scale and colour change are the feedback now. */
+.btn-blue, .btn-wa, .btn-outline, .mq-submit, .mq-pref-btn,
+.mq-service-btn, .svc-cta, .svc-link-pill,
+.area-pill--link, .guide-tab, .svc-links-more, .faq-q, .pkg-dot {
+  -webkit-tap-highlight-color:transparent;
+}
+
+@media (max-width:540px) {
+.section,.section-alt,.cta-section,.faq-section{ padding:3rem 1.25rem; }
+.hero h1:where(:not([class])) { font-size:1.75rem; }
+.s-title  { font-size:1.3rem; }
+.pkg-card { padding:1.4rem 1.15rem; }
+.pkg-price { font-size:2.5rem; }
+.areas-grid { grid-template-columns:repeat(2,1fr); }
+}
+@media (max-width:380px) {
+/* Too narrow for the title and the "Tap to close" hint on one line, so the
+   hint goes; the chevron still shows the card collapses. */
+.hero-card:not(.is-collapsed) .hc-hint-close, .hero-card.is-collapsed .hc-hint-open { display:none; }
+/* Hardening for very narrow viewports. Several blocks carry a min-width of
+   220px or white-space:nowrap, which is fine on a phone but overflows once
+   the effective width drops below about 320px, which happens with large
+   accessibility text or page zoom. */
+.his-checks, .included-banner-text, .cta-actions, .offer-text { min-width:0; }
+.his-checks li:where(:not([class])), .svc-badge, .area-name, .area-pill { white-space:normal; overflow-wrap:anywhere; }
+.areas-grid > *, .visit-grid > *, .svc-top > *, .its-price-row > * { min-width:0; }
+.hero h1:where(:not([class])) { font-size:1.6rem; }
+.areas-grid { grid-template-columns:1fr 1fr; gap:6px; }
+.area-pill { padding:0.65rem 0.75rem; }
+.area-name { font-size:12px; }
+.his-stats { gap:0.5rem; }
+}

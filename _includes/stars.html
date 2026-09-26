@@ -1,0 +1,22 @@
+{%- comment -%}
+  Star rating. One SVG symbol (#ico-star, defined once on the page),
+  drawn twice: a grey row underneath and a gold row on top, with the gold
+  row clipped to the rating. That is what lets 4.8 draw as four and four
+  fifths rather than rounding up to five.
+
+    {% include stars.html value=4.8 size='lg' %}
+    {% include stars.html value=r.stars %}
+
+  The clip width used to be an inline style attribute, which every editor
+  flags: a CSS validator reads "width:{{ value }}%" as a literal value and
+  marks it invalid. The width now comes from two classes, the whole star
+  count and the tenth, which the stylesheet adds together in calc(). Class
+  values are not validated, so the warnings go and the geometry is
+  identical.
+{%- endcomment -%}
+{%- assign _v     = include.value | times: 1.0 -%}
+{%- assign _whole = _v | floor -%}
+{%- assign _wx10  = _whole | times: 10 -%}
+{%- assign _tenth = _v | times: 10 | round | minus: _wx10 -%}
+{%- if _tenth < 0 %}{% assign _tenth = 0 %}{% endif -%}
+<span class="stars{% if include.size == 'lg' %} stars-lg{% endif %} sw-{{ _whole }} st-{{ _tenth }}" role="img" aria-label="{{ include.value }} out of 5 stars"><span class="stars-bg" aria-hidden="true"><svg class="star"><use href="#ico-star"/></svg><svg class="star"><use href="#ico-star"/></svg><svg class="star"><use href="#ico-star"/></svg><svg class="star"><use href="#ico-star"/></svg><svg class="star"><use href="#ico-star"/></svg></span><span class="stars-fg" aria-hidden="true"><svg class="star"><use href="#ico-star"/></svg><svg class="star"><use href="#ico-star"/></svg><svg class="star"><use href="#ico-star"/></svg><svg class="star"><use href="#ico-star"/></svg><svg class="star"><use href="#ico-star"/></svg></span></span>

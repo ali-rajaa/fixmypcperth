@@ -1,0 +1,179 @@
+/* ==========================================================
+   legal.css   VERSION 4
+   v4: adds prefers-contrast, kills the iOS tap flash, em tracking on the
+   fluid h1. (v3 below)
+   Shared page stylesheet for /terms and /privacy. Both pages
+   are the same shape, so they share one file rather than
+   duplicating a near-identical stylesheet twice.
+   Self-contained with its own :root, like every page CSS on
+   this site. Tokens are never shared between page
+   stylesheets: a page that uses a token it has not defined
+   renders dark text on dark panels.
+
+   v3: Apple-design pass. Audited clean against both terms.html and
+   privacy.html - no undefined vars, no HTML classes missing a rule, no
+   scrollspy JS to reconcile (the TOC is plain anchor links). Added press
+   feedback to the TOC links and the two closing CTA buttons, neither of
+   which had any active state before. Critically damped easing tokens
+   added, matching the rest of the site.
+   ========================================================== */
+
+:root {
+  --blue:      #1560FF;
+  --blue-lt:   #EEF3FF;
+  --blue-mid:  #C7D8FF;
+  --blue-dk:   #0A3ACC;
+  --ink:       #0F172A;
+  --ink2:      #1E293B;
+  --muted:     #64748B;
+  --muted2:    #94A3B8;
+  --border:    #E2E8F0;
+  --border2:   #CBD5E1;
+  --bg:        #FFFFFF;
+  --bg2:       #F8FAFC;
+  --bg3:       #F1F5F9;
+  --wa:        #22C55E;
+  --wa-dk:     #15803D;
+  --wa-deep:   #166534;
+  --display:   'Sora', 'Sora Fallback', sans-serif;
+  --body:      'DM Sans', 'DM Sans Fallback', sans-serif;
+  --nav-h:     64px;
+  --mob-nav-h: 60px;
+  /* Critically damped (no overshoot) - the default for hover/reveal motion
+     that isn't carrying momentum from a drag or flick. */
+  --ease-settle: cubic-bezier(0.16, 1, 0.3, 1);
+  /* Fast, for the instant press feedback itself. */
+  --ease-press:  cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* { box-sizing: border-box; }
+body { background:var(--bg); color:var(--ink); font-family:var(--body); font-size:16px; line-height:1.6; overflow-x:hidden; }
+.wrap { max-width:1100px; margin:0 auto; padding:0 2rem; }
+
+/* ---------- hero ---------- */
+/* The hero used its own narrower centred column, so the headline started
+   about 180px to the right of the contents rail below it. It now sits on the
+   same 1100px wrap as the rest of the page and the line length is controlled
+   on the paragraph instead. */
+.lg-hero { background:var(--bg2); padding:96px 0 2.75rem; border-bottom:1px solid var(--border); }
+.lg-hero-inner { max-width:1100px; margin:0 auto; padding:0 2rem; }
+/* Plain text, not a capsule. Same rule as every other label on the site. */
+.lg-updated { display:block; font-size:11.5px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); margin-bottom:0.9rem; }
+.lg-hero h1:where(:not([class])) { max-width:20ch; font-family:var(--display); font-size:clamp(1.9rem,3.4vw,2.6rem); font-weight:800; letter-spacing:-0.034em; line-height:1.12; color:var(--ink); margin:0 0 0.6rem; }
+.lg-sub { max-width:46ch; font-family:var(--display); font-size:clamp(1rem,1.8vw,1.25rem); font-weight:600; color:var(--blue); margin:0 0 1.25rem; }
+.lg-intro { font-size:15.5px; color:var(--muted); line-height:1.8; margin:0; max-width:68ch; }
+
+/* ---------- layout ---------- */
+.lg-layout { display:grid; grid-template-columns:280px 1fr; gap:3rem; align-items:start; padding-top:3rem; padding-bottom:4rem; }
+.lg-side { position:sticky; top:calc(var(--nav-h) + 24px); }
+.lg-side-card { background:var(--bg); border:1px solid var(--border); border-radius:16px; padding:1.1rem; max-height:calc(100vh - var(--nav-h) - 64px); overflow-y:auto; scrollbar-width:thin; }
+.lg-side-head { display:block; font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); padding:0 0.6rem 0.75rem; }
+.lg-toc { display:flex; flex-direction:column; gap:1px; }
+.lg-toc a:where(:not([class])) {
+  display:flex; align-items:flex-start; gap:10px; text-decoration:none;
+  font-family:var(--body); font-size:13.5px; font-weight:600; color:var(--ink2);
+  line-height:1.45; padding:0.55rem 0.6rem; border-radius:9px;
+  transition:background 0.16s,color 0.16s;
+}
+@media (hover: hover) { .lg-toc a:where(:not([class])):hover { background:var(--blue-lt); color:var(--blue-dk); } }
+.lg-toc a:where(:not([class])):active { background:var(--blue-mid); transition:background 0.1s var(--ease-press); }
+.lg-toc a:where(:not([class])):focus-visible { outline:2px solid var(--blue); outline-offset:-2px; }
+.lg-toc-n { flex:0 0 auto; font-size:12px; font-weight:600; color:var(--muted); min-width:16px; font-variant-numeric:tabular-nums; }
+@media (hover: hover) { .lg-toc a:hover .lg-toc-n { color:var(--blue); } }
+
+.lg-main { min-width:0; }
+
+/* ---------- sections ---------- */
+.lg-sec { padding-bottom:2.5rem; scroll-margin-top:calc(var(--nav-h) + 24px); }
+.lg-sec h2:where(:not([class])) {
+  display:flex; align-items:baseline; gap:0.5rem;
+  font-family:var(--display); font-size:clamp(1.15rem,2.2vw,1.45rem); font-weight:800;
+  letter-spacing:-0.5px; color:var(--ink); margin:0 0 0.9rem;
+}
+/* Set in the heading's own type rather than a coloured badge. A numbered
+   clause should read as part of the heading, not as a tag beside it. */
+.lg-num { flex:0 0 auto; font-variant-numeric:tabular-nums; color:var(--blue); }
+.lg-sec p:where(:not([class])) { font-size:15px; color:var(--muted); line-height:1.85; margin:0 0 0.95rem; max-width:72ch; }
+.lg-sec p:where(:not([class])):last-child { margin-bottom:0; }
+.lg-sec strong:where(:not([class])) { color:var(--ink2); font-weight:700; }
+.lg-sec a:where(:not([class])) { color:var(--blue); text-decoration:none; border-bottom:1px solid var(--blue-mid); transition:border-color 0.15s; }
+@media (hover: hover) { .lg-sec a:where(:not([class])):hover { border-color:var(--blue); } }
+.lg-sec ul:where(:not([class])) { margin:0 0 0.95rem; padding:0; list-style:none; max-width:72ch; }
+.lg-sec li:where(:not([class])) { position:relative; font-size:15px; color:var(--muted); line-height:1.75; padding:0 0 0.55rem 1.4rem; }
+.lg-sec li:where(:not([class]))::before { content:''; position:absolute; left:2px; top:11px; width:6px; height:6px; border-radius:50%; background:var(--blue-mid); }
+.lg-sec li:where(:not([class])):last-child { padding-bottom:0; }
+
+/* ---------- closing card ---------- */
+.lg-help { background:var(--bg2); border:1px solid var(--border); border-radius:18px; padding:2rem; margin-top:1rem; }
+.lg-help h2:where(:not([class])) { font-family:var(--display); font-size:1.3rem; font-weight:800; letter-spacing:-0.5px; color:var(--ink); margin:0 0 0.5rem; }
+.lg-help p { font-size:15px; color:var(--muted); line-height:1.75; margin:0 0 1.35rem; max-width:60ch; }
+.lg-help-actions { display:flex; flex-wrap:wrap; gap:10px; }
+.lg-btn {
+  display:inline-flex; align-items:center; justify-content:center;
+  font-family:var(--body); font-size:15px; font-weight:700; text-decoration:none;
+  padding:13px 26px; border-radius:50px; max-width:100%; white-space:nowrap;
+  transition:background 0.18s,border-color 0.18s,color 0.18s,transform 0.1s var(--ease-press);
+}
+.lg-btn:active { transform:scale(0.96); }
+.lg-btn-wa { background:var(--wa-dk); color:#fff; border:1.5px solid var(--wa-dk); }
+@media (hover: hover) { .lg-btn-wa:hover { background:var(--wa-deep); border-color:var(--wa-deep); } }
+.lg-btn-ghost { background:var(--bg); color:var(--ink); border:1.5px solid var(--border2); }
+@media (hover: hover) { .lg-btn-ghost:hover { border-color:var(--blue); color:var(--blue); } }
+
+/* ==========================================================
+   The nav switches to the hamburger at 900px, so the body
+   offset and every sticky top has to move with it.
+   ========================================================== */
+@media (max-width:1000px) {
+  .lg-layout { grid-template-columns:1fr; gap:0; padding-top:2rem; }
+  /* The rail becomes a plain contents block above the text rather than
+     disappearing. On a long legal page that list is the fastest way to
+     reach the one clause someone came for. */
+  .lg-side { position:static; margin-bottom:2rem; }
+  .lg-side-card { max-height:none; overflow:visible; }
+  .lg-toc { display:grid; grid-template-columns:1fr 1fr; gap:2px 1rem; }
+}
+
+@media (max-width:900px) {
+  body { padding-top:var(--mob-nav-h); }
+  .lg-hero { padding-top:2.5rem; }
+  .lg-side { top:calc(var(--mob-nav-h) + 16px); }
+  .lg-sec { scroll-margin-top:calc(var(--mob-nav-h) + 16px); }
+}
+
+@media (max-width:720px) {
+  .wrap { padding:0 1.25rem; }
+  .lg-hero { padding:2rem 0 2.25rem; }
+  .lg-hero-inner { padding:0 1.25rem; }
+  .lg-hero h1:where(:not([class])), .lg-sub { max-width:none; }
+  .lg-hero h1:where(:not([class])) { font-size:1.85rem; letter-spacing:-1px; }
+  .lg-intro { font-size:15px; }
+  .lg-toc { grid-template-columns:1fr; }
+  .lg-layout { padding-bottom:2.5rem; }
+  .lg-sec { padding-bottom:2rem; }
+  .lg-sec p:where(:not([class])), .lg-sec li:where(:not([class])) { font-size:14.5px; }
+  .lg-help { padding:1.5rem 1.25rem; }
+  .lg-btn { width:100%; }
+}
+
+.lg-help-links { font-size:13.5px; color:var(--muted); line-height:1.7; margin:1.1rem 0 0; }
+.lg-help-links a:where(:not([class])) { color:var(--blue); font-weight:600; }
+
+@media (prefers-reduced-motion: reduce) {
+  .lg-toc a:where(:not([class])), .lg-btn, .lg-sec a:where(:not([class])) { transition:none; }
+  .lg-btn:active { transform:none; }
+  html { scroll-behavior:auto; }
+}
+
+/* High contrast. Body copy on these pages is long-form legal text, so the
+   muted grey is darkened and the link underline strengthened. */
+@media (prefers-contrast: more) {
+  .lg-intro, .lg-sec p:where(:not([class])), .lg-sec li:where(:not([class])), .lg-help p { color:#334155; }
+  .lg-sec a:where(:not([class])) { border-bottom-color:#0A3ACC; }
+  .lg-side-card, .lg-help { border-color:#0F172A; }
+  .lg-btn-ghost { border-color:#0F172A; }
+  .lg-sec li:where(:not([class]))::before { background:#0A3ACC; }
+}
+
+/* The grey iOS tap flash paints over the press-scale feedback above. */
+.lg-toc a:where(:not([class])), .lg-btn, .lg-sec a:where(:not([class])) { -webkit-tap-highlight-color:transparent; }

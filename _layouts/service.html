@@ -1,0 +1,633 @@
+---
+layout: default
+---
+{%- comment -%}
+  service.html   layout for the service page cluster   VERSION 1
+  /laptop-repair-perth first, then the other eight in STATUS.md.
+
+  Same design as the Tech Tips guides and the industry pages (one centred
+  column, the same type scale, the same dark on-page quote form), so the
+  site reads as one design. css: service in front matter.
+
+  A guide answers a question; a service page sells the job. So this layout
+  shows a price under each repair, where the guides deliberately do not.
+
+  PRICES. The page never types one. Every figure comes from services.yml
+  through price.html by key, and the note under each price is that entry's
+  own desc, so a labour-only price is never shown without saying so.
+  FAQ answers write prices as [[service-key]] tokens (front matter cannot
+  run Liquid); resolve-prices.html turns them into figures here, once, and
+  the same resolved text feeds the visible FAQ and the FAQ schema, so the
+  two cannot drift apart.
+
+  Front matter:
+    Facts     slug (must match the file name), heading (H1, breadcrumb and
+              schema name; title is the SEO tag only), eyebrow,
+              service_name (schema serviceType), quote_service (tags the
+              quote email), wa_text (the pre-filled WhatsApp message)
+    Written   short_answer, intro (HTML), repairs (each: id, title,
+              price_key, optional also_keys list, text as HTML), faqs
+              (each: q and a)
+    Links     suburbs (suburb slugs; a link renders only if that suburb
+              page exists), guides (Tech Tips slugs; built ones only)
+    Optional  index_heading (contents box heading, default "What we fix")
+              group on a repair: repairs sharing a group sit under one
+                H2 (the repairs become H3s) and the contents box is
+                grouped the same way. Keep a group's repairs together.
+              group_intros: map of group title to an intro (HTML)
+              signs on a repair: short list shown as "Common signs"
+              sections: extra write-ups after the repairs (each: id,
+                title, html), e.g. repair or replace, brands
+    SEO headings (optional, each with a generic default): costs_heading,
+              faq_heading, near_heading, near_text, topic (lower case,
+              e.g. "laptop repair": names the quote form and guides
+              headings), costs_intro (one or two sentences opening the
+              price section, [[tokens]] allowed). Set them so the
+              section headings carry the page's own search terms.
+    All written HTML (intro, repair text, group intros, sections) may use
+    [[service-key]] price tokens; the layout resolves them.
+
+  Links out to other service pages come from service_links in
+  _data/suburbs.yml, built: true only, so a service page can never link to
+  one that does not exist yet.
+{%- endcomment -%}
+
+{%- assign _S = site.data.services -%}
+{%- assign _R = site.data.reviews.meta -%}
+{%- assign _all = _S.services | concat: _S.addons -%}
+{%- assign _url = "https://www.fixmypcperth.com/" | append: page.slug -%}
+{%- capture _desc -%}{% include resolve-prices.html text=page.description %}{%- endcapture -%}
+{%- capture _wa -%}https://wa.me/61452573701?text={{ page.wa_text | default: "Hi! I'd like a free quote for PC repair." | uri_escape }}{%- endcapture -%}
+
+{%- assign _groups = page.repairs | map: "group" | uniq -%}
+{%- assign _grouped = false -%}{%- if _groups.first -%}{%- assign _grouped = true -%}{%- endif -%}
+{%- assign _rh = "h2" -%}{%- if _grouped -%}{%- assign _rh = "h3" -%}{%- endif -%}
+{%- capture _chev %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>{% endcapture -%}
+
+{%- comment -%} Every price key on the page, in order, once each: the
+repairs' own keys then their also_keys. Drives the cost table and the
+schema catalogue. {%- endcomment -%}
+{%- assign _keys = "" | split: "" -%}
+{%- for _r in page.repairs -%}
+  {%- unless _keys contains _r.price_key -%}{%- assign _keys = _keys | push: _r.price_key -%}{%- endunless -%}
+  {%- for _k in _r.also_keys -%}
+    {%- unless _keys contains _k -%}{%- assign _keys = _keys | push: _k -%}{%- endunless -%}
+  {%- endfor -%}
+{%- endfor -%}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": "{{ _url }}#service",
+  "name": {{ page.heading | jsonify }},
+  "serviceType": {{ page.service_name | jsonify }},
+  "description": {{ _desc | jsonify }},
+  "url": "{{ _url }}",
+  {%- assign _subs_all = site.pages | where: "layout", "suburb" %}
+  "areaServed": [
+    { "@type": "City", "name": "Perth", "containedInPlace": { "@type": "State", "name": "Western Australia" } }
+    {%- for _slug in page.suburbs -%}
+    {%- assign _p = _subs_all | where: "slug", _slug | first -%}
+    {%- if _p %},
+    { "@type": "Place", "name": {{ _p.suburb | append: " WA" | jsonify }}, "url": "https://www.fixmypcperth.com/suburbs/{{ _p.slug }}" }
+    {%- endif -%}
+    {%- endfor %}
+  ],
+  "provider": {
+    "@type": "LocalBusiness",
+    "@id": "https://www.fixmypcperth.com/#business",
+    "name": "FixMyPC Perth",
+    "url": "https://www.fixmypcperth.com/",
+    "telephone": "+61452573701",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "7 Barraberry Retreat",
+      "addressLocality": "Canning Vale",
+      "addressRegion": "WA",
+      "postalCode": "6155",
+      "addressCountry": "AU"
+    },
+    "geo": { "@type": "GeoCoordinates", "latitude": -32.0697802, "longitude": 115.9245929 }
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": {{ page.heading | append: " prices" | jsonify }},
+    "itemListElement": [
+      {%- comment -%} Only entries with a number go in the catalogue: a
+      text-only price such as "Free" has no schema.org price. {%- endcomment -%}
+      {%- assign _okeys = "" | split: "" -%}
+      {%- for _k in _keys -%}
+        {%- include service-entry.html key=_k -%}
+        {%- if _e_num -%}{%- assign _okeys = _okeys | push: _k -%}{%- endif -%}
+      {%- endfor -%}
+      {%- for _k in _okeys -%}
+      {%- include service-entry.html key=_k -%}
+      {%- unless forloop.first %},{% endunless %}
+      {
+        "@type": "Offer",
+        "itemOffered": { "@type": "Service", "name": {{ _e_name | jsonify }} },
+        {%- if _e_from %}
+        "priceSpecification": { "@type": "PriceSpecification", "minPrice": {% include price.html key=_k numeric=true %}, "priceCurrency": "AUD" },
+        {%- else %}
+        "price": {% include price.html key=_k numeric=true %},
+        {%- endif %}
+        "priceCurrency": "AUD"
+      }
+      {%- endfor %}
+    ]
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.fixmypcperth.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Services", "item": "https://www.fixmypcperth.com/services"},
+    {"@type": "ListItem", "position": 3, "name": {{ page.heading | jsonify }}, "item": "{{ _url }}"}
+  ]
+}
+</script>
+
+{%- if page.faqs %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {%- for _f in page.faqs -%}
+    {%- capture _a %}{% include resolve-prices.html text=_f.a %}{% endcapture -%}
+    {%- unless forloop.first %},{% endunless %}
+    { "@type": "Question", "name": {{ _f.q | jsonify }}, "acceptedAnswer": { "@type": "Answer", "text": {{ _a | strip | jsonify }} } }
+    {%- endfor %}
+  ]
+}
+</script>
+{%- endif %}
+
+<article class="sv">
+
+  <header class="sv-head">
+    <nav class="sv-crumbs" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="{{ '/' | relative_url }}">Home</a></li>
+        <li><a href="{{ '/services' | relative_url }}">Services</a></li>
+        <li><span aria-current="page">{{ page.heading | escape }}</span></li>
+      </ol>
+    </nav>
+
+    {%- if page.eyebrow %}<span class="sv-eyebrow">{{ page.eyebrow | escape }}</span>{% endif %}
+    <h1 class="sv-h1">{{ page.heading | escape }}</h1>
+    <p class="sv-lede">{{ page.short_answer | escape }}</p>
+
+    <div class="sv-act">
+      <a href="{{ _wa }}" target="_blank" rel="noopener noreferrer" class="sv-btn sv-btn-wa" aria-label="Get a free quote on WhatsApp" onclick="trackWAClick()" data-track="hero_whatsapp">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>
+        Get a quote on WhatsApp
+      </a>
+      <a href="#quote" class="sv-act-link" data-track="hero_form">
+        Or get a fixed price online
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+
+    {%- capture _tick %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>{% endcapture %}
+    <ul class="sv-promise" aria-label="Every repair includes">
+      <li>{{ _tick }}Fixed price first</li>
+      <li>{{ _tick }}Same day on most jobs</li>
+      <li>{{ _tick }}30-day warranty</li>
+      {%- if _R.rating %}<li>{{ _tick }}Rated {{ _R.rating }} on Google</li>{% endif %}
+    </ul>
+  </header>
+
+  <nav class="sv-index" aria-labelledby="sv-index-title">
+    <h2 class="sv-index-title" id="sv-index-title">{{ page.index_heading | default: "What we fix" | escape }}</h2>
+    {%- if _grouped %}
+    <div class="sv-index-groups">
+      {%- for _g in _groups %}
+      {%- assign _rs = page.repairs | where: "group", _g %}
+      <div class="sv-index-group">
+        <p class="sv-index-gtitle"><a href="#{{ _g | slugify }}">{{ _g | escape }}</a></p>
+        <ul class="sv-index-list">
+          {%- for _r in _rs %}
+          <li><a href="#{{ _r.id }}">{{ _chev }}<span>{{ _r.title | escape }}</span></a></li>
+          {%- endfor %}
+        </ul>
+      </div>
+      {%- endfor %}
+    </div>
+    <ul class="sv-index-list sv-index-extra">
+      {%- for _x in page.sections %}
+      <li><a href="#{{ _x.id }}">{{ _chev }}<span>{{ _x.title | escape }}</span></a></li>
+      {%- endfor %}
+      <li><a href="#costs">{{ _chev }}<span>Prices</span></a></li>
+      {%- if page.faqs %}<li><a href="#faq">{{ _chev }}<span>Questions</span></a></li>{% endif %}
+    </ul>
+    {%- else %}
+    <ul class="sv-index-list">
+      {%- for _r in page.repairs %}
+      <li><a href="#{{ _r.id }}">{{ _chev }}<span>{{ _r.title | escape }}</span></a></li>
+      {%- endfor %}
+      {%- for _x in page.sections %}
+      <li><a href="#{{ _x.id }}">{{ _chev }}<span>{{ _x.title | escape }}</span></a></li>
+      {%- endfor %}
+      <li><a href="#costs">{{ _chev }}<span>Prices</span></a></li>
+    </ul>
+    {%- endif %}
+  </nav>
+
+  <div class="sv-body">
+
+    {%- if page.intro %}
+    {%- capture _html %}{% include resolve-prices.html text=page.intro %}{% endcapture %}
+    <div class="sv-intro sv-prose">
+      {{ _html }}
+    </div>
+    {%- endif %}
+
+    {%- assign _pg = "" %}
+    {%- assign _seen = "" | split: "" %}
+    {%- comment -%} One call to action halfway down the repairs, so a reader
+    who is sure what they need does not have to scroll to the form at the
+    end. Grouped pages: before the group after the halfway point. Other
+    pages: after the middle repair. {%- endcomment %}
+    {%- assign _gcount = 0 %}
+    {%- assign _gmid = _groups.size | divided_by: 2 %}
+    {%- assign _rmid = page.repairs.size | divided_by: 2 %}
+    {%- capture _midcta %}
+    <aside class="sv-mid" aria-label="Get a quote">
+      <p class="sv-mid-text"><strong>Know what it is doing?</strong> Tell us, and we reply with a fixed price, usually {{ site.reply_time }}.</p>
+      <div class="sv-mid-act">
+        <a href="{{ _wa }}" target="_blank" rel="noopener noreferrer" class="sv-btn sv-btn-wa sv-btn-sm" onclick="trackWAClick()" data-track="mid_whatsapp">WhatsApp us</a>
+        <a href="#quote" class="sv-act-link" data-track="mid_form">Or use the form</a>
+      </div>
+    </aside>
+    {%- endcapture %}
+    {%- for _r in page.repairs %}
+    {%- include service-entry.html key=_r.price_key %}
+    {%- if _grouped %}
+    {%- if forloop.first or _pg != _r.group %}
+    {%- unless forloop.first %}
+    </section>
+    {%- endunless %}
+    {%- if _gcount == _gmid and _gmid > 0 %}{{ _midcta }}{% endif %}
+    {%- assign _gcount = _gcount | plus: 1 %}
+    <section class="sv-group" id="{{ _r.group | slugify }}" aria-labelledby="{{ _r.group | slugify }}-h">
+      <h2 class="sv-h2 sv-group-h" id="{{ _r.group | slugify }}-h">{{ _r.group | escape }}</h2>
+      {%- assign _gi = page.group_intros[_r.group] %}
+      {%- if _gi %}
+      {%- capture _html %}{% include resolve-prices.html text=_gi %}{% endcapture %}
+      <div class="sv-prose sv-group-intro">{{ _html }}</div>
+      {%- endif %}
+    {%- endif %}
+    {%- endif %}
+    <section class="sv-repair" id="{{ _r.id }}" aria-labelledby="{{ _r.id }}-h">
+      <{{ _rh }} class="{% if _grouped %}sv-h3{% else %}sv-h2{% endif %}" id="{{ _r.id }}-h">{{ _r.title | escape }}</{{ _rh }}>
+      {%- capture _html %}{% include resolve-prices.html text=_r.text %}{% endcapture %}
+      <div class="sv-prose">
+        {{ _html }}
+      </div>
+      {%- if _r.signs %}
+      <div class="sv-signs">
+        <p class="sv-signs-label">Common signs</p>
+        <ul class="sv-signs-list">
+          {%- for _sg in _r.signs %}
+          <li>{{ _sg | escape }}</li>
+          {%- endfor %}
+        </ul>
+      </div>
+      {%- endif %}
+      {%- comment -%} The first time a price appears on the page it gets the
+      full box with its note. After that the same price is a one-line
+      reminder, so a page with seven faults that are all the diagnostic
+      does not print the same box and paragraph seven times. {%- endcomment %}
+      {%- if _seen contains _r.price_key %}
+      <p class="sv-price sv-price-compact">
+        <span class="sv-price-val">{% include price.html key=_r.price_key %}</span>
+        <span class="sv-price-name">{{ _e_name | escape }}</span>
+        <a class="sv-price-more" href="#costs">What it covers</a>
+      </p>
+      {%- else %}
+      {%- assign _seen = _seen | push: _r.price_key %}
+      <p class="sv-price">
+        <span class="sv-price-val">{% include price.html key=_r.price_key %}</span>
+        <span class="sv-price-name">{{ _e_name | escape }}</span>
+        {%- if _e_desc %}<span class="sv-price-note">{{ _e_desc | escape }}</span>{% endif %}
+      </p>
+      {%- endif %}
+    </section>
+    {%- assign _pg = _r.group %}
+    {%- unless _grouped %}{%- if forloop.index == _rmid %}{{ _midcta }}{% endif %}{%- endunless %}
+    {%- if _grouped and forloop.last %}
+    </section>
+    {%- endif %}
+    {%- endfor %}
+
+    {%- for _x in page.sections %}
+    {%- capture _html %}{% include resolve-prices.html text=_x.html %}{% endcapture %}
+    <section class="sv-extra" id="{{ _x.id }}" aria-labelledby="{{ _x.id }}-h">
+      <h2 class="sv-h2" id="{{ _x.id }}-h">{{ _x.title | escape }}</h2>
+      <div class="sv-prose">
+        {{ _html }}
+      </div>
+    </section>
+    {%- endfor %}
+
+    {%- comment -%} How it works. Identical on every service page, so it
+    lives here once. Only claims the site already makes everywhere: 24/7
+    drop-off in Canning Vale, a fixed price agreed first, the 2pm same-day
+    cutoff and the 30-day warranty. {%- endcomment %}
+    <section class="sv-steps-wrap" aria-labelledby="steps-h">
+      <h2 class="sv-h2" id="steps-h">How it works</h2>
+      <ol class="sv-steps">
+        <li><span class="sv-step-title">Message us</span><span class="sv-step-text">Message us on WhatsApp or use the form below. You get a fixed price before you bring it in.</span></li>
+        <li><span class="sv-step-title">Drop it off</span><span class="sv-step-text">At our Canning Vale workshop, any time, day or night. Drop off before 2pm and most jobs are ready by 6pm the same day.</span></li>
+        <li><span class="sv-step-title">Collect it fixed</span><span class="sv-step-text">Tested before you collect it, with a 30-day warranty on the work.</span></li>
+      </ol>
+    </section>
+
+    <section class="sv-costs" id="costs" aria-labelledby="costs-h">
+      <h2 class="sv-h2" id="costs-h">{{ page.costs_heading | default: "Prices" | escape }}</h2>
+      <div class="sv-prose">
+        {%- if page.costs_intro %}
+        {%- capture _html %}{% include resolve-prices.html text=page.costs_intro %}{% endcapture %}
+        <p>{{ _html }} Every price is fixed and includes GST, and everything else is on the <a href="{{ '/pricing' | relative_url }}">full price list</a>.</p>
+        {%- else %}
+        <p>Every price is fixed and includes GST. Not sure what is wrong? The diagnostic finds the fault and fixes it in the same visit for one flat fee, never an hourly rate. Everything else is on the <a href="{{ '/pricing' | relative_url }}">full price list</a>.</p>
+        {%- endif %}
+      </div>
+      <table class="sv-table">
+        <caption class="sr-only">{{ page.heading | escape }} prices</caption>
+        <thead><tr><th scope="col">Repair</th><th scope="col">What it covers</th><th scope="col" class="sv-num">Price</th></tr></thead>
+        <tbody>
+          {%- assign _diag = _S.services | where: "key", "diagnostic-repair-all-in" | first %}
+          {%- comment -%} On phones the "What it covers" column is hidden for
+          width, so the same note is repeated under the name (sv-row-note,
+          phones only). Otherwise a labour-only or "from" price would lose
+          what it covers. The diagnostic is the lead row, so it is skipped
+          in the loop even when a repair on the page uses it. {%- endcomment %}
+          <tr class="sv-row-lead">
+            <th scope="row">{{ _diag.name | escape }}<span class="sv-row-note">Not sure what is wrong</span></th>
+            <td>Not sure what is wrong</td>
+            <td class="sv-num">{% include price.html key="diagnostic-repair-all-in" %}</td>
+          </tr>
+          {%- for _k in _keys %}
+          {%- if _k != "diagnostic-repair-all-in" %}
+          {%- include service-entry.html key=_k %}
+          <tr>
+            <th scope="row">{{ _e_name | escape }}{% if _e_desc %}<span class="sv-row-note">{{ _e_desc | escape }}</span>{% endif %}</th>
+            <td>{{ _e_desc | escape }}</td>
+            <td class="sv-num">{% include price.html key=_k %}</td>
+          </tr>
+          {%- endif %}
+          {%- endfor %}
+        </tbody>
+      </table>
+    </section>
+
+    {%- comment -%} Quote form. Same panel and field names as the Tech Tips
+    form and /quote-request, so enquiries arrive in the same shape. Inputs
+    are 16px so iPhones do not zoom. WhatsApp or email replies only, never
+    a call: the site is WhatsApp-only. The reply time comes from
+    _config.yml, the rating from reviews.yml, and no review count is
+    shown anywhere. {%- endcomment %}
+    <section class="audit-block tq" id="quote" aria-labelledby="quote-h">
+      <h2 class="audit-block-title" id="quote-h">{% if page.topic %}Get a fixed {{ page.topic | escape }} price{% else %}Get a fixed price{% endif %}</h2>
+      <p class="audit-block-desc">Tell us what it is doing. We reply with a fixed price, usually {{ site.reply_time }}.</p>
+      <form id="svQuote" class="tq-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+        <input type="hidden" name="access_key" value="{{ _S.form.access_key }}">
+        <input type="hidden" name="subject" value="Quote request: {{ page.heading | escape }}">
+        <input type="hidden" name="Services" value="{{ page.quote_service | default: 'Something Else' | escape }}">
+        <input type="hidden" name="from_page" value="{{ page.slug }}">
+        <input type="checkbox" name="botcheck" class="tq-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+        <fieldset class="tq-group" id="tq-device" aria-describedby="tq-device-err">
+          <legend class="tq-label">What kind of computer?</legend>
+          <div class="tq-seg">
+            {%- for _d in _S.device_types %}
+            <label class="tq-seg-opt"><input type="radio" name="Device Type" value="{{ _d | escape }}"{% if _d == page.default_device %} checked{% endif %}><span>{{ _d | escape }}</span></label>
+            {%- endfor %}
+          </div>
+          <p class="tq-err" id="tq-device-err" hidden>Choose the closest one.</p>
+        </fieldset>
+
+        <div class="tq-field">
+          <label class="tq-label" for="tq-desc">What is it doing? <span class="tq-opt">Optional</span></label>
+          <textarea class="tq-input" id="tq-desc" name="Description" rows="3" placeholder="In your own words, and the make and model if you know it"></textarea>
+        </div>
+
+        <div class="tq-row">
+          <div class="tq-field">
+            <label class="tq-label" for="tq-name">Your name</label>
+            <input class="tq-input" id="tq-name" name="Name" type="text" autocomplete="name" required aria-describedby="tq-name-err">
+            <p class="tq-err" id="tq-name-err" hidden>Please enter your name.</p>
+          </div>
+          <div class="tq-field">
+            <label class="tq-label" for="tq-phone">Mobile number</label>
+            <input class="tq-input" id="tq-phone" name="Phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="04xx xxx xxx" required aria-describedby="tq-phone-err">
+            <p class="tq-err" id="tq-phone-err" hidden>Please enter an Australian mobile number.</p>
+          </div>
+        </div>
+
+        <div class="tq-field">
+          <label class="tq-label" for="tq-email">Email <span class="tq-opt">Optional</span></label>
+          <input class="tq-input" id="tq-email" name="Email" type="email" autocomplete="email">
+        </div>
+
+        <fieldset class="tq-group">
+          <legend class="tq-label">How should we reply?</legend>
+          <div class="tq-seg">
+            <label class="tq-seg-opt"><input type="radio" name="Preferred Contact" value="WhatsApp" checked><span>WhatsApp</span></label>
+            <label class="tq-seg-opt"><input type="radio" name="Preferred Contact" value="Email"><span>Email</span></label>
+          </div>
+        </fieldset>
+
+        <button class="tq-submit" type="submit">Send quote request</button>
+        <p class="tq-err tq-err-form" id="tqErr" role="alert" hidden>That did not send. Please try again, or message us on WhatsApp on 0452 573 701.</p>
+        <p class="tq-trust">
+          {%- if _R.rating %}<span class="tq-stars" aria-hidden="true">&#9733;</span> Rated {{ _R.rating }} on Google. {% endif %}Your details are only used to answer this quote.
+        </p>
+      </form>
+      <div class="audit-done" id="tqDone" role="status" aria-live="polite" hidden>
+        <div class="audit-done-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <p class="audit-done-title">Quote request sent.</p>
+        <p class="audit-done-text">A member of our team will come back to you with a fixed price, usually {{ site.reply_time }}. If it is urgent, message us on WhatsApp on 0452 573 701.</p>
+      </div>
+    </section>
+
+    {%- if page.faqs %}
+    <section class="sv-faq" id="faq" aria-labelledby="faq-h">
+      <h2 class="sv-h2" id="faq-h">{{ page.faq_heading | default: "Questions we get asked" | escape }}</h2>
+      <div class="sv-faq-list">
+      {%- for _f in page.faqs %}
+      {%- capture _a %}{% include resolve-prices.html text=_f.a %}{% endcapture %}
+      <div class="sv-faq-item">
+        <h3 class="sv-faq-h">
+          <button type="button" class="sv-faq-q" aria-expanded="false" aria-controls="faq-a-{{ forloop.index }}" id="faq-q-{{ forloop.index }}">
+            <span>{{ _f.q | escape }}</span>
+            <svg class="sv-faq-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </h3>
+        <div class="sv-faq-a" id="faq-a-{{ forloop.index }}" role="region" aria-labelledby="faq-q-{{ forloop.index }}"><div><p>{{ _a | strip | escape }}</p></div></div>
+      </div>
+      {%- endfor %}
+      </div>
+    </section>
+    {%- endif %}
+
+    {%- capture _arrow %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>{% endcapture %}
+
+    {%- comment -%} Suburb pages near the workshop. Found from the pages
+    themselves, so a suburb only links once its page exists. {%- endcomment -%}
+    {%- assign _subs = site.pages | where: "layout", "suburb" -%}
+    {%- capture _sub_items -%}
+      {%- for _slug in page.suburbs -%}
+        {%- assign _p = _subs | where: "slug", _slug | first -%}
+        {%- if _p %}
+      <li><a href="{{ '/suburbs/' | append: _p.slug | relative_url }}"><span>{{ _p.suburb | escape }}<span class="sv-links-sub">Computer and laptop repair</span></span>{{ _arrow }}</a></li>
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endcapture -%}
+    {%- if _sub_items != "" %}
+    <section class="sv-more" aria-labelledby="near-h">
+      <h2 class="sv-h2" id="near-h">{{ page.near_heading | default: "Near you" | escape }}</h2>
+      <div class="sv-prose"><p>{{ page.near_text | default: "The workshop is in Canning Vale, and most of our customers come from the suburbs around it." | escape }}</p></div>
+      <ul class="sv-links">{{ _sub_items }}
+      </ul>
+    </section>
+    {%- endif %}
+
+    {%- capture _guide_items -%}
+      {%- for _gs in page.guides -%}
+        {%- assign _g = site.data.techtips.posts | where: "slug", _gs | first -%}
+        {%- if _g and _g.built %}
+      <li><a href="{{ '/tech-tips/' | append: _g.slug | relative_url }}"><span>{{ _g.title | escape }}<span class="sv-links-sub">{{ _g.category | escape }}</span></span>{{ _arrow }}</a></li>
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endcapture -%}
+    {%- if _guide_items != "" %}
+    <section class="sv-more" aria-labelledby="guides-h">
+      <h2 class="sv-h2" id="guides-h">{% if page.topic %}{{ page.topic | slice: 0 | upcase | escape }}{{ page.topic | slice: 1, 200 | escape }} guides worth reading{% else %}Worth reading first{% endif %}</h2>
+      <ul class="sv-links sv-links-wide">{{ _guide_items }}
+      </ul>
+    </section>
+    {%- endif %}
+
+    {%- assign _others = site.data.suburbs.service_links | where: "built", true | where: "kind", "service" -%}
+    {%- capture _other_items -%}
+      {%- for _o in _others -%}
+        {%- if _o.slug != page.slug %}
+      <li><a href="{{ '/' | append: _o.slug | relative_url }}"><span>{{ _o.label | escape }}</span>{{ _arrow }}</a></li>
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endcapture -%}
+    {%- if _other_items != "" %}
+    <section class="sv-more" aria-labelledby="other-h">
+      <h2 class="sv-h2" id="other-h">More repairs we do</h2>
+      <ul class="sv-links">{{ _other_items }}
+      </ul>
+    </section>
+    {%- endif %}
+
+  </div>
+</article>
+
+<script>
+/* FAQ: grid-template-rows transition, so a second tap mid-animation
+   reverses from where it is rather than jumping. */
+document.querySelectorAll('.sv-faq-q').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var open = btn.getAttribute('aria-expanded') !== 'true';
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.closest('.sv-faq-item').classList.toggle('open', open);
+  });
+});
+
+/* Quote form. Validates each field when the person leaves it, submits
+   over fetch so nobody lands on Web3Forms' own page, and swaps the form
+   for a confirmation on success. */
+(function () {
+  var form = document.getElementById('svQuote');
+  if (!form) return;
+  var btn = form.querySelector('.tq-submit');
+  var done = document.getElementById('tqDone');
+  var errEl = document.getElementById('tqErr');
+  var phoneRe = /^(\+?61|0)[2-478]\d{8}$/;
+  var checks = {
+    'tq-device': function () { return !!form.querySelector('input[name="Device Type"]:checked'); },
+    'tq-name':   function (v) { return v.trim().length > 0; },
+    'tq-phone':  function (v) { return phoneRe.test(v.replace(/[\s().-]/g, '')); }
+  };
+  function check(id) {
+    var el = document.getElementById(id);
+    var ok = checks[id](el.value);
+    el.setAttribute('aria-invalid', ok ? 'false' : 'true');
+    document.getElementById(id + '-err').hidden = ok;
+    return ok;
+  }
+  ['tq-name', 'tq-phone'].forEach(function (id) {
+    var el = document.getElementById(id);
+    el.addEventListener('blur', function () { if (el.value) check(id); });
+    el.addEventListener('input', function () { if (el.getAttribute('aria-invalid') === 'true') check(id); });
+  });
+  form.querySelectorAll('input[name="Device Type"]').forEach(function (r) {
+    r.addEventListener('change', function () { check('tq-device'); });
+  });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    errEl.hidden = true;
+    var bad = Object.keys(checks).filter(function (id) { return !check(id); });
+    if (bad.length) {
+      var first = document.getElementById(bad[0]);
+      (first.tagName === 'FIELDSET' ? first.querySelector('input') : first).focus();
+      return;
+    }
+    btn.disabled = true;
+    var label = btn.textContent;
+    btn.textContent = 'Sending...';
+    var data = {};
+    new FormData(form).forEach(function (v, k) { data[k] = v; });
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify(data)
+    }).then(function (r) { return r.json(); }).then(function (res) {
+      if (!res.success) throw new Error(res.message || 'failed');
+      form.hidden = true;
+      var desc = document.querySelector('#quote .audit-block-desc');
+      if (desc) desc.hidden = true;
+      done.hidden = false;
+      done.setAttribute('tabindex', '-1');
+      done.focus();
+      if (typeof gtag === 'function') gtag('event', 'generate_lead', { form: 'service_quote', page: '{{ page.slug }}' });
+    }).catch(function () {
+      btn.disabled = false;
+      btn.textContent = label;
+      errEl.hidden = false;
+    });
+  });
+
+  /* The site's sticky bottom bar steps aside while this form is on
+     screen. The bar is rendered after this article, so look it up once
+     the document has finished parsing. */
+  document.addEventListener('DOMContentLoaded', function () {
+    var bar = document.getElementById('stickyCta');
+    var block = document.getElementById('quote');
+    if (!bar || !block || !('IntersectionObserver' in window)) return;
+    new IntersectionObserver(function (entries) {
+      bar.classList.toggle('sv-form-visible', entries[0].isIntersecting);
+    }).observe(block);
+  });
+
+  /* Which button brought them to the form or WhatsApp. */
+  document.querySelectorAll('[data-track]').forEach(function (a) {
+    a.addEventListener('click', function () {
+      if (typeof gtag === 'function') gtag('event', 'quote_form_click', { event_label: a.getAttribute('data-track'), page: '{{ page.slug }}' });
+    });
+  });
+})();
+</script>

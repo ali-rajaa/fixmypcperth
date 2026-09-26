@@ -1,0 +1,626 @@
+---
+layout: default
+---
+{%- comment -%}
+  suburb.html   layout for the /suburbs/<slug> cluster
+
+  Holds only what is genuinely identical on every suburb page: the three
+  schema shells, the contents list, the price table, the quote form, the
+  process steps, the five shared FAQs, the section headings, the link
+  blocks and the JS. Change any of that once and every page follows.
+
+  Everything that argues the page belongs to its suburb comes from the
+  page's front matter, and all of it is required. The verifier fails a
+  page with any of these missing:
+
+    Facts        suburb, slug (must match the file name), postcode, nearby
+    Travel       travel (three cells, each val and lbl), travel_note,
+                 cta_title, cta_desc
+    Written      why_heading, standfirst, quick_answer, why_local,
+                 problems (six cards: title, text, price_key),
+                 laptops_intro, desktops_intro, data_intro, local_area,
+                 faqs (at least three: q and a)
+
+  Travel is per suburb because geography is. This layout once hardcoded
+  "sits directly east of Canning Vale, a short run west", which is true
+  of Huntingdale and false everywhere else, including Canning Vale.
+
+  Rules for the written slots:
+  - No Liquid. Front matter cannot run it, so a price include inside a
+    slot renders as literal text. Prices stay in this layout.
+  - Write, do not reword. The verifier compares every suburb page's
+    written sentences with every other, names swapped, and fails anything
+    over 10% overlap. Eighteen pages differing only by a name is the
+    doorway-page pattern Google penalises.
+  - A problem card's price_key must be a service with a numeric price;
+    one priced as text reads "From Custom".
+
+  The faqs list feeds both the visible FAQ and the FAQ schema, so the two
+  cannot drift apart.
+
+  Every price comes from _data/services.yml through price.html, so a price
+  rise stays one edit in one file.
+{%- endcomment -%}
+
+{%- capture _area_default %}{{ page.suburb }}, Western Australia{% endcapture -%}
+{%- assign _area = page.area_served | default: _area_default -%}
+{%- assign _diag = site.data.services.services | where: "key", "diagnostic-repair-all-in" | first -%}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Computer and laptop repair",
+  "name": "Computer Repairs in {{ page.suburb }}",
+  "description": "Computer and laptop repair for {{ page.suburb }} residents, carried out at the FixMyPC Perth workshop in Canning Vale.",
+  "url": "https://www.fixmypcperth.com/suburbs/{{ page.slug }}",
+  "areaServed": {
+    "@type": "Place",
+    "name": {{ _area | jsonify }}
+  },
+  "provider": {
+    "@type": "LocalBusiness",
+    "@id": "https://www.fixmypcperth.com/#business",
+    "name": "FixMyPC Perth",
+    "url": "https://www.fixmypcperth.com/",
+    "telephone": "+61452573701",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "7 Barraberry Retreat",
+      "addressLocality": "Canning Vale",
+      "addressRegion": "WA",
+      "postalCode": "6155",
+      "addressCountry": "AU"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": -32.0697802,
+      "longitude": 115.9245929
+    }
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.fixmypcperth.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Computer Repairs {{ page.suburb }}", "item": "https://www.fixmypcperth.com/suburbs/{{ page.slug }}" }
+  ]
+}
+</script>
+
+{%- comment -%}
+  FAQ schema is generated from the same five questions shown on the page,
+  with prices resolved through the same include, so the two cannot drift.
+{%- endcomment -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {%- for _f in page.faqs %}
+    {
+      "@type": "Question",
+      "name": {{ _f.q | jsonify }},
+      "acceptedAnswer": { "@type": "Answer", "text": {{ _f.a | strip_html | jsonify }} }
+    },
+    {%- endfor %}
+    {
+      "@type": "Question",
+      "name": "How much does a computer repair cost for {{ page.suburb }} customers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The diagnostic and repair is {% include price.html key='diagnostic-repair-all-in' bare=true raw=true %} all-in, which covers the full diagnostic, all repair labour and a 30 day warranty on that labour. Parts are quoted separately and never fitted without your approval. There is no separate call-out charge for a drop-off, and no travel fee, because {{ page.suburb }} customers come to the workshop rather than us coming to them."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long will my repair take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most common faults are same day or next day. Software work such as virus removal, a Windows reinstall or a tune-up is usually done the same day. Anything waiting on a part depends on the part, and you get told the wait before any work starts rather than after."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can you recover files from a {{ page.suburb }} customer's failed drive?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Often, yes. Recovery from a failing drive that still powers up has a good success rate. A drive that has stopped spinning entirely is harder and the odds drop. The single most important thing is to stop using the machine as soon as you notice files missing, because continuing to run it can overwrite what is still recoverable."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need to book, or can I just turn up?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Just turn up. Drop-offs do not need an appointment. If you would rather check first, message us and we will tell you whether the fault sounds like something we can turn around quickly, and roughly what it is likely to cost."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What should I bring with the computer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The charger, if it is a laptop, because a fair share of laptops brought in as dead turn out to have a failed charger rather than a failed laptop. Your Windows or Microsoft account login if you have it, since plenty of jobs stall waiting on a password nobody can remember. A desktop tower on its own is fine, no need for the monitor, keyboard or mouse unless the fault involves them."
+      }
+    }
+  ]
+}
+</script>
+
+<div class="suburb-wrap">
+
+  {%- comment -%} Two steps, matching the BreadcrumbList schema. A middle
+  "Areas We Cover" step once pointed at /#areas, which Google reads as the
+  homepage, so the trail was really Home, Home, Suburb. The other suburbs are
+  reachable from the footer row on every page instead. {%- endcomment %}
+  <nav class="sub-breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a>
+    <span aria-hidden="true">/</span>
+    <span aria-current="page">Computer Repairs {{ page.suburb }}</span>
+  </nav>
+
+  <span class="sub-cat">{{ page.suburb }} WA {{ page.postcode }}</span>
+  <h1 class="sub-h1">Computer Repairs in {{ page.suburb }}</h1>
+
+  <p class="sub-standfirst">{{ page.standfirst }}</p>
+
+  <div class="sub-meta">
+    <span>FixMyPC Perth</span>
+    <span class="sub-meta-sep" aria-hidden="true">&middot;</span>
+    <span>Canning Vale WA 6155</span>
+    <span class="sub-meta-sep" aria-hidden="true">&middot;</span>
+    <span>Diagnostic and repair {% include price.html key="diagnostic-repair-all-in" bare=true raw=true %} all-in</span>
+  </div>
+
+  <div class="travel-box">
+    <div class="travel-box-title">Getting here from {{ page.suburb }}</div>
+    <div class="travel-grid">
+      {%- for _t in page.travel %}
+      <div class="travel-cell">
+        <span class="travel-val">{{ _t.val | escape }}</span>
+        <span class="travel-lbl">{{ _t.lbl | escape }}</span>
+      </div>
+      {%- endfor %}
+    </div>
+    <p class="travel-note">{{ page.travel_note }}</p>
+    {%- comment -%} Opens the real route in Google Maps, so a visitor gets an
+    exact answer whatever the estimate above says. Built from the suburb name;
+    a page can set directions_from when its name alone is ambiguous, as
+    Cockburn is. {%- endcomment -%}
+    {%- capture _from_default %}{{ page.suburb }} WA {{ page.postcode }}{% endcapture -%}
+    {%- assign _from = page.directions_from | default: _from_default %}
+    <a class="travel-directions" href="https://www.google.com/maps/dir/?api=1&amp;origin={{ _from | url_encode }}&amp;destination=7+Barraberry+Retreat%2C+Canning+Vale+WA+6155&amp;travelmode=driving" target="_blank" rel="noopener noreferrer">Directions from {{ page.suburb }}<svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr-only"> (opens Google Maps in a new tab)</span></a>
+  </div>
+
+  <div class="sub-body">
+
+    {%- comment -%}
+      Direct answer to the page's own question, in the first screen, in
+      the phrasing someone would actually search. Snippet bait, but it
+      also settles the visitor before a long page.
+    {%- endcomment -%}
+    <div class="quick-answer">
+      {{ page.quick_answer }}
+      <p>The diagnostic and repair is {% include price.html key="diagnostic-repair-all-in" bare=true raw=true %} all-in, covering the full diagnostic, all repair labour and a 30 day warranty on that labour. Parts are quoted separately and never fitted without your say-so. Most jobs are ready the same day or the next.</p>
+    </div>
+
+    <nav class="sub-toc" aria-label="On this page">
+      <div class="sub-toc-title">On this page</div>
+      <ol>
+        <li><a href="#why">{{ page.why_heading }}</a></li>
+        <li><a href="#common">What we see most</a></li>
+        <li><a href="#laptops">Laptop repair</a></li>
+        <li><a href="#desktops">Desktop and PC repair</a></li>
+        <li><a href="#data">Data recovery</a></li>
+        <li><a href="#prices">What it costs</a></li>
+        <li><a href="#quote">Get a price</a></li>
+        <li><a href="#how">How a repair works</a></li>
+        <li><a href="#local">Streets, schools and nearby suburbs</a></li>
+        <li><a href="#faq">Questions we get asked</a></li>
+      </ol>
+    </nav>
+
+    <h2 id="why">{{ page.why_heading }}</h2>
+
+    {{ page.why_local }}
+
+    <div class="sub-note">
+      <p><strong>Before you replace it:</strong> bring it in for the diagnostic first. If the machine genuinely is not worth repairing we will tell you that, and you will have paid the diagnostic fee rather than the cost of a new computer you did not need.</p>
+    </div>
+
+    <h2 id="common">What we see most from {{ page.suburb }}</h2>
+
+    <div class="problem-grid">
+      {%- for _p in page.problems %}
+      <div class="problem-card">
+        <h3>{{ _p.title }}</h3>
+        <p>{{ _p.text }}</p>
+        <span class="problem-price">From {% include price.html key=_p.price_key bare=true raw=true %}</span>
+      </div>
+      {%- endfor %}
+    </div>
+
+    <div class="sub-cta">
+      <div class="sub-cta-title">Not sure what is wrong with it?</div>
+      <div class="sub-cta-desc">Answer seven questions about what the machine is doing and find out how urgent it is and what it usually costs to fix. Takes about a minute.</div>
+      <div class="sub-cta-btns">
+        <a href="/pc-health-check-perth" class="sub-cta-btn">Run the health check<svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a href="#quote" class="sub-cta-btn-outline">Get a price for yours</a>
+      </div>
+    </div>
+
+    <h2 id="laptops">Laptop repair for {{ page.suburb }}</h2>
+
+    {{ page.laptops_intro }}
+
+    <ul class="fact-list">
+      <li>Cracked and flickering screens</li>
+      <li>Battery replacement</li>
+      <li>Charging port repair</li>
+      <li>Keyboard replacement</li>
+      <li>Hinge repair</li>
+      <li>Liquid spill cleaning</li>
+      <li>Trackpad replacement</li>
+      <li>Fan and overheating</li>
+    </ul>
+
+    <h2 id="desktops">Desktop and PC repair</h2>
+
+    {{ page.desktops_intro }}
+
+    <h2 id="data">Data recovery for {{ page.suburb }}</h2>
+
+    {{ page.data_intro }}
+
+    <div class="sub-note">
+      <p><strong>If nothing is backed up right now,</strong> that is worth fixing before something goes wrong rather than after. It does not have to be us: an external drive and an afternoon will do. Any backup beats the arrangement where the only copy lives on one ageing drive.</p>
+    </div>
+
+    <h2 id="prices">What computer repairs cost for {{ page.suburb }} customers</h2>
+
+    <p>The diagnostic and repair is one flat fee rather than an hourly rate, so the price does not move because a fault turned out to be fiddly. Parts are quoted separately and never fitted without your approval. There is no call-out charge on a drop-off and no travel fee, because you are coming to the workshop rather than us coming to you.</p>
+
+    <div class="price-table">
+      <div class="price-table-head">
+        <strong>Common jobs</strong>
+        <span>Price</span>
+      </div>
+      <div class="price-row">
+        <div>
+          <div class="price-row-name">{{ _diag.name }}</div>
+          <span class="price-row-sub">Full diagnostic, all repair labour, 30 day labour warranty</span>
+        </div>
+        <div class="price-row-val">{% include price.html key="diagnostic-repair-all-in" %}</div>
+      </div>
+      <div class="price-row">
+        <div>
+          <div class="price-row-name">Virus and malware removal</div>
+          <span class="price-row-sub">Pop-ups, hijacked browsers, disabled antivirus</span>
+        </div>
+        <div class="price-row-val">{% include price.html key="virus-malware-removal" %}</div>
+      </div>
+      <div class="price-row">
+        <div>
+          <div class="price-row-name">HDD to SSD migration</div>
+          <span class="price-row-sub">The usual fix for a slow older machine, files and Windows carried across</span>
+        </div>
+        <div class="price-row-val">{% include price.html key="hdd-to-ssd-full-migration" %}</div>
+      </div>
+      <div class="price-row">
+        <div>
+          <div class="price-row-name">Overheating fix and deep clean</div>
+          <span class="price-row-sub">Dust removal, fresh thermal paste, fan check</span>
+        </div>
+        <div class="price-row-val">{% include price.html key="overheating-fix-deep-clean" %}</div>
+      </div>
+      <div class="price-row">
+        <div>
+          <div class="price-row-name">Windows reinstall with data backup</div>
+          <span class="price-row-sub">Clean install, your files carried across first</span>
+        </div>
+        <div class="price-row-val">{% include price.html key="windows-reinstall-data-backup" %}</div>
+      </div>
+      <div class="price-row">
+        <div>
+          <div class="price-row-name">Laptop battery replacement</div>
+          <span class="price-row-sub">Labour; battery quoted separately for the model</span>
+        </div>
+        <div class="price-row-val">{% include price.html key="laptop-battery-replacement" %}</div>
+      </div>
+      <div class="price-row">
+        <div>
+          <div class="price-row-name">Laptop screen replacement</div>
+          <span class="price-row-sub">Labour; panel quoted for the model and type</span>
+        </div>
+        <div class="price-row-val">{% include price.html key="laptop-screen-replacement" %}</div>
+      </div>
+      <div class="price-row">
+        <div>
+          <div class="price-row-name">Password and account recovery</div>
+          <span class="price-row-sub">Locked out of Windows or a Microsoft account</span>
+        </div>
+        <div class="price-row-val">{% include price.html key="password-reset-account-recovery" %}</div>
+      </div>
+      <div class="price-foot">
+        Full list on the <a href="/pricing">pricing page</a>. Parts are always quoted before they are ordered, and nothing is fitted without your say-so.
+      </div>
+    </div>
+
+
+    {%- comment -%}
+      Instant quote form. Same component as the industry pages' audit
+      block, deliberately: a visitor moving between the two clusters
+      should meet the same thing. Placed straight after the price table,
+      which is the moment someone has just seen what things cost and is
+      most likely to ask about their own machine.
+
+      Submits over fetch rather than a normal POST, so a send does not
+      throw the visitor off the site onto the Web3Forms page.
+    {%- endcomment -%}
+    <div class="quote-block" id="quote">
+      <p class="quote-block-title">Get a price for your machine</p>
+      <p class="quote-block-desc">Tell us what it is doing and we will come back with what is likely wrong, what it costs and how long it takes. No appointment needed either way.</p>
+
+      <form id="quoteForm" action="https://api.web3forms.com/submit" method="POST" class="quote-grid">
+        <input type="hidden" name="access_key" value="b00c2b06-22d4-4924-af92-5143e83ab186">
+        <input type="hidden" name="subject" value="Quote Request, {{ page.suburb }}. FixMyPC Perth">
+        <input type="hidden" name="from_page" value="suburbs/{{ page.slug }}">
+        <input type="hidden" name="botcheck" value="">
+
+        <div class="quote-input-group">
+          <label class="quote-label" for="qf-name">Your name</label>
+          <input class="quote-input" id="qf-name" name="name" type="text" placeholder="e.g. Sarah" autocomplete="name" required>
+        </div>
+        <div class="quote-input-group">
+          <label class="quote-label" for="qf-suburb">Your suburb</label>
+          <input class="quote-input" id="qf-suburb" name="suburb" type="text" value="{{ page.suburb }}" autocomplete="address-level2" required>
+        </div>
+        <div class="quote-input-group">
+          <label class="quote-label" for="qf-device">What is it?</label>
+          <select class="quote-select" id="qf-device" name="device">
+            <option value="Laptop">Laptop</option>
+            <option value="Desktop PC">Desktop PC</option>
+            <option value="All-in-one">All-in-one</option>
+            <option value="Not sure">Not sure</option>
+          </select>
+        </div>
+        <div class="quote-input-group">
+          <label class="quote-label" for="qf-issue">What is it doing?</label>
+          <select class="quote-select" id="qf-issue" name="issue">
+            <option value="Running slowly">Running slowly</option>
+            <option value="Will not turn on">Will not turn on</option>
+            <option value="Overheating or shutting down">Overheating or shutting down</option>
+            <option value="Pop-ups or virus">Pop-ups or virus</option>
+            <option value="Missing or unopenable files">Missing or unopenable files</option>
+            <option value="Cracked or faulty screen">Cracked or faulty screen</option>
+            <option value="Battery or charging">Battery or charging</option>
+            <option value="Locked out of Windows">Locked out of Windows</option>
+            <option value="Something else">Something else</option>
+          </select>
+        </div>
+        <div class="quote-input-group">
+          <label class="quote-label" for="qf-email">Your email</label>
+          <input class="quote-input" id="qf-email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required>
+        </div>
+        <div class="quote-input-group">
+          <label class="quote-label" for="qf-phone">Your phone number</label>
+          <input class="quote-input" id="qf-phone" name="phone" type="tel" placeholder="e.g. 0412 345 678" autocomplete="tel">
+        </div>
+        <div class="quote-input-group full">
+          <label class="quote-label" for="qf-msg">Anything else worth knowing? (optional)</label>
+          <input class="quote-input" id="qf-msg" name="message" type="text" placeholder="e.g. takes about 4 minutes to start up, fan is loud">
+        </div>
+
+        <button class="quote-submit" type="submit">Get my price</button>
+        <p class="quote-err" id="quoteErr" hidden>That did not send. Please try again, or call 0452 573 701.</p>
+        <p class="quote-note">A member of our team will contact you as soon as possible, usually the same day. Your details are used to answer your enquiry and nothing else.</p>
+      </form>
+
+      <div class="quote-done" id="quoteDone" role="status" aria-live="polite" hidden>
+        <div class="quote-done-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" width="26" height="26"><path d="M4 12.5l5.2 5.2L20 7" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <p class="quote-done-title">Request received.</p>
+        <p class="quote-done-text">A member of our team will contact you as soon as possible, usually the same day. If it is urgent, call 0452 573 701.</p>
+      </div>
+    </div>
+
+    <h2 id="how">How a repair works</h2>
+
+    <div class="process-list">
+      <div class="process-item">
+        <div class="process-num" aria-hidden="true">1</div>
+        <div>
+          <h3>Drop it in, no appointment</h3>
+          <p>Bring the machine to the Canning Vale workshop whenever suits. We take the details and what it has been doing. Bring the charger if it is a laptop, and your Windows login if you have it.</p>
+        </div>
+      </div>
+      <div class="process-item">
+        <div class="process-num" aria-hidden="true">2</div>
+        <div>
+          <h3>Full diagnostic</h3>
+          <p>The machine goes on the bench and gets tested properly rather than guessed at. This is what the flat fee covers, and it happens before anyone quotes you for parts.</p>
+        </div>
+      </div>
+      <div class="process-item">
+        <div class="process-num" aria-hidden="true">3</div>
+        <div>
+          <h3>You hear the price first</h3>
+          <p>We call or message with what is wrong, what it costs and how long it will take. Nothing gets ordered or fitted until you say go.</p>
+        </div>
+      </div>
+      <div class="process-item">
+        <div class="process-num" aria-hidden="true">4</div>
+        <div>
+          <h3>Repair and collection</h3>
+          <p>Most jobs are ready the same day or the next. Anything waiting on a part depends on the part, and you are told that wait up front rather than after. Labour carries a 30 day warranty.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="local">Streets, schools and nearby suburbs</h2>
+
+    {{ page.local_area }}
+
+    <ul class="fact-list">
+      {%- for _n in page.nearby %}
+      <li>{{ _n | escape }}</li>
+      {%- endfor %}
+    </ul>
+
+    <p>Remote support is available Australia wide for anything that does not need the machine physically in front of us, which covers most software problems, email setup, printer issues and account lockouts.</p>
+
+    <h2 id="faq">Questions we get from {{ page.suburb }} customers</h2>
+
+    <div class="sub-faq">
+      {%- for _f in page.faqs %}
+      <div class="sub-faq-item">
+        <button type="button" class="sub-faq-q" aria-expanded="false">
+          <span>{{ _f.q | escape }}</span>
+          <span class="sub-faq-arrow" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </button>
+        <div class="sub-faq-a"><div>{{ _f.a }}</div></div>
+      </div>
+      {%- endfor %}
+      <div class="sub-faq-item">
+        <button type="button" class="sub-faq-q" aria-expanded="false">
+          <span>How much does a computer repair cost for {{ page.suburb }} customers?</span>
+          <span class="sub-faq-arrow" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </button>
+        <div class="sub-faq-a"><div>The diagnostic and repair is {% include price.html key="diagnostic-repair-all-in" bare=true raw=true %} all-in, which covers the full diagnostic, all repair labour and a 30 day warranty on that labour. Parts are quoted separately and never fitted without your approval. There is no separate call-out charge for a drop-off and no travel fee, because {{ page.suburb }} customers come to the workshop rather than us coming to them.</div></div>
+      </div>
+      <div class="sub-faq-item">
+        <button type="button" class="sub-faq-q" aria-expanded="false">
+          <span>How long will my repair take?</span>
+          <span class="sub-faq-arrow" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </button>
+        <div class="sub-faq-a"><div>Most common faults are same day or next day. Software work such as virus removal, a Windows reinstall or a tune-up is usually done the same day. Anything waiting on a part depends on the part, and you get told the wait before any work starts rather than after.</div></div>
+      </div>
+      <div class="sub-faq-item">
+        <button type="button" class="sub-faq-q" aria-expanded="false">
+          <span>Can you recover files from a failed drive?</span>
+          <span class="sub-faq-arrow" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </button>
+        <div class="sub-faq-a"><div>Often, yes. Recovery from a failing drive that still powers up has a good success rate. A drive that has stopped spinning entirely is harder and the odds drop. The single most important thing is to stop using the machine as soon as you notice files missing, because continuing to run it can overwrite what is still recoverable.</div></div>
+      </div>
+      <div class="sub-faq-item">
+        <button type="button" class="sub-faq-q" aria-expanded="false">
+          <span>Do I need to book, or can I just turn up?</span>
+          <span class="sub-faq-arrow" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </button>
+        <div class="sub-faq-a"><div>Just turn up. Drop-offs do not need an appointment. If you would rather check first, message us and we will tell you whether the fault sounds like something we can turn around quickly, and roughly what it is likely to cost.</div></div>
+      </div>
+      <div class="sub-faq-item">
+        <button type="button" class="sub-faq-q" aria-expanded="false">
+          <span>What should I bring with the computer?</span>
+          <span class="sub-faq-arrow" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </button>
+        <div class="sub-faq-a"><div>The charger, if it is a laptop, because a fair share of laptops brought in as dead turn out to have a failed charger rather than a failed laptop. Your Windows or Microsoft account login if you have it, since plenty of jobs stall waiting on a password nobody can remember. A desktop tower on its own is fine, no need for the monitor, keyboard or mouse unless the fault involves them.</div></div>
+      </div>
+    </div>
+
+    <div class="sub-cta">
+      <div class="sub-cta-title">{{ page.cta_title }}</div>
+      <div class="sub-cta-desc">{{ page.cta_desc }}</div>
+      <div class="sub-cta-btns">
+        <a href="https://wa.me/61452573701" target="_blank" rel="noopener noreferrer" class="sub-cta-btn">Message us on WhatsApp<svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a href="/quote-request" class="sub-cta-btn-outline">Use the quote form</a>
+      </div>
+    </div>
+
+    {%- assign _svcs = site.data.suburbs.service_links | where: "built", true -%}
+    {%- if _svcs.size > 0 %}
+    <div class="link-block">
+      <div class="link-block-title">Repairs we do most</div>
+      <div class="link-row">
+        {%- for _v in _svcs %}
+        <a href="/{{ _v.slug }}" class="link-chip">{{ _v.label | escape }}</a>
+        {%- endfor %}
+      </div>
+    </div>
+    {%- endif %}
+
+    {%- comment -%}
+      Sibling suburbs are found automatically: any page using this layout
+      is a suburb page, so adding one is just adding its file. Nothing to
+      flag in a data file, and a page can never link to a suburb that does
+      not exist. The current page is left out by its own slug; this once
+      excluded "huntingdale" by name, so every other page listed itself.
+    {%- endcomment -%}
+    {%- assign _sibs = site.pages | where: "layout", "suburb" | sort: "suburb" -%}
+    {%- if _sibs.size > 1 %}
+    <div class="link-block">
+      <div class="link-block-title">Nearby suburbs we cover</div>
+      <div class="link-row">
+        {%- for _s in _sibs -%}
+        {%- unless _s.slug == page.slug %}
+        <a href="/suburbs/{{ _s.slug }}" class="link-chip">{{ _s.suburb | escape }}</a>
+        {%- endunless -%}
+        {%- endfor %}
+      </div>
+    </div>
+    {%- endif %}
+
+  </div>
+</div>
+
+<script>
+/* FAQ accordion. One delegated handler, so adding a question needs no
+   JS change. The panel animates via grid-template-rows in the stylesheet,
+   which is why the answer text sits in its own wrapper div. */
+document.querySelectorAll('.sub-faq-q').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var item = btn.closest('.sub-faq-item');
+    var open = item.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+});
+
+/* Quote form.
+
+   Without this, the form does a normal POST and Web3Forms answers with
+   its own success page, which takes the visitor off the site onto a
+   stranger's branding. Submitting over fetch keeps them here and lets us
+   show our own confirmation. */
+(function () {
+  var form = document.getElementById('quoteForm');
+  if (!form) return;
+  var btn   = form.querySelector('.quote-submit');
+  var done  = document.getElementById('quoteDone');
+  var errEl = document.getElementById('quoteErr');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (errEl) errEl.hidden = true;
+    btn.disabled = true;
+    var label = btn.textContent;
+    btn.textContent = 'Sending...';
+
+    var data = {};
+    new FormData(form).forEach(function (v, k) { data[k] = v; });
+
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify(data)
+    }).then(function (r) { return r.json(); }).then(function (res) {
+      if (!res.success) throw new Error(res.message || 'failed');
+      form.hidden = true;
+      /* The intro asked for details that have now been given, so it goes
+         too. The title stays as context for the confirmation. */
+      var desc = document.querySelector('.quote-block-desc');
+      if (desc) desc.hidden = true;
+      done.hidden = false;
+      done.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }).catch(function () {
+      btn.disabled = false;
+      btn.textContent = label;
+      if (errEl) errEl.hidden = false;
+    });
+  });
+})();
+</script>
