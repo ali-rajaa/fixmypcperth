@@ -87,10 +87,19 @@ reviews:
   stars: 5
   text: Transparent, fast, and actually explains what he did. Did not feel like I was being upsold anything I did
     not need. Already booked him again for a RAM upgrade.
-# The six quotes shown on the homepage, moved here word for word from
-# index.html. They are NOT the same set as `reviews:` above. The owner
-# still needs to confirm each one is a genuine Google review; remove any
-# that are not. No source, date or suburb is shown because none was
+- name: Harrison
+  service: PC Repair
+  initials: H
+  stars: 5
+  text: "Can't thank Ali enough. My PC had a few problems but he sorted them all and kept me updated throughout the whole process through WhatsApp. Will be coming back in the future."
+- name: Karl-Kristjan
+  service: Laptop Repair
+  initials: KK
+  stars: 5
+  text: "Excellent service! They quickly found the problem with my laptop and fixed the loud fan noise that had been driving me crazy. The staff were friendly, professional, and explained everything clearly."
+# The six quotes shown on the homepage. Owner confirmed all six are
+# genuine Google reviews (Harrison and Karl-Kristjan are also in
+# `reviews:` above). No source, date or suburb is shown because none was
 # recorded for these.
 homepage:
 - name: "Sarah"

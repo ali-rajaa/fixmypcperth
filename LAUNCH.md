@@ -20,8 +20,7 @@ meta tag on the live site, so it is DNS based and carries over untouched.
       checks, deleted-files price, drive supplied, MacBook recovery,
       hardware check before a reinstall, remote virus removal, account
       recovery, second-drive price, parts supplied on request).
-- [ ] Confirm the six homepage reviews in `_data/reviews.yml` (homepage:)
-      are genuine Google reviews (STATUS.md, homepage audit).
+- [x] Six homepage reviews confirmed genuine by the owner.
 - [ ] Have Cloudflare and GitHub (owner of both repos) logged in.
 
 ## 1. Cloudflare: redirects (before the site switches)

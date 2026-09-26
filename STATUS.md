@@ -169,8 +169,8 @@ time, url and section IDs unchanged throughout.
     `stars.html` component, plus a "Read our reviews on Google" link.
     Owner decision: never show the review count on a page, even from
     data, because it changes.
-    **Open: these six are a different set from `reviews:` (the /reviews
-    page). The owner must confirm which are genuine Google reviews.**
+    Owner confirmed all six are genuine Google reviews; Harrison and
+    Karl-Kristjan were added to `reviews:` (the /reviews page) as well.
   - Stats: "500+ Systems Optimised" (unverified) replaced by "Same day /
     Typical turnaround". The strip's rating was removed: it duplicated
     the quote card's rating directly above and collided with the checks.
