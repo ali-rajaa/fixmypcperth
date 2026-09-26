@@ -292,7 +292,9 @@ body { background:var(--bg); color:var(--ink); font-family:var(--body); font-siz
 
 /* ---------- faq ---------- */
 .pr-faq-sec { padding:3.75rem 0 4rem; }
-.pr-faq { display:flex; flex-direction:column; gap:10px; margin-top:1.5rem; max-width:840px; }
+/* Two columns like the homepage FAQ; one on phones. */
+.pr-faq { display:grid; grid-template-columns:1fr 1fr; gap:0 20px; margin-top:1.5rem; align-items:start; }
+.pr-faq .faq-col { display:flex; flex-direction:column; gap:10px; }
 
 /* A touch of overshoot on the rotation (Apple's own spec value for rotation
    is damping 0.8) so the tap feels answered rather than merely obeyed. */
@@ -379,6 +381,7 @@ body { background:var(--bg); color:var(--ink); font-family:var(--body); font-siz
   .pr-packs { grid-template-columns:1fr; }
   .pr-pack-price { font-size:1.7rem; }
   .pr-rules-sec, .pr-faq-sec { padding:2.75rem 0; }
+  .pr-faq { grid-template-columns:1fr; gap:10px; }
 
 }
 
