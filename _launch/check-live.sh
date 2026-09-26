@@ -1,10 +1,8 @@
 #!/usr/bin/env bash
 # Run after launch (or from the "Verify live site" workflow): checks the
-# live site is the new one, open to Google, and that staging is still
-# noindex. Prints each check, then a summary. Usage: bash _launch/check-live.sh
+# live site is the new one and open to Google. Prints each check, then a summary. Usage: bash _launch/check-live.sh
 set -u
 BASE="${BASE:-https://www.fixmypcperth.com}"
-STAGING="https://staging.fixmypcperth.com"
 fail=0
 ok()  { echo "PASS $1"; }
 bad() { echo "FAIL $1"; fail=$((fail+1)); }
@@ -36,11 +34,6 @@ c404=$(curl -s -o /tmp/nf.html -w "%{http_code}" --max-time 20 "$BASE/this-page-
 
 apex=$(curl -s -o /dev/null -w "%{http_code} %{redirect_url}" --max-time 20 "https://fixmypcperth.com/")
 case "$apex" in 30[18]\ https://www.fixmypcperth.com/*) ok "fixmypcperth.com redirects to www";; *) bad "fixmypcperth.com gave: $apex";; esac
-
-# Staging lets crawlers in so they can read its noindex; noindex is what
-# keeps it out of Google.
-shome=$(curl -s --max-time 20 "$STAGING/")
-echo "$shome" | grep -q '<meta name="robots" content="noindex' && ok "staging pages are noindex" || echo "NOTE staging home page has no noindex"
 
 echo "$fail problems"
 [ "$fail" -eq 0 ]

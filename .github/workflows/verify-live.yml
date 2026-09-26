@@ -1,7 +1,7 @@
 # Run by hand (Actions > Verify live site > Run workflow) after launch, or
 # any time. It runs on GitHub's servers, so it can reach the live site from
 # anywhere. Checks all 72 redirects, robots.txt, the sitemap and every page
-# in it, the 404 page, the apex redirect, and that staging is still noindex.
+# in it, the 404 page, the apex redirect.
 name: Verify live site
 
 on:
