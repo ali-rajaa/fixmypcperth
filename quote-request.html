@@ -27,7 +27,7 @@ description: "Get a computer repair quote from FixMyPC Perth in Canning Vale. Te
 </section>
 
 <div class="wrap qr-layout">
-  <main class="qr-main">
+  <div class="qr-main">
 
     <form id="qrForm" class="qr-form" novalidate>
       <input type="hidden" name="access_key" value="{{ D.form.access_key }}">
@@ -42,7 +42,7 @@ description: "Get a computer repair quote from FixMyPC Perth in Canning Vale. Te
 
       <fieldset class="qr-block">
         <legend><span class="qr-num">1</span>What do you need help with?</legend>
-        <div class="qr-opts">
+        <div class="qr-opts" role="group" aria-describedby="errServices">
           {%- for o in D.quote_options %}
           <label class="qr-opt">
             <input type="checkbox" class="qr-opt-input" value="{{ o.value | escape }}" data-key="{{ o.key }}">
@@ -53,7 +53,7 @@ description: "Get a computer repair quote from FixMyPC Perth in Canning Vale. Te
           </label>
           {%- endfor %}
         </div>
-        <p class="qr-err" id="errServices">Please select at least one service.</p>
+        <p class="qr-err qr-err-group" id="errServices" role="alert">Please select at least one service.</p>
       </fieldset>
 
       <fieldset class="qr-block">
@@ -66,13 +66,13 @@ description: "Get a computer repair quote from FixMyPC Perth in Canning Vale. Te
             <option value="{{ dt | escape }}">{{ dt | escape }}</option>
             {%- endfor %}
           </select>
+          <span class="qr-err" id="errDevice">Please select a device type.</span>
         </label>
-        <p class="qr-err" id="errDevice">Please select a device type.</p>
         <label class="qr-field">
           <span class="qr-label">What is it doing? <span class="req">*</span></span>
           <textarea name="Description" id="qrDesc" rows="5" aria-describedby="errDesc" placeholder="Make and model if you know it, what goes wrong, and when it started."></textarea>
+          <span class="qr-err" id="errDesc">Tell us what it is doing.</span>
         </label>
-        <p class="qr-err" id="errDesc">Tell us what it is doing.</p>
       </fieldset>
 
       <fieldset class="qr-block">
@@ -81,19 +81,19 @@ description: "Get a computer repair quote from FixMyPC Perth in Canning Vale. Te
           <label class="qr-field">
             <span class="qr-label">Full name <span class="req">*</span></span>
             <input type="text" name="Name" id="qrName" autocomplete="name" aria-describedby="errName">
+            <span class="qr-err" id="errName">Please enter your name.</span>
           </label>
           <label class="qr-field">
             <span class="qr-label">Phone number <span class="req">*</span></span>
             <input type="tel" name="Phone" id="qrPhone" autocomplete="tel" inputmode="tel" aria-describedby="errPhone" placeholder="04xx xxx xxx">
+            <span class="qr-err" id="errPhone">Please enter a valid Australian phone number.</span>
           </label>
         </div>
-        <p class="qr-err" id="errName">Please enter your name.</p>
-        <p class="qr-err" id="errPhone">Please enter a valid Australian phone number.</p>
         <label class="qr-field">
           <span class="qr-label">Email address <span class="qr-opt-note">optional</span></span>
           <input type="email" name="Email" id="qrEmail" autocomplete="email" aria-describedby="errEmail">
+          <span class="qr-err" id="errEmail">That email address does not look right.</span>
         </label>
-        <p class="qr-err" id="errEmail">That email address does not look right.</p>
 
         <fieldset class="qr-contact">
           <legend class="qr-label">How should we reply?</legend>
@@ -111,7 +111,7 @@ description: "Get a computer repair quote from FixMyPC Perth in Canning Vale. Te
 
       <button type="submit" class="qr-submit" id="qrSubmit">Send quote request</button>
       <p class="qr-note">Most quotes go out within the hour.</p>
-      <p class="qr-err qr-err-form" id="errForm">That did not send. Message us on WhatsApp and we will pick it up straight away.</p>
+      <p class="qr-err qr-err-form" id="errForm" role="alert">That did not send. Message us on WhatsApp and we will pick it up straight away.</p>
     </form>
 
     <div class="qr-done" id="qrDone" hidden role="status" aria-live="polite">
@@ -125,7 +125,7 @@ description: "Get a computer repair quote from FixMyPC Perth in Canning Vale. Te
         <a class="qr-btn qr-btn-ghost" href="/pricing">See every fixed price</a>
       </div>
     </div>
-  </main>
+  </div>
 
   <aside class="qr-aside" aria-label="Why FixMyPC Perth">
     <div class="qr-card">
@@ -262,7 +262,11 @@ description: "Get a computer repair quote from FixMyPC Perth in Canning Vale. Te
     if (email.value.trim() && !EMAIL.test(email.value.trim())) { err('errEmail', true, email); ok = false; } else err('errEmail', false, email);
 
     if (!ok) {
+      /* Move focus to the first problem as well, so a keyboard or screen
+         reader user lands on it rather than back at the submit button. */
       var first = form.querySelector('.qr-err.show');
+      var bad = first && first.id === 'errServices' ? opts[0] : form.querySelector('.is-err');
+      if (bad) bad.focus({ preventScroll: true });
       if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
       return;
     }

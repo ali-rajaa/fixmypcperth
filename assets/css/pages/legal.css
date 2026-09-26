@@ -219,6 +219,7 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body)
   /* Section rhythm */
   .lg-hero { padding-top: var(--m-hero-top); padding-bottom: var(--m-section); }
   main > .wrap { padding-bottom: var(--m-section); }
+  .lg-layout { padding-top: var(--m-block); }
 
   /* Cards */
   .lg-side-card, .lg-help { padding: var(--m-card-pad); border-radius: var(--m-card-radius); }

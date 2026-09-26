@@ -149,7 +149,7 @@ image_alt: "FixMyPC Perth: fixed-price computer repairs in Perth, every price li
     </div>
     <a class="pr-side-cta" href="https://wa.me/61452573701" target="_blank" rel="noopener noreferrer" onclick="trackWAClick()">Not listed? Ask us</a>
   </aside>
-  <main class="pr-main" id="prMain">
+  <div class="pr-main" id="prMain">
     <p class="pr-count" id="prCount" aria-live="polite"></p>
     {%- for c in D.categories %}
     {%- assign inCat = D.services | where: "category", c.id %}
@@ -280,7 +280,7 @@ image_alt: "FixMyPC Perth: fixed-price computer repairs in Perth, every price li
       {%- endfor %}
       </div>
     </section>
-  </main>
+  </div>
 </div>
 
 <section class="pr-sec pr-wide" id="bizit">
