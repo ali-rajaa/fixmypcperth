@@ -25,9 +25,16 @@ meta:
   # ...@-32.06,115.92,17z/data=... kind) are not stable: they carry map
   # coordinates and open a pin or a search rather than the listing. Every
   # page reads these three, so a change is one edit here.
+  #
+  # profile_url and reviews_url use Google's Maps URLs format
+  # (maps/search/?api=1 with query_place_id): on a phone it opens the
+  # Google Maps app at the listing, where the reviews are; on a computer,
+  # Google Maps in the browser. Maps has no link straight to its reviews
+  # tab, so the two are the same. Writing a review has no Maps app link,
+  # so write_review_url opens Google's review box in the browser.
   place_id: ChIJQxKYICCXMioRFw4BqZ15Mz0
-  profile_url: https://www.google.com/maps/place/?q=place_id:ChIJQxKYICCXMioRFw4BqZ15Mz0
-  reviews_url: https://search.google.com/local/reviews?placeid=ChIJQxKYICCXMioRFw4BqZ15Mz0
+  profile_url: https://www.google.com/maps/search/?api=1&query=FixMyPC%20Perth&query_place_id=ChIJQxKYICCXMioRFw4BqZ15Mz0
+  reviews_url: https://www.google.com/maps/search/?api=1&query=FixMyPC%20Perth&query_place_id=ChIJQxKYICCXMioRFw4BqZ15Mz0
   write_review_url: https://search.google.com/local/writereview?placeid=ChIJQxKYICCXMioRFw4BqZ15Mz0
   note: Rating and count are the live Google Business Profile figures. Update them here only; every page reads from
     this file.
