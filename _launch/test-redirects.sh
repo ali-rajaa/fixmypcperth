@@ -8,15 +8,29 @@ set -u
 BASE="${BASE:-https://www.fixmypcperth.com}"   # override to test elsewhere
 fail=0; n=0
 check() {
+  # Follows the whole chain (up to 4 hops). Passes when the first response
+  # is a permanent redirect (301/308), the chain ends on the expected page
+  # with a 200, and a #section target keeps its #section somewhere in the
+  # chain. Two hops are fine: Cloudflare's existing ".html" rule strips the
+  # extension first, then the bulk list sends it on.
   local src="$1" want="$2"; n=$((n+1))
-  local out code loc
-  out=$(curl -s -o /dev/null -w "%{http_code} %{redirect_url}" --max-time 20 "$BASE$src")
-  code=${out%% *}; loc=${out#* }
-  if [ "$code" != "301" ] || [ "$loc" != "$BASE$want" ]; then
-    echo "FAIL $src -> got $code $loc (want 301 $BASE$want)"; fail=$((fail+1)); return
-  fi
-  local tcode; tcode=$(curl -s -o /dev/null -w "%{http_code}" --max-time 20 "$BASE${want%%#*}")
-  if [ "$tcode" != "200" ]; then echo "FAIL target $want returned $tcode"; fail=$((fail+1)); fi
+  local url="$BASE$src" code loc hops=0 first="" frag_ok=1
+  [ "${want#*#}" != "$want" ] && frag_ok=0
+  while :; do
+    local out; out=$(curl -s -o /dev/null -w "%{http_code} %{redirect_url}" --max-time 20 "$url")
+    code=${out%% *}; loc=${out#* }
+    [ -z "$first" ] && first=$code
+    case "$code" in 301|302|307|308) ;; *) break;; esac
+    hops=$((hops+1)); [ "$frag_ok" -eq 0 ] && [ "$loc" = "$BASE$want" ] && frag_ok=1
+    url=${loc%%#*}; [ "$hops" -ge 4 ] && break
+  done
+  if [ "$first" != "301" ] && [ "$first" != "308" ]; then
+    echo "FAIL $src -> first response $first, not a permanent redirect"; fail=$((fail+1)); return; fi
+  if [ "$url" != "$BASE${want%%#*}" ] || [ "$code" != "200" ]; then
+    echo "FAIL $src -> ended at $url ($code), want $BASE$want"; fail=$((fail+1)); return; fi
+  if [ "$frag_ok" -ne 1 ]; then echo "FAIL $src -> lost the #${want#*#} on the way"; fail=$((fail+1)); return; fi
+  [ "$hops" -gt 1 ] && echo "note $src -> $want in $hops hops"
+  return 0
 }
 check "/blog" "/tech-tips"
 check "/blog.html" "/tech-tips"
@@ -52,6 +66,7 @@ check "/computer-wont-turn-on-perth.html" "/computer-wont-turn-on-perth"
 check "/data-recovery-perth.html" "/data-recovery-perth"
 check "/gaming-pc-build-perth.html" "/gaming-pc-build-perth"
 check "/index.html" "/"
+check "/index" "/"
 check "/industries/it-support-accountants-perth" "/it-support-accountants-perth"
 check "/industries/it-support-allied-health-perth" "/it-support-allied-health-perth"
 check "/industries/it-support-childcare-perth" "/it-support-childcare-perth"

@@ -10,7 +10,7 @@ ok()  { echo "PASS $1"; }
 bad() { echo "FAIL $1"; fail=$((fail+1)); }
 
 robots=$(curl -s --max-time 20 "$BASE/robots.txt")
-echo "$robots" | grep -q "^Allow: /" && echo "$robots" | grep -q "Sitemap: $BASE/sitemap.xml" && ok "robots.txt allows crawling and names the sitemap" || bad "robots.txt: $robots"
+grep -q "^Allow: /" <<<"$robots" && grep -q "Sitemap: $BASE/sitemap.xml" <<<"$robots" && ok "robots.txt allows crawling and names the sitemap" || bad "robots.txt: $robots"
 
 home=$(curl -s --max-time 20 "$BASE/")
 echo "$home" | grep -q '<meta name="robots" content="index, follow' && ok "home page is indexable" || bad "home page robots meta is not index,follow"
