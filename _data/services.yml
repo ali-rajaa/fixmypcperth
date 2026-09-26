@@ -608,6 +608,10 @@ addons:
     name: After-hours emergency call-out
     price: 99
     suffix: flat
+  - key: biz-cyber-training
+    name: Staff cyber security training
+    price: 299
+    suffix: per session
 packages:
   - key: complete-pc-overhaul
     name: Complete PC Overhaul
@@ -633,6 +637,9 @@ offers:
   - key: free-cleanup-threshold
     name: Repair value that includes a free system cleanup
     price: 149
+  - key: business-it-first-month
+    name: First month on any Business IT plan
+    price: 99
 plans:
   - key: business-it-essential
     name: Essential

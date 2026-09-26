@@ -121,7 +121,7 @@ image_alt: "FixMyPC Perth: managed business IT support for Perth small businesse
       "name": "How much does managed IT support cost for a Perth small business?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Plans start from {% include price.html key='business-it-essential' bare=true raw=true %} per month base for the Essential plan covering up to 5 PCs, plus $35 per device. The Business plan is {% include price.html key='business-it-business' bare=true raw=true %} base plus $45 per device for up to 10 PCs. The Premium plan is {% include price.html key='business-it-premium' bare=true raw=true %} base plus $60 per device for up to 20 PCs. All plans are month-to-month with no lock-in contracts."
+        "text": "Plans start from {% include price.html key='business-it-essential' bare=true raw=true %} per month base for the Essential plan covering up to 5 PCs, plus {% include price.html key="business-it-essential" extra=true raw=true %} per device. The Business plan is {% include price.html key='business-it-business' bare=true raw=true %} base plus {% include price.html key="business-it-business" extra=true raw=true %} per device for up to 10 PCs. The Premium plan is {% include price.html key='business-it-premium' bare=true raw=true %} base plus {% include price.html key="business-it-premium" extra=true raw=true %} per device for up to 20 PCs. All plans are month-to-month with no lock-in contracts."
       }
     },
     {
@@ -183,24 +183,24 @@ image_alt: "FixMyPC Perth: managed business IT support for Perth small businesse
       <div class="hero-trust">
         <div class="hero-trust-item"><div class="hero-trust-dot">✓</div>No lock-in contracts</div>
         <div class="hero-trust-item"><div class="hero-trust-dot">✓</div>7am–11pm remote support</div>
-        <div class="hero-trust-item"><div class="hero-trust-dot">✓</div>5/5 rated service</div>
+        <div class="hero-trust-item"><div class="hero-trust-dot">✓</div>Rated {{ site.data.reviews.meta.rating }} on Google</div>
         <div class="hero-trust-item"><div class="hero-trust-dot">✓</div>Same day remote support</div>
       </div>
     </div>
 
     <div class="hero-card" role="complementary" aria-label="FixMyPC Perth business IT plan summary">
       <div class="hc-header">
-        <div class="hc-dot" style="background:#FF5F57"></div>
-        <div class="hc-dot" style="background:#FEBC2E"></div>
-        <div class="hc-dot" style="background:#28C840"></div>
+        <div class="hc-dot hc-dot-red"></div>
+        <div class="hc-dot hc-dot-amber"></div>
+        <div class="hc-dot hc-dot-green"></div>
         <span class="hc-title">Business IT Support Overview</span>
       </div>
       <div class="hc-body">
         <div class="hc-stat-row">
           <div class="hc-stat"><span class="hc-stat-val">7am–11pm</span><span class="hc-stat-lbl">Remote Support</span></div>
-          <div class="hc-stat"><span class="hc-stat-val">$149</span><span class="hc-stat-lbl">Starting from per month</span></div>
+          <div class="hc-stat"><span class="hc-stat-val">{% include price.html key="business-it-essential" bare=true %}</span><span class="hc-stat-lbl">Starting from per month</span></div>
           <div class="hc-stat"><span class="hc-stat-val">4hr</span><span class="hc-stat-lbl">Emergency Response</span></div>
-          <div class="hc-stat"><span class="hc-stat-val">5/5</span><span class="hc-stat-lbl">Client Rating</span></div>
+          <div class="hc-stat"><span class="hc-stat-val">{{ site.data.reviews.meta.rating }}</span><span class="hc-stat-lbl">Google Rating</span></div>
         </div>
         <div class="hc-divider"></div>
         <div class="hc-list">
@@ -213,7 +213,7 @@ image_alt: "FixMyPC Perth: managed business IT support for Perth small businesse
       </div>
       <div class="hc-footer">
         <div class="hc-rating"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-        <span class="hc-rating-text">5/5 rated · Canning Vale, Perth WA</span>
+        <span class="hc-rating-text">{{ site.data.reviews.meta.rating }} on Google · Canning Vale, Perth WA</span>
       </div>
     </div>
   </div>
@@ -226,19 +226,19 @@ image_alt: "FixMyPC Perth: managed business IT support for Perth small businesse
 
 <!-- FREE AUDIT BANNER -->
 <div class="audit-strip" aria-label="Free IT health check offer Perth businesses">
-  <div class="audit-inner" style="max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;">
-    <div style="display:flex;align-items:center;gap:1rem;flex:1;min-width:0;">
-      <div class="audit-badge-icon" style="flex-shrink:0;">
+  <div class="audit-inner audit-strip-row">
+    <div class="audit-strip-lead">
+      <div class="audit-badge-icon no-shrink">
         <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
       </div>
-      <div style="min-width:0;">
-        <div class="hc-cta-title" style="font-family:var(--display);font-size:15px;font-weight:700;color:#fff;margin:0 0 2px;">Book a free 30-minute meeting.</div>
-        <p style="font-size:12.5px;color:rgba(255,255,255,0.75);margin:0;line-height:1.5;">We check every critical area, document where your business stands, and show you how we can help.</p>
+      <div class="min-w0">
+        <div class="hc-cta-title audit-strip-title">Book a free 30-minute meeting.</div>
+        <p class="audit-strip-desc">We check every critical area, document where your business stands, and show you how we can help.</p>
       </div>
     </div>
-    <a href="#audit-section"
+    <a class="audit-strip-btn" href="#audit-section"
        onclick="event.preventDefault();document.querySelector('.audit-section').scrollIntoView({behavior:'smooth',block:'start'})"
-       style="--hov-accent:var(--blue);display:inline-flex;align-items:center;justify-content:center;background:#fff;color:var(--blue);font-family:var(--body);font-size:13.5px;font-weight:700;padding:10px 22px;border-radius:50px;text-decoration:none;white-space:nowrap;box-shadow:0 4px 16px rgba(0,0,0,0.15);transition:transform 0.15s cubic-bezier(0.16,1,0.3,1),box-shadow 0.15s;flex-shrink:0;">
+      >
       Book Free IT Audit
     </a>
   </div>
@@ -249,7 +249,7 @@ image_alt: "FixMyPC Perth: managed business IT support for Perth small businesse
   <div class="metrics-inner">
     <div class="metric-item fade-up"><span class="metric-val">7am-11pm</span><span class="metric-lbl">Remote Support Coverage</span></div>
     <div class="metric-item fade-up"><span class="metric-val">4hr</span><span class="metric-lbl">Maximum Emergency Response</span></div>
-    <div class="metric-item fade-up"><span class="metric-val">$99</span><span class="metric-lbl">First Month Offer. Any Plan.</span></div>
+    <div class="metric-item fade-up"><span class="metric-val">{% include price.html key="business-it-first-month" bare=true %}</span><span class="metric-lbl">First Month Offer. Any Plan.</span></div>
     <div class="metric-item fade-up"><span class="metric-val">0</span><span class="metric-lbl">Lock-In Contracts. Cancel Anytime.</span></div>
   </div>
 </div>
@@ -259,20 +259,20 @@ image_alt: "FixMyPC Perth: managed business IT support for Perth small businesse
   <div class="plans-header fade-up">
     <span class="s-eyebrow">Transparent Pricing</span>
     <h2 class="s-title">One monthly fee. <span class="accent">Full IT coverage.</span></h2>
-    <p class="s-sub" style="margin-top:0.75rem;">Managed IT support plans for Perth small businesses. Every plan covers unlimited remote support, managed antivirus and scheduled onsite visits. No lock-in, cancel any time with 14 days notice.</p>
+    <p class="s-sub plans-sub">Managed IT support plans for Perth small businesses. Every plan covers unlimited remote support, managed antivirus and scheduled onsite visits. No lock-in, cancel any time with 14 days notice.</p>
   </div>
 
  
   
   <div class="first-month-banner fade-up">
-    <div class="first-month-badge">$99</div>
-    <div class="first-month-text" style="flex:1;">
-      <p class="first-month-h">Get Your First Month on Any Plan for Just $99</p>
-      <p>Available for new clients. Experience full-service IT support and next-gen security for your entire team for just $99 your first month. No lock-in contracts, no risk. Cancel anytime if we aren't a perfect fit.</p>
+    <div class="first-month-badge">{% include price.html key="business-it-first-month" bare=true %}</div>
+    <div class="first-month-text grow">
+      <p class="first-month-h">Get Your First Month on Any Plan for Just {% include price.html key="business-it-first-month" bare=true %}</p>
+      <p>Available for new clients. Experience full-service IT support and next-gen security for your entire team for just {% include price.html key="business-it-first-month" bare=true %} your first month. No lock-in contracts, no risk. Cancel anytime if we aren't a perfect fit.</p>
     </div>
   </div>
 
-  <div id="plans-scroll-wrapper" style="padding: 0 1.25rem;">
+  <div class="plans-scroll-pad" id="plans-scroll-wrapper">
     <div class="plan-tabs" id="plan-tabs">
       <button class="plan-tab active" onclick="scrollToPlan(0,this)">Essential</button>
       <button class="plan-tab" onclick="scrollToPlan(1,this)">Business</button>
@@ -291,7 +291,7 @@ image_alt: "FixMyPC Perth: managed business IT support for Perth small businesse
               <span class="plan-num">{% include price.html key='business-it-essential' bare=true raw=true %}</span>
             </div>
             <div class="plan-period">base per month, billed monthly</div>
-            <div class="plan-note">+ $35 per device / month</div>
+            <div class="plan-note">+ {% include price.html key="business-it-essential" extra=true %} per device / month</div>
             <div class="plan-coverage">Up to 5 PCs covered</div>
           </div>
           <a href="#audit-form" onclick="event.preventDefault();document.querySelector('.audit-section').scrollIntoView({behavior:'smooth',block:'start'});" class="plan-cta">Get Started Today</a>
@@ -325,7 +325,7 @@ image_alt: "FixMyPC Perth: managed business IT support for Perth small businesse
               <span class="plan-num">{% include price.html key='business-it-business' bare=true raw=true %}</span>
             </div>
             <div class="plan-period">base per month, billed monthly</div>
-            <div class="plan-note">+ $45 per device / month</div>
+            <div class="plan-note">+ {% include price.html key="business-it-business" extra=true %} per device / month</div>
             <div class="plan-coverage">Up to 10 PCs covered</div>
           </div>
           <a href="#audit-form" onclick="event.preventDefault();document.querySelector('.audit-section').scrollIntoView({behavior:'smooth',block:'start'});" class="plan-cta">Get Started Today</a>
@@ -360,7 +360,7 @@ image_alt: "FixMyPC Perth: managed business IT support for Perth small businesse
               <span class="plan-num">{% include price.html key='business-it-premium' bare=true raw=true %}</span>
             </div>
             <div class="plan-period">base per month, billed monthly</div>
-            <div class="plan-note">+ $60 per device / month</div>
+            <div class="plan-note">+ {% include price.html key="business-it-premium" extra=true %} per device / month</div>
             <div class="plan-coverage">Up to 20 PCs covered</div>
           </div>
           <a href="#audit-form" onclick="event.preventDefault();document.querySelector('.audit-section').scrollIntoView({behavior:'smooth',block:'start'});" class="plan-cta">Get Started Today</a>
@@ -386,17 +386,17 @@ image_alt: "FixMyPC Perth: managed business IT support for Perth small businesse
     </div><!-- end plans-grid -->
   </div><!-- end plans-scroll-wrapper -->
 
-  <div style="text-align:center;margin-top:2.5rem;width:100%;display:flex;flex-direction:column;align-items:center;gap:1.25rem;" class="fade-up">
-    <p style="font-size:14px;color:var(--muted);line-height:1.75;">Not sure which plan fits? Let us know and we will tell you exactly which plan makes sense for you.</p>
+  <div class="fade-up plans-help">
+    <p class="plans-help-text">Not sure which plan fits? Let us know and we will tell you exactly which plan makes sense for you.</p>
     <a href="#audit-form" onclick="event.preventDefault();document.querySelector('.audit-section').scrollIntoView({behavior:'smooth',block:'start'});" class="btn-outline">Get a free IT assessment</a>
   </div>
 </section>
 
 
 <!-- RESULTS -->
-<section class="results-section" style="padding:5.5rem 2rem;background:var(--ink);position:relative;overflow:hidden;" aria-label="What FixMyPC Perth delivers for business clients">
-  <div style="position:absolute;top:-100px;left:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(21,96,255,0.12) 0%,transparent 70%);pointer-events:none;"></div>
-  <div style="position:absolute;bottom:-80px;right:-80px;width:350px;height:350px;background:radial-gradient(circle,rgba(34,197,94,0.08) 0%,transparent 70%);pointer-events:none;"></div>
+<section class="results-section results-band" aria-label="What FixMyPC Perth delivers for business clients">
+  <div class="results-glow-a"></div>
+  <div class="results-glow-b"></div>
   <div class="wrap">
     <div class="fade-up">
       <span class="s-eyebrow-light">What We Deliver</span>
@@ -404,72 +404,72 @@ image_alt: "FixMyPC Perth: managed business IT support for Perth small businesse
       <p class="s-sub-light">An IT support officer in Perth averages around $82,500 a year before superannuation. Our plans give you dedicated IT expertise, proactive monitoring and guaranteed response times for a fixed monthly fee.</p>
     </div>
 
-    <div style="display:flex;align-items:center;justify-content:flex-end;gap:6px;margin-top:1.75rem;margin-bottom:0.75rem;">
-      <span style="font-size:12px;font-weight:600;color:rgba(255,255,255,0.4);">Scroll to see more</span>
+    <div class="scroll-hint">
+      <span class="scroll-hint-text-dark">Scroll to see more</span>
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
     </div>
 
-    <div style="overflow-x:auto;padding-bottom:1rem;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,0.15) transparent;">
-      <div style="display:flex;gap:14px;padding:4px 2px 8px;">
+    <div class="h-scroll-dark">
+      <div class="res-row">
 
-        <div class="fade-up hov-lift" style="--hov-accent:rgba(21,96,255,0.35);width:300px;flex-shrink:0;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:18px;padding:1.5rem;position:relative;overflow:hidden;transition:background 0.2s cubic-bezier(0.16,1,0.3,1),border-color 0.2s,transform 0.2s;">
-          <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--blue),#00CFFF);"></div>
-          <div style="width:36px;height:36px;background:rgba(21,96,255,0.15);border:1px solid rgba(21,96,255,0.3);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;">
+        <div class="fade-up hov-lift res-card tone-blue">
+          <div class="res-bar tone-blue end-cyan"></div>
+          <div class="res-icon tone-blue">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           </div>
-          <div style="font-family:var(--display);font-size:2.2rem;font-weight:800;letter-spacing:-1.5px;color:#fff;line-height:1;margin-bottom:0.4rem;">8+ hrs</div>
-          <div style="font-size:12px;font-weight:700;color:#60A5FA;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.5rem;">Saved monthly</div>
-          <div style="font-size:12.5px;color:rgba(255,255,255,0.5);line-height:1.65;">We resolve issues remotely before staff are impacted. One client, Hyperlink Solutions, reported recovering around 8 hours a month over twelve months.</div>
+          <div class="res-val">8+ hrs</div>
+          <div class="res-label tone-blue">Saved monthly</div>
+          <div class="res-desc">We resolve issues remotely before staff are impacted. One client, Hyperlink Solutions, reported recovering around 8 hours a month over twelve months.</div>
         </div>
 
-        <div class="fade-up hov-lift" style="--hov-accent:rgba(34,197,94,0.3);width:300px;flex-shrink:0;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:18px;padding:1.5rem;position:relative;overflow:hidden;transition:background 0.2s cubic-bezier(0.16,1,0.3,1),border-color 0.2s,transform 0.2s;">
-          <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#22C55E,#00CFFF);"></div>
-          <div style="width:36px;height:36px;background:rgba(34,197,94,0.12);border:1px solid rgba(34,197,94,0.25);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;">
+        <div class="fade-up hov-lift res-card tone-green">
+          <div class="res-bar tone-green end-cyan"></div>
+          <div class="res-icon tone-green">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4ADE80" stroke-width="2" stroke-linecap="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 100 7h5a3.5 3.5 0 110 7H6"/></svg>
           </div>
-          <div style="font-family:var(--display);font-size:2.2rem;font-weight:800;letter-spacing:-1.5px;color:#fff;line-height:1;margin-bottom:0.4rem;">Zero</div>
-          <div style="font-size:12px;font-weight:700;color:#4ADE80;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.5rem;">Unexpected costs</div>
-          <div style="font-size:12.5px;color:rgba(255,255,255,0.5);line-height:1.65;">One predictable monthly fee. No surprise callout charges, no emergency repair bills. Ever.</div>
+          <div class="res-val">Zero</div>
+          <div class="res-label tone-green">Unexpected costs</div>
+          <div class="res-desc">One predictable monthly fee. No surprise callout charges, no emergency repair bills. Ever.</div>
         </div>
 
-        <div class="fade-up hov-lift" style="--hov-accent:rgba(168,85,247,0.3);width:300px;flex-shrink:0;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:18px;padding:1.5rem;position:relative;overflow:hidden;transition:background 0.2s cubic-bezier(0.16,1,0.3,1),border-color 0.2s,transform 0.2s;">
-          <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#A855F7,#1560FF);"></div>
-          <div style="width:36px;height:36px;background:rgba(168,85,247,0.12);border:1px solid rgba(168,85,247,0.25);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;">
+        <div class="fade-up hov-lift res-card tone-purple">
+          <div class="res-bar tone-purple end-blue"></div>
+          <div class="res-icon tone-purple">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C084FC" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           </div>
-          <div style="font-family:var(--display);font-size:2.2rem;font-weight:800;letter-spacing:-1.5px;color:#fff;line-height:1;margin-bottom:0.4rem;">100%</div>
-          <div style="font-size:12px;font-weight:700;color:#C084FC;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.5rem;">Data protected</div>
-          <div style="font-size:12.5px;color:rgba(255,255,255,0.5);line-height:1.65;">Cloud backup configured and verified monthly. If a drive fails or ransomware hits, your data is recoverable the same day.</div>
+          <div class="res-val">100%</div>
+          <div class="res-label tone-purple">Data protected</div>
+          <div class="res-desc">Cloud backup configured and verified monthly. If a drive fails or ransomware hits, your data is recoverable the same day.</div>
         </div>
 
-        <div class="fade-up hov-lift" style="--hov-accent:rgba(245,158,11,0.3);width:300px;flex-shrink:0;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:18px;padding:1.5rem;position:relative;overflow:hidden;transition:background 0.2s cubic-bezier(0.16,1,0.3,1),border-color 0.2s,transform 0.2s;">
-          <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#F59E0B,#FF6B6B);"></div>
-          <div style="width:36px;height:36px;background:rgba(245,158,11,0.12);border:1px solid rgba(245,158,11,0.25);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;">
+        <div class="fade-up hov-lift res-card tone-amber">
+          <div class="res-bar tone-amber end-coral"></div>
+          <div class="res-icon tone-amber">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FCD34D" stroke-width="2" stroke-linecap="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
           </div>
-          <div style="font-family:var(--display);font-size:2.2rem;font-weight:800;letter-spacing:-1.5px;color:#fff;line-height:1;margin-bottom:0.4rem;">4hr</div>
-          <div style="font-size:12px;font-weight:700;color:#FCD34D;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.5rem;">Emergency response</div>
-          <div style="font-size:12.5px;color:rgba(255,255,255,0.5);line-height:1.65;">Premium clients get guaranteed onsite within 4 hours. Remote issues resolved within the hour on all plans.</div>
+          <div class="res-val">4hr</div>
+          <div class="res-label tone-amber">Emergency response</div>
+          <div class="res-desc">Premium clients get guaranteed onsite within 4 hours. Remote issues resolved within the hour on all plans.</div>
         </div>
 
-        <div class="fade-up hov-lift" style="--hov-accent:rgba(21,96,255,0.35);width:300px;flex-shrink:0;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:18px;padding:1.5rem;position:relative;overflow:hidden;transition:background 0.2s cubic-bezier(0.16,1,0.3,1),border-color 0.2s,transform 0.2s;">
-          <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#1560FF,#A855F7);"></div>
-          <div style="width:36px;height:36px;background:rgba(21,96,255,0.15);border:1px solid rgba(21,96,255,0.3);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;">
+        <div class="fade-up hov-lift res-card tone-blue">
+          <div class="res-bar tone-blue end-purple"></div>
+          <div class="res-icon tone-blue">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
           </div>
-          <div style="font-family:var(--display);font-size:2.2rem;font-weight:800;letter-spacing:-1.5px;color:#fff;line-height:1;margin-bottom:0.4rem;">$82.5k</div>
-          <div style="font-size:12px;font-weight:700;color:#60A5FA;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.5rem;">Perth IT salary, avg</div>
-          <div style="font-size:12.5px;color:rgba(255,255,255,0.5);line-height:1.65;">A managed plan costs a few thousand a year rather than a salary. It is not a replacement for a full-time employee, and we will say so if that is what you need.</div>
+          <div class="res-val">$82.5k</div>
+          <div class="res-label tone-blue">Perth IT salary, avg</div>
+          <div class="res-desc">A managed plan costs a few thousand a year rather than a salary. It is not a replacement for a full-time employee, and we will say so if that is what you need.</div>
         </div>
 
-        <div class="fade-up hov-lift" style="--hov-accent:rgba(0,207,255,0.3);width:300px;flex-shrink:0;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:18px;padding:1.5rem;position:relative;overflow:hidden;transition:background 0.2s cubic-bezier(0.16,1,0.3,1),border-color 0.2s,transform 0.2s;">
-          <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#00CFFF,#22C55E);"></div>
-          <div style="width:36px;height:36px;background:rgba(0,207,255,0.1);border:1px solid rgba(0,207,255,0.25);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;">
+        <div class="fade-up hov-lift res-card tone-cyan">
+          <div class="res-bar tone-cyan end-green"></div>
+          <div class="res-icon tone-cyan">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22D3EE" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
           </div>
-          <div style="font-family:var(--display);font-size:2.2rem;font-weight:800;letter-spacing:-1.5px;color:#fff;line-height:1;margin-bottom:0.4rem;">7am-11pm</div>
-          <div style="font-size:12px;font-weight:700;color:#22D3EE;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.5rem;">7am–11pm coverage</div>
-          <div style="font-size:12.5px;color:rgba(255,255,255,0.5);line-height:1.65;">Business does not stop at 5pm. Our remote support team is available 7am to 11pm daily on all plans, with emergency response for Premium clients.</div>
+          <div class="res-val">7am-11pm</div>
+          <div class="res-label tone-cyan">7am–11pm coverage</div>
+          <div class="res-desc">Business does not stop at 5pm. Our remote support team is available 7am to 11pm daily on all plans, with emergency response for Premium clients.</div>
         </div>
 
       </div>
@@ -496,7 +496,7 @@ image_alt: "FixMyPC Perth: managed business IT support for Perth small businesse
           </div>
         </div>
         <div class="addon-right">
-          <span class="addon-price">$35 to $60</span>
+          <span class="addon-price">{% include price.html key="business-it-essential" extra=true %} to {% include price.html key="business-it-premium" extra=true %}</span>
           <span class="addon-freq">per extra device, by plan</span>
         </div>
       </div>
@@ -510,7 +510,7 @@ image_alt: "FixMyPC Perth: managed business IT support for Perth small businesse
           </div>
         </div>
         <div class="addon-right">
-          <span class="addon-price">$99</span>
+          <span class="addon-price">{% include price.html key="biz-afterhours-callout" bare=true %}</span>
           <span class="addon-freq">flat fee per callout</span>
         </div>
       </div>
@@ -524,12 +524,12 @@ image_alt: "FixMyPC Perth: managed business IT support for Perth small businesse
           </div>
         </div>
         <div class="addon-right">
-          <span class="addon-price">$149</span>
+          <span class="addon-price">{% include price.html key="business-pc-setup-migration" bare=true %}</span>
           <span class="addon-freq">one-off per device</span>
         </div>
       </div>
 
-      <div id="addon-extra" style="display:none;">
+      <div id="addon-extra" hidden>
         <div class="addon-row">
           <div class="addon-left">
             <div class="addon-dot"></div>
@@ -539,7 +539,7 @@ image_alt: "FixMyPC Perth: managed business IT support for Perth small businesse
             </div>
           </div>
           <div class="addon-right">
-            <span class="addon-price">$299</span>
+            <span class="addon-price">{% include price.html key="biz-cyber-training" bare=true %}</span>
             <span class="addon-freq">one-off per session</span>
           </div>
         </div>
@@ -553,7 +553,7 @@ image_alt: "FixMyPC Perth: managed business IT support for Perth small businesse
             </div>
           </div>
           <div class="addon-right">
-            <span class="addon-price">$99</span>
+            <span class="addon-price">{% include price.html key="biz-backup-audit" bare=true %}</span>
             <span class="addon-freq">one-off per year</span>
           </div>
         </div>
@@ -567,7 +567,7 @@ image_alt: "FixMyPC Perth: managed business IT support for Perth small businesse
             </div>
           </div>
           <div class="addon-right">
-            <span class="addon-price">$89</span>
+            <span class="addon-price">{% include price.html key="biz-extra-onsite" bare=true %}</span>
             <span class="addon-freq">per visit</span>
           </div>
         </div>
@@ -575,24 +575,11 @@ image_alt: "FixMyPC Perth: managed business IT support for Perth small businesse
 
     </div>
 
-    <div style="text-align:center;margin-top:1.25rem;">
-      <button id="addon-toggle"
-        onclick="
-          var el = document.getElementById('addon-extra');
-          var btn = document.getElementById('addon-toggle');
-          if(el.style.display === 'none'){
-            el.style.display = 'block';
-            btn.innerHTML = '<span style=\'display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;background:var(--blue);border-radius:50%;margin-right:8px;\'><svg width=\'8\' height=\'8\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'white\' stroke-width=\'3\' stroke-linecap=\'round\'><polyline points=\'18 15 12 9 6 15\'/></svg></span>Show Less';
-          } else {
-            el.style.display = 'none';
-            btn.innerHTML = '<span style=\'display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;background:var(--blue);border-radius:50%;margin-right:8px;\'><svg width=\'8\' height=\'8\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'white\' stroke-width=\'3\' stroke-linecap=\'round\'><polyline points=\'6 9 12 15 18 9\'/></svg></span>Show All Add-Ons';
-          }
-        "
-        style="display:inline-flex;align-items:center;background:transparent;border:1.5px solid var(--border2);color:var(--ink);font-family:var(--body);font-size:13.5px;font-weight:600;padding:10px 22px;border-radius:50px;cursor:pointer;transition:border-color 0.15s cubic-bezier(0.16,1,0.3,1),color 0.15s;">
-        <span style="display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;background:var(--blue);border-radius:50%;margin-right:8px;">
-          <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
-        </span>
-        Show All Add-Ons
+    <div class="addon-more">
+      <button type="button" id="addon-toggle" class="addon-toggle" aria-expanded="false" aria-controls="addon-extra"
+        onclick="var x=document.getElementById('addon-extra'),o=x.hidden;x.hidden=!o;this.setAttribute('aria-expanded',o?'true':'false');this.querySelector('.addon-toggle-text').textContent=o?'Show Less':'Show All Add-Ons';">
+        <span class="addon-toggle-icon" aria-hidden="true"><svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+        <span class="addon-toggle-text">Show All Add-Ons</span>
       </button>
     </div>
 
@@ -609,94 +596,94 @@ image_alt: "FixMyPC Perth: managed business IT support for Perth small businesse
       <p class="s-sub">We support cafes, real estate offices, dental clinics and retail stores across Canning Vale, Fremantle, Cockburn and Cannington. If your business relies on computers, we are built for you.</p>
     </div>
 
-    <div style="display:flex;align-items:center;justify-content:flex-end;gap:6px;margin-top:1.75rem;margin-bottom:0.75rem;">
-      <span style="font-size:12px;font-weight:600;color:var(--muted);">Scroll to see more</span>
+    <div class="scroll-hint">
+      <span class="scroll-hint-text">Scroll to see more</span>
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
     </div>
 
-    <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:var(--border2) transparent;padding-bottom:1rem;">
+    <div class="h-scroll">
       <div id="who-grid" class="who-grid">
 
         <!-- Card 1 -->
-        <div class="hov-lift" style="--hov-accent:var(--blue);background:var(--bg);border:1.5px solid var(--border);border-radius:18px;padding:1.5rem 1.4rem;transition:border-color 0.2s cubic-bezier(0.16,1,0.3,1),transform 0.2s,box-shadow 0.2s;cursor:default;position:relative;overflow:hidden;">
-          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),#00CFFF);"></div>
-          <div style="width:48px;height:48px;background:var(--blue-lt);border:1.5px solid var(--blue-mid);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin-bottom:1rem;">☕</div>
-          <div style="font-family:var(--display);font-size:15px;font-weight:700;color:var(--ink);margin-bottom:6px;line-height:1.3;">Cafes and Restaurants</div>
-          <div style="font-size:12.5px;color:var(--muted);line-height:1.6;">POS, EFTPOS and wifi kept running during service</div>
+        <div class="hov-lift serve-card tone-blue">
+          <div class="card-bar tone-blue end-cyan"></div>
+          <div class="serve-icon tone-blue">☕</div>
+          <div class="who-title">Cafes and Restaurants</div>
+          <div class="who-desc">POS, EFTPOS and wifi kept running during service</div>
         </div>
 
         <!-- Card 2 -->
-        <div class="hov-lift" style="--hov-accent:#A855F7;background:var(--bg);border:1.5px solid var(--border);border-radius:18px;padding:1.5rem 1.4rem;transition:border-color 0.2s cubic-bezier(0.16,1,0.3,1),transform 0.2s,box-shadow 0.2s;cursor:default;position:relative;overflow:hidden;">
-          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#A855F7,#EC4899);"></div>
-          <div style="width:48px;height:48px;background:rgba(168,85,247,0.08);border:1.5px solid rgba(168,85,247,0.2);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin-bottom:1rem;">✂️</div>
-          <div style="font-family:var(--display);font-size:15px;font-weight:700;color:var(--ink);margin-bottom:6px;line-height:1.3;">Hair and Beauty Salons</div>
-          <div style="font-size:12.5px;color:var(--muted);line-height:1.6;">Booking software and payment terminals, always online</div>
+        <div class="hov-lift serve-card tone-purple">
+          <div class="card-bar tone-purple end-pink"></div>
+          <div class="serve-icon tone-purple">✂️</div>
+          <div class="who-title">Hair and Beauty Salons</div>
+          <div class="who-desc">Booking software and payment terminals, always online</div>
         </div>
 
         <!-- Card 3 -->
-        <div class="hov-lift" style="--hov-accent:#F59E0B;background:var(--bg);border:1.5px solid var(--border);border-radius:18px;padding:1.5rem 1.4rem;transition:border-color 0.2s cubic-bezier(0.16,1,0.3,1),transform 0.2s,box-shadow 0.2s;cursor:default;position:relative;overflow:hidden;">
-          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#F59E0B,#FF6B6B);"></div>
-          <div style="width:48px;height:48px;background:rgba(245,158,11,0.08);border:1.5px solid rgba(245,158,11,0.2);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin-bottom:1rem;">🏠</div>
-          <div style="font-family:var(--display);font-size:15px;font-weight:700;color:var(--ink);margin-bottom:6px;line-height:1.3;">Real Estate Offices</div>
-          <div style="font-size:12.5px;color:var(--muted);line-height:1.6;">Document management, printing and email support</div>
+        <div class="hov-lift serve-card tone-amber">
+          <div class="card-bar tone-amber end-coral"></div>
+          <div class="serve-icon tone-amber">🏠</div>
+          <div class="who-title">Real Estate Offices</div>
+          <div class="who-desc">Document management, printing and email support</div>
         </div>
 
         <!-- Card 4 -->
-        <div class="hov-lift" style="--hov-accent:#22C55E;background:var(--bg);border:1.5px solid var(--border);border-radius:18px;padding:1.5rem 1.4rem;transition:border-color 0.2s cubic-bezier(0.16,1,0.3,1),transform 0.2s,box-shadow 0.2s;cursor:default;position:relative;overflow:hidden;">
-          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#22C55E,#00CFFF);"></div>
-          <div style="width:48px;height:48px;background:rgba(34,197,94,0.08);border:1.5px solid rgba(34,197,94,0.2);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin-bottom:1rem;">🦷</div>
-          <div style="font-family:var(--display);font-size:15px;font-weight:700;color:var(--ink);margin-bottom:6px;line-height:1.3;">Dental Clinics</div>
-          <div style="font-size:12.5px;color:var(--muted);line-height:1.6;">Patient records, imaging software and practice management</div>
+        <div class="hov-lift serve-card tone-green">
+          <div class="card-bar tone-green end-cyan"></div>
+          <div class="serve-icon tone-green">🦷</div>
+          <div class="who-title">Dental Clinics</div>
+          <div class="who-desc">Patient records, imaging software and practice management</div>
         </div>
 
         <!-- Card 5 -->
-        <div class="hov-lift" style="--hov-accent:#EF4444;background:var(--bg);border:1.5px solid var(--border);border-radius:18px;padding:1.5rem 1.4rem;transition:border-color 0.2s cubic-bezier(0.16,1,0.3,1),transform 0.2s,box-shadow 0.2s;cursor:default;position:relative;overflow:hidden;">
-          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#EF4444,#F59E0B);"></div>
-          <div style="width:48px;height:48px;background:rgba(239,68,68,0.08);border:1.5px solid rgba(239,68,68,0.2);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin-bottom:1rem;">🏥</div>
-          <div style="font-family:var(--display);font-size:15px;font-weight:700;color:var(--ink);margin-bottom:6px;line-height:1.3;">Medical Practices</div>
-          <div style="font-size:12.5px;color:var(--muted);line-height:1.6;">Clinical software, secure data and compliance support</div>
+        <div class="hov-lift serve-card tone-red">
+          <div class="card-bar tone-red end-amber"></div>
+          <div class="serve-icon tone-red">🏥</div>
+          <div class="who-title">Medical Practices</div>
+          <div class="who-desc">Clinical software, secure data and compliance support</div>
         </div>
 
         <!-- Card 6 -->
-        <div class="hov-lift" style="--hov-accent:#00CFFF;background:var(--bg);border:1.5px solid var(--border);border-radius:18px;padding:1.5rem 1.4rem;transition:border-color 0.2s cubic-bezier(0.16,1,0.3,1),transform 0.2s,box-shadow 0.2s;cursor:default;position:relative;overflow:hidden;">
-          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#00CFFF,#A855F7);"></div>
-          <div style="width:48px;height:48px;background:rgba(0,207,255,0.08);border:1.5px solid rgba(0,207,255,0.2);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin-bottom:1rem;">🛒</div>
-          <div style="font-family:var(--display);font-size:15px;font-weight:700;color:var(--ink);margin-bottom:6px;line-height:1.3;">Retail Shops</div>
-          <div style="font-size:12.5px;color:var(--muted);line-height:1.6;">Inventory systems, EFTPOS and multi-PC environments</div>
+        <div class="hov-lift serve-card tone-cyan">
+          <div class="card-bar tone-cyan end-purple"></div>
+          <div class="serve-icon tone-cyan">🛒</div>
+          <div class="who-title">Retail Shops</div>
+          <div class="who-desc">Inventory systems, EFTPOS and multi-PC environments</div>
         </div>
 
         <!-- Card 7 -->
-        <div class="hov-lift" style="--hov-accent:#F59E0B;background:var(--bg);border:1.5px solid var(--border);border-radius:18px;padding:1.5rem 1.4rem;transition:border-color 0.2s cubic-bezier(0.16,1,0.3,1),transform 0.2s,box-shadow 0.2s;cursor:default;position:relative;overflow:hidden;">
-          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#F59E0B,#22C55E);"></div>
-          <div style="width:48px;height:48px;background:rgba(245,158,11,0.08);border:1.5px solid rgba(245,158,11,0.2);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin-bottom:1rem;">🏗️</div>
-          <div style="font-family:var(--display);font-size:15px;font-weight:700;color:var(--ink);margin-bottom:6px;line-height:1.3;">Tradies and Contractors</div>
-          <div style="font-size:12.5px;color:var(--muted);line-height:1.6;">Quoting software, job management and cloud access</div>
+        <div class="hov-lift serve-card tone-amber">
+          <div class="card-bar tone-amber end-green"></div>
+          <div class="serve-icon tone-amber">🏗️</div>
+          <div class="who-title">Tradies and Contractors</div>
+          <div class="who-desc">Quoting software, job management and cloud access</div>
         </div>
 
         <!-- Card 8 -->
-        <div class="hov-lift" style="--hov-accent:#A855F7;background:var(--bg);border:1.5px solid var(--border);border-radius:18px;padding:1.5rem 1.4rem;transition:border-color 0.2s cubic-bezier(0.16,1,0.3,1),transform 0.2s,box-shadow 0.2s;cursor:default;position:relative;overflow:hidden;">
-          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#A855F7,var(--blue));"></div>
-          <div style="width:48px;height:48px;background:rgba(168,85,247,0.08);border:1.5px solid rgba(168,85,247,0.2);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin-bottom:1rem;">⚖️</div>
-          <div style="font-family:var(--display);font-size:15px;font-weight:700;color:var(--ink);margin-bottom:6px;line-height:1.3;">Law and Accounting Firms</div>
-          <div style="font-size:12.5px;color:var(--muted);line-height:1.6;">Document security, compliance and reliable infrastructure</div>
+        <div class="hov-lift serve-card tone-purple">
+          <div class="card-bar tone-purple end-blue"></div>
+          <div class="serve-icon tone-purple">⚖️</div>
+          <div class="who-title">Law and Accounting Firms</div>
+          <div class="who-desc">Document security, compliance and reliable infrastructure</div>
         </div>
 
         <!-- Card 9 -->
-        <div class="hov-lift" style="--hov-accent:#22C55E;background:var(--bg);border:1.5px solid var(--border);border-radius:18px;padding:1.5rem 1.4rem;transition:border-color 0.2s cubic-bezier(0.16,1,0.3,1),transform 0.2s,box-shadow 0.2s;cursor:default;position:relative;overflow:hidden;">
-          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#22C55E,#00CFFF);"></div>
-          <div style="width:48px;height:48px;background:rgba(34,197,94,0.08);border:1.5px solid rgba(34,197,94,0.2);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin-bottom:1rem;">🏋️</div>
-          <div style="font-family:var(--display);font-size:15px;font-weight:700;color:var(--ink);margin-bottom:6px;line-height:1.3;">Gyms and Studios</div>
-          <div style="font-size:12.5px;color:var(--muted);line-height:1.6;">Membership software, access control and kiosk systems</div>
+        <div class="hov-lift serve-card tone-green">
+          <div class="card-bar tone-green end-cyan"></div>
+          <div class="serve-icon tone-green">🏋️</div>
+          <div class="who-title">Gyms and Studios</div>
+          <div class="who-desc">Membership software, access control and kiosk systems</div>
         </div>
 
       </div>
     </div>
 
-    <div class="fade-up" style="margin-top:1.5rem;">
+    <div class="fade-up who-more">
       <a href="#audit-form"
          onclick="event.preventDefault();document.querySelector('.audit-section').scrollIntoView({behavior:'smooth',block:'start'});"
-         class="btn-primary"
-         style="display:inline-flex;">
+         class="btn-primary inline-flex"
+        >
         Talk to us about your business
       </a>
     </div>
@@ -792,7 +779,7 @@ image_alt: "FixMyPC Perth: managed business IT support for Perth small businesse
     <div>
       <span class="s-eyebrow-light">Free Online IT Consultation</span>
       <h2 class="s-title-light">Book a free 30-minute <br><span class="accent-light">meeting.</span></h2>
-      <p class="s-sub-light" style="margin-bottom:2rem;">Our team checks every critical area during the free audit. We document a picture of where your business stands, and how we can help you save time and resources.</p>
+      <p class="s-sub-light audit-sub">Our team checks every critical area during the free audit. We document a picture of where your business stands, and how we can help you save time and resources.</p>
       <div class="audit-checklist">
         <div class="audit-check-item">
           <div class="audit-icon-box warn">
@@ -855,13 +842,13 @@ image_alt: "FixMyPC Perth: managed business IT support for Perth small businesse
         <div class="audit-note" id="audit-note">Our team will respond as fast as possible.</div>
       </form>
 
-      <div class="audit-direct" style="margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:8px;">
-        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:2px;">Prefer to reach us directly?</div>
-        <a href="mailto:aly.imran.raja@gmail.com" style="display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--blue);text-decoration:none;">
+      <div class="audit-direct audit-direct-box">
+        <div class="audit-direct-label">Prefer to reach us directly?</div>
+        <a class="audit-direct-link" href="mailto:aly.imran.raja@gmail.com">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           aly.imran.raja@gmail.com
         </a>
-        <a href="https://wa.me/61452573701" target="_blank" rel="noopener noreferrer" onclick="trackWAClick()" style="display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--blue);text-decoration:none;">
+        <a class="audit-direct-link" href="https://wa.me/61452573701" target="_blank" rel="noopener noreferrer" onclick="trackWAClick()">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>
           WhatsApp 0452 573 701
         </a>
@@ -879,72 +866,72 @@ image_alt: "FixMyPC Perth: managed business IT support for Perth small businesse
       <p class="s-sub">Here is what sets us apart as a managed service provider when your business operations depend on technology working reliably every single day.</p>
     </div>
 
-    <div style="display:flex;align-items:center;justify-content:flex-end;gap:6px;margin-top:1.75rem;margin-bottom:0.75rem;">
-      <span style="font-size:12px;font-weight:600;color:var(--muted);">Scroll to see more</span>
+    <div class="scroll-hint">
+      <span class="scroll-hint-text">Scroll to see more</span>
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
     </div>
 
-    <div style="overflow-x:auto;padding-bottom:1rem;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:var(--border2) transparent;">
-      <div style="display:flex;gap:14px;width:max-content;padding:4px 2px 8px;">
+    <div class="h-scroll">
+      <div class="why-row">
 
-        <div class="fade-up hov-lift" style="--hov-accent:var(--blue);width:280px;flex-shrink:0;background:var(--bg);border:1.5px solid var(--border);border-radius:18px;padding:1.5rem;position:relative;overflow:hidden;transition:transform 0.2s cubic-bezier(0.16,1,0.3,1),box-shadow 0.2s,border-color 0.2s;">
-          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),#00CFFF);"></div>
-          <div style="width:38px;height:38px;background:var(--blue-lt);border:1.5px solid var(--blue-mid);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;">
+        <div class="fade-up hov-lift why-card">
+          <div class="card-bar tone-blue end-cyan"></div>
+          <div class="why-icon tone-blue">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
           </div>
-          <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--blue);background:var(--blue-lt);border:1px solid var(--blue-mid);padding:3px 10px;border-radius:50px;display:inline-block;margin-bottom:0.7rem;">Monitoring</div>
-          <div style="font-family:var(--display);font-size:15px;font-weight:700;color:var(--ink);margin-bottom:0.5rem;">Proactive, Not Reactive</div>
-          <div style="font-size:13px;color:var(--muted);line-height:1.7;">Our monitoring tools identify problems before they become outages. We resolve issues in the background before your team is ever aware of them.</div>
+          <div class="why-tag tone-blue">Monitoring</div>
+          <div class="why-title">Proactive, Not Reactive</div>
+          <div class="why-desc">Our monitoring tools identify problems before they become outages. We resolve issues in the background before your team is ever aware of them.</div>
         </div>
 
-        <div class="fade-up hov-lift" style="--hov-accent:var(--blue);width:280px;flex-shrink:0;background:var(--bg);border:1.5px solid var(--border);border-radius:18px;padding:1.5rem;position:relative;overflow:hidden;transition:transform 0.2s cubic-bezier(0.16,1,0.3,1),box-shadow 0.2s,border-color 0.2s;">
-          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#22C55E,#00CFFF);"></div>
-          <div style="width:38px;height:38px;background:rgba(34,197,94,0.1);border:1.5px solid rgba(34,197,94,0.25);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;">
+        <div class="fade-up hov-lift why-card">
+          <div class="card-bar tone-green end-cyan"></div>
+          <div class="why-icon tone-green">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
           </div>
-          <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#16A34A;background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.25);padding:3px 10px;border-radius:50px;display:inline-block;margin-bottom:0.7rem;">Coverage</div>
-          <div style="font-family:var(--display);font-size:15px;font-weight:700;color:var(--ink);margin-bottom:0.5rem;">All Perth Suburbs Covered</div>
-          <div style="font-size:13px;color:var(--muted);line-height:1.7;">Based in Canning Vale, we cover all southern Perth suburbs for onsite visits including Cockburn, Cannington, Willetton, Jandakot, Harrisdale and Thornlie.</div>
+          <div class="why-tag tone-green">Coverage</div>
+          <div class="why-title">All Perth Suburbs Covered</div>
+          <div class="why-desc">Based in Canning Vale, we cover all southern Perth suburbs for onsite visits including Cockburn, Cannington, Willetton, Jandakot, Harrisdale and Thornlie.</div>
         </div>
 
-        <div class="fade-up hov-lift" style="--hov-accent:var(--blue);width:280px;flex-shrink:0;background:var(--bg);border:1.5px solid var(--border);border-radius:18px;padding:1.5rem;position:relative;overflow:hidden;transition:transform 0.2s cubic-bezier(0.16,1,0.3,1),box-shadow 0.2s,border-color 0.2s;">
-          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#F59E0B,#FF6B6B);"></div>
-          <div style="width:38px;height:38px;background:rgba(245,158,11,0.1);border:1.5px solid rgba(245,158,11,0.25);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;">
+        <div class="fade-up hov-lift why-card">
+          <div class="card-bar tone-amber end-coral"></div>
+          <div class="why-icon tone-amber">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
           </div>
-          <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#D97706;background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.25);padding:3px 10px;border-radius:50px;display:inline-block;margin-bottom:0.7rem;">Contracts</div>
-          <div style="font-family:var(--display);font-size:15px;font-weight:700;color:var(--ink);margin-bottom:0.5rem;">No Lock-In. Cancel Anytime.</div>
-          <div style="font-size:13px;color:var(--muted);line-height:1.7;">Every plan is month-to-month. We earn your business through results, not contracts. Cancel or adjust your plan at any time with 14 days notice.</div>
+          <div class="why-tag tone-amber">Contracts</div>
+          <div class="why-title">No Lock-In. Cancel Anytime.</div>
+          <div class="why-desc">Every plan is month-to-month. We earn your business through results, not contracts. Cancel or adjust your plan at any time with 14 days notice.</div>
         </div>
 
-        <div class="fade-up hov-lift" style="--hov-accent:var(--blue);width:280px;flex-shrink:0;background:var(--bg);border:1.5px solid var(--border);border-radius:18px;padding:1.5rem;position:relative;overflow:hidden;transition:transform 0.2s cubic-bezier(0.16,1,0.3,1),box-shadow 0.2s,border-color 0.2s;">
-          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#A855F7,#1560FF);"></div>
-          <div style="width:38px;height:38px;background:rgba(168,85,247,0.1);border:1.5px solid rgba(168,85,247,0.25);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;">
+        <div class="fade-up hov-lift why-card">
+          <div class="card-bar tone-purple end-blue"></div>
+          <div class="why-icon tone-purple">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9333EA" stroke-width="2" stroke-linecap="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 100 7h5a3.5 3.5 0 110 7H6"/></svg>
           </div>
-          <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#9333EA;background:rgba(168,85,247,0.1);border:1px solid rgba(168,85,247,0.25);padding:3px 10px;border-radius:50px;display:inline-block;margin-bottom:0.7rem;">Pricing</div>
-          <div style="font-family:var(--display);font-size:15px;font-weight:700;color:var(--ink);margin-bottom:0.5rem;">One Fixed Monthly Fee</div>
-          <div style="font-size:13px;color:var(--muted);line-height:1.7;">No surprise invoices. No callout fees on covered plans. One predictable cost that makes IT a known business expense rather than an unexpected liability.</div>
+          <div class="why-tag tone-purple">Pricing</div>
+          <div class="why-title">One Fixed Monthly Fee</div>
+          <div class="why-desc">No surprise invoices. No callout fees on covered plans. One predictable cost that makes IT a known business expense rather than an unexpected liability.</div>
         </div>
 
-        <div class="fade-up hov-lift" style="--hov-accent:var(--blue);width:280px;flex-shrink:0;background:var(--bg);border:1.5px solid var(--border);border-radius:18px;padding:1.5rem;position:relative;overflow:hidden;transition:transform 0.2s cubic-bezier(0.16,1,0.3,1),box-shadow 0.2s,border-color 0.2s;">
-          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#00CFFF,#22C55E);"></div>
-          <div style="width:38px;height:38px;background:rgba(0,207,255,0.1);border:1.5px solid rgba(0,207,255,0.25);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;">
+        <div class="fade-up hov-lift why-card">
+          <div class="card-bar tone-cyan end-green"></div>
+          <div class="why-icon tone-cyan">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0891B2" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           </div>
-          <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#0891B2;background:rgba(0,207,255,0.1);border:1px solid rgba(0,207,255,0.25);padding:3px 10px;border-radius:50px;display:inline-block;margin-bottom:0.7rem;">Availability</div>
-          <div style="font-family:var(--display);font-size:15px;font-weight:700;color:var(--ink);margin-bottom:0.5rem;">24/7 Support Team</div>
-          <div style="font-size:13px;color:var(--muted);line-height:1.7;">Business operations do not stop at 5pm. Our remote support team is available 7am to 11pm, seven days a week, on all plans.</div>
+          <div class="why-tag tone-cyan">Availability</div>
+          <div class="why-title">24/7 Support Team</div>
+          <div class="why-desc">Business operations do not stop at 5pm. Our remote support team is available 7am to 11pm, seven days a week, on all plans.</div>
         </div>
 
-        <div class="fade-up hov-lift" style="--hov-accent:var(--blue);width:280px;flex-shrink:0;background:var(--bg);border:1.5px solid var(--border);border-radius:18px;padding:1.5rem;position:relative;overflow:hidden;transition:transform 0.2s cubic-bezier(0.16,1,0.3,1),box-shadow 0.2s,border-color 0.2s;">
-          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#F59E0B,#22C55E);"></div>
-          <div style="width:38px;height:38px;background:rgba(245,158,11,0.1);border:1.5px solid rgba(245,158,11,0.25);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;">
+        <div class="fade-up hov-lift why-card">
+          <div class="card-bar tone-amber end-green"></div>
+          <div class="why-icon tone-amber">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
           </div>
-          <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#D97706;background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.25);padding:3px 10px;border-radius:50px;display:inline-block;margin-bottom:0.7rem;">Track Record</div>
-          <div style="font-family:var(--display);font-size:15px;font-weight:700;color:var(--ink);margin-bottom:0.5rem;">Premium Service</div>
-          <div style="font-size:13px;color:var(--muted);line-height:1.7;">We take quality of service seriously and prioritise communication, speed and clear explanations over technical jargon.</div>
+          <div class="why-tag tone-amber">Track Record</div>
+          <div class="why-title">Premium Service</div>
+          <div class="why-desc">We take quality of service seriously and prioritise communication, speed and clear explanations over technical jargon.</div>
         </div>
 
       </div>
@@ -961,74 +948,74 @@ image_alt: "FixMyPC Perth: managed business IT support for Perth small businesse
       <p class="s-sub">Here is what happened when Hyperlink Solutions, a Perth IT outsourcing and development firm, switched to our Business plan.</p>
     </div>
 
-    <div class="fade-up" style="margin-top:2.5rem;background:var(--ink);border-radius:24px;overflow:hidden;box-shadow:0 8px 40px rgba(15,23,42,0.18);border:1.5px solid rgba(255,255,255,0.06);position:relative;">
+    <div class="fade-up cs-card">
 
-      <div style="height:3px;background:linear-gradient(90deg,var(--blue),#00CFFF,var(--wa));"></div>
-      <div class="case-study-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
+      <div class="cs-bar"></div>
+      <div class="case-study-grid cs-grid">
         <!-- LEFT: COMPANY INFO + STATS -->
-        <div style="padding:2.25rem 2.5rem;border-right:1px solid rgba(255,255,255,0.07);display:flex;flex-direction:column;justify-content:space-between;gap:1.75rem;">
+        <div class="cs-left">
 
           <div>
-            <div style="font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#60A5FA;margin-bottom:0.6rem;">Business Plan Client · Canning Vale, Perth</div>
-            <div style="font-family:var(--display);font-size:2rem;font-weight:800;color:#fff;letter-spacing:-1px;line-height:1.1;margin-bottom:0.4rem;">Hyperlink Solutions</div>
-            <div style="font-size:13px;color:rgba(255,255,255,0.45);margin-bottom:0.5rem;">IT Outsourcing and Custom Development · Perth WA</div>
-            <a href="https://hyperlinksolutions.com.au" target="_blank" rel="noopener" style="--hov-accent:var(--blue);display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:#60A5FA;text-decoration:none;opacity:0.85;transition:opacity 0.15s cubic-bezier(0.16,1,0.3,1);">
+            <div class="cs-kicker">Business Plan Client · Canning Vale, Perth</div>
+            <div class="cs-name">Hyperlink Solutions</div>
+            <div class="cs-meta">IT Outsourcing and Custom Development · Perth WA</div>
+            <a class="cs-link" href="https://hyperlinksolutions.com.au" target="_blank" rel="noopener">
               <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
               hyperlinksolutions.com.au
             </a>
           </div>
 
-          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;">
-            <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:1rem 0.75rem;text-align:center;">
-              <div style="font-family:var(--display);font-size:1.65rem;font-weight:800;color:#fff;letter-spacing:-1px;line-height:1;">8+</div>
-              <div style="font-size:9.5px;color:rgba(255,255,255,0.4);font-weight:600;margin-top:4px;text-transform:uppercase;letter-spacing:0.05em;">Hours saved monthly</div>
+          <div class="cs-stats">
+            <div class="cs-stat">
+              <div class="cs-stat-val">8+</div>
+              <div class="cs-stat-lbl">Hours saved monthly</div>
             </div>
-            <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:1rem 0.75rem;text-align:center;">
-              <div style="font-family:var(--display);font-size:1.65rem;font-weight:800;color:#fff;letter-spacing:-1px;line-height:1;">Zero</div>
-              <div style="font-size:9.5px;color:rgba(255,255,255,0.4);font-weight:600;margin-top:4px;text-transform:uppercase;letter-spacing:0.05em;">Unexpected costs</div>
+            <div class="cs-stat">
+              <div class="cs-stat-val">Zero</div>
+              <div class="cs-stat-lbl">Unexpected costs</div>
             </div>
-            <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:1rem 0.75rem;text-align:center;">
-              <div style="font-family:var(--display);font-size:1.65rem;font-weight:800;color:#fff;letter-spacing:-1px;line-height:1;">$149</div>
-              <div style="font-size:9.5px;color:rgba(255,255,255,0.4);font-weight:600;margin-top:4px;text-transform:uppercase;letter-spacing:0.05em;">Plans start from, per month</div>
+            <div class="cs-stat">
+              <div class="cs-stat-val">{% include price.html key="business-it-essential" bare=true %}</div>
+              <div class="cs-stat-lbl">Plans start from, per month</div>
             </div>
           </div>
 
           <div>
-            <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--blue);margin-bottom:0.6rem;">What Happened</div>
-            <div style="font-size:13px;color:rgba(255,255,255,0.55);line-height:1.75;">Hyperlink Solutions had unmanaged workstations, no antivirus, no backup and zero visibility into their IT. Avoidable issues were quietly burning billable developer hours every week. We moved them onto the Business plan. Within the first week, managed antivirus was live, cloud backup was protecting all client project files and a full network audit was complete. Two failing drives were caught before data loss. The result was 30+ staff hours recovered per month and that time was spent into actual productivity.</div>
+            <div class="cs-h">What Happened</div>
+            <div class="cs-story">Hyperlink Solutions had unmanaged workstations, no antivirus, no backup and zero visibility into their IT. Avoidable issues were quietly burning billable developer hours every week. We moved them onto the Business plan. Within the first week, managed antivirus was live, cloud backup was protecting all client project files and a full network audit was complete. Two failing drives were caught before data loss. The result was 30+ staff hours recovered per month and that time was spent into actual productivity.</div>
           </div>
 
         </div>
 
         <!-- RIGHT: TESTIMONY + GLOW -->
-        <div style="padding:2.25rem 2.5rem;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;">
+        <div class="cs-right">
 
-          <div style="position:absolute;top:-60px;right:-60px;width:260px;height:260px;background:radial-gradient(circle,rgba(21,96,255,0.12) 0%,transparent 70%);pointer-events:none;"></div>
+          <div class="cs-glow"></div>
 
-          <div style="display:flex;gap:3px;margin-bottom:1.25rem;">
-            <span style="color:#F59E0B;font-size:18px;">★</span>
-            <span style="color:#F59E0B;font-size:18px;">★</span>
-            <span style="color:#F59E0B;font-size:18px;">★</span>
-            <span style="color:#F59E0B;font-size:18px;">★</span>
-            <span style="color:#F59E0B;font-size:18px;">★</span>
+          <div class="cs-stars">
+            <span class="cs-star">★</span>
+            <span class="cs-star">★</span>
+            <span class="cs-star">★</span>
+            <span class="cs-star">★</span>
+            <span class="cs-star">★</span>
           </div>
 
-          <div style="font-size:15px;color:rgba(255,255,255,0.88);line-height:1.8;font-style:italic;margin-bottom:1.75rem;position:relative;">
-            <span style="position:absolute;top:-10px;left:-8px;font-size:3.5rem;color:rgba(21,96,255,0.25);font-family:Georgia,serif;line-height:1;">"</span>
-            <span style="position:relative;z-index:1;">Before FixMyPC Perth, small IT issues were adding up to real lost time every week. Since we handled their IT needs, everything just works. Our developers focus on client work, not troubleshooting. The fixed monthly cost means no more surprise bills and budgeting is finally predictable. Having a local Perth business who knows our setup and responds fast has been genuinely valuable.</span>
+          <div class="cs-quote">
+            <span class="cs-quote-mark">"</span>
+            <span class="cs-quote-text">Before FixMyPC Perth, small IT issues were adding up to real lost time every week. Since we handled their IT needs, everything just works. Our developers focus on client work, not troubleshooting. The fixed monthly cost means no more surprise bills and budgeting is finally predictable. Having a local Perth business who knows our setup and responds fast has been genuinely valuable.</span>
           </div>
 
-          <div style="display:flex;align-items:center;gap:12px;">
-            <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--blue),#00CFFF);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:15px;font-weight:800;color:#fff;flex-shrink:0;">H</div>
+          <div class="cs-author">
+            <div class="cs-avatar">H</div>
             <div>
-              <div style="font-family:var(--display);font-size:13.5px;font-weight:700;color:#fff;">Hyperlink Solutions</div>
-              <div style="font-size:12px;color:rgba(255,255,255,0.4);">IT Outsourcing and Development · Perth WA</div>
+              <div class="cs-author-name">Hyperlink Solutions</div>
+              <div class="cs-author-meta">IT Outsourcing and Development · Perth WA</div>
             </div>
           </div>
 
-          <div style="margin-top:1.5rem;padding:0.85rem 1.1rem;background:rgba(21,96,255,0.1);border:1px solid rgba(21,96,255,0.22);border-radius:12px;display:flex;align-items:center;justify-content:space-between;">
-            <div style="font-size:12px;font-weight:600;color:rgba(255,255,255,0.6);">Currently on</div>
-            <div style="font-family:var(--display);font-size:13px;font-weight:700;color:#60A5FA;">Business Plan</div>
+          <div class="cs-plan">
+            <div class="cs-plan-label">Currently on</div>
+            <div class="cs-plan-name">Business Plan</div>
           </div>
 
         </div>
@@ -1047,16 +1034,16 @@ image_alt: "FixMyPC Perth: managed business IT support for Perth small businesse
     </div>
     <div class="cta-actions fade-up">
 
-      <a href="#audit-form"
+      <a class="cta-btn-primary" href="#audit-form"
          onclick="event.preventDefault();document.querySelector('.audit-section').scrollIntoView({behavior:'smooth',block:'start'});"
-         style="--hov-accent:var(--blue);display:inline-flex;align-items:center;justify-content:center;width:280px;padding:14px 24px;border-radius:50px;background:var(--blue);color:#fff;font-family:var(--body);font-size:16px;font-weight:700;text-decoration:none;white-space:nowrap;box-shadow:0 4px 16px rgba(21,96,255,0.35);transition:transform 0.15s cubic-bezier(0.16,1,0.3,1),box-shadow 0.15s;">
+        >
         Book My Free Session
       </a>
 
-      <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20to%20book%20a%20free%20business%20IT%20health%20check."
+      <a class="cta-btn-wa" href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20to%20book%20a%20free%20business%20IT%20health%20check."
          target="_blank" rel="noopener"
-         style="--hov-accent:var(--blue);display:inline-flex;align-items:center;justify-content:center;gap:9px;width:280px;padding:14px 24px;border-radius:50px;background:#25D366;color:#fff;font-family:var(--body);font-size:15px;font-weight:700;text-decoration:none;box-shadow:0 4px 16px rgba(37,211,102,0.35);transition:transform 0.15s cubic-bezier(0.16,1,0.3,1),box-shadow 0.15s;">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="white" style="flex-shrink:0;">
+        >
+        <svg class="no-shrink" width="18" height="18" viewBox="0 0 24 24" fill="white">
           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
           <path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/>
         </svg>
@@ -1068,60 +1055,77 @@ image_alt: "FixMyPC Perth: managed business IT support for Perth small businesse
 </section>
 
 <!-- VISIBLE FAQ SECTION -->
-<section style="background:var(--bg);border-top:1px solid var(--border);padding:4.5rem 2rem;" aria-labelledby="biz-faq-h">
-  <div style="max-width:1100px;margin:0 auto;">
-    <div style="text-align:center;margin-bottom:2.5rem;">
+<section class="biz-faq-sec" aria-labelledby="biz-faq-h">
+  <div class="sec-inner">
+    <div class="biz-faq-head">
       <span class="s-eyebrow">Common Questions</span>
-      <h2 class="s-title" id="biz-faq-h" style="margin-bottom:0.4rem;">Business IT support, <br><span class="accent">answered.</span></h2>
-      <p class="s-sub" style="max-width:480px;margin:0 auto;">Everything Perth business owners ask before signing up.</p>
+      <h2 class="s-title biz-faq-title" id="biz-faq-h">Business IT support, <br><span class="accent">answered.</span></h2>
+      <p class="s-sub biz-faq-sub">Everything Perth business owners ask before signing up.</p>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(420px,100%),1fr));gap:10px;">
+    <div class="biz-faq-list">
 
-      <details class="hov-edge" style="background:var(--bg2);border:1.5px solid var(--border);border-radius:14px;overflow:hidden;">
-        <summary style="display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 1.25rem;cursor:pointer;font-family:var(--display);font-size:13.5px;font-weight:700;color:var(--ink);list-style:none;">How much does managed IT support cost for a Perth small business? <span style="width:21px;height:21px;border-radius:50%;background:var(--bg3);border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;">▾</span></summary>
-        <div style="padding:0.8rem 1.25rem 1rem;font-size:13px;color:var(--muted);line-height:1.7;border-top:1px solid var(--border);">Plans start from {% include price.html key='business-it-essential' bare=true raw=true %} per month base for the Essential plan covering up to 5 PCs, plus $35 per device. The Business plan is {% include price.html key='business-it-business' bare=true raw=true %} base plus $45 per device for up to 10 PCs. The Premium plan is {% include price.html key='business-it-premium' bare=true raw=true %} base plus $60 per device for up to 20 PCs. All plans are month-to-month with no lock-in contracts.</div>
-      </details>
+      <div class="faq-item">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-1">
+          How much does managed IT support cost for a Perth small business?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a" id="faq-a-1" role="region"><p>Plans start from {% include price.html key='business-it-essential' bare=true raw=true %} per month base for the Essential plan covering up to 5 PCs, plus {% include price.html key="business-it-essential" extra=true %} per device. The Business plan is {% include price.html key='business-it-business' bare=true raw=true %} base plus {% include price.html key="business-it-business" extra=true %} per device for up to 10 PCs. The Premium plan is {% include price.html key='business-it-premium' bare=true raw=true %} base plus {% include price.html key="business-it-premium" extra=true %} per device for up to 20 PCs. All plans are month-to-month with no lock-in contracts.</p></div>
+      </div>
 
-      <details class="hov-edge" style="background:var(--bg2);border:1.5px solid var(--border);border-radius:14px;overflow:hidden;">
-        <summary style="display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 1.25rem;cursor:pointer;font-family:var(--display);font-size:13.5px;font-weight:700;color:var(--ink);list-style:none;">What is included in managed IT support for a small business? <span style="width:21px;height:21px;border-radius:50%;background:var(--bg3);border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;">▾</span></summary>
-        <div style="padding:0.8rem 1.25rem 1rem;font-size:13px;color:var(--muted);line-height:1.7;border-top:1px solid var(--border);">All plans include unlimited remote support, scheduled onsite visits, managed antivirus, Windows updates management and a monthly PC health report. Higher plans add cloud backup, proactive monitoring, network security audits, printer support and priority response.</div>
-      </details>
+      <div class="faq-item">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-2">
+          What is included in managed IT support for a small business?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a" id="faq-a-2" role="region"><p>All plans include unlimited remote support, scheduled onsite visits, managed antivirus, Windows updates management and a monthly PC health report. Higher plans add cloud backup, proactive monitoring, network security audits, printer support and priority response.</p></div>
+      </div>
 
-      <details class="hov-edge" style="background:var(--bg2);border:1.5px solid var(--border);border-radius:14px;overflow:hidden;">
-        <summary style="display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 1.25rem;cursor:pointer;font-family:var(--display);font-size:13.5px;font-weight:700;color:var(--ink);list-style:none;">Do you offer IT support with no lock-in contracts? <span style="width:21px;height:21px;border-radius:50%;background:var(--bg3);border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;">▾</span></summary>
-        <div style="padding:0.8rem 1.25rem 1rem;font-size:13px;color:var(--muted);line-height:1.7;border-top:1px solid var(--border);">Yes. Every plan is month-to-month. Cancel or change plans at any time with 14 days notice. We earn your business through results, not contracts.</div>
-      </details>
+      <div class="faq-item">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-3">
+          Do you offer IT support with no lock-in contracts?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a" id="faq-a-3" role="region"><p>Yes. Every plan is month-to-month. Cancel or change plans at any time with 14 days notice. We earn your business through results, not contracts.</p></div>
+      </div>
 
-      <details class="hov-edge" style="background:var(--bg2);border:1.5px solid var(--border);border-radius:14px;overflow:hidden;">
-        <summary style="display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 1.25rem;cursor:pointer;font-family:var(--display);font-size:13.5px;font-weight:700;color:var(--ink);list-style:none;">Which Perth suburbs do you service for business IT support? <span style="width:21px;height:21px;border-radius:50%;background:var(--bg3);border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;">▾</span></summary>
-        <div style="padding:0.8rem 1.25rem 1rem;font-size:13px;color:var(--muted);line-height:1.7;border-top:1px solid var(--border);">We provide onsite IT support across southern Perth including Canning Vale, Cockburn, Cannington, Willetton, Jandakot, Harrisdale, Thornlie, Gosnells, Fremantle, Subiaco and surrounding suburbs. Remote support is available Australia-wide.</div>
-      </details>
+      <div class="faq-item">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-4">
+          Which Perth suburbs do you service for business IT support?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a" id="faq-a-4" role="region"><p>We provide onsite IT support across southern Perth including Canning Vale, Cockburn, Cannington, Willetton, Jandakot, Harrisdale, Thornlie, Gosnells, Fremantle, Subiaco and surrounding suburbs. Remote support is available Australia-wide.</p></div>
+      </div>
 
-      <details class="hov-edge" style="background:var(--bg2);border:1.5px solid var(--border);border-radius:14px;overflow:hidden;">
-        <summary style="display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 1.25rem;cursor:pointer;font-family:var(--display);font-size:13.5px;font-weight:700;color:var(--ink);list-style:none;">How fast is emergency IT support response for Perth businesses? <span style="width:21px;height:21px;border-radius:50%;background:var(--bg3);border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;">▾</span></summary>
-        <div style="padding:0.8rem 1.25rem 1rem;font-size:13px;color:var(--muted);line-height:1.7;border-top:1px solid var(--border);">Premium plan clients get a guaranteed same day onsite response within 4 hours. Business and Essential plan clients receive priority remote support with most issues resolved within the hour. Support is available 7am to 11pm, 7 days a week on all plans.</div>
-      </details>
+      <div class="faq-item">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-5">
+          How fast is emergency IT support response for Perth businesses?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a" id="faq-a-5" role="region"><p>Premium plan clients get a guaranteed same day onsite response within 4 hours. Business and Essential plan clients receive priority remote support with most issues resolved within the hour. Support is available 7am to 11pm, 7 days a week on all plans.</p></div>
+      </div>
 
-      <details class="hov-edge" style="background:var(--bg2);border:1.5px solid var(--border);border-radius:14px;overflow:hidden;">
-        <summary style="display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 1.25rem;cursor:pointer;font-family:var(--display);font-size:13.5px;font-weight:700;color:var(--ink);list-style:none;">Is outsourced IT support cheaper than hiring in-house? <span style="width:21px;height:21px;border-radius:50%;background:var(--bg3);border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;">▾</span></summary>
-        <div style="padding:0.8rem 1.25rem 1rem;font-size:13px;color:var(--muted);line-height:1.7;border-top:1px solid var(--border);">For most Perth small businesses with fewer than 20 staff, outsourced IT support through FixMyPC Perth costs significantly less than a part-time hire, without recruitment costs, sick leave or coverage gaps. A managed plan costs a few thousand a year against a Perth IT support salary averaging around $82,500 before super.</div>
-      </details>
+      <div class="faq-item">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-6">
+          Is outsourced IT support cheaper than hiring in-house?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a" id="faq-a-6" role="region"><p>For most Perth small businesses with fewer than 20 staff, outsourced IT support through FixMyPC Perth costs significantly less than a part-time hire, without recruitment costs, sick leave or coverage gaps. A managed plan costs a few thousand a year against a Perth IT support salary averaging around $82,500 before super.</p></div>
+      </div>
 
     </div>
   </div>
 </section>
 
 <!-- INTERNAL LINKS TO SERVICE PAGES -->
-<section style="background:var(--bg2);border-top:1px solid var(--border);padding:2.5rem 2rem;" aria-label="FixMyPC Perth services">
-  <div style="max-width:1100px;margin:0 auto;">
-    <div style="font-family:var(--display);font-size:13px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:1rem;">Also need PC repair? We cover everything.</div>
-    <div class="biz-svc-links" style="display:flex;flex-wrap:wrap;gap:8px;">
-      <a href="/pricing#sec-repairs" style="--hov-accent:var(--blue);display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--muted);background:var(--bg);border:1.5px solid var(--border);border-radius:50px;padding:6px 14px;text-decoration:none;transition:border-color 0.15s cubic-bezier(0.16,1,0.3,1),color 0.15s,background 0.15s;">Virus Removal Perth</a>
-      <a href="/pricing#sec-repairs" style="--hov-accent:var(--blue);display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--muted);background:var(--bg);border:1.5px solid var(--border);border-radius:50px;padding:6px 14px;text-decoration:none;transition:border-color 0.15s cubic-bezier(0.16,1,0.3,1),color 0.15s,background 0.15s;">Data Recovery Perth</a>
-      <a href="/pricing#sec-upgrades" style="--hov-accent:var(--blue);display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--muted);background:var(--bg);border:1.5px solid var(--border);border-radius:50px;padding:6px 14px;text-decoration:none;transition:border-color 0.15s cubic-bezier(0.16,1,0.3,1),color 0.15s,background 0.15s;">SSD Upgrade Perth</a>
-      <a href="/pricing#sec-gaming" style="--hov-accent:var(--blue);display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--muted);background:var(--bg);border:1.5px solid var(--border);border-radius:50px;padding:6px 14px;text-decoration:none;transition:border-color 0.15s cubic-bezier(0.16,1,0.3,1),color 0.15s,background 0.15s;">Gaming PC Builds Perth</a>
-      <a href="/pricing#sec-repairs" style="--hov-accent:var(--blue);display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--muted);background:var(--bg);border:1.5px solid var(--border);border-radius:50px;padding:6px 14px;text-decoration:none;transition:border-color 0.15s cubic-bezier(0.16,1,0.3,1),color 0.15s,background 0.15s;">Laptop Screen Replacement Perth</a>
-      <a href="/pricing" style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--blue);background:var(--blue-lt);border:1.5px solid var(--blue-mid);border-radius:50px;padding:6px 14px;text-decoration:none;">View All Pricing →</a>
+<section class="biz-links-sec" aria-label="FixMyPC Perth services">
+  <div class="sec-inner">
+    <div class="biz-links-title">Also need PC repair? We cover everything.</div>
+    <div class="biz-svc-links biz-links-flex">
+      {%- assign _svcs = site.data.suburbs.service_links | where: "kind", "service" | where: "built", true %}
+      {%- for _v in _svcs %}
+      <a class="biz-link-chip" href="/{{ _v.slug }}">{{ _v.label | escape }}</a>
+      {%- endfor %}
+      <a class="biz-link-chip-all" href="/pricing">View All Pricing →</a>
     </div>
   </div>
 </section>

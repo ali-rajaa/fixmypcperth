@@ -52,16 +52,11 @@ a { color: inherit; }
 .sub-cta::after { content: ''; position: absolute; top: -70px; right: -70px; width: 240px; height: 240px; background: radial-gradient(circle, rgba(21,96,255,0.22) 0%, transparent 70%); pointer-events: none; }
 .sub-cta-btns { display: flex; gap: 10px; flex-wrap: wrap; position: relative; z-index: 1; }
 @media (hover: hover) { .sub-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 26px rgba(21,96,255,0.45); } }
-.sub-faq-item { background: var(--bg2); }
-@media (hover: hover) { .sub-faq-q:hover { background: var(--bg3); } }
-.sub-faq-arrow svg { width: 11px; height: 11px; color: var(--muted); }
-.sub-faq-item.open .sub-faq-arrow { transform: rotate(180deg); background: var(--blue-lt); }
-.sub-faq-item.open .sub-faq-arrow svg { color: var(--blue); }
-.sub-faq-q { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.1rem 1.35rem; cursor: pointer; border: none; background: transparent; font-family: var(--display); font-size: 14.5px; font-weight: 700; color: var(--ink); text-align: left; transition: background 0.15s var(--ease-settle); -webkit-tap-highlight-color: transparent; }
+
 .sub-cta-btn:active { transform: scale(0.97); transition: transform 0.1s var(--ease-press); }
 .sub-cta-btn-outline:active { transform: scale(0.97); transition: transform 0.1s var(--ease-press); }
 .link-chip:active { transform: scale(0.95); transition: transform 0.1s var(--ease-press); }
-.sub-faq-q:active { background: var(--bg3); }
+
 .travel-box-title { font-family: var(--display); font-size: 14px; font-weight: 800; color: var(--ink); margin-bottom: 0.9rem; letter-spacing: -0.01em; }
 .problem-card h3:where(:not([class])) { font-family: var(--display); font-size: 14.5px; font-weight: 800; color: var(--ink); margin: 0 0 0.4rem; letter-spacing: -0.01em; }
 .travel-val { font-family: var(--display); font-size: 1.35rem; font-weight: 800; color: var(--blue); letter-spacing: -0.03em; line-height: 1; display: block; margin-bottom: 0.3rem; }
@@ -82,12 +77,7 @@ a { color: inherit; }
 .price-foot { padding: 1.1rem 1.35rem; background: var(--bg2); border-top: 1px solid var(--border); font-size: 0.8125rem; color: var(--muted); line-height: 1.65; }
 .sub-cta-desc { font-size: 0.875rem; color: rgba(255,255,255,0.7); line-height: 1.65; margin-bottom: 1.15rem; position: relative; z-index: 1; }
 .link-row { display: flex; flex-wrap: wrap; gap: 10px; }
-.sub-faq-a { display: grid; padding: 0 1.35rem 1.15rem; font-size: 0.875rem; color: var(--muted); line-height: 1.8; grid-template-rows: 0fr; padding-top: 0; padding-bottom: 0; opacity: 0; transition: grid-template-rows 0.32s var(--ease-settle),
-              opacity 0.22s var(--ease-settle),
-              padding-bottom 0.32s var(--ease-settle); }
-.sub-faq-a > * { overflow: hidden; min-height: 0; }
-.sub-faq-item.open .sub-faq-a { display: grid; grid-template-rows: 1fr; padding-bottom: 1.15rem; opacity: 1; }
-.sub-faq-arrow { flex-shrink: 0; width: 22px; height: 22px; background: var(--border); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: transform 0.32s var(--ease-settle), background 0.2s var(--ease-settle); }
+
 .sub-body > p { max-width: 68ch; }
 .sub-body > ul { max-width: 68ch; }
 .sub-body > h2 { max-width: 68ch; }
@@ -122,7 +112,7 @@ a { color: inherit; }
 .problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 1.75rem 0 2rem; }
 .problem-card { background: var(--bg); border: 1.5px solid var(--border); border-radius: 14px; padding: 1.3rem 1.35rem; transition: border-color 0.2s var(--ease-settle), transform 0.2s var(--ease-settle); }
 .price-table { margin: 1.75rem 0 2rem; border: 1.5px solid var(--border); border-radius: 16px; overflow: hidden; }
-.sub-faq { display: flex; flex-direction: column; gap: 1px; background: var(--border); border-radius: 16px; overflow: hidden; margin: 1.5rem 0 0; margin-top: 1.75rem; }
+.sub-faq { display: flex; flex-direction: column; gap: 10px; margin-top: 1.75rem; }
 .sub-cta { background: linear-gradient(135deg, var(--ink) 0%, #1B2A4A 100%); border-radius: 18px; padding: 2rem 2.1rem; margin: 3rem 0; position: relative; overflow: hidden; }
 .quick-answer { border-left: 3px solid var(--blue); background: var(--blue-lt); border-radius: 0 12px 12px 0; padding: 1.35rem 1.5rem; margin: 0 0 2rem; max-width: 68ch; margin-bottom: 2.25rem; }
 .sub-toc { margin: 0 0 2.25rem; padding: 1.35rem 1.5rem; background: var(--bg2); border: 1.5px solid var(--border); border-radius: 14px; max-width: 68ch; margin-bottom: 2.5rem; }
@@ -200,10 +190,9 @@ body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--b
   .problem-grid { grid-template-columns: 1fr; gap: 10px; }
   .price-row-name { font-size: 13.5px; }
   .price-foot { padding: 1rem; }
-  .sub-faq-q { font-size: 14px; padding: 1rem; }
-  .sub-faq-a { padding: 0 1rem 1rem; }
+
   .sub-body { font-size: 0.97rem; }
-  .sub-faq-item.open .sub-faq-a { padding-bottom: 1rem; }
+
   .process-item { grid-template-columns: 30px 1fr; gap: 12px; padding: 0.95rem 1rem; }
   .process-num { width: 30px; height: 30px; font-size: 0.8125rem; }
   .sub-body > p { max-width: none; }
@@ -250,8 +239,7 @@ body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--b
   .price-row-val { font-size: 0.8125rem; }
   .problem-card { padding: 1.1rem 1rem; }
   .sub-cta { padding: 1.3rem 1.15rem; }
-  .sub-faq-q { padding: 0.9rem 0.9rem; font-size: 0.875rem; }
-  .sub-faq-a { padding-left: 0.9rem; padding-right: 0.9rem; }
+
   .sub-body { overflow-wrap: break-word; }
   .quote-block { padding: 1.25rem 1rem; overflow-wrap: break-word; }
   .travel-box { overflow-wrap: break-word; }
@@ -270,8 +258,7 @@ body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--b
   @media (hover: hover) { .problem-card:hover { transform: none; } }
   @media (hover: hover) { .sub-cta-btn:hover { transform: none; } }
   @media (hover: hover) { .sub-cta-btn-outline:hover { transform: none; } }
-  .sub-faq-a { transition: opacity 0.2s ease; }
-  .sub-faq-arrow { transition: none; }
+
   .sub-cta-btn svg { transition: none; transform: none; }
   .sub-cta-btn-outline svg { transition: none; transform: none; }
   @media (hover: hover) { .sub-cta-btn:hover svg { transition: none; transform: none; } }
@@ -301,11 +288,10 @@ body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--b
   .problem-card p:where(:not([class])) { color: #334155; }
   .price-row-sub { color: #334155; }
   .price-foot { color: #334155; }
-  .sub-faq-a { color: #334155; }
+
   .problem-card { border-color: #0F172A; }
   .price-table { border-color: #0F172A; }
   .travel-box { border-color: #0F172A; }
-  .sub-faq { border-color: #0F172A; }
   .link-chip { border-color: #0A3ACC; }
   .sub-cta-desc { color: rgba(255,255,255,0.85); }
   .quote-input { border-color: rgba(255,255,255,0.5); }
@@ -329,4 +315,56 @@ body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--b
 @keyframes quoteTickMark {
   from { stroke-dashoffset: 32; }
   to   { stroke-dashoffset: 0; }
+}
+
+/* ==========================================================
+   FAQ: one component, the same on every page. The homepage design,
+   copied into each page stylesheet that has an FAQ (index, pricing,
+   reviews, health-check, service, tech-tip, suburb, industry,
+   business-it). Keep every copy identical: change one, change all.
+
+   Markup:
+     <div class="faq-item">
+       <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-1">
+         Question
+         <svg viewBox="0 0 24 24" ...><polyline points="6 9 12 15 18 9"/></svg>
+       </button>
+       <div class="faq-a" id="faq-a-1" role="region"><p>Answer</p></div>
+     </div>
+   The shared handler in _includes/scripts.html opens one at a time.
+   The answer opens with grid-template-rows 0fr to 1fr rather than a
+   max-height, so it sizes itself to the text and can never be clipped.
+   The page lays the items out (list, gap, columns); this block only
+   styles an item.
+   ========================================================== */
+.faq-item { background:var(--bg); border:1.5px solid var(--border); border-radius:var(--radius); overflow:hidden; transition:border-color 0.2s; }
+.faq-item.open { border-color:var(--blue-mid); }
+.faq-q { width:100%; background:none; border:none; text-align:left; cursor:pointer; font-family:var(--display); font-size:15px; font-weight:700; line-height:1.4; color:var(--ink); padding:1.25rem 1.5rem; display:flex; justify-content:space-between; align-items:center; gap:1rem; transition:color 0.15s,background 0.15s; -webkit-tap-highlight-color:transparent; }
+.faq-q:active { background:var(--bg2); }
+.faq-q:focus-visible { outline:2px solid var(--blue); outline-offset:-2px; }
+/* Rotation gets a touch of overshoot so the tap feels answered. */
+.faq-q svg { width:18px; height:18px; flex-shrink:0; color:var(--blue); transition:transform 0.35s var(--ease-settle); }
+.faq-item.open .faq-q svg { transform:rotate(180deg); }
+.faq-a { display:grid; grid-template-rows:0fr; overflow:hidden; transition:grid-template-rows 0.4s var(--ease-settle); }
+.faq-item.open .faq-a { grid-template-rows:1fr; }
+.faq-a p:where(:not([class])) { min-height:0; font-size:14px; color:var(--muted); line-height:1.75; margin:0; padding:0 1.5rem; transition:padding 0.4s var(--ease-settle); }
+.faq-item.open .faq-a p:where(:not([class])) { padding:0 1.5rem 1.25rem; }
+.faq-a a:where(:not([class])) { color:var(--blue); font-weight:600; text-decoration:none; border-bottom:1px solid var(--blue-mid); }
+.faq-a strong:where(:not([class])) { color:var(--ink); font-weight:600; }
+@media (hover: hover) {
+  .faq-item:hover { border-color:var(--blue-mid); }
+  .faq-q:hover { color:var(--blue); }
+  .faq-a a:where(:not([class])):hover { color:var(--blue-dk); border-bottom-color:var(--blue-dk); }
+}
+@media (max-width:720px) {
+  .faq-q { font-size:14px; padding:1rem 1.25rem; }
+  .faq-a p:where(:not([class])) { font-size:13.5px; padding:0 1.25rem; }
+  .faq-item.open .faq-a p:where(:not([class])) { padding:0 1.25rem 1rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .faq-item, .faq-q, .faq-q svg, .faq-a, .faq-a p:where(:not([class])) { transition:none; }
+}
+@media (prefers-contrast: more) {
+  .faq-a p:where(:not([class])) { color:#334155; }
+  .faq-item { border-color:#0F172A; }
 }

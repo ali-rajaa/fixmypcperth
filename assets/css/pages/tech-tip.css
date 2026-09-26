@@ -31,6 +31,7 @@
 :root {
   --blue:    #1560FF;
   --blue-lt: #EEF3FF;
+  --blue-mid: #C7D8FF;
   --blue-dk: #0A3ACC;
   --ink:     #0F172A;
   --ink2:    #1E293B;
@@ -41,6 +42,8 @@
   --border2: #CBD5E1;
   --bg:      #FFFFFF;
   --bg2:     #F8FAFC;
+  --bg3:     #F1F5F9;
+  --radius:  14px;
   --teal:    #00CFFF;
   --wa:      #22C55E;
   --lvl-1:   #15803D;
@@ -190,17 +193,8 @@ textarea.tq-input { resize: vertical; min-height: 88px; }
 
 /* ---------- FAQ ---------- */
 .tip-faq { margin: 0 0 3rem; }
-.tip-faq .tip-h2 { margin-bottom: 0.5rem; }
-.tip-faq-item { border-bottom: 1px solid var(--border); }
-.tip-faq-h { margin: 0; font: inherit; }
-.tip-faq-q { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 3.25rem; padding: 0.9rem 0; border: 0; background: none; cursor: pointer; text-align: left; font-family: var(--body); font-size: 15.5px; font-weight: 700; line-height: 1.4; color: var(--ink); -webkit-tap-highlight-color: transparent; }
-.tip-faq-q:active { color: var(--blue); }
-.tip-faq-icon { width: 0.9rem; height: 0.9rem; flex-shrink: 0; color: var(--muted); transition: transform 0.3s var(--ease-settle); }
-.tip-faq-item.open .tip-faq-icon { transform: rotate(180deg); color: var(--blue); }
-.tip-faq-a { display: grid; grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows 0.32s var(--ease-settle), opacity 0.2s var(--ease-settle); }
-.tip-faq-a > div { overflow: hidden; min-height: 0; }
-.tip-faq-a p:where(:not([class])) { margin: 0 0 1.1rem; font-size: 15px; line-height: 1.8; color: var(--ink3); }
-.tip-faq-item.open .tip-faq-a { grid-template-rows: 1fr; opacity: 1; }
+.tip-faq .tip-h2 { margin-bottom: 1.25rem; }
+.tip-faq-list { display: flex; flex-direction: column; gap: 10px; }
 
 /* ---------- more guides (renders only once another is built) ---------- */
 .tip-more ul:where(:not([class])) { list-style: none; margin: 1rem 0 0; padding: 0; }
@@ -224,7 +218,7 @@ textarea.tq-input { resize: vertical; min-height: 88px; }
   .tip-table td a:where(:not([class])):hover { color: var(--blue); }
   .tq-submit:hover { background: var(--blue-dk); }
   .tq-seg-opt:hover span:where(:not([class])) { background: rgba(255,255,255,0.12); }
-  .tip-faq-q:hover { color: var(--blue); }
+
   .tip-more a:hover .tip-more-title { color: var(--blue); }
 }
 
@@ -257,7 +251,59 @@ textarea.tq-input { resize: vertical; min-height: 88px; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .tip-faq-a { transition: opacity 0.15s ease; }
-  .tip-faq-icon, .tip-btn, .tq-submit, .tq-input, .tq-seg-opt span:where(:not([class])) { transition: none; }
+
+  .tip-btn, .tq-submit, .tq-input, .tq-seg-opt span:where(:not([class])) { transition: none; }
   .tip-btn:active, .tq-submit:active, .tq-seg-opt input:active + span { transform: none; }
+}
+
+/* ==========================================================
+   FAQ: one component, the same on every page. The homepage design,
+   copied into each page stylesheet that has an FAQ (index, pricing,
+   reviews, health-check, service, tech-tip, suburb, industry,
+   business-it). Keep every copy identical: change one, change all.
+
+   Markup:
+     <div class="faq-item">
+       <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-1">
+         Question
+         <svg viewBox="0 0 24 24" ...><polyline points="6 9 12 15 18 9"/></svg>
+       </button>
+       <div class="faq-a" id="faq-a-1" role="region"><p>Answer</p></div>
+     </div>
+   The shared handler in _includes/scripts.html opens one at a time.
+   The answer opens with grid-template-rows 0fr to 1fr rather than a
+   max-height, so it sizes itself to the text and can never be clipped.
+   The page lays the items out (list, gap, columns); this block only
+   styles an item.
+   ========================================================== */
+.faq-item { background:var(--bg); border:1.5px solid var(--border); border-radius:var(--radius); overflow:hidden; transition:border-color 0.2s; }
+.faq-item.open { border-color:var(--blue-mid); }
+.faq-q { width:100%; background:none; border:none; text-align:left; cursor:pointer; font-family:var(--display); font-size:15px; font-weight:700; line-height:1.4; color:var(--ink); padding:1.25rem 1.5rem; display:flex; justify-content:space-between; align-items:center; gap:1rem; transition:color 0.15s,background 0.15s; -webkit-tap-highlight-color:transparent; }
+.faq-q:active { background:var(--bg2); }
+.faq-q:focus-visible { outline:2px solid var(--blue); outline-offset:-2px; }
+/* Rotation gets a touch of overshoot so the tap feels answered. */
+.faq-q svg { width:18px; height:18px; flex-shrink:0; color:var(--blue); transition:transform 0.35s var(--ease-settle); }
+.faq-item.open .faq-q svg { transform:rotate(180deg); }
+.faq-a { display:grid; grid-template-rows:0fr; overflow:hidden; transition:grid-template-rows 0.4s var(--ease-settle); }
+.faq-item.open .faq-a { grid-template-rows:1fr; }
+.faq-a p:where(:not([class])) { min-height:0; font-size:14px; color:var(--muted); line-height:1.75; margin:0; padding:0 1.5rem; transition:padding 0.4s var(--ease-settle); }
+.faq-item.open .faq-a p:where(:not([class])) { padding:0 1.5rem 1.25rem; }
+.faq-a a:where(:not([class])) { color:var(--blue); font-weight:600; text-decoration:none; border-bottom:1px solid var(--blue-mid); }
+.faq-a strong:where(:not([class])) { color:var(--ink); font-weight:600; }
+@media (hover: hover) {
+  .faq-item:hover { border-color:var(--blue-mid); }
+  .faq-q:hover { color:var(--blue); }
+  .faq-a a:where(:not([class])):hover { color:var(--blue-dk); border-bottom-color:var(--blue-dk); }
+}
+@media (max-width:720px) {
+  .faq-q { font-size:14px; padding:1rem 1.25rem; }
+  .faq-a p:where(:not([class])) { font-size:13.5px; padding:0 1.25rem; }
+  .faq-item.open .faq-a p:where(:not([class])) { padding:0 1.25rem 1rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .faq-item, .faq-q, .faq-q svg, .faq-a, .faq-a p:where(:not([class])) { transition:none; }
+}
+@media (prefers-contrast: more) {
+  .faq-a p:where(:not([class])) { color:#334155; }
+  .faq-item { border-color:#0F172A; }
 }

@@ -8,12 +8,12 @@ description: "Answer 7 questions about what your computer is doing and find out 
   Was /quiz. Renamed and moved to /pc-health-check-perth.
 
   The word "diagnostic" is gone from this page and the nav. It belongs to the
-  paid $120 service. Advertising a "Free PC Diagnostic" next to a page that
-  quotes $120 thirteen times reads as a bait and switch, which is the last
+  paid all-in diagnostic. Advertising a "Free PC Diagnostic" next to a page that
+  quotes that price thirteen times reads as a bait and switch, which is the last
   thing this site needs given flat pricing is the whole positioning.
 
   Fixed: pill and dot styling on the hero eyebrow, question tag and result
-  severity badge; em dashes; the $120 figure now pulls from
+  severity badge; em dashes; every price now pulls from
   _data/services.yml; links converted to extensionless site-root URLs; the
   H1 carried no target term at all.
 
@@ -77,7 +77,7 @@ description: "Answer 7 questions about what your computer is doing and find out 
       "name": "How do I know what is wrong with my computer?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Symptoms narrow it down but they rarely identify the fault on their own. The same slowdown can be a failing drive, an infection, overheating or corrupted Windows, and the wrong guess costs money without fixing anything. The health check above flags which of your symptoms matter most and how urgent they are. A proper diagnostic is $120 all-in, covering the full diagnostic, all repair labour and a 30-day warranty."
+        "text": "Symptoms narrow it down but they rarely identify the fault on their own. The same slowdown can be a failing drive, an infection, overheating or corrupted Windows, and the wrong guess costs money without fixing anything. The health check above flags which of your symptoms matter most and how urgent they are. A proper diagnostic is {% include price.html key="diagnostic-repair-all-in" bare=true raw=true %} all-in, covering the full diagnostic, all repair labour and a 30-day warranty."
       }
     },
     {
@@ -85,7 +85,7 @@ description: "Answer 7 questions about what your computer is doing and find out 
       "name": "My computer still works but is acting strange. Should I wait?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No. The most expensive jobs we see are almost always machines that showed warning signs for months. Freezing, unusual noises, corrupted files, random restarts and sudden slowdowns are early-stage failures, and every day the machine keeps running the odds of a straightforward repair drop. Data recovery starts from $149; catching the same fault early is often a fraction of that."
+        "text": "No. The most expensive jobs we see are almost always machines that showed warning signs for months. Freezing, unusual noises, corrupted files, random restarts and sudden slowdowns are early-stage failures, and every day the machine keeps running the odds of a straightforward repair drop. Data recovery starts from {% include price.html key="data-recovery-failing-drive" bare=true raw=true %}; catching the same fault early is often a fraction of that."
       }
     },
     {
@@ -101,7 +101,7 @@ description: "Answer 7 questions about what your computer is doing and find out 
       "name": "Will I lose my files if Windows gets reinstalled?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No. Before any Windows reinstall, all personal files including documents, photos, downloads and desktop items are backed up to an external drive, then copied back after the clean install. Software licences such as Microsoft Office and saved passwords need reactivating afterwards, since a clean install removes installed programs. Exactly what to expect is explained before we start. Windows reinstall with data backup is $120."
+        "text": "No. Before any Windows reinstall, all personal files including documents, photos, downloads and desktop items are backed up to an external drive, then copied back after the clean install. Software licences such as Microsoft Office and saved passwords need reactivating afterwards, since a clean install removes installed programs. Exactly what to expect is explained before we start. Windows reinstall with data backup is {% include price.html key="windows-reinstall-data-backup" bare=true raw=true %}."
       }
     },
     {
@@ -117,7 +117,7 @@ description: "Answer 7 questions about what your computer is doing and find out 
       "name": "Is it worth repairing an older computer?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "In most cases yes. A new mid-range PC or laptop in Perth costs $900 to $1,800, while the repairs that bring an older machine back up to speed typically land between $65 and $180. As a guide, if the repair costs under 40 to 50 percent of a comparable replacement and the machine is under 7 to 8 years old, repair is the better option. If a machine genuinely is not worth fixing, we tell you upfront."
+        "text": "In most cases yes. A new mid-range PC or laptop in Perth costs $900 to $1,800, while the repairs that bring an older machine back up to speed usually cost a fraction of that: a tune up is {% include price.html key="basic-tune-up" bare=true raw=true %} and the all-in diagnostic and repair is {% include price.html key="diagnostic-repair-all-in" bare=true raw=true %}. As a guide, if the repair costs under 40 to 50 percent of a comparable replacement and the machine is under 7 to 8 years old, repair is the better option. If a machine genuinely is not worth fixing, we tell you upfront."
       }
     },
     {
@@ -212,17 +212,17 @@ description: "Answer 7 questions about what your computer is doing and find out 
 </section>
 
 <!-- ============================================================
-     $10 OFF BANNER
+     FIRST-TIME CUSTOMER OFFER
      ============================================================ -->
 <section class="offer-banner" aria-label="First time customer offer">
   <div class="offer-inner fade-up">
     <div class="offer-text">
       <div class="offer-tag">First-time customers</div>
-      <div class="offer-title">$10 off your first repair with FixMyPC Perth</div>
-      <p class="offer-desc">Mention this page when you book. Applies to any repair over $99, stacks with the free system cleanup on jobs $149 and over.</p>
+      <div class="offer-title">{% include price.html key="first-time-discount" bare=true %} off your first repair with FixMyPC Perth</div>
+      <p class="offer-desc">Mention this page when you book. Applies to any repair over {% include price.html key="first-time-min-spend" bare=true %}, and stacks with the free system cleanup on jobs {% include price.html key="free-cleanup-threshold" bare=true %} and over.</p>
     </div>
     <div class="offer-btn">
-      <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20to%20claim%20the%20%2410%20off%20first%20repair%20offer." target="_blank" rel="noopener noreferrer" class="btn-blue" onclick="trackWAClick()">Claim my $10 off &nbsp;&rarr;</a>
+      <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20to%20claim%20the%20first-time%20customer%20discount." target="_blank" rel="noopener noreferrer" class="btn-blue" onclick="trackWAClick()">Claim my discount &nbsp;&rarr;</a>
     </div>
   </div>
 </section>
@@ -251,7 +251,7 @@ description: "Answer 7 questions about what your computer is doing and find out 
       <div class="process-step">
         <div class="ps-num">03</div>
         <h3 class="ps-title">Then it stops being a repair</h3>
-        <p class="ps-desc">Once a drive fails outright it becomes a data recovery job from $149, and sometimes nothing can be recovered at any price. Catching the same fault a month earlier is often a fraction of the cost, with none of the risk to your files.</p>
+        <p class="ps-desc">Once a drive fails outright it becomes a data recovery job from {% include price.html key="data-recovery-failing-drive" bare=true %}, and sometimes nothing can be recovered at any price. Catching the same fault a month earlier is often a fraction of the cost, with none of the risk to your files.</p>
       </div>
     </div>
   </div>
@@ -330,7 +330,7 @@ description: "Answer 7 questions about what your computer is doing and find out 
 
 <!-- Pricing lives on /pricing, which is the single source of truth. A full
      table here was duplicate content and had already drifted: it still showed
-     $175 and $199 for laptop screens against the current $170 and $190. -->
+     out-of-date laptop screen prices. -->
 <section class="section section-alt" aria-label="PC repair pricing Perth">
   <div class="wrap">
     <div class="hc-pricing fade-up">
@@ -383,7 +383,7 @@ description: "Answer 7 questions about what your computer is doing and find out 
       <p>The consequence is not just poor performance. Sustained high temperatures permanently shorten the life of the processor, the drive and the motherboard. A machine that shuts itself down under load has already moved past the warning stage and is protecting itself from damage. A full clean and repaste is {% include price.html key="overheating-fix-deep-clean" bare=true raw=true %} and resolves it.{% assign _lr = site.data.suburbs.service_links | where: "slug", "laptop-repair-perth" | first %}{% if _lr.built %} Our <a href="/laptop-repair-perth#overheating">laptop repair page</a> covers this and every other laptop fault we fix.{% endif %}</p>
 
       <h2>Is it worth repairing my computer, or should I replace it?</h2>
-      <p>The honest guideline we use: if the repair costs less than 40 to 50 percent of what a comparable replacement would cost, and the machine is under seven or eight years old, repairing is almost always the better decision. A new mid-range PC or laptop in Perth runs $900 to $1,800, while most of the repairs that bring an older machine back up to speed sit between $65 and $180.</p>
+      <p>The honest guideline we use: if the repair costs less than 40 to 50 percent of what a comparable replacement would cost, and the machine is under seven or eight years old, repairing is almost always the better decision. A new mid-range PC or laptop in Perth runs $900 to $1,800, while most of the repairs that bring an older machine back up to speed usually cost a fraction of that: a tune up is {% include price.html key="basic-tune-up" bare=true %} and the all-in diagnostic and repair is {% include price.html key="diagnostic-repair-all-in" bare=true %}.</p>
       <p>If a machine genuinely is not worth repairing, we say so upfront rather than charging for work that will not last. Every job gets a written quote before anything begins, so you always know what you are deciding between.</p>
 
     </div>
@@ -416,7 +416,7 @@ description: "Answer 7 questions about what your computer is doing and find out 
           My computer still works but is acting strange. Should I wait?
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
-        <div class="faq-a" id="faq-a-2" role="region"><p>No. The most expensive jobs we see are almost always machines that showed warning signs for months. Freezing, unusual noises, corrupted files, random restarts and sudden slowdowns are early-stage failures, and every day the machine keeps running the odds of a straightforward repair drop. Data recovery starts from $149; catching the same fault early is often a fraction of that.</p></div>
+        <div class="faq-a" id="faq-a-2" role="region"><p>No. The most expensive jobs we see are almost always machines that showed warning signs for months. Freezing, unusual noises, corrupted files, random restarts and sudden slowdowns are early-stage failures, and every day the machine keeps running the odds of a straightforward repair drop. Data recovery starts from {% include price.html key="data-recovery-failing-drive" bare=true %}; catching the same fault early is often a fraction of that.</p></div>
       </div>
 
       <div class="faq-item" role="listitem">
@@ -448,7 +448,7 @@ description: "Answer 7 questions about what your computer is doing and find out 
           Is it worth repairing an older computer?
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
-        <div class="faq-a" id="faq-a-6" role="region"><p>In most cases yes. A new mid-range PC or laptop in Perth costs $900 to $1,800, while the repairs that bring an older machine back up to speed typically land between $65 and $180. As a guide, if the repair costs under 40 to 50 percent of a comparable replacement and the machine is under 7 to 8 years old, repair is the better option. If a machine genuinely is not worth fixing, we tell you upfront.</p></div>
+        <div class="faq-a" id="faq-a-6" role="region"><p>In most cases yes. A new mid-range PC or laptop in Perth costs $900 to $1,800, while the repairs that bring an older machine back up to speed usually cost a fraction of that: a tune up is {% include price.html key="basic-tune-up" bare=true %} and the all-in diagnostic and repair is {% include price.html key="diagnostic-repair-all-in" bare=true %}. As a guide, if the repair costs under 40 to 50 percent of a comparable replacement and the machine is under 7 to 8 years old, repair is the better option. If a machine genuinely is not worth fixing, we tell you upfront.</p></div>
       </div>
 
       <div class="faq-item" role="listitem">
@@ -875,7 +875,7 @@ const BANDS = {
     points: [
       'Every extra startup on a machine in this state narrows what can still be fixed or recovered',
       'Power the machine down and bring it in rather than continuing to use it',
-      'Our $120 all-in fee covers the full diagnostic, all repair labour and a 30-day warranty',
+      'Our {% include price.html key="diagnostic-repair-all-in" bare=true raw=true %} all-in fee covers the full diagnostic, all repair labour and a 30-day warranty',
       'If it turns out to be a recovery job, no fix means no fee',
     ],
   },
@@ -889,7 +889,7 @@ const BANDS = {
     points: [
       'These symptoms typically get worse rather than settling down on their own',
       'Catching it now is usually a fraction of what it costs once it fully fails',
-      'Our $120 all-in fee covers the full diagnostic, all repair labour and a 30-day warranty',
+      'Our {% include price.html key="diagnostic-repair-all-in" bare=true raw=true %} all-in fee covers the full diagnostic, all repair labour and a 30-day warranty',
       'Most jobs dropped off before 2pm are ready the same day',
     ],
   },
@@ -903,7 +903,7 @@ const BANDS = {
     points: [
       'Early-stage faults often produce no obvious symptoms at all',
       'A diagnostic checks drive health, memory, temperatures and system error logs',
-      'Our $120 all-in fee covers the full diagnostic, all repair labour and a 30-day warranty',
+      'Our {% include price.html key="diagnostic-repair-all-in" bare=true raw=true %} all-in fee covers the full diagnostic, all repair labour and a 30-day warranty',
       'You get a written explanation of everything found, in plain language',
     ],
   },

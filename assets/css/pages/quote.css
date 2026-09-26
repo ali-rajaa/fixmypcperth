@@ -18,7 +18,7 @@
   --blue:#1560FF; --blue-lt:#EEF3FF; --blue-mid:#C7D8FF; --blue-dk:#0A3ACC;
   --ink:#0F172A; --ink2:#1E293B; --muted:#64748B; --muted2:#94A3B8;
   --border:#E2E8F0; --border2:#CBD5E1;
-  --bg:#FFFFFF; --bg2:#F8FAFC; --bg3:#F1F5F9;
+  --bg:#FFFFFF; --bg2:#F8FAFC; --bg3:#F1F5F9; --radius:14px;
   --wa:#22C55E; --wa-dk:#15803D; --wa-deep:#166534; --red:#DC2626; --green:#16A34A;
   --display:'Sora', 'Sora Fallback', sans-serif; --body:'DM Sans', 'DM Sans Fallback', sans-serif;
   --nav-h:64px; --mob-nav-h:60px;

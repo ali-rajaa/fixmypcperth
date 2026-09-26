@@ -445,48 +445,48 @@ layout: default
 
     <div class="sub-faq">
       {%- for _f in page.faqs %}
-      <div class="sub-faq-item">
-        <button type="button" class="sub-faq-q" aria-expanded="false">
-          <span>{{ _f.q | escape }}</span>
-          <span class="sub-faq-arrow" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <div class="faq-item">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-{{ forloop.index }}">
+          {{ _f.q | escape }}
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
-        <div class="sub-faq-a"><div>{{ _f.a }}</div></div>
+        <div class="faq-a" id="faq-a-{{ forloop.index }}" role="region"><p>{{ _f.a }}</p></div>
       </div>
       {%- endfor %}
-      <div class="sub-faq-item">
-        <button type="button" class="sub-faq-q" aria-expanded="false">
-          <span>How much does a computer repair cost for {{ page.suburb }} customers?</span>
-          <span class="sub-faq-arrow" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <div class="faq-item">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-g1">
+          How much does a computer repair cost for {{ page.suburb }} customers?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
-        <div class="sub-faq-a"><div>The diagnostic and repair is {% include price.html key="diagnostic-repair-all-in" bare=true raw=true %} all-in, which covers the full diagnostic, all repair labour and a 30 day warranty on that labour. Parts are quoted separately and never fitted without your approval. There is no separate call-out charge for a drop-off and no travel fee, because {{ page.suburb }} customers come to the workshop rather than us coming to them.</div></div>
+        <div class="faq-a" id="faq-a-g1" role="region"><p>The diagnostic and repair is {% include price.html key="diagnostic-repair-all-in" bare=true raw=true %} all-in, which covers the full diagnostic, all repair labour and a 30 day warranty on that labour. Parts are quoted separately and never fitted without your approval. There is no separate call-out charge for a drop-off and no travel fee, because {{ page.suburb }} customers come to the workshop rather than us coming to them.</p></div>
       </div>
-      <div class="sub-faq-item">
-        <button type="button" class="sub-faq-q" aria-expanded="false">
-          <span>How long will my repair take?</span>
-          <span class="sub-faq-arrow" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <div class="faq-item">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-g2">
+          How long will my repair take?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
-        <div class="sub-faq-a"><div>Most common faults are same day or next day. Software work such as virus removal, a Windows reinstall or a tune-up is usually done the same day. Anything waiting on a part depends on the part, and you get told the wait before any work starts rather than after.</div></div>
+        <div class="faq-a" id="faq-a-g2" role="region"><p>Most common faults are same day or next day. Software work such as virus removal, a Windows reinstall or a tune-up is usually done the same day. Anything waiting on a part depends on the part, and you get told the wait before any work starts rather than after.</p></div>
       </div>
-      <div class="sub-faq-item">
-        <button type="button" class="sub-faq-q" aria-expanded="false">
-          <span>Can you recover files from a failed drive?</span>
-          <span class="sub-faq-arrow" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <div class="faq-item">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-g3">
+          Can you recover files from a failed drive?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
-        <div class="sub-faq-a"><div>Often, yes. Recovery from a failing drive that still powers up has a good success rate. A drive that has stopped spinning entirely is harder and the odds drop. The single most important thing is to stop using the machine as soon as you notice files missing, because continuing to run it can overwrite what is still recoverable.</div></div>
+        <div class="faq-a" id="faq-a-g3" role="region"><p>Often, yes. Recovery from a failing drive that still powers up has a good success rate. A drive that has stopped spinning entirely is harder and the odds drop. The single most important thing is to stop using the machine as soon as you notice files missing, because continuing to run it can overwrite what is still recoverable.</p></div>
       </div>
-      <div class="sub-faq-item">
-        <button type="button" class="sub-faq-q" aria-expanded="false">
-          <span>Do I need to book, or can I just turn up?</span>
-          <span class="sub-faq-arrow" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <div class="faq-item">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-g4">
+          Do I need to book, or can I just turn up?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
-        <div class="sub-faq-a"><div>Just turn up. Drop-offs do not need an appointment. If you would rather check first, message us and we will tell you whether the fault sounds like something we can turn around quickly, and roughly what it is likely to cost.</div></div>
+        <div class="faq-a" id="faq-a-g4" role="region"><p>Just turn up. Drop-offs do not need an appointment. If you would rather check first, message us and we will tell you whether the fault sounds like something we can turn around quickly, and roughly what it is likely to cost.</p></div>
       </div>
-      <div class="sub-faq-item">
-        <button type="button" class="sub-faq-q" aria-expanded="false">
-          <span>What should I bring with the computer?</span>
-          <span class="sub-faq-arrow" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <div class="faq-item">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-g5">
+          What should I bring with the computer?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
-        <div class="sub-faq-a"><div>The charger, if it is a laptop, because a fair share of laptops brought in as dead turn out to have a failed charger rather than a failed laptop. Your Windows or Microsoft account login if you have it, since plenty of jobs stall waiting on a password nobody can remember. A desktop tower on its own is fine, no need for the monitor, keyboard or mouse unless the fault involves them.</div></div>
+        <div class="faq-a" id="faq-a-g5" role="region"><p>The charger, if it is a laptop, because a fair share of laptops brought in as dead turn out to have a failed charger rather than a failed laptop. Your Windows or Microsoft account login if you have it, since plenty of jobs stall waiting on a password nobody can remember. A desktop tower on its own is fine, no need for the monitor, keyboard or mouse unless the fault involves them.</p></div>
       </div>
     </div>
 
@@ -536,16 +536,7 @@ layout: default
 </div>
 
 <script>
-/* FAQ accordion. One delegated handler, so adding a question needs no
-   JS change. The panel animates via grid-template-rows in the stylesheet,
-   which is why the answer text sits in its own wrapper div. */
-document.querySelectorAll('.sub-faq-q').forEach(function (btn) {
-  btn.addEventListener('click', function () {
-    var item = btn.closest('.sub-faq-item');
-    var open = item.classList.toggle('open');
-    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-  });
-});
+/* The FAQ uses the shared .faq-q handler in _includes/scripts.html. */
 
 /* Quote form.
 

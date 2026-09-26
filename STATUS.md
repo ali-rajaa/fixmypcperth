@@ -524,6 +524,31 @@ private preview (noindex). Keep both repos identical except CNAME and
   general ones repeated on every suburb page are visible but no longer
   marked up.
 
+**Consistency pass (26 Sep 2026):**
+
+- One FAQ component sitewide, the homepage one: `.faq-item` / `.faq-q` /
+  `.faq-a`, an identical CSS block in every page stylesheet that has an
+  FAQ (index, pricing, reviews, health-check, service, tech-tip, suburb,
+  industry, business-it), one JS handler in `_includes/scripts.html`.
+  The sub-faq, tip-faq, sv-faq, industry faq-question and Business IT
+  `<details>` versions are gone. Checked on all 47 FAQ pages against the
+  homepage, desktop and phone.
+- Free PC Health Check and Business IT: every business price comes from
+  services.yml (added `business-it-first-month` and `biz-cyber-training`).
+  "5/5" ratings removed (Business IT and the sitewide ticker); they read
+  the Google rating from `_data/reviews.yml`.
+- Business IT: all 213 inline styles moved into business-it.css classes
+  (tone-* classes for the coloured cards); capsule tags on the Why cards
+  are plain text; section headings on the H2 standard; its own footer and
+  WhatsApp-button overrides removed; the "Also need PC repair?" row lists
+  the built service pages from data.
+- Industry pages: industry.css rebuilt (it was eight sheets pasted
+  together: 43 repeated properties, five copies of the phone block, nav
+  and footer rules), H1/H2 on the type scale, tracking in em, the
+  other-industries block is one class set on all nine pages.
+- Every page stylesheet now defines every token it uses (pricing, legal,
+  quote and tech-tip were missing --radius and others).
+
 Everything is in LAUNCH.md, in order: Cloudflare redirects, a final
 staging pass, the switch (copy to the live repo, CNAME, `staging: false`,
 Pages source to GitHub Actions), checks including

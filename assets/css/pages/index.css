@@ -446,23 +446,13 @@ a    { color:inherit; }
 .faq-section { background:var(--bg); padding:6rem 2rem; }
 .faq-list { margin-top:2.5rem; display:grid; grid-template-columns:1fr 1fr; gap:0 20px; max-width:1000px; align-items:start; }
 .faq-col { display:flex; flex-direction:column; gap:10px; }
-.faq-item { background:var(--bg); border:1.5px solid var(--border); border-radius:var(--radius); overflow:hidden; transition:border-color 0.2s; }
-@media (hover: hover) { .faq-item:hover { border-color:var(--blue-mid); } }
-.faq-item.open { border-color:var(--blue-mid); }
-.faq-q { width:100%; background:none; border:none; text-align:left; cursor:pointer; font-family:var(--display); font-size:15px; font-weight:700; color:var(--ink); padding:1.25rem 1.5rem; display:flex; justify-content:space-between; align-items:center; gap:1rem; transition:color 0.15s,background 0.15s; }
-@media (hover: hover) { .faq-q:hover { color:var(--blue); } }
-.faq-q:active { background:var(--bg2); }
-.faq-q:focus-visible { outline:2px solid var(--blue); outline-offset:-2px; }
+
 /* Rotation gets a touch of overshoot (Apple's own value for rotation is
    damping 0.8) so the tap feels answered rather than merely obeyed. */
-.faq-q svg { width:18px; height:18px; flex-shrink:0; color:var(--blue); transition:transform 0.35s var(--ease-settle); }
-.faq-item.open .faq-q svg { transform:rotate(180deg); }
+
 /* grid-template-rows 0fr/1fr rather than a fixed max-height: the panel sizes
    itself to whatever the answer needs, so no answer can ever be clipped. */
-.faq-a { display:grid; grid-template-rows:0fr; overflow:hidden; transition:grid-template-rows 0.4s var(--ease-settle); }
-.faq-item.open .faq-a { grid-template-rows:1fr; }
-.faq-a p:where(:not([class])) { min-height:0; font-size:14px; color:var(--muted); line-height:1.75; margin:0; padding:0 1.5rem; transition:padding 0.4s var(--ease-settle); }
-.faq-item.open .faq-a p:where(:not([class])) { padding:0 1.5rem 1.25rem; }
+
 .area-pill,
 a.area-pill--link {
   display: flex;
@@ -619,12 +609,8 @@ a.area-pill--link.has-page .area-dot {
    its own shadow and a dimmed losing card, none of which appear anywhere
    else on the site. */
 
-
 /* No rules between rows. Nothing else on the site uses a divider list, and
    they were what made this read as a stock pricing table. */
-
-
-
 
 /* Flat-fee proof line, sits directly under the H1 so the price is the
    first thing read after the headline without being the headline itself. */
@@ -734,9 +720,7 @@ body { padding-top:var(--mob-nav-h); }
 .cta-actions { flex-direction:column; align-items:stretch; width:100%; }
 .cta-actions .btn-wa, .cta-actions .btn-outline { width:100%; min-width:0; }
 .faq-list { max-width:100%; grid-template-columns:1fr; gap:10px; }
-.faq-q { font-size:14px; padding:1rem 1.25rem; }
-.faq-a p:where(:not([class])) { font-size:13.5px; padding:0 1.25rem; }
-.faq-item.open .faq-a p:where(:not([class])) { padding:0 1.25rem 1rem; }
+
 .svc-links-section { padding:1.5rem 1.25rem; }
 .svc-links-grid { gap:6px; }
 /* First eight pills only, which is about three rows, then a toggle. */
@@ -856,7 +840,7 @@ body { padding-top:var(--mob-nav-h); }
 @media (prefers-reduced-motion: reduce) {
   .mq-response-dot, .trust-track, .pkg-swipe-hint svg { animation:none; }
   .js .fade-up { transition:opacity 0.2s ease; transform:none; }
-  .faq-q-arrow { transition:transform 0.2s ease; }
+
   @media (hover: hover) { .btn-blue:hover, .btn-wa:hover, .mq-submit:hover,
   .svc-card:hover, .how-card:hover, .its-card:hover, .why-card:hover,
   .testi-card:hover, a.area-pill--link:hover,
@@ -891,7 +875,7 @@ body { padding-top:var(--mob-nav-h); }
    two fight each other. The scale and colour change are the feedback now. */
 .btn-blue, .btn-wa, .btn-outline, .mq-submit, .mq-pref-btn,
 .mq-service-btn, .svc-cta, .svc-link-pill,
-.area-pill--link, .guide-tab, .svc-links-more, .faq-q, .pkg-dot {
+.area-pill--link, .guide-tab, .svc-links-more, .pkg-dot {
   -webkit-tap-highlight-color:transparent;
 }
 
@@ -919,4 +903,56 @@ body { padding-top:var(--mob-nav-h); }
 .area-pill { padding:0.65rem 0.75rem; }
 .area-name { font-size:12px; }
 .his-stats { gap:0.5rem; }
+}
+
+/* ==========================================================
+   FAQ: one component, the same on every page. The homepage design,
+   copied into each page stylesheet that has an FAQ (index, pricing,
+   reviews, health-check, service, tech-tip, suburb, industry,
+   business-it). Keep every copy identical: change one, change all.
+
+   Markup:
+     <div class="faq-item">
+       <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-1">
+         Question
+         <svg viewBox="0 0 24 24" ...><polyline points="6 9 12 15 18 9"/></svg>
+       </button>
+       <div class="faq-a" id="faq-a-1" role="region"><p>Answer</p></div>
+     </div>
+   The shared handler in _includes/scripts.html opens one at a time.
+   The answer opens with grid-template-rows 0fr to 1fr rather than a
+   max-height, so it sizes itself to the text and can never be clipped.
+   The page lays the items out (list, gap, columns); this block only
+   styles an item.
+   ========================================================== */
+.faq-item { background:var(--bg); border:1.5px solid var(--border); border-radius:var(--radius); overflow:hidden; transition:border-color 0.2s; }
+.faq-item.open { border-color:var(--blue-mid); }
+.faq-q { width:100%; background:none; border:none; text-align:left; cursor:pointer; font-family:var(--display); font-size:15px; font-weight:700; line-height:1.4; color:var(--ink); padding:1.25rem 1.5rem; display:flex; justify-content:space-between; align-items:center; gap:1rem; transition:color 0.15s,background 0.15s; -webkit-tap-highlight-color:transparent; }
+.faq-q:active { background:var(--bg2); }
+.faq-q:focus-visible { outline:2px solid var(--blue); outline-offset:-2px; }
+/* Rotation gets a touch of overshoot so the tap feels answered. */
+.faq-q svg { width:18px; height:18px; flex-shrink:0; color:var(--blue); transition:transform 0.35s var(--ease-settle); }
+.faq-item.open .faq-q svg { transform:rotate(180deg); }
+.faq-a { display:grid; grid-template-rows:0fr; overflow:hidden; transition:grid-template-rows 0.4s var(--ease-settle); }
+.faq-item.open .faq-a { grid-template-rows:1fr; }
+.faq-a p:where(:not([class])) { min-height:0; font-size:14px; color:var(--muted); line-height:1.75; margin:0; padding:0 1.5rem; transition:padding 0.4s var(--ease-settle); }
+.faq-item.open .faq-a p:where(:not([class])) { padding:0 1.5rem 1.25rem; }
+.faq-a a:where(:not([class])) { color:var(--blue); font-weight:600; text-decoration:none; border-bottom:1px solid var(--blue-mid); }
+.faq-a strong:where(:not([class])) { color:var(--ink); font-weight:600; }
+@media (hover: hover) {
+  .faq-item:hover { border-color:var(--blue-mid); }
+  .faq-q:hover { color:var(--blue); }
+  .faq-a a:where(:not([class])):hover { color:var(--blue-dk); border-bottom-color:var(--blue-dk); }
+}
+@media (max-width:720px) {
+  .faq-q { font-size:14px; padding:1rem 1.25rem; }
+  .faq-a p:where(:not([class])) { font-size:13.5px; padding:0 1.25rem; }
+  .faq-item.open .faq-a p:where(:not([class])) { padding:0 1.25rem 1rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .faq-item, .faq-q, .faq-q svg, .faq-a, .faq-a p:where(:not([class])) { transition:none; }
+}
+@media (prefers-contrast: more) {
+  .faq-a p:where(:not([class])) { color:#334155; }
+  .faq-item { border-color:#0F172A; }
 }

@@ -464,14 +464,12 @@ schema catalogue. {%- endcomment -%}
       <div class="sv-faq-list">
       {%- for _f in page.faqs %}
       {%- capture _a %}{% include resolve-prices.html text=_f.a %}{% endcapture %}
-      <div class="sv-faq-item">
-        <h3 class="sv-faq-h">
-          <button type="button" class="sv-faq-q" aria-expanded="false" aria-controls="faq-a-{{ forloop.index }}" id="faq-q-{{ forloop.index }}">
-            <span>{{ _f.q | escape }}</span>
-            <svg class="sv-faq-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-        </h3>
-        <div class="sv-faq-a" id="faq-a-{{ forloop.index }}" role="region" aria-labelledby="faq-q-{{ forloop.index }}"><div><p>{{ _a | strip | escape }}</p></div></div>
+      <div class="faq-item">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-{{ forloop.index }}">
+          {{ _f.q | escape }}
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a" id="faq-a-{{ forloop.index }}" role="region"><p>{{ _a | strip | escape }}</p></div>
       </div>
       {%- endfor %}
       </div>
@@ -536,15 +534,7 @@ schema catalogue. {%- endcomment -%}
 </article>
 
 <script>
-/* FAQ: grid-template-rows transition, so a second tap mid-animation
-   reverses from where it is rather than jumping. */
-document.querySelectorAll('.sv-faq-q').forEach(function (btn) {
-  btn.addEventListener('click', function () {
-    var open = btn.getAttribute('aria-expanded') !== 'true';
-    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    btn.closest('.sv-faq-item').classList.toggle('open', open);
-  });
-});
+/* The FAQ uses the shared .faq-q handler in _includes/scripts.html. */
 
 /* Quote form. Validates each field when the person leaves it, submits
    over fetch so nobody lands on Web3Forms' own page, and swaps the form

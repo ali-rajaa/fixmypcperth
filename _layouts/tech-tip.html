@@ -270,17 +270,17 @@ layout: default
     {%- if page.faqs %}
     <section class="tip-faq" id="faq" aria-labelledby="faq-h">
       <h2 class="tip-h2" id="faq-h">Questions we get asked</h2>
+      <div class="tip-faq-list">
       {%- for _f in page.faqs %}
-      <div class="tip-faq-item">
-        <h3 class="tip-faq-h">
-          <button type="button" class="tip-faq-q" aria-expanded="false" aria-controls="faq-a-{{ forloop.index }}" id="faq-q-{{ forloop.index }}">
-            <span>{{ _f.q | escape }}</span>
-            <svg class="tip-faq-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-        </h3>
-        <div class="tip-faq-a" id="faq-a-{{ forloop.index }}" role="region" aria-labelledby="faq-q-{{ forloop.index }}"><div><p>{{ _f.a | escape }}</p></div></div>
+      <div class="faq-item">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-{{ forloop.index }}">
+          {{ _f.q | escape }}
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a" id="faq-a-{{ forloop.index }}" role="region"><p>{{ _f.a | escape }}</p></div>
       </div>
       {%- endfor %}
+      </div>
     </section>
     {%- endif %}
 
@@ -323,15 +323,7 @@ layout: default
 </article>
 
 <script>
-/* FAQ: grid-template-rows transition, so a second tap mid-animation
-   reverses from where it is rather than jumping. */
-document.querySelectorAll('.tip-faq-q').forEach(function (btn) {
-  btn.addEventListener('click', function () {
-    var open = btn.getAttribute('aria-expanded') !== 'true';
-    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    btn.closest('.tip-faq-item').classList.toggle('open', open);
-  });
-});
+/* The FAQ uses the shared .faq-q handler in _includes/scripts.html. */
 
 /* Quote form. Validates each field when the person leaves it (not only on
    submit), submits over fetch so nobody is sent to Web3Forms' own page,
