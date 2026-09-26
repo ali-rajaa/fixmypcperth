@@ -493,6 +493,16 @@ options. No phone call option, on any form.
 
 ## At launch
 
+**Launched 26 Sep 2026.** www.fixmypcperth.com now serves this site from
+`ali-rajaa/fixmypcperth` (Pages source: GitHub Actions; CNAME www;
+`staging: false`). The old plain-HTML site was removed in full. Cloudflare
+bulk list `fixmypcperth_launch` holds the 73 redirects and is live.
+"Verify live site" (Actions, run on demand): 9 of 9 live checks and 73 of
+73 redirects pass; 15 old .html addresses take two hops because a
+Cloudflare .html rule runs first, which is fine. Staging stays as the
+private preview (noindex). Keep both repos identical except CNAME and
+`staging`.
+
 Everything is in LAUNCH.md, in order: Cloudflare redirects, a final
 staging pass, the switch (copy to the live repo, CNAME, `staging: false`,
 Pages source to GitHub Actions), checks including
