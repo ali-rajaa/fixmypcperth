@@ -1545,6 +1545,11 @@ img { max-width: 100%; height: auto; }
   .plan-inner, .audit-card { padding: var(--m-card-pad); }
   .plan-price-block, .plan-best { padding: var(--m-panel-pad); border-radius: var(--m-panel-radius); }
   .addon-row { padding: var(--m-row-pad); }
+  /* Add-ons: one left edge for name, text and price; price and its unit on one line */
+  .addon-row { gap: var(--m-gap-rows); }
+  .addon-dot { display: none; }
+  .addon-right { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 8px; }
+  .addon-price { display: inline; }
 
   /* Gaps */
   .res-row, .why-row, .who-grid, .metrics-inner { gap: var(--m-gap-cards); }
