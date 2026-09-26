@@ -437,8 +437,8 @@ existed on the live site, so it needs no redirect.
   laptop repair shop near me (27, pos 8.3), macbook repair perth (pos 2.5),
   laptop cleaning service (24), laptop keyboard repair perth (12),
   same day laptop repair (pos 7). Screen queries go to laptop-screen-repair-perth.
-- `pc-health-check-perth` still has typed prices in its body copy (29 found).
-  One is now an include; the rest are a separate job.
+- `pc-health-check-perth` typed prices: all replaced with price.html
+  includes (September 2026).
 
 ---
 
