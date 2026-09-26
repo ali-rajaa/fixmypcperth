@@ -176,12 +176,12 @@ img { max-width: 100%; height: auto; }
   .btn-outline-light:hover { border-color: #fff; background: rgba(255,255,255,0.08); }
 }
 /* ─── ANIMATIONS ─────────────────────────────────────────────── */
-.fade-up {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.6s cubic-bezier(.22,.68,0,1.2), transform 0.6s cubic-bezier(.22,.68,0,1.2);
-}
-.fade-up.in { opacity: 1; transform: none; }
+/* Visible by default; hidden only once the reveal script has added the
+   html.js flag (it does so only when it can undo it). Critically damped,
+   like the homepage: no overshoot on something that merely fades in. */
+.fade-up { opacity: 1; transform: none; }
+.js .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s var(--ease-settle), transform 0.6s var(--ease-settle); }
+.js .fade-up.in { opacity: 1; transform: none; }
 #plan-tabs { display: none; }
 @media (max-width: 720px) {
   #plan-tabs {

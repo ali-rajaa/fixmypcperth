@@ -78,7 +78,7 @@
 @media (hover: hover) { .nav-logo:hover .logo-mark { transform: scale(1.03); box-shadow: 0 3px 10px rgba(21,96,255,0.18); } }
 .nav-logo:active .logo-mark { transform: scale(0.96); transition: transform 0.1s cubic-bezier(0.4,0,0.2,1); }
 .logo-mark img:where(:not([class])) { width: 100%; height: 100%; object-fit: cover; display: block; }
-.logo-name { font-family: 'Sora', 'Sora Fallback', sans-serif; font-size: 16px; font-weight: 700; color: #0F172A; letter-spacing: -0.3px; white-space: nowrap; transition: color 0.2s ease; }
+.logo-name { font-family: 'Sora', 'Sora Fallback', sans-serif; font-size: 16px; font-weight: 700; color: #0F172A; letter-spacing: -0.019em; white-space: nowrap; transition: color 0.2s ease; }
 .logo-name--mob { font-size: 14px; }
 .logo-name em:where(:not([class])) { color: #1560FF; font-style: normal; transition: color 0.2s ease; }
 @media (hover: hover) { .nav-logo:hover .logo-name em:where(:not([class])) { color: #0A3ACC; } }
@@ -273,7 +273,6 @@
 .sticky-cta { display:flex; }
 }
 
-
 /* ==========================================================
    FOOTER
    Four columns: brand, repairs, company, contact.
@@ -296,7 +295,7 @@ footer {
 .footer-logo { display:flex; align-items:center; gap:10px; text-decoration:none; margin-bottom:1.1rem; }
 .footer-logo .logo-mark { width:38px; height:38px; border-radius:9px; overflow:hidden; flex-shrink:0; }
 .footer-logo .logo-mark img:where(:not([class])) { width:100%; height:100%; object-fit:cover; display:block; }
-.footer-logo .logo-name { font-family:'Sora', 'Sora Fallback', sans-serif; font-size:17px; font-weight:800; color:#0F172A; letter-spacing:-0.4px; }
+.footer-logo .logo-name { font-family:'Sora', 'Sora Fallback', sans-serif; font-size:17px; font-weight:800; color:#0F172A; letter-spacing: -0.02em; }
 .footer-logo .logo-name em:where(:not([class])) { font-style:normal; color:#1560FF; }
 
 .footer-tag { font-size:15.5px; font-weight:700; color:#1E293B; line-height:1.7; margin-bottom:1rem; }

@@ -375,17 +375,23 @@ a { color: inherit; }
   display: flex; align-items: center; justify-content: center;
   margin-top: 1.4rem;
 }
-.carousel-dots { display: flex; gap: 8px; align-items: center; }
+/* Dots: the button is the tap target (44px tall, 24px wide, per Apple's
+   44pt minimum); the dot you see is drawn inside it by ::before. The
+   negative margins cancel the extra height so the dots sit where they did. */
+.carousel-dots { display: flex; gap: 0; align-items: center; margin: -18px 0; }
 .carousel-dot {
-  width: 8px; height: 8px; border-radius: 50%; padding: 0;
-  background: var(--border2); border: none; cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 24px; height: 44px; padding: 0 4px;
+  background: none; border: none; cursor: pointer;
   flex-shrink: 0; -webkit-tap-highlight-color: transparent;
-  transition:
-    background 0.25s var(--ease-settle),
-    width 0.3s var(--ease-settle);
 }
-@media (hover: hover) { .carousel-dot:hover { background: var(--muted2); } }
-.carousel-dot.active { background: var(--blue); width: 26px; border-radius: 4px; }
+.carousel-dot::before {
+  content: ''; display: block; width: 8px; height: 8px; border-radius: 4px;
+  background: var(--border2);
+  transition: background 0.25s var(--ease-settle), width 0.3s var(--ease-settle);
+}
+@media (hover: hover) { .carousel-dot:hover::before { background: var(--muted2); } }
+.carousel-dot.active::before { background: var(--blue); width: 26px; }
 
 /* ==========================================================
    FAQ

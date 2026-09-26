@@ -53,7 +53,7 @@ body { background:var(--bg); color:var(--ink); font-family:var(--body); font-siz
 /* ---------- blocks ---------- */
 .qr-form { margin:0; }
 .qr-block { border:0; margin:0 0 1.75rem; padding:0; min-width:0; }
-.qr-block legend { display:flex; align-items:center; gap:10px; font-family:var(--display); font-size:1rem; font-weight:800; letter-spacing:-0.3px; color:var(--ink); padding:0; margin-bottom:0.9rem; }
+.qr-block legend { display:flex; align-items:center; gap:10px; font-family:var(--display); font-size:1rem; font-weight:800; letter-spacing: -0.019em; color:var(--ink); padding:0; margin-bottom:0.9rem; }
 .qr-num { display:flex; align-items:center; justify-content:center; width:26px; height:26px; border-radius:8px; background:var(--blue-lt); color:var(--blue); font-family:var(--display); font-size:13px; font-weight:800; flex-shrink:0; }
 
 /* ---------- service options ---------- */
@@ -73,7 +73,7 @@ body { background:var(--bg); color:var(--ink); font-family:var(--body); font-siz
 }
 .qr-opt-ico { display:flex; align-items:center; justify-content:center; width:22px; height:22px; color:var(--blue); flex-shrink:0; transition:color 0.16s var(--ease-settle); }
 .qr-opt-ico svg { width:22px; height:22px; }
-.qr-opt-text { font-family:var(--display); font-size:13px; font-weight:700; letter-spacing:-0.1px; line-height:1.25; color:var(--ink2); }
+.qr-opt-text { font-family:var(--display); font-size:13px; font-weight:700; letter-spacing: -0.008em; line-height:1.25; color:var(--ink2); }
 @media (hover: hover) { .qr-opt:hover .qr-opt-face { border-color:var(--blue-mid); background:var(--bg); } }
 .qr-opt:active .qr-opt-face { transform:scale(0.97); }
 .qr-opt-input:checked + .qr-opt-face { border-color:var(--blue); background:var(--blue-lt); box-shadow:0 0 0 1px var(--blue); }
@@ -84,7 +84,7 @@ body { background:var(--bg); color:var(--ink); font-family:var(--body); font-siz
 /* ---------- fields ---------- */
 .qr-field { display:block; margin-bottom:0.85rem; }
 .qr-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
-.qr-label { display:block; font-family:var(--display); font-size:13px; font-weight:700; letter-spacing:-0.1px; color:var(--ink2); margin-bottom:0.45rem; }
+.qr-label { display:block; font-family:var(--display); font-size:13px; font-weight:700; letter-spacing: -0.008em; color:var(--ink2); margin-bottom:0.45rem; }
 .req { color:var(--red); }
 .qr-opt-note { font-weight:500; color:var(--muted2); text-transform:none; letter-spacing:0; }
 .qr-field input, .qr-field select, .qr-field textarea {
@@ -104,8 +104,9 @@ body { background:var(--bg); color:var(--ink); font-family:var(--body); font-siz
 /* ---------- contact preference ---------- */
 .qr-contact { border:0; padding:0; margin:0.5rem 0 0; min-width:0; }
 .qr-contact legend { display:block; margin-bottom:0.55rem; font-family:var(--body); font-size:13px; font-weight:700; color:var(--ink2); }
-.qr-radio { display:inline-flex; align-items:center; gap:7px; margin:0 8px 8px 0; cursor:pointer; }
-.qr-radio input { accent-color:var(--blue); width:17px; height:17px; }
+/* 44px tall so the whole label is an easy tap target, not just the dot. */
+.qr-radio { display:inline-flex; align-items:center; gap:7px; min-height:44px; padding-right:10px; margin:0 8px 0 0; cursor:pointer; }
+.qr-radio > input { accent-color:var(--blue); width:17px; height:17px; }
 .qr-radio span:where(:not([class])) { font-family:var(--display); font-size:13.5px; font-weight:600; color:var(--ink2); }
 
 /* ---------- draft, privacy, submit ---------- */
@@ -117,7 +118,7 @@ body { background:var(--bg); color:var(--ink); font-family:var(--body); font-siz
 .qr-privacy { font-size:12.5px; color:var(--muted); line-height:1.65; margin:0 0 1.1rem; }
 .qr-privacy a:where(:not([class])) { color:var(--blue); text-decoration:none; border-bottom:1px solid var(--blue-mid); }
 .qr-submit {
-  width:100%; font-family:var(--display); font-size:16px; font-weight:700; letter-spacing:-0.2px; color:#fff;
+  width:100%; font-family:var(--display); font-size:16px; font-weight:700; letter-spacing: -0.013em; color:#fff;
   background:var(--blue); border:0; border-radius:50px; padding:15px 28px; cursor:pointer;
   transition:background 0.18s,transform 0.15s var(--ease-settle);
 }
@@ -131,7 +132,7 @@ body { background:var(--bg); color:var(--ink); font-family:var(--body); font-siz
 .qr-done { text-align:center; background:var(--bg2); border:1px solid var(--border); border-radius:18px; padding:3rem 2rem; }
 .qr-done-icon { display:flex; align-items:center; justify-content:center; width:58px; height:58px; border-radius:50%; background:var(--green); color:#fff; margin:0 auto 1.35rem; }
 .qr-done-icon svg { width:26px; height:26px; }
-.qr-done h2:where(:not([class])) { font-family:var(--display); font-size:1.6rem; font-weight:800; letter-spacing:-0.6px; color:var(--ink); margin:0 0 0.65rem; }
+.qr-done h2:where(:not([class])) { font-family:var(--display); font-size:1.6rem; font-weight:800; letter-spacing: -0.02em; color:var(--ink); margin:0 0 0.65rem; }
 .qr-done p:where(:not([class])) { font-size:15px; color:var(--muted); line-height:1.8; margin:0 auto 1.75rem; max-width:52ch; }
 .qr-done-actions { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; }
 
@@ -141,12 +142,12 @@ body { background:var(--bg); color:var(--ink); font-family:var(--body); font-siz
 .qr-card-alt { background:var(--bg2); }
 .qr-card-head { margin-bottom:0.9rem; }
 .qr-card-eyebrow { display:block; font-size:10.5px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:4px; }
-.qr-card-title { display:block; font-family:var(--display); font-size:15px; font-weight:800; color:var(--ink); letter-spacing:-0.2px; line-height:1.35; }
+.qr-card-title { display:block; font-family:var(--display); font-size:15px; font-weight:800; color:var(--ink); letter-spacing: -0.013em; line-height:1.35; }
 .qr-list { list-style:none; margin:0; padding:0; }
 .qr-list li:where(:not([class])) { position:relative; font-size:13.5px; color:var(--ink2); line-height:1.65; padding:0 0 0.7rem 1.55rem; }
 .qr-list li:where(:not([class])):last-child { padding-bottom:0; }
 .qr-list li:where(:not([class]))::before { content:''; position:absolute; left:1px; top:7px; width:11px; height:6px; border-left:2px solid var(--green); border-bottom:2px solid var(--green); transform:rotate(-45deg); }
-.qr-phone { display:block; font-family:var(--display); font-size:1.35rem; font-weight:800; letter-spacing:-0.5px; color:var(--ink); text-decoration:none; margin:0.35rem 0 0.5rem; }
+.qr-phone { display:block; font-family:var(--display); font-size:1.35rem; font-weight:800; letter-spacing: -0.02em; color:var(--ink); text-decoration:none; margin:0.35rem 0 0.5rem; }
 @media (hover: hover) { .qr-phone:hover { color:var(--blue); } }
 .qr-addr { font-size:13px; color:var(--muted); line-height:1.65; margin:0 0 1.1rem; }
 .qr-btn {
@@ -186,7 +187,7 @@ body { background:var(--bg); color:var(--ink); font-family:var(--body); font-siz
   .wrap { padding:0 1.25rem; }
   .qr-hero { padding:2rem 0 2.25rem; }
   .qr-hero-inner { padding:0 1.25rem; }
-  .qr-hero h1:where(:not([class])) { font-size:1.8rem; letter-spacing:-1px; }
+  .qr-hero h1:where(:not([class])) { font-size:1.8rem; }
   .qr-sub { font-size:15px; }
   .qr-layout { padding-bottom:2.5rem; }
   /* Icon-beside-label needs more width per tile than the old stacked

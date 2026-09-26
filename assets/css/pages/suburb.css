@@ -183,7 +183,7 @@ body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--b
   .mob-nav { display: flex; }
   body { padding-top: var(--mob-nav-h); }
   .sticky-cta { display: flex; }
-  .sub-h1 { letter-spacing: -1px; }
+
   .travel-grid { grid-template-columns: 1fr; }
   .travel-cell { display: flex; align-items: baseline; justify-content: space-between; text-align: left; padding: 0.8rem 1rem; }
   .travel-val { font-size: 1.15rem; margin-bottom: 0; }

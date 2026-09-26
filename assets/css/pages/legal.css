@@ -89,7 +89,7 @@ body { background:var(--bg); color:var(--ink); font-family:var(--body); font-siz
 .lg-sec h2:where(:not([class])) {
   display:flex; align-items:baseline; gap:0.5rem;
   font-family:var(--display); font-size:clamp(1.15rem,2.2vw,1.45rem); font-weight:800;
-  letter-spacing:-0.5px; color:var(--ink); margin:0 0 0.9rem;
+  letter-spacing: -0.02em; color:var(--ink); margin:0 0 0.9rem;
 }
 /* Set in the heading's own type rather than a coloured badge. A numbered
    clause should read as part of the heading, not as a tag beside it. */
@@ -106,7 +106,7 @@ body { background:var(--bg); color:var(--ink); font-family:var(--body); font-siz
 
 /* ---------- closing card ---------- */
 .lg-help { background:var(--bg2); border:1px solid var(--border); border-radius:18px; padding:2rem; margin-top:1rem; }
-.lg-help h2:where(:not([class])) { font-family:var(--display); font-size:1.3rem; font-weight:800; letter-spacing:-0.5px; color:var(--ink); margin:0 0 0.5rem; }
+.lg-help h2:where(:not([class])) { font-family:var(--display); font-size:1.3rem; font-weight:800; letter-spacing: -0.02em; color:var(--ink); margin:0 0 0.5rem; }
 .lg-help p { font-size:15px; color:var(--muted); line-height:1.75; margin:0 0 1.35rem; max-width:60ch; }
 .lg-help-actions { display:flex; flex-wrap:wrap; gap:10px; }
 .lg-btn {
@@ -147,7 +147,7 @@ body { background:var(--bg); color:var(--ink); font-family:var(--body); font-siz
   .lg-hero { padding:2rem 0 2.25rem; }
   .lg-hero-inner { padding:0 1.25rem; }
   .lg-hero h1:where(:not([class])), .lg-sub { max-width:none; }
-  .lg-hero h1:where(:not([class])) { font-size:1.85rem; letter-spacing:-1px; }
+  .lg-hero h1:where(:not([class])) { font-size:1.85rem; }
   .lg-intro { font-size:15px; }
   .lg-toc { grid-template-columns:1fr; }
   .lg-layout { padding-bottom:2.5rem; }

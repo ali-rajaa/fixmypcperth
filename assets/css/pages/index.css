@@ -355,9 +355,13 @@ a    { color:inherit; }
 0%,100%{transform:translateX(0)}
 50%{transform:translateX(4px)}
 }
-.pkg-dots { display:none; justify-content:center; gap:7px; margin-top:1rem; }
-.pkg-dot { width:7px; height:7px; border-radius:50%; background:var(--border2); border:none; padding:0; cursor:pointer; transition:width 0.25s,background 0.25s; }
-.pkg-dot.active { width:22px; border-radius:50px; background:var(--blue); }
+/* Dots: the button is the tap target (44px tall, 24px wide, per Apple's
+   44pt minimum); the dot you see is drawn inside it by ::before. The
+   negative margins cancel the extra height so the dots sit where they did. */
+.pkg-dots { display:none; justify-content:center; gap:0; margin:calc(1rem - 18.5px) 0 -18.5px; }
+.pkg-dot { display:inline-flex; align-items:center; justify-content:center; min-width:24px; height:44px; padding:0 4px; border:none; background:none; cursor:pointer; }
+.pkg-dot::before { content:''; display:block; width:7px; height:7px; border-radius:50px; background:var(--border2); transition:width 0.25s var(--ease-settle),background 0.25s var(--ease-settle); }
+.pkg-dot.active::before { width:22px; background:var(--blue); }
 /* Light card system, matching .svc-card: white background, thin border,
    gradient hairline on hover. Was a dark "pricing table" template with a
    diagonal ribbon and star-glyph eyebrows that matched nothing else on the

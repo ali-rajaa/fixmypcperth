@@ -147,7 +147,7 @@ a { color: inherit; }
    - hierarchy from weight, not size: labels 600, values 400 */
 .audit-block { background: var(--ink); border-radius: 16px; padding: 2rem; margin: 2.5rem 0; position: relative; overflow: hidden; scroll-margin-top: calc(var(--nav-h) + 1rem); }
 .audit-block::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--blue), var(--teal), var(--wa)); }
-.audit-block-title { font-family: var(--display); font-size: 1.3rem; font-weight: 800; letter-spacing: -0.3px; color: #fff; margin: 0 0 0.4rem; }
+.audit-block-title { font-family: var(--display); font-size: 1.3rem; font-weight: 800; letter-spacing: -0.014em; color: #fff; margin: 0 0 0.4rem; }
 .audit-block-desc { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.7; margin: 0 0 1.5rem; }
 
 .tq-form { display: flex; flex-direction: column; gap: 1.25rem; }
