@@ -158,7 +158,8 @@ body { background:var(--bg); color:var(--ink); font-family:var(--body); font-siz
 }
 
 .lg-help-links { font-size:13.5px; color:var(--muted); line-height:1.7; margin:1.1rem 0 0; }
-.lg-help-links a:where(:not([class])) { color:var(--blue); font-weight:600; }
+.lg-help-links a:where(:not([class])) { color: var(--blue); font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--blue-mid); }
+@media (hover: hover) { .lg-help-links a:where(:not([class])):hover { color: var(--blue-dk); border-bottom-color: var(--blue-dk); } }
 
 @media (prefers-reduced-motion: reduce) {
   .lg-toc a:where(:not([class])), .lg-btn, .lg-sec a:where(:not([class])) { transition:none; }

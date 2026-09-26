@@ -143,7 +143,8 @@ a { color: inherit; }
 
 .sv-prose > p { margin: 0 0 1.35rem; font-size: 16px; line-height: 1.85; color: var(--ink2); text-wrap: pretty; }
 .sv-prose > p:last-child { margin-bottom: 0; }
-.sv-prose a:not([class]) { color: var(--blue); text-decoration: underline; text-underline-offset: 0.18em; }
+.sv-prose a:not([class]) { color: var(--blue); font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--blue-mid); }
+@media (hover: hover) { .sv-prose a:not([class]):hover { color: var(--blue-dk); border-bottom-color: var(--blue-dk); } }
 
 /* One price per repair, straight from services.yml, with that entry's own
    note (for example "Labour only. Battery quoted separately") so the price

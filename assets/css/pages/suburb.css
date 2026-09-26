@@ -38,7 +38,8 @@ a { color: inherit; }
 .travel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border-radius: 12px; overflow: hidden; }
 .travel-cell { background: var(--bg); padding: 0.95rem 0.9rem; text-align: center; }
 .sub-body strong:where(:not([class])) { color: var(--ink); font-weight: 700; }
-.sub-body a:not([class]) { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; }
+.sub-body a:not([class]) { color: var(--blue); font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--blue-mid); }
+@media (hover: hover) { .sub-body a:not([class]):hover { color: var(--blue-dk); border-bottom-color: var(--blue-dk); } }
 .sub-body ul { margin: 0 0 1.15rem; padding-left: 1.15rem; }
 @media (hover: hover) { .problem-card:hover { border-color: var(--blue); transform: translateY(-2px); } }
 .problem-price { display: block; margin-top: 0.7rem; font-family: var(--display); font-size: 14px; font-weight: 800; color: var(--blue); }
@@ -92,8 +93,8 @@ a { color: inherit; }
 .sub-toc-title { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.75rem; }
 .sub-toc ol:where(:not([class])) { margin: 0; padding-left: 1.1rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0.35rem 1.5rem; }
 .sub-toc li:where(:not([class])) { font-size: 0.875rem; margin: 0; }
-.sub-toc a:where(:not([class])) { color: var(--blue); text-decoration: none; }
-@media (hover: hover) { .sub-toc a:where(:not([class])):hover { text-decoration: underline; } }
+.sub-toc a:not([class]) { color: var(--blue); font-weight: inherit; text-decoration: none; border-bottom: 0; }
+@media (hover: hover) { .sub-toc a:not([class]):hover { color: var(--blue-dk); } }
 .process-num { width: 34px; height: 34px; border-radius: 50%; background: var(--blue-lt); border: 1.5px solid var(--blue-mid); color: var(--blue); font-family: var(--display); font-weight: 800; font-size: 0.875rem; display: flex; align-items: center; justify-content: center; }
 .fact-list li:where(:not([class])) { font-size: 0.8125rem; font-weight: 600; color: var(--ink2); background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 6px 11px; margin: 0; }
 .sub-note p:where(:not([class])) { margin: 0; font-size: 0.9rem; line-height: 1.75; color: var(--ink2); }

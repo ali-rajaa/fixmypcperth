@@ -280,7 +280,8 @@ body { background:var(--bg); color:var(--ink); font-family:var(--body); font-siz
 .pr-rules-sec { background:var(--bg2); padding:3.75rem 0; margin-top:3.5rem; }
 .pr-rules { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem 2.5rem; margin-top:1.5rem; }
 .pr-rule h3:where(:not([class])) { font-family:var(--display); font-size:1.02rem; font-weight:700; color:var(--ink); margin:0 0 0.45rem; }
-.pr-rule p:where(:not([class])) { font-size:14.5px; color:var(--muted); line-height:1.75; margin:0; }
+.pr-rule p a:where(:not([class])) { color: var(--blue); font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--blue-mid); }
+@media (hover: hover) { .pr-rule p a:where(:not([class])):hover { color: var(--blue-dk); border-bottom-color: var(--blue-dk); } }
 
 /* ---------- links out to the service detail pages ---------- */
 .pr-links { display:flex; flex-wrap:wrap; gap:8px; }
