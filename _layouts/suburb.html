@@ -53,16 +53,16 @@ layout: default
   "serviceType": "Computer and laptop repair",
   "name": "Computer Repairs in {{ page.suburb }}",
   "description": "Computer and laptop repair for {{ page.suburb }} residents, carried out at the FixMyPC Perth workshop in Canning Vale.",
-  "url": "https://www.fixmypcperth.com/suburbs/{{ page.slug }}",
+  "url": "{{ site.url }}/suburbs/{{ page.slug }}",
   "areaServed": {
     "@type": "Place",
     "name": {{ _area | jsonify }}
   },
   "provider": {
     "@type": "LocalBusiness",
-    "@id": "https://www.fixmypcperth.com/#business",
+    "@id": "{{ site.url }}/#business",
     "name": "FixMyPC Perth",
-    "url": "https://www.fixmypcperth.com/",
+    "url": "{{ site.url }}/",
     "telephone": "+61452573701",
     "priceRange": "$$",
     "address": {
@@ -87,16 +87,23 @@ layout: default
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.fixmypcperth.com/" },
-    { "@type": "ListItem", "position": 2, "name": "Computer Repairs {{ page.suburb }}", "item": "https://www.fixmypcperth.com/suburbs/{{ page.slug }}" }
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ site.url }}/" },
+    { "@type": "ListItem", "position": 2, "name": "Computer Repairs {{ page.suburb }}", "item": "{{ site.url }}/suburbs/{{ page.slug }}" }
   ]
 }
 </script>
 
 {%- comment -%}
-  FAQ schema is generated from the same five questions shown on the page,
-  with prices resolved through the same include, so the two cannot drift.
+  FAQ schema carries only this suburb's own questions (page.faqs), with the
+  same text shown on the page. The five general questions below them (cost,
+  turnaround, recovery, booking, what to bring) are the same on every
+  suburb page apart from the name, so they are left out of the schema:
+  twenty-odd pages marking up the same answers adds nothing for search
+  engines and reads as duplicate markup. Google no longer shows FAQ rich
+  results for a business like this one either way; the markup is for
+  answer engines, which want each page's unique answers.
 {%- endcomment -%}
+{%- if page.faqs.size > 0 %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -107,52 +114,12 @@ layout: default
       "@type": "Question",
       "name": {{ _f.q | jsonify }},
       "acceptedAnswer": { "@type": "Answer", "text": {{ _f.a | strip_html | jsonify }} }
-    },
+    }{% unless forloop.last %},{% endunless %}
     {%- endfor %}
-    {
-      "@type": "Question",
-      "name": "How much does a computer repair cost for {{ page.suburb }} customers?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The diagnostic and repair is {% include price.html key='diagnostic-repair-all-in' bare=true raw=true %} all-in, which covers the full diagnostic, all repair labour and a 30 day warranty on that labour. Parts are quoted separately and never fitted without your approval. There is no separate call-out charge for a drop-off, and no travel fee, because {{ page.suburb }} customers come to the workshop rather than us coming to them."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How long will my repair take?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Most common faults are same day or next day. Software work such as virus removal, a Windows reinstall or a tune-up is usually done the same day. Anything waiting on a part depends on the part, and you get told the wait before any work starts rather than after."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can you recover files from a {{ page.suburb }} customer's failed drive?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Often, yes. Recovery from a failing drive that still powers up has a good success rate. A drive that has stopped spinning entirely is harder and the odds drop. The single most important thing is to stop using the machine as soon as you notice files missing, because continuing to run it can overwrite what is still recoverable."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do I need to book, or can I just turn up?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Just turn up. Drop-offs do not need an appointment. If you would rather check first, message us and we will tell you whether the fault sounds like something we can turn around quickly, and roughly what it is likely to cost."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What should I bring with the computer?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The charger, if it is a laptop, because a fair share of laptops brought in as dead turn out to have a failed charger rather than a failed laptop. Your Windows or Microsoft account login if you have it, since plenty of jobs stall waiting on a password nobody can remember. A desktop tower on its own is fine, no need for the monitor, keyboard or mouse unless the fault involves them."
-      }
-    }
   ]
 }
 </script>
-
+{%- endif %}
 <div class="suburb-wrap">
 
   {%- comment -%} Two steps, matching the BreadcrumbList schema. A middle

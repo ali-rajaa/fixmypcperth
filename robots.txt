@@ -3,15 +3,14 @@ layout: none
 permalink: /robots.txt
 ---
 {%- comment -%}
-  Driven by `staging` in _config.yml. Staging blocks everything; the live
-  site allows everything and points crawlers at the sitemap.
+  Crawlers are let in on both sites. Staging keeps itself out of Google
+  with noindex on every page (site.staging in _layouts/default.html); a
+  Disallow here would stop crawlers reading that noindex. Only the live
+  site points at the sitemap.
 {%- endcomment -%}
-{%- if site.staging -%}
-User-agent: *
-Disallow: /
-{%- else -%}
 User-agent: *
 Allow: /
+{%- unless site.staging %}
 
-Sitemap: https://www.fixmypcperth.com/sitemap.xml
-{%- endif %}
+Sitemap: {{ site.url }}/sitemap.xml
+{%- endunless %}

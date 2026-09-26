@@ -7,13 +7,13 @@ description: "Computer repair Perth, flat [[diagnostic-repair-all-in]] covering 
 {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "@id": "https://www.fixmypcperth.com/#business",
+  "@id": "{{ site.url }}/#business",
   "name": "FixMyPC Perth",
-  "image": "https://www.fixmypcperth.com/og-suburbs.png",
-  "logo": "https://www.fixmypcperth.com/logo.png",
+  "image": "{{ site.url }}/og-suburbs.png",
+  "logo": "{{ site.url }}/logo.png",
   "alternateName": ["Fix My PC Perth","FixMyPC Canning Vale","PC Repair Perth","Computer & Laptop Repair Perth"],
   "description": "Perth's trusted computer & laptop repair specialist in Canning Vale. Same-day PC repair, laptop repair, virus removal, data recovery, SSD upgrades, Windows reinstall and gaming PC builds. Also offering managed business IT support. No fix, no fee on data recovery. 30-day labour warranty on all work.",
-  "url": "https://www.fixmypcperth.com/",
+  "url": "{{ site.url }}/",
   "telephone": "+61452573701",
   "priceRange": "$$",
   "currenciesAccepted": "AUD",
@@ -195,14 +195,14 @@ description: "Computer repair Perth, flat [[diagnostic-repair-all-in]] covering 
   "name": "Computer & Laptop Repair Perth: Suburb Service Pages",
   "description": "FixMyPC Perth provides computer & laptop repair services across all southern Perth suburbs. Click your suburb for local pricing and service information.",
   "itemListElement": [
-    {"@type":"ListItem","position":1,"name":"Computer & Laptop Repair Canning Vale","url":"https://www.fixmypcperth.com/suburbs/canning-vale"},
-    {"@type":"ListItem","position":2,"name":"Computer & Laptop Repair Cockburn","url":"https://www.fixmypcperth.com/suburbs/cockburn"},
-    {"@type":"ListItem","position":3,"name":"Computer & Laptop Repair Willetton","url":"https://www.fixmypcperth.com/suburbs/willetton"},
-    {"@type":"ListItem","position":4,"name":"Computer & Laptop Repair Jandakot","url":"https://www.fixmypcperth.com/suburbs/jandakot"},
-    {"@type":"ListItem","position":5,"name":"Computer & Laptop Repair Thornlie","url":"https://www.fixmypcperth.com/suburbs/thornlie"},
-    {"@type":"ListItem","position":6,"name":"Computer & Laptop Repair Cannington","url":"https://www.fixmypcperth.com/suburbs/cannington"},
-    {"@type":"ListItem","position":7,"name":"Computer & Laptop Repair Harrisdale","url":"https://www.fixmypcperth.com/suburbs/harrisdale"},
-    {"@type":"ListItem","position":8,"name":"Computer & Laptop Repair Huntingdale","url":"https://www.fixmypcperth.com/suburbs/huntingdale"}
+    {"@type":"ListItem","position":1,"name":"Computer & Laptop Repair Canning Vale","url":"{{ site.url }}/suburbs/canning-vale"},
+    {"@type":"ListItem","position":2,"name":"Computer & Laptop Repair Cockburn","url":"{{ site.url }}/suburbs/cockburn"},
+    {"@type":"ListItem","position":3,"name":"Computer & Laptop Repair Willetton","url":"{{ site.url }}/suburbs/willetton"},
+    {"@type":"ListItem","position":4,"name":"Computer & Laptop Repair Jandakot","url":"{{ site.url }}/suburbs/jandakot"},
+    {"@type":"ListItem","position":5,"name":"Computer & Laptop Repair Thornlie","url":"{{ site.url }}/suburbs/thornlie"},
+    {"@type":"ListItem","position":6,"name":"Computer & Laptop Repair Cannington","url":"{{ site.url }}/suburbs/cannington"},
+    {"@type":"ListItem","position":7,"name":"Computer & Laptop Repair Harrisdale","url":"{{ site.url }}/suburbs/harrisdale"},
+    {"@type":"ListItem","position":8,"name":"Computer & Laptop Repair Huntingdale","url":"{{ site.url }}/suburbs/huntingdale"}
   ]
 }
 
@@ -216,7 +216,7 @@ description: "Computer repair Perth, flat [[diagnostic-repair-all-in]] covering 
       "serviceType": "Virus and Malware Removal",
       "name": "Virus and Malware Removal Perth",
       "description": "Same-day virus, spyware, ransomware and browser hijacker removal in Perth. Full system scan, browser cleanup and antivirus setup included.",
-      "provider": { "@type": "LocalBusiness", "name": "FixMyPC Perth", "@id": "https://www.fixmypcperth.com/#business" },
+      "provider": { "@type": "LocalBusiness", "name": "FixMyPC Perth", "@id": "{{ site.url }}/#business" },
       "areaServed": { "@type": "City", "name": "Perth" },
       "offers": { "@type": "Offer", "price": "99", "priceCurrency": "AUD", "availability": "https://schema.org/InStock" }
     },
@@ -225,7 +225,7 @@ description: "Computer repair Perth, flat [[diagnostic-repair-all-in]] covering 
       "serviceType": "Data Recovery",
       "name": "Data Recovery Perth",
       "description": "Recover photos, documents and files from failing or dead hard drives in Perth. No fix, no fee guarantee.",
-      "provider": { "@type": "LocalBusiness", "name": "FixMyPC Perth", "@id": "https://www.fixmypcperth.com/#business" },
+      "provider": { "@type": "LocalBusiness", "name": "FixMyPC Perth", "@id": "{{ site.url }}/#business" },
       "areaServed": { "@type": "City", "name": "Perth" },
       "offers": { "@type": "Offer", "price": "149", "priceCurrency": "AUD", "availability": "https://schema.org/InStock" }
     },
@@ -234,7 +234,7 @@ description: "Computer repair Perth, flat [[diagnostic-repair-all-in]] covering 
       "serviceType": "SSD Upgrade",
       "name": "SSD Upgrade Perth",
       "description": "SSD upgrade and data transfer for slow PCs and laptops in Perth. Most jobs completed same day.",
-      "provider": { "@type": "LocalBusiness", "name": "FixMyPC Perth", "@id": "https://www.fixmypcperth.com/#business" },
+      "provider": { "@type": "LocalBusiness", "name": "FixMyPC Perth", "@id": "{{ site.url }}/#business" },
       "areaServed": { "@type": "City", "name": "Perth" },
       "offers": { "@type": "Offer", "price": "65", "priceCurrency": "AUD", "availability": "https://schema.org/InStock" }
     },
@@ -243,7 +243,7 @@ description: "Computer repair Perth, flat [[diagnostic-repair-all-in]] covering 
       "serviceType": "Laptop Screen Replacement",
       "name": "Laptop Screen Replacement Perth",
       "description": "Cracked or dead laptop screen replacement in Perth. Standard panel from {% include price.html key='laptop-screen-standard' bare=true raw=true %}, touchscreen {% include price.html key='laptop-screen-touchscreen' bare=true raw=true %}, OLED {% include price.html key='laptop-screen-oled-premium' bare=true raw=true %}.",
-      "provider": { "@type": "LocalBusiness", "name": "FixMyPC Perth", "@id": "https://www.fixmypcperth.com/#business" },
+      "provider": { "@type": "LocalBusiness", "name": "FixMyPC Perth", "@id": "{{ site.url }}/#business" },
       "areaServed": { "@type": "City", "name": "Perth" },
       "offers": { "@type": "Offer", "price": "145", "priceCurrency": "AUD", "availability": "https://schema.org/InStock" }
     },
@@ -252,7 +252,7 @@ description: "Computer repair Perth, flat [[diagnostic-repair-all-in]] covering 
       "serviceType": "PC Diagnostic and Repair",
       "name": "Slow Computer & Laptop Repair and PC Diagnostic Perth",
       "description": "Diagnostic and repair for slow, freezing, crashing or non-booting computers in Perth. Written report before any work begins.",
-      "provider": { "@type": "LocalBusiness", "name": "FixMyPC Perth", "@id": "https://www.fixmypcperth.com/#business" },
+      "provider": { "@type": "LocalBusiness", "name": "FixMyPC Perth", "@id": "{{ site.url }}/#business" },
       "areaServed": { "@type": "City", "name": "Perth" },
       "offers": { "@type": "Offer", "price": "120", "priceCurrency": "AUD", "availability": "https://schema.org/InStock" }
     },
@@ -261,7 +261,7 @@ description: "Computer repair Perth, flat [[diagnostic-repair-all-in]] covering 
       "serviceType": "Used Laptop Servicing",
       "name": "Used Laptop Revival Package Perth",
       "description": "16-point service package for used and second-hand laptops in Perth. Hardware health check, battery test, secure wipe of previous owner data, Windows 11 clean reinstall, malware scan, thermal service and 30-day labour warranty.",
-      "provider": { "@type": "LocalBusiness", "name": "FixMyPC Perth", "@id": "https://www.fixmypcperth.com/#business" },
+      "provider": { "@type": "LocalBusiness", "name": "FixMyPC Perth", "@id": "{{ site.url }}/#business" },
       "areaServed": { "@type": "City", "name": "Perth" },
       "offers": { "@type": "Offer", "price": "140", "priceCurrency": "AUD", "availability": "https://schema.org/InStock" }
     },
@@ -270,7 +270,7 @@ description: "Computer repair Perth, flat [[diagnostic-repair-all-in]] covering 
       "serviceType": "Gaming PC Build",
       "name": "Gaming PC Build and Upgrade Perth",
       "description": "Custom gaming PC assembly in Perth across three tiers: Essential {% include price.html key="essential-assembly" bare=true raw=true %}, Performance {% include price.html key="performance-assembly" bare=true raw=true %} and Elite {% include price.html key="elite-assembly" bare=true raw=true %}. Includes cable management, PBO tuning, benchmarking and a free Windows 11 key.",
-      "provider": { "@type": "LocalBusiness", "name": "FixMyPC Perth", "@id": "https://www.fixmypcperth.com/#business" },
+      "provider": { "@type": "LocalBusiness", "name": "FixMyPC Perth", "@id": "{{ site.url }}/#business" },
       "areaServed": { "@type": "City", "name": "Perth" },
       "offers": { "@type": "Offer", "price": "149", "priceCurrency": "AUD", "availability": "https://schema.org/InStock" }
     }

@@ -1,6 +1,12 @@
 title: FixMyPC Perth
 description: Computer and laptop repair in Canning Vale, Perth.
 
+# The live address. Canonicals, share images, schema and the sitemap all
+# build full URLs from it ({{ site.url }}). It is the same on staging on
+# purpose: staging is a copy of the live site, so its canonicals name the
+# live pages.
+url: "https://www.fixmypcperth.com"
+
 # Jekyll's default permalink style keeps page.html serving at /page with
 # no trailing slash, which is what Google has indexed. Do not change it.
 
@@ -12,9 +18,11 @@ plugins: []
 reply_time: within 2 hours
 
 # staging: true on staging.fixmypcperth.com, false on the live site. It is
-# the one switch between them: true makes robots.txt block every crawler
-# and adds noindex to every page, so staging can never be indexed. Set it
-# to false at launch (LAUNCH.md step 3), along with the CNAME file.
+# the one switch between them: true adds noindex to every page, so staging
+# can never be indexed. robots.txt still lets crawlers in on staging, on
+# purpose: a crawler that is blocked never reads the noindex, and Google
+# can then list a blocked address from links alone. The CNAME file is the
+# only other difference between the two repos.
 staging: false
 
 exclude:

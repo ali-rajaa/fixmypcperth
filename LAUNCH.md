@@ -79,7 +79,7 @@ does the two settings.
       `bash _launch/check-live.sh` and `bash _launch/test-redirects.sh`
       from any machine with curl). It checks robots.txt, the sitemap and
       every page in it, the 404 page, the apex redirect, that staging is
-      still closed, and all 72 redirects. Expect 0 problems in both.
+      still noindex, and all 72 redirects. Expect 0 problems in both.
 - [ ] https://www.fixmypcperth.com/robots.txt shows `Allow: /` and the
       Sitemap line. If it says `Disallow: /`, `staging` is still true.
 - [ ] https://www.fixmypcperth.com/sitemap.xml lists about 50 pages, all
@@ -125,9 +125,9 @@ The old site is back as it was within a few minutes.
 |---|---|
 | `_launch/cloudflare-bulk-redirects.csv` | The 72 redirects, ready to upload |
 | `_launch/test-redirects.sh` | Checks every redirect after launch |
-| `_launch/check-live.sh` | Checks robots, sitemap pages, 404, apex, staging closed |
+| `_launch/check-live.sh` | Checks robots, sitemap pages, 404, apex, staging noindex |
 | `.github/workflows/verify-live.yml` | Runs both checks on GitHub's servers, on demand |
-| `robots.txt` | Blocks everything while `staging: true`, allows and points to the sitemap when false |
+| `robots.txt` | Allows crawling on both; names the sitemap only when `staging: false`. Staging stays out of Google by noindex |
 | `sitemap.xml` | Built from the pages; add `sitemap: false` to a page to leave it out |
 | `404.html` | Shown for any address that does not exist; noindex |
 

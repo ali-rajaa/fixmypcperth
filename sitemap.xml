@@ -38,7 +38,7 @@ permalink: /sitemap.xml
     {%- if _u == "/index" -%}{%- assign _u = "/" -%}{%- endif -%}
     {%- assign _mod = site.data.lastmod[_p.path] | default: _p.updated | default: _p.date %}
   <url>
-    <loc>https://www.fixmypcperth.com{{ _u }}</loc>
+    <loc>{{ site.url }}{{ _u }}</loc>
     {%- if _mod %}
     <lastmod>{{ _mod | date: "%Y-%m-%d" }}</lastmod>
     {%- endif %}

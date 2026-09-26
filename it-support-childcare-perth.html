@@ -23,14 +23,14 @@ description: "Managed IT support for Perth childcare centres. Xplor and Storypar
 {
   "@context": "https://schema.org",
   "@type": "Service",
-  "@id": "https://www.fixmypcperth.com/it-support-childcare-perth#service",
+  "@id": "{{ site.url }}/it-support-childcare-perth#service",
   "serviceType": "Managed IT Support for Childcare Centres",
   "name": "IT Support for Childcare Centres in Perth",
   "description": "Managed IT support for Perth childcare and early learning centres. Enrolment and CCS software, sign-in systems, and record retention under the National Regulations.",
-  "url": "https://www.fixmypcperth.com/it-support-childcare-perth",
+  "url": "{{ site.url }}/it-support-childcare-perth",
   "provider": {
     "@type": "LocalBusiness",
-    "@id": "https://www.fixmypcperth.com/#business",
+    "@id": "{{ site.url }}/#business",
     "name": "FixMyPC Perth",
     "telephone": "+61452573701",
     "priceRange": "$$",
@@ -69,7 +69,7 @@ description: "Managed IT support for Perth childcare centres. Xplor and Storypar
         "price": "{{ pl.price }}",
         "priceCurrency": "{{ site.data.services.meta.currency }}",
         "availability": "https://schema.org/InStock",
-        "seller": {"@id": "https://www.fixmypcperth.com/#business"}
+        "seller": {"@id": "{{ site.url }}/#business"}
       }
       {%- endfor -%}
     ]
@@ -82,9 +82,9 @@ description: "Managed IT support for Perth childcare centres. Xplor and Storypar
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.fixmypcperth.com/"},
-    {"@type": "ListItem", "position": 2, "name": "Business IT Support", "item": "https://www.fixmypcperth.com/business-it-support"},
-    {"@type": "ListItem", "position": 3, "name": "Childcare Centres", "item": "https://www.fixmypcperth.com/it-support-childcare-perth"}
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "{{ site.url }}/"},
+    {"@type": "ListItem", "position": 2, "name": "Business IT Support", "item": "{{ site.url }}/business-it-support"},
+    {"@type": "ListItem", "position": 3, "name": "Childcare Centres", "item": "{{ site.url }}/it-support-childcare-perth"}
   ]
 }
 </script>

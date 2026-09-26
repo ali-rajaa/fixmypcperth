@@ -22,7 +22,7 @@ heading: "Computer Repair Services in Perth"
 {%- endcomment -%}
 {%- assign _R = site.data.reviews.meta -%}
 {%- assign _svcs = site.data.suburbs.service_links | where: "kind", "service" | where: "built", true -%}
-{%- assign _url = "https://www.fixmypcperth.com/services" -%}
+{%- assign _url = site.url | append: "/services" -%}
 
 <script type="application/ld+json">
 {
@@ -32,7 +32,7 @@ heading: "Computer Repair Services in Perth"
   "itemListElement": [
     {%- for _v in _svcs -%}
     {%- unless forloop.first %},{% endunless %}
-    { "@type": "ListItem", "position": {{ forloop.index }}, "name": {{ _v.label | jsonify }}, "url": "https://www.fixmypcperth.com/{{ _v.slug }}" }
+    { "@type": "ListItem", "position": {{ forloop.index }}, "name": {{ _v.label | jsonify }}, "url": "{{ site.url }}/{{ _v.slug }}" }
     {%- endfor %}
   ]
 }
@@ -42,7 +42,7 @@ heading: "Computer Repair Services in Perth"
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.fixmypcperth.com/"},
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "{{ site.url }}/"},
     {"@type": "ListItem", "position": 2, "name": "Services", "item": "{{ _url }}"}
   ]
 }

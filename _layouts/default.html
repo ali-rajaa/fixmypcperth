@@ -17,7 +17,7 @@
   site drops it. Without this the canonical named a second address for
   each page, splitting its search signals between the two. {%- endcomment -%}
   {%- assign _clean_url = page.url | replace: "/index.html", "/" | replace: ".html", "" -%}
-  <link rel="canonical" href="https://www.fixmypcperth.com{{ _clean_url }}">
+  <link rel="canonical" href="{{ site.url }}{{ _clean_url }}">
   {%- if site.staging or page.noindex %}
   <meta name="robots" content="noindex, nofollow">
   {%- else %}
@@ -36,36 +36,41 @@
   <meta property="og:site_name" content="FixMyPC Perth">
   <meta property="og:title" content="{{ _title }}">
   <meta property="og:description" content="{{ _desc }}">
-  <meta property="og:url" content="https://www.fixmypcperth.com{{ _clean_url }}">
-  {%- comment -%} Suburb pages share one 1200x630 card, so adding a suburb
-  never needs an image. The Tech Tips hub and every guide share a second one,
-  the same card with a Tech Tips label, which is also the BlogPosting image
-  in the guide schema (Google wants articles to carry a wide image, not the
-  square logo). Every other page keeps the square logo, and the card type
-  follows the image: a square logo in a wide "large image" preview is
-  cropped badly, so it gets the small summary card instead. {%- endcomment -%}
-  {%- if page.layout == "suburb" -%}
+  <meta property="og:url" content="{{ site.url }}{{ _clean_url }}">
+  <meta property="og:locale" content="en_AU">
+  {%- comment -%} Every page shares a wide 1200x630 card, so every preview
+  gets the large image. A page can name its own with "image:" (and
+  "image_alt:") in front matter: the nine service pages, pricing and
+  business IT do, from /assets/og/. Suburb pages share one card, so adding a
+  suburb never needs an image. The Tech Tips hub and every guide share a
+  second, which is also the BlogPosting image in the guide schema. Anything
+  else falls back to the default card. To make a new card, copy the style
+  of the existing ones at 1200x630. {%- endcomment -%}
+  {%- if page.image -%}
+    {%- assign _og_img = page.image -%}
+    {%- capture _og_alt_d %}FixMyPC Perth: {{ page.heading | default: page.title }}{% endcapture -%}
+    {%- assign _og_alt = page.image_alt | default: _og_alt_d -%}
+  {%- elsif page.layout == "suburb" -%}
     {%- assign _og_img = "/og-suburbs.png" -%}
-    {%- assign _og_card = "summary_large_image" -%}
     {%- assign _og_alt = "FixMyPC Perth: computer and laptop repairs across Perth's southern suburbs" -%}
   {%- elsif page.layout == "tech-tip" or page.css == "tech-tips" -%}
     {%- assign _og_img = "/og-tech-tips.png" -%}
-    {%- assign _og_card = "summary_large_image" -%}
     {%- assign _og_alt = "FixMyPC Perth Tech Tips: computer and laptop repair guides from our Canning Vale workshop" -%}
   {%- else -%}
-    {%- assign _og_img = "/logo.png" -%}
-    {%- assign _og_card = "summary" -%}
+    {%- assign _og_img = "/assets/og/default.png" -%}
+    {%- assign _og_alt = "FixMyPC Perth: computer and laptop repairs from our Canning Vale workshop" -%}
   {%- endif %}
-  <meta property="og:image" content="https://www.fixmypcperth.com{{ _og_img }}">
-  {%- if _og_card == "summary_large_image" %}
+  <meta property="og:image" content="{{ site.url }}{{ _og_img }}">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="{{ _og_alt }}">
-  {%- endif %}
-  <meta name="twitter:card" content="{{ _og_card }}">
-  <meta name="twitter:image" content="https://www.fixmypcperth.com{{ _og_img }}">
+  <meta property="og:image:alt" content="{{ _og_alt | escape }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="{{ site.url }}{{ _og_img }}">
+  <meta name="twitter:image:alt" content="{{ _og_alt | escape }}">
 
-  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" type="image/png" href="/favicon.png" sizes="96x96">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <meta name="theme-color" content="#0F172A">
 
   <meta name="geo.region" content="AU-WA">
@@ -73,19 +78,29 @@
   <meta name="geo.position" content="-32.0697802;115.9245929">
   <meta name="ICBM" content="-32.0697802, 115.9245929">
 
-  <!-- Size-matched fallbacks. Fonts load asynchronously, so text first
-       paints in a system font and swaps to Sora / DM Sans when they arrive.
-       These faces scale the system font to the real fonts' measured width
-       and line metrics (from the woff2 files, Arial as the base), so the
-       swap no longer shifts the layout. -->
+  <!-- Fonts are served from this site (assets/fonts), not Google Fonts: no
+       third-party connection before text can paint. Sora and DM Sans are
+       variable fonts, one file per style covering every weight, split into
+       latin and latin-ext; the browser only fetches latin-ext for a page
+       that uses one of its characters. The two latin files are preloaded
+       because every page needs them.
+
+       The fallback faces scale the system font to the real fonts' measured
+       width and line metrics (from the woff2 files, Arial as the base), so
+       text that first paints in Arial does not shift when the swap
+       happens. -->
+  <link rel="preload" href="/assets/fonts/sora-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
   <style>
+    @font-face { font-family:'Sora'; font-style:normal; font-weight:400 800; font-display:swap; src:url(/assets/fonts/sora-latin.woff2) format('woff2'); unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+    @font-face { font-family:'Sora'; font-style:normal; font-weight:400 800; font-display:swap; src:url(/assets/fonts/sora-latin-ext.woff2) format('woff2'); unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+    @font-face { font-family:'DM Sans'; font-style:normal; font-weight:400 600; font-display:swap; src:url(/assets/fonts/dm-sans-latin.woff2) format('woff2'); unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+    @font-face { font-family:'DM Sans'; font-style:normal; font-weight:400 600; font-display:swap; src:url(/assets/fonts/dm-sans-latin-ext.woff2) format('woff2'); unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+    @font-face { font-family:'DM Sans'; font-style:italic; font-weight:400; font-display:swap; src:url(/assets/fonts/dm-sans-italic-latin.woff2) format('woff2'); unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+    @font-face { font-family:'DM Sans'; font-style:italic; font-weight:400; font-display:swap; src:url(/assets/fonts/dm-sans-italic-latin-ext.woff2) format('woff2'); unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
     @font-face { font-family:'Sora Fallback'; src:local('Arial Bold'), local('Arial-BoldMT'), local('Helvetica Neue Bold'), local('Liberation Sans Bold'), local('Roboto Bold'); size-adjust:108.07%; ascent-override:89.75%; descent-override:26.83%; line-gap-override:0%; }
     @font-face { font-family:'DM Sans Fallback'; src:local('Arial'), local('ArialMT'), local('Helvetica Neue'), local('Liberation Sans'), local('Roboto'); size-adjust:104.6%; ascent-override:94.85%; descent-override:29.65%; line-gap-override:0%; }
   </style>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet"></noscript>
 
   <!-- Each page loads its own stylesheet. Set "css:" in a page's front matter
        to pick one, for example "css: pricing" loads pages/pricing.css. Pages

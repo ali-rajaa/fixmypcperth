@@ -416,8 +416,10 @@ existed on the live site, so it needs no redirect.
 
 **SEO at launch (production), found in the laptop repair audit:**
 
-- `robots.txt` and the robots meta tag follow `staging` in _config.yml:
-  blocked and noindex while true, open with a Sitemap line when false.
+- `robots.txt` lets crawlers in on both sites; only the live one (staging:
+  false) names the sitemap. `staging: true` adds noindex to every page,
+  and that is what keeps staging out of Google (a Disallow would stop
+  Google reading the noindex).
 - `sitemap.xml` is built from the pages (clean URLs, no .html).
 - The `.html` duplicates Search Console lists are in the redirect CSV.
 - Old production `/laptop-repair-perth` had a canonical pointing at a URL that
@@ -502,6 +504,25 @@ bulk list `fixmypcperth_launch` holds the 73 redirects and is live.
 Cloudflare .html rule runs first, which is fine. Staging stays as the
 private preview (noindex). Keep both repos identical except CNAME and
 `staging`.
+
+**After launch (SEO audit, applied 26 Sep 2026):**
+
+- Every page now has a wide 1200x630 share card (summary_large_image).
+  The nine service pages, pricing and business IT set their own with
+  `image:` / `image_alt:` in front matter (cards in `assets/og/`);
+  suburbs and Tech Tips keep theirs; everything else uses
+  `assets/og/default.png`. `og:locale` is en_AU.
+- H1s: /reviews "Computer repair reviews from Perth customers", /quote-request
+  "Get a Free Computer Repair Quote in Perth".
+- Fonts are self-hosted from `assets/fonts` (Sora and DM Sans variable
+  woff2, latin preloaded); Google Fonts is no longer called.
+- Favicons: favicon.ico (16/32/48), favicon.png 96px, apple-touch-icon.png
+  180px.
+- `url:` is set in _config.yml; templates build full URLs from
+  `{{ site.url }}` instead of typing the domain.
+- Suburb FAQ schema holds only each suburb's own questions; the five
+  general ones repeated on every suburb page are visible but no longer
+  marked up.
 
 Everything is in LAUNCH.md, in order: Cloudflare redirects, a final
 staging pass, the switch (copy to the live repo, CNAME, `staging: false`,
