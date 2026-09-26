@@ -512,7 +512,7 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body)
 
   /* Buttons */
   .pr-book, .btn-outline { min-height: var(--m-btn); padding-top: 0; padding-bottom: 0; }
-  .pr-book { font-size: var(--m-text-min); }
+  .pr-book { font-size: var(--m-text-min); min-width: 96px; padding-left: 20px; padding-right: 20px; }
   .pr-sec .btn-outline { width: 100%; justify-content: center; }
 
   .pr-sec-title + * { margin-top: 0; }

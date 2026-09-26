@@ -446,6 +446,10 @@ textarea.tq-input { resize: vertical; min-height: 88px; }
 
   /* Cards and the boxes inside them */
   .sv-index, .sv-mid, .sv-steps > li, .audit-block, .sv-hub-link, .sv-price { padding: var(--m-card-pad); border-radius: var(--m-card-radius); }
+  /* The compact price line is a plain line under a repair, not a card:
+     price, then name, with "What it covers" under the name. */
+  .sv-price-compact { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 12px; align-items: baseline; padding: 12px 0 0; border-radius: 0; }
+  .sv-price-compact .sv-price-more { grid-column: 2; justify-self: start; margin-left: 0; min-height: 44px; }
 
   /* Gaps */
   .sv-steps, .sv-hub { gap: var(--m-gap-cards); }
