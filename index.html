@@ -59,10 +59,10 @@ description: "Computer repair Perth, flat [[diagnostic-repair-all-in]] covering 
       "closes": "23:59"
     }
   ],
-  "hasMap": "https://www.google.com/maps/search/?api=1&query=7+Barraberry+Retreat+Canning+Vale+WA+6155",
+  "hasMap": "{{ site.data.reviews.meta.profile_url }}",
   "sameAs": [
     "https://www.facebook.com/profile.php?id=61588810785733",
-    "https://www.google.com/maps/place/FixMyPC+Perth/@-32.0697802,115.922018,17z/data=!3m1!4b1!4m6!3m5!1s0x2a32972020981243:0x3d33799da9010e17!8m2!3d-32.0697802!4d115.9245929"
+    "{{ site.data.reviews.meta.profile_url }}"
   ],
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
@@ -351,7 +351,7 @@ description: "Computer repair Perth, flat [[diagnostic-repair-all-in]] covering 
       <div class="hc-collapse">
       <div class="hc-body" id="hcBody">
 
-        <a href="https://www.google.com/maps/place/FixMyPC+Perth/@-32.0697802,115.922018,17z/data=!3m1!4b1!4m6!3m5!1s0x2a32972020981243:0x3d33799da9010e17!8m2!3d-32.0697802!4d115.9245929" target="_blank" rel="noopener noreferrer" class="mq-rating" aria-label="Read FixMyPC Perth reviews on Google">
+        <a href="{{ site.data.reviews.meta.reviews_url }}" target="_blank" rel="noopener noreferrer" class="mq-rating" aria-label="Read FixMyPC Perth reviews on Google">
           {% include stars.html value=site.data.reviews.meta.rating %}
           <span class="mq-rating-text">{{ site.data.reviews.meta.rating }} on Google <span>&middot; read our reviews</span></span>
         </a>
@@ -769,7 +769,7 @@ description: "Computer repair Perth, flat [[diagnostic-repair-all-in]] covering 
       {%- endfor %}
     </div>
       <div class="slide-hint" aria-hidden="true"><span class="pkg-swipe-hint">Swipe<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></div>
-    <p class="testi-more fade-up"><a href="https://www.google.com/maps/place/FixMyPC+Perth/@-32.0697802,115.922018,17z/data=!3m1!4b1!4m6!3m5!1s0x2a32972020981243:0x3d33799da9010e17!8m2!3d-32.0697802!4d115.9245929" target="_blank" rel="noopener noreferrer">Read our reviews on Google</a><span aria-hidden="true"> · </span>Have a story of your own? <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20to%20leave%20a%20review." target="_blank" rel="noopener noreferrer">Send it over on WhatsApp</a>.</p>
+    <p class="testi-more fade-up"><a href="{{ site.data.reviews.meta.reviews_url }}" target="_blank" rel="noopener noreferrer">Read our reviews on Google</a><span aria-hidden="true"> · </span>Had a repair with us? <a href="{{ site.data.reviews.meta.write_review_url }}" target="_blank" rel="noopener noreferrer">Leave a Google review</a>.</p>
   </div>
 </section>
 
