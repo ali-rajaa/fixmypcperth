@@ -309,6 +309,20 @@ a    { color:inherit; }
 @media (hover: hover) { .trust-track:hover { animation-play-state:paused; } }
 .trust-item { display:inline-flex; align-items:center; gap:8px; padding:0 2.5rem; font-size:13px; font-weight:600; color:rgba(255,255,255,0.85); white-space:nowrap; }
 .trust-dot { width:4px; height:4px; background:var(--blue); border-radius:50%; flex-shrink:0; }
+
+/* Ticker with motion turned off (reduced motion): it cannot scroll, so
+   instead of a frozen strip cut off at the edge it shows the first four
+   promises, centred and evenly spaced, and a 2 x 2 grid on phones. */
+@media (prefers-reduced-motion: reduce) {
+  .trust-track { animation: none; flex-wrap: wrap; justify-content: center; gap: 8px 0; white-space: normal; transform: none; }
+  .trust-item:nth-child(n+5) { display: none; }
+  .trust-item { padding: 0 1.75rem; }
+}
+@media (prefers-reduced-motion: reduce) and (max-width: 720px) {
+  .trust-track { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 16px; padding: 0 20px; }
+  .trust-item { padding: 0; white-space: normal; align-items: flex-start; line-height: 1.4; }
+  .trust-dot { margin-top: 0.5em; flex-shrink: 0; }
+}
 .section { padding:6rem 2rem; }
 .section-alt { background:var(--bg2); }
 .included-banner { display:flex; align-items:center; gap:14px; background:linear-gradient(135deg,var(--blue-lt) 0%,#fff 100%); border:1.5px solid var(--blue-mid); border-radius:16px; padding:1.1rem 1.4rem; margin-bottom:2rem; flex-wrap:wrap; }

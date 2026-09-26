@@ -433,8 +433,9 @@ schema catalogue. {%- endcomment -%}
         </div>
 
         <div class="tq-field">
-          <label class="tq-label" for="tq-email">Email <span class="tq-opt">Optional</span></label>
-          <input class="tq-input" id="tq-email" name="Email" type="email" autocomplete="email">
+          <label class="tq-label" for="tq-email">Email</label>
+          <input class="tq-input" id="tq-email" name="Email" type="email" autocomplete="email" placeholder="you@example.com" required aria-describedby="tq-email-err">
+          <p class="tq-err" id="tq-email-err" hidden>Please enter a valid email address.</p>
         </div>
 
         <fieldset class="tq-group">
@@ -549,7 +550,8 @@ schema catalogue. {%- endcomment -%}
   var checks = {
     'tq-device': function () { return !!form.querySelector('input[name="Device Type"]:checked'); },
     'tq-name':   function (v) { return v.trim().length > 0; },
-    'tq-phone':  function (v) { return phoneRe.test(v.replace(/[\s().-]/g, '')); }
+    'tq-phone':  function (v) { return phoneRe.test(v.replace(/[\s().-]/g, '')); },
+    'tq-email':  function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()); }
   };
   function check(id) {
     var el = document.getElementById(id);
@@ -558,7 +560,7 @@ schema catalogue. {%- endcomment -%}
     document.getElementById(id + '-err').hidden = ok;
     return ok;
   }
-  ['tq-name', 'tq-phone'].forEach(function (id) {
+  ['tq-name', 'tq-phone', 'tq-email'].forEach(function (id) {
     var el = document.getElementById(id);
     el.addEventListener('blur', function () { if (el.value) check(id); });
     el.addEventListener('input', function () { if (el.getAttribute('aria-invalid') === 'true') check(id); });

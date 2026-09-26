@@ -333,6 +333,20 @@ img { max-width: 100%; height: auto; }
   white-space: nowrap;
 }
 .trust-dot { width: 4px; height: 4px; background: var(--blue); border-radius: 50%; }
+
+/* Ticker with motion turned off (reduced motion): it cannot scroll, so
+   instead of a frozen strip cut off at the edge it shows the first four
+   promises, centred and evenly spaced, and a 2 x 2 grid on phones. */
+@media (prefers-reduced-motion: reduce) {
+  .trust-track { animation: none; flex-wrap: wrap; justify-content: center; gap: 8px 0; white-space: normal; transform: none; }
+  .trust-item:nth-child(n+5) { display: none; }
+  .trust-item { padding: 0 1.75rem; }
+}
+@media (prefers-reduced-motion: reduce) and (max-width: 720px) {
+  .trust-track { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 16px; padding: 0 20px; }
+  .trust-item { padding: 0; white-space: normal; align-items: flex-start; line-height: 1.4; }
+  .trust-dot { margin-top: 0.5em; flex-shrink: 0; }
+}
 /* ─── FREE AUDIT BANNER ──────────────────────────────────────── */
 .audit-strip { padding: 1.6rem 2rem !important; background: linear-gradient(135deg, var(--blue) 0%, #0A3ACC 100%); }
 .audit-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }

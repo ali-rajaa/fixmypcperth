@@ -90,9 +90,9 @@ description: "Get a computer repair quote from FixMyPC Perth in Canning Vale. Te
           </label>
         </div>
         <label class="qr-field">
-          <span class="qr-label">Email address <span class="qr-opt-note">optional</span></span>
-          <input type="email" name="Email" id="qrEmail" autocomplete="email" aria-describedby="errEmail">
-          <span class="qr-err" id="errEmail">That email address does not look right.</span>
+          <span class="qr-label">Email address <span class="req">*</span></span>
+          <input type="email" name="Email" id="qrEmail" autocomplete="email" placeholder="you@example.com" aria-describedby="errEmail">
+          <span class="qr-err" id="errEmail">Please enter a valid email address.</span>
         </label>
 
         <fieldset class="qr-contact">
@@ -185,7 +185,7 @@ description: "Get a computer repair quote from FixMyPC Perth in Canning Vale. Te
     if (chosen().length) done++;
     if (device.value) done++;
     if (desc.value.trim()) done++;
-    if (name.value.trim() && PHONE.test(phone.value.replace(/[\s\-()]/g, ''))) done++;
+    if (name.value.trim() && PHONE.test(phone.value.replace(/[\s\-()]/g, '')) && EMAIL.test(email.value.trim())) done++;
     var p = Math.round(done / 4 * 100);
     fill.style.width = p + '%';
     pct.textContent = p + '% complete';
@@ -237,7 +237,7 @@ description: "Get a computer repair quote from FixMyPC Perth in Canning Vale. Te
     if (desc.value.trim()) err('errDesc', false, desc);
     if (name.value.trim()) err('errName', false, name);
     if (PHONE.test(phone.value.replace(/[\s\-()]/g, ''))) err('errPhone', false, phone);
-    if (!email.value.trim() || EMAIL.test(email.value.trim())) err('errEmail', false, email);
+    if (EMAIL.test(email.value.trim())) err('errEmail', false, email);
   }
 
   form.addEventListener('input', function () { revalidate(); progress(); save(); });
@@ -259,7 +259,7 @@ description: "Get a computer repair quote from FixMyPC Perth in Canning Vale. Te
     if (!desc.value.trim()) { err('errDesc', true, desc); ok = false; } else err('errDesc', false, desc);
     if (!name.value.trim()) { err('errName', true, name); ok = false; } else err('errName', false, name);
     if (!PHONE.test(phone.value.replace(/[\s\-()]/g, ''))) { err('errPhone', true, phone); ok = false; } else err('errPhone', false, phone);
-    if (email.value.trim() && !EMAIL.test(email.value.trim())) { err('errEmail', true, email); ok = false; } else err('errEmail', false, email);
+    if (!EMAIL.test(email.value.trim())) { err('errEmail', true, email); ok = false; } else err('errEmail', false, email);
 
     if (!ok) {
       /* Move focus to the first problem as well, so a keyboard or screen
