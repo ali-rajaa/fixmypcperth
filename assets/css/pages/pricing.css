@@ -182,15 +182,20 @@ body { background:var(--bg); color:var(--ink); font-family:var(--body); font-siz
 @media (hover: hover) { .pr-side-cta:hover { border-color:var(--blue); color:var(--blue); } }
 .pr-side-cta:active { transform:scale(0.97); }
 
-.pr-wide { padding-top:3.25rem; }
-
 /* ---------- sections ---------- */
 .pr-main { min-width:0; padding-bottom:2rem; }
 .pr-sec { padding:0 0 2.5rem; }
 .pr-sec:first-of-type { padding-top:0; }
+/* The full-width sections below the price list (business IT, rules,
+   service pages, FAQ). Two classes so it outranks .pr-sec's padding
+   shorthand and :first-of-type, which had reset this to zero and left
+   each heading pressed against the section above. */
+.pr-sec.pr-wide { padding-top:3.25rem; }
 .pr-sec-title { font-family:var(--display); font-size:clamp(1.25rem,2.4vw,1.6rem); font-weight:800; letter-spacing:-0.027em; color:var(--ink); margin:0 0 0.4rem; display:flex; align-items:center; gap:10px; }
 .pr-sec-count { font-family:var(--body); font-size:12px; font-weight:700; color:var(--muted); background:var(--bg3); border-radius:6px; padding:3px 8px; }
 .pr-sec-blurb { font-size:14.5px; color:var(--muted); line-height:1.65; max-width:64ch; margin:0 0 1.2rem; }
+.pr-sec-blurb a:where(:not([class])) { color:var(--blue); font-weight:600; text-decoration:none; border-bottom:1px solid var(--blue-mid); }
+@media (hover: hover) { .pr-sec-blurb a:where(:not([class])):hover { color:var(--blue-dk); border-bottom-color:var(--blue-dk); } }
 
 /* Sub-headings inside a section. 18 repairs in one run reads as a dump; four
    named groups of four or five reads as a list you can scan. */
@@ -336,7 +341,7 @@ body { background:var(--bg); color:var(--ink); font-family:var(--body); font-siz
   .pr-layout { grid-template-columns:1fr; gap:0; padding-top:1.5rem; }
   .pr-side { display:none; }
   .pr-chips { display:flex; }
-  .pr-wide { padding-top:2.5rem; }
+  .pr-sec.pr-wide { padding-top:2.5rem; }
 }
 
 @media (max-width:900px) {
