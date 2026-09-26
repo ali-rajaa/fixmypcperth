@@ -27,6 +27,28 @@
    ========================================================== */
 
 :root {
+  /* Mobile standard (phones, max-width 720px). Identical in every page
+     stylesheet; the "MOBILE STANDARD" block at the end of this file maps
+     this page's classes onto them. */
+  --m-gutter: 20px;
+  --m-section: 48px;
+  --m-block: 24px;
+  --m-hero-top: 24px;
+  --m-band: 24px;
+  --m-card-pad: 20px;
+  --m-card-radius: 14px;
+  --m-panel-pad: 16px;
+  --m-panel-radius: 12px;
+  --m-row-pad: 14px 16px;
+  --m-gap-cards: 12px;
+  --m-gap-rows: 10px;
+  --m-h1: 1.7rem;
+  --m-h2: 1.3rem;
+  --m-h2-space: 12px;
+  --m-text: 16px;
+  --m-text-min: 13px;
+  --m-btn: 48px;
+
   --blue:    #1560FF;
   --blue-lt: #EEF3FF;
   --blue-dk: #0A3ACC;
@@ -389,4 +411,61 @@ textarea.tq-input { resize: vertical; min-height: 88px; }
 @media (prefers-contrast: more) {
   .faq-a p:where(:not([class])) { color:#334155; }
   .faq-item { border-color:#0F172A; }
+}
+
+/* ==========================================================
+   MOBILE STANDARD, phones (max-width: 720px)
+   The same numbers on every page (tokens in :root, --m-*):
+     side margin 20 | sections 48 top and bottom, hero 24 on top |
+     thin bands 24 | cards and lists inside a section 24 above and
+     below | cards 20 padding, 14 corners | boxes inside a
+     card 16 padding, 12 corners | table-style rows 14/16 |
+     gaps: 12 between cards, 10 between stacked rows |
+     H1 1.7rem | H2 1.3rem with 12 below | reading text 16px |
+     no sentence under 13px | buttons 48px tall, full width.
+   It sits last in the file on purpose, so it wins over the older
+   per-breakpoint values above it. Desktop is untouched.
+   ========================================================== */
+@media (max-width: 720px) {
+  /* Side margin and page top: 20px sides, 24px under the header */
+  .sv { padding-left: var(--m-gutter); padding-right: var(--m-gutter); padding-top: calc(var(--mob-nav-h) + var(--m-hero-top)); }
+
+  /* Article head: 24 under the breadcrumb, 12 under the label, 16 under
+     the headline, 24 under the intro; then 48 to the next block */
+  .sv-crumbs { margin-bottom: 24px; }
+  .sv-eyebrow { margin-bottom: 12px; }
+  .sv-h1 { font-size: var(--m-h1); margin-bottom: 16px; }
+  .sv-lede { margin-bottom: 24px; }
+  .sv-head { margin-bottom: var(--m-section); }
+  .sv-head > :last-child { margin-bottom: 0; }
+
+  /* Every block and every section ends 48 above the next */
+  .sv-index, .sv-intro, .sv-group, .sv-extra, .sv-steps-wrap, .sv-costs, .sv-faq,
+  .sv-more, .sv-hub, .sv-mid { margin-bottom: var(--m-section); }
+  .sv-group .sv-repair:last-child, .sv-body > :last-child { margin-bottom: 0; }
+
+  /* Cards and the boxes inside them */
+  .sv-index, .sv-mid, .sv-steps > li, .audit-block, .sv-hub-link, .sv-price { padding: var(--m-card-pad); border-radius: var(--m-card-radius); }
+
+  /* Gaps */
+  .sv-steps, .sv-hub { gap: var(--m-gap-cards); }
+  .sv-faq-list { gap: var(--m-gap-rows); }
+
+  /* Headings */
+  .sv-h2 { font-size: var(--m-h2); margin-bottom: var(--m-h2-space); }
+  .sv-faq .sv-h2 { margin-bottom: var(--m-h2-space); }
+  .sv-head .sv-act { margin-bottom: var(--m-block); }
+  .sv-promise { padding-bottom: var(--m-block); margin-bottom: 0; }
+  .audit-block { margin-top: var(--m-section); margin-bottom: var(--m-section); }
+  .audit-block-title { font-size: var(--m-h2); margin-bottom: var(--m-h2-space); }
+
+  /* Text */
+  .sv-lede, .sv-prose > p, .sv-intro > p { font-size: var(--m-text); }
+  .tq-label, .tq-trust, .sv-links-sub { font-size: var(--m-text-min); }
+
+  /* Buttons */
+  .sv-btn, .tq-submit { min-height: var(--m-btn); padding-top: 0; padding-bottom: 0; width: 100%; justify-content: center; }
+
+  .sv-h2 + * { margin-top: 0; }
+  .sv-table > thead > tr > th, .sv-table > thead > tr > .sv-num { font-size: var(--m-text-min); }
 }

@@ -23,7 +23,29 @@
    blue on a blue fill. Use a child combinator or a class.
    ========================================================== */
 
-:root { --blue: #1560FF; --blue-lt: #EEF3FF; --blue-mid: #C7D8FF; --blue-dk: #0A3ACC; --ink: #0F172A; --ink2: #1E293B; --muted: #64748B; --muted2: #94A3B8; --border: #E2E8F0; --border2: #CBD5E1; --bg: #FFFFFF; --bg2: #F8FAFC; --bg3: #F1F5F9; --wa: #22C55E; --wa-dk: #15803D; --wa-deep: #166534; --gold: #F59E0B; --teal: #00CFFF; --green: #16A34A; --display: 'Sora', 'Sora Fallback', sans-serif; --body: 'DM Sans', 'DM Sans Fallback', sans-serif; --radius: 14px; --nav-h: 64px; --mob-nav-h: 60px; --ease-settle: cubic-bezier(0.16, 1, 0.3, 1); --ease-press: cubic-bezier(0.4, 0, 0.2, 1); }
+:root {
+  /* Mobile standard (phones, max-width 720px). Identical in every page
+     stylesheet; the "MOBILE STANDARD" block at the end of this file maps
+     this page's classes onto them. */
+  --m-gutter: 20px;
+  --m-section: 48px;
+  --m-block: 24px;
+  --m-hero-top: 24px;
+  --m-band: 24px;
+  --m-card-pad: 20px;
+  --m-card-radius: 14px;
+  --m-panel-pad: 16px;
+  --m-panel-radius: 12px;
+  --m-row-pad: 14px 16px;
+  --m-gap-cards: 12px;
+  --m-gap-rows: 10px;
+  --m-h1: 1.7rem;
+  --m-h2: 1.3rem;
+  --m-h2-space: 12px;
+  --m-text: 16px;
+  --m-text-min: 13px;
+  --m-btn: 48px;
+ --blue: #1560FF; --blue-lt: #EEF3FF; --blue-mid: #C7D8FF; --blue-dk: #0A3ACC; --ink: #0F172A; --ink2: #1E293B; --muted: #64748B; --muted2: #94A3B8; --border: #E2E8F0; --border2: #CBD5E1; --bg: #FFFFFF; --bg2: #F8FAFC; --bg3: #F1F5F9; --wa: #22C55E; --wa-dk: #15803D; --wa-deep: #166534; --gold: #F59E0B; --teal: #00CFFF; --green: #16A34A; --display: 'Sora', 'Sora Fallback', sans-serif; --body: 'DM Sans', 'DM Sans Fallback', sans-serif; --radius: 14px; --nav-h: 64px; --mob-nav-h: 60px; --ease-settle: cubic-bezier(0.16, 1, 0.3, 1); --ease-press: cubic-bezier(0.4, 0, 0.2, 1); }
 * { box-sizing: border-box; }
 *::before { box-sizing: border-box; }
 *::after { box-sizing: border-box; }
@@ -368,4 +390,63 @@ body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--b
 @media (prefers-contrast: more) {
   .faq-a p:where(:not([class])) { color:#334155; }
   .faq-item { border-color:#0F172A; }
+}
+
+/* ==========================================================
+   MOBILE STANDARD, phones (max-width: 720px)
+   The same numbers on every page (tokens in :root, --m-*):
+     side margin 20 | sections 48 top and bottom, hero 24 on top |
+     thin bands 24 | cards and lists inside a section 24 above and
+     below | cards 20 padding, 14 corners | boxes inside a
+     card 16 padding, 12 corners | table-style rows 14/16 |
+     gaps: 12 between cards, 10 between stacked rows |
+     H1 1.7rem | H2 1.3rem with 12 below | reading text 16px |
+     no sentence under 13px | buttons 48px tall, full width.
+   It sits last in the file on purpose, so it wins over the older
+   per-breakpoint values above it. Desktop is untouched.
+   ========================================================== */
+@media (max-width: 720px) {
+  /* Side margin and page top */
+  .suburb-wrap { padding-left: var(--m-gutter); padding-right: var(--m-gutter); padding-top: var(--m-hero-top); }
+
+  /* Article head: 24 under the breadcrumb, 12 under the label, 16 under
+     the headline, 24 under the intro and the byline; 48 to the next block */
+  .sub-breadcrumb { margin-bottom: 24px; }
+  .sub-cat { margin-bottom: 12px; }
+  .sub-h1 { font-size: var(--m-h1); margin-bottom: 16px; }
+  .sub-standfirst { margin-bottom: 24px; }
+  .sub-meta { padding-bottom: 24px; margin-bottom: var(--m-section); }
+  .travel-box { margin-bottom: var(--m-section); }
+
+  /* Body: 48 above every section heading, 24 around the cards and lists
+     inside a section, 48 around the big call-to-action boxes */
+  .sub-body h2:where(:not([class])) { margin-top: var(--m-section); margin-bottom: var(--m-h2-space); }
+  .sub-body h2:where(:not([class])):first-child { margin-top: 0; }
+  .sub-toc { margin-bottom: var(--m-section); }
+  .problem-grid, .price-table, .process-list, .sub-note, .quick-answer { margin-top: var(--m-block); margin-bottom: var(--m-block); }
+  .sub-faq { margin-top: var(--m-block); }
+  .sub-cta, .quote-block { margin-top: var(--m-section); margin-bottom: var(--m-section); }
+  .link-block { margin-top: var(--m-section); padding-top: var(--m-block); }
+
+  /* Cards, notes and the boxes inside them */
+  .travel-box, .sub-toc, .problem-card, .process-item, .sub-cta, .quote-block { padding: var(--m-card-pad); border-radius: var(--m-card-radius); }
+  .price-table { border-radius: var(--m-card-radius); }
+  .sub-note, .quick-answer { padding: var(--m-card-pad); border-radius: 0 var(--m-panel-radius) var(--m-panel-radius) 0; }
+  .travel-grid { border-radius: var(--m-panel-radius); }
+
+  /* Gaps */
+  .problem-grid, .process-list, .quote-grid { gap: var(--m-gap-cards); }
+  .sub-faq { gap: var(--m-gap-rows); }
+
+  /* Text */
+  .sub-standfirst, .sub-body > p, .quick-answer p:where(:not([class])), .sub-body > ul > li { font-size: var(--m-text); }
+  .sub-breadcrumb, .sub-breadcrumb > span, .sub-meta, .sub-meta > span, .travel-lbl, .price-row-sub,
+  .quote-label, .link-chip { font-size: var(--m-text-min); }
+
+  /* Buttons */
+  .sub-cta-btn, .sub-cta-btn-outline, .quote-submit { min-height: var(--m-btn); padding-top: 0; padding-bottom: 0; width: 100%; justify-content: center; }
+
+  .sub-body h2:where(:not([class])) + * { margin-top: 0; }
+  .sub-note p:where(:not([class])) { font-size: var(--m-text); }
+  .link-row { gap: 8px; }
 }

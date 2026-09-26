@@ -3,6 +3,27 @@
 /* index.css   VERSION 6 - Apple-design pass: critically damped hover, instant press feedback, reduced-motion sweep. .wa-bubble moved to shell.css (was duplicated, and shell.css is where it belongs since it ships in a shared include). :root tokens intact. */
 
 :root {
+  /* Mobile standard (phones, max-width 720px). Identical in every page
+     stylesheet; the "MOBILE STANDARD" block at the end of this file maps
+     this page's classes onto them. */
+  --m-gutter: 20px;
+  --m-section: 48px;
+  --m-hero-top: 24px;
+  --m-band: 24px;
+  --m-card-pad: 20px;
+  --m-card-radius: 14px;
+  --m-panel-pad: 16px;
+  --m-panel-radius: 12px;
+  --m-row-pad: 14px 16px;
+  --m-gap-cards: 12px;
+  --m-gap-rows: 10px;
+  --m-h1: 1.7rem;
+  --m-h2: 1.3rem;
+  --m-h2-space: 12px;
+  --m-text: 16px;
+  --m-text-min: 13px;
+  --m-btn: 48px;
+
   --blue:      #1560FF;
   --blue-lt:   #EEF3FF;
   --blue-mid:  #C7D8FF;
@@ -959,4 +980,83 @@ body { padding-top:var(--mob-nav-h); }
 @media (prefers-contrast: more) {
   .faq-a p:where(:not([class])) { color:#334155; }
   .faq-item { border-color:#0F172A; }
+}
+
+/* ==========================================================
+   MOBILE STANDARD, phones (max-width: 720px)
+   The same numbers on every page (tokens in :root, --m-*):
+     side margin 20 | sections 48 top and bottom, hero 24 on top |
+     thin bands 24 | cards and lists inside a section 24 above and
+     below | cards 20 padding, 14 corners | boxes inside a
+     card 16 padding, 12 corners | table-style rows 14/16 |
+     gaps: 12 between cards, 10 between stacked rows |
+     H1 1.7rem | H2 1.3rem with 12 below | reading text 16px |
+     no sentence under 13px | buttons 48px tall, full width.
+   It sits last in the file on purpose, so it wins over the older
+   per-breakpoint values above it. Desktop is untouched.
+   ========================================================== */
+@media (max-width: 720px) {
+  /* Side margin */
+  .hero, .hero-info-strip, .brand-strip, .section, .svc-links-section,
+  .offer-banner, .faq-section, .cta-section { padding-left: var(--m-gutter); padding-right: var(--m-gutter); }
+
+  /* Section rhythm: hero 24 under the header; the info card below it
+     belongs to the hero, then 48 before the next section. */
+  .hero { padding-top: var(--m-hero-top); padding-bottom: var(--m-hero-top); }
+  .hero-info-strip { padding-top: 0; padding-bottom: var(--m-section); }
+  .section, .faq-section, .cta-section { padding-top: var(--m-section); padding-bottom: var(--m-section); }
+  .brand-strip, .svc-links-section { padding-top: var(--m-band); padding-bottom: var(--m-band); }
+
+  /* Cards and the boxes inside them */
+  .hero-info-strip > .wrap, .included-banner, .svc-card, .testi-card, .how-card,
+  .pkg-card, .why-card, .its-card, .visit-card { padding: var(--m-card-pad); border-radius: var(--m-card-radius); }
+  .hero-card { border-radius: var(--m-card-radius); }
+  .hc-body { padding: var(--m-card-pad); }
+  .vc-turnaround { padding: var(--m-panel-pad); border-radius: var(--m-panel-radius); }
+
+  /* Gaps */
+  .services-grid, .testi-grid, .how-grid, .pkg-duo, .why-grid, .its-grid,
+  .visit-grid, .his-stats { gap: var(--m-gap-cards); }
+  .faq-list, .faq-col { gap: var(--m-gap-rows); }
+
+  /* Headings */
+  .hero-copy > h1 { font-size: var(--m-h1); }
+  .s-title, .cta-title { font-size: var(--m-h2); margin-bottom: var(--m-h2-space); }
+
+  /* Text */
+  .s-sub, .hero-desc, .hero-more, .cta-desc, .guide-panel > p { font-size: var(--m-text); }
+  .hc-url, .mq-rating-text > span, .mq-notice > span, .mq-field > label, .mq-service-btn,
+  .mq-note, .mq-trust-item, .his-lbl, .his-checks > li, .brand-badge, .svc-link-pill,
+  .pkg-swipe-count, .pkg-was, .pkg-lbl, .pkg-item, .pkg-tagline, .vc-turnaround-note,
+  .svc-cta { font-size: var(--m-text-min); }
+  .mq-notice { padding: var(--m-row-pad); border-radius: var(--m-panel-radius); font-size: var(--m-text-min); }
+
+  /* Buttons */
+  .btn-wa, .btn-outline, .mq-submit, .svc-cta, .svc-links-more { min-height: var(--m-btn); padding-top: 0; padding-bottom: 0; }
+  .hero-wa > .btn-wa, .svc-header-row > .btn-outline, .pkg-price-block > .btn-wa,
+  .offer-btn > .btn-wa, .fade-up > .btn-outline, .vc-actions > .btn-wa,
+  .cta-actions > .btn-wa, .cta-actions > .btn-outline { width: 100%; justify-content: center; }
+
+  /* Inner .wrap adds nothing on phones: the section is the 20px margin.
+     (It added 32px, putting most text 52px from the edge.) */
+  .section > .wrap, .faq-section > .wrap { padding-left: 0; padding-right: 0; }
+  .offer-inner { padding: var(--m-card-pad); border-radius: var(--m-card-radius); }
+
+  /* Carousels run edge to edge; the first card lines up with the text. */
+  .services-grid, .testi-grid, .its-grid, .pkg-duo {
+    margin-left: calc(-1 * var(--m-gutter)); margin-right: calc(-1 * var(--m-gutter));
+    padding-left: var(--m-gutter); padding-right: var(--m-gutter);
+    scroll-padding-inline: var(--m-gutter);
+  }
+  .services-grid > *, .testi-grid > *, .its-grid > *, .pkg-duo > .pkg-card { scroll-snap-align: start; }
+
+  /* More specific button rules from earlier in this file */
+  .hero-actions .btn-wa, .pkg-price-block .btn-wa, .vc-actions .btn-wa { min-height: var(--m-btn); padding-top: 0; padding-bottom: 0; }
+
+  /* Chip rows bleed to the edge like the carousels; chips sit 8 apart */
+  .guide-tabs { margin-left: calc(-1 * var(--m-gutter)); margin-right: calc(-1 * var(--m-gutter)); padding-left: var(--m-gutter); padding-right: var(--m-gutter); scroll-padding-inline: var(--m-gutter); }
+  .guide-tabs, .areas-grid, .svc-links-grid { gap: 8px; }
+  .s-title + *, .cta-title + * { margin-top: 0; }
+  .hc-hint, .mq-rating-text, .mq-progress-label, .mq-service-grid .mq-service-btn, .pkg-swipe-hint,
+  .area-name, .vc-step-time > small { font-size: var(--m-text-min); }
 }

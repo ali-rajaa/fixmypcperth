@@ -484,6 +484,35 @@ written standard every file copies, not a shared file.
 **Quote forms:** every quote form offers WhatsApp and Email as reply
 options. No phone call option, on any form.
 
+## Mobile standard (phones, max-width 720px)
+
+One set of spacing numbers on every page, applied September 2026. Each page
+stylesheet has the `--m-*` tokens in its `:root` and a "MOBILE STANDARD"
+block as the last thing in the file, mapping that page's classes onto the
+tokens. Desktop and tablet are untouched. A new page or section gets its
+classes added to its stylesheet's block; never a one-off number.
+
+| What | Phone value |
+|---|---|
+| Side margin | 20px (carousels bleed to the edge, first card on the 20px line) |
+| Sections | 48 top and bottom; hero 24 under the header, 48 below |
+| Thin bands | 24 top and bottom |
+| Cards and lists inside a section | 24 above and below |
+| Cards | 20 padding, 14 corners |
+| Boxes inside a card | 16 padding, 12 corners |
+| Table-style rows | 14 top/bottom, 16 sides |
+| Gaps | 12 between cards, 10 between stacked rows, 8 between chips |
+| H1 | 1.7rem |
+| H2 | 1.3rem, 12 below; the element after it has no top margin |
+| Article head | 24 under breadcrumb, 12 under label, 16 under H1, 24 under lede and byline, 48 to the next block |
+| Article body H2 | 48 above |
+| Reading text | 16px |
+| Smallest text | 13px (uppercase labels excepted) |
+| Buttons | 48px tall; standalone buttons full width |
+
+Exempt: the trust ticker strip, and chips (their own 8 gap).
+`shell.css` cannot use `var()`, so its phone button block writes 48px.
+
 ---
 
 ## Tech Tips rules

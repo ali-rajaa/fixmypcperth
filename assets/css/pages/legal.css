@@ -19,6 +19,28 @@
    ========================================================== */
 
 :root {
+  /* Mobile standard (phones, max-width 720px). Identical in every page
+     stylesheet; the "MOBILE STANDARD" block at the end of this file maps
+     this page's classes onto them. */
+  --m-gutter: 20px;
+  --m-section: 48px;
+  --m-block: 24px;
+  --m-hero-top: 24px;
+  --m-band: 24px;
+  --m-card-pad: 20px;
+  --m-card-radius: 14px;
+  --m-panel-pad: 16px;
+  --m-panel-radius: 12px;
+  --m-row-pad: 14px 16px;
+  --m-gap-cards: 12px;
+  --m-gap-rows: 10px;
+  --m-h1: 1.7rem;
+  --m-h2: 1.3rem;
+  --m-h2-space: 12px;
+  --m-text: 16px;
+  --m-text-min: 13px;
+  --m-btn: 48px;
+
   --blue:      #1560FF;
   --blue-lt:   #EEF3FF;
   --blue-mid:  #C7D8FF;
@@ -48,7 +70,7 @@
 }
 
 * { box-sizing: border-box; }
-body { background:var(--bg); color:var(--ink); font-family:var(--body); font-size:16px; line-height:1.6; overflow-x:hidden; }
+body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body); font-size:16px; line-height:1.6; overflow-x:hidden; }
 .wrap { max-width:1100px; margin:0 auto; padding:0 2rem; }
 
 /* ---------- hero ---------- */
@@ -179,3 +201,36 @@ body { background:var(--bg); color:var(--ink); font-family:var(--body); font-siz
 
 /* The grey iOS tap flash paints over the press-scale feedback above. */
 .lg-toc a:where(:not([class])), .lg-btn, .lg-sec a:where(:not([class])) { -webkit-tap-highlight-color:transparent; }
+
+/* ==========================================================
+   MOBILE STANDARD, phones (max-width: 720px)
+   The same numbers on every page (tokens in :root, --m-*):
+     side margin 20 | sections 48 top and bottom, hero 24 on top |
+     thin bands 24 | cards and lists inside a section 24 above and
+     below | cards 20 padding, 14 corners | boxes inside a
+     card 16 padding, 12 corners | table-style rows 14/16 |
+     gaps: 12 between cards, 10 between stacked rows |
+     H1 1.7rem | H2 1.3rem with 12 below | reading text 16px |
+     no sentence under 13px | buttons 48px tall, full width.
+   It sits last in the file on purpose, so it wins over the older
+   per-breakpoint values above it. Desktop is untouched.
+   ========================================================== */
+@media (max-width: 720px) {
+  /* Section rhythm */
+  .lg-hero { padding-top: var(--m-hero-top); padding-bottom: var(--m-section); }
+  main > .wrap { padding-bottom: var(--m-section); }
+
+  /* Cards */
+  .lg-side-card, .lg-help { padding: var(--m-card-pad); border-radius: var(--m-card-radius); }
+
+  /* Headings */
+  .lg-hero h1:where(:not([class])) { font-size: var(--m-h1); }
+  .lg-sec h2:where(:not([class])), .lg-help h2:where(:not([class])) { font-size: var(--m-h2); margin-bottom: var(--m-h2-space); }
+
+  /* Text */
+  .lg-intro, .lg-sec p:where(:not([class])), .lg-sec li:where(:not([class])), .lg-help-links { font-size: var(--m-text); }
+  .lg-updated { font-size: var(--m-text-min); }
+
+  /* Buttons */
+  .lg-btn { min-height: var(--m-btn); padding-top: 0; padding-bottom: 0; width: 100%; justify-content: center; }
+}

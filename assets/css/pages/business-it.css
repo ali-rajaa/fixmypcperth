@@ -17,6 +17,28 @@
    rules at the bottom.
    ========================================================== */
 :root {
+  /* Mobile standard (phones, max-width 720px). Identical in every page
+     stylesheet; the "MOBILE STANDARD" block at the end of this file maps
+     this page's classes onto them. */
+  --m-gutter: 20px;
+  --m-section: 48px;
+  --m-block: 24px;
+  --m-hero-top: 24px;
+  --m-band: 24px;
+  --m-card-pad: 20px;
+  --m-card-radius: 14px;
+  --m-panel-pad: 16px;
+  --m-panel-radius: 12px;
+  --m-row-pad: 14px 16px;
+  --m-gap-cards: 12px;
+  --m-gap-rows: 10px;
+  --m-h1: 1.7rem;
+  --m-h2: 1.3rem;
+  --m-h2-space: 12px;
+  --m-text: 16px;
+  --m-text-min: 13px;
+  --m-btn: 48px;
+
   --blue: #1560FF;
   --blue-lt: #EEF3FF;
   --blue-mid: #C7D8FF;
@@ -1479,4 +1501,76 @@ img { max-width: 100%; height: auto; }
 @media (prefers-contrast: more) {
   .faq-a p:where(:not([class])) { color: #334155; }
   .faq-item { border-color: #0F172A; }
+}
+
+/* ==========================================================
+   MOBILE STANDARD, phones (max-width: 720px)
+   The same numbers on every page (tokens in :root, --m-*):
+     side margin 20 | sections 48 top and bottom, hero 24 on top |
+     thin bands 24 | cards and lists inside a section 24 above and
+     below | cards 20 padding, 14 corners | boxes inside a
+     card 16 padding, 12 corners | table-style rows 14/16 |
+     gaps: 12 between cards, 10 between stacked rows |
+     H1 1.7rem | H2 1.3rem with 12 below | reading text 16px |
+     no sentence under 13px | buttons 48px tall, full width.
+   It sits last in the file on purpose, so it wins over the older
+   per-breakpoint values above it. Desktop is untouched.
+   ========================================================== */
+@media (max-width: 720px) {
+  /* Side margin: every section 20px; inner .wrap adds nothing */
+  .hero, .audit-strip, .metrics-strip, .plans-section, .results-section, .addons-section,
+  .why-section, .industries-section, .audit-section, .cta-final, .biz-faq-sec,
+  .biz-links-sec { padding-left: var(--m-gutter); padding-right: var(--m-gutter); }
+  .results-section > .wrap, .addons-section > .wrap, .why-section > .wrap,
+  .plans-scroll-pad { padding-left: 0; padding-right: 0; }
+
+  /* Section rhythm */
+  .hero { padding-top: var(--m-hero-top); padding-bottom: var(--m-section); }
+  .metrics-strip, .plans-section, .results-section, .addons-section, .why-section,
+  .industries-section, .audit-section, .cta-final, .biz-faq-sec { padding-top: var(--m-section); padding-bottom: var(--m-section); }
+  .audit-strip, .biz-links-sec { padding-top: var(--m-band); padding-bottom: var(--m-band); }
+
+  /* Carousels edge to edge, first card on the 20px line */
+  .plans-grid, .h-scroll, .h-scroll-dark {
+    margin-left: calc(-1 * var(--m-gutter)); margin-right: calc(-1 * var(--m-gutter));
+    padding-left: var(--m-gutter); padding-right: var(--m-gutter);
+    scroll-padding-inline: var(--m-gutter);
+  }
+  .plans-grid .plan-card { scroll-snap-align: start; }
+  .res-row, .why-row { padding-left: 0; padding-right: 0; }
+
+  /* Cards and boxes inside cards */
+  .first-month-banner, .res-card, .serve-card, .why-card { padding: var(--m-card-pad); border-radius: var(--m-card-radius); }
+  .plan-card, .addons-table, .audit-card { border-radius: var(--m-card-radius); }
+  .plan-inner, .audit-card { padding: var(--m-card-pad); }
+  .plan-price-block, .plan-best { padding: var(--m-panel-pad); border-radius: var(--m-panel-radius); }
+  .addon-row { padding: var(--m-row-pad); }
+
+  /* Gaps */
+  .res-row, .why-row, .who-grid, .metrics-inner { gap: var(--m-gap-cards); }
+  .biz-faq-list { gap: var(--m-gap-rows); }
+
+  /* Headings */
+  .hero-h1 { font-size: var(--m-h1); }
+  .s-title, .s-title-light, .industries-heading, .cta-title { font-size: var(--m-h2); margin-bottom: var(--m-h2-space); }
+  .biz-faq-title { margin-bottom: var(--m-h2-space); }
+
+  /* Text */
+  .hero-desc, .s-sub, .s-sub-light, .industries-sub, .cta-desc, .plans-help-text { font-size: var(--m-text); }
+  .hero-trust-item, .audit-strip-desc, .metric-lbl, .plan-period, .plan-note, .plan-best-text,
+  .scroll-hint-text, .scroll-hint-text-dark, .res-desc, .addon-desc, .addon-freq, .who-desc,
+  .audit-label, .audit-note { font-size: var(--m-text-min); }
+
+  /* Buttons */
+  .btn-primary, .btn-outline, .audit-strip-btn, .plan-cta, .addon-toggle, .audit-submit,
+  .cta-btn-primary, .cta-btn-wa { min-height: var(--m-btn); padding-top: 0; padding-bottom: 0; }
+  .hero-actions > .btn-primary, .audit-strip-btn, .plans-help > .btn-outline, .who-more > .btn-primary,
+  .cta-actions > a, .audit-submit { width: 100%; justify-content: center; }
+
+  .hero .hero-h1 { font-size: var(--m-h1); }
+  .plans-grid { gap: var(--m-gap-cards); }
+  .plans-grid .plan-card { border-radius: var(--m-card-radius); }
+  .s-title + *, .s-title-light + *, .industries-heading + *, .cta-title + *, .biz-faq-title + * { margin-top: 0; }
+  .audit-strip-desc { font-size: var(--m-text); }
+  .industries-grid, .biz-svc-links { gap: 8px; }
 }

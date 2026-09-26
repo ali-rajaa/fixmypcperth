@@ -64,6 +64,28 @@
    ========================================================== */
 
 :root {
+  /* Mobile standard (phones, max-width 720px). Identical in every page
+     stylesheet; the "MOBILE STANDARD" block at the end of this file maps
+     this page's classes onto them. */
+  --m-gutter: 20px;
+  --m-section: 48px;
+  --m-block: 24px;
+  --m-hero-top: 24px;
+  --m-band: 24px;
+  --m-card-pad: 20px;
+  --m-card-radius: 14px;
+  --m-panel-pad: 16px;
+  --m-panel-radius: 12px;
+  --m-row-pad: 14px 16px;
+  --m-gap-cards: 12px;
+  --m-gap-rows: 10px;
+  --m-h1: 1.7rem;
+  --m-h2: 1.3rem;
+  --m-h2-space: 12px;
+  --m-text: 16px;
+  --m-text-min: 13px;
+  --m-btn: 48px;
+
   --blue:    #1560FF;
   --blue-lt: #EEF3FF;
   --blue-mid:#C7D8FF;
@@ -598,4 +620,64 @@ a { color: inherit; }
 @media (prefers-contrast: more) {
   .faq-a p:where(:not([class])) { color:#334155; }
   .faq-item { border-color:#0F172A; }
+}
+
+/* ==========================================================
+   MOBILE STANDARD, phones (max-width: 720px)
+   The same numbers on every page (tokens in :root, --m-*):
+     side margin 20 | sections 48 top and bottom, hero 24 on top |
+     thin bands 24 | cards and lists inside a section 24 above and
+     below | cards 20 padding, 14 corners | boxes inside a
+     card 16 padding, 12 corners | table-style rows 14/16 |
+     gaps: 12 between cards, 10 between stacked rows |
+     H1 1.7rem | H2 1.3rem with 12 below | reading text 16px |
+     no sentence under 13px | buttons 48px tall, full width.
+   It sits last in the file on purpose, so it wins over the older
+   per-breakpoint values above it. Desktop is untouched.
+   ========================================================== */
+@media (max-width: 720px) {
+  /* Side margin: each section is the 20px; the page wrapper adds nothing */
+  .page { padding-left: 0; padding-right: 0; padding-top: var(--m-hero-top); padding-bottom: var(--m-section); }
+  .page-hero, .page > .wrap, .faq-wrap { padding-left: var(--m-gutter); padding-right: var(--m-gutter); }
+  .cta-bar { margin-left: var(--m-gutter); margin-right: var(--m-gutter); }
+
+  /* Section rhythm: 48 between sections */
+  .page-hero { padding-top: 0; padding-bottom: var(--m-section); }
+  .carousel-wrap { margin-bottom: var(--m-section); }
+  .faq-wrap { margin-bottom: var(--m-section); }
+  .cta-bar { margin-top: 0; }
+
+  /* Carousel edge to edge, first card on the 20px line */
+  .carousel-track {
+    margin-left: calc(-1 * var(--m-gutter)); margin-right: calc(-1 * var(--m-gutter));
+    padding-left: var(--m-gutter); padding-right: var(--m-gutter);
+    scroll-padding-inline: var(--m-gutter);
+  }
+  .carousel-track > .review-card { scroll-snap-align: start; }
+
+  /* Cards */
+  .rating-block, .hero-review, .review-card, .cta-bar { padding: var(--m-card-pad); border-radius: var(--m-card-radius); }
+
+  /* Gaps */
+  .carousel-track { gap: var(--m-gap-cards); }
+  .faq-wrap { gap: var(--m-gap-rows); }
+
+  /* Headings */
+  .page-title { font-size: var(--m-h1); }
+  .s-title, .cta-bar > h2 { font-size: var(--m-h2); margin-bottom: var(--m-h2-space); }
+
+  /* Text */
+  .page-sub, .s-sub, .cta-bar > p { font-size: var(--m-text); }
+  .rating-meta { font-size: var(--m-text-min); }
+
+  /* Buttons */
+  .btn-blue, .btn-outline { min-height: var(--m-btn); padding-top: 0; padding-bottom: 0; width: 100%; justify-content: center; }
+
+  /* FAQ list: 10 between questions, but the flex gap must not also sit
+     under the heading and intro */
+  .faq-wrap { gap: 0; }
+  .faq-wrap > .s-sub { margin-bottom: var(--m-block); }
+  .faq-wrap > .faq-item + .faq-item { margin-top: var(--m-gap-rows); }
+  .s-title + *, .cta-bar > h2 + * { margin-top: 0; }
+  .review-suburb, .review-date { font-size: var(--m-text-min); }
 }

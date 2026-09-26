@@ -226,6 +226,12 @@
     content: ''; position: absolute; inset: -19px -8px;
   }
 }
+/* Mobile standard: buttons are 48px tall on phones (chips, tabs and
+   links keep the 44px minimum above). No var() here, by shell rule. */
+@media (max-width: 720px) {
+  .btn-blue, .btn-ghost, .svc-cta, .svc-links-more, .tt-show-btn,
+  .audit-inner > a, #addon-toggle, .pr-book { min-height: 48px; }
+}
 
 /* Scroll-reactive header. Progressive enhancement: the whole block is
    ignored by browsers that do not support scroll-driven animations, and

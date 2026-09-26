@@ -62,6 +62,28 @@
    ========================================================== */
 
 :root {
+  /* Mobile standard (phones, max-width 720px). Identical in every page
+     stylesheet; the "MOBILE STANDARD" block at the end of this file maps
+     this page's classes onto them. */
+  --m-gutter: 20px;
+  --m-section: 48px;
+  --m-block: 24px;
+  --m-hero-top: 24px;
+  --m-band: 24px;
+  --m-card-pad: 20px;
+  --m-card-radius: 14px;
+  --m-panel-pad: 16px;
+  --m-panel-radius: 12px;
+  --m-row-pad: 14px 16px;
+  --m-gap-cards: 12px;
+  --m-gap-rows: 10px;
+  --m-h1: 1.7rem;
+  --m-h2: 1.3rem;
+  --m-h2-space: 12px;
+  --m-text: 16px;
+  --m-text-min: 13px;
+  --m-btn: 48px;
+
   --blue:    #1560FF;
   --blue-lt: #EEF3FF;
   --blue-mid:#C7D8FF;
@@ -846,4 +868,56 @@ a { color: inherit; }
 @media (prefers-contrast: more) {
   .faq-a p:where(:not([class])) { color:#334155; }
   .faq-item { border-color:#0F172A; }
+}
+
+/* ==========================================================
+   MOBILE STANDARD, phones (max-width: 720px)
+   The same numbers on every page (tokens in :root, --m-*):
+     side margin 20 | sections 48 top and bottom, hero 24 on top |
+     thin bands 24 | cards and lists inside a section 24 above and
+     below | cards 20 padding, 14 corners | boxes inside a
+     card 16 padding, 12 corners | table-style rows 14/16 |
+     gaps: 12 between cards, 10 between stacked rows |
+     H1 1.7rem | H2 1.3rem with 12 below | reading text 16px |
+     no sentence under 13px | buttons 48px tall, full width.
+   It sits last in the file on purpose, so it wins over the older
+   per-breakpoint values above it. Desktop is untouched.
+   ========================================================== */
+@media (max-width: 720px) {
+  /* Side margin: the section is the 20px; inner .wrap adds nothing */
+  .quiz-hero, .trust-strip, .offer-banner, .section, .intro-section, .cta-section,
+  .scroll-section-head, .scroll-track { padding-left: var(--m-gutter); padding-right: var(--m-gutter); }
+  .section > .wrap, .intro-section > .wrap { padding-left: 0; padding-right: 0; }
+  .scroll-track { scroll-padding-inline: var(--m-gutter); }
+
+  /* Section rhythm */
+  .quiz-hero { padding-top: var(--m-hero-top); padding-bottom: var(--m-section); }
+  .offer-banner, .section, .scroll-section, .intro-section, .cta-section { padding-top: var(--m-section); padding-bottom: var(--m-section); }
+
+  /* Cards */
+  .offer-inner, .process-step, .info-card, .hc-pricing { padding: var(--m-card-pad); border-radius: var(--m-card-radius); }
+  .stats-strip, .area-links { border-radius: var(--m-card-radius); }
+
+  /* Gaps */
+  .process-steps, .scroll-track { gap: var(--m-gap-cards); }
+  .faq-list { gap: var(--m-gap-rows); }
+
+  /* Headings */
+  .quiz-hero-inner > h1 { font-size: var(--m-h1); }
+  .s-title, .cta-title, .intro-prose > h2 { font-size: var(--m-h2); margin-bottom: var(--m-h2-space); }
+
+  /* Text */
+  .quiz-hero-sub, .s-sub, .intro-prose > p, .cta-desc { font-size: var(--m-text); }
+  .trust-item, .area-label { font-size: var(--m-text-min); }
+
+  /* Buttons */
+  .btn-start-quiz, .btn-blue, .btn-ghost, .cta-icon-btn { min-height: var(--m-btn); padding-top: 0; padding-bottom: 0; }
+  .btn-start-quiz, .offer-btn > .btn-blue, .hc-pricing-actions > .btn-blue, .hc-pricing-actions > .btn-ghost,
+  .cta-actions > .btn-blue { width: 100%; justify-content: center; }
+
+  /* The tablet rule that pulls these headings 40px past the column (for
+     the two-column layout) must not apply to the single phone column */
+  .intro-prose h2:where(:not([class])) { margin-right: 0; padding-right: 0; }
+  .cta-icon-btn { box-sizing: border-box; height: var(--m-btn); }
+  .s-title + *, .cta-title + *, .intro-prose > h2 + * { margin-top: 0; }
 }

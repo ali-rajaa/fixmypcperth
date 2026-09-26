@@ -19,6 +19,28 @@
    uppercase text now, per the sitewide rule.
    ========================================================== */
 :root {
+  /* Mobile standard (phones, max-width 720px). Identical in every page
+     stylesheet; the "MOBILE STANDARD" block at the end of this file maps
+     this page's classes onto them. */
+  --m-gutter: 20px;
+  --m-section: 48px;
+  --m-block: 24px;
+  --m-hero-top: 24px;
+  --m-band: 24px;
+  --m-card-pad: 20px;
+  --m-card-radius: 14px;
+  --m-panel-pad: 16px;
+  --m-panel-radius: 12px;
+  --m-row-pad: 14px 16px;
+  --m-gap-cards: 12px;
+  --m-gap-rows: 10px;
+  --m-h1: 1.7rem;
+  --m-h2: 1.3rem;
+  --m-h2-space: 12px;
+  --m-text: 16px;
+  --m-text-min: 13px;
+  --m-btn: 48px;
+
   --blue: #1560FF;
   --blue-lt: #EEF3FF;
   --blue-mid: #C7D8FF;
@@ -84,7 +106,7 @@ body {
 .post-meta-author { color: var(--ink); font-weight: 700; }
 .post-body p { margin-bottom: 1.35rem; }
 .post-body h3:where(:not([class])) { font-family: var(--display); font-size: 1.05rem; font-weight: 700; color: var(--ink); margin: 1.75rem 0 0.5rem; }
-.post-body ul, .post-body ol:where(:not([class])) { padding-left: 1.5rem; margin-bottom: 1.25rem; }
+.post-body ul:where(:not([class])), .post-body ol:where(:not([class])) { padding-left: 1.5rem; margin-bottom: 1.25rem; }
 .post-body li { margin-bottom: 0.6rem; color: var(--ink2); }
 .post-body strong:where(:not([class])) { color: var(--ink); font-weight: 700; }
 .post-body a:not([class]) { color: var(--blue); font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--blue-mid); }
@@ -812,4 +834,65 @@ a { color: inherit; text-decoration: none; }
   .audit-err { color: #FECACA; border-color: #EF4444; }
   .faq-a p:where(:not([class])) { color: #334155; }
   .faq-item { border-color: #0F172A; }
+}
+
+/* ==========================================================
+   MOBILE STANDARD, phones (max-width: 720px)
+   The same numbers on every page (tokens in :root, --m-*):
+     side margin 20 | sections 48 top and bottom, hero 24 on top |
+     thin bands 24 | cards and lists inside a section 24 above and
+     below | cards 20 padding, 14 corners | boxes inside a
+     card 16 padding, 12 corners | table-style rows 14/16 |
+     gaps: 12 between cards, 10 between stacked rows |
+     H1 1.7rem | H2 1.3rem with 12 below | reading text 16px |
+     no sentence under 13px | buttons 48px tall, full width.
+   It sits last in the file on purpose, so it wins over the older
+   per-breakpoint values above it. Desktop is untouched.
+   ========================================================== */
+@media (max-width: 720px) {
+  /* Side margin and page top */
+  .article-wrap { padding-left: var(--m-gutter); padding-right: var(--m-gutter); padding-top: calc(var(--mob-nav-h) + var(--m-hero-top)); }
+
+  /* Article head: 24 under the breadcrumb, 12 under the label, 16 under
+     the headline, 24 under the byline; 48 to the next block */
+  .post-breadcrumb { margin-bottom: 24px; }
+  .post-cat { display: block; margin-bottom: 12px; }
+  .post-h1 { font-size: var(--m-h1); margin-top: 0; margin-bottom: 16px; }
+  .post-meta { padding-bottom: 24px; margin-bottom: var(--m-section); }
+  .summary-box { margin-top: 0; margin-bottom: var(--m-section); }
+
+  /* Body: 48 above every section heading, 24 around the cards and lists
+     inside a section, 48 around the big call-to-action boxes */
+  .post-body h2:where(:not([class])) { margin-top: var(--m-section); margin-bottom: var(--m-h2-space); }
+  .post-body > :first-child { margin-top: 0; }
+  .stat-row, .callout, .service-links, .coverage-list, .problem-list { margin-top: var(--m-block); margin-bottom: var(--m-block); }
+  .inline-cta, .audit-block { margin-top: var(--m-section); margin-bottom: var(--m-section); }
+  .faq-section, .ind-more, .post-footer-nav { margin-top: var(--m-section); }
+  .faq-section-title, .ind-more { padding-top: var(--m-block); }
+  .post-footer-nav { padding-top: var(--m-block); }
+
+  /* Cards, rows and the boxes inside them */
+  .summary-box, .stat-box, .callout, .service-link-card, .inline-cta, .audit-block { padding: var(--m-card-pad); border-radius: var(--m-card-radius); }
+  .coverage-list, .problem-list { border-radius: var(--m-card-radius); }
+
+  /* Gaps */
+  .stat-row, .service-links, .audit-grid { gap: var(--m-gap-cards); }
+  .ind-faq-list { gap: var(--m-gap-rows); }
+
+  /* Headings */
+  .post-body h2:where(:not([class])), .faq-section-title { font-size: var(--m-h2); }
+  .faq-section-title { margin-bottom: var(--m-h2-space); }
+  .inline-cta-title, .audit-block-title { margin-bottom: var(--m-h2-space); }
+
+  /* Text */
+  .post-body, .post-body p:where(:not([class])), .check-list > li, .problem-item, .coverage-item { font-size: var(--m-text); }
+  .post-breadcrumb, .stat-lbl, .service-link-price, .audit-label, .audit-note { font-size: var(--m-text-min); }
+
+  /* Buttons */
+  .inline-cta-btn, .inline-cta-btn-outline, .audit-submit { min-height: var(--m-btn); padding-top: 0; padding-bottom: 0; width: 100%; justify-content: center; }
+
+  .post-body h2:where(:not([class])) + *, .faq-section-title + *, .ind-more-title + * { margin-top: 0; }
+  .ind-more-sub { font-size: var(--m-text); }
+  .coverage-list, .problem-list { padding: 0; }
+  .industry-links { gap: 8px; }
 }
