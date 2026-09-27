@@ -824,8 +824,10 @@ img { max-width: 100%; height: auto; }
   .audit-content { grid-template-columns: 1fr; gap: 3rem; }
   .cta-final-inner { grid-template-columns: 1fr; gap: 2rem; }
   .cta-actions { flex-direction: row; flex-wrap: wrap; }
-  .case-study-grid { grid-template-columns: 1fr; }
-  .case-study-grid > div { border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.07); padding: 1.25rem !important; }
+  /* Two classes: the later base .cs-grid rule otherwise kept two columns. */
+  .case-study-grid.cs-grid { grid-template-columns: 1fr; }
+  .case-study-grid > .cs-left { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .case-study-grid > .cs-left, .case-study-grid > .cs-right { padding: 1.5rem; }
   .case-study-grid > div:last-child { border-bottom: none; }
 }
 @media (max-width: 720px) {
@@ -894,8 +896,6 @@ img { max-width: 100%; height: auto; }
   .cta-final-inner { grid-template-columns: 1fr; gap: 2rem; }
   .cta-actions { flex-direction: column; align-items: stretch; }
   .cta-actions > a { width: 100% !important; justify-content: center; }
-  /* ── Case study ── */
-  .case-study-section { display: none !important; }
   /* ── Footer ── */
   /* ── WhatsApp bubble — keep above bottom safe area ── */
 }
@@ -905,10 +905,8 @@ img { max-width: 100%; height: auto; }
   .metrics-inner { gap: 1rem; }
   .metric-val { font-size: 2rem; }
 }
-/* ─── CASE STUDY MOBILE FIX ──────────────────────────────────── */
+/* ─── PLAN CARDS MOBILE ───────────────────────────────────────── */
 @media (max-width: 720px) {
-  /* Company name + stats panel */
-  .case-study-grid > div:first-child { gap: 1.25rem !important; }
   .plan-tabs { display: none; }
   .plans-grid {
     display: flex;
@@ -925,27 +923,6 @@ img { max-width: 100%; height: auto; }
   .plans-grid::-webkit-scrollbar { display: none; }
   .plans-grid .plan-card { flex: 0 0 100%; scroll-snap-align: center; border-radius: 18px; }
   .plan-card.featured { transform: none; }
-  /* Company name size */
-  .case-study-grid > div:first-child > div:nth-child(1) > div:nth-child(2) { font-size: 1.4rem !important; }
-  /* 3-col stats → 3-col but compact */
-  .case-study-grid > div:first-child > div:nth-child(2) { grid-template-columns: 1fr 1fr 1fr !important; gap: 6px !important; }
-  .case-study-grid > div:first-child > div:nth-child(2) > div { padding: 0.75rem 0.5rem !important; }
-  .case-study-grid > div:first-child > div:nth-child(2) > div > div:first-child { font-size: 1.2rem !important; }
-  .case-study-grid > div:first-child > div:nth-child(2) > div > div:last-child { font-size: 8.5px !important; }
-  /* "What Happened" body text */
-  .case-study-grid > div:first-child > div:nth-child(3) > div:last-child { font-size: 12.5px !important; line-height: 1.65 !important; }
-  /* Testimonial quote text */
-  .case-study-grid > div:last-child > div:nth-child(3) { font-size: 13.5px !important; line-height: 1.7 !important; }
-  /* Opening quote mark — pull back on mobile */
-  .case-study-grid > div:last-child > div:nth-child(3) > span:first-child {
-    font-size: 2.5rem !important;
-    top: -6px !important;
-    left: -4px !important;
-  }
-  /* Avatar row */
-  .case-study-grid > div:last-child > div:nth-child(4) { gap: 8px !important; }
-  /* "Currently on" pill */
-  .case-study-grid > div:last-child > div:last-child { flex-direction: column !important; gap: 2px !important; align-items: flex-start !important; }
 }
 /* ==========================================================
    Press feedback, accessibility and motion
@@ -1602,4 +1579,19 @@ img { max-width: 100%; height: auto; }
   .s-title + *, .s-title-light + *, .industries-heading + *, .cta-title + *, .biz-faq-title + * { margin-top: 0; }
   .audit-strip-desc { font-size: var(--m-text); }
   .industries-grid, .biz-svc-links { gap: 8px; }
+
+  /* Case study: shown on phones (it was hidden), laid out to the standard */
+  .cs-card { margin-top: var(--m-block); border-radius: var(--m-card-radius); }
+  .cs-link, .cs-author-meta, .cs-plan-label { font-size: var(--m-text-min); }
+  .case-study-grid > .cs-left, .case-study-grid > .cs-right { padding: var(--m-card-pad); }
+  .cs-left { gap: 20px; }
+  .cs-name { font-size: 1.4rem; }
+  .cs-stats { gap: 8px; }
+  .cs-stat { padding: 12px 6px; border-radius: var(--m-panel-radius); }
+  .cs-stat-val { font-size: 1.25rem; }
+  .cs-stat-lbl { font-size: 11px; line-height: 1.3; letter-spacing: 0.03em; }
+  .cs-story, .cs-quote { font-size: var(--m-text); line-height: 1.7; }
+  .cs-quote-mark { font-size: 2.5rem; top: -6px; left: -4px; }
+  .cs-author { gap: 10px; }
+  .cs-plan { flex-direction: column; align-items: flex-start; gap: 2px; padding: var(--m-row-pad); border-radius: var(--m-panel-radius); }
 }

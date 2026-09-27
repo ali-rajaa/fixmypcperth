@@ -200,7 +200,7 @@ function trackQuoteForm() {
   (function() {
     const bar = document.getElementById('stickyCta');
     if (!bar) return;
-    const hero = document.querySelector('.hero');
+    const hero = document.querySelector('.hero, .quiz-hero');
     window.addEventListener('scroll', function() {
       const past = hero ? (window.scrollY > hero.offsetHeight * 0.85) : (window.scrollY > 600);
       bar.classList.toggle('show', past);
@@ -208,8 +208,7 @@ function trackQuoteForm() {
 
     /* Slide the bar away once the footer scrolls into view, and back when
        it leaves. A separate class rather than toggling .show, so it cannot
-       fight the page-level scroll handlers that also set .show (the health
-       check has its own). */
+       clash with the .show toggle above. */
     const footer = document.querySelector('footer');
     if (footer && 'IntersectionObserver' in window) {
       new IntersectionObserver(function(entries) {

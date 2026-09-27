@@ -448,6 +448,11 @@ existed on the live site, so it needs no redirect.
   Google Maps. Each page carries a "Directions from ..." link.
 - **Workshop photos**: suburb and guide pages have no real photographs.
   Needed from the owner.
+- **"No surprises"** is in the footer tagline, the homepage description, the
+  ticker and a few section intros. It reads like the banned reassurance
+  lines, but it is the brand line, so it stays until the owner decides.
+- **Contact email** on the homepage visit card carries the owner's name
+  (aly.imran.raja@gmail.com). Swap for a business address when there is one.
 - **Low SEO items deliberately left alone**: shared FAQs repeated in schema
   across pages, plain suburb names as homepage link text, and suburbs
   sharing a postcode. Each was judged and rejected, not missed.

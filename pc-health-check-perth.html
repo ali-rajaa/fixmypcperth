@@ -125,7 +125,7 @@ description: "Answer 7 questions about what your computer is doing and find out 
       "name": "Do you offer a warranty on repairs?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. All work comes with a 30-day labour warranty. If the same issue returns within 30 days of collection we fix it at no additional charge. No exceptions and no fine print. This applies to every service we offer."
+        "text": "Yes. All work comes with a 30-day labour warranty. If the same issue returns within 30 days of collection we repair it again under that warranty. This applies to every service we offer."
       }
     },
     {
@@ -456,7 +456,7 @@ description: "Answer 7 questions about what your computer is doing and find out 
           Do you offer a warranty on repairs?
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
-        <div class="faq-a" id="faq-a-7" role="region"><p>Yes. All work comes with a 30-day labour warranty. If the same issue returns within 30 days of collection we fix it at no additional charge. No exceptions and no fine print. This applies to every service we offer.</p></div>
+        <div class="faq-a" id="faq-a-7" role="region"><p>Yes. All work comes with a 30-day labour warranty. If the same issue returns within 30 days of collection we repair it again under that warranty. This applies to every service we offer.</p></div>
       </div>
 
       <div class="faq-item" role="listitem">
@@ -523,35 +523,10 @@ window.dataLayer = window.dataLayer || [];
 (function () {
 'use strict';
 
-/* ---- Scroll progress ---- */
-const progressBar = document.getElementById('scroll-progress');
-/* The page has no #scroll-progress element (the nav carries its own), so
-   without this check every scroll event threw an error. */
-if (progressBar) {
-  window.addEventListener('scroll', function() {
-    const h = document.documentElement.scrollHeight - window.innerHeight;
-    progressBar.style.transform = 'scaleX(' + (h > 0 ? window.scrollY / h : 0) + ')';
-  }, { passive: true });
-}
-
-/* ---- Fade up ---- */
-const fadeEls = document.querySelectorAll('.fade-up');
-if ('IntersectionObserver' in window) {
-  const obs = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry, i) {
-      if (entry.isIntersecting) {
-        setTimeout(function(){ entry.target.classList.add('in'); }, i * 60);
-        obs.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.08 });
-  fadeEls.forEach(function(el){ obs.observe(el); });
-} else {
-  fadeEls.forEach(function(el){ el.classList.add('in'); });
-}
-
-/* The mobile menu is handled once, site-wide, in _includes/scripts.html.
-   A second copy here toggled it open and shut on the same tap. */
+/* Scroll progress, reveal on scroll, the mobile menu and the sticky bar
+   are all handled once, site-wide, in _includes/scripts.html. Copies of
+   them here fought the shared code (the menu opened and shut on one tap,
+   the sticky bar toggled on two different thresholds). */
 
 /* ---- Same-day cutoff countdown (2pm Perth time) ---- */
 (function() {
@@ -577,17 +552,6 @@ if ('IntersectionObserver' in window) {
   tick();
   box.classList.add('ready');
   setInterval(tick, 1000);
-})();
-
-/* ---- Sticky mobile CTA ---- */
-(function() {
-  const bar = document.getElementById('stickyCta');
-  if (!bar) return;
-  const hero = document.getElementById('quiz-hero');
-  window.addEventListener('scroll', function() {
-    const past = hero ? (window.scrollY > hero.offsetHeight * 0.8) : (window.scrollY > 500);
-    bar.classList.toggle('show', past);
-  }, { passive: true });
 })();
 
 /* FAQ accordion is handled once, globally, in _includes/scripts.html. The

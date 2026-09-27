@@ -215,7 +215,7 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body)
    each heading pressed against the section above. */
 .pr-sec.pr-wide { padding-top:3.25rem; }
 .pr-sec-title { font-family:var(--display); font-size:clamp(1.25rem,2.4vw,1.6rem); font-weight:800; letter-spacing:-0.027em; color:var(--ink); margin:0 0 0.4rem; display:flex; align-items:center; gap:10px; }
-.pr-sec-count { font-family:var(--body); font-size:13px; font-weight:700; color:var(--muted); background:var(--bg3); border-radius:6px; padding:3px 8px; }
+.pr-sec-count { font-family:var(--body); font-size:13px; font-weight:600; color:var(--muted); font-variant-numeric:tabular-nums; }
 .pr-sec-blurb { font-size:14.5px; color:var(--muted); line-height:1.65; max-width:64ch; margin:0 0 1.2rem; }
 .pr-sec-blurb a:where(:not([class])) { color:var(--blue); font-weight:600; text-decoration:none; border-bottom:1px solid var(--blue-mid); }
 @media (hover: hover) { .pr-sec-blurb a:where(:not([class])):hover { color:var(--blue-dk); border-bottom-color:var(--blue-dk); } }
@@ -227,7 +227,8 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body)
 .pr-group:first-of-type { margin-top:0; }
 .pr-group[hidden], .pr-rows[hidden] { display:none; }
 .pr-group::after { content:''; flex:1; height:1px; background:var(--border); }
-.pr-group-n { font-size:11px; font-weight:700; color:var(--muted); background:var(--bg3); border-radius:20px; padding:2px 7px; letter-spacing:0; }
+/* Counts are plain text beside the heading, never a pill or boxed badge. */
+.pr-group-n { font-size:13px; font-weight:600; color:var(--muted); letter-spacing:0; text-transform:none; font-variant-numeric:tabular-nums; }
 
 /* ---------- price rows ---------- */
 .pr-rows { display:flex; flex-direction:column; gap:8px; }
