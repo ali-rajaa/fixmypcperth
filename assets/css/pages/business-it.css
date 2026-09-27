@@ -313,6 +313,7 @@ img { max-width: 100%; height: auto; }
 .hc-divider { height: 1px; background: var(--border); margin: 13px 0; }
 .hc-list { display: flex; flex-direction: column; gap: 9px; }
 .hc-list-item { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--ink2); font-weight: 500; }
+.hero-trust-dot > svg { width: 10px; height: 10px; }
 .hc-check {
   width: 18px;
   height: 18px;
@@ -518,6 +519,8 @@ img { max-width: 100%; height: auto; }
 .plan-feat { display: flex; align-items: flex-start; gap: 10px; font-size: 13.5px; line-height: 1.45; }
 .plan-card:not(.premium-tier) .plan-feat { color: var(--ink2); }
 .plan-card.premium-tier .plan-feat { color: rgba(255,255,255,0.78); }
+.hc-check > svg { width: 11px; height: 11px; color: var(--wa-dk); }
+.feat-icon > svg { width: 10px; height: 10px; }
 .feat-icon {
   width: 17px;
   height: 17px;
@@ -1050,6 +1053,7 @@ img { max-width: 100%; height: auto; }
   position: relative;
   overflow: hidden;
 }
+.serve-icon > svg { width: 24px; height: 24px; color: var(--tone-ink); }
 .serve-icon {
   width: 48px;
   height: 48px;

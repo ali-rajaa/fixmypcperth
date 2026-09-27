@@ -497,6 +497,16 @@ written standard every file copies, not a shared file.
 **Quote forms:** every quote form offers WhatsApp and Email as reply
 options. No phone call option, on any form.
 
+**Writing style** (from the "signs of AI writing" pass, September 2026):
+section headings in sentence case (page titles, product names and
+proper names keep their capitals); no emoji, icons are SVG; no
+"No X, no Y, no Z" lists in sales copy (plain descriptions of symptoms
+are fine, and "no fix, no fee" is the industry term); no "not just X
+but Y"; no false "from X to Y" ranges; no teaser labels like "The
+question worth asking:", lead with the fact; no ", ensuring..." tails;
+no "knows X, knows Y and knows Z" triples; straight apostrophes.
+Customer reviews and the client quote are never edited.
+
 ## Mobile standard (phones, max-width 720px)
 
 One set of spacing numbers on every page, applied September 2026. Each page
