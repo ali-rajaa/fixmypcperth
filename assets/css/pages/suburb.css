@@ -45,7 +45,7 @@
   --m-text: 16px;
   --m-text-min: 13px;
   --m-btn: 48px;
- --blue: #1560FF; --blue-lt: #EEF3FF; --blue-mid: #C7D8FF; --blue-dk: #0A3ACC; --ink: #0F172A; --ink2: #1E293B; --muted: #64748B; --muted2: #94A3B8; --border: #E2E8F0; --border2: #CBD5E1; --bg: #FFFFFF; --bg2: #F8FAFC; --bg3: #F1F5F9; --wa: #22C55E; --wa-dk: #15803D; --wa-deep: #166534; --gold: #F59E0B; --teal: #00CFFF; --green: #16A34A; --display: 'Sora', 'Sora Fallback', sans-serif; --body: 'DM Sans', 'DM Sans Fallback', sans-serif; --radius: 14px; --nav-h: 64px; --mob-nav-h: 60px; --ease-settle: cubic-bezier(0.16, 1, 0.3, 1); --ease-press: cubic-bezier(0.4, 0, 0.2, 1); }
+ --blue: #1560FF; --blue-lt: #EEF3FF; --blue-mid: #C7D8FF; --blue-dk: #0A3ACC; --ink: #0F172A; --ink2: #1E293B; --muted: #5E6E84; --muted2: #64748B; --border: #E2E8F0; --border2: #CBD5E1; --bg: #FFFFFF; --bg2: #F8FAFC; --bg3: #F1F5F9; --wa: #22C55E; --wa-dk: #15803D; --wa-deep: #166534; --gold: #F59E0B; --teal: #00CFFF; --green: #16A34A; --display: 'Sora', 'Sora Fallback', sans-serif; --body: 'DM Sans', 'DM Sans Fallback', sans-serif; --radius: 14px; --nav-h: 64px; --mob-nav-h: 60px; --ease-settle: cubic-bezier(0.16, 1, 0.3, 1); --ease-press: cubic-bezier(0.4, 0, 0.2, 1); }
 * { box-sizing: border-box; }
 *::before { box-sizing: border-box; }
 *::after { box-sizing: border-box; }
@@ -152,7 +152,7 @@ a { color: inherit; }
 .quote-label { font-size: 0.75rem; font-weight: 700; color: rgba(255,255,255,0.78); letter-spacing: 0.02em; }
 .quote-input { width: 100%; font-family: var(--body); font-size: 1rem; color: #fff; background: rgba(255,255,255,0.06); border: 1.5px solid rgba(255,255,255,0.16); border-radius: 10px; padding: 11px 14px; min-height: 44px; transition: border-color 0.18s, background 0.18s; }
 .quote-select { width: 100%; font-family: var(--body); font-size: 1rem; color: #fff; background: rgba(255,255,255,0.06); border: 1.5px solid rgba(255,255,255,0.16); border-radius: 10px; padding: 11px 14px; min-height: 44px; transition: border-color 0.18s, background 0.18s; }
-.quote-input::placeholder { color: rgba(255,255,255,0.32); }
+.quote-input::placeholder { color: rgba(255,255,255,0.6); }
 .quote-input:focus { outline: none; border-color: var(--blue); background: rgba(255,255,255,0.1); }
 .quote-select:focus { outline: none; border-color: var(--blue); background: rgba(255,255,255,0.1); }
 .quote-select option { background: var(--ink); color: #fff; }

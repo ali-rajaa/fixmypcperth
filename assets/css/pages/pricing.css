@@ -46,8 +46,8 @@
   --blue-dk:   #0A3ACC;
   --ink:       #0F172A;
   --ink2:      #1E293B;
-  --muted:     #64748B;
-  --muted2:    #94A3B8;
+  --muted:     #5E6E84;
+  --muted2:    #64748B;
   --border:    #E2E8F0;
   --border2:   #CBD5E1;
   --bg:        #FFFFFF;
@@ -55,7 +55,7 @@
   --radius:    14px;
   --bg3:       #F1F5F9;
   --wa:        #22C55E;
-  --green:     #16A34A;
+  --green:     #15803D;
   --display:   'Sora', 'Sora Fallback', sans-serif;
   --body:      'DM Sans', 'DM Sans Fallback', sans-serif;
   --nav-h:     64px;
@@ -142,6 +142,7 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body)
 .pr-search svg { width:17px; height:17px; color:var(--muted2); flex-shrink:0; transition:color 0.2s; }
 .pr-search input { flex:1; align-self:stretch; min-width:0; border:0; background:none; outline:none; font-family:var(--body); font-size:16px; color:var(--ink); }
 .pr-search input::-webkit-search-cancel-button { display:none; }
+.pr-search input::placeholder { color:var(--muted); }
 .pr-search-clear { display:flex; align-items:center; justify-content:center; width:28px; height:28px; border:0; background:none; padding:0; cursor:pointer; color:var(--muted); border-radius:50%; transition:background 0.15s,color 0.15s,transform 0.1s var(--ease-press); }
 @media (hover: hover) { .pr-search-clear:hover { background:var(--bg3); color:var(--ink); } }
 .pr-search-clear:active { transform:scale(0.88); }
@@ -172,7 +173,7 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body)
 .pr-side-card { background:var(--bg); border:1.5px solid var(--border); border-radius:18px; overflow:hidden; }
 .pr-side-head { background:var(--ink); padding:1.15rem 1.35rem; position:relative; }
 .pr-side-head::after { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--blue),#00CFFF); }
-.pr-side-eyebrow { display:block; font-size:10px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.42); margin-bottom:3px; }
+.pr-side-eyebrow { display:block; font-size:10px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.7); margin-bottom:3px; }
 .pr-side-title { display:block; font-family:var(--display); font-size:16px; font-weight:800; color:#fff; letter-spacing: -0.019em; }
 .pr-side-nav { padding:0.6rem; }
 .pr-side-item {

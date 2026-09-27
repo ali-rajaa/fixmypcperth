@@ -30,8 +30,8 @@
   --blue-dk:   #0A3ACC;
   --ink:       #0F172A;
   --ink2:      #1E293B;
-  --muted:     #64748B;
-  --muted2:    #94A3B8;
+  --muted:     #5E6E84;
+  --muted2:    #64748B;
   --border:    #E2E8F0;
   --border2:   #CBD5E1;
   --bg:        #FFFFFF;
@@ -42,7 +42,7 @@
   --wa-deep:   #166534;
   --fb:        #1877F2;
   --fb-dk:     #1565D8;
-  --red:       #EF4444;
+  --red:       #DC2626;
   --gold:      #F59E0B;
   --display:   'Sora', 'Sora Fallback', sans-serif;
   --body:      'DM Sans', 'DM Sans Fallback', sans-serif;
@@ -175,7 +175,7 @@ a    { color:inherit; }
 .mq-field input.err,
 .mq-field select.err,
 .mq-field textarea.err { border-color:var(--red); }
-.mq-err { font-size:11px; color:var(--red); display:none; }
+.mq-err { font-size:13px; color:var(--red); display:none; }
 .mq-err.show { display:block; }
 .mq-group-label { font-size:10.5px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--muted); margin:2px 0 -2px; }
 .mq-divider { height:1px; background:var(--border); margin:2px 0; border:none; }

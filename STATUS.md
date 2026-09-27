@@ -480,6 +480,14 @@ written standard every file copies, not a shared file.
 - Eyebrows and labels are plain uppercase text, never pills.
 - The homepage hero is the one exception allowed a larger display H1.
 - The teal is `#00CFFF` everywhere.
+- Text contrast is WCAG AA everywhere (4.5:1, 3:1 for large text),
+  checked on every page at phone and desktop width, including errors,
+  success panels, the open menu and every quiz result. Greys:
+  `--muted` #5E6E84 (passes on white and every pale panel), `--muted2`
+  #64748B (white and #F8FAFC only; never on #F1F5F9 or #EEF3FF). Never
+  #94A3B8 for text. White text on dark sections is at least 70%.
+  Coloured labels use the -700 shade (#15803D, #B45309, #0E7490).
+  Decorative numbers that are not meant to be read carry aria-hidden.
 
 **Quote forms:** every quote form offers WhatsApp and Email as reply
 options. No phone call option, on any form.

@@ -58,8 +58,8 @@
   --ink:     #0F172A;
   --ink2:    #1E293B;
   --ink3:    #334155;
-  --muted:   #64748B;
-  --muted2:  #94A3B8;
+  --muted:   #5E6E84;
+  --muted2:  #64748B;
   --border:  #E2E8F0;
   --border2: #CBD5E1;
   --bg:      #FFFFFF;
@@ -182,7 +182,7 @@ a { color: inherit; }
 
 .tq-input { width: 100%; font-family: var(--body); font-size: 16px; line-height: 1.4; color: #fff; background: rgba(255,255,255,0.06); border: 1.5px solid rgba(255,255,255,0.16); border-radius: 10px; padding: 11px 14px; min-height: 48px; transition: border-color 0.18s var(--ease-settle), background 0.18s var(--ease-settle); }
 textarea.tq-input { resize: vertical; min-height: 88px; }
-.tq-input::placeholder { color: rgba(255,255,255,0.32); }
+.tq-input::placeholder { color: rgba(255,255,255,0.6); }
 .tq-input:focus { outline: none; border-color: var(--blue); background: rgba(255,255,255,0.1); }
 .tq-input[aria-invalid="true"] { border-color: #F87171; box-shadow: 0 0 0 4px rgba(248,113,113,0.18); }
 

@@ -339,7 +339,7 @@ footer {
   transition: color .15s;
 }
 @media (hover: hover) { .footer-phone:hover { color: #1560FF; } }
-.footer-hours { font-size: 14px; color: #94A3B8; line-height: 1.75; }
+.footer-hours { font-size: 14px; color: #64748B; line-height: 1.75; }
 
 /* Computer Repairs by Suburb: a full-width row under the four columns rather
    than a fifth column. The four-column grid above is deliberately balanced,
@@ -367,7 +367,7 @@ footer {
   display:flex; justify-content:space-between; align-items:center;
   gap:1rem; flex-wrap:wrap;
 }
-.footer-copy, .footer-note { font-size:13px; color:#94A3B8; }
+.footer-copy, .footer-note { font-size:13px; color:#64748B; }
 
 /* Previously this dropped to three columns and pushed Visit or Call onto a
    second row spanning columns 2 and 3. Because the brand column is the tallest,
