@@ -101,7 +101,7 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body)
 @media (hover: hover) { .lg-toc a:where(:not([class])):hover { background:var(--blue-lt); color:var(--blue-dk); } }
 .lg-toc a:where(:not([class])):active { background:var(--blue-mid); transition:background 0.1s var(--ease-press); }
 .lg-toc a:where(:not([class])):focus-visible { outline:2px solid var(--blue); outline-offset:-2px; }
-.lg-toc-n { flex:0 0 auto; font-size:12px; font-weight:600; color:var(--muted); min-width:16px; font-variant-numeric:tabular-nums; }
+.lg-toc-n { flex:0 0 auto; font-size:13px; font-weight:600; color:var(--muted); min-width:16px; font-variant-numeric:tabular-nums; }
 @media (hover: hover) { .lg-toc a:hover .lg-toc-n { color:var(--blue); } }
 
 .lg-main { min-width:0; }

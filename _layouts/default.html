@@ -17,7 +17,9 @@
   site drops it. Without this the canonical named a second address for
   each page, splitting its search signals between the two. {%- endcomment -%}
   {%- assign _clean_url = page.url | replace: "/index.html", "/" | replace: ".html", "" -%}
+  {%- unless page.url == "/404.html" %}
   <link rel="canonical" href="{{ site.url }}{{ _clean_url }}">
+  {%- endunless %}
   {%- if site.staging or page.noindex %}
   <meta name="robots" content="noindex, nofollow">
   {%- else %}

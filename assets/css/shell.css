@@ -377,6 +377,14 @@ footer {
    the nine service names, which wrapped onto two and three lines. The brand
    block now spans the top and the three link and contact columns sit
    beneath it, so nothing wraps and no column is left with an empty block. */
+/* Footer links and the case study link: 44px rows on tablets and touch
+   screens, not only on phones (they were 23px and 19px lines at 768 to
+   900). After the footer's base rules so their margin does not win. */
+@media (max-width: 900px), (pointer: coarse) {
+  .footer-col a { display: flex; align-items: center; min-height: 44px; margin-bottom: 0; }
+  .footer-area-link { display: inline-flex; align-items: center; min-height: 44px; }
+  .cs-link { display: inline-flex; align-items: center; min-height: 44px; }
+}
 @media (max-width: 1000px) {
   .footer-inner { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem 1.5rem; }
   .footer-brand { grid-column: 1 / -1; }

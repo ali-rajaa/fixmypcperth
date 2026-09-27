@@ -140,7 +140,7 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body)
 .pr-search:focus-within { border-color:var(--blue); background:var(--bg); box-shadow:0 0 0 3px rgba(21,96,255,0.13); }
 .pr-search:focus-within svg { color:var(--blue); }
 .pr-search svg { width:17px; height:17px; color:var(--muted2); flex-shrink:0; transition:color 0.2s; }
-.pr-search input { flex:1; min-width:0; border:0; background:none; outline:none; font-family:var(--body); font-size:16px; color:var(--ink); }
+.pr-search input { flex:1; align-self:stretch; min-width:0; border:0; background:none; outline:none; font-family:var(--body); font-size:16px; color:var(--ink); }
 .pr-search input::-webkit-search-cancel-button { display:none; }
 .pr-search-clear { display:flex; align-items:center; justify-content:center; width:28px; height:28px; border:0; background:none; padding:0; cursor:pointer; color:var(--muted); border-radius:50%; transition:background 0.15s,color 0.15s,transform 0.1s var(--ease-press); }
 @media (hover: hover) { .pr-search-clear:hover { background:var(--bg3); color:var(--ink); } }
@@ -214,7 +214,7 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body)
    each heading pressed against the section above. */
 .pr-sec.pr-wide { padding-top:3.25rem; }
 .pr-sec-title { font-family:var(--display); font-size:clamp(1.25rem,2.4vw,1.6rem); font-weight:800; letter-spacing:-0.027em; color:var(--ink); margin:0 0 0.4rem; display:flex; align-items:center; gap:10px; }
-.pr-sec-count { font-family:var(--body); font-size:12px; font-weight:700; color:var(--muted); background:var(--bg3); border-radius:6px; padding:3px 8px; }
+.pr-sec-count { font-family:var(--body); font-size:13px; font-weight:700; color:var(--muted); background:var(--bg3); border-radius:6px; padding:3px 8px; }
 .pr-sec-blurb { font-size:14.5px; color:var(--muted); line-height:1.65; max-width:64ch; margin:0 0 1.2rem; }
 .pr-sec-blurb a:where(:not([class])) { color:var(--blue); font-weight:600; text-decoration:none; border-bottom:1px solid var(--blue-mid); }
 @media (hover: hover) { .pr-sec-blurb a:where(:not([class])):hover { color:var(--blue-dk); border-bottom-color:var(--blue-dk); } }
