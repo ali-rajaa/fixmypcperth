@@ -206,16 +206,34 @@ img { max-width: 100%; height: auto; }
 .js .fade-up.in { opacity: 1; transform: none; }
 #plan-tabs { display: none; }
 @media (max-width: 720px) {
+  /* Segmented control, iOS style: a white thumb on a grey track. The
+     thumb is moved by script in step with the plan cards' scroll, so it
+     follows a swipe 1:1 and a tap glides it with the cards. */
   #plan-tabs {
     display: flex;
+    position: relative;
     background: var(--bg3);
-    border: 1.5px solid var(--border2);
-    border-radius: 14px;
-    padding: 5px;
+    border: 0;
+    border-radius: 12px;
+    padding: 3px;
     width: 100%;
     box-sizing: border-box;
-    margin: 0 0 10px 0;
+    margin: 0 0 12px 0;
   }
+  .plan-tabs-thumb {
+    position: absolute;
+    top: 3px; bottom: 3px; left: 3px;
+    width: calc((100% - 6px) / 3);
+    background: var(--bg);
+    border-radius: 9px;
+    box-shadow: 0 1px 2px rgba(15,23,42,0.12), 0 3px 8px rgba(15,23,42,0.08);
+    will-change: transform;
+    pointer-events: none;
+  }
+}
+@media (max-width: 720px) and (prefers-contrast: more) {
+  #plan-tabs { border: 1px solid #0F172A; }
+  .plan-tabs-thumb { box-shadow: none; outline: 1.5px solid #0F172A; }
 }
 /* ─── HERO ───────────────────────────────────────────────────── */
 .hero { padding: 100px 2rem 60px; background: var(--bg); position: relative; overflow: hidden; }
@@ -828,20 +846,25 @@ img { max-width: 100%; height: auto; }
   .audit-inner > a { text-align: center; width: 100%; justify-content: center; }
   .audit-checklist { display: none; }
   .plan-tab {
+    position: relative;
+    z-index: 1;
     flex: 1;
-    padding: 10px 8px;
-    border-radius: 10px;
+    min-height: 44px;
+    padding: 0 8px;
+    border-radius: 9px;
     border: none;
     background: transparent;
     font-family: var(--body);
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 600;
     color: var(--muted);
     cursor: pointer;
-    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    transition: color 0.2s var(--ease-settle);
     white-space: nowrap;
+    -webkit-tap-highlight-color: transparent;
   }
-  .plan-tab.active { background: var(--blue); color: #fff; box-shadow: 0 2px 8px rgba(21,96,255,0.3); }
+  .plan-tab.active { color: var(--ink); }
+  .plan-tab:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
   /* ── Metrics ── */
   .metrics-strip { padding: 2.5rem 1.25rem; }
   .metrics-inner { grid-template-columns: 1fr 1fr; gap: 1.25rem; }
@@ -1373,27 +1396,8 @@ img { max-width: 100%; height: auto; }
   box-shadow: 0 1px 2px rgba(0,0,0,0.25);
   transition: transform 0.15s cubic-bezier(0.16,1,0.3,1),background-color 0.15s;
 }
-.cta-btn-wa {
-  --hov-accent: var(--blue);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 9px;
-  width: 280px;
-  padding: 14px 24px;
-  border-radius: 50px;
-  background: var(--wa-dk);
-  color: #fff;
-  font-family: var(--body);
-  font-size: 15px;
-  font-weight: 700;
-  text-decoration: none;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.25);
-  transition: transform 0.15s cubic-bezier(0.16,1,0.3,1),background-color 0.15s;
-}
 @media (hover: hover) {
   .cta-btn-primary:hover { background: var(--blue-dk); }
-  .cta-btn-wa:hover { background: var(--wa-deep); }
 }
 .biz-faq-sec { background: var(--bg); border-top: 1px solid var(--border); padding: 4.5rem 2rem; }
 .sec-inner { max-width: 1100px; margin: 0 auto; }
@@ -1549,6 +1553,7 @@ img { max-width: 100%; height: auto; }
   .audit-strip, .biz-links-sec { padding-top: var(--m-band); padding-bottom: var(--m-band); }
 
   /* Carousels edge to edge, first card on the 20px line */
+  .plans-grid { max-width: none; }
   .plans-grid, .h-scroll, .h-scroll-dark {
     margin-left: calc(-1 * var(--m-gutter)); margin-right: calc(-1 * var(--m-gutter));
     padding-left: var(--m-gutter); padding-right: var(--m-gutter);
@@ -1586,7 +1591,7 @@ img { max-width: 100%; height: auto; }
 
   /* Buttons */
   .btn-primary, .btn-outline, .audit-strip-btn, .plan-cta, .addon-toggle, .audit-submit,
-  .cta-btn-primary, .cta-btn-wa { min-height: var(--m-btn); padding-top: 0; padding-bottom: 0; }
+  .cta-btn-primary { min-height: var(--m-btn); padding-top: 0; padding-bottom: 0; }
   .hero-actions > .btn-primary, .audit-strip-btn, .plans-help > .btn-outline, .who-more > .btn-primary,
   .cta-actions > a, .audit-submit { width: 100%; justify-content: center; }
 

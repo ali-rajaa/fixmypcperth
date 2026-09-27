@@ -273,15 +273,16 @@ image_alt: "FixMyPC Perth: managed business IT support for Perth small businesse
   </div>
 
   <div class="plans-scroll-pad" id="plans-scroll-wrapper">
-    <div class="plan-tabs" id="plan-tabs">
-      <button class="plan-tab active" onclick="scrollToPlan(0,this)">Essential</button>
-      <button class="plan-tab" onclick="scrollToPlan(1,this)">Business</button>
-      <button class="plan-tab" onclick="scrollToPlan(2,this)">Premium</button>
+    <div class="plan-tabs" id="plan-tabs" role="tablist" aria-label="Choose a plan">
+      <span class="plan-tabs-thumb" aria-hidden="true"></span>
+      <button class="plan-tab active" type="button" role="tab" id="plan-tab-0" aria-selected="true" aria-controls="plan-essential">Essential</button>
+      <button class="plan-tab" type="button" role="tab" id="plan-tab-1" aria-selected="false" aria-controls="plan-business" tabindex="-1">Business</button>
+      <button class="plan-tab" type="button" role="tab" id="plan-tab-2" aria-selected="false" aria-controls="plan-premium" tabindex="-1">Premium</button>
     </div>
-    <div class="plans-grid">
+    <div class="plans-grid" id="plans-grid">
 
       <!-- ESSENTIAL -->
-      <div class="plan-card fade-up" aria-label="Essential managed IT support plan Perth from 149 per month plus 35 per device">
+      <div class="plan-card fade-up" id="plan-essential" aria-label="Essential managed IT support plan Perth from 149 per month plus 35 per device">
         <div class="plan-bar"></div>
         <div class="plan-inner">
           <div class="plan-name">Essential</div>
@@ -314,7 +315,7 @@ image_alt: "FixMyPC Perth: managed business IT support for Perth small businesse
       </div>
 
       <!-- BUSINESS (FEATURED) -->
-      <div class="plan-card featured fade-up" aria-label="Business managed IT support plan Perth from 199 per month plus 45 per device most popular">
+      <div class="plan-card featured fade-up" id="plan-business" aria-label="Business managed IT support plan Perth from 199 per month plus 45 per device most popular">
         <div class="plan-bar"></div>
         <div class="plan-inner">
           <div class="plan-badge badge-popular">Most Popular</div>
@@ -349,7 +350,7 @@ image_alt: "FixMyPC Perth: managed business IT support for Perth small businesse
       </div>
 
       <!-- PREMIUM -->
-      <div class="plan-card premium-tier fade-up" aria-label="Premium managed IT support plan Perth from 299 per month plus 60 per device unlimited onsite">
+      <div class="plan-card premium-tier fade-up" id="plan-premium" aria-label="Premium managed IT support plan Perth from 299 per month plus 60 per device unlimited onsite">
         <div class="plan-bar"></div>
         <div class="plan-inner">
           <div class="plan-badge badge-premium">Premium Tier</div>
@@ -1039,17 +1040,6 @@ image_alt: "FixMyPC Perth: managed business IT support for Perth small businesse
         >
         Book My Free Session
       </a>
-
-      <a class="cta-btn-wa" href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20to%20book%20a%20free%20business%20IT%20health%20check."
-         target="_blank" rel="noopener"
-        >
-        <svg class="no-shrink" width="18" height="18" viewBox="0 0 24 24" fill="white">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-          <path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/>
-        </svg>
-        WhatsApp Us
-      </a>
-
     </div>
   </div>
 </section>
@@ -1131,3 +1121,57 @@ image_alt: "FixMyPC Perth: managed business IT support for Perth small businesse
 </section>
 
 <!-- FOOTER -->
+<script>
+/* Plan switcher (phones): the Essential / Business / Premium control and
+   the swipeable plan cards drive each other. The white thumb is placed
+   from the cards' live scroll position on every frame, so it follows a
+   swipe 1:1 and can be grabbed mid-glide; a tap scrolls the cards (the
+   scroll itself is the animation, so it is interruptible). Arrow keys,
+   Home and End move between tabs. Reduced motion jumps instead of
+   gliding. */
+(function () {
+  var tabs = document.getElementById('plan-tabs');
+  var grid = document.getElementById('plans-grid');
+  if (!tabs || !grid) return;
+  var btns  = [].slice.call(tabs.querySelectorAll('.plan-tab'));
+  var cards = [].slice.call(grid.querySelectorAll('.plan-card'));
+  var thumb = tabs.querySelector('.plan-tabs-thumb');
+  var still = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var current = 0, frame = 0;
+
+  function pos(i) { return cards[i].offsetLeft - cards[0].offsetLeft; }
+  function select(i) {
+    current = i;
+    btns.forEach(function (b, k) {
+      var on = k === i;
+      b.classList.toggle('active', on);
+      b.setAttribute('aria-selected', on ? 'true' : 'false');
+      b.tabIndex = on ? 0 : -1;
+    });
+  }
+  function paint() {
+    frame = 0;
+    var step = cards.length > 1 ? pos(1) : 1;
+    var p = Math.max(0, Math.min(cards.length - 1, grid.scrollLeft / step));
+    if (thumb) thumb.style.transform = 'translateX(' + (p * 100) + '%)';
+    var i = Math.round(p);
+    if (i !== current) select(i);
+  }
+  function go(i) {
+    select(i);
+    grid.scrollTo({ left: pos(i), behavior: still.matches ? 'auto' : 'smooth' });
+  }
+
+  btns.forEach(function (b, i) { b.addEventListener('click', function () { go(i); }); });
+  tabs.addEventListener('keydown', function (e) {
+    var i = { ArrowRight: current + 1, ArrowLeft: current - 1, Home: 0, End: btns.length - 1 }[e.key];
+    if (i === undefined) return;
+    e.preventDefault();
+    i = Math.max(0, Math.min(btns.length - 1, i));
+    go(i); btns[i].focus();
+  });
+  grid.addEventListener('scroll', function () { if (!frame) frame = requestAnimationFrame(paint); }, { passive: true });
+  window.addEventListener('resize', function () { if (!frame) frame = requestAnimationFrame(paint); });
+  paint();
+})();
+</script>
