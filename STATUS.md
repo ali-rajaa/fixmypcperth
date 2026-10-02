@@ -69,8 +69,8 @@ time, url and section IDs unchanged throughout.
   Added `business-pc-setup-migration` to `services.yml`. The "Save $200"
   package ribbon is now computed (`was_price` minus `price`), not typed.
   The few dollar figures still typed on the page are deliberate: the
-  $900-$1,800 new-PC comparison and the "$149 and over" free-cleanup
-  threshold are not FixMyPC's own service prices.
+  $900-$1,800 new-PC comparison is not one of FixMyPC's own service
+  prices.
 - Step 2, buttons - done. 7 separate button classes
   (`.pkg-btn`, `.its-cta`, `.hero-icon-btn`, plus `.mq-submit` drifting
   from `.btn-blue`) collapsed onto the 3 that already existed and were
@@ -153,9 +153,8 @@ time, url and section IDs unchanged throughout.
     old #22C55E was 2.28:1, now 5.02:1. The floating bubble keeps
     #22C55E because it carries an icon, not text.
   - Offer banner: $10 and $99 now come from a new `offers:` list in
-    `services.yml` (price.html looks there too), as does the $149
-    free-cleanup threshold, so it is no longer typed anywhere on the
-    homepage. The button is a WhatsApp link that pre-fills the claim,
+    `services.yml` (price.html looks there too), so they are no longer typed anywhere
+    on the homepage. The button is a WhatsApp link that pre-fills the claim,
     replacing "#top-quote", which was dead at tablet widths.
   - Hero: the quote card now shows at 721 to 900px (it was display:none,
     so tablets had no form). Phones get a one-line price and promise
