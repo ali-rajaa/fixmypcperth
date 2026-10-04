@@ -269,45 +269,45 @@ description: "Answer 7 questions about what your computer is doing and find out 
   <div class="scroll-track-outer alt-bg">
     <div class="scroll-track" id="fix-track" role="list">
 
-      <article class="info-card" role="listitem">
+      <div class="info-card" role="listitem">
         <div class="info-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
         <h3>Boot times creeping up</h3>
         <p>A machine that now takes minutes to reach the desktop when it used to take seconds is the classic early sign of a drive nearing the end of its life. Drives rarely fail cleanly, they slow down first, then take your files with them. {% assign _sl = site.data.suburbs.service_links | where: "slug", "slow-computer-repair-perth" | first %}{% if _sl.built %}<a href="/slow-computer-repair-perth">Slow computer repair</a>.{% endif %}</p>
-      </article>
+      </div>
 
-      <article class="info-card" role="listitem">
+      <div class="info-card" role="listitem">
         <div class="info-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
         <h3>Pop-ups and browser changes</h3>
         <p>Homepages changing on their own, redirects to sites you did not ask for, or security software that will not stay enabled. Every day an infection runs it keeps working, harvesting saved passwords, banking logins and card details. {% assign _sl = site.data.suburbs.service_links | where: "slug", "virus-removal-perth" | first %}{% if _sl.built %}<a href="/virus-removal-perth">Virus removal</a>.{% endif %}</p>
-      </article>
+      </div>
 
-      <article class="info-card" role="listitem">
+      <div class="info-card" role="listitem">
         <div class="info-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/></svg></div>
         <h3>Won't power on or stuck on the logo</h3>
         <p>Alarming, but your files are usually safe. The fault is normally in power delivery or the boot process rather than the drive holding your data. Bring it in rather than risking secondary damage, recovery options are assessed first. {% assign _sl = site.data.suburbs.service_links | where: "slug", "computer-wont-turn-on-perth" | first %}{% if _sl.built %}<a href="/computer-wont-turn-on-perth">Won't turn on repairs</a>.{% endif %}</p>
-      </article>
+      </div>
 
-      <article class="info-card" role="listitem">
+      <div class="info-card" role="listitem">
         <div class="info-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 12l2 2 4-4"/></svg></div>
         <h3>Blue screens and random restarts</h3>
         <p>Hardware-level instability. Continuing to run a machine in this state is the single most common reason a recoverable repair becomes an unrecoverable one. Covered by our {% include price.html key='diagnostic-repair-all-in' bare=true raw=true %} all-in diagnostic and repair fee.</p>
-      </article>
+      </div>
 
-      <article class="info-card" role="listitem">
+      <div class="info-card" role="listitem">
         <div class="info-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div>
         <h3>Running hot, fans always loud</h3>
         <p>Sustained heat permanently shortens the life of the processor, drive and motherboard, and Perth summers make it significantly worse. A machine shutting itself down under load is already past the warning stage.</p>
-      </article>
+      </div>
 
-      <article class="info-card" role="listitem">
+      <div class="info-card" role="listitem">
         <div class="info-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
         <h3>Clicking, grinding, missing files</h3>
         <p>This is late stage. If a drive is making noise, power the machine off and bring it in. Caught early, recovery is routine. Caught late, sometimes nothing can be done at any price. No fix, no fee applies either way. {% assign _sl = site.data.suburbs.service_links | where: "slug", "data-recovery-perth" | first %}{% if _sl.built %}<a href="/data-recovery-perth">Data recovery</a>.{% endif %}</p>
-      </article>
+      </div>
 
     </div>
   </div>
-  <div class="scroll-dots" id="fix-dots" aria-hidden="true"></div>
+  <div class="scroll-dots" id="fix-dots" role="group" aria-label="Choose a card"></div>
 </section>
 
 <!-- ============================================================
@@ -408,7 +408,7 @@ description: "Answer 7 questions about what your computer is doing and find out 
           How do I know what is wrong with my computer?
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
-        <div class="faq-a" id="faq-a-1" role="region"><p>Symptoms narrow it down but they rarely identify the fault on their own. The same slowdown can be a failing drive, an infection, overheating or corrupted Windows, and the wrong guess costs money without fixing anything. The health check above flags which of your symptoms matter most and how urgent they are. A proper diagnostic is {% include price.html key='diagnostic-repair-all-in' bare=true raw=true %} all-in, covering the full diagnostic, all repair labour and a 30-day warranty.</p></div>
+        <div class="faq-a" id="faq-a-1"><p>Symptoms narrow it down but they rarely identify the fault on their own. The same slowdown can be a failing drive, an infection, overheating or corrupted Windows, and the wrong guess costs money without fixing anything. The health check above flags which of your symptoms matter most and how urgent they are. A proper diagnostic is {% include price.html key='diagnostic-repair-all-in' bare=true raw=true %} all-in, covering the full diagnostic, all repair labour and a 30-day warranty.</p></div>
       </div>
 
       <div class="faq-item" role="listitem">
@@ -416,7 +416,7 @@ description: "Answer 7 questions about what your computer is doing and find out 
           My computer still works but is acting strange. Should I wait?
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
-        <div class="faq-a" id="faq-a-2" role="region"><p>No. The most expensive jobs we see are almost always machines that showed warning signs for months. Freezing, unusual noises, corrupted files, random restarts and sudden slowdowns are early-stage failures, and every day the machine keeps running the odds of a straightforward repair drop. Data recovery starts from {% include price.html key="data-recovery-failing-drive" bare=true %}; catching the same fault early is often a fraction of that.</p></div>
+        <div class="faq-a" id="faq-a-2"><p>No. The most expensive jobs we see are almost always machines that showed warning signs for months. Freezing, unusual noises, corrupted files, random restarts and sudden slowdowns are early-stage failures, and every day the machine keeps running the odds of a straightforward repair drop. Data recovery starts from {% include price.html key="data-recovery-failing-drive" bare=true %}; catching the same fault early is often a fraction of that.</p></div>
       </div>
 
       <div class="faq-item" role="listitem">
@@ -424,7 +424,7 @@ description: "Answer 7 questions about what your computer is doing and find out 
           My PC will not turn on at all. Is my data gone?
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
-        <div class="faq-a" id="faq-a-3" role="region"><p>Usually not. A computer that will not power on most often has a fault in the power supply, motherboard or boot process rather than the drive holding your files. Even when the machine itself cannot be saved, the data is frequently recoverable. Bring it in rather than attempting repairs that risk secondary damage. A no fix, no fee policy applies to all data recovery work.</p></div>
+        <div class="faq-a" id="faq-a-3"><p>Usually not. A computer that will not power on most often has a fault in the power supply, motherboard or boot process rather than the drive holding your files. Even when the machine itself cannot be saved, the data is frequently recoverable. Bring it in rather than attempting repairs that risk secondary damage. A no fix, no fee policy applies to all data recovery work.</p></div>
       </div>
 
       <div class="faq-item" role="listitem">
@@ -432,7 +432,7 @@ description: "Answer 7 questions about what your computer is doing and find out 
           Will I lose my files if Windows gets reinstalled?
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
-        <div class="faq-a" id="faq-a-4" role="region"><p>No. Before any Windows reinstall, all personal files including documents, photos, downloads and desktop items are backed up to an external drive, then copied back after the clean install. Software licences such as Microsoft Office and saved passwords need reactivating afterwards, since a clean install removes installed programs. Exactly what to expect is explained before we start. Windows reinstall with data backup is {% include price.html key='diagnostic-repair-all-in' bare=true raw=true %}.</p></div>
+        <div class="faq-a" id="faq-a-4"><p>No. Before any Windows reinstall, all personal files including documents, photos, downloads and desktop items are backed up to an external drive, then copied back after the clean install. Software licences such as Microsoft Office and saved passwords need reactivating afterwards, since a clean install removes installed programs. Exactly what to expect is explained before we start. Windows reinstall with data backup is {% include price.html key='diagnostic-repair-all-in' bare=true raw=true %}.</p></div>
       </div>
 
       <div class="faq-item" role="listitem">
@@ -440,7 +440,7 @@ description: "Answer 7 questions about what your computer is doing and find out 
           How long does PC repair take in Perth?
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
-        <div class="faq-a" id="faq-a-5" role="region"><p>Most repairs are completed same day or next day. Drop off before 2pm and your machine is usually ready for pickup by 6pm. Virus removals and Windows reinstalls typically take 2 to 4 hours of active work, SSD upgrades with full data transfer 3 to 5 hours. Complex repairs needing specific parts may take 1 to 3 business days, with updates throughout.</p></div>
+        <div class="faq-a" id="faq-a-5"><p>Most repairs are completed same day or next day. Drop off before 2pm and your machine is usually ready for pickup by 6pm. Virus removals and Windows reinstalls typically take 2 to 4 hours of active work, SSD upgrades with full data transfer 3 to 5 hours. Complex repairs needing specific parts may take 1 to 3 business days, with updates throughout.</p></div>
       </div>
 
       <div class="faq-item" role="listitem">
@@ -448,7 +448,7 @@ description: "Answer 7 questions about what your computer is doing and find out 
           Is it worth repairing an older computer?
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
-        <div class="faq-a" id="faq-a-6" role="region"><p>In most cases yes. A new mid-range PC or laptop in Perth costs $900 to $1,800, while the repairs that bring an older machine back up to speed usually cost a fraction of that: a tune up is {% include price.html key="basic-tune-up" bare=true %} and the all-in diagnostic and repair is {% include price.html key="diagnostic-repair-all-in" bare=true %}. As a guide, if the repair costs under 40 to 50 percent of a comparable replacement and the machine is under 7 to 8 years old, repair is the better option. If a machine genuinely is not worth fixing, we tell you upfront.</p></div>
+        <div class="faq-a" id="faq-a-6"><p>In most cases yes. A new mid-range PC or laptop in Perth costs $900 to $1,800, while the repairs that bring an older machine back up to speed usually cost a fraction of that: a tune up is {% include price.html key="basic-tune-up" bare=true %} and the all-in diagnostic and repair is {% include price.html key="diagnostic-repair-all-in" bare=true %}. As a guide, if the repair costs under 40 to 50 percent of a comparable replacement and the machine is under 7 to 8 years old, repair is the better option. If a machine genuinely is not worth fixing, we tell you upfront.</p></div>
       </div>
 
       <div class="faq-item" role="listitem">
@@ -456,7 +456,7 @@ description: "Answer 7 questions about what your computer is doing and find out 
           Do you offer a warranty on repairs?
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
-        <div class="faq-a" id="faq-a-7" role="region"><p>Yes. All work comes with a 30-day labour warranty. If the same issue returns within 30 days of collection we repair it again under that warranty. This applies to every service we offer.</p></div>
+        <div class="faq-a" id="faq-a-7"><p>Yes. All work comes with a 30-day labour warranty. If the same issue returns within 30 days of collection we repair it again under that warranty. This applies to every service we offer.</p></div>
       </div>
 
       <div class="faq-item" role="listitem">
@@ -464,7 +464,7 @@ description: "Answer 7 questions about what your computer is doing and find out 
           Where are you and when are you open?
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
-        <div class="faq-a" id="faq-a-8" role="region"><p>We are at 7 Barraberry Retreat, Canning Vale WA 6155, open 24 hours a day, 7 days a week including public holidays. All southern Perth suburbs are served including Cockburn, Willetton, Jandakot, Atwell, Harrisdale, Armadale, Gosnells, Thornlie and Cannington. Remote support for software issues is available Australia-wide.</p></div>
+        <div class="faq-a" id="faq-a-8"><p>We are at 7 Barraberry Retreat, Canning Vale WA 6155, open 24 hours a day, 7 days a week including public holidays. All southern Perth suburbs are served including Cockburn, Willetton, Jandakot, Atwell, Harrisdale, Armadale, Gosnells, Thornlie and Cannington. Remote support for software issues is available Australia-wide.</p></div>
       </div>
 
     </div>

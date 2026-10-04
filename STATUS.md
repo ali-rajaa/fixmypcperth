@@ -585,6 +585,29 @@ Applied October 2026. Motion here is feedback, not decoration.
 
 ---
 
+## Accessibility rules (axe-core audit, October 2026)
+
+Every page scanned with axe-core (WCAG 2.2 AA plus best practice) at
+1280 and 390px. What it found and the rule that now stands:
+
+- **FAQ answers** carry no `role="region"`. Ninety-seven unnamed regions
+  were flooding the landmark list. The button's `aria-expanded` and
+  `aria-controls` are enough. A closed answer is `visibility: hidden` (it
+  waits out the close animation), so its links leave the tab order: before
+  this, Tab landed on invisible links inside closed answers.
+- **Horizontal scroll strips** with nothing focusable inside get
+  `tabindex="0" role="region" aria-label="..."` and a focus ring, so arrow
+  keys can scroll them.
+- **One `<main>` per page.** The layout provides it; a page never adds its own.
+- **`role="listitem"`** only inside a `role="list"` parent, and never on
+  `<article>`.
+- **Decorative icons** (SVG or a glyph like "!") carry `aria-hidden="true"`.
+  Controls that hold only an icon need an `aria-label`.
+- **Accepted:** the faint "01 02 03" step numbers fail contrast on
+  purpose. They are aria-hidden watermarks, which WCAG exempts as decoration.
+
+---
+
 ## Tech Tips rules
 
 - Guides say what a symptom **means**, how urgent it is, and what it costs.

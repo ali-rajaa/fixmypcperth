@@ -470,7 +470,7 @@ schema catalogue. {%- endcomment -%}
           {{ _f.q | escape }}
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
-        <div class="faq-a" id="faq-a-{{ forloop.index }}" role="region"><p>{{ _a | strip | escape }}</p></div>
+        <div class="faq-a" id="faq-a-{{ forloop.index }}"><p>{{ _a | strip | escape }}</p></div>
       </div>
       {%- endfor %}
       </div>

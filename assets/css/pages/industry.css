@@ -742,7 +742,7 @@ a { color: inherit; text-decoration: none; }
          Question
          <svg viewBox="0 0 24 24" ...><polyline points="6 9 12 15 18 9"/></svg>
        </button>
-       <div class="faq-a" id="faq-a-1" role="region"><p>Answer</p></div>
+       <div class="faq-a" id="faq-a-1"><p>Answer</p></div>
      </div>
    The shared handler in _includes/scripts.html opens one at a time.
    The answer opens with grid-template-rows 0fr to 1fr rather than a
@@ -776,8 +776,8 @@ a { color: inherit; text-decoration: none; }
 /* Rotation gets a touch of overshoot so the tap feels answered. */
 .faq-q svg { width: 18px; height: 18px; flex-shrink: 0; color: var(--blue); transition: transform 0.35s var(--ease-settle); }
 .faq-item.open .faq-q svg { transform: rotate(180deg); }
-.faq-a { display: grid; grid-template-rows: 0fr; overflow: hidden; transition: grid-template-rows 0.4s var(--ease-settle); }
-.faq-item.open .faq-a { grid-template-rows: 1fr; }
+.faq-a { display: grid; grid-template-rows: 0fr; overflow: hidden; visibility: hidden; transition: grid-template-rows 0.4s var(--ease-settle), visibility 0s linear 0.4s; }
+.faq-item.open .faq-a { grid-template-rows: 1fr; visibility: visible; transition: grid-template-rows 0.4s var(--ease-settle), visibility 0s; }
 .faq-a p:where(:not([class])) {
   min-height: 0;
   font-size: 14px;
