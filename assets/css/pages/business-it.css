@@ -845,7 +845,7 @@ img { max-width: 100%; height: auto; }
 }
 @media (max-width: 720px) {
   /* ── Core layout ── */
-  nav { display: none; }
+  .desk-nav { display: none; }  /* was a bare nav selector, which also hid the footer's suburb links on phones */
   .mob-top-nav { display: flex; }
   body { padding-top: 60px; }
   /* ── Hero ── */

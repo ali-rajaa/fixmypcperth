@@ -68,6 +68,7 @@ service_links:
     kind: service
     from_key: cpu-thermal-paste-replacement
     label: "Gaming PC repair and builds"
+    footer_label: "Gaming PC builds"
     summary: "Gaming PCs that crash, stutter or overheat, plus custom PC assembly, upgrades and tuning."
     built: true
   - slug: computer-upgrades-perth
@@ -80,6 +81,7 @@ service_links:
     kind: service
     from_key: diagnostic-repair-all-in
     label: "Computer won't turn on"
+    footer_label: "PC won't turn on"
     summary: "No power, no picture, or stuck before Windows starts, on desktops and laptops."
     built: true
   - slug: pc-health-check-perth

@@ -191,6 +191,27 @@ function formShow(el) {
     });
   });
 
+  /* ---- Footer sections (phones) ----
+     On phones Repairs, Company and Suburbs collapse behind their headings
+     (shell.css, max-width 760px). The class is only added here, so with no
+     JavaScript every list simply shows. Wider screens never hide anything. */
+  (function () {
+    var ft = document.querySelector('footer');
+    if (!ft) return;
+    var secs = ft.querySelectorAll('.footer-sec');
+    if (!secs.length) return;
+    ft.classList.add('footer-js');
+    secs.forEach(function (sec) {
+      var btn = sec.querySelector('.footer-sec-btn');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var open = !sec.classList.contains('open');
+        sec.classList.toggle('open', open);
+        btn.setAttribute('aria-expanded', String(open));
+      });
+    });
+  })();
+
   /* ---- Phone click tracking ---- */
   document.querySelectorAll('a[href^="tel:"]').forEach(function(el) {
     el.addEventListener('click', function() { if(typeof trackPhoneClick==='function') trackPhoneClick(); });
