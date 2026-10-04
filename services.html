@@ -2,7 +2,7 @@
 layout: default
 css: service
 title: "Computer Repair Services Perth | All Repairs | FixMyPC Perth"
-description: "Every computer and laptop repair we do in Perth, with fixed prices: laptops, screens, viruses, data recovery, slow PCs, Windows, gaming PCs, upgrades, networking and remote help."
+description: "Every computer and laptop repair we do in Perth, with fixed prices: laptops, screens, viruses, data recovery, slow PCs, gaming PCs, upgrades and wifi."
 slug: services
 heading: "Computer Repair Services in Perth"
 topic: repair
@@ -173,46 +173,37 @@ faqs:
   <section class="sv-more" id="all-services" aria-labelledby="all-services-h">
     <h2 class="sv-h2" id="all-services-h">Every service and price</h2>
     <div class="sv-prose">
-      <p>This is everything we do, grouped by the kind of job. Every price is fixed and includes GST. Where a service has its own page, its name links to it, and each group links to the same group on the <a href="{{ '/pricing' | relative_url }}">full price list</a>.</p>
+      <p>This is everything we do, grouped by the kind of job, with the fixed price for each. Prices include GST. Where a service has its own page, its name links to it. What each price covers is on the <a href="{{ '/pricing' | relative_url }}">full price list</a>.</p>
     </div>
     {%- for _cat in _S.categories %}
     {%- assign _items = _S.services | where: "category", _cat.id %}
     {%- if _items.size > 0 %}
+    {%- case _cat.id %}
+    {%- when "repairs" %}{% assign _ch = "Repairs" %}{% capture _ci %}Faults on desktops and laptops: viruses, password lockouts, broken screens, failed batteries and drives that have stopped. If you are not sure what is wrong, the first one is the one to book.{% endcapture %}
+    {%- when "performance" %}{% assign _ch = "Speed-ups" %}{% capture _ci %}For a computer that works but crawls. Three levels of clean-up, depending on how far it has slowed and how long since anyone looked at it.{% endcapture %}
+    {%- when "upgrades" %}{% assign _ch = "Upgrades" %}{% capture _ci %}Faster storage, more memory, a new graphics card or Windows 11. Labour is a fixed price, and you can supply the part or we can.{% endcapture %}
+    {%- when "gaming" %}{% assign _ch = "Gaming PCs and consoles" %}{% capture _ci %}Building with your parts, the finishing work around a build (cooling, cables, lighting, tuning and testing) and PS5 and Xbox repairs.{% endcapture %}
+    {%- when "networking" %}{% assign _ch = "Networking and wifi" %}{% capture _ci %}Done at your home or office across the southern suburbs, at the same price as in the workshop plus the call-out fee.{% endcapture %}
+    {%- when "software" %}{% assign _ch = "Software and remote help" %}{% capture _ci %}Jobs that often do not need the computer in the workshop at all: setup, email, Office, backups and moving everything to a new PC.{% endcapture %}
+    {%- else %}{% assign _ch = _cat.nav | default: _cat.label %}{% assign _ci = _cat.blurb %}
+    {%- endcase %}
     <div class="sv-cat" id="all-{{ _cat.id }}">
-      <h3 class="sv-h3">{{ _cat.label | escape }}</h3>
-      <div class="sv-prose">
-        {%- case _cat.id %}
-        {%- when "repairs" %}<p>Faults on desktops and laptops, from a virus or a password lockout to a broken screen, a failed battery or a drive that has stopped. If you are not sure what is wrong, the first row is the one to book.</p>
-        {%- when "performance" %}<p>For a computer that works but crawls. Three levels of clean-up, depending on how far it has slowed and how long it has been since anyone looked at it.</p>
-        {%- when "upgrades" %}<p>Faster storage, more memory, a new graphics card or Windows 11. Labour is a fixed price, and you can supply the part or we can.</p>
-        {%- when "gaming" %}<p>Building with your parts, plus the finishing work around a build: cooling, cables, lighting, tuning and testing. Consoles are here too.</p>
-        {%- when "networking" %}<p>Done at your home or office across the southern suburbs, at the same price as in the workshop plus the call-out fee.</p>
-        {%- when "software" %}<p>Jobs that often do not need the computer in the workshop at all: setup, email, Office, backups and moving everything to a new PC.</p>
-        {%- else %}<p>{{ _cat.blurb | escape }}</p>
-        {%- endcase %}
-      </div>
-      <table class="sv-table">
-        <caption class="sr-only">{{ _cat.label | escape }} prices</caption>
-        <thead><tr><th scope="col">Service</th><th scope="col">What it covers</th><th scope="col" class="sv-num">Price</th></tr></thead>
-        <tbody>
-          {%- for _s in _items %}
-          {%- assign _href = "" %}
-          {%- for _p in _svcpages %}
-            {%- if _href == "" %}
-            {%- for _r in _p.repairs %}
-              {%- if _r.price_key == _s.key or _r.also_keys contains _s.key %}{% assign _href = '/' | append: _p.slug | relative_url %}{% break %}{% endif %}
-            {%- endfor %}
-            {%- endif %}
+      <h3 class="sv-h3">{{ _ch | escape }}</h3>
+      <div class="sv-prose"><p>{{ _ci | strip }}</p></div>
+      <ul class="sv-cat-list" aria-label="{{ _ch | escape }} prices">
+        {%- for _s in _items %}
+        {%- assign _href = "" %}
+        {%- for _p in _svcpages %}
+          {%- if _href == "" %}
+          {%- for _r in _p.repairs %}
+            {%- if _r.price_key == _s.key or _r.also_keys contains _s.key %}{% assign _href = '/' | append: _p.slug | relative_url %}{% break %}{% endif %}
           {%- endfor %}
-          <tr>
-            <th scope="row">{% if _href != "" %}<a href="{{ _href }}">{{ _s.name | escape }}</a>{% else %}{{ _s.name | escape }}{% endif %}{% if _s.desc %}<span class="sv-row-note">{% include resolve-prices.html text=_s.desc %}</span>{% endif %}</th>
-            <td>{% include resolve-prices.html text=_s.desc %}</td>
-            <td class="sv-num">{% include price.html key=_s.key %}</td>
-          </tr>
-          {%- endfor %}
-        </tbody>
-      </table>
-      <p class="sv-cat-more"><a href="{{ '/pricing' | relative_url }}#{{ _cat.id }}">{{ _cat.label | escape }} on the price list</a></p>
+          {%- endif %}
+        {%- endfor %}
+        <li>{% if _href != "" %}<a href="{{ _href }}">{{ _s.name | escape }}</a>{% else %}<span>{{ _s.name | escape }}</span>{% endif %}<span class="sv-num">{% include price.html key=_s.key %}</span></li>
+        {%- endfor %}
+      </ul>
+      <p class="sv-cat-more"><a href="{{ '/pricing' | relative_url }}#{{ _cat.id }}">What each {{ _ch | downcase | escape }} price covers</a></p>
     </div>
     {%- endif %}
     {%- endfor %}
@@ -226,7 +217,7 @@ faqs:
         {%- endunless %}
         {%- endfor %}
       </ul>
-      <p class="sv-cat-more"><a href="{{ '/pricing' | relative_url }}#extras">Extras on the price list</a></p>
+      <p class="sv-cat-more"><a href="{{ '/pricing' | relative_url }}#extras">What each extra covers</a></p>
     </div>
   </section>
 
@@ -261,7 +252,7 @@ faqs:
       <p><strong>One fee when the fault is unknown.</strong> When nobody can say yet what is wrong, the all-in diagnostic at {% include price.html key="diagnostic-repair-all-in" bare=true %} finds the fault and covers the repair labour in the same visit. You pay one figure for both, not a diagnostic fee followed by a repair bill.</p>
       <p><strong>Labour and parts are shown separately where it matters.</strong> Upgrades are listed as labour only, so you can bring your own SSD or memory, or as supplied, where we source the part. Screen and battery prices depend on the model, which is why some read "from". You get the exact figure for your laptop when we quote.</p>
       <p><strong>No fix, no fee on data recovery.</strong> If we cannot get your files back, you do not pay for the attempt.</p>
-      <p><strong>30-day warranty.</strong> Every repair carries a 30-day labour warranty. If the same fault returns in that time, the labour to fix it again is on us.</p>
+      <p><strong>30-day warranty.</strong> If the same fault returns within 30 days of collection, the labour to fix it again is on us.</p>
       <p>All prices include GST. The complete list, with packages and current offers, is on the <a href="{{ '/pricing' | relative_url }}">pricing page</a>.</p>
     </div>
   </section>
@@ -278,8 +269,8 @@ faqs:
   <section class="sv-more" id="devices" aria-labelledby="devices-h">
     <h2 class="sv-h2" id="devices-h">Computers we work on</h2>
     <div class="sv-prose">
-      <p>Windows laptops and desktops from every common brand, including HP, Dell, Lenovo, Asus, Acer, MSI, Samsung, Toshiba, Dynabook, Gigabyte and Razer, plus all-in-ones and custom-built PCs. Gaming PCs and gaming laptops get their own work, from repasting and cooling to tuning and full builds, and PS5 and Xbox consoles are repaired in the same workshop.</p>
-      <p>MacBook and Surface devices are welcome for diagnostics, virus removal, data recovery and software work. We do not replace screens on MacBook or Surface devices, and we say so before you bring one in.</p>
+      <p>Windows laptops and desktops from every common brand, including HP, Dell, Lenovo, Asus, Acer, MSI, Samsung, Toshiba, Dynabook, Gigabyte and Razer, plus all-in-ones and custom-built PCs. Gaming PCs and gaming laptops are repasted, cooled, tuned and built here too, and PS5 and Xbox consoles are repaired in the same workshop.</p>
+      <p>MacBooks and Surface devices come in for diagnostics, virus removal, data recovery and software jobs. Screen replacements on them are the one thing we do not do, and we will tell you that before you make the trip.</p>
       <p>External hard drives, USB sticks and memory cards come in for data recovery, and old machines come in for a secure wipe before they are sold, donated or recycled.</p>
     </div>
   </section>

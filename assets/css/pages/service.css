@@ -268,16 +268,15 @@ textarea.tq-input { resize: vertical; min-height: 88px; }
 .sv-hub-price { font-family: var(--display); font-size: 0.95rem; font-weight: 700; color: var(--blue); }
 .sv-hub-go { display: inline-flex; align-items: center; gap: 4px; font-size: 13px; font-weight: 700; color: var(--ink3); }
 .sv-hub-go svg { width: 14px; height: 14px; flex-shrink: 0; transition: transform 0.2s var(--ease-settle); }
-/* Every service and price: one block per category, each a heading, a line
-   of intro and the price table. Service names that have their own page are
-   links. Extras have no description, so they are a simple two-part list. */
+/* Every service and price: one block per category, a heading, a line of
+   intro and a name / price list. Names with their own page are links. What
+   each price covers lives on /pricing, so the two pages do not repeat. */
 .sv-cat { margin: 2rem 0 0; scroll-margin-top: calc(var(--nav-h) + 1rem); }
-.sv-cat .sv-table { margin-top: 0.75rem; }
-.sv-table th a:where(:not([class])) { color: var(--ink); font-weight: 600; text-decoration: underline; text-decoration-color: var(--border2); text-underline-offset: 3px; }
 .sv-cat-more { margin: 0.75rem 0 0; font-size: 14px; }
 .sv-cat-more a:where(:not([class])) { color: var(--blue); font-weight: 600; text-decoration: none; }
 .sv-cat-list { list-style: none; margin: 0.75rem 0 0; padding: 0; }
 .sv-cat-list > li { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: 0.7rem 0; border-bottom: 1px solid var(--border); font-size: 0.9375rem; color: var(--ink2); }
+.sv-cat-list a:where(:not([class])) { color: var(--ink); font-weight: 600; text-decoration: underline; text-decoration-color: var(--border2); text-underline-offset: 3px; }
 .sv-cat-list .sv-num { flex-shrink: 0; font-family: var(--display); font-weight: 700; color: var(--ink); white-space: nowrap; }
 /* "Not sure" block: room between the text and the buttons, and no extra
    space below it before the footer. */
@@ -307,7 +306,7 @@ textarea.tq-input { resize: vertical; min-height: 88px; }
   .sv-btn-wa:hover { background: var(--wa-deep); }
   .sv-index-list a:where(:not([class])):hover { color: var(--blue); }
   .sv-table td a:where(:not([class])):hover { color: var(--blue); }
-  .sv-table th a:where(:not([class])):hover { color: var(--blue); text-decoration-color: var(--blue); }
+  .sv-cat-list a:where(:not([class])):hover { color: var(--blue); text-decoration-color: var(--blue); }
   .sv-cat-more a:where(:not([class])):hover { color: var(--blue-dk); text-decoration: underline; }
   .tq-submit:hover { background: var(--blue-dk); }
   .tq-seg-opt:hover span:where(:not([class])) { background: rgba(255,255,255,0.12); }
