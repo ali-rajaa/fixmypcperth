@@ -541,6 +541,19 @@ the sitemap at 390px and 360px and fails on anything off the standard.
 
 ---
 
+## Business IT page: email only
+
+Owner decision, October 2026: the Business IT page is professional and
+email only. No WhatsApp anywhere on it. `contact: email` in its front
+matter switches the shared chrome: the header button becomes "Book a free
+IT call" (blue, scrolls to the form), the footer shows the email instead
+of WhatsApp, and the phone bar and floating bubble are not rendered. The
+form messages point to the email, not the phone. The plan features say
+phone and email support. Every other page keeps WhatsApp. It still uses
+the owner's Gmail until a business address exists.
+
+---
+
 ## Motion and feedback standard
 
 Applied October 2026. Motion here is feedback, not decoration.

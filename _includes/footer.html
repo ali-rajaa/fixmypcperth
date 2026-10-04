@@ -54,12 +54,16 @@
     </div>
 
     <div class="footer-col footer-contact">
-      <p class="footer-head">Visit or Message</p>
+      <p class="footer-head">Visit or {% if page.contact == "email" %}Email{% else %}Message{% endif %}</p>
       <address>
         7 Barraberry Retreat<br>
         Canning Vale WA 6155
       </address>
+      {%- if page.contact == "email" %}
+      <a href="mailto:aly.imran.raja@gmail.com" class="footer-phone footer-email">aly.imran.raja@gmail.com</a>
+      {%- else %}
       <a href="https://wa.me/61452573701" target="_blank" rel="noopener noreferrer" class="footer-phone" aria-label="Message FixMyPC Perth on WhatsApp, 0452 573 701" onclick="trackWAClick()">WhatsApp 0452 573 701</a>
+      {%- endif %}
       <p class="footer-hours">
         Open 24 hours<br>
         Seven days a week

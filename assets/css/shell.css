@@ -109,6 +109,10 @@
 .nav-cta { display:none; align-items:center; gap:7px; margin-left:6px; font-family:'DM Sans', 'DM Sans Fallback', sans-serif; font-size:13px; font-weight:700; color:#fff; background:#15803D; padding:10px 17px; border-radius:50px; text-decoration:none; white-space:nowrap; box-shadow:0 3px 12px rgba(21,128,61,0.28); transition:transform 0.25s cubic-bezier(0.16,1,0.3,1), background 0.15s; }
 .nav-cta svg { width:15px; height:15px; flex-shrink:0; }
 @media (hover: hover) { .nav-cta:hover { background:#166534; transform:translateY(-1px); } }
+/* Email-only pages (Business IT): the header button goes to the page's own
+   enquiry form, so it takes the brand blue instead of WhatsApp green. */
+.nav-cta--form { background:#1560FF; box-shadow:0 3px 12px rgba(21,96,255,0.28); }
+@media (hover: hover) { .nav-cta--form:hover { background:#0A3ACC; } }
 .nav-cta:active { transform:scale(0.96); transition:transform 0.1s cubic-bezier(0.4,0,0.2,1); }
 @media (min-width:1121px) {
   .nav-cta { display:inline-flex; }

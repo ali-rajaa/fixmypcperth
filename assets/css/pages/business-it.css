@@ -741,6 +741,7 @@ img { max-width: 100%; height: auto; }
 .audit-done-tick > svg { width: 26px; height: 26px; }
 .audit-done-title { font-family: var(--display); font-size: 1.15rem; font-weight: 800; color: var(--ink); margin: 0 0 0.4rem; }
 .audit-done-text { font-size: 14px; line-height: 1.7; color: var(--muted); max-width: 46ch; margin: 0 auto; }
+.audit-err > a, .audit-done-text > a { color: inherit; text-decoration: underline; text-underline-offset: 2px; overflow-wrap: anywhere; }
 .audit-err { font-size: 13px; font-weight: 600; color: #B91C1C; background: #FEF2F2; border: 1px solid #FECACA; border-radius: 10px; padding: 10px 14px; margin: 0.75rem 0 0; }
 /* ─── CTA FINAL ──────────────────────────────────────────────── */
 .cta-final { background: linear-gradient(135deg, var(--ink) 0%, var(--ink2) 100%); padding: 5.5rem 2rem; position: relative; overflow: hidden; }
