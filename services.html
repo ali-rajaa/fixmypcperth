@@ -2,27 +2,59 @@
 layout: default
 css: service
 title: "Computer Repair Services Perth | All Repairs | FixMyPC Perth"
-description: "Every computer and laptop repair we do in Perth, with fixed prices: laptops, screens, viruses, data recovery, slow PCs, Windows, gaming PCs and upgrades."
+description: "Every computer and laptop repair we do in Perth, with fixed prices: laptops, screens, viruses, data recovery, slow PCs, Windows, gaming PCs, upgrades, networking and remote help."
 slug: services
 heading: "Computer Repair Services in Perth"
+topic: repair
+faqs:
+  - q: "How do I know which repair I need?"
+    a: "You do not need to know. Tell us what the computer is doing and we will tell you what it usually means and what it costs. If the cause is not obvious, the all-in diagnostic at [[diagnostic-repair-all-in]] finds the fault and covers the repair labour in the same visit. The Free PC Health Check on this site also explains what a symptom usually points to and how urgent it is."
+  - q: "Do I get a price before you start?"
+    a: "Yes. Every job has a fixed price agreed before any work begins. If we find something else once the machine is open, we stop and tell you before doing anything more, and nothing is added at collection."
+  - q: "How long does a repair take?"
+    a: "Most jobs dropped off before 2pm are ready by 6pm the same day. Jobs that need a part ordered, such as a laptop screen or a battery for a less common model, take longer, and we tell you the timing when we quote."
+  - q: "Is there a warranty?"
+    a: "Every repair carries a 30-day labour warranty. If the same fault comes back within 30 days, bring it in and we fix it again with no labour cost."
+  - q: "Do I have to bring the computer to Canning Vale?"
+    a: "For most repairs, yes, because the work happens on the bench in our workshop. Network, wifi and printer jobs are done at your place for the same price plus a [[on-site-call-out]] call-out fee, and many software problems can be sorted over a remote session from [[remote-support-session]]."
+  - q: "Do you work on MacBooks?"
+    a: "MacBook and Surface devices are welcome for diagnostics, virus removal, data recovery and software work. We do not replace screens on MacBook or Surface devices. Newer MacBooks keep their storage on the board and encrypted, so for data recovery we assess it first and tell you honestly what is possible before any charge."
+  - q: "What happens if my data cannot be recovered?"
+    a: "Data recovery is no fix, no fee. If we cannot get your files back, you do not pay for the recovery attempt."
+  - q: "Can you fix a gaming PC or console?"
+    a: "Yes. We build gaming PCs from your parts, from [[essential-assembly]], and repair, tune and upgrade existing ones. PS5 and Xbox consoles are repaired from [[console-repair-ps5-or-xbox]]."
 ---
 {%- comment -%}
-  /services   the hub for the nine service pages.
+  /services   the hub for every service the business offers.
 
-  Built from _data/suburbs.yml service_links (kind: service, built: true),
-  in the order listed there, so a new service page appears here the moment
-  its flag is set. The "from" price on each card is that entry's from_key,
-  chosen as the page's lowest core repair (add-ons excluded).
+  Three layers, all from data so nothing here goes stale:
+  1. The nine service pages, from _data/suburbs.yml service_links
+     (kind: service, built: true), in nav_order, the same order as the
+     header Repairs menu. A new service page appears here once built.
+  2. Every priced service, from _data/services.yml, grouped by category.
+     A row links to the service page whose repairs list its key (found
+     from each page's front matter), otherwise only the category links to
+     /pricing. Add-ons follow, minus the biz- ones (Business IT owns those).
+     No price is typed on this page.
+  3. Written sections: symptoms, pricing rules, workshop / on-site /
+     remote, devices, FAQ. Only facts the site already states elsewhere:
+     2pm same-day cutoff, 30-day labour warranty, no fix no fee on data
+     recovery, the MacBook limits, the Canning Vale workshop, the brands
+     on the laptop page.
 
-  Keyword targeting (GSC, 16 months): computer repairs services (46, pos
-  32), computer repair services, computer repair shop (47), pc repair shop
-  (78). Not "computer repair perth": the homepage owns that.
+  The quote form is _includes/quote-form.html, shared with the service
+  pages. Keyword targeting (GSC, 16 months): computer repairs services,
+  computer repair services, computer repair shop, pc repair shop. Not
+  "computer repair perth": the homepage owns that.
 
-  Styles: service.css (the sv- design), plus the .sv-hub rules in it.
+  Styles: service.css (the sv- design, plus .sv-hub and .sv-cat).
 {%- endcomment -%}
+{%- assign _S = site.data.services -%}
 {%- assign _R = site.data.reviews.meta -%}
-{%- assign _svcs = site.data.suburbs.service_links | where: "kind", "service" | where: "built", true -%}
+{%- assign _svcs = site.data.suburbs.service_links | where: "kind", "service" | where: "built", true | sort: "nav_order", "last" -%}
+{%- assign _svcpages = site.pages | where: "layout", "service" -%}
 {%- assign _url = site.url | append: "/services" -%}
+{%- capture _chev %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>{% endcapture -%}
 
 <script type="application/ld+json">
 {
@@ -47,6 +79,19 @@ heading: "Computer Repair Services in Perth"
   ]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {%- for _f in page.faqs -%}
+    {%- capture _a %}{% include resolve-prices.html text=_f.a %}{% endcapture -%}
+    {%- unless forloop.first %},{% endunless %}
+    { "@type": "Question", "name": {{ _f.q | jsonify }}, "acceptedAnswer": { "@type": "Answer", "text": {{ _a | strip | jsonify }} } }
+    {%- endfor %}
+  ]
+}
+</script>
 
 <article class="sv">
   <header class="sv-head">
@@ -58,7 +103,7 @@ heading: "Computer Repair Services in Perth"
     </nav>
     <span class="sv-eyebrow">Services</span>
     <h1 class="sv-h1">{{ page.heading | escape }}</h1>
-    <p class="sv-lede">Every computer and laptop repair we do, from our workshop in Canning Vale. Each one is a fixed price agreed before we start, most jobs are ready the same day, and every repair carries a 30-day warranty. Choose the one that sounds like yours, or message us and we will tell you.</p>
+    <p class="sv-lede">Every computer and laptop repair we do, from our workshop in Canning Vale. Each one is a fixed price agreed before we start, most jobs are ready the same day, and every repair carries a 30-day warranty. Pick the one that sounds like yours, or tell us what the computer is doing and we will tell you.</p>
     {%- capture _tick %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>{% endcapture %}
     <ul class="sv-promise" aria-label="Every repair includes">
       <li>{{ _tick }}Fixed price first</li>
@@ -68,33 +113,219 @@ heading: "Computer Repair Services in Perth"
     </ul>
   </header>
 
-  <ul class="sv-hub" aria-label="Our repair services">
-    {%- for _v in _svcs %}
-    <li class="sv-hub-item">
-      <a class="sv-hub-link" href="{{ '/' | append: _v.slug | relative_url }}">
-        <span class="sv-hub-name">{{ _v.label | escape }}</span>
-        <span class="sv-hub-sum">{{ _v.summary | escape }}</span>
-        <span class="sv-hub-foot">
-          {%- if _v.from_key %}<span class="sv-hub-price">From {% include price.html key=_v.from_key bare=true %}</span>{% endif %}
-          <span class="sv-hub-go">Details<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></span>
-        </span>
-      </a>
-    </li>
+  <nav class="sv-index" aria-labelledby="sv-index-title">
+    <h2 class="sv-index-title" id="sv-index-title">On this page</h2>
+    <ul class="sv-index-list">
+      <li><a href="#repairs">{{ _chev }}<span>Repair services</span></a></li>
+      <li><a href="#by-symptom">{{ _chev }}<span>Find it by symptom</span></a></li>
+      <li><a href="#all-services">{{ _chev }}<span>Every service and price</span></a></li>
+      <li><a href="#more-help">{{ _chev }}<span>Other ways we help</span></a></li>
+      <li><a href="#how-it-works">{{ _chev }}<span>How a repair works</span></a></li>
+      <li><a href="#pricing">{{ _chev }}<span>How our pricing works</span></a></li>
+      <li><a href="#where">{{ _chev }}<span>Workshop, on-site and remote</span></a></li>
+      <li><a href="#devices">{{ _chev }}<span>Computers we work on</span></a></li>
+      <li><a href="#quote">{{ _chev }}<span>Get a fixed price</span></a></li>
+      <li><a href="#faq">{{ _chev }}<span>Questions</span></a></li>
+    </ul>
+  </nav>
+
+  <section class="sv-more" id="repairs" aria-labelledby="repairs-h">
+    <h2 class="sv-h2" id="repairs-h">Our repair services</h2>
+    <div class="sv-prose">
+      <p>These are the repairs people bring us most. Each has its own page with what we check, what usually causes the fault, what it costs and how long it takes.</p>
+    </div>
+    <ul class="sv-hub" aria-label="Our repair services">
+      {%- for _v in _svcs %}
+      <li class="sv-hub-item">
+        <a class="sv-hub-link" href="{{ '/' | append: _v.slug | relative_url }}">
+          <span class="sv-hub-name">{{ _v.label | escape }}</span>
+          <span class="sv-hub-sum">{{ _v.summary | escape }}</span>
+          <span class="sv-hub-foot">
+            {%- if _v.from_key %}<span class="sv-hub-price">From {% include price.html key=_v.from_key bare=true %}</span>{% endif %}
+            <span class="sv-hub-go">Details{{ _chev }}</span>
+          </span>
+        </a>
+      </li>
+      {%- endfor %}
+    </ul>
+  </section>
+
+  <section class="sv-more" id="by-symptom" aria-labelledby="by-symptom-h">
+    <h2 class="sv-h2" id="by-symptom-h">Find your repair by what the computer is doing</h2>
+    <div class="sv-prose">
+      <p>Most people know what the computer is doing, not why. Start from the symptom and the right page is usually clear.</p>
+      <ul>
+        <li><strong>Nothing happens when you press the power button.</strong> No lights, no fans, or lights that come on and then nothing. The cause is often the power supply, the charger or charging port, the motherboard or a stuck power state. See <a href="{{ '/computer-wont-turn-on-perth' | relative_url }}">computer won't turn on</a>.</li>
+        <li><strong>It turns on but never reaches Windows.</strong> Endless spinning dots, a repair loop or a black screen with a cursor. This is usually Windows itself or a failing drive. <a href="{{ '/windows-reinstall-perth' | relative_url }}">Windows reinstall</a> covers the software side, and if the drive is clicking or very slow, read <a href="{{ '/data-recovery-perth' | relative_url }}">data recovery</a> first so your files come off before anything is wiped.</li>
+        <li><strong>Blue screens or random restarts.</strong> These point to drivers, memory, a drive starting to fail or overheating. The all-in diagnostic finds which one, and <a href="{{ '/laptop-repair-perth' | relative_url }}">laptop repair</a> explains the laptop-specific causes.</li>
+        <li><strong>Everything takes forever.</strong> Slow start-up, programs that hang, a fan that never stops. An old hard drive, too little memory, a crowded startup list or dust in the cooling are the usual reasons. See <a href="{{ '/slow-computer-repair-perth' | relative_url }}">slow computer repair</a>, and <a href="{{ '/computer-upgrades-perth' | relative_url }}">computer upgrades</a> if the hardware is the limit.</li>
+        <li><strong>Pop-ups, a changed homepage or a scam warning.</strong> Browser hijacks, fake virus alerts and remote-access scams all land here, as do hacked email and social accounts. See <a href="{{ '/virus-removal-perth' | relative_url }}">virus removal</a>.</li>
+        <li><strong>Cracked, dark or striped laptop screen.</strong> A crack, dead patches, coloured lines or a screen that only works at certain angles. See <a href="{{ '/laptop-screen-repair-perth' | relative_url }}">laptop screen repair</a>.</li>
+        <li><strong>Battery, keyboard, hinge or charging problems.</strong> A battery that dies in an hour, keys that stop working, a hinge that cracks the case or a charger that only works at an angle. See <a href="{{ '/laptop-repair-perth' | relative_url }}">laptop repair</a>.</li>
+        <li><strong>Files you cannot get to.</strong> A drive that is not detected, an external drive that clicks, deleted photos or a computer that will not start with your only copy inside. See <a href="{{ '/data-recovery-perth' | relative_url }}">data recovery</a>, and stop using the drive until then.</li>
+        <li><strong>Games stutter, or you want a new build.</strong> Low frame rates, high temperatures, a build that will not post, or parts in boxes waiting to be put together. See <a href="{{ '/gaming-pc-build-perth' | relative_url }}">gaming PC builds</a>.</li>
+        <li><strong>Wifi, printers and the home network.</strong> Dead spots, a new NBN router, a printer that will not connect. These are done at your place, and the prices are under networking below.</li>
+      </ul>
+      <p>If none of these fit, or it is a mix of several, that is what the diagnostic is for. One flat fee finds the fault and covers the repair labour.</p>
+    </div>
+  </section>
+
+  <section class="sv-more" id="all-services" aria-labelledby="all-services-h">
+    <h2 class="sv-h2" id="all-services-h">Every service and price</h2>
+    <div class="sv-prose">
+      <p>This is everything we do, grouped by the kind of job. Every price is fixed and includes GST. Where a service has its own page, its name links to it, and each group links to the same group on the <a href="{{ '/pricing' | relative_url }}">full price list</a>.</p>
+    </div>
+    {%- for _cat in _S.categories %}
+    {%- assign _items = _S.services | where: "category", _cat.id %}
+    {%- if _items.size > 0 %}
+    <div class="sv-cat" id="all-{{ _cat.id }}">
+      <h3 class="sv-h3">{{ _cat.label | escape }}</h3>
+      <div class="sv-prose">
+        {%- case _cat.id %}
+        {%- when "repairs" %}<p>Faults on desktops and laptops, from a virus or a password lockout to a broken screen, a failed battery or a drive that has stopped. If you are not sure what is wrong, the first row is the one to book.</p>
+        {%- when "performance" %}<p>For a computer that works but crawls. Three levels of clean-up, depending on how far it has slowed and how long it has been since anyone looked at it.</p>
+        {%- when "upgrades" %}<p>Faster storage, more memory, a new graphics card or Windows 11. Labour is a fixed price, and you can supply the part or we can.</p>
+        {%- when "gaming" %}<p>Building with your parts, plus the finishing work around a build: cooling, cables, lighting, tuning and testing. Consoles are here too.</p>
+        {%- when "networking" %}<p>Done at your home or office across the southern suburbs, at the same price as in the workshop plus the call-out fee.</p>
+        {%- when "software" %}<p>Jobs that often do not need the computer in the workshop at all: setup, email, Office, backups and moving everything to a new PC.</p>
+        {%- else %}<p>{{ _cat.blurb | escape }}</p>
+        {%- endcase %}
+      </div>
+      <table class="sv-table">
+        <caption class="sr-only">{{ _cat.label | escape }} prices</caption>
+        <thead><tr><th scope="col">Service</th><th scope="col">What it covers</th><th scope="col" class="sv-num">Price</th></tr></thead>
+        <tbody>
+          {%- for _s in _items %}
+          {%- assign _href = "" %}
+          {%- for _p in _svcpages %}
+            {%- if _href == "" %}
+            {%- for _r in _p.repairs %}
+              {%- if _r.price_key == _s.key or _r.also_keys contains _s.key %}{% assign _href = '/' | append: _p.slug | relative_url %}{% break %}{% endif %}
+            {%- endfor %}
+            {%- endif %}
+          {%- endfor %}
+          <tr>
+            <th scope="row">{% if _href != "" %}<a href="{{ _href }}">{{ _s.name | escape }}</a>{% else %}{{ _s.name | escape }}{% endif %}{% if _s.desc %}<span class="sv-row-note">{% include resolve-prices.html text=_s.desc %}</span>{% endif %}</th>
+            <td>{% include resolve-prices.html text=_s.desc %}</td>
+            <td class="sv-num">{% include price.html key=_s.key %}</td>
+          </tr>
+          {%- endfor %}
+        </tbody>
+      </table>
+      <p class="sv-cat-more"><a href="{{ '/pricing' | relative_url }}#{{ _cat.id }}">{{ _cat.label | escape }} on the price list</a></p>
+    </div>
+    {%- endif %}
     {%- endfor %}
-  </ul>
+    <div class="sv-cat" id="all-extras">
+      <h3 class="sv-h3">Call-outs and extras</h3>
+      <div class="sv-prose"><p>Added to a job rather than booked on their own: a visit to your place, a faster turnaround, a follow-up check or a care plan.</p></div>
+      <ul class="sv-cat-list">
+        {%- for _s in _S.addons %}
+        {%- unless _s.key contains "biz-" %}
+        <li><span>{{ _s.name | escape }}</span><span class="sv-num">{% include price.html key=_s.key %}</span></li>
+        {%- endunless %}
+        {%- endfor %}
+      </ul>
+      <p class="sv-cat-more"><a href="{{ '/pricing' | relative_url }}#extras">Extras on the price list</a></p>
+    </div>
+  </section>
+
+  <section class="sv-more" id="more-help" aria-labelledby="more-help-h">
+    <h2 class="sv-h2" id="more-help-h">Other ways we help</h2>
+    <div class="sv-prose">
+      <p><strong>Not sure it is worth fixing?</strong> The <a href="{{ '/pc-health-check-perth' | relative_url }}">Free PC Health Check</a> asks seven questions about what the computer is doing and tells you what it usually means, how urgent it is and roughly what it costs. It takes a couple of minutes and needs nothing installed.</p>
+      <p><strong>Running a business?</strong> <a href="{{ '/business-it-support' | relative_url }}">Business IT Support</a> covers offices and shops with monthly plans: remote help, onsite visits, managed antivirus, backups and updates, for one fixed fee.</p>
+      <p><strong>Buying a used computer?</strong> The pre-purchase inspection is for a laptop or PC off Marketplace or Gumtree. We check it over before you hand over any cash, so you know what you are buying.</p>
+      <p><strong>Want to read up first?</strong> <a href="{{ '/tech-tips' | relative_url }}">Tech Tips</a> has guides on why a PC slows down, the signs of a virus or a failing drive, and what repairs cost in Perth.</p>
+      <p>What customers say about the work is on the <a href="{{ '/reviews' | relative_url }}">reviews page</a>.</p>
+    </div>
+  </section>
+
+  <section class="sv-steps-wrap" id="how-it-works" aria-labelledby="steps-h">
+    <h2 class="sv-h2" id="steps-h">How a repair works</h2>
+    <ol class="sv-steps">
+      <li><span class="sv-step-title">Message us</span><span class="sv-step-text">Message us on WhatsApp or use the form below. You get a fixed price before you bring it in.</span></li>
+      <li><span class="sv-step-title">Drop it off</span><span class="sv-step-text">At our Canning Vale workshop, any time, day or night. Drop off before 2pm and most jobs are ready by 6pm the same day.</span></li>
+      <li><span class="sv-step-title">Collect it fixed</span><span class="sv-step-text">Tested before you collect it, with a 30-day warranty on the work.</span></li>
+    </ol>
+    <div class="sv-prose">
+      <p>A short message is enough to start: what the computer is, what it is doing and when it started. A photo of an error message or a cracked screen helps. We usually reply {{ site.reply_time }} with a price, or with one or two questions if the symptom could mean more than one thing.</p>
+      <p>Once it is on the bench, we confirm the fault before touching anything. If what we find matches the quote, we go ahead. If it turns out to be something different, we message you with the new price and wait for your answer. Every repair is tested before it goes back to you.</p>
+    </div>
+  </section>
+
+  <section class="sv-more" id="pricing" aria-labelledby="pricing-h">
+    <h2 class="sv-h2" id="pricing-h">How our pricing works</h2>
+    <div class="sv-prose">
+      <p><strong>A fixed price, agreed first.</strong> Every job is quoted before work starts, and the price you agree is the price you pay at collection. There is no hourly rate running in the background.</p>
+      <p><strong>One fee when the fault is unknown.</strong> When nobody can say yet what is wrong, the all-in diagnostic at {% include price.html key="diagnostic-repair-all-in" bare=true %} finds the fault and covers the repair labour in the same visit. You pay one figure for both, not a diagnostic fee followed by a repair bill.</p>
+      <p><strong>Labour and parts are shown separately where it matters.</strong> Upgrades are listed as labour only, so you can bring your own SSD or memory, or as supplied, where we source the part. Screen and battery prices depend on the model, which is why some read "from". You get the exact figure for your laptop when we quote.</p>
+      <p><strong>No fix, no fee on data recovery.</strong> If we cannot get your files back, you do not pay for the attempt.</p>
+      <p><strong>30-day warranty.</strong> Every repair carries a 30-day labour warranty. If the same fault returns in that time, the labour to fix it again is on us.</p>
+      <p>All prices include GST. The complete list, with packages and current offers, is on the <a href="{{ '/pricing' | relative_url }}">pricing page</a>.</p>
+    </div>
+  </section>
+
+  <section class="sv-more" id="where" aria-labelledby="where-h">
+    <h2 class="sv-h2" id="where-h">Workshop, on-site and remote</h2>
+    <div class="sv-prose">
+      <p><strong>The workshop.</strong> Repairs are done at our workshop at 7 Barraberry Retreat, Canning Vale WA 6155. You can drop off any time, day or night, which suits shift workers and anyone who would rather leave a laptop on the way to work. Most of our customers come from the suburbs around Canning Vale, such as Willetton, Riverton, Harrisdale, Piara Waters and Southern River, and people bring computers from right across Perth.</p>
+      <p><strong>At your place.</strong> Wifi, NBN routers, mesh networks, printers and smart TVs are set up where they live. The price is the same as in the workshop, plus a call-out fee of {% include price.html key="on-site-call-out" bare=true %} per visit across the southern suburbs.</p>
+      <p><strong>Remote.</strong> Plenty of software jobs never need the computer to leave your desk: email that stopped syncing, a program that will not install, a printer driver, a quick clean-up. A remote session starts at {% include price.html key="remote-support-session" bare=true %} for the first half hour. If the problem turns out to be hardware, we tell you straight away so you can bring it in.</p>
+    </div>
+  </section>
+
+  <section class="sv-more" id="devices" aria-labelledby="devices-h">
+    <h2 class="sv-h2" id="devices-h">Computers we work on</h2>
+    <div class="sv-prose">
+      <p>Windows laptops and desktops from every common brand, including HP, Dell, Lenovo, Asus, Acer, MSI, Samsung, Toshiba, Dynabook, Gigabyte and Razer, plus all-in-ones and custom-built PCs. Gaming PCs and gaming laptops get their own work, from repasting and cooling to tuning and full builds, and PS5 and Xbox consoles are repaired in the same workshop.</p>
+      <p>MacBook and Surface devices are welcome for diagnostics, virus removal, data recovery and software work. We do not replace screens on MacBook or Surface devices, and we say so before you bring one in.</p>
+      <p>External hard drives, USB sticks and memory cards come in for data recovery, and old machines come in for a secure wipe before they are sold, donated or recycled.</p>
+    </div>
+  </section>
+
+  {%- include quote-form.html %}
+
+  <section class="sv-faq" id="faq" aria-labelledby="faq-h">
+    <h2 class="sv-h2" id="faq-h">Questions we get asked</h2>
+    <div class="sv-faq-list">
+    {%- for _f in page.faqs %}
+    {%- capture _a %}{% include resolve-prices.html text=_f.a %}{% endcapture %}
+    <div class="faq-item">
+      <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-{{ forloop.index }}">
+        {{ _f.q | escape }}
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-a" id="faq-a-{{ forloop.index }}"><p>{{ _a | strip | escape }}</p></div>
+    </div>
+    {%- endfor %}
+    </div>
+  </section>
+
+  {%- assign _subs = site.pages | where: "layout", "suburb" | sort: "suburb" -%}
+  {%- if _subs.size > 0 %}
+  <section class="sv-more" aria-labelledby="near-h">
+    <h2 class="sv-h2" id="near-h">Computer repairs near you</h2>
+    <div class="sv-prose"><p>Each suburb page has the trip to the workshop and the repairs people there bring us most.</p></div>
+    <ul class="sv-links">
+      {%- for _p in _subs %}
+      <li><a href="{{ '/suburbs/' | append: _p.slug | relative_url }}"><span>{{ _p.suburb | escape }}<span class="sv-links-sub">Computer and laptop repair</span></span>{{ _chev }}</a></li>
+      {%- endfor %}
+    </ul>
+  </section>
+  {%- endif %}
 
   <section class="sv-more sv-hub-help" aria-labelledby="unsure-h">
-    <h2 class="sv-h2" id="unsure-h">Not sure which one it is?</h2>
+    <h2 class="sv-h2" id="unsure-h">Still not sure which one it is?</h2>
     <div class="sv-prose">
-      <p>That is normal. Most people only know what the computer is doing, not why. The all-in diagnostic is a flat {% include price.html key="diagnostic-repair-all-in" bare=true %} that finds the fault and covers the repair labour, never an hourly rate. Or try the <a href="{{ '/pc-health-check-perth' | relative_url }}">Free PC Health Check</a>, which tells you what a symptom usually means and how urgent it is.</p>
-      <p>Every price is on the <a href="{{ '/pricing' | relative_url }}">full price list</a>, and businesses have their own page for <a href="{{ '/business-it-support' | relative_url }}">Business IT Support</a>.</p>
+      <p>Send a message with what the computer is doing and we will tell you what it is likely to be and what it costs. If it needs a look on the bench first, the all-in diagnostic is a flat {% include price.html key="diagnostic-repair-all-in" bare=true %} that finds the fault and covers the repair labour.</p>
     </div>
     <div class="sv-act">
-      <a href="https://wa.me/61452573701?text={{ "Hi! I'd like a quote for a computer repair." | uri_escape }}" target="_blank" rel="noopener noreferrer" class="sv-btn sv-btn-wa" onclick="trackWAClick()">
+      <a href="{% include wa-href.html text="Hi! I'd like a quote for a computer repair." %}" target="_blank" rel="noopener noreferrer" class="sv-btn sv-btn-wa" onclick="trackWAClick()">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>
         Get a quote on WhatsApp
       </a>
-      <a href="{{ '/quote-request' | relative_url }}" class="sv-act-link">Or use the quote form</a>
+      <a href="#quote" class="sv-act-link">Or use the quote form</a>
     </div>
   </section>
 </article>
