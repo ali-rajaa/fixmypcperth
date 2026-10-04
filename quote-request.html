@@ -272,8 +272,7 @@ description: "Get a computer repair quote from FixMyPC Perth in Canning Vale. Te
     }
 
     hidden.value = services.join(', ');
-    submit.disabled = true;
-    submit.textContent = 'Sending...';
+    formSending(submit);
 
     var data = {};
     new FormData(form).forEach(function (v, k) { data[k] = v; });
@@ -284,15 +283,16 @@ description: "Get a computer repair quote from FixMyPC Perth in Canning Vale. Te
       body: JSON.stringify(data)
     }).then(function (r) { return r.json(); }).then(function (res) {
       if (!res.success) throw new Error(res.message || 'failed');
-      try { localStorage.removeItem(LS); } catch (e) {}
-      if (typeof trackQuoteForm === 'function') trackQuoteForm();
-      form.hidden = true;
-      var done = document.getElementById('qrDone');
-      done.hidden = false;
-      done.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      formSent(submit, function () {
+        try { localStorage.removeItem(LS); } catch (e) {}
+        if (typeof trackQuoteForm === 'function') trackQuoteForm();
+        form.hidden = true;
+        var done = document.getElementById('qrDone');
+        formShow(done);
+        done.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
     }).catch(function () {
-      submit.disabled = false;
-      submit.textContent = 'Send quote request';
+      formReset(submit);
       err('errForm', true);
     });
   });

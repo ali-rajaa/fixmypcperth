@@ -25,6 +25,44 @@ function trackQuoteForm() {
   }
 }
 
+/* ============================================================
+   Submit button states, shared by every quote and audit form:
+   Send > Sending (spinner) > Sent (tick) > the form's own
+   confirmation. Styled in shell.css. formSending keeps the
+   button's original markup so formReset can put the label and
+   its icon back exactly after a failed send (restoring with
+   textContent used to drop the arrow icon). formSent holds the
+   tick on screen briefly so the change reads, then runs `then`.
+   formShow reveals a confirmation with the shared fade and lift.
+   ============================================================ */
+function formSending(btn) {
+  if (!btn.hasAttribute('data-label')) btn.setAttribute('data-label', btn.innerHTML);
+  btn.style.minWidth = btn.offsetWidth + 'px';
+  btn.disabled = true;
+  btn.setAttribute('aria-busy', 'true');
+  btn.classList.remove('is-sent');
+  btn.classList.add('is-sending');
+  btn.innerHTML = '<span class="btn-state"><span class="btn-spin" aria-hidden="true"></span>Sending</span>';
+}
+function formSent(btn, then) {
+  btn.classList.remove('is-sending');
+  btn.classList.add('is-sent');
+  btn.removeAttribute('aria-busy');
+  btn.innerHTML = '<span class="btn-state"><svg class="btn-tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 9 17 20 6"/></svg>Sent</span>';
+  setTimeout(then, 700);
+}
+function formReset(btn) {
+  btn.classList.remove('is-sending', 'is-sent');
+  btn.removeAttribute('aria-busy');
+  btn.disabled = false;
+  btn.style.minWidth = '';
+  if (btn.hasAttribute('data-label')) btn.innerHTML = btn.getAttribute('data-label');
+}
+function formShow(el) {
+  el.hidden = false;
+  el.classList.add('rise-in');
+}
+
 (function () {
   'use strict';
 
@@ -269,8 +307,6 @@ function trackQuoteForm() {
     const selName   = document.getElementById('mqSelectedName');
     const trust     = document.querySelector('.mq-trust');
 
-    const SUBMIT_HTML = 'Get My Free Quote <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>';
-
     function selectedService() {
       const el = form.querySelector('input[name="Service"]:checked');
       return el ? el.value : '';
@@ -333,8 +369,7 @@ function trackQuoteForm() {
         return;
       }
 
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Sending...';
+      formSending(submitBtn);
 
       try {
         const response = await fetch('https://api.web3forms.com/submit', {
@@ -344,18 +379,18 @@ function trackQuoteForm() {
         const result = await response.json();
         if (result.success) {
           if (typeof trackQuoteForm === 'function') trackQuoteForm();
-          form.style.display = 'none';
-          if (trust) trust.style.display = 'none';
-          success.classList.add('show');
+          formSent(submitBtn, function() {
+            form.style.display = 'none';
+            if (trust) trust.style.display = 'none';
+            success.classList.add('show', 'rise-in');
+          });
         } else {
+          formReset(submitBtn);
           alert('Submission failed. Please try again or contact us on WhatsApp.');
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = SUBMIT_HTML;
         }
       } catch (err) {
+        formReset(submitBtn);
         alert('An error occurred. Please try again.');
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = SUBMIT_HTML;
       }
     });
   })();

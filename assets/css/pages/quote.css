@@ -151,7 +151,7 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body)
 }
 @media (hover: hover) { .qr-submit:hover { background:var(--blue-dk); } }
 .qr-submit:active:not(:disabled) { transform:scale(0.98); transition:transform 0.1s var(--ease-press); }
-.qr-submit:disabled { background:var(--muted2); cursor:default; transform:none; }
+.qr-submit:disabled:not(.is-sending, .is-sent) { background:var(--muted2); cursor:default; transform:none; }
 .qr-submit:focus-visible { outline:2px solid var(--blue); outline-offset:3px; }
 .qr-note { text-align:center; font-size:12.5px; color:var(--muted); margin:0.85rem 0 0; }
 

@@ -163,6 +163,8 @@ img { max-width: 100%; height: auto; }
   -webkit-tap-highlight-color: transparent;
   transition: color 0.15s var(--ease-settle);
 }
+@media (hover: hover) { .tt-copy-toggle:hover { color: var(--blue-dk); } }
+.tt-copy-toggle:active { color: var(--blue-dk); }
 
 /* Hero visual: inline SVG so there is no image request and nothing to lazy-load. */
 .tt-hero-art { display: flex; justify-content: center; align-items: center; }

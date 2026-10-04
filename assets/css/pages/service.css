@@ -100,7 +100,7 @@ a { color: inherit; }
 
 .sv-act { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1.25rem; margin: 0 0 1.25rem; }
 .sv-act-link { font-size: 0.9375rem; font-weight: 600; color: var(--ink2); text-decoration: underline; text-decoration-color: var(--border2); text-underline-offset: 4px; min-height: 44px; display: inline-flex; align-items: center; gap: 6px; }
-.sv-act-link svg { width: 15px; height: 15px; flex-shrink: 0; }
+.sv-act-link svg { width: 15px; height: 15px; flex-shrink: 0; transition: transform 0.2s var(--ease-settle); }
 
 /* The promise line: the three facts every job carries, as plain text
    with a small tick, never as badges. */
@@ -127,7 +127,7 @@ a { color: inherit; }
 .sv-index-title { font-family: var(--display); font-size: 0.9375rem; font-weight: 700; letter-spacing: -0.01em; color: var(--ink); margin: 0 0 0.5rem; }
 .sv-index-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 1.5rem; }
 .sv-index-list a:where(:not([class])) { display: flex; align-items: center; gap: 0.55rem; min-height: 40px; padding: 0.25rem 0; font-size: 0.9375rem; line-height: 1.4; color: var(--ink3); text-decoration: none; }
-.sv-index-list svg { width: 13px; height: 13px; flex-shrink: 0; color: var(--blue); }
+.sv-index-list svg { width: 13px; height: 13px; flex-shrink: 0; color: var(--blue); transition: transform 0.2s var(--ease-settle); }
 /* Grouped contents: one block per group, two columns of blocks. */
 /* Columns rather than a grid, so groups of different lengths pack into two
    balanced columns instead of leaving a gap beside every short group. */
@@ -292,8 +292,11 @@ textarea.tq-input { resize: vertical; min-height: 88px; }
 @media (hover: hover) {
   .sv-crumbs a:where(:not([class])):hover { color: var(--blue-dk); text-decoration: underline; }
   .sv-act-link:hover { color: var(--blue); text-decoration-color: var(--blue); }
+  .sv-act-link:hover > svg { transform: translateX(3px); }
+  .sv-price-more:hover { color: var(--blue-dk); }
   .sv-btn-wa:hover { background: var(--wa-deep); }
   .sv-index-list a:where(:not([class])):hover { color: var(--blue); }
+  .sv-index-list a:where(:not([class])):hover > svg { transform: translateX(2px); }
   .sv-table td a:where(:not([class])):hover { color: var(--blue); }
   .tq-submit:hover { background: var(--blue-dk); }
   .tq-seg-opt:hover span:where(:not([class])) { background: rgba(255,255,255,0.12); }
@@ -356,7 +359,8 @@ textarea.tq-input { resize: vertical; min-height: 88px; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 
-  .sv-hub-link, .sv-btn, .tq-submit, .tq-input, .tq-seg-opt span:where(:not([class])), .sv-links svg { transition: none; }
+  .sv-hub-link, .sv-btn, .tq-submit, .tq-input, .tq-seg-opt span:where(:not([class])), .sv-links svg, .sv-act-link > svg, .sv-index-list a:where(:not([class])) > svg { transition: none; }
+  .sv-act-link:hover > svg, .sv-index-list a:where(:not([class])):hover > svg { transform: none; }
   .sv-hub-link:active, .sv-btn:active, .tq-submit:active, .tq-seg-opt input:active + span { transform: none; }
 }
 

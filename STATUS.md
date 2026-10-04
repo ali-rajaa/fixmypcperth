@@ -13,7 +13,7 @@ every push, and show the owner screenshots first for bigger changes.
 the `fixmypcperth-jekyll` skill, which loads on its own. Do not re-decide
 anything listed under "Locked decisions" there or here.
 
-Last updated: 26 September 2026.
+Last updated: 4 October 2026.
 
 ---
 
@@ -538,6 +538,37 @@ Exempt: the trust ticker strip, and chips (their own 8 gap).
 Check it on the live site: Actions > Verify live site > Run workflow. The
 "Mobile standard" step (`_launch/mobile-check.js`) measures every page in
 the sitemap at 390px and 360px and fails on anything off the standard.
+
+---
+
+## Motion and feedback standard
+
+Applied October 2026. Motion here is feedback, not decoration.
+
+- **Press.** Every button, card and chip responds the moment it is pressed
+  (compress to 0.97-0.985, or a colour change on rows and text links) and
+  settles back on release without overshoot. Where a control also lifts on
+  hover, the press uses the `scale` property, not `transform`: a hover lift
+  in a later or more specific rule used to win while the mouse was held, so
+  a desktop click showed nothing.
+- **Forms.** Every quote and audit form uses the shared sequence in
+  `scripts.html`: `formSending(btn)` (spinner, "Sending", full colour),
+  `formSent(btn, then)` (green tick, "Sent", 0.7s), `formShow(el)` (the
+  confirmation fades and lifts in), `formReset(btn)` on failure (puts the
+  original label and icon back). A new form calls these; it never sets its
+  own button text. Styles are in `shell.css`. The Business IT call form now
+  confirms on the page too; it used to post away to Web3Forms.
+- **Hover.** Arrow links nudge their arrow 2-3px. Hover only exists inside
+  `@media (hover: hover)`.
+- **Reveal.** Homepage, Business IT and PC Health Check use `.fade-up`
+  (a fade and short lift, staggered 60ms). Other pages do not animate content
+  in, on purpose: they are search landing pages and guides, where text
+  should be readable immediately.
+- **Not used, on purpose:** magnetic buttons, parallax, pinned scroll
+  scenes and clip-mask text reveals. They slow phones, can trigger motion
+  sickness and do nothing to help someone book a repair.
+- **Reduced motion.** Every lift and press goes, the spinner breathes
+  instead of turning, and confirmations fade without moving.
 
 ---
 

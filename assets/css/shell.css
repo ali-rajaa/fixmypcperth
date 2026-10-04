@@ -1,5 +1,11 @@
 /* ==========================================================
-   shell.css   VERSION 7
+   shell.css   VERSION 8
+   v8: form feedback. Every quote and audit form now shares one submit
+   button sequence, Send > Sending (spinner) > Sent (tick), set by
+   formSending / formSent / formReset in scripts.html, and the confirmation
+   that replaces the form fades and lifts in (.rise-in). The button keeps
+   its colour while sending so it reads as working rather than greyed out.
+   (v7 below)
    v7: mobile nav audit. The menu now emerges from the hamburger that opens
    it (transform-origin top right) and materialises its blur rather than
    plain-fading, and is hidden entirely above 901px - it had no such rule, so
@@ -252,6 +258,22 @@
 }
 
 #scroll-bar { position:fixed; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,#1560FF,#00CFFF,#22C55E); transform:scaleX(0); transform-origin:left; z-index:9999; }
+
+/* Submit button states, shared by every form (see formSending in
+   scripts.html). button.is-* outranks each page's own .x:disabled rule, so
+   the sending button stays full colour instead of the faded disabled look,
+   and the sent button turns green whatever its resting colour was. */
+button.is-sending, button.is-sending:disabled { opacity:1; cursor:progress; transform:none; }
+button.is-sent, button.is-sent:disabled { opacity:1; cursor:default; transform:none; color:#FFFFFF; background:#15803D; border-color:#15803D; box-shadow:0 4px 14px rgba(21,128,61,0.28); filter:none; }
+.btn-state { display:inline-flex; align-items:center; justify-content:center; gap:0.55em; }
+.btn-spin { flex-shrink:0; width:1em; height:1em; border-radius:50%; border:2px solid currentColor; border-right-color:transparent; animation:btn-spin 0.7s linear infinite; }
+.btn-tick { flex-shrink:0; width:1.15em; height:1.15em; stroke-dasharray:24; stroke-dashoffset:24; animation:btn-tick 0.35s cubic-bezier(0.16,1,0.3,1) forwards; }
+@keyframes btn-spin { to { transform:rotate(360deg); } }
+@keyframes btn-tick { to { stroke-dashoffset:0; } }
+/* The confirmation that replaces a sent form arrives rather than
+   appearing: a short fade and lift, critically damped (no overshoot). */
+.rise-in { animation:rise-in 0.5s cubic-bezier(0.16,1,0.3,1) both; }
+@keyframes rise-in { from { opacity:0; transform:translateY(14px); } }
 /* The wordmark plus five pills needs roughly 890px. Squeezing them into a
    tablet meant 11px text, so the switch to the hamburger now happens at 900
    rather than 720. Between 901 and 1120 the chrome is tightened slightly to
@@ -464,6 +486,13 @@ footer {
     transition:opacity 0.15s ease, visibility 0s linear 0.15s;
   }
   .mob-menu.open { transform:none; transition:opacity 0.15s ease; }
+  /* Form states: the spinner breathes instead of turning, the tick is
+     drawn at once, and the confirmation fades without the lift. */
+  .btn-spin { border-right-color:currentColor; animation:btn-breathe 1.2s ease-in-out infinite alternate; }
+  .btn-tick { stroke-dasharray:none; animation:none; }
+  .rise-in { animation:rise-fade 0.2s ease both; }
+  @keyframes btn-breathe { to { opacity:0.35; } }
+  @keyframes rise-fade { from { opacity:0; } }
 }
 
 /* Reduced transparency. Every translucent surface here goes solid and drops
@@ -503,6 +532,10 @@ footer {
 .sticky-cta a, .wa-bubble, .nav-cta, .footer-social a:where(:not([class])), .footer-phone, .footer-col a, .footer-area-link {
   -webkit-tap-highlight-color:transparent;
 }
+/* The footer's text links change colour on hover, which never fires on a
+   phone, and the tap flash is suppressed just above, so a tap showed
+   nothing at all. The same blue now shows on press. */
+.footer-col a:where(:not([class])):active, .footer-phone:active, .footer-area-link:active { color:#1560FF; }
 
 /* ==========================================================
    Page scrollbar

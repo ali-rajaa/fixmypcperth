@@ -493,7 +493,7 @@ img { max-width: 100%; height: auto; }
   padding: 14px 22px;
   border-radius: 50px;
   text-decoration: none;
-  transition: transform 0.15s, box-shadow 0.15s;
+  transition: transform 0.15s, box-shadow 0.15s, scale 0.3s var(--ease-settle);
   margin-bottom: 1.5rem;
 }
 .plan-card:not(.featured):not(.premium-tier) .plan-cta { background: var(--ink); color: #fff; box-shadow: 0 4px 14px rgba(15,23,42,0.2); }
@@ -733,6 +733,15 @@ img { max-width: 100%; height: auto; }
   .audit-submit:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(21,96,255,0.45); }
 }
 .audit-note { font-size: 12px; color: var(--muted); text-align: center; margin-top: 0.7rem; }
+/* Inline confirmation and error, so a sent form stays on this page instead
+   of leaving for Web3Forms' own confirmation page. Light versions of the
+   industry.css pair, since this form sits on a white card. */
+.audit-done { text-align: center; padding: 1.25rem 0 0.5rem; outline: none; }
+.audit-done-tick { width: 52px; height: 52px; margin: 0 auto 1rem; border-radius: 50%; background: rgba(34,197,94,0.12); border: 1.5px solid rgba(34,197,94,0.4); display: flex; align-items: center; justify-content: center; color: #15803D; }
+.audit-done-tick > svg { width: 26px; height: 26px; }
+.audit-done-title { font-family: var(--display); font-size: 1.15rem; font-weight: 800; color: var(--ink); margin: 0 0 0.4rem; }
+.audit-done-text { font-size: 14px; line-height: 1.7; color: var(--muted); max-width: 46ch; margin: 0 auto; }
+.audit-err { font-size: 13px; font-weight: 600; color: #B91C1C; background: #FEF2F2; border: 1px solid #FECACA; border-radius: 10px; padding: 10px 14px; margin: 0.75rem 0 0; }
 /* ─── CTA FINAL ──────────────────────────────────────────────── */
 .cta-final { background: linear-gradient(135deg, var(--ink) 0%, var(--ink2) 100%); padding: 5.5rem 2rem; position: relative; overflow: hidden; }
 .cta-final::before {
@@ -933,14 +942,29 @@ img { max-width: 100%; height: auto; }
    ========================================================== */
 /* The grey iOS tap flash paints over the press feedback below, so the two
    fight each other. The scale and colour change are the feedback now. */
-.btn-primary, .btn-outline, .plan-cta, .plan-tab, .industry-card, .audit-submit, .cta-actions > a, .addon-row, .first-month-banner {
+.btn-primary, .btn-outline, .plan-cta, .plan-tab, .industry-card, .audit-submit, .cta-actions > a, .addon-row, .first-month-banner,
+.audit-strip-btn, .addon-toggle, .biz-link-chip, .biz-link-chip-all {
   -webkit-tap-highlight-color: transparent;
 }
 /* Feedback on press, not release: the instant a finger or cursor is down the
    control visibly compresses, so a tap is never left unacknowledged. */
-.btn-primary:active, .plan-cta:active, .audit-submit:active, .cta-actions > a:active, .btn-outline:active {
+.btn-primary:active, .audit-submit:active, .cta-actions > a:active, .btn-outline:active {
   transform: scale(0.97);
   transition: transform 0.1s var(--ease-press);
+}
+/* These use the scale property rather than transform. The plan buttons'
+   hover lift is a transform in a more specific rule further up, and it
+   silently won while the mouse was held down, so a desktop click got no
+   press at all. scale composes with the lift instead of competing with it.
+   The strip button, add-on toggle and link chips had no press or hover. */
+.plan-cta:active, .audit-strip-btn:active, .addon-toggle:active, .biz-link-chip:active, .biz-link-chip-all:active {
+  scale: 0.97;
+  transition: scale 0.1s var(--ease-press), transform 0.1s var(--ease-press);
+}
+@media (hover: hover) {
+  .audit-strip-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 22px rgba(0,0,0,0.2); }
+  .addon-toggle:hover, .biz-link-chip:hover { border-color: var(--blue); color: var(--blue); }
+  .biz-link-chip-all:hover { border-color: var(--blue); }
 }
 .plan-tab:active, .industry-card:active { transform: scale(0.98); transition: transform 0.1s var(--ease-press); }
 /* The original used a mix of ad hoc curves and linear easing on hover lifts.
@@ -959,6 +983,9 @@ img { max-width: 100%; height: auto; }
   .plan-card:hover, .industry-card:hover, .addon-row:hover, .btn-primary:hover, .plan-cta:hover, .cta-actions > a:hover, .industry-card:active, .plan-tab:active, .btn-primary:active, .plan-cta:active, .audit-submit:active, .btn-outline:active {
     transform: none;
   }
+  /* The plan buttons' lifts are set at higher specificity, so name them the same way. */
+  .audit-strip-btn:hover, .plan-card:not(.featured):not(.premium-tier) .plan-cta:hover, .plan-card.featured .plan-cta:hover, .plan-card.premium-tier .plan-cta:hover { transform: none; }
+  .plan-cta:active, .audit-strip-btn:active, .addon-toggle:active, .biz-link-chip:active, .biz-link-chip-all:active { scale: none; }
 }
 /* Muted greys darkened to carry real contrast, panels given a defined border
    rather than relying on a tinted fill alone. */
@@ -1129,7 +1156,7 @@ img { max-width: 100%; height: auto; }
   padding: 10px 22px;
   border-radius: 50px;
   cursor: pointer;
-  transition: border-color 0.15s cubic-bezier(0.16,1,0.3,1), color 0.15s;
+  transition: border-color 0.15s cubic-bezier(0.16,1,0.3,1), color 0.15s, scale 0.3s var(--ease-settle);
 }
 .addon-toggle-icon {
   display: inline-flex;
@@ -1176,7 +1203,7 @@ img { max-width: 100%; height: auto; }
   text-decoration: none;
   white-space: nowrap;
   box-shadow: 0 4px 16px rgba(0,0,0,0.15);
-  transition: transform 0.15s cubic-bezier(0.16,1,0.3,1),box-shadow 0.15s;
+  transition: transform 0.15s cubic-bezier(0.16,1,0.3,1),box-shadow 0.15s,scale 0.3s var(--ease-settle);
   flex-shrink: 0;
 }
 .plans-sub { margin-top: 0.75rem; }
@@ -1238,7 +1265,9 @@ img { max-width: 100%; height: auto; }
 .audit-sub { margin-bottom: 2rem; }
 .audit-direct-box { margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 8px; }
 .audit-direct-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 2px; }
-.audit-direct-link { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: var(--blue); text-decoration: none; }
+.audit-direct-link { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: var(--blue); text-decoration: none; text-underline-offset: 3px; -webkit-tap-highlight-color: transparent; }
+@media (hover: hover) { .audit-direct-link:hover { color: var(--blue-dk); text-decoration: underline; } }
+.audit-direct-link:active { color: var(--blue-dk); text-decoration: underline; }
 .why-row { display: flex; gap: 14px; width: max-content; padding: 4px 2px 8px; }
 .why-card {
   --hov-accent: var(--blue);
@@ -1295,7 +1324,11 @@ img { max-width: 100%; height: auto; }
   text-decoration: none;
   opacity: 0.85;
   transition: opacity 0.15s cubic-bezier(0.16,1,0.3,1);
+  -webkit-tap-highlight-color: transparent;
 }
+/* The opacity transition above had no hover to run on. */
+@media (hover: hover) { .cs-link:hover { opacity: 1; text-decoration: underline; } }
+.cs-link:active { opacity: 1; text-decoration: underline; }
 .cs-stats { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
 .cs-stat {
   background: rgba(255,255,255,0.05);
@@ -1410,7 +1443,7 @@ img { max-width: 100%; height: auto; }
   border-radius: 50px;
   padding: 6px 14px;
   text-decoration: none;
-  transition: border-color 0.15s cubic-bezier(0.16,1,0.3,1),color 0.15s,background 0.15s;
+  transition: border-color 0.15s cubic-bezier(0.16,1,0.3,1),color 0.15s,background 0.15s,scale 0.3s var(--ease-settle);
 }
 .biz-link-chip-all {
   display: inline-flex;
@@ -1424,6 +1457,7 @@ img { max-width: 100%; height: auto; }
   border-radius: 50px;
   padding: 6px 14px;
   text-decoration: none;
+  transition: border-color 0.15s, background 0.15s, scale 0.3s var(--ease-settle);
 }
 /* FAQ layout on this page: two columns on wide screens, like the
    homepage. align-items:start so opening one answer does not stretch

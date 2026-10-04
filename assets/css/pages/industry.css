@@ -516,13 +516,16 @@ a { color: inherit; text-decoration: none; }
 .inline-cta-btn, .inline-cta-btn-outline, .service-link-card, .industry-pill, .post-footer-link { -webkit-tap-highlight-color: transparent; }
 /* Feedback on press, not release: the control compresses the instant a finger
    or cursor is down, so a tap is never left unacknowledged. */
-.inline-cta-btn:active, .inline-cta-btn-outline:active { transform: scale(0.97); transition: transform 0.1s var(--ease-press); }
-.service-link-card:active { transform: scale(0.985); transition: transform 0.1s var(--ease-press); }
+/* The two below use the scale property, not transform: their hover lift is a
+   transform in the (hover: hover) block further down, which won while the
+   mouse was held, so a desktop click showed no press. scale composes with it. */
+.inline-cta-btn:active, .inline-cta-btn-outline:active { scale: 0.97; transition: scale 0.1s var(--ease-press), transform 0.1s var(--ease-press); }
+.service-link-card:active { scale: 0.985; transition: scale 0.1s var(--ease-press), transform 0.1s var(--ease-press); }
 .industry-pill:active, .post-footer-link:active { transform: scale(0.95); transition: transform 0.1s var(--ease-press); }
 /* Hover settles into place rather than bouncing past it. Overshoot belongs to
    momentum-driven gestures, not a static hover. */
 .service-link-card, .callout, .summary-box, .stat-box {
-  transition: border-color 0.2s, transform 0.3s var(--ease-settle), box-shadow 0.3s var(--ease-settle);
+  transition: border-color 0.2s, background 0.2s, transform 0.3s var(--ease-settle), box-shadow 0.3s var(--ease-settle), scale 0.3s var(--ease-settle);
 }
 /* The FAQ arrow gets a touch of overshoot, which is the one place it belongs:
    Apple's own spec value for rotation is damping 0.8, so the tap reads as
@@ -666,7 +669,7 @@ a { color: inherit; text-decoration: none; }
   border-radius: 50px;
   text-decoration: none;
   box-shadow: 0 4px 14px rgba(21,96,255,0.35);
-  transition: transform 0.25s var(--ease-settle);
+  transition: transform 0.25s var(--ease-settle), scale 0.3s var(--ease-settle);
   white-space: nowrap;
   font-size: 14.5px;
   padding: 13px 26px;
@@ -678,7 +681,7 @@ a { color: inherit; text-decoration: none; }
   font-family: var(--body);
   border-radius: 50px;
   text-decoration: none;
-  transition: border-color 0.15s, color 0.15s;
+  transition: border-color 0.15s, color 0.15s, background 0.15s, scale 0.3s var(--ease-settle);
   white-space: nowrap;
   color: #fff;
   font-weight: 700;
@@ -819,6 +822,8 @@ a { color: inherit; text-decoration: none; }
   .service-link-card:hover, .service-link-card:active, .inline-cta-btn:active, .inline-cta-btn-outline:active, .industry-pill:active, .post-footer-link:active {
     transform: none;
   }
+  .inline-cta-btn:hover { transform: none; }
+  .service-link-card:active, .inline-cta-btn:active, .inline-cta-btn-outline:active { scale: none; }
   .audit-submit:active { transform: none; }
   .audit-input, .audit-select, .audit-submit { transition-duration: 0.15s; }
   .faq-item, .faq-q, .faq-q svg, .faq-a, .faq-a p:where(:not([class])) { transition: none; }
