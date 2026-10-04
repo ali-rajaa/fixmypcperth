@@ -666,7 +666,6 @@ a { color: inherit; }
   transition: transform 0.1s var(--ease-press), box-shadow 0.1s var(--ease-press);
 }
 .btn-start-quiz:active, .btn-next:active:not(:disabled) { box-shadow: 0 2px 8px rgba(21,96,255,0.4); }
-.btn-start-quiz:active svg { transform: translateX(2px); }
 .btn-ghost:active { transform: scale(0.97); transition: transform 0.1s var(--ease-press); }
 .option-btn:not(:disabled):active {
   transform: scale(0.97);

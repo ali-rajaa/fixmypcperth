@@ -257,7 +257,6 @@ img { max-width: 100%; height: auto; }
   transition: transform 0.2s var(--ease-settle);
 }
 @media (hover: hover) { .post-featured:hover .feat-read-btn { transform: translateX(3px); } }
-.post-featured:active .feat-read-btn { transform: translateX(2px); }
 
 /* ---------- post cards ---------- */
 .post-card {
@@ -290,7 +289,6 @@ img { max-width: 100%; height: auto; }
 .read-time-badge svg { color: var(--cat-c, var(--muted2)); opacity: 0.7; }
 .post-read-more { font-size: 12px; font-weight: 700; color: var(--cat-c, var(--blue)); display: flex; align-items: center; gap: 3px; transition: transform 0.2s var(--ease-settle); }
 @media (hover: hover) { .post-card:hover .post-read-more { transform: translateX(3px); } }
-.post-card:active .post-read-more { transform: translateX(2px); }
 
 /* ---------- show more / show fewer ----------
    The one control on this page that must not read as a pill.

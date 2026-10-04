@@ -556,6 +556,11 @@ the owner's Gmail until a business address exists.
 
 ## Motion and feedback standard
 
+**One control, one press.** A link or button presses as a single unit
+(scale on :active from pointer-down). No part inside it (an icon, the logo
+mark, an arrow) gets its own press motion. The logo has no hover effect.
+Hover arrow nudges stay: they hint at direction and are not press feedback.
+
 Applied October 2026. Motion here is feedback, not decoration.
 
 - **Press.** Every button, card and chip responds the moment it is pressed
