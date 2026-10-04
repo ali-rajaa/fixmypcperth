@@ -559,7 +559,8 @@ the owner's Gmail until a business address exists.
 **One control, one press.** A link or button presses as a single unit
 (scale on :active from pointer-down). No part inside it (an icon, the logo
 mark, an arrow) gets its own press motion. The logo has no hover effect.
-Hover arrow nudges stay: they hint at direction and are not press feedback.
+No hover nudges either: arrows and icons inside links do not move on hover
+(colour changes only).
 
 Applied October 2026. Motion here is feedback, not decoration.
 
@@ -615,8 +616,10 @@ reshuffle without a reason.
 - Desktop: Logo | Repairs (menu) | Pricing | Reviews | Free PC Health Check |
   Business IT | WhatsApp Us. Plain text links, no pills. The WhatsApp button
   shows from 901px up; the floating bubble only shows on tablets (721-900).
-- Repairs menu: opens on click (aria-expanded), Escape / outside click / Tab
-  out close it, arrow keys move through it. No prices in it, on purpose.
+- Repairs menu: with a mouse it opens on hover (60ms intent delay, closes
+  220ms after leaving; a mouse click keeps it open). Keyboard and touch open
+  it on click / Enter (aria-expanded). Escape / outside click / Tab out close
+  it, arrow keys move through it. No prices in it, on purpose.
   Built from service_links in _data/suburbs.yml (kind: service, built: true),
   ordered by nav_order; nav_label overrides label there only. A new service
   page appears by itself once built: true; give it a nav_order.

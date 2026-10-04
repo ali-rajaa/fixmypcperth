@@ -118,6 +118,9 @@
   opacity:0; transform:translateY(-6px) scale(0.97); visibility:hidden; pointer-events:none;
   transition:opacity 0.2s cubic-bezier(0.16,1,0.3,1), transform 0.24s cubic-bezier(0.16,1,0.3,1), visibility 0s linear 0.24s;
 }
+/* An invisible strip over the 8px gap, so a mouse moving from the button
+   to the panel never leaves the menu. Only takes pointer events when open. */
+.nav-dd-panel::before { content:''; position:absolute; left:0; right:0; top:-9px; height:9px; }
 .nav-dd-panel.open {
   opacity:1; transform:none; visibility:visible; pointer-events:auto;
   transition:opacity 0.2s cubic-bezier(0.16,1,0.3,1), transform 0.24s cubic-bezier(0.16,1,0.3,1), visibility 0s;
@@ -191,8 +194,8 @@
              -webkit-backdrop-filter 0.22s cubic-bezier(0.16,1,0.3,1);
 }
 .mob-link { font-family:'DM Sans', 'DM Sans Fallback', sans-serif; font-size:15px; font-weight:600; color:#0F172A; text-decoration:none; padding:0.9rem 1rem; border-radius:10px; display:block; transition:background 0.18s,color 0.18s,transform 0.25s cubic-bezier(0.16,1,0.3,1); }
-@media (hover: hover) { .mob-link:hover { background:#EEF3FF; color:#1560FF; transform:translateX(3px); } }
-.mob-link:active { background:#E4EEFF; transform:translateX(3px) scale(0.98); transition:transform 0.1s cubic-bezier(0.4,0,0.2,1),background 0.1s; }
+@media (hover: hover) { .mob-link:hover { background:#EEF3FF; color:#1560FF; } }
+.mob-link:active { background:#E4EEFF; transform:scale(0.98); transition:transform 0.1s cubic-bezier(0.4,0,0.2,1),background 0.1s; }
 .mob-link.active, .mob-link[aria-current="page"] { background:#EEF3FF; color:#0A3ACC; }
 /* Repairs opens expanded; its heading is a button that folds the list away.
    Eleven extra rows make the panel taller than a short phone, so it scrolls

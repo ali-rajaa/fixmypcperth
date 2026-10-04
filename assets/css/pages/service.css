@@ -292,11 +292,9 @@ textarea.tq-input { resize: vertical; min-height: 88px; }
 @media (hover: hover) {
   .sv-crumbs a:where(:not([class])):hover { color: var(--blue-dk); text-decoration: underline; }
   .sv-act-link:hover { color: var(--blue); text-decoration-color: var(--blue); }
-  .sv-act-link:hover > svg { transform: translateX(3px); }
   .sv-price-more:hover { color: var(--blue-dk); }
   .sv-btn-wa:hover { background: var(--wa-deep); }
   .sv-index-list a:where(:not([class])):hover { color: var(--blue); }
-  .sv-index-list a:where(:not([class])):hover > svg { transform: translateX(2px); }
   .sv-table td a:where(:not([class])):hover { color: var(--blue); }
   .tq-submit:hover { background: var(--blue-dk); }
   .tq-seg-opt:hover span:where(:not([class])) { background: rgba(255,255,255,0.12); }
@@ -304,8 +302,7 @@ textarea.tq-input { resize: vertical; min-height: 88px; }
   .sv-links a:where(:not([class])):hover { color: var(--blue); }
   .sv-hub-link:hover { border-color: var(--blue); }
   .sv-hub-link:hover .sv-hub-name, .sv-hub-link:hover .sv-hub-go { color: var(--blue); }
-  .sv-hub-link:hover .sv-hub-go svg { transform: translateX(3px); }
-  .sv-links a:where(:not([class])):hover svg { color: var(--blue); transform: translateX(3px); }
+  .sv-links a:where(:not([class])):hover svg { color: var(--blue); }
 }
 
 /* ---------- phones ---------- */

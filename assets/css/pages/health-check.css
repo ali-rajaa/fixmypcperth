@@ -635,7 +635,6 @@ a { color: inherit; }
   .btn-blue:hover { background: var(--blue-dk); transform: translateY(-2px); box-shadow: 0 10px 28px rgba(21,96,255,0.45); }
   .btn-ghost:hover { border-color: var(--blue); color: var(--blue); }
   .btn-start-quiz:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(21,96,255,0.5); }
-  .btn-start-quiz:hover svg { transform: translateX(4px); }
   .btn-back-q:hover { color: var(--blue); }
   .option-btn:not(:disabled):hover { border-color: var(--blue); background: var(--blue-lt); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(21,96,255,0.1); }
   .option-btn:not(:disabled):hover::before { transform: scaleY(1); }
@@ -649,7 +648,6 @@ a { color: inherit; }
   .info-card:hover::before { opacity: 1; }
   .scroll-dot:hover::before { background: var(--blue-mid); }
   .area-link:hover { background: var(--blue-lt); color: var(--blue); }
-  .area-link:hover::after { transform: translateX(3px) rotate(45deg); }
 
   .intro-prose a:not([class]):hover { border-bottom-color: var(--blue); }
   .cta-icon-btn:hover { transform: translateY(-2px); }

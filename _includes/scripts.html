@@ -195,10 +195,13 @@ function formShow(el) {
   }
 
   /* ---- Header Repairs menu (desktop) ----
-     Opens on click, not hover, so it works the same with a mouse, a
-     keyboard and a touch laptop. Escape, a click outside, Tab past the last
-     link or crossing to the phone layout all close it. Down arrow from the
-     button moves into the list; Up and Down move through it. */
+     With a mouse it opens on hover and closes a moment after the pointer
+     leaves (the delay lets the pointer cross the gap or cut a corner without
+     the menu snapping shut). A mouse click on the button keeps it open
+     rather than toggling it shut under the pointer. Keyboard and touch open
+     it on click / Enter. Escape, a click outside, Tab past the last link or
+     crossing to the phone layout all close it. Down arrow from the button
+     moves into the list; Up and Down move through it. */
   var ddBtn = document.getElementById('nav-dd-btn');
   var ddPanel = document.getElementById('nav-dd-panel');
   if (ddBtn && ddPanel) {
@@ -210,7 +213,21 @@ function formShow(el) {
       ddPanel.classList.toggle('open', open);
       ddBtn.setAttribute('aria-expanded', String(open));
     };
-    ddBtn.addEventListener('click', function() { setDd(!ddOpen()); });
+    var ddWrap = ddBtn.parentNode, ddTimer, lastPointer = '';
+    ddWrap.addEventListener('pointerenter', function(e) {
+      if (e.pointerType !== 'mouse') return;
+      clearTimeout(ddTimer); ddTimer = setTimeout(function() { setDd(true); }, 60);
+    });
+    ddWrap.addEventListener('pointerleave', function(e) {
+      if (e.pointerType !== 'mouse') return;
+      clearTimeout(ddTimer); ddTimer = setTimeout(function() { setDd(false); }, 220);
+    });
+    ddBtn.addEventListener('pointerdown', function(e) { lastPointer = e.pointerType; });
+    ddBtn.addEventListener('click', function(e) {
+      clearTimeout(ddTimer);
+      if (e.detail > 0 && lastPointer === 'mouse') { setDd(true); return; }
+      setDd(!ddOpen());
+    });
     ddBtn.addEventListener('keydown', function(e) {
       if (e.key === 'ArrowDown') { e.preventDefault(); setDd(true); ddLinks()[0].focus(); }
     });
