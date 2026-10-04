@@ -93,25 +93,45 @@
    shape in the header, so it reads as the one action. */
 .nav-link { display:inline-flex; align-items:center; gap:5px; min-height:44px; padding:0 10px; font-family:'DM Sans', 'DM Sans Fallback', sans-serif; font-size:14px; font-weight:600; color:#0F172A; background:transparent; border:0; border-radius:8px; text-decoration:none; white-space:nowrap; cursor:pointer; transition:color 0.15s ease, background 0.15s ease; }
 @media (hover: hover) { .nav-link:hover { color:#1560FF; background:#F4F8FF; } }
-.nav-link:active { background:#EEF3FF; }
+/* Feedback on press, not release: a slight scale while the pointer is down. */
+.nav-link:active { background:#EEF3FF; transform:scale(0.97); transition:transform 0.1s cubic-bezier(0.4,0,0.2,1), background 0.1s; }
 .nav-link[aria-current="page"] { color:#0A3ACC; }
 
-/* Repairs menu. Opens on click (scripts.html), anchored under its button and
-   growing from that corner. Closing is instant; [hidden] removes it. */
+/* Repairs menu. Opens on click (scripts.html) and grows out of the button
+   that opened it (transform-origin at that corner). It animates out along
+   the same path it came in, and because these are transitions on a class,
+   clicking again mid-way reverses from wherever it is, with no jump.
+   visibility drops only after the fade, so a closed panel takes no clicks,
+   focus or screen reader attention. Near-solid (0.985) with a blur behind:
+   it is a list of text over text, and legibility wins over see-through.
+   The heavier shadow marks it as the larger floating surface. */
 .nav-dd { position:relative; }
-.nav-dd-btn svg { width:12px; height:12px; flex-shrink:0; transition:transform 0.2s cubic-bezier(0.16,1,0.3,1); }
+.nav-dd-btn svg { width:12px; height:12px; flex-shrink:0; transition:transform 0.25s cubic-bezier(0.16,1,0.3,1); }
 .nav-dd-btn[aria-expanded="true"] { color:#1560FF; background:#F4F8FF; }
 .nav-dd-btn[aria-expanded="true"] svg { transform:rotate(180deg); }
-.nav-dd-panel { position:absolute; top:calc(100% + 8px); left:0; z-index:210; min-width:250px; padding:6px; background:#FFFFFF; border:1px solid #E2E8F0; border-radius:14px; box-shadow:0 18px 44px rgba(15,23,42,0.14), 0 2px 6px rgba(15,23,42,0.05); transform-origin:top left; animation:dd-in 0.18s cubic-bezier(0.16,1,0.3,1) both; }
-@keyframes dd-in { from { opacity:0; transform:translateY(-4px) scale(0.98); } }
+.nav-dd-panel {
+  position:absolute; top:calc(100% + 8px); left:0; z-index:210; min-width:250px; padding:6px;
+  background:rgba(255,255,255,0.985); backdrop-filter:blur(24px) saturate(180%); -webkit-backdrop-filter:blur(24px) saturate(180%);
+  border:1px solid rgba(226,232,240,0.9); border-radius:14px;
+  box-shadow:0 18px 44px rgba(15,23,42,0.14), 0 2px 6px rgba(15,23,42,0.05);
+  transform-origin:top left;
+  opacity:0; transform:translateY(-6px) scale(0.97); visibility:hidden; pointer-events:none;
+  transition:opacity 0.2s cubic-bezier(0.16,1,0.3,1), transform 0.24s cubic-bezier(0.16,1,0.3,1), visibility 0s linear 0.24s;
+}
+.nav-dd-panel.open {
+  opacity:1; transform:none; visibility:visible; pointer-events:auto;
+  transition:opacity 0.2s cubic-bezier(0.16,1,0.3,1), transform 0.24s cubic-bezier(0.16,1,0.3,1), visibility 0s;
+}
 .nav-dd-list { list-style:none; margin:0; padding:0; }
-.nav-dd-list a { display:flex; align-items:center; min-height:40px; padding:0 12px; font-family:'DM Sans', 'DM Sans Fallback', sans-serif; font-size:14px; font-weight:500; color:#0F172A; text-decoration:none; border-radius:8px; white-space:nowrap; transition:color 0.15s ease, background 0.15s ease; }
+.nav-dd-list a { display:flex; align-items:center; min-height:40px; padding:0 12px; font-family:'DM Sans', 'DM Sans Fallback', sans-serif; font-size:14px; font-weight:500; color:#0F172A; text-decoration:none; border-radius:8px; white-space:nowrap; transition:color 0.15s ease, background 0.15s ease, transform 0.2s cubic-bezier(0.16,1,0.3,1); }
 @media (hover: hover) { .nav-dd-list a:hover { color:#1560FF; background:#F4F8FF; } }
-.nav-dd-list a:active { background:#EEF3FF; }
+.nav-dd-list a:active { background:#EEF3FF; transform:scale(0.98); transition:transform 0.1s cubic-bezier(0.4,0,0.2,1), background 0.1s; }
 .nav-dd-list a:focus-visible { outline:2px solid #1560FF; outline-offset:-2px; }
 .nav-dd-list a[aria-current="page"] { color:#0A3ACC; font-weight:600; }
 .nav-dd-more { margin-top:6px; padding-top:6px; border-top:1px solid #E2E8F0; }
-.nav-dd-more a { color:#475569; }
+/* The two way-out links read as actions in the brand blue, so Tech Tips and
+   the full list are clearly separate from the repairs above the divider. */
+.nav-dd-more a { color:#1560FF; font-weight:600; }
 
 /* Keyboard focus. Previously there was no visible ring at all. */
 .nav-link:focus-visible,
@@ -178,9 +198,17 @@
    Eleven extra rows make the panel taller than a short phone, so it scrolls
    inside itself (max-height on .mob-menu) rather than running off it. */
 .mob-head { display:flex; align-items:center; justify-content:space-between; width:100%; background:transparent; border:0; text-align:left; cursor:pointer; }
-.mob-head svg { width:14px; height:14px; flex-shrink:0; color:#64748B; transition:transform 0.2s cubic-bezier(0.16,1,0.3,1); }
+.mob-head svg { width:14px; height:14px; flex-shrink:0; color:#64748B; transition:transform 0.28s cubic-bezier(0.16,1,0.3,1); }
 .mob-head[aria-expanded="true"] svg { transform:rotate(180deg); }
-.mob-sub { list-style:none; margin:0 0 4px; padding:0 0 6px; border-bottom:1px solid #E2E8F0; }
+/* Unfolds in place: the row grows from 0 to its natural height (grid 0fr to
+   1fr, so no fixed height to guess) while the links fade in. A tap mid-way
+   reverses it from where it is. The divider sits on the last row so it
+   folds away with the list. */
+.mob-sub-wrap { display:grid; grid-template-rows:0fr; transition:grid-template-rows 0.3s cubic-bezier(0.16,1,0.3,1); }
+.mob-sub-wrap.open { grid-template-rows:1fr; }
+.mob-sub { list-style:none; margin:0; padding:0; min-height:0; overflow:hidden; opacity:0; transition:opacity 0.2s ease; }
+.mob-sub-wrap.open .mob-sub { opacity:1; transition:opacity 0.25s ease 0.05s; }
+.mob-sub li:last-child { padding-bottom:6px; margin-bottom:4px; border-bottom:1px solid #E2E8F0; }
 .mob-link--sub { display:flex; align-items:center; min-height:44px; padding:0 1rem 0 1.5rem; font-size:14.5px; font-weight:500; color:#334155; }
 .mob-link--all { color:#1560FF; font-weight:600; }
 .sticky-cta {
@@ -562,7 +590,9 @@ footer {
 @media (prefers-reduced-motion: reduce) {
   .nav-logo:hover .logo-mark, .nav-logo:active .logo-mark,
   .nav-dd-btn svg, .mob-head svg { transition:none; }
-  .nav-dd-panel { animation:none; }
+  .nav-dd-panel, .nav-dd-panel.open { transform:none; }
+  .nav-link:active, .nav-dd-list a:active { transform:none; }
+  .mob-sub-wrap { transition:none; }
   .mob-hamburger:active,
   .mob-link:hover, .mob-link:active,
   .sticky-cta a:active,
@@ -590,7 +620,7 @@ footer {
    its blur. The backgrounds were already 0.88-0.97 alpha, so going opaque
    barely changes the look but removes the blur cost and the see-through. */
 @media (prefers-reduced-transparency: reduce) {
-  .desk-nav, .mob-nav, .mob-menu, .sticky-cta {
+  .desk-nav, .mob-nav, .mob-menu, .sticky-cta, .nav-dd-panel {
     background:#FFFFFF;
     backdrop-filter:none;
     -webkit-backdrop-filter:none;
@@ -602,7 +632,7 @@ footer {
    and the muted greys darkened to carry real contrast against the footer's
    light background. */
 @media (prefers-contrast: more) {
-  .desk-nav, .mob-nav, .mob-menu, .sticky-cta {
+  .desk-nav, .mob-nav, .mob-menu, .sticky-cta, .nav-dd-panel {
     background:#FFFFFF;
     backdrop-filter:none;
     -webkit-backdrop-filter:none;

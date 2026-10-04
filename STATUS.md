@@ -615,13 +615,17 @@ reshuffle without a reason.
   Built from service_links in _data/suburbs.yml (kind: service, built: true),
   ordered by nav_order; nav_label overrides label there only. A new service
   page appears by itself once built: true; give it a nav_order.
-  Below a divider: All repair services (/services), Repair guides (/tech-tips).
-- Phones: Repairs (open by default, folds away) then Pricing, Reviews, Free PC
-  Health Check, Business IT, Get a quote. WhatsApp stays on the sticky bar,
+  Below a divider, in brand blue: All repair services (/services), Tech Tips
+  (/tech-tips). It animates in and out from its button and reverses cleanly
+  if clicked mid-way (class-based transitions, not [hidden]).
+- Phones: Repairs (closed by default, unfolds in place, inert while folded)
+  then Pricing, Reviews, Free PC Health Check, Tech Tips, Business IT, Get a
+  quote. Closing the menu folds Repairs again. WhatsApp stays on the sticky bar,
   which carries the line "24/7 drop-off, Canning Vale".
 - Business IT (contact: email) keeps "Book a free IT call" and no WhatsApp.
 - The current page's link gets aria-current="page" (scripts.html).
-- Tech Tips left the header, so the footer Company list links it again.
+- Tech Tips is in the Repairs menu (desktop), top level on phones, and in the
+  footer Company list.
 
 ## WhatsApp messages
 

@@ -137,6 +137,10 @@ function formShow(el) {
     hamburger.classList.toggle('open', isOpen);
     hamburger.setAttribute('aria-expanded', String(isOpen));
     hamburger.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+    /* Fold Repairs once the panel has faded out, not while it is visible. */
+    if (!isOpen) setTimeout(function() {
+      if (!mobMenu.classList.contains('open') && typeof setRep === 'function') setRep(false);
+    }, 240);
   }
 
   hamburger.addEventListener('click', function() {
@@ -172,14 +176,21 @@ function formShow(el) {
 
   }
 
-  /* Phone menu: Repairs starts open; its heading folds the list away. */
+  /* Phone menu: Repairs starts closed, so the menu opens short. Its heading
+     unfolds the list in place. inert keeps the folded links out of the tab
+     order and away from screen readers. Closing the whole menu folds it
+     again, so the next open starts the same way. */
   var mobRepBtn = document.getElementById('mob-repairs-btn');
   var mobRep = document.getElementById('mob-repairs');
+  var setRep = function(open) {
+    if (!mobRepBtn || !mobRep) return;
+    mobRepBtn.setAttribute('aria-expanded', String(open));
+    mobRep.classList.toggle('open', open);
+    if (open) mobRep.removeAttribute('inert'); else mobRep.setAttribute('inert', '');
+  };
   if (mobRepBtn && mobRep) {
     mobRepBtn.addEventListener('click', function() {
-      var open = mobRepBtn.getAttribute('aria-expanded') !== 'true';
-      mobRepBtn.setAttribute('aria-expanded', String(open));
-      mobRep.hidden = !open;
+      setRep(mobRepBtn.getAttribute('aria-expanded') !== 'true');
     });
   }
 
@@ -192,11 +203,14 @@ function formShow(el) {
   var ddPanel = document.getElementById('nav-dd-panel');
   if (ddBtn && ddPanel) {
     var ddLinks = function() { return Array.prototype.slice.call(ddPanel.querySelectorAll('a')); };
+    /* The panel stays in the page and animates both ways (shell.css), so a
+       second click mid-opening reverses it from where it is. */
+    var ddOpen = function() { return ddPanel.classList.contains('open'); };
     var setDd = function(open) {
-      ddPanel.hidden = !open;
+      ddPanel.classList.toggle('open', open);
       ddBtn.setAttribute('aria-expanded', String(open));
     };
-    ddBtn.addEventListener('click', function() { setDd(ddPanel.hidden); });
+    ddBtn.addEventListener('click', function() { setDd(!ddOpen()); });
     ddBtn.addEventListener('keydown', function(e) {
       if (e.key === 'ArrowDown') { e.preventDefault(); setDd(true); ddLinks()[0].focus(); }
     });
@@ -206,10 +220,10 @@ function formShow(el) {
       else if (e.key === 'ArrowUp') { e.preventDefault(); if (i <= 0) ddBtn.focus(); else links[i - 1].focus(); }
     });
     document.addEventListener('click', function(e) {
-      if (!ddPanel.hidden && !ddPanel.contains(e.target) && !ddBtn.contains(e.target)) setDd(false);
+      if (ddOpen() && !ddPanel.contains(e.target) && !ddBtn.contains(e.target)) setDd(false);
     });
     document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape' && !ddPanel.hidden) { setDd(false); ddBtn.focus(); }
+      if (e.key === 'Escape' && ddOpen()) { setDd(false); ddBtn.focus(); }
     });
     ddBtn.parentNode.addEventListener('focusout', function(e) {
       if (e.relatedTarget && !ddBtn.parentNode.contains(e.relatedTarget)) setDd(false);

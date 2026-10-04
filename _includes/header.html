@@ -22,7 +22,7 @@
     <div class="nav-right">
       <div class="nav-dd">
         <button type="button" class="nav-link nav-dd-btn" id="nav-dd-btn" aria-expanded="false" aria-controls="nav-dd-panel">Repairs<svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 4.5l3 3 3-3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <div class="nav-dd-panel" id="nav-dd-panel" hidden>
+        <div class="nav-dd-panel" id="nav-dd-panel">
           <ul class="nav-dd-list">
             {%- for _v in _navsvc %}
             <li><a href="{{ '/' | append: _v.slug | relative_url }}">{{ _v.nav_label | default: _v.label }}</a></li>
@@ -30,7 +30,7 @@
           </ul>
           <ul class="nav-dd-list nav-dd-more">
             <li><a href="{{ '/services' | relative_url }}">All repair services</a></li>
-            <li><a href="{{ '/tech-tips' | relative_url }}">Repair guides</a></li>
+            <li><a href="{{ '/tech-tips' | relative_url }}">Tech Tips</a></li>
           </ul>
         </div>
       </div>
@@ -67,17 +67,19 @@
 </div>
 
 <nav class="mob-menu" id="mob-menu" aria-label="Mobile menu">
-  <button type="button" class="mob-link mob-head" id="mob-repairs-btn" aria-expanded="true" aria-controls="mob-repairs">Repairs<svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 4.5l3 3 3-3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-  <ul class="mob-sub" id="mob-repairs">
+  <button type="button" class="mob-link mob-head" id="mob-repairs-btn" aria-expanded="false" aria-controls="mob-repairs">Repairs<svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 4.5l3 3 3-3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  <div class="mob-sub-wrap" id="mob-repairs" inert>
+  <ul class="mob-sub">
     {%- for _v in _navsvc %}
     <li><a href="{{ '/' | append: _v.slug | relative_url }}" class="mob-link mob-link--sub">{{ _v.nav_label | default: _v.label }}</a></li>
     {%- endfor %}
     <li><a href="{{ '/services' | relative_url }}" class="mob-link mob-link--sub mob-link--all">All repair services</a></li>
-    <li><a href="{{ '/tech-tips' | relative_url }}" class="mob-link mob-link--sub">Repair guides</a></li>
   </ul>
+  </div>
   <a href="{{ '/pricing' | relative_url }}" class="mob-link">Pricing</a>
   <a href="{{ '/reviews' | relative_url }}" class="mob-link">Reviews</a>
   <a href="{{ '/pc-health-check-perth' | relative_url }}" class="mob-link">Free PC Health Check</a>
+  <a href="{{ '/tech-tips' | relative_url }}" class="mob-link">Tech Tips</a>
   <a href="{{ '/business-it-support' | relative_url }}" class="mob-link">Business IT</a>
   <a href="{{ '/quote-request' | relative_url }}" class="mob-link">Get a quote</a>
 </nav>
