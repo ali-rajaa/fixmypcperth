@@ -401,12 +401,14 @@ footer {
 .footer-bar {
   max-width:1100px; margin:2.5rem auto 0; padding:1.1rem 0 1.5rem;
   border-top:1px solid #E2E8F0;
-  display:flex; justify-content:space-between; align-items:center;
-  gap:1rem; flex-wrap:wrap;
+  /* Copyright and legal links on the left, the GST note on the right. */
+  display:grid; grid-template-columns:auto 1fr auto; align-items:center; column-gap:1.5rem; row-gap:.4rem;
 }
-.footer-copy, .footer-note { font-size:13px; color:#64748B; }
+.footer-copy, .footer-note { font-size:13px; line-height:1.5; color:#64748B; margin:0; }
+.footer-note { text-align:right; }
+.footer-abn { white-space:nowrap; }
 /* Terms and Privacy live in the bottom bar, beside the copyright line. */
-.footer-legal { display:inline-flex; gap:1.1rem; margin-left:1.1rem; }
+.footer-legal { display:flex; flex-wrap:wrap; gap:0 1.25rem; font-size:13px; line-height:1.5; }
 .footer-legal a { color:#64748B; text-decoration:underline; text-decoration-color:#CBD5E1; text-underline-offset:3px; -webkit-tap-highlight-color:transparent; transition:color .15s; }
 @media (hover: hover) { .footer-legal a:hover { color:#1560FF; } }
 .footer-legal a:active { color:#1560FF; }
@@ -437,6 +439,8 @@ footer {
   .footer-tag { grid-column: 1; grid-row: 2; margin-bottom: 0; }
   .footer-blurb { grid-column: 2; grid-row: 1 / span 2; max-width: none; margin: 0; }
   .footer-social { grid-column: 3; grid-row: 1; }
+  .footer-bar { grid-template-columns: auto 1fr; }
+  .footer-note { grid-column: 1 / -1; text-align: left; }
 }
 
 @media (max-width: 760px) {
@@ -494,7 +498,13 @@ footer {
   .footer-areas .footer-head { margin-bottom: .35rem; }
   .footer-areas-list { gap: 0 1.25rem; }
   .footer-area-link { display: inline-flex; align-items: center; min-height: 44px; padding: 0; }
-  .footer-bar { margin-top: 1.35rem; padding: .85rem 0 1.25rem; }
+  .footer-bar { margin-top: 1.35rem; padding: .85rem 0 1.25rem; grid-template-columns: 1fr; row-gap: .5rem; }
+  .footer-copy { order: 1; }
+  .footer-abn { display: block; }
+  .footer-note { order: 2; grid-column: auto; text-align: left; }
+  /* The links are 44px tap targets around 19px of text; the negative margins
+     take back that padding so all three lines sit the same 8px apart. */
+  .footer-legal { order: 3; margin: -12px 0 -12px; }
   /* Matches the base rule's two-class weight, or the desktop gap wins here. */
   .footer-areas + .footer-bar { margin-top: 1.1rem; }
 }
@@ -507,9 +517,8 @@ footer {
   .footer-area-link { font-size: 14px; }
   .footer-contact address, .footer-hours { display: block; margin-right: 0; }
   .footer-phone { margin-right: 0; }
-  .footer-bar { flex-direction: column; align-items: flex-start; gap: .35rem; margin-top: 1.5rem; padding-bottom: 1.25rem; }
-  .footer-copy, .footer-note { font-size: 12px; }
-  .footer-legal { display: flex; margin: .35rem 0 0; }
+  .footer-bar { margin-top: 1.5rem; }
+  .footer-copy, .footer-note, .footer-legal { font-size: 12px; }
 }
 
 /* Reduced motion for the header and footer chrome. Previously only the
