@@ -351,7 +351,7 @@ footer {
 
 .footer-head {
   font-family:'Sora', 'Sora Fallback', sans-serif; font-size:12px; font-weight:700;
-  letter-spacing:.09em; text-transform:uppercase; color:#0F172A; margin-bottom:.85rem;
+  letter-spacing:.09em; text-transform:uppercase; color:#0F172A; margin:0 0 .85rem; line-height:1.5;
 }
 .footer-col a {
   display:block; font-size:14.5px; color:#64748B;
@@ -361,7 +361,7 @@ footer {
 /* Repairs sits in two columns so the tallest list is five rows, not nine.
    The toggle button only exists for phones (see the 760px block). */
 .footer-links--2col { display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); grid-template-rows:repeat(5, auto); grid-auto-flow:column; column-gap:1.5rem; }
-.footer-sec-btn { display:none; }
+.footer-sec-h { display:none; margin:0; font-size:inherit; }
 
 .footer-contact address {
   font-style: normal; font-size: 14.5px; color: #64748B;
@@ -371,12 +371,16 @@ footer {
 /* 44px tall so it meets the touch-target minimum; the extra height is
    taken out of the margin so the column keeps its rhythm. */
 .footer-phone {
-  display: flex; align-items: center; min-height: 44px; font-size: 15.5px; font-weight: 700;
-  color: #0F172A; text-decoration: none; margin: -0.6rem 0 0.4rem;
+  display: flex; align-items: center; font-size: 15.5px; font-weight: 700;
+  color: #0F172A; text-decoration: none; margin: 0 0 1rem;
   transition: color .15s;
 }
 @media (hover: hover) { .footer-phone:hover { color: #1560FF; } }
 .footer-hours { font-size: 14px; color: #64748B; line-height: 1.75; }
+.footer-map { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; transition: color .15s; }
+@media (hover: hover) { .footer-map:hover { color: #1560FF; } }
+.footer-map:active { color: #1560FF; }
+.footer-map:focus-visible { outline: 2px solid #1560FF; outline-offset: 3px; border-radius: 3px; }
 
 /* Computer Repairs by Suburb: a full-width row under the four columns rather
    than a fifth column. The four-column grid above is deliberately balanced,
@@ -409,7 +413,7 @@ footer {
 .footer-abn { white-space:nowrap; }
 /* Terms and Privacy live in the bottom bar, beside the copyright line. */
 .footer-legal { display:flex; flex-wrap:wrap; gap:0 1.25rem; font-size:13px; line-height:1.5; }
-.footer-legal a { color:#64748B; text-decoration:underline; text-decoration-color:#CBD5E1; text-underline-offset:3px; -webkit-tap-highlight-color:transparent; transition:color .15s; }
+.footer-legal a { color:#64748B; text-decoration:none; -webkit-tap-highlight-color:transparent; transition:color .15s; }
 @media (hover: hover) { .footer-legal a:hover { color:#1560FF; } }
 .footer-legal a:active { color:#1560FF; }
 
@@ -429,6 +433,9 @@ footer {
   .footer-area-link { display: inline-flex; align-items: center; min-height: 44px; }
   .cs-link { display: inline-flex; align-items: center; min-height: 44px; }
   .footer-legal a { display: inline-flex; align-items: center; min-height: 44px; }
+  /* 44px tap box around ~22px of text: the negative margins keep the gaps even. */
+  .footer-phone { min-height: 44px; margin: -11px 0 calc(1rem - 11px); }
+  .footer-map { display: inline-flex; min-height: 44px; }
 }
 @media (max-width: 1000px) {
   .footer-inner { grid-template-columns: 2fr 1fr 1.2fr; gap: 2rem 1.5rem; }
@@ -458,14 +465,15 @@ footer {
   .footer-contact { order: 2; padding-bottom: 1.1rem; }
   .footer-sec { order: 3; border-top: 1px solid #E2E8F0; }
   .footer-js .footer-sec > .footer-head { display: none; }
-  .footer-js .footer-sec-btn {
+  .footer-js .footer-sec-h { display: block; }
+  .footer-sec-btn {
     display: flex; align-items: center; justify-content: space-between; width: 100%; min-height: 52px;
     padding: 0; background: none; border: 0; cursor: pointer; -webkit-tap-highlight-color: transparent;
     font-family: 'Sora', 'Sora Fallback', sans-serif; font-size: 12px; font-weight: 700;
     letter-spacing: .09em; text-transform: uppercase; color: #0F172A;
   }
   .footer-sec-btn svg { width: 18px; height: 18px; color: #64748B; transition: transform .25s cubic-bezier(0.16,1,0.3,1); }
-  .footer-sec.open > .footer-sec-btn svg { transform: rotate(180deg); }
+  .footer-sec.open .footer-sec-btn svg { transform: rotate(180deg); }
   .footer-sec-btn:active { color: #1560FF; }
   .footer-sec-btn:focus-visible { outline: 2px solid #1560FF; outline-offset: 2px; border-radius: 4px; }
   .footer-js .footer-sec:not(.open) > .footer-links,

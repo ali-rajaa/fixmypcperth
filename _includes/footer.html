@@ -37,8 +37,8 @@
     On phones each section collapses behind its heading (scripts.html adds
     .footer-js and wires the buttons). Without JavaScript every list shows. {%- endcomment %}
     <div class="footer-col footer-sec">
-      <p class="footer-head">Repairs</p>
-      <button type="button" class="footer-sec-btn" aria-expanded="false" aria-controls="ft-repairs">Repairs <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <h2 class="footer-head">Repairs</h2>
+      <h2 class="footer-sec-h"><button type="button" class="footer-sec-btn" aria-expanded="false" aria-controls="ft-repairs">Repairs <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button></h2>
       <div class="footer-links footer-links--2col" id="ft-repairs">
       {%- assign _ft_svcs = site.data.suburbs.service_links | where: "built", true | where: "kind", "service" -%}
       {%- for _v in _ft_svcs %}
@@ -48,8 +48,8 @@
     </div>
 
     <div class="footer-col footer-sec">
-      <p class="footer-head">Company</p>
-      <button type="button" class="footer-sec-btn" aria-expanded="false" aria-controls="ft-company">Company <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <h2 class="footer-head">Company</h2>
+      <h2 class="footer-sec-h"><button type="button" class="footer-sec-btn" aria-expanded="false" aria-controls="ft-company">Company <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button></h2>
       <div class="footer-links" id="ft-company">
       <a href="{{ '/services' | relative_url }}">All Services</a>
       <a href="{{ '/pricing' | relative_url }}">Pricing</a>
@@ -60,10 +60,9 @@
     </div>
 
     <div class="footer-col footer-contact">
-      <p class="footer-head">Visit or {% if page.contact == "email" %}Email{% else %}Message{% endif %}</p>
+      <h2 class="footer-head">Visit or {% if page.contact == "email" %}Email{% else %}Message{% endif %}</h2>
       <address>
-        7 Barraberry Retreat<br>
-        Canning Vale WA 6155
+        <a class="footer-map" href="https://www.google.com/maps/search/?api=1&amp;query=7+Barraberry+Retreat+Canning+Vale+WA+6155" target="_blank" rel="noopener noreferrer" aria-label="7 Barraberry Retreat, Canning Vale WA 6155, opens in Google Maps">7 Barraberry Retreat<br>Canning Vale WA 6155</a>
       </address>
       {%- if page.contact == "email" %}
       <a href="mailto:aly.imran.raja@gmail.com" class="footer-phone footer-email">aly.imran.raja@gmail.com</a>
@@ -95,8 +94,8 @@
   {%- assign _areas = site.pages | where: "layout", "suburb" | sort: "suburb" -%}
   {%- if _areas.size > 0 %}
   <nav class="footer-areas footer-sec" aria-label="Computer repairs by suburb">
-    <p class="footer-head">Computer Repairs by Suburb</p>
-    <button type="button" class="footer-sec-btn" aria-expanded="false" aria-controls="ft-areas">Computer Repairs by Suburb <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+    <h2 class="footer-head">Computer Repairs by Suburb</h2>
+    <h2 class="footer-sec-h"><button type="button" class="footer-sec-btn" aria-expanded="false" aria-controls="ft-areas">Computer Repairs by Suburb <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button></h2>
     <div class="footer-areas-list" id="ft-areas">
       {%- for _a in _areas %}
       <a class="footer-area-link" href="{{ '/suburbs/' | append: _a.slug | relative_url }}"{% if _a.slug == page.slug %} aria-current="page"{% endif %}>{{ _a.suburb | escape }}</a>
