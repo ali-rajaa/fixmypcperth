@@ -603,6 +603,9 @@ Every page scanned with axe-core (WCAG 2.2 AA plus best practice) at
   `<article>`.
 - **Decorative icons** (SVG or a glyph like "!") carry `aria-hidden="true"`.
   Controls that hold only an icon need an `aria-label`.
+- **Link text says where it goes.** No bare "Learn more" or "Read more":
+  Lighthouse SEO fails it even with an aria-label. Lighthouse SEO is 100 on
+  every page except 404.html, which is noindex on purpose.
 - **Accepted:** the faint "01 02 03" step numbers fail contrast on
   purpose. They are aria-hidden watermarks, which WCAG exempts as decoration.
 
