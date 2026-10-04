@@ -585,6 +585,18 @@ Applied October 2026. Motion here is feedback, not decoration.
 
 ---
 
+## Logo (owner decision, October 2026)
+
+The gradient monitor logo **with the green tick** is the main logo, everywhere:
+header, footer, phone menu (`logo-sm.png`), schema (`logo.png`), iPhone home
+screen (`apple-touch-icon.png`), the 14 share images, and all social profiles.
+The **only** place without the tick is the browser-tab favicon (`favicon.ico`,
+`favicon.png`), which also has transparent rounded corners. When an icon file
+changes, bump its `?v=` number in `default.html`, `header.html` and `footer.html`
+so browsers drop the cached copy.
+
+---
+
 ## Accessibility rules (axe-core audit, October 2026)
 
 Every page scanned with axe-core (WCAG 2.2 AA plus best practice) at
