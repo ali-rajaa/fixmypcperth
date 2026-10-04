@@ -13,12 +13,31 @@
       </div>
       <span class="logo-name">FixMyPC <em>Perth</em></span>
     </a>
+{%- comment -%}
+  Repairs menu. Built from service_links in _data/suburbs.yml (kind: service,
+  built: true), ordered by nav_order, so a new service page shows up here
+  by itself once it is flagged built. No prices in the menu by design.
+{%- endcomment -%}
+{%- assign _navsvc = site.data.suburbs.service_links | where: "kind", "service" | where: "built", true | sort: "nav_order", "last" -%}
     <div class="nav-right">
-      <a href="{{ '/pricing' | relative_url }}" class="nav-pill pill-ghost">Pricing</a>
-      <a href="{{ '/business-it-support' | relative_url }}" class="nav-pill pill-ghost">Business IT Support</a>
-      <a href="{{ '/pc-health-check-perth' | relative_url }}" class="nav-pill pill-ghost">Free PC Health Check</a>
-      <a href="{{ '/tech-tips' | relative_url }}" class="nav-pill pill-ghost">Tech Tips</a>
-      <a href="{{ '/reviews' | relative_url }}" class="nav-pill pill-ghost">Reviews &amp; FAQ</a>
+      <div class="nav-dd">
+        <button type="button" class="nav-link nav-dd-btn" id="nav-dd-btn" aria-expanded="false" aria-controls="nav-dd-panel">Repairs<svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 4.5l3 3 3-3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="nav-dd-panel" id="nav-dd-panel" hidden>
+          <ul class="nav-dd-list">
+            {%- for _v in _navsvc %}
+            <li><a href="{{ '/' | append: _v.slug | relative_url }}">{{ _v.nav_label | default: _v.label }}</a></li>
+            {%- endfor %}
+          </ul>
+          <ul class="nav-dd-list nav-dd-more">
+            <li><a href="{{ '/services' | relative_url }}">All repair services</a></li>
+            <li><a href="{{ '/tech-tips' | relative_url }}">Repair guides</a></li>
+          </ul>
+        </div>
+      </div>
+      <a href="{{ '/pricing' | relative_url }}" class="nav-link">Pricing</a>
+      <a href="{{ '/reviews' | relative_url }}" class="nav-link">Reviews</a>
+      <a href="{{ '/pc-health-check-perth' | relative_url }}" class="nav-link">Free PC Health Check</a>
+      <a href="{{ '/business-it-support' | relative_url }}" class="nav-link">Business IT</a>
       <!-- The one solid action in the header, so desktop visitors always have
            a way to get in touch after scrolling past the hero. -->
       {%- if page.contact == "email" -%}
@@ -26,7 +45,7 @@
            header action goes to the page's own enquiry form instead. -->
       <a href="#audit-section" class="nav-cta nav-cta--form">Book a free IT call</a>
       {%- else -%}
-      <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener noreferrer" class="nav-cta" aria-label="Chat with FixMyPC Perth on WhatsApp" onclick="trackWAClick()">
+      <a href="{% include wa-href.html %}" target="_blank" rel="noopener noreferrer" class="nav-cta" onclick="trackWAClick()">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>
         WhatsApp Us
       </a>
@@ -47,10 +66,18 @@
   </button>
 </div>
 
-<div class="mob-menu" id="mob-menu" role="menu">
-  <a href="{{ '/pricing' | relative_url }}" class="mob-link" role="menuitem">Pricing</a>
-  <a href="{{ '/business-it-support' | relative_url }}" class="mob-link" role="menuitem">Business IT Support</a>
-  <a href="{{ '/pc-health-check-perth' | relative_url }}" class="mob-link" role="menuitem">Free PC Health Check</a>
-  <a href="{{ '/tech-tips' | relative_url }}" class="mob-link" role="menuitem">Tech Tips</a>
-  <a href="{{ '/reviews' | relative_url }}" class="mob-link" role="menuitem">Reviews &amp; FAQ</a>
-</div>
+<nav class="mob-menu" id="mob-menu" aria-label="Mobile menu">
+  <button type="button" class="mob-link mob-head" id="mob-repairs-btn" aria-expanded="true" aria-controls="mob-repairs">Repairs<svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 4.5l3 3 3-3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  <ul class="mob-sub" id="mob-repairs">
+    {%- for _v in _navsvc %}
+    <li><a href="{{ '/' | append: _v.slug | relative_url }}" class="mob-link mob-link--sub">{{ _v.nav_label | default: _v.label }}</a></li>
+    {%- endfor %}
+    <li><a href="{{ '/services' | relative_url }}" class="mob-link mob-link--sub mob-link--all">All repair services</a></li>
+    <li><a href="{{ '/tech-tips' | relative_url }}" class="mob-link mob-link--sub">Repair guides</a></li>
+  </ul>
+  <a href="{{ '/pricing' | relative_url }}" class="mob-link">Pricing</a>
+  <a href="{{ '/reviews' | relative_url }}" class="mob-link">Reviews</a>
+  <a href="{{ '/pc-health-check-perth' | relative_url }}" class="mob-link">Free PC Health Check</a>
+  <a href="{{ '/business-it-support' | relative_url }}" class="mob-link">Business IT</a>
+  <a href="{{ '/quote-request' | relative_url }}" class="mob-link">Get a quote</a>
+</nav>

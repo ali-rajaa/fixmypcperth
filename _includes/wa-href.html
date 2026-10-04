@@ -1,0 +1,17 @@
+{%- comment -%}
+  The WhatsApp link with a message that matches the page, so the chat opens
+  already saying what the visitor came for. Used by the header button, the
+  phone sticky bar and the floating bubble. First match wins:
+    include.text   a message passed in by the caller
+    page.wa_text   set in front matter (every service page has one)
+    suburb pages   "Hi! I'm in <suburb> ..."
+    anything else  the generic quote message
+  url_encode turns spaces into "+", which WhatsApp shows literally on some
+  phones, so they become %20.
+{%- endcomment -%}
+{%- assign _wt = include.text | default: page.wa_text -%}
+{%- if _wt == nil and page.layout == "suburb" and page.suburb -%}
+  {%- capture _wt -%}Hi! I'm in {{ page.suburb }} and need a computer repair quote.{%- endcapture -%}
+{%- endif -%}
+{%- assign _wt = _wt | default: "Hi! I'd like a free quote for PC repair." -%}
+https://wa.me/61452573701?text={{ _wt | url_encode | replace: "+", "%20" }}

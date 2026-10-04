@@ -602,6 +602,36 @@ pricing page and the service pages.
 
 ---
 
+## Header (October 2026)
+
+Decided by an LLM council review for SEO, usability and conversion. Do not
+reshuffle without a reason.
+
+- Desktop: Logo | Repairs (menu) | Pricing | Reviews | Free PC Health Check |
+  Business IT | WhatsApp Us. Plain text links, no pills. The WhatsApp button
+  shows from 901px up; the floating bubble only shows on tablets (721-900).
+- Repairs menu: opens on click (aria-expanded), Escape / outside click / Tab
+  out close it, arrow keys move through it. No prices in it, on purpose.
+  Built from service_links in _data/suburbs.yml (kind: service, built: true),
+  ordered by nav_order; nav_label overrides label there only. A new service
+  page appears by itself once built: true; give it a nav_order.
+  Below a divider: All repair services (/services), Repair guides (/tech-tips).
+- Phones: Repairs (open by default, folds away) then Pricing, Reviews, Free PC
+  Health Check, Business IT, Get a quote. WhatsApp stays on the sticky bar,
+  which carries the line "24/7 drop-off, Canning Vale".
+- Business IT (contact: email) keeps "Book a free IT call" and no WhatsApp.
+- The current page's link gets aria-current="page" (scripts.html).
+- Tech Tips left the header, so the footer Company list links it again.
+
+## WhatsApp messages
+
+_includes/wa-href.html builds every shared WhatsApp link (header button,
+sticky bar, bubble, service and suburb CTAs). Message order: include text,
+then page.wa_text (each service page sets one, pricing too), then on suburb
+pages "Hi! I'm in <suburb> and need a computer repair quote.", then the
+generic quote message. Special one-off messages in page bodies (discount,
+packages, per-price quotes) are left as they are.
+
 ## Logo (owner decision, October 2026)
 
 The gradient monitor logo **with the green tick** is the main logo, everywhere:

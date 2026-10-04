@@ -494,7 +494,7 @@ layout: default
       <div class="sub-cta-title">{{ page.cta_title }}</div>
       <div class="sub-cta-desc">{{ page.cta_desc }}</div>
       <div class="sub-cta-btns">
-        <a href="https://wa.me/61452573701" target="_blank" rel="noopener noreferrer" class="sub-cta-btn">Message us on WhatsApp<svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a href="{% include wa-href.html %}" target="_blank" rel="noopener noreferrer" class="sub-cta-btn" onclick="trackWAClick()">Message us on WhatsApp<svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         <a href="/quote-request" class="sub-cta-btn-outline">Use the quote form</a>
       </div>
     </div>

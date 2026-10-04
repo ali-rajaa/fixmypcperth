@@ -57,7 +57,7 @@ layout: default
 {%- assign _all = _S.services | concat: _S.addons -%}
 {%- assign _url = site.url | append: "/" | append: page.slug -%}
 {%- capture _desc -%}{% include resolve-prices.html text=page.description %}{%- endcapture -%}
-{%- capture _wa -%}https://wa.me/61452573701?text={{ page.wa_text | default: "Hi! I'd like a free quote for PC repair." | uri_escape }}{%- endcapture -%}
+{%- capture _wa -%}{% include wa-href.html %}{%- endcapture -%}
 
 {%- assign _groups = page.repairs | map: "group" | uniq -%}
 {%- assign _grouped = false -%}{%- if _groups.first -%}{%- assign _grouped = true -%}{%- endif -%}

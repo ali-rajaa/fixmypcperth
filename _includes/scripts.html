@@ -143,7 +143,7 @@ function formShow(el) {
     setMenu(!mobMenu.classList.contains('open'));
   });
 
-  mobMenu.querySelectorAll('.mob-link').forEach(function(link) {
+  mobMenu.querySelectorAll('a.mob-link').forEach(function(link) {
     link.addEventListener('click', function() { setMenu(false); });
   });
 
@@ -171,6 +171,62 @@ function formShow(el) {
   else if (deskQuery.addListener) { deskQuery.addListener(onBreakpoint); }
 
   }
+
+  /* Phone menu: Repairs starts open; its heading folds the list away. */
+  var mobRepBtn = document.getElementById('mob-repairs-btn');
+  var mobRep = document.getElementById('mob-repairs');
+  if (mobRepBtn && mobRep) {
+    mobRepBtn.addEventListener('click', function() {
+      var open = mobRepBtn.getAttribute('aria-expanded') !== 'true';
+      mobRepBtn.setAttribute('aria-expanded', String(open));
+      mobRep.hidden = !open;
+    });
+  }
+
+  /* ---- Header Repairs menu (desktop) ----
+     Opens on click, not hover, so it works the same with a mouse, a
+     keyboard and a touch laptop. Escape, a click outside, Tab past the last
+     link or crossing to the phone layout all close it. Down arrow from the
+     button moves into the list; Up and Down move through it. */
+  var ddBtn = document.getElementById('nav-dd-btn');
+  var ddPanel = document.getElementById('nav-dd-panel');
+  if (ddBtn && ddPanel) {
+    var ddLinks = function() { return Array.prototype.slice.call(ddPanel.querySelectorAll('a')); };
+    var setDd = function(open) {
+      ddPanel.hidden = !open;
+      ddBtn.setAttribute('aria-expanded', String(open));
+    };
+    ddBtn.addEventListener('click', function() { setDd(ddPanel.hidden); });
+    ddBtn.addEventListener('keydown', function(e) {
+      if (e.key === 'ArrowDown') { e.preventDefault(); setDd(true); ddLinks()[0].focus(); }
+    });
+    ddPanel.addEventListener('keydown', function(e) {
+      var links = ddLinks(), i = links.indexOf(document.activeElement);
+      if (e.key === 'ArrowDown') { e.preventDefault(); links[Math.min(i + 1, links.length - 1)].focus(); }
+      else if (e.key === 'ArrowUp') { e.preventDefault(); if (i <= 0) ddBtn.focus(); else links[i - 1].focus(); }
+    });
+    document.addEventListener('click', function(e) {
+      if (!ddPanel.hidden && !ddPanel.contains(e.target) && !ddBtn.contains(e.target)) setDd(false);
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && !ddPanel.hidden) { setDd(false); ddBtn.focus(); }
+    });
+    ddBtn.parentNode.addEventListener('focusout', function(e) {
+      if (e.relatedTarget && !ddBtn.parentNode.contains(e.relatedTarget)) setDd(false);
+    });
+    var phoneQuery = window.matchMedia('(max-width: 900px)');
+    var onPhone = function(e) { if (e.matches) setDd(false); };
+    if (phoneQuery.addEventListener) { phoneQuery.addEventListener('change', onPhone); }
+    else if (phoneQuery.addListener) { phoneQuery.addListener(onPhone); }
+  }
+
+  /* Marks the header links for the page being viewed. */
+  var here = location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+  document.querySelectorAll('.desk-nav a, .mob-menu a').forEach(function(a) {
+    if (a.getAttribute('href').charAt(0) === '#') return;
+    var p = a.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+    if (p === here && p !== '/') a.setAttribute('aria-current', 'page');
+  });
 
   /* ---- FAQ Accordion ---- */
   /* Every FAQ on the site is the same .faq-item / .faq-q / .faq-a markup

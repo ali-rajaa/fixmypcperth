@@ -27,45 +27,56 @@
 # one line shown on /services; it must not type a price. from_key is the
 # services.yml key whose price /services shows as "From ...": the lowest
 # core repair on that page, never an add-on.
+# nav_order sets the order in the header Repairs menu (most urgent first);
+# a new service with no nav_order still appears, at the end. nav_label
+# overrides label there only.
 service_links:
   - slug: laptop-repair-perth
     kind: service
+    nav_order: 2
     from_key: laptop-battery-replacement
     label: "Laptop repair"
     summary: "Batteries, charging ports, keyboards, hinges, blue screens, SSDs and spills on Windows laptops."
     built: true
   - slug: virus-removal-perth
     kind: service
+    nav_order: 5
     from_key: virus-malware-removal
     label: "Virus removal"
     summary: "Viruses, pop-ups, scam callers, hacked accounts and ransomware, cleaned up and protected."
     built: true
   - slug: data-recovery-perth
     kind: service
+    nav_order: 6
     from_key: external-drive-usb-recovery
     label: "Data recovery"
     summary: "Files back from failing and dead hard drives, SSDs, external drives, USB sticks and memory cards."
     built: true
   - slug: laptop-screen-repair-perth
     kind: service
+    nav_order: 3
     from_key: screen-flicker-or-line-repair
     label: "Laptop screen repair"
     summary: "Cracked, black, flickering and touchscreen laptop screens, panel and labour included."
     built: true
   - slug: slow-computer-repair-perth
     kind: service
+    nav_order: 4
     from_key: basic-tune-up
     label: "Slow computer repair"
     summary: "Tune ups, deep cleans and the fixes that make a slow computer fast again."
     built: true
   - slug: windows-reinstall-perth
     kind: service
+    nav_order: 7
     from_key: windows-reinstall-data-backup
     label: "Windows reinstall"
     summary: "Windows reinstalls and repairs, stuck updates, and Windows 11 upgrades, files backed up first."
     built: true
   - slug: gaming-pc-build-perth
     kind: service
+    nav_order: 9
+    nav_label: "Gaming PC builds"
     from_key: cpu-thermal-paste-replacement
     label: "Gaming PC repair and builds"
     footer_label: "Gaming PC builds"
@@ -73,12 +84,14 @@ service_links:
     built: true
   - slug: computer-upgrades-perth
     kind: service
+    nav_order: 8
     from_key: ram-upgrade-labour-only
     label: "Computer upgrades"
     summary: "SSD, RAM, graphics card and cooling upgrades, fitted, set up and tested."
     built: true
   - slug: computer-wont-turn-on-perth
     kind: service
+    nav_order: 1
     from_key: diagnostic-repair-all-in
     label: "Computer won't turn on"
     footer_label: "PC won't turn on"
