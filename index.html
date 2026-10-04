@@ -316,13 +316,13 @@ description: "Computer repair Perth, flat [[diagnostic-repair-all-in]] covering 
         <!-- The number is a caption for the WhatsApp button, grouped with it,
              so it reads as part of that action rather than a stray line. -->
         <div class="hero-wa">
-          <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener noreferrer" class="btn-wa" aria-label="Chat on WhatsApp for a free PC repair quote" onclick="trackWAClick()">
+          <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener noreferrer" class="btn-wa" onclick="trackWAClick()">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="white" aria-hidden="true"><use href="#i-wa"/></svg>
             <span>WhatsApp Us</span>
           </a>
           <span class="hero-note">Free quote · 0452&nbsp;573&nbsp;701</span>
         </div>
-        <a href="{{ '/quote-request' | relative_url }}" class="hero-alt-link" aria-label="Request a free computer &amp; laptop repair quote online" onclick="trackQuoteForm()">
+        <a href="{{ '/quote-request' | relative_url }}" class="hero-alt-link" onclick="trackQuoteForm()">
           Or request a quote online
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
@@ -351,7 +351,7 @@ description: "Computer repair Perth, flat [[diagnostic-repair-all-in]] covering 
       <div class="hc-collapse">
       <div class="hc-body" id="hcBody">
 
-        <a href="{{ site.data.reviews.meta.reviews_url }}" target="_blank" rel="noopener noreferrer" class="mq-rating" aria-label="Read FixMyPC Perth reviews on Google">
+        <a href="{{ site.data.reviews.meta.reviews_url }}" target="_blank" rel="noopener noreferrer" class="mq-rating">
           {% include stars.html value=site.data.reviews.meta.rating %}
           <span class="mq-rating-text">{{ site.data.reviews.meta.rating }} on Google <span>&middot; read our reviews</span></span>
         </a>
@@ -595,7 +595,7 @@ description: "Computer repair Perth, flat [[diagnostic-repair-all-in]] covering 
             PC repair, laptop repair, virus removal, data recovery, SSD upgrades, Windows reinstall, gaming PC builds &amp; screen replacement. If it has a power button, we can fix it. A computer & laptop repair workshop in Canning Vale, open 24 hours.
           </p>
         </div>
-        <a href="{{ '/pricing' | relative_url }}" class="btn-outline" aria-label="View all PC repair services and pricing in Perth">View all services &amp; pricing</a>
+        <a href="{{ '/pricing' | relative_url }}" class="btn-outline">View all services &amp; pricing</a>
       </div>
     </div>
 
@@ -615,7 +615,7 @@ description: "Computer repair Perth, flat [[diagnostic-repair-all-in]] covering 
         <div class="svc-desc">Full scan, removal, browser cleanup and antivirus setup. Most infections cleared same day. Covers viruses, spyware, ransomware &amp; browser hijackers.</div>
         <div class="svc-price-row">
           <span class="svc-price">{% include price.html key="virus-malware-removal" bare=true %}</span>
-          <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20virus%20removal." target="_blank" class="svc-cta" rel="noopener" aria-label="Book virus removal in Perth" onclick="trackWAClick()">Book now</a>
+          <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20virus%20removal." target="_blank" class="svc-cta" rel="noopener" aria-label="Book now: virus removal in Perth" onclick="trackWAClick()">Book now</a>
         </div>
       </div>
 
@@ -633,7 +633,7 @@ description: "Computer repair Perth, flat [[diagnostic-repair-all-in]] covering 
         <div class="svc-desc">Custom gaming PC builds, GPU &amp; RAM installs, PBO performance tuning. Fully benchmarked before pickup. Your parts or ours.</div>
         <div class="svc-price-row">
           <span class="svc-price">From {% include price.html key="essential-assembly" bare=true %}</span>
-          <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20a%20gaming%20PC%20build." target="_blank" class="svc-cta" rel="noopener" aria-label="Book gaming PC build in Perth" onclick="trackWAClick()">Book now</a>
+          <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20a%20gaming%20PC%20build." target="_blank" class="svc-cta" rel="noopener" aria-label="Book now: gaming PC build in Perth" onclick="trackWAClick()">Book now</a>
         </div>
       </div>
 
@@ -651,7 +651,7 @@ description: "Computer repair Perth, flat [[diagnostic-repair-all-in]] covering 
         <div class="svc-desc">Recover photos, documents and files from failing or dead hard drives. No fix, no fee guarantee. You only pay if we recover your data.</div>
         <div class="svc-price-row">
           <span class="svc-price">From {% include price.html key="data-recovery-failing-drive" bare=true %}</span>
-          <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20data%20recovery." target="_blank" class="svc-cta" rel="noopener" aria-label="Book data recovery in Perth" onclick="trackWAClick()">Book now</a>
+          <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20data%20recovery." target="_blank" class="svc-cta" rel="noopener" aria-label="Book now: data recovery in Perth" onclick="trackWAClick()">Book now</a>
         </div>
       </div>
 
@@ -669,7 +669,7 @@ description: "Computer repair Perth, flat [[diagnostic-repair-all-in]] covering 
         <div class="svc-desc">Cracked or dead laptop screen? We replace all common screen sizes same day. From {% include price.html key='laptop-screen-standard' bare=true raw=true %} standard, {% include price.html key='laptop-screen-touchscreen' bare=true raw=true %} touchscreen, {% include price.html key='laptop-screen-oled-premium' bare=true raw=true %} OLED, panel and labour included.</div>
         <div class="svc-price-row">
           <span class="svc-price">From {% include price.html key="laptop-screen-replacement" bare=true %}</span>
-          <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20a%20laptop%20screen%20replacement." target="_blank" class="svc-cta" rel="noopener" aria-label="Book laptop screen replacement in Perth" onclick="trackWAClick()">Book now</a>
+          <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20a%20laptop%20screen%20replacement." target="_blank" class="svc-cta" rel="noopener" aria-label="Book now: laptop screen replacement in Perth" onclick="trackWAClick()">Book now</a>
         </div>
       </div>
 
@@ -687,7 +687,7 @@ description: "Computer repair Perth, flat [[diagnostic-repair-all-in]] covering 
         <div class="svc-desc">Double your computer's speed with an SSD upgrade. We supply &amp; fit Samsung or Crucial SSDs, then transfer all your data. Most jobs done same day.</div>
         <div class="svc-price-row">
           <span class="svc-price">From {% include price.html key="ssd-upgrade-labour-only" bare=true %}</span>
-          <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20an%20SSD%20upgrade." target="_blank" class="svc-cta" rel="noopener" aria-label="Book SSD upgrade in Perth" onclick="trackWAClick()">Book now</a>
+          <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20an%20SSD%20upgrade." target="_blank" class="svc-cta" rel="noopener" aria-label="Book now: SSD upgrade in Perth" onclick="trackWAClick()">Book now</a>
         </div>
       </div>
 
@@ -704,7 +704,7 @@ description: "Computer repair Perth, flat [[diagnostic-repair-all-in]] covering 
         <div class="svc-desc">Full system diagnostic, written report before we touch anything. Covers slow PCs, blue screens, crashes, boot failures &amp; overheating. 30-day warranty included.</div>
         <div class="svc-price-row">
           <span class="svc-price">From {% include price.html key="diagnostic-repair-all-in" bare=true %}</span>
-          <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20a%20PC%20diagnostic." target="_blank" class="svc-cta" rel="noopener" aria-label="Book PC diagnostic and repair in Perth" onclick="trackWAClick()">Book now</a>
+          <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20a%20PC%20diagnostic." target="_blank" class="svc-cta" rel="noopener" aria-label="Book now: PC diagnostic and repair in Perth" onclick="trackWAClick()">Book now</a>
         </div>
       </div>
 
@@ -834,7 +834,7 @@ description: "Computer repair Perth, flat [[diagnostic-repair-all-in]] covering 
             <span class="pkg-was">{% include price.html key='complete-pc-overhaul' was=true raw=true %}</span>
           </div>
           <span class="pkg-lbl">labour only &middot; parts supplied by you</span>
-          <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20the%20Complete%20PC%20Overhaul%20Package." target="_blank" class="btn-wa" rel="noopener" aria-label="Book Complete PC Overhaul Package Perth" onclick="trackWAClick()">
+          <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20the%20Complete%20PC%20Overhaul%20Package." target="_blank" class="btn-wa" rel="noopener" aria-label="Book this now: Complete PC Overhaul Package" onclick="trackWAClick()">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#i-wa"/></svg>
             Book this now
           </a>
@@ -884,7 +884,7 @@ description: "Computer repair Perth, flat [[diagnostic-repair-all-in]] covering 
             <span class="pkg-save">Save ${{ _ulr.was_price | minus: _ulr.price }}</span>
           </div>
           <span class="pkg-lbl">labour only &middot; 16 checks &amp; services included</span>
-          <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20the%20Used%20Laptop%20Revival%20Package." target="_blank" class="btn-wa" rel="noopener" aria-label="Book Used Laptop Revival Package Perth" onclick="trackWAClick()">
+          <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20the%20Used%20Laptop%20Revival%20Package." target="_blank" class="btn-wa" rel="noopener" aria-label="Book this now: Used Laptop Revival Package" onclick="trackWAClick()">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#i-wa"/></svg>
             Book this now
           </a>
@@ -948,7 +948,7 @@ description: "Computer repair Perth, flat [[diagnostic-repair-all-in]] covering 
       <p class="offer-desc">Applies to any repair over {% include price.html key="first-time-min-spend" bare=true %}. The button notes the discount in your WhatsApp message, so there is nothing to remember at drop-off.</p>
     </div>
     <div class="offer-btn">
-      <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20to%20claim%20the%20first-time%20customer%20discount." target="_blank" rel="noopener noreferrer" class="btn-wa" aria-label="Claim your first-time customer discount on WhatsApp" onclick="trackWAClick()">
+      <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20to%20claim%20the%20first-time%20customer%20discount." target="_blank" rel="noopener noreferrer" class="btn-wa" aria-label="Claim my discount on WhatsApp" onclick="trackWAClick()">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#i-wa"/></svg>
         Claim my discount
       </a>
@@ -1007,7 +1007,7 @@ description: "Computer repair Perth, flat [[diagnostic-repair-all-in]] covering 
         <div class="its-desc">Fixed monthly IT support for Perth businesses. Remote help, onsite visits, managed antivirus, updates, cloud backups and proactive monitoring, so you never have downtime.</div>
         <div class="its-price-row">
           <span class="its-price">From {% include price.html key='business-it-essential' bare=true raw=true %}/mo</span>
-          <a href="{{ '/business-it-support' | relative_url }}" class="svc-cta" aria-label="See managed IT plans for Perth businesses">See plans</a>
+          <a href="{{ '/business-it-support' | relative_url }}" class="svc-cta" aria-label="See plans: managed IT for Perth businesses">See plans</a>
         </div>
       </div>
       <div class="its-card fade-up">
@@ -1031,7 +1031,7 @@ description: "Computer repair Perth, flat [[diagnostic-repair-all-in]] covering 
     </div>
       <div class="slide-hint" aria-hidden="true"><span class="pkg-swipe-hint">Swipe<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></div>
     <div style="text-align:center;margin-top:2rem;" class="fade-up">
-      <a href="{{ '/business-it-support' | relative_url }}" class="btn-outline" aria-label="View all business IT support plans in Perth">View all business IT plans &amp; pricing</a>
+      <a href="{{ '/business-it-support' | relative_url }}" class="btn-outline">View all business IT plans &amp; pricing</a>
     </div>
   </div>
 </section>
@@ -1336,7 +1336,7 @@ description: "Computer repair Perth, flat [[diagnostic-repair-all-in]] covering 
             </a>
           </li>
           <li>
-            <a href="mailto:aly.imran.raja@gmail.com" class="vc-row" aria-label="Email FixMyPC Perth">
+            <a href="mailto:aly.imran.raja@gmail.com" class="vc-row">
               <span class="vc-row-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22 6 12 13 2 6"/></svg>
               </span>
@@ -1348,7 +1348,7 @@ description: "Computer repair Perth, flat [[diagnostic-repair-all-in]] covering 
             </a>
           </li>
           <li>
-            <a href="https://www.google.com/maps/search/?api=1&query=7+Barraberry+Retreat+Canning+Vale+WA+6155" target="_blank" rel="noopener noreferrer" class="vc-row" aria-label="Get directions to FixMyPC Perth on Google Maps">
+            <a href="https://www.google.com/maps/search/?api=1&query=7+Barraberry+Retreat+Canning+Vale+WA+6155" target="_blank" rel="noopener noreferrer" class="vc-row">
               <span class="vc-row-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
               </span>
@@ -1362,11 +1362,11 @@ description: "Computer repair Perth, flat [[diagnostic-repair-all-in]] covering 
         </ul>
 
         <div class="vc-actions">
-          <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener noreferrer" class="btn-wa" aria-label="Get a free quote from FixMyPC Perth on WhatsApp" onclick="trackWAClick()">
+          <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener noreferrer" class="btn-wa" onclick="trackWAClick()">
             <svg viewBox="0 0 24 24" width="18" height="18" fill="white" aria-hidden="true"><use href="#i-wa"/></svg>
             Get a quote on WhatsApp
           </a>
-          <a href="{{ '/quote-request' | relative_url }}" class="vc-quote-link" aria-label="Request a free computer &amp; laptop repair quote online" onclick="trackQuoteForm()">Or request a quote online</a>
+          <a href="{{ '/quote-request' | relative_url }}" class="vc-quote-link" onclick="trackQuoteForm()">Or request a quote online</a>
         </div>
       </div>
 
@@ -1405,11 +1405,11 @@ description: "Computer repair Perth, flat [[diagnostic-repair-all-in]] covering 
       <p class="cta-desc">Message us on WhatsApp or use the quote form, and tell us the make, model and what it is doing. We usually reply {{ site.reply_time }}.</p>
     </div>
     <div class="cta-actions fade-up">
-      <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener noreferrer" class="btn-wa" aria-label="Get a free quote from FixMyPC Perth on WhatsApp" onclick="trackWAClick()">
+      <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener noreferrer" class="btn-wa" onclick="trackWAClick()">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="white" aria-hidden="true"><use href="#i-wa"/></svg>
         <span>WhatsApp Us</span>
       </a>
-      <a href="{{ '/quote-request' | relative_url }}" class="btn-outline" aria-label="Request a free computer & laptop repair quote online" onclick="trackQuoteForm()">Request a quote online</a>
+      <a href="{{ '/quote-request' | relative_url }}" class="btn-outline" onclick="trackQuoteForm()">Request a quote online</a>
     </div>
   </div>
 </section>

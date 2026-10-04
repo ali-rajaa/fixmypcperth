@@ -172,7 +172,7 @@ description: "Straight answers on slow computers, viruses, failing drives and wh
   <div class="blog-section">
     <div class="blog-grid" id="blog-grid">
 
-      <a href="/tech-tips/{{ featured.slug }}" class="post-featured" aria-label="Read: {{ featured.title | escape }}">
+      <a href="/tech-tips/{{ featured.slug }}" class="post-featured">
         <div>
           <div class="feat-eyebrow">Featured guide</div>
           <div class="feat-title">{{ featured.title | escape }}</div>
@@ -197,7 +197,7 @@ description: "Straight answers on slow computers, viruses, failing drives and wh
       {%- if p.category contains "Data" %}{% assign cc = "cat-data" %}{% endif -%}
       {%- if p.category contains "Upgrade" %}{% assign cc = "cat-upgrades" %}{% endif -%}
       {%- if p.category contains "Pricing" %}{% assign cc = "cat-pricing" %}{% endif -%}
-      <a href="/tech-tips/{{ p.slug }}" class="post-card {{ cc }}{% if shown > 3 %} tt-extra{% endif %}" aria-label="Read: {{ p.title | escape }}"{% if shown > 3 %} hidden{% endif %}>
+      <a href="/tech-tips/{{ p.slug }}" class="post-card {{ cc }}{% if shown > 3 %} tt-extra{% endif %}"{% if shown > 3 %} hidden{% endif %}>
         <div class="post-card-accent" aria-hidden="true"></div>
         <span class="post-cat">{{ p.category | escape }}</span>
         <div class="post-title">{{ p.title | escape }}</div>

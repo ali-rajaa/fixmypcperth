@@ -167,7 +167,7 @@ description: "Answer 7 questions about what your computer is doing and find out 
       <div class="trust-pill" role="listitem"><span class="tp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true" focusable="false"><polyline points="20 6 9 17 4 12"/></svg></span>Open 24 hours</div>
     </div>
 
-    <button type="button" class="btn-start-quiz" id="btn-start-quiz" aria-label="Start the free PC health check">
+    <button type="button" class="btn-start-quiz" id="btn-start-quiz">
       Start the free health check
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
@@ -940,7 +940,7 @@ function renderQuestion(index) {
       '<div class="' + gridCls + '" id="opts-grid" role="' + (isMulti?'group':'radiogroup') + '" aria-labelledby="q-text-' + index + '">' + optionsHtml + '</div>' +
       (isMulti
         ? '<div class="next-area">' +
-            '<button type="button" class="btn-next" aria-label="Next question" id="btn-next" disabled>' + (isLast ? 'See my result' : 'Next question') +
+            '<button type="button" class="btn-next" id="btn-next" disabled>' + (isLast ? 'See my result' : 'Next question') +
             '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>' +
           '</div>'
         : '') +
