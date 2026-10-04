@@ -596,6 +596,9 @@ phones (760px and under) Repairs, Company and Suburbs collapse behind their
 headings (`.footer-sec`, toggled in scripts.html); contact stays open, and
 with no JavaScript every list shows. Heights: desktop 715 to 546px, tablet
 1159 to 818px, phone about 1150 to 624px.
+The brand block reads "Local repairs. Straight answers." with a short
+brand line, not prices (owner decision, October 2026); prices live on the
+pricing page and the service pages.
 
 ---
 
