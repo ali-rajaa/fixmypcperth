@@ -635,6 +635,16 @@ reshuffle without a reason.
 - Tech Tips is in the Repairs menu (desktop), top level on phones, and in the
   footer Company list.
 
+## /services hub (October 2026)
+
+All from data, nothing typed: the nine service cards (nav_order), every
+service in services.yml by category as name / price / link, and the extras
+minus the biz- ones. What each price covers stays on /pricing only, so the
+two pages do not duplicate. A row links to the service page that lists its
+key most (headline "from" price wins, option keys count, ties go to the
+page with fewer repairs); `page:` on a services.yml entry overrides it.
+The quote form is _includes/quote-form.html, shared with every service page.
+
 ## WhatsApp messages
 
 _includes/wa-href.html builds every shared WhatsApp link (header button,

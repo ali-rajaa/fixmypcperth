@@ -32,9 +32,9 @@ faqs:
      (kind: service, built: true), in nav_order, the same order as the
      header Repairs menu. A new service page appears here once built.
   2. Every priced service, from _data/services.yml, grouped by category.
-     A row links to the service page whose repairs list its key (found
-     from each page's front matter), otherwise only the category links to
-     /pricing. Add-ons follow, minus the biz- ones (Business IT owns those).
+     A row links to the service page that lists its key (or option keys)
+     most, ties to the page with fewer repairs; otherwise it is plain text.
+     Each category links to the same group on /pricing. Add-ons follow, minus the biz- ones (Business IT owns those).
      No price is typed on this page.
   3. Written sections: symptoms, pricing rules, workshop / on-site /
      remote, devices, FAQ. Only facts the site already states elsewhere:
@@ -192,18 +192,33 @@ faqs:
       <div class="sv-prose"><p>{{ _ci | strip }}</p></div>
       <ul class="sv-cat-list" aria-label="{{ _ch | escape }} prices">
         {%- for _s in _items %}
-        {%- assign _href = "" %}
+        {%- comment -%} The page this service belongs to. A page: field in
+        services.yml decides outright. Otherwise each service page scores:
+        100 if the key is that page's headline "from" price, 2 for each
+        repair priced with it, 1 for each "also" mention. Option keys (the
+        screen panel tiers) count as the service. Highest wins; a tie goes
+        to the more specialised page, the one with fewer repairs. {%- endcomment -%}
+        {%- assign _ks = "" | split: "" | push: _s.key %}
+        {%- for _o in _s.options %}{% if _o.key %}{% assign _ks = _ks | push: _o.key %}{% endif %}{% endfor %}
+        {%- assign _href = "" %}{% assign _best = 0 %}{% assign _bestn = 999 %}
         {%- for _p in _svcpages %}
-          {%- if _href == "" %}
+          {%- assign _c = 0 %}
+          {%- assign _sl = site.data.suburbs.service_links | where: "slug", _p.slug | first %}
+          {%- if _sl and _ks contains _sl.from_key %}{% assign _c = 100 %}{% endif %}
           {%- for _r in _p.repairs %}
-            {%- if _r.price_key == _s.key or _r.also_keys contains _s.key %}{% assign _href = '/' | append: _p.slug | relative_url %}{% break %}{% endif %}
+            {%- if _ks contains _r.price_key %}{% assign _c = _c | plus: 2 %}{% endif %}
+            {%- for _a in _r.also_keys %}{% if _ks contains _a %}{% assign _c = _c | plus: 1 %}{% endif %}{% endfor %}
           {%- endfor %}
+          {%- assign _n = _p.repairs.size %}
+          {%- if _c > _best %}{% assign _best = _c %}{% assign _bestn = _n %}{% assign _href = '/' | append: _p.slug | relative_url %}
+          {%- elsif _c > 0 and _c == _best and _n < _bestn %}{% assign _bestn = _n %}{% assign _href = '/' | append: _p.slug | relative_url %}
           {%- endif %}
         {%- endfor %}
+        {%- if _s.page %}{% assign _href = '/' | append: _s.page | relative_url %}{% endif %}
         <li>{% if _href != "" %}<a href="{{ _href }}">{{ _s.name | escape }}</a>{% else %}<span>{{ _s.name | escape }}</span>{% endif %}<span class="sv-num">{% include price.html key=_s.key %}</span></li>
         {%- endfor %}
       </ul>
-      <p class="sv-cat-more"><a href="{{ '/pricing' | relative_url }}#{{ _cat.id }}">What each {{ _ch | downcase | escape }} price covers</a></p>
+      <p class="sv-cat-more"><a href="{{ '/pricing' | relative_url }}#{{ _cat.id }}">{{ _ch | escape }}: what each price covers</a></p>
     </div>
     {%- endif %}
     {%- endfor %}
@@ -217,7 +232,7 @@ faqs:
         {%- endunless %}
         {%- endfor %}
       </ul>
-      <p class="sv-cat-more"><a href="{{ '/pricing' | relative_url }}#extras">What each extra covers</a></p>
+      <p class="sv-cat-more"><a href="{{ '/pricing' | relative_url }}#extras">Extras: what each price covers</a></p>
     </div>
   </section>
 

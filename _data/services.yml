@@ -29,6 +29,8 @@
 #     text:     use instead of price for "Free" or "Custom"
 #     chips:    list of symptom words, shown as tags
 #     options:  list of tiers, each with name and price
+#     page:     service page slug /services links this row to, when
+#               the automatic match (see services.html) picks wrong
 #
 # ----------------------------------------------------------
 # CHANGING A PRICE
@@ -227,6 +229,7 @@ services:
     desc: Unresponsive, clicking or drifting trackpads replaced and calibrated.
     price: 89
   - key: liquid-spill-clean-repair
+    page: laptop-repair-perth
     category: repairs
     group: Laptop hardware
     name: Liquid Spill Clean & Repair

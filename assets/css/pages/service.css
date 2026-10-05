@@ -272,10 +272,13 @@ textarea.tq-input { resize: vertical; min-height: 88px; }
    intro and a name / price list. Names with their own page are links. What
    each price covers lives on /pricing, so the two pages do not repeat. */
 .sv-cat { margin: 2rem 0 0; scroll-margin-top: calc(var(--nav-h) + 1rem); }
-.sv-cat-more { margin: 0.75rem 0 0; font-size: 14px; }
-.sv-cat-more a:where(:not([class])) { color: var(--blue); font-weight: 600; text-decoration: none; }
+.sv-cat-more { margin: 0.25rem 0 0; font-size: 14px; }
+.sv-cat-more a:where(:not([class])) { display: inline-flex; align-items: center; min-height: 44px; color: var(--blue); font-weight: 600; text-decoration: none; }
 .sv-cat-list { list-style: none; margin: 0.75rem 0 0; padding: 0; }
-.sv-cat-list > li { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: 0.7rem 0; border-bottom: 1px solid var(--border); font-size: 0.9375rem; color: var(--ink2); }
+/* The name fills the row and is at least 44px tall, so a linked name is
+   a full-size tap target on a phone, not just the width of its text. */
+.sv-cat-list > li { display: flex; justify-content: space-between; align-items: center; gap: 1rem; border-bottom: 1px solid var(--border); font-size: 0.9375rem; color: var(--ink2); }
+.sv-cat-list > li > :first-child { flex: 1; min-width: 0; display: flex; align-items: center; min-height: 44px; padding: 0.35rem 0; }
 .sv-cat-list a:where(:not([class])) { color: var(--ink); font-weight: 600; text-decoration: underline; text-decoration-color: var(--border2); text-underline-offset: 3px; }
 .sv-cat-list .sv-num { flex-shrink: 0; font-family: var(--display); font-weight: 700; color: var(--ink); white-space: nowrap; }
 /* "Not sure" block: room between the text and the buttons, and no extra
