@@ -105,6 +105,7 @@ categories:
     blurb: Assembly with your parts, plus the tuning and finishing work. Three build tiers and everything that goes around them.
     groups:
       - Build tiers
+      - Case swaps
       - Assembly extras
       - Tuning and testing
       - Creators and consoles
@@ -389,6 +390,23 @@ services:
     name: Elite Assembly
     desc: Everything in Performance, plus a 24-hour stress test burn-in, premium thermal compound, airflow and dust filter optimisation, priority same-day slot where parts allow, and an extended 60-day warranty.
     price: 249
+  - key: case-swap
+    category: gaming
+    group: Case swaps
+    name: Case Swap
+    desc: Your whole PC moved into a new case. Fit checked before you book, cooler refitted with fresh paste, cables tidied, stress tested, 30-day warranty.
+    price: 129
+    prefix: from
+    page: gaming-pc-build-perth
+    options:
+      - key: case-swap-air
+        name: Air-cooled
+        price: 129
+        note: Air cooler refitted with fresh thermal paste. One graphics card.
+      - key: case-swap-aio
+        name: With AIO cooler
+        price: 169
+        note: AIO liquid cooler, radiator and fans moved and mounted. Custom water loops are quoted.
   - key: cpu-cooler-installation
     category: gaming
     group: Assembly extras
@@ -680,7 +698,7 @@ quote_options:
   - {key: upgrade,  label: SSD / RAM Upgrade,    value: SSD or RAM Upgrade,               service: ssd-upgrade-labour-only}
   - {key: screen,   label: Screen / Battery,     value: Laptop Screen or Battery Replacement, service: laptop-screen-replacement}
   - {key: nopower,  label: Won't Turn On,        value: Computer Will Not Turn On,        service: diagnostic-repair-all-in}
-  - {key: gaming,   label: Gaming PC Build,      value: Gaming PC Build or Upgrade,       service: essential-assembly}
+  - {key: gaming,   label: Gaming PC Build,      value: "Gaming PC Build, Upgrade or Case Swap", service: essential-assembly}
   - {key: other,    label: Something Else,       value: Something Else,                   service: ~}
 
 device_types:

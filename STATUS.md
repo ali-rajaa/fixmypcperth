@@ -648,6 +648,15 @@ key most (headline "from" price wins, option keys count, ties go to the
 page with fewer repairs); `page:` on a services.yml entry overrides it.
 The quote form is _includes/quote-form.html, shared with every service page.
 
+## Case Swap (October 2026)
+
+case-swap in services.yml, Gaming PC Builds > Case swaps: from 129, options
+case-swap-air 129 and case-swap-aio 169 (custom loops quoted). Priced under
+Essential Assembly since there is no Windows install. Shown on /pricing,
+/services, the gaming page (section, costs intro, FAQ) and the homepage
+gaming card; pricing search finds "case swap", "new case", "transfer".
+Terms section 6 covers a part that does not fit the new case.
+
 ## WhatsApp messages
 
 _includes/wa-href.html builds every shared WhatsApp link (header button,

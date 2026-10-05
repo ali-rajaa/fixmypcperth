@@ -412,7 +412,7 @@ description: "Computer and laptop repair in Perth: a flat [[diagnostic-repair-al
                   Won't Turn On
                 </label>
 
-                <input type="radio" class="mq-service-radio" id="mqSvc7" name="Service" value="Gaming PC Build or Upgrade">
+                <input type="radio" class="mq-service-radio" id="mqSvc7" name="Service" value="Gaming PC Build, Upgrade or Case Swap">
                 <label for="mqSvc7" class="mq-service-btn">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h4M8 10v4M15 12h.01M18 12h.01"/></svg>
                   Gaming PC Build
@@ -630,7 +630,7 @@ description: "Computer and laptop repair in Perth: a flat [[diagnostic-repair-al
         </div>
         {%- assign _sl = site.data.suburbs.service_links | where: "slug", "gaming-pc-build-perth" | first %}
         <div class="svc-name">{% if _sl.built %}<a class="svc-name-link" href="{{ '/gaming-pc-build-perth' | relative_url }}">Gaming PC Build &amp; <span class="svc-name-end">Upgrade</span></a>{% else %}Gaming PC Build &amp; Upgrade{% endif %}</div>
-        <div class="svc-desc">Custom gaming PC builds, GPU &amp; RAM installs, PBO performance tuning. Fully benchmarked before pickup. Your parts or ours.</div>
+        <div class="svc-desc">Custom gaming PC builds, case swaps, GPU &amp; RAM installs, PBO performance tuning. Fully benchmarked before pickup. Your parts or ours.</div>
         <div class="svc-price-row">
           <span class="svc-price">From {% include price.html key="essential-assembly" bare=true %}</span>
           <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20a%20gaming%20PC%20build." target="_blank" class="svc-cta" rel="noopener" aria-label="Book now: gaming PC build in Perth" onclick="trackWAClick()">Book now</a>
