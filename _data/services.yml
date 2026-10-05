@@ -53,7 +53,7 @@
 # diagnostic fee, edit them too:
 #
 #   index.html      title:        "... Flat $120 All-In ..."
-#   index.html      description:  "... flat $120 covering ..."
+#   index.html      description:  "... a flat $120 covers ..." (uses [[keys]])
 #   pricing.html    description:  "... $120 all-in, virus $99 ..." (uses [[keys]])
 #
 # Everything else on the site updates itself.
@@ -120,7 +120,7 @@ categories:
     label: Software & Remote Support
     nav: Remote & software
     icon: software
-    blurb: Remote help anywhere in Perth for jobs that do not need a bench. The first half hour is the minimum charge.
+    blurb: Remote help for jobs that do not need a bench. The first half hour is the minimum charge.
     groups:
       - Remote help and setup
       - Data and maintenance
