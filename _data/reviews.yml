@@ -139,51 +139,49 @@ homepage:
 
 faqs:
 - q: How much does a repair cost?
-  a: It is a flat [[diagnostic-repair-all-in]] diagnostic and repair
-    fee for most jobs. That covers diagnosing the problem, fixing it, and giving you a 30 day labour warranty on
-    the work. If parts are needed such as an SSD or RAM, those are quoted
-    separately and you approve before anything is ordered.
+  a: Most jobs are a flat [[diagnostic-repair-all-in]] diagnostic and repair fee. That covers finding the problem,
+    fixing it and a 30 day labour warranty on the work. If a part is needed, such as an SSD or RAM, it is quoted
+    separately and you approve it before anything is ordered.
 - q: What is included in the [[diagnostic-repair-all-in]] fee?
-  a: The [[diagnostic-repair-all-in]] flat fee includes a full diagnosis
-    of your PC, the actual repair itself, and a 30 day labour warranty on everything done. You are not paying separately
-    for diagnosis and then again for the repair. One price, job done. If the fix turns out to need parts, we will
-    let you know the total cost before touching anything.
+  a: The [[diagnostic-repair-all-in]] flat fee covers a full diagnosis of your computer, the repair itself and a
+    30 day labour warranty on everything done. You do not pay for the diagnosis and then again for the repair.
+    If the fix needs parts, we tell you the total cost before touching anything.
 - q: Do you come to me, or do I drop my PC off?
-  a: Both options are available. For most PC repairs, upgrades and builds, you drop your machine off in Canning
-    Vale. It is quicker and means we can work on it properly. For networking, printer setup and on-site jobs, we
-    come to you anywhere in the Perth metro area. A a flat fee callout fee applies for on-site visits.
+  a: Both. For most repairs, upgrades and builds you drop the computer off in Canning Vale, which is quicker and
+    means we can work on it properly. Networking, printer setup and other on-site jobs are done at your place
+    across the southern suburbs, with a flat [[on-site-call-out]] call-out fee per visit.
 - q: How long does a repair take?
-  a: Most repairs are done same day or next day. Simple jobs like virus removal, SSD upgrades and password resets
-    are often sorted within a few hours. More involved work like data recovery or a full Windows reinstall may take
-    a full day. We will always give you a time estimate before you book so there are no surprises.
+  a: Most repairs are done the same day or the next. Simple jobs like virus removal, SSD upgrades and password
+    resets often take a few hours. More involved work like data recovery or a full Windows reinstall can take a
+    full day. You get a time estimate before you book.
 - q: Will you wipe my files or data?
-  a: Never without your permission. We always back up your files before doing anything that could affect them, including
-    Windows reinstalls. You will be told exactly what will happen to your data before we proceed.
+  a: Never without your permission. We back up your files before doing anything that could affect them, including
+    Windows reinstalls, and you are told exactly what will happen to your data before we start.
 - q: Is there a warranty on your work?
   a: Yes. All services come with a 30 day labour warranty. If the same issue comes back within 30 days of the repair,
-    we will look at it again at no extra labour cost. Hardware components like SSDs and RAM also carry their manufacturer
-    warranty on top of that.
+    we look at it again at no extra labour cost. Parts such as SSDs and RAM also carry their manufacturer's warranty
+    on top of that.
 - q: Do you work on laptops as well as desktop PCs?
-  a: Yes. Most software repairs, virus removal, Windows reinstalls, data recovery and SSD upgrades can be done on
-    laptops as well as desktops. Hardware upgrades like RAM and storage are possible on many laptops too depending
-    on the model. Message us with your laptop model and we will let you know what is possible before you book.
+  a: Yes. Software repairs, virus removal, Windows reinstalls, data recovery and SSD upgrades can all be done on
+    laptops, and RAM and storage upgrades are possible on many laptops depending on the model. Message us with your
+    laptop model and we will tell you what is possible before you book.
 - q: What areas in Perth do you service?
-  a: We are based in Canning Vale and customers drop off from all across Perth. For on-site visits including networking,
-    printer setup and smart TV, we travel across the greater Perth metro area including the southern suburbs, eastern
-    suburbs and the CBD. Not sure if we cover your area? Just message us and we will confirm straight away.
+  a: The workshop is in Canning Vale, and customers drop off from all over Perth. On-site visits for networking,
+    printers and smart TVs cover the southern suburbs. Not sure if we cover your area? Message us and we will
+    tell you straight away.
 - q: My PC will not turn on at all. Can you still help?
-  a: Absolutely. A PC that will not turn on is one of the most common things we work on. It could be a failed power
-    supply, a faulty component, or something simpler. Drop it off and we will diagnose exactly what is going on.
-    The flat [[diagnostic-repair-all-in]] fee covers the diagnosis
-    and the repair, so you will know the full picture before paying anything extra.
+  a: Yes. A computer that will not turn on is one of the jobs we see most. It could be a failed power supply, a
+    faulty part or something simpler. Drop it off and we will find out what is wrong. The flat
+    [[diagnostic-repair-all-in]] fee covers the diagnosis and the repair, so you know the full picture before paying
+    anything extra.
 - q: How do I pay?
-  a: Payment is accepted via bank transfer or cash on collection. Payment is based on the quote you received before
-    work started. No payment is required upfront. You pay when you are happy with the work.
+  a: Bank transfer, PayID or cash when you collect. You pay the price you were quoted before work started. If a
+    part has to be ordered, a deposit covering the part is taken first.
 - q: Can you help me choose parts for a new PC build?
-  a: 100%. If you are building a gaming PC or upgrading and do not know where to start, message us with your budget
-    and what you will be using it for and we will put together a parts list. We always recommend the best value
-    for your budget. No inflated margins, just honest advice. Assembly is a flat fee with full benchmarking included.
+  a: Yes. If you are building a gaming PC or upgrading and are not sure where to start, message us with your budget
+    and what you will use it for, and we will put together a parts list that gets the most out of that budget.
+    Assembly is a flat fee with full benchmarking included.
 - q: Do you offer remote support?
-  a: Yes. For software issues, settings, troubleshooting and general guidance, we offer remote support via AnyDesk
-    at a flat fee per hour. Great for smaller issues that do not need a physical drop-off, or if you just need a
-    quick second opinion. Message us and we will set up a session at a time that suits you.
+  a: Yes. Software problems, settings and general questions can be handled over a remote session on AnyDesk, from
+    [[remote-support-session]] for the first half hour and then billed per half hour. It suits smaller problems
+    that do not need the computer in the workshop. Message us and we will set up a session at a time that suits you.
