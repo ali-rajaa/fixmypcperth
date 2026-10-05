@@ -100,14 +100,13 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body)
   align-items:start;
 }
 .pr-hero-top      { grid-column:1; grid-row:1; min-width:0; }
-.pr-hero-copy     { grid-column:1; grid-row:2; min-width:0; }
-.pr-hero-copy-alt { grid-column:2; grid-row:2; min-width:0; }
+.pr-hero-copy     { grid-column:1; grid-row:2; min-width:0; max-width:64ch; }
 /* Top aligned rather than centred, with the closing paragraph sitting under
    the artwork. Centring left a large gap beneath the illustration because the
    text column is taller. */
 .pr-hero-art { grid-column:2; grid-row:1; min-width:0; display:flex; align-items:center; justify-content:center; align-self:stretch; }
 .pr-art { width:100%; max-width:400px; height:auto; display:block; margin:0 auto; }
-.pr-hero-copy .pr-intro:last-child, .pr-hero-copy-alt .pr-intro:last-child { margin-bottom:0; }
+.pr-hero-copy .pr-intro:last-child { margin-bottom:0; }
 
 /* Three prices people actually look for, before any prose. */
 .pr-quick { display:flex; flex-wrap:wrap; gap:10px; margin:0 0 1.6rem; }
@@ -229,6 +228,9 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body)
 .pr-group::after { content:''; flex:1; height:1px; background:var(--border); }
 /* Counts are plain text beside the heading, never a pill or boxed badge. */
 .pr-group-n { font-size:13px; font-weight:600; color:var(--muted); letter-spacing:0; text-transform:none; font-variant-numeric:tabular-nums; }
+
+/* Hidden text for screen readers: each Book link says which service. */
+.sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0; }
 
 /* ---------- price rows ---------- */
 .pr-rows { display:flex; flex-direction:column; gap:8px; }
@@ -357,10 +359,9 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body)
 @media (max-width:1000px) {
   /* Single column: headline, artwork, then both copy blocks in reading order. */
   .pr-hero-inner { grid-template-columns:1fr; grid-template-rows:none; row-gap:1.5rem; }
-  .pr-hero-top, .pr-hero-art, .pr-hero-copy, .pr-hero-copy-alt { grid-column:1; grid-row:auto; }
+  .pr-hero-top, .pr-hero-art, .pr-hero-copy { grid-column:1; grid-row:auto; }
   .pr-hero-art { order:2; }
   .pr-hero-copy { order:3; }
-  .pr-hero-copy-alt { order:4; }
   .pr-art { max-width:340px; }
   /* Not enough width for a rail and a readable list side by side. */
   .pr-layout { grid-template-columns:1fr; gap:0; padding-top:1.5rem; }
@@ -384,7 +385,7 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body)
      the prices, so it goes rather than eating a third of the first view. */
   .pr-hero-art { display:none; }
   .pr-quick { gap:8px; margin-bottom:1.35rem; }
-  .pr-quick-item { flex:1; min-width:0; padding:0.55rem 0.7rem; }
+  .pr-quick-item { flex:1; min-width:0; }
   .pr-quick-price { font-size:1.1rem; }
   .pr-quick-lbl { font-size:12px; }
   .pr-hero h1:where(:not([class])) { font-size:1.85rem; }
@@ -395,19 +396,22 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body)
   .pr-tools-inner { padding-top:0.75rem; padding-bottom:0.75rem; }
   .pr-chips { margin:0.7rem -1.25rem 0; padding:0 1.25rem; }
 
-  /* The two-column row collapses. Price and Book sit on one
-     line under the text instead of in a right-hand column,
-     which is what keeps the rows short enough to scan. */
-  .pr-row { grid-template-columns:1fr; gap:0.75rem; padding:0.9rem 1rem; }
-  /* Wraps rather than overflowing when a price string is long, for example
-     a tier that carries an alternative figure alongside it. */
-  .pr-row-price { flex-direction:row; flex-wrap:wrap; align-items:center; justify-content:space-between; width:100%; gap:8px 12px; padding-top:0.85rem; border-top:1px solid var(--border); }
-  .pr-price { font-size:1.2rem; }
-  .pr-price-alt { margin-left:-4px; }
-  .pr-book { margin-left:auto; }
+  /* Name and description on the left, the price with Book under it on the
+     right, the way a printed price list reads. The old phone row stacked
+     the price and a full-width Book bar under the text, a divider between
+     them, which made 74 rows about 27 screens long. */
+  .pr-row { grid-template-columns:minmax(0,1fr) auto; gap:0.6rem 0.9rem; align-items:start; padding:0.9rem 1rem; }
+  .pr-row-price { flex-direction:column; align-items:flex-end; justify-content:flex-start; gap:8px; }
+  .pr-price { font-size:1.15rem; }
   .pr-name { font-size:15.5px; }
   .pr-desc { font-size:13.5px; }
-  .pr-opts { grid-template-columns:1fr; }
+  /* Screen panel tiers: one line each (name, price) with the note under
+     it, rather than three tall boxes. */
+  .pr-opts { grid-template-columns:1fr; gap:6px; margin-top:0.25rem; padding-top:0.75rem; }
+  .pr-opt { display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:baseline; column-gap:0.75rem; }
+  .pr-opt-name { grid-column:1; }
+  .pr-opt-price { grid-column:2; grid-row:1; margin:0; font-size:1.05rem; }
+  .pr-opt-desc { grid-column:1 / -1; margin-top:2px; }
   .pr-packs { grid-template-columns:1fr; }
   .pr-pack-price { font-size:1.7rem; }
   .pr-rules-sec, .pr-faq-sec { padding:2.75rem 0; }
@@ -418,7 +422,7 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body)
 @media (max-width:380px) {
   .pr-hero h1:where(:not([class])) { font-size:1.6rem; }
   .pr-price { font-size:1.2rem; }
-  .pr-book { padding:8px 14px; font-size:12.5px; }
+  .pr-book { font-size:12.5px; }
   .pr-sec-title { font-size:1.25rem; }
 }
 
@@ -514,10 +518,14 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body)
 
   /* Buttons */
   .pr-book, .btn-outline { min-height: var(--m-btn); padding-top: 0; padding-bottom: 0; }
-  .pr-book { font-size: var(--m-text-min); min-width: 96px; padding-left: 20px; padding-right: 20px; }
+  .pr-book { font-size: var(--m-text-min); min-width: 0; padding-left: 18px; padding-right: 18px; }
   .pr-sec .btn-outline { width: 100%; justify-content: center; }
 
   .pr-sec-title + * { margin-top: 0; }
-  .pr-quick, .pr-chips { gap: 8px; }
+  .pr-chips { gap: 8px; }
+  /* The three headline prices are cards like any other: standard padding,
+     radius and the 10px row gap between them. */
+  .pr-quick { gap: var(--m-gap-rows); }
+  .pr-quick-item { padding: var(--m-row-pad); border-radius: var(--m-card-radius); }
   .pr-quick-lbl { font-size: var(--m-text-min); }
 }

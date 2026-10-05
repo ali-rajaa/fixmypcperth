@@ -54,7 +54,7 @@
 #
 #   index.html      title:        "... Flat $120 All-In ..."
 #   index.html      description:  "... flat $120 covering ..."
-#   pricing.html    description:  "... $120 flat, virus $99 ..."
+#   pricing.html    description:  "... $120 all-in, virus $99 ..." (uses [[keys]])
 #
 # Everything else on the site updates itself.
 # ----------------------------------------------------------
@@ -77,29 +77,29 @@ categories:
     label: PC & Laptop Repairs
     nav: Repairs
     icon: repairs
-    blurb: Laptop repair Perth and desktop repair, all fixed price. If we need to find the fault before we can fix it, that is the all-in diagnostic and repair fee below.
+    blurb: Desktop and laptop repairs, each at a fixed price. When we need to find the fault before we can fix it, that is the all-in diagnostic and repair fee below.
     groups:
       - Most common faults
       - Laptop hardware
       - Data services
       - Before you buy
   - id: performance
-    label: Performance Enhancement
+    label: Speed-ups & Tune-ups
     nav: Performance
     icon: performance
-    blurb: For a machine that works but crawls. Three depths of tune-up depending on how far gone it is.
+    blurb: For a computer that works but crawls. Three levels of tune-up, depending on how far it has slowed.
     groups: []
   - id: upgrades
     label: PC & Laptop Upgrades
     nav: Upgrades
     icon: upgrades
-    blurb: SSD upgrade Perth, RAM, graphics and Windows. Labour is fixed. Parts are yours or ours, your choice.
+    blurb: SSDs, memory, graphics cards and Windows. Labour is a fixed price, and the parts can be yours or ours.
     groups:
       - Storage and memory
       - Components and cooling
       - Software and advice
   - id: gaming
-    label: Gaming PC Build Perth
+    label: Gaming PC Builds
     nav: Gaming
     icon: gaming
     blurb: Assembly with your parts, plus the tuning and finishing work. Three build tiers and everything that goes around them.
@@ -120,7 +120,7 @@ categories:
     label: Software & Remote Support
     nav: Remote & software
     icon: software
-    blurb: Remote support Perth wide for anything that does not need a bench. The first half hour is the minimum charge.
+    blurb: Remote help anywhere in Perth for jobs that do not need a bench. The first half hour is the minimum charge.
     groups:
       - Remote help and setup
       - Data and maintenance

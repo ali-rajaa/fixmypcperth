@@ -1,0 +1,33 @@
+{%- comment -%}
+  pr-row.html  one price row on /pricing (services and add-ons).
+  Pass the entry as s=. Book opens WhatsApp with the service named.
+{%- endcomment -%}
+{%- assign _s = include.s -%}
+<div class="pr-row" data-name="{{ _s.name | downcase | escape }}" data-key="{{ _s.key }}">
+  <div class="pr-row-main">
+    <h3 class="pr-name">{{ _s.name | escape }}{% if _s.badge %} <span class="pr-badge">{{ _s.badge | escape }}</span>{% endif %}</h3>
+    {%- if _s.desc %}
+    <p class="pr-desc">{{ _s.desc | escape }}</p>
+    {%- endif %}
+    {%- if _s.chips %}
+    <div class="pr-symptoms">{% for ch in _s.chips %}<span class="pr-symptom">{{ ch | escape }}</span>{% endfor %}</div>
+    {%- endif %}
+  </div>
+  <div class="pr-row-price">
+    <span class="pr-price-wrap">
+      <span class="pr-price">{% include price.html key=_s.key %}</span>
+      {%- if _s.alt %}
+      <span class="pr-price-alt">{{ _s.alt | escape }}</span>
+      {%- endif %}
+    </span>
+    {%- capture _t %}Hi! I'd like a quote for {{ _s.name | replace: "&", "and" }}.{% endcapture %}
+    <a class="pr-book" href="{% include wa-href.html text=_t %}" target="_blank" rel="noopener noreferrer" onclick="trackWAClick()">Book<span class="sr-only"> {{ _s.name | escape }}</span></a>
+  </div>
+  {%- if _s.options %}
+  <div class="pr-opts">
+    {%- for o in _s.options %}
+    <div class="pr-opt"><span class="pr-opt-name">{{ o.name | escape }}</span><span class="pr-opt-price">{% if o.prefix %}{{ o.prefix | escape }} {% endif %}{% if o.text %}{{ o.text }}{% else %}${{ o.price }}{% endif %}</span><span class="pr-opt-desc">{{ o.note | escape }}</span></div>
+    {%- endfor %}
+  </div>
+  {%- endif %}
+</div>

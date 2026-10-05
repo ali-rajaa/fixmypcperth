@@ -3,7 +3,7 @@ layout: default
 wa_text: "Hi! I've seen your prices and would like a quote."
 css: pricing
 title: "Computer Repair Prices Perth | Flat [[diagnostic-repair-all-in]] All-In | FixMyPC"
-description: "Computer repair Perth prices, all upfront. Diagnostic and repair [[diagnostic-repair-all-in]] flat, virus removal [[virus-malware-removal]], data recovery from [[data-recovery-failing-drive]]. Canning Vale workshop, [[on-site-call-out]] call-out."
+description: "Fixed computer repair prices in Perth, set before we start: diagnostic and repair [[diagnostic-repair-all-in]] all-in, virus removal [[virus-malware-removal]], data recovery from [[data-recovery-failing-drive]]. Canning Vale."
 image: /assets/og/pricing.png
 image_alt: "FixMyPC Perth: fixed-price computer repairs in Perth, every price listed"
 ---
@@ -41,7 +41,7 @@ image_alt: "FixMyPC Perth: fixed-price computer repairs in Perth, every price li
 <section class="pr-hero">
   <div class="wrap pr-hero-inner">
     <div class="pr-hero-top">
-      <h1>Computer Repair Prices Perth.<br><span class="accent">Every price before we start.</span></h1>
+      <h1>Computer Repair Prices in Perth<br><span class="accent">Every price, before we start.</span></h1>
       <p class="pr-anchor"><strong>Flat {% include price.html key="diagnostic-repair-all-in" bare=true %}</strong> covers diagnosis and repair</p>
       <p class="pr-sub">No hourly rates &middot; Fixed prices &middot; Nothing added at collection</p>
       <div class="pr-quick">
@@ -104,11 +104,8 @@ image_alt: "FixMyPC Perth: fixed-price computer repairs in Perth, every price li
 </svg>
     </div>
     <div class="pr-hero-copy">
-      <p class="pr-intro">The most common question we get is how much does computer repair cost in Perth, and the honest answer from most shops is a quote after they have looked at it. Whether you searched <strong>computer repair Perth</strong>, <strong>computer repairs Perth</strong> or <strong>PC repair Perth</strong>, every price on this page is fixed and published before you hand anything over.</p>
-      <p class="pr-intro">Diagnostic and repair is a flat <strong>{% include price.html key="diagnostic-repair-all-in" bare=true %}</strong>, not {% include price.html key="diagnostic-repair-all-in" bare=true %} an hour. That covers finding the fault and fixing it. Fixed-scope jobs are priced separately below, so <strong>virus removal Perth</strong> is {% include price.html key="virus-malware-removal" bare=true %} whether it takes us an hour or a day, and <strong>data recovery Perth</strong> starts at {% include price.html key="data-recovery-failing-drive" bare=true %} with no fix no fee.</p>
-    </div>
-    <div class="pr-hero-copy-alt">
-      <p class="pr-intro">We are a Canning Vale workshop covering the southern corridor. Searches like <strong>computer repairs Canning Vale</strong>, <strong>computer repair near me</strong> and <strong>PC doctor Perth</strong> land here because we are the closest fixed-price workshop to Willetton, Riverton, Thornlie, Cockburn and Cannington.</p>
+      <p class="pr-intro">Every job below has a fixed price, set before we start and paid at collection with nothing added. When the fault is not obvious, the all-in diagnostic at <strong>{% include price.html key="diagnostic-repair-all-in" bare=true %}</strong> finds it and covers the repair labour, so you pay one figure rather than a diagnostic fee and then a repair bill.</p>
+      <p class="pr-intro">Jobs with a known scope are priced on their own. Virus removal is <strong>{% include price.html key="virus-malware-removal" bare=true %}</strong> however long it takes, and data recovery starts at <strong>{% include price.html key="data-recovery-failing-drive" bare=true %}</strong>, no fix, no fee. Prices include GST. The workshop is in Canning Vale, and on-site visits across the southern suburbs add a <strong>{% include price.html key="on-site-call-out" bare=true %}</strong> call-out.</p>
     </div>
   </div>
 </section>
@@ -148,7 +145,7 @@ image_alt: "FixMyPC Perth: fixed-price computer repairs in Perth, every price li
         <button type="button" class="pr-side-item" data-cat="extras"><span class="pr-side-accent"></span><span class="pr-side-ico">{% include svc-icon.html id="extras" %}</span><span class="pr-side-label">Add-ons &amp; packages</span><span class="pr-side-n">{{ extras_n }}</span></button>
       </nav>
     </div>
-    <a class="pr-side-cta" href="https://wa.me/61452573701" target="_blank" rel="noopener noreferrer" onclick="trackWAClick()">Not listed? Ask us</a>
+    <a class="pr-side-cta" href="{% include wa-href.html text="Hi! I need a price for something that is not on your list." %}" target="_blank" rel="noopener noreferrer" onclick="trackWAClick()">Not listed? Ask us</a>
   </aside>
   <div class="pr-main" id="prMain">
     <p class="pr-count" id="prCount" aria-live="polite"></p>
@@ -164,34 +161,7 @@ image_alt: "FixMyPC Perth: fixed-price computer repairs in Perth, every price li
       <h3 class="pr-group">{{ g | escape }} <span class="pr-group-n">{{ inGroup | size }}</span></h3>
       <div class="pr-rows">
       {%- for s in inGroup %}
-      {%- assign wa = "https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20quote%20for%20" | append: s.name | replace: "&", "and" | uri_escape -%}
-      <div class="pr-row" data-name="{{ s.name | downcase | escape }}" data-key="{{ s.key }}">
-        <div class="pr-row-main">
-          <h3 class="pr-name">{{ s.name | escape }}{% if s.badge %} <span class="pr-badge">{{ s.badge | escape }}</span>{% endif %}</h3>
-          {%- if s.desc %}
-          <p class="pr-desc">{{ s.desc | escape }}</p>
-          {%- endif %}
-          {%- if s.chips %}
-          <div class="pr-symptoms">{% for ch in s.chips %}<span class="pr-symptom">{{ ch | escape }}</span>{% endfor %}</div>
-          {%- endif %}
-        </div>
-        <div class="pr-row-price">
-          <span class="pr-price-wrap">
-            <span class="pr-price">{% include price.html key=s.key %}</span>
-            {%- if s.alt %}
-            <span class="pr-price-alt">{{ s.alt | escape }}</span>
-            {%- endif %}
-          </span>
-          <a class="pr-book" href="{{ wa }}" target="_blank" rel="noopener noreferrer" onclick="trackWAClick()">Book</a>
-        </div>
-        {%- if s.options %}
-        <div class="pr-opts">
-          {%- for o in s.options %}
-          <div class="pr-opt"><span class="pr-opt-name">{{ o.name | escape }}</span><span class="pr-opt-price">{% if o.prefix %}{{ o.prefix | escape }} {% endif %}{% if o.text %}{{ o.text }}{% else %}${{ o.price }}{% endif %}</span><span class="pr-opt-desc">{{ o.note | escape }}</span></div>
-          {%- endfor %}
-        </div>
-        {%- endif %}
-      </div>
+      {%- include pr-row.html s=s %}
       {%- endfor %}
       </div>
       {%- endif %}
@@ -199,34 +169,7 @@ image_alt: "FixMyPC Perth: fixed-price computer repairs in Perth, every price li
       {%- else %}
       <div class="pr-rows">
       {%- for s in inCat %}
-      {%- assign wa = "https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20quote%20for%20" | append: s.name | replace: "&", "and" | uri_escape -%}
-      <div class="pr-row" data-name="{{ s.name | downcase | escape }}" data-key="{{ s.key }}">
-        <div class="pr-row-main">
-          <h3 class="pr-name">{{ s.name | escape }}{% if s.badge %} <span class="pr-badge">{{ s.badge | escape }}</span>{% endif %}</h3>
-          {%- if s.desc %}
-          <p class="pr-desc">{{ s.desc | escape }}</p>
-          {%- endif %}
-          {%- if s.chips %}
-          <div class="pr-symptoms">{% for ch in s.chips %}<span class="pr-symptom">{{ ch | escape }}</span>{% endfor %}</div>
-          {%- endif %}
-        </div>
-        <div class="pr-row-price">
-          <span class="pr-price-wrap">
-            <span class="pr-price">{% include price.html key=s.key %}</span>
-            {%- if s.alt %}
-            <span class="pr-price-alt">{{ s.alt | escape }}</span>
-            {%- endif %}
-          </span>
-          <a class="pr-book" href="{{ wa }}" target="_blank" rel="noopener noreferrer" onclick="trackWAClick()">Book</a>
-        </div>
-        {%- if s.options %}
-        <div class="pr-opts">
-          {%- for o in s.options %}
-          <div class="pr-opt"><span class="pr-opt-name">{{ o.name | escape }}</span><span class="pr-opt-price">{% if o.prefix %}{{ o.prefix | escape }} {% endif %}{% if o.text %}{{ o.text }}{% else %}${{ o.price }}{% endif %}</span><span class="pr-opt-desc">{{ o.note | escape }}</span></div>
-          {%- endfor %}
-        </div>
-        {%- endif %}
-      </div>
+      {%- include pr-row.html s=s %}
       {%- endfor %}
       </div>
       {%- endif %}
@@ -237,34 +180,7 @@ image_alt: "FixMyPC Perth: fixed-price computer repairs in Perth, every price li
       <p class="pr-sec-blurb">Optional extras you can add to any service.</p>
       <div class="pr-rows">
       {%- for s in D.addons %}
-      {%- assign wa = "https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20quote%20for%20" | append: s.name | replace: "&", "and" | uri_escape -%}
-      <div class="pr-row" data-name="{{ s.name | downcase | escape }}" data-key="{{ s.key }}">
-        <div class="pr-row-main">
-          <h3 class="pr-name">{{ s.name | escape }}{% if s.badge %} <span class="pr-badge">{{ s.badge | escape }}</span>{% endif %}</h3>
-          {%- if s.desc %}
-          <p class="pr-desc">{{ s.desc | escape }}</p>
-          {%- endif %}
-          {%- if s.chips %}
-          <div class="pr-symptoms">{% for ch in s.chips %}<span class="pr-symptom">{{ ch | escape }}</span>{% endfor %}</div>
-          {%- endif %}
-        </div>
-        <div class="pr-row-price">
-          <span class="pr-price-wrap">
-            <span class="pr-price">{% include price.html key=s.key %}</span>
-            {%- if s.alt %}
-            <span class="pr-price-alt">{{ s.alt | escape }}</span>
-            {%- endif %}
-          </span>
-          <a class="pr-book" href="{{ wa }}" target="_blank" rel="noopener noreferrer" onclick="trackWAClick()">Book</a>
-        </div>
-        {%- if s.options %}
-        <div class="pr-opts">
-          {%- for o in s.options %}
-          <div class="pr-opt"><span class="pr-opt-name">{{ o.name | escape }}</span><span class="pr-opt-price">{% if o.prefix %}{{ o.prefix | escape }} {% endif %}{% if o.text %}{{ o.text }}{% else %}${{ o.price }}{% endif %}</span><span class="pr-opt-desc">{{ o.note | escape }}</span></div>
-          {%- endfor %}
-        </div>
-        {%- endif %}
-      </div>
+      {%- include pr-row.html s=s %}
       {%- endfor %}
       </div>
       <h2 class="pr-sec-title">Fixed-price packages <span class="pr-sec-count">{{ D.packages.size }}</span></h2>
@@ -286,7 +202,7 @@ image_alt: "FixMyPC Perth: fixed-price computer repairs in Perth, every price li
 
 <section class="pr-sec pr-wide" id="bizit">
   <div class="wrap">
-    <h2 class="pr-sec-title">Business IT Support Perth</h2>
+    <h2 class="pr-sec-title">Business IT support plans</h2>
     <p class="pr-sec-blurb">Monthly managed plans, billed monthly with no lock-in and 14 days notice to cancel. Full detail on the <a href="/business-it-support">business IT support</a> page.</p>
   </div>
   <div class="wrap pr-plans">
@@ -311,7 +227,7 @@ image_alt: "FixMyPC Perth: fixed-price computer repairs in Perth, every price li
     <div class="pr-rule"><h3>Prices are fixed, never requoted</h3><p>The price you are quoted is the price you pay. If we find something else once the machine is open, we tell you. We do not come back with a bigger number.</p></div>
     <div class="pr-rule"><h3>Quotes hold for six months</h3><p>A written quote from us is valid for six months from the date we issue it.</p></div>
     <div class="pr-rule"><h3>No fix no fee on data recovery</h3><p>Both {% assign _dr = site.data.suburbs.service_links | where: "slug", "data-recovery-perth" | first %}{% if _dr.built %}<a href="{{ '/data-recovery-perth' | relative_url }}">data recovery</a>{% else %}data recovery{% endif %} services carry it. If we cannot get your files back you pay nothing. If we come to you rather than you coming to us, the {% include price.html key='on-site-call-out' bare=true raw=true %} call-out still applies.</p></div>
-    <div class="pr-rule"><h3>On-site is a flat {% include price.html key='on-site-call-out' bare=true raw=true %} call-out</h3><p>Charged per visit, on top of the service price, on every service. A $90 job at your place is $90 plus the {% include price.html key="on-site-call-out" bare=true %} call-out. Most mobile technicians in Perth bill $205 an hour with a one-hour minimum.</p></div>
+    <div class="pr-rule"><h3>On-site is a flat {% include price.html key='on-site-call-out' bare=true raw=true %} call-out</h3><p>Charged per visit, on top of the service price, on every service. So a wifi dead-spot fix at your place is {% include price.html key="wifi-dead-spot-diagnosis-fix" bare=true %} plus the {% include price.html key="on-site-call-out" bare=true %} call-out, with no hourly rate on top.</p></div>
     <div class="pr-rule"><h3>Everything includes GST</h3><p>Parts and labour. No fees added at collection.</p></div>
     <div class="pr-rule"><h3>Payment</h3><p>Cash, bank transfer or PayID. A deposit covering the part cost is taken when we have to order one, with the labour paid on collection.</p></div>
     <div class="pr-rule"><h3>Same day where we can</h3><p>Drop off before 2pm and most repairs are ready by 6pm the same day at no extra cost. It is best effort rather than a guarantee, and we tell you early if we cannot make it. Work finishing after 6pm carries the {% include price.html key="priority-same-day-booking" bare=true %} priority booking fee.</p></div>
@@ -346,7 +262,7 @@ image_alt: "FixMyPC Perth: fixed-price computer repairs in Perth, every price li
 <section class="pr-sec pr-faq-sec pr-wide" id="faq">
   <div class="wrap">
     <span class="s-eyebrow">Pricing questions</span>
-    <h2 class="pr-sec-title">Computer repair Perth, answered</h2>
+    <h2 class="pr-sec-title">Questions about our prices</h2>
   </div>
   <div class="wrap">
     <div class="pr-faq">
