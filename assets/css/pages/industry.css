@@ -113,6 +113,10 @@ body {
 .post-body a:not([class]) { color: var(--blue); font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--blue-mid); }
 /* Anything with a class is a button or card and must never be underlined. */
 .post-body a[class] { text-decoration: none; border-bottom: 0; }
+/* The email address in the audit form messages: same colour as the message,
+   underlined. a.audit-mail outranks .post-body a[class] above on purpose. */
+.audit-err > a.audit-mail, .audit-done-text > a.audit-mail { color: inherit; text-decoration: underline; text-underline-offset: 2px; overflow-wrap: anywhere; }
+.audit-mail:focus-visible { outline: 2px solid #fff; outline-offset: 2px; border-radius: 2px; }
 .callout strong:where(:not([class])) { color: var(--blue); }
 .callout-green strong:where(:not([class])) { color: var(--green); }
 .summary-box::before {
