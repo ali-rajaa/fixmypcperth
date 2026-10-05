@@ -77,7 +77,7 @@ description: "Computer and laptop repair in Perth: a flat [[diagnostic-repair-al
       {"@type":"Offer","itemOffered":{"@type":"Service","name":"Laptop Screen Replacement Perth","description":"Standard panel from {% include price.html key='laptop-screen-standard' bare=true raw=true %}, touchscreen {% include price.html key='laptop-screen-touchscreen' bare=true raw=true %}, OLED {% include price.html key='laptop-screen-oled-premium' bare=true raw=true %}. Panel and labour included."},"price":"{% include price.html key='laptop-screen-standard' numeric=true raw=true %}","priceCurrency":"AUD"},
       {"@type":"Offer","itemOffered":{"@type":"Service","name":"Business IT Support Perth","description":"Managed IT support for Perth small businesses. Proactive monitoring, remote help, onsite visits, managed antivirus and cloud backup."},"price":"{% include price.html key='business-it-essential' numeric=true raw=true %}","priceCurrency":"AUD"},
       {"@type":"Offer","itemOffered":{"@type":"Service","name":"Complete PC Overhaul Package Perth","description":"Full malware removal, Windows 11 reinstall with data backup, cable management, thermal paste reapply, all drivers updated, PBO tuning, benchmark report and 30-day labour warranty."},"price":"{% include price.html key='complete-pc-overhaul' numeric=true raw=true %}","priceCurrency":"AUD"},
-      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Used Laptop Revival Package Perth","description":"16-point service for used and second-hand laptops. Hardware health check, battery test, secure wipe of previous owner data, Windows 11 clean reinstall, malware scan, drive health scan, dust removal, thermal paste reapply, driver updates, port and hinge inspection, bloatware removal and 30-day labour warranty."},"price":"{% include price.html key='used-laptop-revival' numeric=true raw=true %}","priceCurrency":"AUD"}
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Used Laptop Revival Package Perth","description":"15-point service for used and second-hand laptops. Hardware health check, battery test, secure wipe of previous owner data, Windows 11 clean reinstall, malware scan, drive health scan, thermal paste reapply, driver updates, port and hinge inspection, bloatware removal and 30-day labour warranty."},"price":"{% include price.html key='used-laptop-revival' numeric=true raw=true %}","priceCurrency":"AUD"}
     ]
   }
 }
@@ -260,7 +260,7 @@ description: "Computer and laptop repair in Perth: a flat [[diagnostic-repair-al
       "@type": "Service",
       "serviceType": "Used Laptop Servicing",
       "name": "Used Laptop Revival Package Perth",
-      "description": "16-point service package for used and second-hand laptops in Perth. Hardware health check, battery test, secure wipe of previous owner data, Windows 11 clean reinstall, malware scan, thermal service and 30-day labour warranty.",
+      "description": "15-point service package for used and second-hand laptops in Perth. Hardware health check, battery test, secure wipe of previous owner data, Windows 11 clean reinstall, malware scan, fresh thermal paste and 30-day labour warranty.",
       "provider": { "@type": "LocalBusiness", "name": "FixMyPC Perth", "@id": "{{ site.url }}/#business" },
       "areaServed": { "@type": "City", "name": "Perth" },
       "offers": { "@type": "Offer", "price": "140", "priceCurrency": "AUD", "availability": "https://schema.org/InStock" }
@@ -780,7 +780,7 @@ description: "Computer and laptop repair in Perth: a flat [[diagnostic-repair-al
       <div class="how-card fade-up">
         <div class="how-num" aria-hidden="true">02</div>
         <div class="how-title">Drop Off in Canning Vale</div>
-        <div class="how-desc">Bring your PC, laptop or components to us in Canning Vale, easy to reach from Cockburn, Willetton, Jandakot, Thornlie, Cannington and surrounding suburbs. Grab a coffee or tea while we take a first look.</div>
+        <div class="how-desc">Bring your PC, laptop or components to us in Canning Vale, easy to reach from Cockburn, Willetton, Jandakot, Thornlie, Cannington and surrounding suburbs.</div>
       </div>
       <div class="how-card fade-up">
         <div class="how-num" aria-hidden="true">03</div>
@@ -883,7 +883,7 @@ description: "Computer and laptop repair in Perth: a flat [[diagnostic-repair-al
             <span class="pkg-was">{% include price.html key='used-laptop-revival' was=true raw=true %}</span>
             <span class="pkg-save">Save ${{ _ulr.was_price | minus: _ulr.price }}</span>
           </div>
-          <span class="pkg-lbl">labour only &middot; 16 checks &amp; services included</span>
+          <span class="pkg-lbl">labour only &middot; 15 checks &amp; services included</span>
           <a href="https://wa.me/61452573701?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20the%20Used%20Laptop%20Revival%20Package." target="_blank" class="btn-wa" rel="noopener" aria-label="Book this now: Used Laptop Revival Package" onclick="trackWAClick()">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#i-wa"/></svg>
             Book this now
@@ -900,7 +900,6 @@ description: "Computer and laptop repair in Perth: a flat [[diagnostic-repair-al
               <div class="pkg-item">Windows 11 clean reinstall &amp; activation</div>
               <div class="pkg-item">Full malware, spyware &amp; keylogger scan</div>
               <div class="pkg-item">SSD/HDD health &amp; bad sector scan</div>
-              <div class="pkg-item">Internal dust removal &amp; fan clean</div>
               <div class="pkg-item">Thermal paste reapply on CPU</div>
               <div class="pkg-item">All drivers updated (chipset, audio, WiFi)</div>
               <div class="pkg-item">Keyboard, trackpad &amp; port function test</div>
@@ -1117,7 +1116,7 @@ description: "Computer and laptop repair in Perth: a flat [[diagnostic-repair-al
         <li><strong>Windows reinstall with data backup:</strong> from {% include price.html key="windows-reinstall-data-backup" bare=true %}</li>
         <li><strong>Gaming PC build/upgrade (labour):</strong> {% include price.html key="essential-assembly" bare=true %} Essential, {% include price.html key="performance-assembly" bare=true %} Performance, {% include price.html key="elite-assembly" bare=true %} Elite, all with a free Windows 11 key</li>
         <li><strong>Complete PC Overhaul Package:</strong> {% include price.html key='complete-pc-overhaul' bare=true raw=true %}, combining virus removal, a Windows 11 reinstall, cable management, thermal paste, driver updates, performance tuning and a benchmark report</li>
-        <li><strong>Used Laptop Revival Package:</strong> {% include price.html key='used-laptop-revival' bare=true raw=true %}, a 16-point service for second-hand laptops: a full hardware health check, battery test, secure wipe of the previous owner's data, a clean Windows 11 reinstall and a thermal service</li>
+        <li><strong>Used Laptop Revival Package:</strong> {% include price.html key='used-laptop-revival' bare=true raw=true %}, a 15-point service for second-hand laptops: a full hardware health check, battery test, secure wipe of the previous owner's data, a clean Windows 11 reinstall and fresh thermal paste</li>
       </ul>
       <p>All prices include GST, and you get a fixed quote in writing before any work begins, so the price at collection is the one you agreed.</p>
 

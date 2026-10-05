@@ -626,7 +626,7 @@ packages:
     price: 140
     was: Was $340
     was_price: 340
-    desc: Just bought a second-hand laptop, or dusting off an old one? The full health check and clean slate it needs. 16 checks and services included.
+    desc: Just bought a second-hand laptop, or dusting off an old one? The full health check and clean slate it needs. 15 checks and services included.
 offers:
   # Offer figures and thresholds. Not services, but still the business's
   # own dollar amounts, so they live here and pages read them through
