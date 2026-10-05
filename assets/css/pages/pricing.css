@@ -55,6 +55,8 @@
   --radius:    14px;
   --bg3:       #F1F5F9;
   --wa:        #22C55E;
+  --wa-dk:     #15803D;
+  --wa-deep:   #166534;
   --green:     #15803D;
   --display:   'Sora', 'Sora Fallback', sans-serif;
   --body:      'DM Sans', 'DM Sans Fallback', sans-serif;
@@ -322,6 +324,16 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body)
 @media (hover: hover) { .pr-link-pill:hover { background:var(--blue-lt); border-color:var(--blue); } }
 .pr-link-pill:active { transform:scale(0.95); }
 
+/* ---------- closing call to action ---------- */
+.pr-sec.pr-close { padding-top:0; padding-bottom:4rem; }
+.pr-close-box { background:var(--bg2); border:1.5px solid var(--border); border-radius:16px; padding:2rem 2.25rem; }
+.pr-close-box .pr-sec-blurb { margin-bottom:1.5rem; }
+.pr-close-act { display:flex; flex-wrap:wrap; align-items:center; gap:12px; }
+.pr-wa-btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; min-height:52px; padding:0 26px; border-radius:50px; background:var(--wa-dk); color:#fff; font-family:var(--body); font-size:15px; font-weight:700; text-decoration:none; box-shadow:0 4px 14px rgba(21,128,61,0.28); -webkit-tap-highlight-color:transparent; transition:background-color 0.15s var(--ease-settle), transform 0.1s var(--ease-press); }
+.pr-wa-btn svg { width:18px; height:18px; flex-shrink:0; }
+@media (hover: hover) { .pr-wa-btn:hover { background:var(--wa-deep); color:#fff; } }
+.pr-wa-btn:active { transform:scale(0.97); }
+
 /* ---------- faq ---------- */
 .pr-faq-sec { padding:3.75rem 0 4rem; }
 /* Two columns like the homepage FAQ; one on phones. */
@@ -333,7 +345,7 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body)
 
 @media (prefers-reduced-motion: reduce) {
   .pr-chips, .pr-side-item { transition:none; scroll-behavior:auto; }
-  .pr-chip:active, .pr-book:active, .pr-side-cta:active, .btn-outline:active, .pr-search-clear:active, .pr-link-pill:active { transform:none; }
+  .pr-chip:active, .pr-book:active, .pr-side-cta:active, .btn-outline:active, .pr-search-clear:active, .pr-link-pill:active, .pr-wa-btn:active { transform:none; }
 }
 
 /* High contrast. Muted greys darkened, and the tinted panels given a
@@ -342,7 +354,8 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body)
   .pr-intro, .pr-desc, .pr-sec-blurb, .pr-opt-desc, .pr-rule p:where(:not([class])), .pr-plan-who, .pr-quick-lbl { color:#334155; }
   .pr-row, .pr-opt, .pr-plan, .pr-side-card, .pr-quick-item { border-color:#0F172A; }
   .pr-book, .pr-link-pill { border-color:#0A3ACC; }
-  .btn-outline, .pr-side-cta { border-color:#0F172A; }
+  .btn-outline, .pr-side-cta, .pr-close-box { border-color:#0F172A; }
+  .pr-wa-btn { background:#14532D; box-shadow:none; }
   .pr-tools { border-bottom-color:#0F172A; }
 }
 
@@ -368,6 +381,7 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body)
   .pr-side { display:none; }
   .pr-chips { display:flex; }
   .pr-sec.pr-wide { padding-top:2.5rem; }
+  .pr-sec.pr-close { padding-top:0; }
 }
 
 @media (max-width:900px) {
@@ -498,6 +512,7 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body)
   /* Section rhythm */
   .pr-hero { padding-top: var(--m-hero-top); padding-bottom: var(--m-section); }
   .pr-sec.pr-wide { padding-top: var(--m-section); padding-bottom: var(--m-section); margin-top: 0; }
+  .pr-sec.pr-close { padding-top: 0; }
 
   /* Cards, rows and the boxes inside them */
   .pr-pack, .pr-plan { padding: var(--m-card-pad); border-radius: var(--m-card-radius); }
@@ -517,7 +532,10 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body)
   .pr-symptom, .pr-opt-desc, .pr-price-alt { font-size: var(--m-text-min); }
 
   /* Buttons */
-  .pr-book, .btn-outline { min-height: var(--m-btn); padding-top: 0; padding-bottom: 0; }
+  .pr-book, .btn-outline, .pr-wa-btn { min-height: var(--m-btn); padding-top: 0; padding-bottom: 0; }
+  .pr-close-box { padding: var(--m-card-pad); border-radius: var(--m-card-radius); }
+  .pr-close-act { flex-direction: column; align-items: stretch; gap: var(--m-gap-rows); }
+  .pr-wa-btn { width: 100%; }
   .pr-book { font-size: var(--m-text-min); min-width: 0; padding-left: 18px; padding-right: 18px; }
   .pr-sec .btn-outline { width: 100%; justify-content: center; }
 

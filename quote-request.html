@@ -121,7 +121,7 @@ description: "Get a computer repair quote from FixMyPC Perth in Canning Vale. Te
       <h2>Got it</h2>
       <p>Your request is with us. We will send back a fixed price, usually within the hour. Need it sorted today? Message us on WhatsApp and we will get straight on it.</p>
       <div class="qr-done-actions">
-        <a class="qr-btn qr-btn-wa" href="https://wa.me/61452573701" target="_blank" rel="noopener noreferrer" onclick="trackWAClick()">Message us on WhatsApp</a>
+        <a class="qr-btn qr-btn-wa" href="{% include wa-href.html text="Hi! I've just sent a quote request on your website." %}" target="_blank" rel="noopener noreferrer" onclick="trackWAClick()">Message us on WhatsApp</a>
         <a class="qr-btn qr-btn-ghost" href="/pricing">See every fixed price</a>
       </div>
     </div>
@@ -143,9 +143,9 @@ description: "Get a computer repair quote from FixMyPC Perth in Canning Vale. Te
     </div>
     <div class="qr-card qr-card-alt">
       <span class="qr-card-eyebrow">WhatsApp us directly</span>
-      <a class="qr-phone" href="https://wa.me/61452573701" target="_blank" rel="noopener noreferrer" onclick="trackWAClick()">0452 573 701</a>
+      <a class="qr-phone" href="{% include wa-href.html %}" target="_blank" rel="noopener noreferrer" onclick="trackWAClick()">0452 573 701</a>
       <p class="qr-addr">7 Barraberry Retreat<br>Canning Vale WA 6155</p>
-      <a class="qr-btn qr-btn-wa qr-btn-wide" href="https://wa.me/61452573701" target="_blank" rel="noopener noreferrer" onclick="trackWAClick()">WhatsApp us</a>
+      <a class="qr-btn qr-btn-wa qr-btn-wide" href="{% include wa-href.html %}" target="_blank" rel="noopener noreferrer" onclick="trackWAClick()">WhatsApp us</a>
     </div>
   </aside>
 </div>

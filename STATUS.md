@@ -651,8 +651,26 @@ _includes/wa-href.html builds every shared WhatsApp link (header button,
 sticky bar, bubble, service and suburb CTAs). Message order: include text,
 then page.wa_text (each service page sets one, pricing too), then on suburb
 pages "Hi! I'm in <suburb> and need a computer repair quote.", then the
-generic quote message. Special one-off messages in page bodies (discount,
-packages, per-price quotes) are left as they are.
+generic quote message. Every wa.me link on the site now carries a message:
+the footer number, quote-request ("I've just sent a quote request" on the
+confirmation), privacy and terms have their own, and the /pricing package
+buttons go through wa-href too. A bare wa.me link with no ?text= is a bug.
+
+## Where the first call to action sits (October 2026)
+
+Every page gets a way to act on its first screen or close to it:
+- Service pages and /services: WhatsApp button + "Or get a fixed price
+  online" under the intro (.sv-act).
+- Suburb pages: the same pair under the standfirst (.sub-act in
+  _layouts/suburb.html), WhatsApp message names the suburb.
+- Industry pages: an .inline-cta straight after the .stat-row ("Book a free
+  IT audit" to #audit, plans link). Trades says "an IT audit", no "free",
+  matching the rest of that page.
+- /pricing: the Book buttons on every row, plus a closing box after the FAQ.
+- Tech Tips hub: health check first, then a WhatsApp link under the buttons.
+The sticky bar covers phones everywhere else. Audit copy never says "at no
+cost" or "most <industry> owners find": "free" already says the first,
+and the second implies clients we do not have.
 
 ## Logo (owner decision, October 2026)
 

@@ -314,6 +314,10 @@ img { max-width: 100%; height: auto; }
 .cta-kicker { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.75rem; }
 .cta-bar-inner p:where(:not([class])) { font-size: 15px; color: var(--muted); line-height: 1.75; margin: 0 0 1.75rem; }
 .cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.cta-wa { font-size: 14px; color: var(--muted); line-height: 1.6; margin: 1rem 0 0; }
+.cta-wa-link { display: inline-flex; align-items: center; min-height: 44px; font-weight: 700; color: var(--wa-dk); text-decoration: underline; text-decoration-color: rgba(21,128,61,0.35); text-underline-offset: 4px; -webkit-tap-highlight-color: transparent; transition: color 0.15s var(--ease-settle), text-decoration-color 0.15s var(--ease-settle); }
+@media (hover: hover) { .cta-wa-link:hover { color: var(--wa-deep); text-decoration-color: currentColor; } }
+.cta-wa-link:active { opacity: 0.7; }
 
 /* ==========================================================
    Responsive
@@ -360,6 +364,8 @@ img { max-width: 100%; height: auto; }
   .btn-outline { border-color: #0F172A; }
   .tt-show-btn { border-color: #0A3ACC; }
   .cta-bar-inner p:where(:not([class])) { color: #334155; }
+  .cta-wa { color: #334155; }
+  .cta-wa-link { color: #14532D; text-decoration-color: currentColor; }
 }
 /* The hero illustration is decorative. Reduced motion leaves it alone, but
    forced-colors strips its thin strokes, so give it a floor. */
