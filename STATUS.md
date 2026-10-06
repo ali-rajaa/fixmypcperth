@@ -649,6 +649,16 @@ key most (headline "from" price wins, option keys count, ties go to the
 page with fewer repairs); `page:` on a services.yml entry overrides it.
 The quote form is _includes/quote-form.html, shared with every service page.
 
+## Business IT plans (October 2026)
+
+One list in services.yml (plans): label, tagline, who, includes and seven
+features {t, d} per plan. The cards on /business-it-support loop over it,
+and so do the /pricing plan rows, _includes/plan-links.html on the industry
+pages and the OfferCatalog schema. On desktop the cards are CSS subgrids of
+one grid: same height, every row (label, head, price, button, features,
+best for) on the same line. Phones and tablets open on Business. Keep seven
+features each, or the rows stop lining up.
+
 ## Case Swap (October 2026)
 
 case-swap in services.yml, Gaming PC Builds > Case swaps: from 129, options

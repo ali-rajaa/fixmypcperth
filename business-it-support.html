@@ -80,7 +80,7 @@ image_alt: "FixMyPC Perth: managed business IT support for Perth small businesse
       {
         "@type": "Offer",
         "name": {{ pl.name | append: " managed IT plan" | jsonify }},
-        "description": {{ pl.covers | jsonify }},
+        {%- assign _ft = pl.features | map: "t" | join: ", " -%}"description": {{ pl.covers | append: ". " | append: pl.includes | append: ": " | append: _ft | append: "." | jsonify }},
         "price": "{{ pl.price }}",
         "priceCurrency": "{{ site.data.services.meta.currency }}",
         "priceSpecification": {
@@ -282,113 +282,44 @@ image_alt: "FixMyPC Perth: managed business IT support for Perth small businesse
       <button class="plan-tab" type="button" role="tab" id="plan-tab-2" aria-selected="false" aria-controls="plan-premium" tabindex="-1">Premium</button>
     </div>
     <div class="plans-grid" id="plans-grid">
-
-      <!-- ESSENTIAL -->
-      <div class="plan-card fade-up" id="plan-essential" role="group" aria-label="Essential managed IT support plan, from {% include price.html key='business-it-essential' bare=true raw=true %} per month plus {% include price.html key='business-it-essential' extra=true raw=true %} per device">
-        <div class="plan-bar"></div>
-        <div class="plan-inner">
-          <div class="plan-name">Essential</div>
-          <p class="plan-tagline">The right foundation for sole traders and small teams. Ideal for businesses running 2 to 5 devices.</p>
-          <div class="plan-price-block">
-            <div class="plan-price-row">
-              <span class="plan-num">{% include price.html key='business-it-essential' bare=true raw=true %}</span>
-            </div>
-            <div class="plan-period">base per month, billed monthly</div>
-            <div class="plan-note">+ {% include price.html key="business-it-essential" extra=true %} per device / month</div>
-            <div class="plan-coverage">Up to 5 PCs covered</div>
-          </div>
-          <a href="#audit-form" onclick="event.preventDefault();document.querySelector('.audit-section').scrollIntoView({behavior:'smooth',block:'start'});" class="plan-cta">Get Started Today</a>
-          <div class="plan-divider"></div>
-          <div class="plan-feat-label">What is included</div>
-          <div class="plan-features">
-            <div class="plan-feat"><span aria-hidden="true" class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="20 6 9 17 4 12"/></svg></span><span><strong>Unlimited remote support</strong>, available 7 days a week, 7am to 11pm, issues resolved the same day</span></div>
-            <div class="plan-feat"><span aria-hidden="true" class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="20 6 9 17 4 12"/></svg></span><span><strong>1 onsite visit per month</strong>, we come to your business, no travel charge within southern Perth</span></div>
-            <div class="plan-feat"><span aria-hidden="true" class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="20 6 9 17 4 12"/></svg></span><span><strong>Managed antivirus</strong>. Malwarebytes installed and actively monitored across all devices</span></div>
-            <div class="plan-feat"><span aria-hidden="true" class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="20 6 9 17 4 12"/></svg></span><span><strong>Windows updates managed</strong>, your systems stay patched, current and secure</span></div>
-            <div class="plan-feat"><span aria-hidden="true" class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="20 6 9 17 4 12"/></svg></span><span><strong>Monthly health report</strong>, a plain-English summary of your PC status each month</span></div>
-            <div class="plan-feat"><span aria-hidden="true" class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="20 6 9 17 4 12"/></svg></span><span><strong>Phone and email support</strong>. 7 days a week, 7am to 11pm</span></div>
-            <div class="plan-feat"><span aria-hidden="true" class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="20 6 9 17 4 12"/></svg></span><span><strong>No lock-in contract</strong>, cancel or change plans at any time with 14 days notice</span></div>
-          </div>
-          <div class="plan-best">
-            <div class="plan-best-label">Best for</div>
-            <div class="plan-best-text">Cafes, salons, small retail, sole trader tradies</div>
-          </div>
+      {%- comment -%} Built from site.data.services.plans, so these cards, the
+      /pricing plan rows, the industry page plan links and the schema all show
+      the same points. Every card has the same rows in the same order (label,
+      name, who it is for, price, button, seven features, best for); on desktop
+      the grid lines those rows up across the three cards, so the cards are the
+      same height and every row starts at the same line. {%- endcomment -%}
+      {%- assign _cls = "plan-essential,plan-business,plan-premium" | split: "," -%}
+      {%- for pl in site.data.services.plans %}
+      {%- capture _per %}{% include price.html key=pl.key extra=true %}{% endcapture -%}
+      {%- capture _base %}{% include price.html key=pl.key bare=true raw=true %}{% endcapture %}
+      <article class="plan-card fade-up{% if forloop.index == 2 %} featured{% elsif forloop.index == 3 %} premium-tier{% endif %}" id="{{ _cls[forloop.index0] }}" aria-labelledby="{{ _cls[forloop.index0] }}-name">
+        <p class="plan-badge">{{ pl.label | escape }}</p>
+        <div class="plan-head">
+          <h3 class="plan-name" id="{{ _cls[forloop.index0] }}-name">{{ pl.name | escape }}</h3>
+          <p class="plan-tagline">{{ pl.tagline | escape }}</p>
         </div>
-      </div>
-
-      <!-- BUSINESS (FEATURED) -->
-      <div class="plan-card featured fade-up" id="plan-business" role="group" aria-label="Business managed IT support plan, most popular, from {% include price.html key='business-it-business' bare=true raw=true %} per month plus {% include price.html key='business-it-business' extra=true raw=true %} per device">
-        <div class="plan-bar"></div>
-        <div class="plan-inner">
-          <div class="plan-badge badge-popular">Most Popular</div>
-          <div class="plan-name">Business</div>
-          <p class="plan-tagline">Complete coverage for growing businesses with 3 to 10 devices and no tolerance for downtime.</p>
-          <div class="plan-price-block">
-            <div class="plan-price-row">
-              <span class="plan-num">{% include price.html key='business-it-business' bare=true raw=true %}</span>
-            </div>
-            <div class="plan-period">base per month, billed monthly</div>
-            <div class="plan-note">+ {% include price.html key="business-it-business" extra=true %} per device / month</div>
-            <div class="plan-coverage">Up to 10 PCs covered</div>
-          </div>
-          <a href="#audit-form" onclick="event.preventDefault();document.querySelector('.audit-section').scrollIntoView({behavior:'smooth',block:'start'});" class="plan-cta">Get Started Today</a>
-          <div class="plan-divider"></div>
-          <div class="plan-feat-label">Everything in Essential, plus</div>
-          <div class="plan-features">
-            <div class="plan-feat"><span aria-hidden="true" class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="20 6 9 17 4 12"/></svg></span><span><strong>2 onsite visits per month</strong>, priority scheduling for your business, no travel charge</span></div>
-            <div class="plan-feat"><span aria-hidden="true" class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="20 6 9 17 4 12"/></svg></span><span><strong>Cloud backup managed</strong>, daily automatic backup of critical business files via OneDrive or Google Drive</span></div>
-            <div class="plan-feat"><span aria-hidden="true" class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="20 6 9 17 4 12"/></svg></span><span><strong>Proactive PC monitoring</strong>, alerted before issues reach you</span></div>
-            <div class="plan-feat"><span aria-hidden="true" class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="20 6 9 17 4 12"/></svg></span><span><strong>Network and WiFi security audit</strong>, monthly router and network review</span></div>
-            <div class="plan-feat"><span aria-hidden="true" class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="20 6 9 17 4 12"/></svg></span><span><strong>Printer and peripheral support</strong>, printers, scanners and EFTPOS managed</span></div>
-            <div class="plan-feat"><span aria-hidden="true" class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="20 6 9 17 4 12"/></svg></span><span><strong>New staff PC setup included</strong>, new devices configured and ready, no extra charge</span></div>
-            <div class="plan-feat"><span aria-hidden="true" class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="20 6 9 17 4 12"/></svg></span><span><strong>Priority response</strong>, your calls and messages answered ahead of Essential clients</span></div>
-            <div class="plan-feat"><span aria-hidden="true" class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="20 6 9 17 4 12"/></svg></span><span><strong>Quarterly IT review call</strong>. 30 minutes every quarter covering what is working and what needs attention</span></div>
-          </div>
-          <div class="plan-best">
-            <div class="plan-best-label">Best for</div>
-            <div class="plan-best-text">Real estate offices, medical clinics, restaurants, retail shops</div>
-          </div>
+        <div class="plan-price-block">
+          <p class="plan-price-row"><span class="plan-num">{{ _base }}</span><span class="plan-per">/month</span></p>
+          <p class="plan-period">Base fee, billed monthly</p>
+          <p class="plan-note">+ {{ _per }} per device / month</p>
+          <p class="plan-coverage">{{ pl.covers | escape }} covered</p>
         </div>
-      </div>
-
-      <!-- PREMIUM -->
-      <div class="plan-card premium-tier fade-up" id="plan-premium" role="group" aria-label="Premium managed IT support plan, unlimited onsite visits, from {% include price.html key='business-it-premium' bare=true raw=true %} per month plus {% include price.html key='business-it-premium' extra=true raw=true %} per device">
-        <div class="plan-bar"></div>
-        <div class="plan-inner">
-          <div class="plan-badge badge-premium">Premium Tier</div>
-          <div class="plan-name">Premium</div>
-          <p class="plan-tagline">The complete IT partnership for businesses where every hour of downtime has a direct cost.</p>
-          <div class="plan-price-block">
-            <div class="plan-price-row">
-              <span class="plan-num">{% include price.html key='business-it-premium' bare=true raw=true %}</span>
-            </div>
-            <div class="plan-period">base per month, billed monthly</div>
-            <div class="plan-note">+ {% include price.html key="business-it-premium" extra=true %} per device / month</div>
-            <div class="plan-coverage">Up to 20 PCs covered</div>
-          </div>
-          <a href="#audit-form" onclick="event.preventDefault();document.querySelector('.audit-section').scrollIntoView({behavior:'smooth',block:'start'});" class="plan-cta">Get Started Today</a>
-          <div class="plan-divider"></div>
-          <div class="plan-feat-label">Everything in Business, plus</div>
-          <div class="plan-features">
-            <div class="plan-feat"><span aria-hidden="true" class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="20 6 9 17 4 12"/></svg></span><span><strong>Unlimited onsite visits</strong>, we attend as many times as your business requires, no callout fee ever</span></div>
-            <div class="plan-feat"><span aria-hidden="true" class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="20 6 9 17 4 12"/></svg></span><span><strong>Same day emergency response</strong>, guaranteed onsite within 4 hours of your call, southern Perth</span></div>
-            <div class="plan-feat"><span aria-hidden="true" class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="20 6 9 17 4 12"/></svg></span><span><strong>Full network management</strong>, router, switches, WiFi access points and everything connected</span></div>
-            <div class="plan-feat"><span aria-hidden="true" class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="20 6 9 17 4 12"/></svg></span><span><strong>Annual staff cyber security briefing</strong>, a practical one-hour session for your entire team</span></div>
-            <div class="plan-feat"><span aria-hidden="true" class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="20 6 9 17 4 12"/></svg></span><span><strong>Full business software support</strong>, assistance with any software your team relies on day to day</span></div>
-            <div class="plan-feat"><span aria-hidden="true" class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="20 6 9 17 4 12"/></svg></span><span><strong>IT roadmap review twice per year</strong>, what needs replacing and what to budget for, planned in advance</span></div>
-            <div class="plan-feat"><span aria-hidden="true" class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="20 6 9 17 4 12"/></svg></span><span><strong>Direct phone and email line to your technician</strong>, not a ticketing queue, not a call centre, straight to the person doing the work</span></div>
-            <div class="plan-feat"><span aria-hidden="true" class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="20 6 9 17 4 12"/></svg></span><span><strong>Hardware procurement support</strong>, we source and compare quotes on new equipment so you never overpay</span></div>
-          </div>
-          <div class="plan-best">
-            <div class="plan-best-label">Best for</div>
-            <div class="plan-best-text">Dental and medical clinics, accounting and law firms, multi-PC retail</div>
-          </div>
+        <a href="#audit-section" class="plan-cta" data-plan="{{ pl.name | escape }}">Get Started Today<span class="sr-only"> with the {{ pl.name | escape }} plan</span></a>
+        <div class="plan-body">
+          <p class="plan-feat-label">{{ pl.includes | escape }}</p>
+          <ul class="plan-features">
+            {%- for ft in pl.features %}
+            <li class="plan-feat"><span aria-hidden="true" class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="20 6 9 17 4 12"/></svg></span><span class="plan-feat-text"><strong>{{ ft.t | escape }}</strong><span class="plan-feat-d">{{ ft.d | escape }}</span></span></li>
+            {%- endfor %}
+          </ul>
         </div>
-      </div>
-
+        <p class="plan-best"><span class="plan-best-label">Best for</span> {{ pl.who | escape }}</p>
+      </article>
+      {%- endfor %}
     </div><!-- end plans-grid -->
   </div><!-- end plans-scroll-wrapper -->
 
+  <p class="plans-terms fade-up">Every plan: billed monthly <span aria-hidden="true">&middot;</span> no lock-in, 14 days notice to cancel <span aria-hidden="true">&middot;</span> prices include GST</p>
   <div class="fade-up plans-help">
     <p class="plans-help-text">Not sure which plan fits? Let us know and we will tell you exactly which plan makes sense for you.</p>
     <a href="#audit-form" onclick="event.preventDefault();document.querySelector('.audit-section').scrollIntoView({behavior:'smooth',block:'start'});" class="btn-outline">Get a free IT assessment</a>
@@ -1175,6 +1106,12 @@ image_alt: "FixMyPC Perth: managed business IT support for Perth small businesse
   });
   grid.addEventListener('scroll', function () { if (!frame) frame = requestAnimationFrame(paint); }, { passive: true });
   window.addEventListener('resize', function () { if (!frame) frame = requestAnimationFrame(paint); });
+  /* One card at a time (tablet and phone): open on Business, the plan most
+     businesses pick, with Essential a swipe or a tap to the left. */
+  if (grid.scrollWidth > grid.clientWidth + 4) {
+    var g0 = grid.style.scrollBehavior; grid.style.scrollBehavior = 'auto';
+    grid.scrollLeft = pos(1); grid.style.scrollBehavior = g0;
+  }
   paint();
 })();
 

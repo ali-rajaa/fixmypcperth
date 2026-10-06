@@ -1,0 +1,12 @@
+{%- comment -%} The three plan links on the industry pages, from
+  site.data.services.plans: name, base price, per-device price and how many
+  devices. Same figures as the cards on /business-it-support. {%- endcomment -%}
+{%- for pl in site.data.services.plans %}
+      <a href="/business-it-support#plans" class="service-link-card">
+        <div>
+          <div class="service-link-label">{{ pl.name | escape }} Plan</div>
+          <div class="service-link-price">From {% include price.html key=pl.key bare=true raw=true %} a month + {% include price.html key=pl.key extra=true %} per device &middot; {{ pl.covers | escape }}</div>
+        </div>
+        <span class="service-link-arrow" aria-hidden="true">&#8594;</span>
+      </a>
+{%- endfor %}

@@ -210,7 +210,7 @@ image_alt: "FixMyPC Perth: fixed-price computer repairs in Perth, every price li
     <div class="pr-plan" data-name="{{ pl.name | downcase | escape }} business it" data-key="{{ pl.key }}">
       <span class="pr-plan-name">{{ pl.name | escape }}</span>
       <p class="pr-plan-price">{% include price.html key=pl.key bare=true %}<span class="pr-plan-per">/{{ pl.per }}</span></p>
-      <p class="pr-plan-cov">{{ pl.covers | escape }} &middot; {{ pl.extra | escape }}</p>
+      <p class="pr-plan-cov">{{ pl.covers | escape }} &middot; + {% include price.html key=pl.key extra=true %} per device / month</p>
       <p class="pr-plan-who">{{ pl.who | escape }}</p>
     </div>
     {%- endfor %}

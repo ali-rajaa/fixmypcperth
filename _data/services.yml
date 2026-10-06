@@ -659,31 +659,65 @@ offers:
     name: First month on any Business IT plan
     price: 99
 plans:
+  # Business IT plans. Every page that shows a plan reads this list: the
+  # cards on /business-it-support, the plan rows on /pricing, the plan links
+  # on the industry pages and the OfferCatalog schema. Seven features each,
+  # so the three cards line up row for row. extra_price is the per-device
+  # charge on top of the base price (price.html extra=true).
   - key: business-it-essential
     name: Essential
     price: 149
     per: month
     covers: Up to 5 PCs
-    extra: +$35 per extra device
     extra_price: 35
+    label: Small teams
+    tagline: The right foundation for sole traders and small teams running 2 to 5 devices.
     who: Cafes, salons, small retail, sole trader tradies
+    includes: What is included
+    features:
+      - {t: "Unlimited remote support", d: "7 days, 7am to 11pm, issues resolved the same day"}
+      - {t: "1 onsite visit a month", d: "No travel charge within southern Perth"}
+      - {t: "Managed antivirus", d: "Malwarebytes, actively monitored on every device"}
+      - {t: "Windows updates managed", d: "Systems kept patched, current and secure"}
+      - {t: "Monthly health report", d: "A plain-English summary of your PCs"}
+      - {t: "Phone and email support", d: "7 days a week, 7am to 11pm"}
+      - {t: "No lock-in contract", d: "Cancel or change plans with 14 days notice"}
   - key: business-it-business
     name: Business
     price: 199
     per: month
     covers: Up to 10 PCs
-    extra: +$45 per extra device
     extra_price: 45
-    who: Real estate, medical clinics, restaurants, retail
+    label: Most popular
+    tagline: Complete coverage for growing teams of 3 to 10 devices with no tolerance for downtime.
+    who: Real estate offices, medical clinics, restaurants, retail shops
+    includes: Everything in Essential, plus
+    features:
+      - {t: "2 onsite visits a month", d: "Priority scheduling, no travel charge"}
+      - {t: "Cloud backup managed", d: "Daily backup of key files via OneDrive or Google Drive"}
+      - {t: "Proactive PC monitoring", d: "Alerted before issues reach you"}
+      - {t: "Network and WiFi security audit", d: "A monthly router and network review"}
+      - {t: "Printers, EFTPOS and new staff PCs", d: "Peripherals managed, new devices set up at no extra charge"}
+      - {t: "Priority response", d: "Answered ahead of Essential clients"}
+      - {t: "Quarterly IT review call", d: "30 minutes on what works and what needs attention"}
   - key: business-it-premium
     name: Premium
     price: 299
     per: month
     covers: Up to 20 PCs
-    extra: +$60 per extra device
     extra_price: 60
-    who: Dental and medical, accounting and law, multi-PC retail
-
+    label: Premium tier
+    tagline: The complete IT partnership for businesses where every hour of downtime has a direct cost.
+    who: Dental and medical clinics, accounting and law firms, multi-PC retail
+    includes: Everything in Business, plus
+    features:
+      - {t: "Unlimited onsite visits", d: "As often as you need, no callout fee ever"}
+      - {t: "Same-day emergency response", d: "Guaranteed onsite within 4 hours, southern Perth"}
+      - {t: "Full network management", d: "Router, switches, WiFi access points and more"}
+      - {t: "Full business software support", d: "Any software your team relies on"}
+      - {t: "IT roadmap and hardware sourcing", d: "Planned twice a year, quotes compared so you never overpay"}
+      - {t: "Direct line to your technician", d: "No ticket queue or call centre, straight to the person doing the work"}
+      - {t: "Staff cyber security briefing", d: "A practical one-hour session each year for your whole team"}
 # ----------------------------------------------------------
 # QUOTE FORM
 # The options on the quote form and the homepage card. Both

@@ -417,108 +417,113 @@ img { max-width: 100%; height: auto; }
 .plans-section { padding: 6rem 2rem; background: var(--bg); }
 .plans-header { text-align: center; margin-bottom: 3.5rem; }
 .plans-header .s-sub { margin: 0.75rem auto 0; }
-.plans-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.25rem; max-width: 1100px; margin: 0 auto; align-items: start; }
+/* Plan cards. Every card has the same six rows in the same order: label,
+   name and who it is for, price, button, features, best for. On desktop the
+   cards are subgrids of one grid, so each row lines up across all three and
+   the cards are the same height. Narrower screens show one card at a time
+   (see the 1000px and 720px blocks), where flex keeps the button and the
+   best-for line in place and the features take the slack. */
+.plans-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.25rem; max-width: 1100px; margin: 0 auto; align-items: stretch; }
 .plan-card {
   background: var(--bg);
   border: 1.5px solid var(--border);
   border-radius: 22px;
   overflow: hidden;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: calc(1.75rem + 4px) 1.75rem 1.75rem;
   transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
 }
+@supports (grid-template-rows: subgrid) {
+  @media (min-width: 1001px) {
+    .plans-grid { grid-template-rows: repeat(6, auto); row-gap: 0; }
+    .plan-card { display: grid; grid-row: span 6; grid-template-rows: subgrid; row-gap: 0; }
+    .plan-card > * { align-self: start; }
+    .plan-card > .plan-best { align-self: end; }
+  }
+}
+/* Colour bar along the top edge, painted rather than an extra element */
+.plan-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #94A3B8, #CBD5E1); }
+.plan-card.featured::before { background: linear-gradient(90deg, var(--blue), #00CFFF); }
+.plan-card.premium-tier::before { background: linear-gradient(90deg, #F59E0B, #FF6B6B, #A855F7); }
 @media (hover: hover) {
   .plan-card:hover { transform: translateY(-5px); box-shadow: 0 18px 50px rgba(15,23,42,0.11); }
 }
-.plan-card.featured { border-color: var(--blue); box-shadow: 0 8px 40px rgba(21,96,255,0.14); transform: translateY(-10px); }
+.plan-card.featured { border-color: var(--blue); box-shadow: 0 8px 40px rgba(21,96,255,0.14); }
 @media (hover: hover) {
-  .plan-card.featured:hover { transform: translateY(-15px); box-shadow: 0 22px 60px rgba(21,96,255,0.2); }
+  .plan-card.featured:hover { box-shadow: 0 22px 60px rgba(21,96,255,0.2); }
 }
 .plan-card.premium-tier { background: var(--ink); border-color: rgba(255,255,255,0.09); }
 @media (hover: hover) {
   .plan-card.premium-tier:hover { box-shadow: 0 18px 55px rgba(15,23,42,0.3); border-color: rgba(255,255,255,0.18); }
 }
-.plan-bar { height: 4px; width: 100%; }
-.plan-card:not(.featured):not(.premium-tier) .plan-bar { background: linear-gradient(90deg, #94A3B8, #CBD5E1); }
-.plan-card.featured .plan-bar { background: linear-gradient(90deg, var(--blue), #00CFFF); }
-.plan-card.premium-tier .plan-bar { background: linear-gradient(90deg, #F59E0B, #FF6B6B, #A855F7); }
-.plan-inner { padding: 1.75rem; }
-.plan-badge { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; margin-bottom: 1.1rem; }
-.badge-popular { color: var(--blue); }
-.badge-premium { color: #FBBF24; }
-.plan-name { font-family: var(--display); font-size: 21px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.3rem; }
-.plan-card:not(.premium-tier) .plan-name { color: var(--ink); }
+/* Row 1: tier label, plain uppercase text */
+.plan-badge { font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; margin: 0 0 1rem; color: var(--muted); }
+.plan-card.featured .plan-badge { color: var(--blue); }
+.plan-card.premium-tier .plan-badge { color: #FBBF24; }
+/* Row 2: name and who it is for */
+.plan-head { margin-bottom: 1.25rem; }
+.plan-name { font-family: var(--display); font-size: 21px; font-weight: 800; letter-spacing: -0.02em; margin: 0 0 0.3rem; color: var(--ink); }
 .plan-card.premium-tier .plan-name { color: #fff; }
-.plan-tagline { font-size: 13px; line-height: 1.5; margin-bottom: 1.4rem; }
-.plan-card:not(.premium-tier) .plan-tagline { color: var(--muted); }
-.plan-card.premium-tier .plan-tagline { color: rgba(255,255,255,0.5); }
-.plan-price-block { margin-bottom: 1.5rem; padding: 1.35rem; border-radius: 14px; }
-.plan-card:not(.featured):not(.premium-tier) .plan-price-block { background: var(--bg2); border: 1px solid var(--border); }
-.plan-card.featured .plan-price-block { background: var(--blue-lt); border: 1px solid var(--blue-mid); }
-.plan-card.premium-tier .plan-price-block { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.09); }
-.plan-price-row { display: flex; align-items: flex-end; gap: 2px; margin-bottom: 3px; }
-.plan-dollar { font-family: var(--display); font-size: 1rem; font-weight: 700; margin-bottom: 10px; }
-.plan-card:not(.premium-tier) .plan-dollar { color: var(--ink2); }
-.plan-card.premium-tier .plan-dollar { color: rgba(255,255,255,0.65); }
-.plan-num { font-family: var(--display); font-size: 3.5rem; font-weight: 800; line-height: 1; letter-spacing: -0.04em; }
-.plan-card:not(.featured):not(.premium-tier) .plan-num { color: var(--ink); }
+.plan-tagline { font-size: 13.5px; line-height: 1.5; margin: 0; color: var(--muted); }
+.plan-card.premium-tier .plan-tagline { color: rgba(255,255,255,0.7); }
+/* Row 3: price */
+.plan-price-block { margin-bottom: 1.25rem; padding: 1.25rem 1.35rem; border-radius: 14px; background: var(--bg2); border: 1px solid var(--border); }
+.plan-card.featured .plan-price-block { background: var(--blue-lt); border-color: var(--blue-mid); }
+.plan-card.premium-tier .plan-price-block { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.09); }
+.plan-price-row { display: flex; align-items: baseline; gap: 4px; margin: 0 0 4px; }
+.plan-num { font-family: var(--display); font-size: 3.25rem; font-weight: 800; line-height: 1; letter-spacing: -0.04em; color: var(--ink); }
 .plan-card.featured .plan-num { color: var(--blue); }
 .plan-card.premium-tier .plan-num { color: #fff; }
-.plan-period { font-size: 12.5px; font-weight: 600; }
-.plan-card:not(.premium-tier) .plan-period { color: var(--muted); }
-.plan-card.premium-tier .plan-period { color: rgba(255,255,255,0.7); }
-.plan-note { font-size: 12px; font-weight: 500; margin-top: 3px; }
-.plan-card:not(.premium-tier) .plan-note { color: var(--muted); }
-.plan-card.premium-tier .plan-note { color: rgba(255,255,255,0.7); }
-/* Coverage line and tier badge: plain uppercase text, no capsule. The tier is
-   carried by colour and weight, which is enough to tell the three cards apart. */
-.plan-coverage {
-  display: block;
-  font-size: 11.5px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  margin-top: 10px;
-  color: var(--muted);
-}
+.plan-per { font-size: 14px; font-weight: 700; color: var(--ink2); }
+.plan-card.premium-tier .plan-per { color: rgba(255,255,255,0.75); }
+.plan-period { font-size: 12.5px; font-weight: 600; margin: 0; color: var(--muted); }
+.plan-note { font-size: 12.5px; font-weight: 500; margin: 2px 0 0; color: var(--muted); }
+.plan-card.premium-tier .plan-period, .plan-card.premium-tier .plan-note { color: rgba(255,255,255,0.7); }
+.plan-coverage { font-size: 11.5px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; margin: 10px 0 0; color: var(--muted); }
 .plan-card.featured .plan-coverage { color: var(--blue); }
 .plan-card.premium-tier .plan-coverage { color: #C084FC; }
+/* Row 4: button */
 .plan-cta {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
+  min-height: 48px;
   font-family: var(--body);
   font-size: 14.5px;
   font-weight: 700;
-  padding: 14px 22px;
+  padding: 0 22px;
   border-radius: 50px;
   text-decoration: none;
   transition: transform 0.15s, box-shadow 0.15s, scale 0.3s var(--ease-settle);
   margin-bottom: 1.5rem;
+  background: var(--ink); color: #fff; box-shadow: 0 4px 14px rgba(15,23,42,0.2);
 }
-.plan-card:not(.featured):not(.premium-tier) .plan-cta { background: var(--ink); color: #fff; box-shadow: 0 4px 14px rgba(15,23,42,0.2); }
 @media (hover: hover) {
-  .plan-card:not(.featured):not(.premium-tier) .plan-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(15,23,42,0.28); }
+  .plan-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(15,23,42,0.28); }
 }
 .plan-card.featured .plan-cta { background: var(--blue); color: #fff; box-shadow: 0 4px 20px rgba(21,96,255,0.38); }
 @media (hover: hover) {
-  .plan-card.featured .plan-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(21,96,255,0.48); }
+  .plan-card.featured .plan-cta:hover { box-shadow: 0 6px 28px rgba(21,96,255,0.48); }
 }
-.plan-card.premium-tier .plan-cta {
-  background: linear-gradient(135deg, #F59E0B, #FF6B6B);
-  color: var(--ink);
-  box-shadow: 0 4px 20px rgba(245,158,11,0.33);
-}
+.plan-card.premium-tier .plan-cta { background: linear-gradient(135deg, #F59E0B, #FF6B6B); color: var(--ink); box-shadow: 0 4px 20px rgba(245,158,11,0.33); }
 @media (hover: hover) {
-  .plan-card.premium-tier .plan-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(245,158,11,0.43); }
+  .plan-card.premium-tier .plan-cta:hover { box-shadow: 0 6px 28px rgba(245,158,11,0.43); }
 }
-.plan-feat-label { font-size: 10.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.8rem; }
-.plan-card:not(.premium-tier) .plan-feat-label { color: var(--muted); }
+/* Row 5: features. Takes the spare height so the last row sits on the base. */
+.plan-body { flex: 1 1 auto; border-top: 1px solid var(--border); padding-top: 1.25rem; }
+.plan-card.premium-tier .plan-body { border-top-color: rgba(255,255,255,0.08); }
+.plan-feat-label { font-size: 10.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin: 0 0 0.9rem; color: var(--muted); }
 .plan-card.premium-tier .plan-feat-label { color: rgba(255,255,255,0.7); }
-.plan-features { display: flex; flex-direction: column; gap: 0.65rem; }
-.plan-feat { display: flex; align-items: flex-start; gap: 10px; font-size: 13.5px; line-height: 1.45; }
-.plan-card:not(.premium-tier) .plan-feat { color: var(--ink2); }
-.plan-card.premium-tier .plan-feat { color: rgba(255,255,255,0.78); }
+.plan-features { display: flex; flex-direction: column; gap: 0.8rem; list-style: none; margin: 0; padding: 0; }
+.plan-feat { display: flex; align-items: flex-start; gap: 10px; font-size: 13.5px; line-height: 1.4; color: var(--ink2); }
+.plan-card.premium-tier .plan-feat { color: #fff; }
+.plan-feat-text { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+.plan-feat-text > strong { font-weight: 700; }
+.plan-feat-d { font-size: 12.5px; line-height: 1.45; color: var(--muted); }
+.plan-card.premium-tier .plan-feat-d { color: rgba(255,255,255,0.65); }
 .hc-check > svg { width: 11px; height: 11px; color: var(--wa-dk); }
 .feat-icon > svg { width: 10px; height: 10px; }
 .feat-icon {
@@ -529,31 +534,23 @@ img { max-width: 100%; height: auto; }
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 9px;
-  font-weight: 800;
-  margin-top: 2px;
-}
-.plan-card:not(.featured):not(.premium-tier) .feat-icon {
+  margin-top: 1px;
   background: rgba(34,197,94,0.12);
   color: var(--wa-dk);
   border: 1px solid rgba(34,197,94,0.24);
 }
-.plan-card.featured .feat-icon { background: rgba(21,96,255,0.11); color: var(--blue); border: 1px solid rgba(21,96,255,0.22); }
-.plan-card.premium-tier .feat-icon { background: rgba(245,158,11,0.14); color: #F59E0B; border: 1px solid rgba(245,158,11,0.28); }
-.plan-divider { height: 1px; margin: 1.1rem 0; }
-.plan-card:not(.premium-tier) .plan-divider { background: var(--border); }
-.plan-card.premium-tier .plan-divider { background: rgba(255,255,255,0.07); }
-.plan-best { margin-top: 1.1rem; padding: 0.8rem 1rem; border-radius: 11px; }
-.plan-card:not(.featured):not(.premium-tier) .plan-best { background: var(--bg2); border: 1px solid var(--border); }
-.plan-card.featured .plan-best { background: var(--blue-lt); border: 1px solid var(--blue-mid); }
-.plan-card.premium-tier .plan-best { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); }
-.plan-best-label { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 3px; }
-.plan-card:not(.featured):not(.premium-tier) .plan-best-label { color: var(--muted); }
+.plan-card.featured .feat-icon { background: rgba(21,96,255,0.11); color: var(--blue); border-color: rgba(21,96,255,0.22); }
+.plan-card.premium-tier .feat-icon { background: rgba(245,158,11,0.14); color: #F59E0B; border-color: rgba(245,158,11,0.28); }
+/* Row 6: best for, on the base line of every card */
+.plan-best { margin: 1.25rem 0 0; padding: 0.8rem 1rem; border-radius: 11px; font-size: 12.5px; font-weight: 500; line-height: 1.5; background: var(--bg2); border: 1px solid var(--border); color: var(--muted); }
+.plan-card.featured .plan-best { background: var(--blue-lt); border-color: var(--blue-mid); }
+.plan-card.premium-tier .plan-best { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.07); color: rgba(255,255,255,0.7); }
+.plan-best-label { display: block; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 3px; color: var(--muted); }
 .plan-card.featured .plan-best-label { color: var(--blue); }
-.plan-card.premium-tier .plan-best-label { color: rgba(245,158,11,0.75); }
-.plan-best-text { font-size: 12.5px; font-weight: 500; line-height: 1.5; }
-.plan-card:not(.premium-tier) .plan-best-text { color: var(--muted); }
-.plan-card.premium-tier .plan-best-text { color: rgba(255,255,255,0.7); }
+.plan-card.premium-tier .plan-best-label { color: rgba(245,158,11,0.85); }
+/* One line under all three cards for what every plan shares */
+.plans-terms { text-align: center; font-size: 13.5px; font-weight: 600; color: var(--ink2); margin: 2rem auto 0; max-width: 1100px; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 /* ─── FIRST MONTH BANNER ─────────────────────────────────────── */
 .first-month-banner {
   background: linear-gradient(135deg, #172d6a 0%, #4057a4 100%);
@@ -1586,7 +1583,8 @@ img { max-width: 100%; height: auto; }
   /* Cards and boxes inside cards */
   .first-month-banner, .res-card, .serve-card, .why-card { padding: var(--m-card-pad); border-radius: var(--m-card-radius); }
   .plan-card, .addons-table, .audit-card { border-radius: var(--m-card-radius); }
-  .plan-inner, .audit-card { padding: var(--m-card-pad); }
+  .plan-card { padding: calc(var(--m-card-pad) + 4px) var(--m-card-pad) var(--m-card-pad); }
+  .audit-card { padding: var(--m-card-pad); }
   .plan-price-block, .plan-best { padding: var(--m-panel-pad); border-radius: var(--m-panel-radius); }
   .addon-row { padding: var(--m-row-pad); }
   /* Add-ons: one left edge for name, text and price; price and its unit on one line */
@@ -1606,7 +1604,7 @@ img { max-width: 100%; height: auto; }
 
   /* Text */
   .hero-desc, .s-sub, .s-sub-light, .industries-sub, .cta-desc, .plans-help-text { font-size: var(--m-text); }
-  .hero-trust-item, .audit-strip-desc, .metric-lbl, .plan-period, .plan-note, .plan-best-text,
+  .hero-trust-item, .audit-strip-desc, .metric-lbl, .plan-period, .plan-note, .plan-best, .plan-feat-d, .plan-tagline, .plans-terms,
   .scroll-hint-text, .scroll-hint-text-dark, .res-desc, .addon-desc, .addon-freq, .who-desc,
   .audit-label, .audit-note { font-size: var(--m-text-min); }
 
