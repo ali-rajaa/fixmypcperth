@@ -140,6 +140,8 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body)
 .lg-btn:active { transform:scale(0.96); }
 .lg-btn-wa { background:var(--wa-dk); color:#fff; border:1.5px solid var(--wa-dk); }
 @media (hover: hover) { .lg-btn-wa:hover { background:var(--wa-deep); border-color:var(--wa-deep); } }
+.lg-btn-mail { background:var(--blue); color:#fff; border:1.5px solid var(--blue); }
+@media (hover: hover) { .lg-btn-mail:hover { background:var(--blue-dk); border-color:var(--blue-dk); } }
 .lg-btn-ghost { background:var(--bg); color:var(--ink); border:1.5px solid var(--border2); }
 @media (hover: hover) { .lg-btn-ghost:hover { border-color:var(--blue); color:var(--blue); } }
 
@@ -196,6 +198,7 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body)
   .lg-sec a:where(:not([class])) { border-bottom-color:#0A3ACC; }
   .lg-side-card, .lg-help { border-color:#0F172A; }
   .lg-btn-ghost { border-color:#0F172A; }
+  .lg-btn-mail { background:#0A3ACC; border-color:#0F172A; }
   .lg-sec li:where(:not([class]))::before { background:#0A3ACC; }
 }
 

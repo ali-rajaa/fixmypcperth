@@ -545,7 +545,8 @@ the sitemap at 390px and 360px and fails on anything off the standard.
 
 Owner decision, October 2026: the Business IT page and all nine
 it-support-*-perth industry pages are professional and email only. No
-WhatsApp anywhere on them. `contact: email` in its front
+WhatsApp anywhere on them. Privacy and terms are email only too, with an
+"Email us" header button (contact_href and contact_label in front matter). `contact: email` in its front
 matter switches the shared chrome: the header button becomes "Book a free
 IT call" (blue, scrolls to the form), the footer shows the email instead
 of WhatsApp, and the phone bar and floating bubble are not rendered. The

@@ -1,7 +1,6 @@
 {%- comment -%} Email-only pages (front matter contact: email) get neither the
-  phone bar nor the floating WhatsApp bubble. Neither do pages that set
-  sticky_cta: false (privacy and terms). {%- endcomment -%}
-{%- unless page.contact == "email" or page.sticky_cta == false -%}
+  phone bar nor the floating WhatsApp bubble. {%- endcomment -%}
+{%- unless page.contact == "email" -%}
 <!-- Sticky bottom bar, phones only (hidden above 720px). WhatsApp is the
      primary action, matching every page's hero; the quote form is second.
      The floating bubble below is hidden wherever this bar or the desktop
