@@ -126,6 +126,9 @@ layout: default
   "Areas We Cover" step once pointed at /#areas, which Google reads as the
   homepage, so the trail was really Home, Home, Suburb. The other suburbs are
   reachable from the footer row on every page instead. {%- endcomment %}
+  <header class="sub-hero">
+  <div class="sub-hero-grid">
+  <div class="sub-hero-copy">
   <nav class="sub-breadcrumb" aria-label="Breadcrumb">
     <a href="/">Home</a>
     <span aria-hidden="true">/</span>
@@ -158,6 +161,7 @@ layout: default
     <span class="sub-meta-sep" aria-hidden="true">&middot;</span>
     <span>Diagnostic and repair {% include price.html key="diagnostic-repair-all-in" bare=true raw=true %} all-in</span>
   </div>
+  </div>
 
   <div class="travel-box">
     <div class="travel-box-title">Getting here from {{ page.suburb }}</div>
@@ -178,6 +182,8 @@ layout: default
     {%- assign _from = page.directions_from | default: _from_default %}
     <a class="travel-directions" href="https://www.google.com/maps/dir/?api=1&amp;origin={{ _from | url_encode }}&amp;destination=7+Barraberry+Retreat%2C+Canning+Vale+WA+6155&amp;travelmode=driving" target="_blank" rel="noopener noreferrer">Directions from {{ page.suburb }}<svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr-only"> (opens Google Maps in a new tab)</span></a>
   </div>
+  </div>
+  </header>
 
   <div class="sub-body">
 

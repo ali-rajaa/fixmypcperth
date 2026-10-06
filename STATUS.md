@@ -647,6 +647,15 @@ drop-off), then .sv-layout: the contents as a sticky side column on desktop
 (>1100px, current section marked with aria-current="location") beside the
 reading column; repairs as cards, steps as a timeline, prices in a panel.
 
+Suburb pages (_layouts/suburb.html): .sub-hero split hero, travel box as
+the side card; prices as tiles (2 columns), the process as a 2x2 grid; the
+reading column stays 820px. Desktop top padding now clears the fixed header
+(it sat under it before).
+
+Industry pages (9 files): .ind-hero split hero with a "Book a free IT
+audit" button (trades: "Book an IT audit") and the page summary as the side
+card; stats as a dark band; warning lists as a 2-column card grid.
+
 ## /services hub (October 2026)
 
 Redesigned as a directory, not a service page: css: service (shared quote

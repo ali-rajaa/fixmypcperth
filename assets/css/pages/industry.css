@@ -129,7 +129,7 @@ body {
   background: linear-gradient(90deg, var(--blue), var(--teal), var(--wa));
 }
 .summary-box ul:where(:not([class])) { padding-left: 0; list-style: none; }
-.stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 1.75rem 0; }
+.stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin: 1.75rem 0; padding: 0.5rem; background: var(--ink); border-radius: 18px; }
 .check-list { list-style: none; padding: 0; margin: 1.25rem 0; }
 .inline-cta::before {
   content: '';
@@ -158,7 +158,21 @@ a { color: inherit; text-decoration: none; }
   z-index: 99999;
   transition: transform 0.1s var(--ease-press);
 }
-.article-wrap { max-width: 740px; margin: 0 auto; padding: calc(var(--nav-h) + 44px) 2rem 5rem; }
+.article-wrap { max-width: 1120px; margin: 0 auto; padding: calc(var(--nav-h) + 44px) 2rem 5rem; }
+.article-wrap > .post-footer-nav { max-width: 740px; margin-left: auto; margin-right: auto; }
+/* Split hero: the intro and the audit button on the left, what the page
+   covers on the right, on a band that runs edge to edge. */
+.ind-hero { position: relative; isolation: isolate; padding: 0 0 3rem; margin: 0 0 3rem; }
+.ind-hero::before { content: ''; position: absolute; z-index: -1; top: calc(-1 * (var(--nav-h) + 44px)); bottom: 0; left: calc(50% - 50vw); right: calc(50% - 50vw); background: radial-gradient(900px 420px at 85% 0%, rgba(21,96,255,0.08), transparent 70%), linear-gradient(180deg, var(--bg2), var(--bg)); border-bottom: 1px solid var(--border); }
+.ind-hero-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr); gap: 3.5rem; align-items: center; }
+.ind-hero .post-meta { margin-bottom: 1.5rem; padding-bottom: 0; border-bottom: 0; }
+.ind-cover { margin: 0; }
+.ind-act { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1.25rem; }
+.ind-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 1.6rem; border-radius: 50px; background: var(--blue); color: #fff; font-family: var(--body); font-size: 15px; font-weight: 700; text-decoration: none; box-shadow: 0 4px 14px rgba(21,96,255,0.35); -webkit-tap-highlight-color: transparent; transition: background-color 0.15s var(--ease-settle), transform 0.1s var(--ease-press); }
+.ind-btn:active { transform: scale(0.97); }
+.ind-act-link { display: inline-flex; align-items: center; min-height: 44px; font-size: 15px; font-weight: 600; color: var(--ink2); text-decoration: underline; text-decoration-color: var(--border2); text-underline-offset: 4px; }
+@media (hover: hover) { .ind-btn:hover { background: var(--blue-dk); } .ind-act-link:hover { color: var(--blue); text-decoration-color: var(--blue); } }
+body:has(.ind-hero) { overflow-x: clip; }
 .post-breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--muted2); margin-bottom: 1.25rem; flex-wrap: wrap; }
 .post-h1 {
   font-family: var(--display);
@@ -182,7 +196,7 @@ a { color: inherit; text-decoration: none; }
   border-bottom: 1px solid var(--border);
   margin-bottom: 2rem;
 }
-.post-body { font-size: 15.5px; color: var(--ink2); line-height: 1.85; }
+.post-body { font-size: 15.5px; color: var(--ink2); line-height: 1.85; max-width: 740px; margin: 0 auto; }
 .post-body h2:where(:not([class])) {
   font-family: var(--display);
   font-size: 1.45rem;
@@ -230,18 +244,19 @@ a { color: inherit; text-decoration: none; }
   flex-shrink: 0;
   margin-top: 7px;
 }
-.stat-box { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.1rem 1rem; text-align: center; }
+.stat-box { background: transparent; border: 0; border-radius: 0; padding: 1.1rem 1rem; text-align: center; }
+.stat-box + .stat-box { border-left: 1px solid rgba(255,255,255,0.12); }
 .stat-val {
   font-family: var(--display);
   font-size: 1.9rem;
   font-weight: 800;
-  color: var(--blue);
+  color: #fff;
   letter-spacing: -0.03em;
   display: block;
   line-height: 1;
   margin-bottom: 5px;
 }
-.stat-lbl { margin-top: 3px; font-size: 12px; color: var(--muted); font-weight: 500; display: block; line-height: 1.4; }
+.stat-lbl { margin-top: 3px; font-size: 12px; color: rgba(255,255,255,0.72); font-weight: 500; display: block; line-height: 1.4; }
 .callout {
   background: var(--blue-lt);
   border: 1.5px solid var(--blue-mid);
@@ -488,6 +503,10 @@ a { color: inherit; text-decoration: none; }
   }
   .coverage-desc, .problem-desc { padding: 0.85rem 1.25rem; }
 }
+/* "What goes wrong" lists (warning icons) become a grid of cards */
+.check-list:has(.check-icon.warn) { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.check-list:has(.check-icon.warn) > li { margin: 0; padding: 1rem 1.1rem 1rem 2.9rem; background: #FFF8F8; border: 1.5px solid rgba(239,68,68,0.16); border-radius: 14px; }
+.check-list:has(.check-icon.warn) > li > .check-icon { left: 1rem; top: 1.15rem; }
 .check-icon {
   position: absolute;
   left: 0;
@@ -866,7 +885,23 @@ a { color: inherit; text-decoration: none; }
    It sits last in the file on purpose, so it wins over the older
    per-breakpoint values above it. Desktop is untouched.
    ========================================================== */
+@media (max-width: 960px) {
+  .ind-hero-grid { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+}
+
 @media (max-width: 720px) {
+  .ind-hero { padding-bottom: var(--m-section); margin-bottom: var(--m-section); }
+  .ind-hero::before { top: calc(-1 * (var(--mob-nav-h) + 44px)); }
+  .ind-hero-grid { gap: var(--m-block); }
+  .ind-btn { width: 100%; min-height: var(--m-btn); }
+  .ind-act-link { width: 100%; justify-content: center; }
+  .stat-row { grid-template-columns: minmax(0, 1fr); }
+  .stat-box + .stat-box { border-left: 0; border-top: 1px solid rgba(255,255,255,0.12); }
+  .check-list:has(.check-icon.warn) { grid-template-columns: minmax(0, 1fr); gap: var(--m-gap-cards); }
+  .check-list:has(.check-icon.warn) > li { padding: var(--m-card-pad); border-radius: var(--m-card-radius); }
+  .check-list:has(.check-icon.warn) > li > .check-icon { position: static; display: inline-flex; vertical-align: -4px; margin-right: 8px; }
+  .stat-row { padding: 0; border-radius: var(--m-card-radius); }
+  .stat-box { padding: var(--m-card-pad); }
   /* Side margin and page top */
   .article-wrap { padding-left: var(--m-gutter); padding-right: var(--m-gutter); padding-top: calc(var(--mob-nav-h) + var(--m-hero-top)); }
 
