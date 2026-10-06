@@ -109,9 +109,9 @@ layout: default
 </script>
 {%- endif %}
 
-<article class="tip">
+<article class="tip tip-page">
 
-  <header class="tip-head">
+  <header class="tip-head tip-hero">
     <nav class="tip-crumbs" aria-label="Breadcrumb">
       <ol>
         <li><a href="/">Home</a></li>
@@ -139,6 +139,7 @@ layout: default
 
   {%- comment -%} Contents and urgency key in one box, like the contents
   panel on the industry pages. Each cause carries a status dot. {%- endcomment %}
+  <div class="tip-layout">
   <nav class="tip-index" aria-labelledby="tip-index-title">
     <h2 class="tip-index-title" id="tip-index-title">{% if page.index_heading %}{{ page.index_heading | escape }}{% else %}The {{ page.causes.size }} causes, by urgency{% endif %}</h2>
     <ul class="tip-index-list">
@@ -158,7 +159,7 @@ layout: default
 
     {%- for _c in page.causes %}
     {%- case _c.urgency -%}{%- when "stop-now" -%}{%- assign _lvl = 3 -%}{%- when "book-this-week" -%}{%- assign _lvl = 2 -%}{%- else -%}{%- assign _lvl = 1 -%}{%- endcase %}
-    <section class="tip-cause" id="{{ _c.id }}" aria-labelledby="{{ _c.id }}-h">
+    <section class="tip-cause tip-c{{ _lvl }}" id="{{ _c.id }}" aria-labelledby="{{ _c.id }}-h">
       <h2 class="tip-h2" id="{{ _c.id }}-h">{{ _c.title | escape }}</h2>
       <p class="tip-urgency tip-lvl-{{ _lvl }}"><span class="tip-dot tip-lvl-{{ _lvl }}" aria-hidden="true"></span>{{ _c.urgency_label | escape }}</p>
       <div class="tip-prose">
@@ -321,9 +322,28 @@ layout: default
     {%- endif %}
 
   </div>
+  </div>
 </article>
 
 <script>
+/* Side contents (desktop): marks the part of the page on screen. */
+(function () {
+  var nav = document.querySelector('.tip-layout > .tip-index');
+  if (!nav || !('IntersectionObserver' in window)) return;
+  var map = {}, on = null;
+  [].slice.call(nav.querySelectorAll('a[href^="#"]')).forEach(function (a) { var t = document.getElementById(a.getAttribute('href').slice(1)); if (t) map[t.id] = a; });
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      var a = map[e.target.id];
+      if (!a || a === on) return;
+      if (on) on.removeAttribute('aria-current');
+      on = a; a.setAttribute('aria-current', 'location');
+    });
+  }, { rootMargin: '-30% 0px -65% 0px' });
+  Object.keys(map).forEach(function (id) { io.observe(document.getElementById(id)); });
+})();
+
 /* The FAQ uses the shared .faq-q handler in _includes/scripts.html. */
 
 /* Quote form. Validates each field when the person leaves it (not only on

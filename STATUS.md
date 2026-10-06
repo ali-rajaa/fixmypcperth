@@ -656,6 +656,14 @@ Industry pages (9 files): .ind-hero split hero with a "Book a free IT
 audit" button (trades: "Book an IT audit") and the page summary as the side
 card; stats as a dark band; warning lists as a 2-column card grid.
 
+Tech Tips guides (_layouts/tech-tip.html): hero band, .tip-layout with the
+contents and urgency key as a sticky side column on desktop, each cause a
+card with a left border in its urgency colour (.tip-c1/2/3), prices in a
+panel.
+
+Section heads (Business IT): .split-head puts the label and title left and
+the intro right on desktop instead of three centred lines.
+
 ## /services hub (October 2026)
 
 Redesigned as a directory, not a service page: css: service (shared quote
