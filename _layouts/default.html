@@ -109,6 +109,10 @@
        without it fall back to index.css. Design tokens are never shared
        between page stylesheets, so every page CSS carries its own :root. -->
   <link rel="stylesheet" href="/assets/css/pages/{{ page.css | default: "index" }}.css?v={{ site.time | date: "%s" }}">
+  {%- if page.css_extra %}
+  <!-- A page can layer one more stylesheet on its cluster sheet (css_extra), e.g. /services uses service.css for the shared quote form and FAQ, plus hub.css for its own layout. -->
+  <link rel="stylesheet" href="/assets/css/pages/{{ page.css_extra }}.css?v={{ site.time | date: "%s" }}">
+  {%- endif %}
   <link rel="stylesheet" href="/assets/css/shell.css?v={{ site.time | date: "%s" }}">
 
   <script>

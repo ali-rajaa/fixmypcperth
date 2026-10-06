@@ -1,6 +1,7 @@
 ---
 layout: default
 css: service
+css_extra: hub
 title: "Computer Repair Services Perth | All Repairs | FixMyPC Perth"
 description: "Every computer and laptop repair we do in Perth, with fixed prices: laptops, screens, viruses, data recovery, slow PCs, gaming PCs, upgrades and wifi."
 slug: services
@@ -47,7 +48,10 @@ faqs:
   computer repair services, computer repair shop, pc repair shop. Not
   "computer repair perth": the homepage owns that.
 
-  Styles: service.css (the sv- design, plus .sv-hub and .sv-cat).
+  Styles: service.css for the shared parts (header type, buttons, quote form,
+  FAQ) and hub.css for the hub layout: the split hero with the symptom
+  finder, the sticky section bar, the card grid, the symptom rows, the
+  tabbed price list and the tiles. Nothing on the service pages changes.
 {%- endcomment -%}
 {%- assign _S = site.data.services -%}
 {%- assign _R = site.data.reviews.meta -%}
@@ -93,255 +97,475 @@ faqs:
 }
 </script>
 
-<article class="sv">
-  <header class="sv-head">
-    <nav class="sv-crumbs" aria-label="Breadcrumb">
-      <ol>
-        <li><a href="{{ '/' | relative_url }}">Home</a></li>
-        <li><span aria-current="page">Services</span></li>
-      </ol>
-    </nav>
-    <span class="sv-eyebrow">Services</span>
-    <h1 class="sv-h1">{{ page.heading | escape }}</h1>
-    <p class="sv-lede">Every computer and laptop repair we do, from our workshop in Canning Vale. Each one is a fixed price agreed before we start, most jobs are ready the same day, and every repair carries a 30-day warranty. Pick the one that sounds like yours, or tell us what the computer is doing and we will tell you.</p>
-    <div class="sv-act">
-      <a href="{% include wa-href.html text="Hi! I'd like a quote for a computer repair." %}" target="_blank" rel="noopener noreferrer" class="sv-btn sv-btn-wa" onclick="trackWAClick()" data-track="hero_whatsapp">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>
-        Get a quote on WhatsApp
-      </a>
-      <a href="#quote" class="sv-act-link" data-track="hero_form">
-        Or get a fixed price online
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-      </a>
+<main class="hub">
+  <header class="hub-hero">
+    <div class="hub-wrap hub-hero-grid">
+      <div class="hub-hero-copy">
+        <nav class="sv-crumbs" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="{{ '/' | relative_url }}">Home</a></li>
+            <li><span aria-current="page">Services</span></li>
+          </ol>
+        </nav>
+        <span class="sv-eyebrow">Services</span>
+        <h1 class="sv-h1 hub-h1">{{ page.heading | escape }}</h1>
+        <p class="sv-lede">Every computer and laptop repair we do, from our workshop in Canning Vale. Each one is a fixed price agreed before we start, most jobs are ready the same day, and every repair carries a 30-day warranty. Pick the one that sounds like yours, or tell us what the computer is doing and we will tell you.</p>
+        <div class="sv-act">
+          <a href="{% include wa-href.html text="Hi! I'd like a quote for a computer repair." %}" target="_blank" rel="noopener noreferrer" class="sv-btn sv-btn-wa" onclick="trackWAClick()" data-track="hero_whatsapp">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>
+            Get a quote on WhatsApp
+          </a>
+          <a href="#quote" class="sv-act-link" data-track="hero_form">
+            Or get a fixed price online
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+        {%- capture _tick %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>{% endcapture %}
+        <ul class="sv-promise hub-promise" aria-label="Every repair includes">
+          <li>{{ _tick }}Fixed price first</li>
+          <li>{{ _tick }}Same day on most jobs</li>
+          <li>{{ _tick }}30-day warranty</li>
+          {%- if _R.rating %}<li>{{ _tick }}Rated {{ _R.rating }} on Google</li>{% endif %}
+        </ul>
+      </div>
+      <aside class="hub-find" aria-labelledby="hub-find-h">
+        <p class="hub-find-k">Quick finder</p>
+        <h2 class="hub-find-h" id="hub-find-h">What is the computer doing?</h2>
+        <ul class="hub-find-list">
+          <li><a class="hub-find-link" href="#sym-1">Won't turn on{{ _chev }}</a></li>
+          <li><a class="hub-find-link" href="#sym-2">Stuck before Windows{{ _chev }}</a></li>
+          <li><a class="hub-find-link" href="#sym-3">Blue screens or restarts{{ _chev }}</a></li>
+          <li><a class="hub-find-link" href="#sym-4">Painfully slow{{ _chev }}</a></li>
+          <li><a class="hub-find-link" href="#sym-5">Pop-ups or a scam{{ _chev }}</a></li>
+          <li><a class="hub-find-link" href="#sym-6">Broken laptop screen{{ _chev }}</a></li>
+          <li><a class="hub-find-link" href="#sym-7">Battery, keyboard or hinge{{ _chev }}</a></li>
+          <li><a class="hub-find-link" href="#sym-8">Files you cannot get to{{ _chev }}</a></li>
+          <li><a class="hub-find-link" href="#sym-9">Games stutter or a new build{{ _chev }}</a></li>
+          <li><a class="hub-find-link" href="#sym-10">Wifi, printers, network{{ _chev }}</a></li>
+        </ul>
+        <a class="hub-find-all" href="#repairs">Or browse all {{ _svcs.size }} repairs<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </aside>
     </div>
-    {%- capture _tick %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>{% endcapture %}
-    <ul class="sv-promise" aria-label="Every repair includes">
-      <li>{{ _tick }}Fixed price first</li>
-      <li>{{ _tick }}Same day on most jobs</li>
-      <li>{{ _tick }}30-day warranty</li>
-      {%- if _R.rating %}<li>{{ _tick }}Rated {{ _R.rating }} on Google</li>{% endif %}
-    </ul>
   </header>
 
-  <nav class="sv-index" aria-labelledby="sv-index-title">
-    <h2 class="sv-index-title" id="sv-index-title">On this page</h2>
-    <ul class="sv-index-list">
-      <li><a href="#repairs">{{ _chev }}<span>Repair services</span></a></li>
-      <li><a href="#by-symptom">{{ _chev }}<span>Find it by symptom</span></a></li>
-      <li><a href="#all-services">{{ _chev }}<span>Every service and price</span></a></li>
-      <li><a href="#more-help">{{ _chev }}<span>Other ways we help</span></a></li>
-      <li><a href="#how-it-works">{{ _chev }}<span>How a repair works</span></a></li>
-      <li><a href="#pricing">{{ _chev }}<span>How our pricing works</span></a></li>
-      <li><a href="#where">{{ _chev }}<span>Workshop, on-site and remote</span></a></li>
-      <li><a href="#devices">{{ _chev }}<span>Computers we work on</span></a></li>
-      <li><a href="#quote">{{ _chev }}<span>Get a fixed price</span></a></li>
-      <li><a href="#faq">{{ _chev }}<span>Questions</span></a></li>
-    </ul>
+  <nav class="hub-bar" aria-label="On this page">
+    <div class="hub-wrap">
+      <ul class="hub-bar-list">
+        <li><a href="#repairs">Repairs</a></li>
+        <li><a href="#by-symptom">By symptom</a></li>
+        <li><a href="#all-services">Every price</a></li>
+        <li><a href="#more-help">Other help</a></li>
+        <li><a href="#how-it-works">How it works</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#where">Where</a></li>
+        <li><a href="#devices">Devices</a></li>
+        <li><a href="#quote">Get a price</a></li>
+        <li><a href="#faq">Questions</a></li>
+      </ul>
+    </div>
   </nav>
 
-  <section class="sv-more" id="repairs" aria-labelledby="repairs-h">
-    <h2 class="sv-h2" id="repairs-h">Our repair services</h2>
-    <div class="sv-prose">
-      <p>These are the repairs people bring us most. Each has its own page with what we check, what usually causes the fault, what it costs and how long it takes.</p>
-    </div>
-    <ul class="sv-hub" aria-label="Our repair services">
-      {%- for _v in _svcs %}
-      <li class="sv-hub-item">
-        <a class="sv-hub-link" href="{{ '/' | append: _v.slug | relative_url }}">
-          <span class="sv-hub-name">{{ _v.label | escape }}</span>
-          <span class="sv-hub-sum">{{ _v.summary | escape }}</span>
-          <span class="sv-hub-foot">
-            {%- if _v.from_key %}<span class="sv-hub-price">From {% include price.html key=_v.from_key bare=true %}</span>{% endif %}
-            <span class="sv-hub-go">Details{{ _chev }}</span>
-          </span>
-        </a>
-      </li>
-      {%- endfor %}
-    </ul>
-  </section>
-
-  <section class="sv-more" id="by-symptom" aria-labelledby="by-symptom-h">
-    <h2 class="sv-h2" id="by-symptom-h">Find your repair by what the computer is doing</h2>
-    <div class="sv-prose">
-      <p>Most people know what the computer is doing, not why. Start from the symptom and the right page is usually clear.</p>
-      <ul>
-        <li><strong>Nothing happens when you press the power button.</strong> No lights, no fans, or lights that come on and then nothing. The cause is often the power supply, the charger or charging port, the motherboard or a stuck power state. See <a href="{{ '/computer-wont-turn-on-perth' | relative_url }}">computer won't turn on</a>.</li>
-        <li><strong>It turns on but never reaches Windows.</strong> Endless spinning dots, a repair loop or a black screen with a cursor. This is usually Windows itself or a failing drive. <a href="{{ '/windows-reinstall-perth' | relative_url }}">Windows reinstall</a> covers the software side, and if the drive is clicking or very slow, read <a href="{{ '/data-recovery-perth' | relative_url }}">data recovery</a> first so your files come off before anything is wiped.</li>
-        <li><strong>Blue screens or random restarts.</strong> These point to drivers, memory, a drive starting to fail or overheating. The all-in diagnostic finds which one, and <a href="{{ '/laptop-repair-perth' | relative_url }}">laptop repair</a> explains the laptop-specific causes.</li>
-        <li><strong>Everything takes forever.</strong> Slow start-up, programs that hang, a fan that never stops. An old hard drive, too little memory, a crowded startup list or dust in the cooling are the usual reasons. See <a href="{{ '/slow-computer-repair-perth' | relative_url }}">slow computer repair</a>, and <a href="{{ '/computer-upgrades-perth' | relative_url }}">computer upgrades</a> if the hardware is the limit.</li>
-        <li><strong>Pop-ups, a changed homepage or a scam warning.</strong> Browser hijacks, fake virus alerts and remote-access scams all land here, as do hacked email and social accounts. See <a href="{{ '/virus-removal-perth' | relative_url }}">virus removal</a>.</li>
-        <li><strong>Cracked, dark or striped laptop screen.</strong> A crack, dead patches, coloured lines or a screen that only works at certain angles. See <a href="{{ '/laptop-screen-repair-perth' | relative_url }}">laptop screen repair</a>.</li>
-        <li><strong>Battery, keyboard, hinge or charging problems.</strong> A battery that dies in an hour, keys that stop working, a hinge that cracks the case or a charger that only works at an angle. See <a href="{{ '/laptop-repair-perth' | relative_url }}">laptop repair</a>.</li>
-        <li><strong>Files you cannot get to.</strong> A drive that is not detected, an external drive that clicks, deleted photos or a computer that will not start with your only copy inside. See <a href="{{ '/data-recovery-perth' | relative_url }}">data recovery</a>, and stop using the drive until then.</li>
-        <li><strong>Games stutter, or you want a new build.</strong> Low frame rates, high temperatures, a build that will not post, or parts in boxes waiting to be put together. See <a href="{{ '/gaming-pc-build-perth' | relative_url }}">gaming PC builds</a>.</li>
-        <li><strong>Wifi, printers and the home network.</strong> Dead spots, a new NBN router, a printer that will not connect. These are done at your place, and the prices are under networking below.</li>
+  <section class="hub-sec" id="repairs" aria-labelledby="repairs-h">
+    <div class="hub-wrap">
+      <div class="hub-sec-head">
+        <h2 class="hub-h2" id="repairs-h">Our repair services</h2>
+        <p class="hub-sec-p">These are the repairs people bring us most. Each has its own page with what we check, what usually causes the fault, what it costs and how long it takes.</p>
+      </div>
+      <ul class="hub-cards" aria-label="Our repair services">
+        {%- for _v in _svcs %}
+        <li>
+          <a class="hub-card" href="{{ '/' | append: _v.slug | relative_url }}">
+            <span class="hub-card-ic">{% include hub-icon.html slug=_v.slug %}</span>
+            <span class="hub-card-name">{{ _v.label | escape }}</span>
+            <span class="hub-card-sum">{{ _v.summary | escape }}</span>
+            <span class="hub-card-foot">
+              {%- if _v.from_key %}<span class="hub-card-price">From {% include price.html key=_v.from_key bare=true %}</span>{% endif %}
+              <span class="hub-card-go">Details{{ _chev }}</span>
+            </span>
+          </a>
+        </li>
+        {%- endfor %}
       </ul>
-      <p>If none of these fit, or it is a mix of several, that is what the diagnostic is for. One flat fee finds the fault and covers the repair labour.</p>
     </div>
   </section>
 
-  <section class="sv-more" id="all-services" aria-labelledby="all-services-h">
-    <h2 class="sv-h2" id="all-services-h">Every service and price</h2>
-    <div class="sv-prose">
-      <p>This is everything we do, grouped by the kind of job, with the fixed price for each. Prices include GST. Where a service has its own page, its name links to it. What each price covers is on the <a href="{{ '/pricing' | relative_url }}">full price list</a>.</p>
+  <section class="hub-sec hub-sec-tint" id="by-symptom" aria-labelledby="by-symptom-h">
+    <div class="hub-wrap hub-split">
+      <div class="hub-split-side">
+        <h2 class="hub-h2" id="by-symptom-h">Find your repair by what the computer is doing</h2>
+        <p class="hub-sec-p">Most people know what the computer is doing, not why. Start from the symptom and the right page is usually clear.</p>
+        <p class="hub-sec-p">If none of these fit, or it is a mix of several, that is what the diagnostic is for. One flat fee finds the fault and covers the repair labour.</p>
+      </div>
+      <ol class="hub-sym">
+        <li class="hub-sym-row" id="sym-1">
+          <span class="hub-sym-n" aria-hidden="true">01</span>
+          <div class="hub-sym-body">
+            <h3 class="hub-sym-t">Nothing happens when you press the power button.</h3>
+            <p class="hub-sym-p">No lights, no fans, or lights that come on and then nothing. The cause is often the power supply, the charger or charging port, the motherboard or a stuck power state. See <a href="{{ '/computer-wont-turn-on-perth' | relative_url }}">computer won't turn on</a>.</p>
+          </div>
+        </li>
+        <li class="hub-sym-row" id="sym-2">
+          <span class="hub-sym-n" aria-hidden="true">02</span>
+          <div class="hub-sym-body">
+            <h3 class="hub-sym-t">It turns on but never reaches Windows.</h3>
+            <p class="hub-sym-p">Endless spinning dots, a repair loop or a black screen with a cursor. This is usually Windows itself or a failing drive. <a href="{{ '/windows-reinstall-perth' | relative_url }}">Windows reinstall</a> covers the software side, and if the drive is clicking or very slow, read <a href="{{ '/data-recovery-perth' | relative_url }}">data recovery</a> first so your files come off before anything is wiped.</p>
+          </div>
+        </li>
+        <li class="hub-sym-row" id="sym-3">
+          <span class="hub-sym-n" aria-hidden="true">03</span>
+          <div class="hub-sym-body">
+            <h3 class="hub-sym-t">Blue screens or random restarts.</h3>
+            <p class="hub-sym-p">These point to drivers, memory, a drive starting to fail or overheating. The all-in diagnostic finds which one, and <a href="{{ '/laptop-repair-perth' | relative_url }}">laptop repair</a> explains the laptop-specific causes.</p>
+          </div>
+        </li>
+        <li class="hub-sym-row" id="sym-4">
+          <span class="hub-sym-n" aria-hidden="true">04</span>
+          <div class="hub-sym-body">
+            <h3 class="hub-sym-t">Everything takes forever.</h3>
+            <p class="hub-sym-p">Slow start-up, programs that hang, a fan that never stops. An old hard drive, too little memory, a crowded startup list or dust in the cooling are the usual reasons. See <a href="{{ '/slow-computer-repair-perth' | relative_url }}">slow computer repair</a>, and <a href="{{ '/computer-upgrades-perth' | relative_url }}">computer upgrades</a> if the hardware is the limit.</p>
+          </div>
+        </li>
+        <li class="hub-sym-row" id="sym-5">
+          <span class="hub-sym-n" aria-hidden="true">05</span>
+          <div class="hub-sym-body">
+            <h3 class="hub-sym-t">Pop-ups, a changed homepage or a scam warning.</h3>
+            <p class="hub-sym-p">Browser hijacks, fake virus alerts and remote-access scams all land here, as do hacked email and social accounts. See <a href="{{ '/virus-removal-perth' | relative_url }}">virus removal</a>.</p>
+          </div>
+        </li>
+        <li class="hub-sym-row" id="sym-6">
+          <span class="hub-sym-n" aria-hidden="true">06</span>
+          <div class="hub-sym-body">
+            <h3 class="hub-sym-t">Cracked, dark or striped laptop screen.</h3>
+            <p class="hub-sym-p">A crack, dead patches, coloured lines or a screen that only works at certain angles. See <a href="{{ '/laptop-screen-repair-perth' | relative_url }}">laptop screen repair</a>.</p>
+          </div>
+        </li>
+        <li class="hub-sym-row" id="sym-7">
+          <span class="hub-sym-n" aria-hidden="true">07</span>
+          <div class="hub-sym-body">
+            <h3 class="hub-sym-t">Battery, keyboard, hinge or charging problems.</h3>
+            <p class="hub-sym-p">A battery that dies in an hour, keys that stop working, a hinge that cracks the case or a charger that only works at an angle. See <a href="{{ '/laptop-repair-perth' | relative_url }}">laptop repair</a>.</p>
+          </div>
+        </li>
+        <li class="hub-sym-row" id="sym-8">
+          <span class="hub-sym-n" aria-hidden="true">08</span>
+          <div class="hub-sym-body">
+            <h3 class="hub-sym-t">Files you cannot get to.</h3>
+            <p class="hub-sym-p">A drive that is not detected, an external drive that clicks, deleted photos or a computer that will not start with your only copy inside. See <a href="{{ '/data-recovery-perth' | relative_url }}">data recovery</a>, and stop using the drive until then.</p>
+          </div>
+        </li>
+        <li class="hub-sym-row" id="sym-9">
+          <span class="hub-sym-n" aria-hidden="true">09</span>
+          <div class="hub-sym-body">
+            <h3 class="hub-sym-t">Games stutter, or you want a new build.</h3>
+            <p class="hub-sym-p">Low frame rates, high temperatures, a build that will not post, or parts in boxes waiting to be put together. See <a href="{{ '/gaming-pc-build-perth' | relative_url }}">gaming PC builds</a>.</p>
+          </div>
+        </li>
+        <li class="hub-sym-row" id="sym-10">
+          <span class="hub-sym-n" aria-hidden="true">10</span>
+          <div class="hub-sym-body">
+            <h3 class="hub-sym-t">Wifi, printers and the home network.</h3>
+            <p class="hub-sym-p">Dead spots, a new NBN router, a printer that will not connect. These are done at your place, and the prices are under networking below.</p>
+          </div>
+        </li>
+      </ol>
     </div>
-    {%- for _cat in _S.categories %}
-    {%- assign _items = _S.services | where: "category", _cat.id %}
-    {%- if _items.size > 0 %}
-    {%- case _cat.id %}
-    {%- when "repairs" %}{% assign _ch = "Repairs" %}{% capture _ci %}Faults on desktops and laptops: viruses, password lockouts, broken screens, failed batteries and drives that have stopped. If you are not sure what is wrong, the first one is the one to book.{% endcapture %}
-    {%- when "performance" %}{% assign _ch = "Speed-ups" %}{% capture _ci %}For a computer that works but crawls. Three levels of clean-up, depending on how far it has slowed and how long since anyone looked at it.{% endcapture %}
-    {%- when "upgrades" %}{% assign _ch = "Upgrades" %}{% capture _ci %}Faster storage, more memory, a new graphics card or Windows 11. Labour is a fixed price, and you can supply the part or we can.{% endcapture %}
-    {%- when "gaming" %}{% assign _ch = "Gaming PCs and consoles" %}{% capture _ci %}Building with your parts, the finishing work around a build (cooling, cables, lighting, tuning and testing) and PS5 and Xbox repairs.{% endcapture %}
-    {%- when "networking" %}{% assign _ch = "Networking and wifi" %}{% capture _ci %}Done at your home or office across the southern suburbs, at the same price as in the workshop plus the call-out fee.{% endcapture %}
-    {%- when "software" %}{% assign _ch = "Software and remote help" %}{% capture _ci %}Jobs that often do not need the computer in the workshop at all: setup, email, Office, backups and moving everything to a new PC.{% endcapture %}
-    {%- else %}{% assign _ch = _cat.nav | default: _cat.label %}{% assign _ci = _cat.blurb %}
-    {%- endcase %}
-    <div class="sv-cat" id="all-{{ _cat.id }}">
-      <h3 class="sv-h3">{{ _ch | escape }}</h3>
-      <div class="sv-prose"><p>{{ _ci | strip }}</p></div>
-      <ul class="sv-cat-list" aria-label="{{ _ch | escape }} prices">
-        {%- for _s in _items %}
-        {%- comment -%} The page this service belongs to. A page: field in
-        services.yml decides outright. Otherwise each service page scores:
-        100 if the key is that page's headline "from" price, 2 for each
-        repair priced with it, 1 for each "also" mention. Option keys (the
-        screen panel tiers) count as the service. Highest wins; a tie goes
-        to the more specialised page, the one with fewer repairs. {%- endcomment -%}
-        {%- assign _ks = "" | split: "" | push: _s.key %}
-        {%- for _o in _s.options %}{% if _o.key %}{% assign _ks = _ks | push: _o.key %}{% endif %}{% endfor %}
-        {%- assign _href = "" %}{% assign _best = 0 %}{% assign _bestn = 999 %}
-        {%- for _p in _svcpages %}
-          {%- assign _c = 0 %}
-          {%- assign _sl = site.data.suburbs.service_links | where: "slug", _p.slug | first %}
-          {%- if _sl and _ks contains _sl.from_key %}{% assign _c = 100 %}{% endif %}
-          {%- for _r in _p.repairs %}
-            {%- if _ks contains _r.price_key %}{% assign _c = _c | plus: 2 %}{% endif %}
-            {%- for _a in _r.also_keys %}{% if _ks contains _a %}{% assign _c = _c | plus: 1 %}{% endif %}{% endfor %}
-          {%- endfor %}
-          {%- assign _n = _p.repairs.size %}
-          {%- if _c > _best %}{% assign _best = _c %}{% assign _bestn = _n %}{% assign _href = '/' | append: _p.slug | relative_url %}
-          {%- elsif _c > 0 and _c == _best and _n < _bestn %}{% assign _bestn = _n %}{% assign _href = '/' | append: _p.slug | relative_url %}
-          {%- endif %}
-        {%- endfor %}
-        {%- if _s.page %}{% assign _href = '/' | append: _s.page | relative_url %}{% endif %}
-        <li>{% if _href != "" %}<a href="{{ _href }}">{{ _s.name | escape }}</a>{% else %}<span>{{ _s.name | escape }}</span>{% endif %}<span class="sv-num">{% include price.html key=_s.key %}</span></li>
-        {%- endfor %}
-      </ul>
-      <p class="sv-cat-more"><a href="{{ '/pricing' | relative_url }}#{{ _cat.id }}">{{ _ch | escape }}: what each price covers</a></p>
-    </div>
-    {%- endif %}
+  </section>
+
+  <section class="hub-sec" id="all-services" aria-labelledby="all-services-h">
+    <div class="hub-wrap">
+      <div class="hub-sec-head">
+        <h2 class="hub-h2" id="all-services-h">Every service and price</h2>
+        <p class="hub-sec-p">This is everything we do, grouped by the kind of job, with the fixed price for each. Prices include GST. Where a service has its own page, its name links to it. What each price covers is on the <a href="{{ '/pricing' | relative_url }}">full price list</a>.</p>
+      </div>
+      <div class="hub-prices">
+        <div class="hub-tools">
+          <label class="sr-only" for="hubSearch">Search every service</label>
+          <input class="hub-search" id="hubSearch" type="search" placeholder="Search every service, e.g. battery" autocomplete="off" hidden>
+          <div class="hub-tabs" role="tablist" aria-label="Price categories" hidden>
+            {%- for _cat in _S.categories %}{% assign _items = _S.services | where: "category", _cat.id %}{% if _items.size > 0 %}
+            <button type="button" class="hub-tab" role="tab" id="tab-{{ _cat.id }}" aria-controls="all-{{ _cat.id }}" aria-selected="false" data-cat="{{ _cat.id }}"><span class="hub-tab-ic">{% include svc-icon.html id=_cat.id %}</span>{{ _cat.nav | default: _cat.label | escape }}</button>
+            {%- endif %}{% endfor %}
+            <button type="button" class="hub-tab" role="tab" id="tab-extras" aria-controls="all-extras" aria-selected="false" data-cat="extras"><span class="hub-tab-ic">{% include svc-icon.html id="extras" %}</span>Extras</button>
+          </div>
+          <p class="hub-empty" id="hubEmpty" hidden>No service matches that. Try another word, or <a href="#quote">ask us</a>.</p>
+        </div>
+        <div class="hub-panels">
+    {%- for _cat in _S.categories %}
+    {%- assign _items = _S.services | where: "category", _cat.id %}
+    {%- if _items.size > 0 %}
+    {%- case _cat.id %}
+    {%- when "repairs" %}{% assign _ch = "Repairs" %}{% capture _ci %}Faults on desktops and laptops: viruses, password lockouts, broken screens, failed batteries and drives that have stopped. If you are not sure what is wrong, the first one is the one to book.{% endcapture %}
+    {%- when "performance" %}{% assign _ch = "Speed-ups" %}{% capture _ci %}For a computer that works but crawls. Three levels of clean-up, depending on how far it has slowed and how long since anyone looked at it.{% endcapture %}
+    {%- when "upgrades" %}{% assign _ch = "Upgrades" %}{% capture _ci %}Faster storage, more memory, a new graphics card or Windows 11. Labour is a fixed price, and you can supply the part or we can.{% endcapture %}
+    {%- when "gaming" %}{% assign _ch = "Gaming PCs and consoles" %}{% capture _ci %}Building with your parts, the finishing work around a build (cooling, cables, lighting, tuning and testing) and PS5 and Xbox repairs.{% endcapture %}
+    {%- when "networking" %}{% assign _ch = "Networking and wifi" %}{% capture _ci %}Done at your home or office across the southern suburbs, at the same price as in the workshop plus the call-out fee.{% endcapture %}
+    {%- when "software" %}{% assign _ch = "Software and remote help" %}{% capture _ci %}Jobs that often do not need the computer in the workshop at all: setup, email, Office, backups and moving everything to a new PC.{% endcapture %}
+    {%- else %}{% assign _ch = _cat.nav | default: _cat.label %}{% assign _ci = _cat.blurb %}
+    {%- endcase %}
+    <div class="sv-cat hub-cat" id="all-{{ _cat.id }}" data-cat="{{ _cat.id }}">
+      <h3 class="sv-h3 hub-cat-h"><span class="hub-cat-ic">{% include svc-icon.html id=_cat.id %}</span>{{ _ch | escape }}</h3>
+      <div class="sv-prose"><p>{{ _ci | strip }}</p></div>
+      <ul class="sv-cat-list" aria-label="{{ _ch | escape }} prices">
+        {%- for _s in _items %}
+        {%- comment -%} The page this service belongs to. A page: field in
+        services.yml decides outright. Otherwise each service page scores:
+        100 if the key is that page's headline "from" price, 2 for each
+        repair priced with it, 1 for each "also" mention. Option keys (the
+        screen panel tiers) count as the service. Highest wins; a tie goes
+        to the more specialised page, the one with fewer repairs. {%- endcomment -%}
+        {%- assign _ks = "" | split: "" | push: _s.key %}
+        {%- for _o in _s.options %}{% if _o.key %}{% assign _ks = _ks | push: _o.key %}{% endif %}{% endfor %}
+        {%- assign _href = "" %}{% assign _best = 0 %}{% assign _bestn = 999 %}
+        {%- for _p in _svcpages %}
+          {%- assign _c = 0 %}
+          {%- assign _sl = site.data.suburbs.service_links | where: "slug", _p.slug | first %}
+          {%- if _sl and _ks contains _sl.from_key %}{% assign _c = 100 %}{% endif %}
+          {%- for _r in _p.repairs %}
+            {%- if _ks contains _r.price_key %}{% assign _c = _c | plus: 2 %}{% endif %}
+            {%- for _a in _r.also_keys %}{% if _ks contains _a %}{% assign _c = _c | plus: 1 %}{% endif %}{% endfor %}
+          {%- endfor %}
+          {%- assign _n = _p.repairs.size %}
+          {%- if _c > _best %}{% assign _best = _c %}{% assign _bestn = _n %}{% assign _href = '/' | append: _p.slug | relative_url %}
+          {%- elsif _c > 0 and _c == _best and _n < _bestn %}{% assign _bestn = _n %}{% assign _href = '/' | append: _p.slug | relative_url %}
+          {%- endif %}
+        {%- endfor %}
+        {%- if _s.page %}{% assign _href = '/' | append: _s.page | relative_url %}{% endif %}
+        <li>{% if _href != "" %}<a href="{{ _href }}">{{ _s.name | escape }}</a>{% else %}<span>{{ _s.name | escape }}</span>{% endif %}<span class="sv-num">{% include price.html key=_s.key %}</span></li>
+        {%- endfor %}
+      </ul>
+      <p class="sv-cat-more"><a href="{{ '/pricing' | relative_url }}#{{ _cat.id }}">{{ _ch | escape }}: what each price covers</a></p>
+    </div>
+    {%- endif %}
     {%- endfor %}
-    <div class="sv-cat" id="all-extras">
-      <h3 class="sv-h3">Call-outs and extras</h3>
-      <div class="sv-prose"><p>Added to a job rather than booked on their own: a visit to your place, a faster turnaround, a follow-up check or a care plan.</p></div>
-      <ul class="sv-cat-list">
-        {%- for _s in _S.addons %}
-        {%- unless _s.key contains "biz-" %}
-        <li><span>{{ _s.name | escape }}</span><span class="sv-num">{% include price.html key=_s.key %}</span></li>
-        {%- endunless %}
-        {%- endfor %}
+    <div class="sv-cat hub-cat" id="all-extras" data-cat="extras">
+      <h3 class="sv-h3 hub-cat-h"><span class="hub-cat-ic">{% include svc-icon.html id="extras" %}</span>Call-outs and extras</h3>
+      <div class="sv-prose"><p>Added to a job rather than booked on their own: a visit to your place, a faster turnaround, a follow-up check or a care plan.</p></div>
+      <ul class="sv-cat-list">
+        {%- for _s in _S.addons %}
+        {%- unless _s.key contains "biz-" %}
+        <li><span>{{ _s.name | escape }}</span><span class="sv-num">{% include price.html key=_s.key %}</span></li>
+        {%- endunless %}
+        {%- endfor %}
+      </ul>
+      <p class="sv-cat-more"><a href="{{ '/pricing' | relative_url }}#extras">Extras: what each price covers</a></p>
+    </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hub-sec hub-sec-tint" id="more-help" aria-labelledby="more-help-h">
+    <div class="hub-wrap">
+      <div class="hub-sec-head">
+        <h2 class="hub-h2" id="more-help-h">Other ways we help</h2>
+      </div>
+      <ul class="hub-tiles">
+        <li class="hub-tile"><h3 class="hub-tile-t">Not sure it is worth fixing?</h3><p>The <a href="{{ '/pc-health-check-perth' | relative_url }}">Free PC Health Check</a> asks seven questions about what the computer is doing and tells you what it usually means, how urgent it is and roughly what it costs. It takes a couple of minutes and needs nothing installed.</p></li>
+        <li class="hub-tile"><h3 class="hub-tile-t">Running a business?</h3><p><a href="{{ '/business-it-support' | relative_url }}">Business IT Support</a> covers offices and shops with monthly plans: remote help, onsite visits, managed antivirus, backups and updates, for one fixed fee.</p></li>
+        <li class="hub-tile"><h3 class="hub-tile-t">Buying a used computer?</h3><p>The pre-purchase inspection is for a laptop or PC off Marketplace or Gumtree. We check it over before you hand over any cash, so you know what you are buying.</p></li>
+        <li class="hub-tile"><h3 class="hub-tile-t">Want to read up first?</h3><p><a href="{{ '/tech-tips' | relative_url }}">Tech Tips</a> has guides on why a PC slows down, the signs of a virus or a failing drive, and what repairs cost in Perth.</p></li>
       </ul>
-      <p class="sv-cat-more"><a href="{{ '/pricing' | relative_url }}#extras">Extras: what each price covers</a></p>
+      <p class="hub-note">What customers say about the work is on the <a href="{{ '/reviews' | relative_url }}">reviews page</a>.</p>
     </div>
   </section>
 
-  <section class="sv-more" id="more-help" aria-labelledby="more-help-h">
-    <h2 class="sv-h2" id="more-help-h">Other ways we help</h2>
-    <div class="sv-prose">
-      <p><strong>Not sure it is worth fixing?</strong> The <a href="{{ '/pc-health-check-perth' | relative_url }}">Free PC Health Check</a> asks seven questions about what the computer is doing and tells you what it usually means, how urgent it is and roughly what it costs. It takes a couple of minutes and needs nothing installed.</p>
-      <p><strong>Running a business?</strong> <a href="{{ '/business-it-support' | relative_url }}">Business IT Support</a> covers offices and shops with monthly plans: remote help, onsite visits, managed antivirus, backups and updates, for one fixed fee.</p>
-      <p><strong>Buying a used computer?</strong> The pre-purchase inspection is for a laptop or PC off Marketplace or Gumtree. We check it over before you hand over any cash, so you know what you are buying.</p>
-      <p><strong>Want to read up first?</strong> <a href="{{ '/tech-tips' | relative_url }}">Tech Tips</a> has guides on why a PC slows down, the signs of a virus or a failing drive, and what repairs cost in Perth.</p>
-      <p>What customers say about the work is on the <a href="{{ '/reviews' | relative_url }}">reviews page</a>.</p>
+  <section class="hub-sec" id="how-it-works" aria-labelledby="steps-h">
+    <div class="hub-wrap">
+      <div class="hub-sec-head">
+        <h2 class="hub-h2" id="steps-h">How a repair works</h2>
+      </div>
+      <ol class="hub-steps">
+        <li class="hub-step"><span class="hub-step-n" aria-hidden="true">1</span><h3 class="hub-step-t">Message us</h3><p class="hub-step-p">Message us on WhatsApp or use the form below. You get a fixed price before you bring it in.</p></li>
+        <li class="hub-step"><span class="hub-step-n" aria-hidden="true">2</span><h3 class="hub-step-t">Drop it off</h3><p class="hub-step-p">At our Canning Vale workshop, any time, day or night. Drop off before 2pm and most jobs are ready by 6pm the same day.</p></li>
+        <li class="hub-step"><span class="hub-step-n" aria-hidden="true">3</span><h3 class="hub-step-t">Collect it fixed</h3><p class="hub-step-p">Tested before you collect it, with a 30-day warranty on the work.</p></li>
+      </ol>
+      <div class="hub-two">
+        <p>A short message is enough to start: what the computer is, what it is doing and when it started. A photo of an error message or a cracked screen helps. We usually reply {{ site.reply_time }} with a price, or with one or two questions if the symptom could mean more than one thing.</p>
+        <p>Once it is on the bench, we confirm the fault before touching anything. If what we find matches the quote, we go ahead. If it turns out to be something different, we message you with the new price and wait for your answer. Every repair is tested before it goes back to you.</p>
+      </div>
     </div>
   </section>
 
-  <section class="sv-steps-wrap" id="how-it-works" aria-labelledby="steps-h">
-    <h2 class="sv-h2" id="steps-h">How a repair works</h2>
-    <ol class="sv-steps">
-      <li><span class="sv-step-title">Message us</span><span class="sv-step-text">Message us on WhatsApp or use the form below. You get a fixed price before you bring it in.</span></li>
-      <li><span class="sv-step-title">Drop it off</span><span class="sv-step-text">At our Canning Vale workshop, any time, day or night. Drop off before 2pm and most jobs are ready by 6pm the same day.</span></li>
-      <li><span class="sv-step-title">Collect it fixed</span><span class="sv-step-text">Tested before you collect it, with a 30-day warranty on the work.</span></li>
-    </ol>
-    <div class="sv-prose">
-      <p>A short message is enough to start: what the computer is, what it is doing and when it started. A photo of an error message or a cracked screen helps. We usually reply {{ site.reply_time }} with a price, or with one or two questions if the symptom could mean more than one thing.</p>
-      <p>Once it is on the bench, we confirm the fault before touching anything. If what we find matches the quote, we go ahead. If it turns out to be something different, we message you with the new price and wait for your answer. Every repair is tested before it goes back to you.</p>
+  <section class="hub-sec hub-sec-tint" id="pricing" aria-labelledby="pricing-h">
+    <div class="hub-wrap">
+      <div class="hub-sec-head">
+        <h2 class="hub-h2" id="pricing-h">How our pricing works</h2>
+        <p class="hub-sec-p">All prices include GST. The complete list, with packages and current offers, is on the <a href="{{ '/pricing' | relative_url }}">pricing page</a>.</p>
+      </div>
+      <ul class="hub-rules">
+        <li class="hub-rule"><h3 class="hub-rule-t">A fixed price, agreed first.</h3><p>Every job is quoted before work starts, and the price you agree is the price you pay at collection. There is no hourly rate running in the background.</p></li>
+        <li class="hub-rule"><h3 class="hub-rule-t">One fee when the fault is unknown.</h3><p>When nobody can say yet what is wrong, the all-in diagnostic at {% include price.html key="diagnostic-repair-all-in" bare=true %} finds the fault and covers the repair labour in the same visit. You pay one figure for both, not a diagnostic fee followed by a repair bill.</p></li>
+        <li class="hub-rule"><h3 class="hub-rule-t">Labour and parts are shown separately where it matters.</h3><p>Upgrades are listed as labour only, so you can bring your own SSD or memory, or as supplied, where we source the part. Screen and battery prices depend on the model, which is why some read "from". You get the exact figure for your laptop when we quote.</p></li>
+        <li class="hub-rule"><h3 class="hub-rule-t">No fix, no fee on data recovery.</h3><p>If we cannot get your files back, you do not pay for the attempt.</p></li>
+        <li class="hub-rule"><h3 class="hub-rule-t">30-day warranty.</h3><p>If the same fault returns within 30 days of collection, the labour to fix it again is on us.</p></li>
+      </ul>
     </div>
   </section>
 
-  <section class="sv-more" id="pricing" aria-labelledby="pricing-h">
-    <h2 class="sv-h2" id="pricing-h">How our pricing works</h2>
-    <div class="sv-prose">
-      <p><strong>A fixed price, agreed first.</strong> Every job is quoted before work starts, and the price you agree is the price you pay at collection. There is no hourly rate running in the background.</p>
-      <p><strong>One fee when the fault is unknown.</strong> When nobody can say yet what is wrong, the all-in diagnostic at {% include price.html key="diagnostic-repair-all-in" bare=true %} finds the fault and covers the repair labour in the same visit. You pay one figure for both, not a diagnostic fee followed by a repair bill.</p>
-      <p><strong>Labour and parts are shown separately where it matters.</strong> Upgrades are listed as labour only, so you can bring your own SSD or memory, or as supplied, where we source the part. Screen and battery prices depend on the model, which is why some read "from". You get the exact figure for your laptop when we quote.</p>
-      <p><strong>No fix, no fee on data recovery.</strong> If we cannot get your files back, you do not pay for the attempt.</p>
-      <p><strong>30-day warranty.</strong> If the same fault returns within 30 days of collection, the labour to fix it again is on us.</p>
-      <p>All prices include GST. The complete list, with packages and current offers, is on the <a href="{{ '/pricing' | relative_url }}">pricing page</a>.</p>
+  <section class="hub-sec" id="where" aria-labelledby="where-h">
+    <div class="hub-wrap">
+      <div class="hub-sec-head">
+        <h2 class="hub-h2" id="where-h">Workshop, on-site and remote</h2>
+      </div>
+      <ul class="hub-where">
+        <li class="hub-where-card"><span class="hub-where-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10l9-6 9 6v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><path d="M9 21v-6h6v6"/></svg></span><h3 class="hub-where-t">The workshop</h3><p>Repairs are done at our workshop at 7 Barraberry Retreat, Canning Vale WA 6155. You can drop off any time, day or night, which suits shift workers and anyone who would rather leave a laptop on the way to work. Most of our customers come from the suburbs around Canning Vale, such as Willetton, Riverton, Harrisdale, Piara Waters and Southern River, and people bring computers from right across Perth.</p></li>
+        <li class="hub-where-card"><span class="hub-where-ic">{% include svc-icon.html id="networking" %}</span><h3 class="hub-where-t">At your place</h3><p>Wifi, NBN routers, mesh networks, printers and smart TVs are set up where they live. The price is the same as in the workshop, plus a call-out fee of {% include price.html key="on-site-call-out" bare=true %} per visit across the southern suburbs.</p></li>
+        <li class="hub-where-card"><span class="hub-where-ic">{% include svc-icon.html id="software" %}</span><h3 class="hub-where-t">Remote</h3><p>Plenty of software jobs never need the computer to leave your desk: email that stopped syncing, a program that will not install, a printer driver, a quick clean-up. A remote session starts at {% include price.html key="remote-support-session" bare=true %} for the first half hour. If the problem turns out to be hardware, we tell you straight away so you can bring it in.</p></li>
+      </ul>
     </div>
   </section>
 
-  <section class="sv-more" id="where" aria-labelledby="where-h">
-    <h2 class="sv-h2" id="where-h">Workshop, on-site and remote</h2>
-    <div class="sv-prose">
-      <p><strong>The workshop.</strong> Repairs are done at our workshop at 7 Barraberry Retreat, Canning Vale WA 6155. You can drop off any time, day or night, which suits shift workers and anyone who would rather leave a laptop on the way to work. Most of our customers come from the suburbs around Canning Vale, such as Willetton, Riverton, Harrisdale, Piara Waters and Southern River, and people bring computers from right across Perth.</p>
-      <p><strong>At your place.</strong> Wifi, NBN routers, mesh networks, printers and smart TVs are set up where they live. The price is the same as in the workshop, plus a call-out fee of {% include price.html key="on-site-call-out" bare=true %} per visit across the southern suburbs.</p>
-      <p><strong>Remote.</strong> Plenty of software jobs never need the computer to leave your desk: email that stopped syncing, a program that will not install, a printer driver, a quick clean-up. A remote session starts at {% include price.html key="remote-support-session" bare=true %} for the first half hour. If the problem turns out to be hardware, we tell you straight away so you can bring it in.</p>
+  <section class="hub-sec hub-sec-tint" id="devices" aria-labelledby="devices-h">
+    <div class="hub-wrap hub-split">
+      <div class="hub-split-side">
+        <h2 class="hub-h2" id="devices-h">Computers we work on</h2>
+      </div>
+      <div class="hub-devices">
+        <p>Windows laptops and desktops from every common brand, including HP, Dell, Lenovo, Asus, Acer, MSI, Samsung, Toshiba, Dynabook, Gigabyte and Razer, plus all-in-ones and custom-built PCs. Gaming PCs and gaming laptops are repasted, cooled, tuned and built here too, and PS5 and Xbox consoles are repaired in the same workshop.</p>
+        <p>MacBooks and Surface devices come in for diagnostics, virus removal, data recovery and software jobs. We do not replace their screens or batteries, and we will tell you that before you make the trip.</p>
+        <p>External hard drives, USB sticks and memory cards come in for data recovery, and old machines come in for a secure wipe before they are sold, donated or recycled.</p>
+      </div>
     </div>
   </section>
 
-  <section class="sv-more" id="devices" aria-labelledby="devices-h">
-    <h2 class="sv-h2" id="devices-h">Computers we work on</h2>
-    <div class="sv-prose">
-      <p>Windows laptops and desktops from every common brand, including HP, Dell, Lenovo, Asus, Acer, MSI, Samsung, Toshiba, Dynabook, Gigabyte and Razer, plus all-in-ones and custom-built PCs. Gaming PCs and gaming laptops are repasted, cooled, tuned and built here too, and PS5 and Xbox consoles are repaired in the same workshop.</p>
-      <p>MacBooks and Surface devices come in for diagnostics, virus removal, data recovery and software jobs. We do not replace their screens or batteries, and we will tell you that before you make the trip.</p>
-      <p>External hard drives, USB sticks and memory cards come in for data recovery, and old machines come in for a secure wipe before they are sold, donated or recycled.</p>
-    </div>
-  </section>
-
+  <div class="hub-wrap hub-narrow">
   {%- include quote-form.html %}
+  </div>
 
-  <section class="sv-faq" id="faq" aria-labelledby="faq-h">
-    <h2 class="sv-h2" id="faq-h">Questions we get asked</h2>
-    <div class="sv-faq-list">
-    {%- for _f in page.faqs %}
-    {%- capture _a %}{% include resolve-prices.html text=_f.a %}{% endcapture %}
-    <div class="faq-item">
-      <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-{{ forloop.index }}">
-        {{ _f.q | escape }}
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
-      </button>
-      <div class="faq-a" id="faq-a-{{ forloop.index }}"><p>{{ _a | strip | escape }}</p></div>
-    </div>
-    {%- endfor %}
+  <section class="hub-sec" id="faq" aria-labelledby="faq-h">
+    <div class="hub-wrap">
+      <div class="hub-sec-head">
+        <h2 class="hub-h2" id="faq-h">Questions we get asked</h2>
+      </div>
+      <div class="sv-faq-list hub-faq">
+      {%- for _f in page.faqs %}
+      {%- capture _a %}{% include resolve-prices.html text=_f.a %}{% endcapture %}
+      <div class="faq-item">
+        <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-{{ forloop.index }}">
+          {{ _f.q | escape }}
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a" id="faq-a-{{ forloop.index }}"><p>{{ _a | strip | escape }}</p></div>
+      </div>
+      {%- endfor %}
+      </div>
     </div>
   </section>
 
   {%- assign _subs = site.pages | where: "layout", "suburb" | sort: "suburb" -%}
   {%- if _subs.size > 0 %}
-  <section class="sv-more" aria-labelledby="near-h">
-    <h2 class="sv-h2" id="near-h">Computer repairs near you</h2>
-    <div class="sv-prose"><p>Each suburb page has the trip to the workshop and the repairs people there bring us most.</p></div>
-    <ul class="sv-links">
-      {%- for _p in _subs %}
-      <li><a href="{{ '/suburbs/' | append: _p.slug | relative_url }}"><span>{{ _p.suburb | escape }}<span class="sv-links-sub">Computer and laptop repair</span></span>{{ _chev }}</a></li>
-      {%- endfor %}
-    </ul>
+  <section class="hub-sec hub-sec-tint" aria-labelledby="near-h">
+    <div class="hub-wrap">
+      <div class="hub-sec-head">
+        <h2 class="hub-h2" id="near-h">Computer repairs near you</h2>
+        <p class="hub-sec-p">Each suburb page has the trip to the workshop and the repairs people there bring us most.</p>
+      </div>
+      <ul class="hub-subs">
+        {%- for _p in _subs %}
+        <li><a class="hub-sub" href="{{ '/suburbs/' | append: _p.slug | relative_url }}"><span class="hub-sub-name">{{ _p.suburb | escape }}<span class="hub-sub-sub">Computer and laptop repair</span></span>{{ _chev }}</a></li>
+        {%- endfor %}
+      </ul>
+    </div>
   </section>
   {%- endif %}
 
-  <section class="sv-more sv-hub-help" aria-labelledby="unsure-h">
-    <h2 class="sv-h2" id="unsure-h">Still not sure which one it is?</h2>
-    <div class="sv-prose">
-      <p>Send a message with what the computer is doing and we will tell you what it is likely to be and what it costs. If it needs a look on the bench first, the all-in diagnostic is a flat {% include price.html key="diagnostic-repair-all-in" bare=true %} that finds the fault and covers the repair labour.</p>
-    </div>
-    <div class="sv-act">
-      <a href="{% include wa-href.html text="Hi! I'd like a quote for a computer repair." %}" target="_blank" rel="noopener noreferrer" class="sv-btn sv-btn-wa" onclick="trackWAClick()">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>
-        Get a quote on WhatsApp
-      </a>
-      <a href="#quote" class="sv-act-link">Or use the quote form</a>
+  <section class="hub-close" aria-labelledby="unsure-h">
+    <div class="hub-wrap hub-close-inner">
+      <div>
+        <h2 class="hub-close-h" id="unsure-h">Still not sure which one it is?</h2>
+        <p class="hub-close-p">Send a message with what the computer is doing and we will tell you what it is likely to be and what it costs. If it needs a look on the bench first, the all-in diagnostic is a flat {% include price.html key="diagnostic-repair-all-in" bare=true %} that finds the fault and covers the repair labour.</p>
+      </div>
+      <div class="hub-close-act">
+        <a href="{% include wa-href.html text="Hi! I'd like a quote for a computer repair." %}" target="_blank" rel="noopener noreferrer" class="sv-btn sv-btn-wa" onclick="trackWAClick()" data-track="close_whatsapp">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>
+          Get a quote on WhatsApp
+        </a>
+        <a href="#quote" class="hub-close-link">Or use the quote form</a>
+      </div>
     </div>
   </section>
-</article>
+</main>
+
+<script>
+/* /services hub: price tabs and search. Without script every category is
+   listed in full (the tabs and search box stay hidden), so nothing depends
+   on this. With it, one category shows at a time and the search box filters
+   every service across all of them. */
+(function () {
+  var tabs = [].slice.call(document.querySelectorAll('.hub-tab'));
+  var panels = [].slice.call(document.querySelectorAll('.hub-cat'));
+  var search = document.getElementById('hubSearch');
+  var empty = document.getElementById('hubEmpty');
+  var bar = document.querySelector('.hub-tabs');
+  if (!tabs.length || !panels.length) return;
+  bar.hidden = false; search.hidden = false;
+  document.documentElement.classList.add('hub-js');
+  panels.forEach(function (p) { p.setAttribute('role', 'tabpanel'); p.setAttribute('aria-labelledby', 'tab-' + p.getAttribute('data-cat')); p.tabIndex = 0; });
+  var rows = [].slice.call(document.querySelectorAll('.hub-cat .sv-cat-list > li'));
+  function show(cat) {
+    tabs.forEach(function (t) {
+      var on = t.getAttribute('data-cat') === cat;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      t.tabIndex = on ? 0 : -1;
+    });
+    panels.forEach(function (p) { p.hidden = p.getAttribute('data-cat') !== cat; });
+  }
+  tabs.forEach(function (t, i) {
+    t.addEventListener('click', function () { search.value = ''; filter(); show(t.getAttribute('data-cat')); });
+    t.addEventListener('keydown', function (e) {
+      var k = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: tabs.length - 1 }[e.key];
+      if (k === undefined) return;
+      e.preventDefault();
+      k = (k + tabs.length) % tabs.length;
+      tabs[k].focus(); tabs[k].click();
+    });
+  });
+  function filter() {
+    var q = search.value.trim().toLowerCase();
+    if (!q) {
+      rows.forEach(function (r) { r.hidden = false; });
+      document.documentElement.classList.remove('hub-searching');
+      empty.hidden = true;
+      var sel = tabs.filter(function (t) { return t.getAttribute('aria-selected') === 'true'; })[0] || tabs[0];
+      show(sel.getAttribute('data-cat'));
+      return;
+    }
+    document.documentElement.classList.add('hub-searching');
+    var any = false;
+    panels.forEach(function (p) {
+      var hit = false;
+      [].slice.call(p.querySelectorAll('.sv-cat-list > li')).forEach(function (r) {
+        var m = r.textContent.toLowerCase().indexOf(q) > -1;
+        r.hidden = !m; if (m) hit = true;
+      });
+      p.hidden = !hit; if (hit) any = true;
+    });
+    empty.hidden = any;
+  }
+  search.addEventListener('input', filter);
+  show(tabs[0].getAttribute('data-cat'));
+})();
+
+/* Section bar: marks the section on screen and keeps its link in view. */
+(function () {
+  var bar = document.querySelector('.hub-bar-list');
+  if (!bar || !('IntersectionObserver' in window)) return;
+  var links = [].slice.call(bar.querySelectorAll('a'));
+  var map = {};
+  links.forEach(function (a) { var t = document.getElementById(a.getAttribute('href').slice(1)); if (t) map[t.id] = a; });
+  var on = null;
+  function mark(a) {
+    if (a === on) return;
+    if (on) { on.classList.remove('is-on'); on.removeAttribute('aria-current'); }
+    on = a;
+    if (!a) return;
+    a.classList.add('is-on'); a.setAttribute('aria-current', 'true');
+    var l = a.offsetLeft - 16, r = a.offsetLeft + a.offsetWidth + 16;
+    if (l < bar.scrollLeft || r > bar.scrollLeft + bar.clientWidth) bar.scrollTo({ left: l, behavior: 'auto' });
+  }
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) mark(map[e.target.id]); });
+  }, { rootMargin: '-35% 0px -60% 0px' });
+  Object.keys(map).forEach(function (id) { io.observe(document.getElementById(id)); });
+})();
+</script>

@@ -641,6 +641,14 @@ reshuffle without a reason.
 
 ## /services hub (October 2026)
 
+Redesigned as a directory, not a service page: css: service (shared quote
+form, FAQ, buttons) plus css_extra: hub (hub.css, its own layout). Split hero
+with a symptom quick finder, sticky section bar that tracks the section on
+screen, title-left / intro-right section heads, a 3x3 card grid with icons
+(_includes/hub-icon.html), numbered symptom rows, a tabbed and searchable
+price list (all categories listed without script), tiles, a 3-step timeline,
+rule cards, a dark closing band. All copy kept word for word.
+
 All from data, nothing typed: the nine service cards (nav_order), every
 service in services.yml by category as name / price / link, and the extras
 minus the biz- ones. What each price covers stays on /pricing only, so the
