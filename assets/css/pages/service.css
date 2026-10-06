@@ -84,8 +84,30 @@ a { color: inherit; }
 
 /* ---------- frame (matches .tip on the guides) ---------- */
 .sv { max-width: 740px; margin: 0 auto; padding: calc(var(--nav-h) + 3px + 2.5rem) 2rem 5rem; }
+/* Service pages are wider than the guides: a split hero across the top,
+   then the contents as a sticky side column beside the reading column. */
+.sv-page { max-width: 1200px; }
+body:has(.sv-page) { overflow-x: clip; }
+.sv-layout { display: grid; grid-template-columns: 240px minmax(0, 760px); gap: 4rem; justify-content: center; align-items: start; }
+.sv-body { min-width: 0; }
 
 /* ---------- head ---------- */
+/* The hero band runs edge to edge behind the header: the painted layer is
+   wider than the column, the content stays in it. */
+.sv-hero { position: relative; isolation: isolate; padding: 0 0 3rem; margin: 0 0 3rem; }
+.sv-hero::before { content: ''; position: absolute; z-index: -1; top: calc(-1 * (var(--nav-h) + 3px + 2.5rem)); bottom: 0; left: calc(50% - 50vw); right: calc(50% - 50vw); background: radial-gradient(900px 420px at 85% 0%, rgba(21,96,255,0.08), transparent 70%), linear-gradient(180deg, var(--bg2), var(--bg)); border-bottom: 1px solid var(--border); }
+.sv-hero-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr); gap: 3.5rem; align-items: center; }
+.sv-hero .sv-h1 { font-size: clamp(2rem, 4vw, 3rem); }
+.sv-hero .sv-act { margin-bottom: 0; }
+/* At a glance: the starting price and what every job carries */
+.sv-glance { background: var(--bg); border: 1.5px solid var(--border); border-radius: 20px; padding: 1.5rem 1.6rem 1.25rem; box-shadow: 0 1px 2px rgba(15,23,42,0.04), 0 18px 48px rgba(15,23,42,0.08); }
+.sv-glance-k { margin: 0 0 0.5rem; font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--blue); }
+.sv-glance-price { display: flex; align-items: baseline; gap: 0.45rem; margin: 0; font-family: var(--display); font-size: 2.75rem; font-weight: 800; line-height: 1; letter-spacing: -0.04em; color: var(--ink); }
+.sv-glance-from { font-family: var(--body); font-size: 14px; font-weight: 700; letter-spacing: 0; color: var(--muted); }
+.sv-glance-sub { margin: 0.45rem 0 0; font-size: 13.5px; color: var(--muted); }
+.sv-glance-link { display: inline-flex; align-items: center; gap: 4px; min-height: 44px; font-size: 14px; font-weight: 700; color: var(--blue); text-decoration: none; }
+.sv-glance-link > svg { width: 14px; height: 14px; }
+@media (hover: hover) { .sv-glance-link:hover { color: var(--blue-dk); } }
 .sv-crumbs ol:where(:not([class])) { list-style: none; margin: 0 0 1.5rem; padding: 0; display: flex; flex-wrap: wrap; font-size: 13px; color: var(--muted2); }
 .sv-crumbs li:where(:not([class])) { display: flex; align-items: center; }
 .sv-crumbs li + li::before { content: '/'; margin: 0 0.55rem; color: var(--border2); }
@@ -105,6 +127,7 @@ a { color: inherit; }
 /* The promise line: the three facts every job carries, as plain text
    with a small tick, never as badges. */
 .sv-promise { list-style: none; display: flex; flex-wrap: wrap; gap: 0.4rem 1.25rem; margin: 0 0 2rem; padding: 0 0 1.5rem; border-bottom: 1.5px solid var(--border); }
+.sv-glance-list { flex-direction: column; gap: 0.55rem; margin: 1.1rem 0 0.5rem; padding: 1.1rem 0 0; border-bottom: 0; border-top: 1px solid var(--border); }
 .sv-promise > li { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 13px; font-weight: 600; color: var(--ink3); }
 .sv-promise svg { width: 14px; height: 14px; flex-shrink: 0; color: var(--wa-dk); }
 
@@ -140,14 +163,15 @@ a { color: inherit; }
 
 /* ---------- body ---------- */
 .sv-intro { margin: 0 0 2.5rem; }
-.sv-repair { margin: 0 0 2.25rem; }
+.sv-repair { margin: 0 0 1.25rem; padding: 1.5rem 1.6rem 1.4rem; background: var(--bg); border: 1.5px solid var(--border); border-radius: 18px; scroll-margin-top: calc(var(--nav-h) + 1.25rem); }
+.sv-repair > .sv-h2 { border-top: 0; padding-top: 0; }
 .sv-h2 { font-family: var(--display); font-size: 1.45rem; font-weight: 800; line-height: 1.2; letter-spacing: -0.02em; color: var(--ink); margin: 0 0 0.9rem; padding-top: 1.5rem; border-top: 1px solid var(--border); text-wrap: balance; }
 
 /* Grouped repairs: the group is the H2, each repair an H3 under it. */
 .sv-group { margin: 0 0 1rem; }
 .sv-group-h { font-size: 1.6rem; margin-bottom: 0.75rem; }
 .sv-group-intro { margin: 0 0 1.75rem; }
-.sv-group .sv-repair { margin: 0 0 2.25rem; }
+.sv-group .sv-repair { margin: 0 0 1.25rem; }
 .sv-h3 { font-family: var(--display); font-size: 1.2rem; font-weight: 700; line-height: 1.3; letter-spacing: -0.015em; color: var(--ink); margin: 0 0 0.7rem; text-wrap: balance; }
 .sv-extra { margin: 0 0 2.5rem; }
 
@@ -182,14 +206,17 @@ a { color: inherit; }
 
 /* ---------- how it works ---------- */
 .sv-steps-wrap { margin: 0 0 2.5rem; }
-.sv-steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; counter-reset: sv-step; }
-.sv-steps > li { counter-increment: sv-step; background: var(--bg); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 1.1rem 1.1rem 1.2rem; }
-.sv-steps > li::before { content: counter(sv-step, decimal-leading-zero); display: block; margin: 0 0 0.5rem; font-family: var(--display); font-size: 12px; font-weight: 800; letter-spacing: 0.04em; color: var(--blue); }
+/* A timeline: numbered dots on one line, joined left to right */
+.sv-steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; counter-reset: sv-step; position: relative; }
+.sv-steps::before { content: ''; position: absolute; top: 20px; left: 20px; right: 20px; height: 2px; background: linear-gradient(90deg, var(--blue-mid), var(--border)); }
+.sv-steps > li { counter-increment: sv-step; position: relative; }
+.sv-steps > li::before { content: counter(sv-step); position: relative; display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; margin: 0 0 0.85rem; border-radius: 50%; background: var(--blue); color: #fff; font-family: var(--display); font-size: 15px; font-weight: 800; box-shadow: 0 0 0 6px var(--bg); }
 .sv-step-title { display: block; margin: 0 0 0.35rem; font-family: var(--display); font-size: 1.05rem; font-weight: 700; line-height: 1.3; letter-spacing: -0.01em; color: var(--ink); }
 .sv-step-text { display: block; font-size: 13.5px; line-height: 1.6; color: var(--muted); }
 
 /* ---------- cost table ---------- */
-.sv-costs { margin: 0 0 1rem; }
+.sv-costs { margin: 0 0 1rem; padding: 1.75rem 1.75rem 1.5rem; background: var(--bg2); border: 1px solid var(--border); border-radius: 20px; scroll-margin-top: calc(var(--nav-h) + 1.25rem); }
+.sv-costs > .sv-h2 { border-top: 0; padding-top: 0; }
 .sv-table { width: 100%; border-collapse: collapse; margin: 1.25rem 0 0; font-size: 0.9375rem; }
 .sv-table thead th { text-align: left; font-size: 12.5px; font-weight: 600; color: var(--muted); padding: 0 0.75rem 0.5rem 0; border-bottom: 1.5px solid var(--border2); }
 .sv-table tbody th:where(:not([class])), .sv-table td { text-align: left; vertical-align: top; padding: 0.8rem 0.75rem 0.8rem 0; border-bottom: 1px solid var(--border); line-height: 1.45; }
@@ -321,6 +348,22 @@ textarea.tq-input { resize: vertical; min-height: 88px; }
 }
 
 /* ---------- phones ---------- */
+/* Desktop: the contents become a sticky side column */
+@media (min-width: 1101px) {
+  .sv-layout > .sv-index { position: sticky; top: calc(var(--nav-h) + 1.5rem); max-height: calc(100vh - var(--nav-h) - 3rem); overflow-y: auto; margin: 0; padding: 0 0.5rem 0 0; background: none; border: 0; border-radius: 0; scrollbar-width: thin; }
+  .sv-layout > .sv-index .sv-index-title { margin-bottom: 0.75rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border); }
+  .sv-layout > .sv-index .sv-index-groups { columns: 1; }
+  .sv-layout > .sv-index .sv-index-list { grid-template-columns: minmax(0, 1fr); }
+  .sv-layout > .sv-index .sv-index-group { margin-bottom: 0.9rem; }
+  .sv-layout > .sv-index a[aria-current="location"] { color: var(--blue); font-weight: 700; }
+}
+@media (max-width: 1100px) {
+  .sv-page { max-width: 820px; }
+  .sv-layout { display: block; }
+}
+@media (max-width: 960px) {
+  .sv-hero-grid { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+}
 @media (max-width: 640px) {
   html { scroll-padding-top: calc(var(--mob-nav-h) + 1rem); }
   .sv { padding: calc(var(--mob-nav-h) + 1.75rem) 1.25rem 6rem; }
@@ -350,6 +393,10 @@ textarea.tq-input { resize: vertical; min-height: 88px; }
   .sv-index-list a:where(:not([class])) { min-height: 44px; }
   .sv-h2 { font-size: 1.3rem; }
   .sv-steps { grid-template-columns: minmax(0, 1fr); }
+  .sv-steps::before { top: 20px; bottom: 20px; left: 19px; right: auto; width: 2px; height: auto; background: linear-gradient(180deg, var(--blue-mid), var(--border)); }
+  .sv-steps > li { display: grid; grid-template-columns: 40px minmax(0, 1fr); column-gap: 14px; }
+  .sv-steps > li::before { grid-row: span 2; margin: 0; }
+  .sv-glance-price { font-size: 2.25rem; }
   .sv-table thead th:nth-child(2), .sv-table td:nth-child(2) { display: none; }
   .sv-row-note { display: block; margin-top: 0.2rem; font-size: 13px; font-weight: 400; line-height: 1.5; color: var(--muted); }
   .sv-links { grid-template-columns: minmax(0, 1fr); }
@@ -449,7 +496,7 @@ textarea.tq-input { resize: vertical; min-height: 88px; }
      the headline, 24 under the intro; then 48 to the next block */
   .sv-crumbs { margin-bottom: 24px; }
   .sv-eyebrow { margin-bottom: 12px; }
-  .sv-h1 { font-size: var(--m-h1); margin-bottom: 16px; }
+  .sv-h1, .sv-hero .sv-h1 { font-size: var(--m-h1); margin-bottom: 16px; }
   .sv-lede { margin-bottom: 24px; }
   .sv-head { margin-bottom: var(--m-section); }
   .sv-head > :last-child { margin-bottom: 0; }
@@ -460,7 +507,10 @@ textarea.tq-input { resize: vertical; min-height: 88px; }
   .sv-group .sv-repair:last-child, .sv-body > :last-child { margin-bottom: 0; }
 
   /* Cards and the boxes inside them */
-  .sv-index, .sv-mid, .sv-steps > li, .audit-block, .sv-hub-link, .sv-price { padding: var(--m-card-pad); border-radius: var(--m-card-radius); }
+  .sv-index, .sv-mid, .audit-block, .sv-hub-link, .sv-price, .sv-repair, .sv-costs, .sv-glance { padding: var(--m-card-pad); border-radius: var(--m-card-radius); }
+  .sv-hero { padding-bottom: var(--m-section); }
+  .sv-hero::before { top: calc(-1 * (var(--mob-nav-h) + var(--m-hero-top))); }
+  .sv-repair, .sv-group .sv-repair { margin-bottom: var(--m-gap-cards); }
   /* The compact price line is a plain line under a repair, not a card:
      price, then name, with "What it covers" under the name. */
   .sv-price-compact { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 12px; align-items: baseline; padding: 12px 0 0; border-radius: 0; }

@@ -639,6 +639,14 @@ reshuffle without a reason.
 - Tech Tips is in the Repairs menu (desktop), top level on phones, and in the
   footer Company list.
 
+## Page layouts (October 2026)
+
+Service pages (_layouts/service.html): split hero (.sv-hero) with an "At a
+glance" card (from price from service_links from_key, the promise list, 24/7
+drop-off), then .sv-layout: the contents as a sticky side column on desktop
+(>1100px, current section marked with aria-current="location") beside the
+reading column; repairs as cards, steps as a timeline, prices in a panel.
+
 ## /services hub (October 2026)
 
 Redesigned as a directory, not a service page: css: service (shared quote

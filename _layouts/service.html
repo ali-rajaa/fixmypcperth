@@ -168,9 +168,12 @@ schema catalogue. {%- endcomment -%}
 </script>
 {%- endif %}
 
-<article class="sv">
+<article class="sv sv-page">
 
-  <header class="sv-head">
+  {%- assign _sl = site.data.suburbs.service_links | where: "slug", page.slug | first %}
+  <header class="sv-head sv-hero">
+   <div class="sv-hero-grid">
+    <div class="sv-hero-copy">
     <nav class="sv-crumbs" aria-label="Breadcrumb">
       <ol>
         <li><a href="{{ '/' | relative_url }}">Home</a></li>
@@ -194,15 +197,27 @@ schema catalogue. {%- endcomment -%}
       </a>
     </div>
 
-    {%- capture _tick %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>{% endcapture %}
-    <ul class="sv-promise" aria-label="Every repair includes">
+    </div>
+    <aside class="sv-glance" aria-label="At a glance">
+      <p class="sv-glance-k">At a glance</p>
+      {%- if _sl.from_key %}
+      <p class="sv-glance-price"><span class="sv-glance-from">From</span>{% include price.html key=_sl.from_key bare=true %}</p>
+      <p class="sv-glance-sub">A fixed price, agreed before we start</p>
+      {%- endif %}
+      {%- capture _tick %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>{% endcapture %}
+    <ul class="sv-promise sv-glance-list" aria-label="Every repair includes">
       <li>{{ _tick }}Fixed price first</li>
       <li>{{ _tick }}Same day on most jobs</li>
       <li>{{ _tick }}30-day warranty</li>
+      <li>{{ _tick }}24/7 drop-off in Canning Vale</li>
       {%- if _R.rating %}<li>{{ _tick }}Rated {{ _R.rating }} on Google</li>{% endif %}
     </ul>
+      <a class="sv-glance-link" href="#costs">See every price{{ _chev }}</a>
+    </aside>
+   </div>
   </header>
 
+  <div class="sv-layout">
   <nav class="sv-index" aria-labelledby="sv-index-title">
     <h2 class="sv-index-title" id="sv-index-title">{{ page.index_heading | default: "What we fix" | escape }}</h2>
     {%- if _grouped %}
@@ -463,4 +478,26 @@ schema catalogue. {%- endcomment -%}
     {%- endif %}
 
   </div>
+  </div>
 </article>
+
+<script>
+/* Side contents (desktop): marks the part of the page on screen. */
+(function () {
+  var nav = document.querySelector('.sv-layout > .sv-index');
+  if (!nav || !('IntersectionObserver' in window)) return;
+  var links = [].slice.call(nav.querySelectorAll('a[href^="#"]'));
+  var map = {}, on = null;
+  links.forEach(function (a) { var t = document.getElementById(a.getAttribute('href').slice(1)); if (t) map[t.id] = a; });
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      var a = map[e.target.id];
+      if (!a || a === on) return;
+      if (on) on.removeAttribute('aria-current');
+      on = a; a.setAttribute('aria-current', 'location');
+    });
+  }, { rootMargin: '-30% 0px -65% 0px' });
+  Object.keys(map).forEach(function (id) { io.observe(document.getElementById(id)); });
+})();
+</script>
