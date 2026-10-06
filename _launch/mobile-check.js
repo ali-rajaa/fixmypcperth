@@ -12,6 +12,7 @@ const EXEMPT = [
   /^card \.pr-quick>\.pr-quick-item /,       // chips keep chip padding
   /^gap \.pr-hero-top>\.pr-quick /,          // chips: 8 gap
   /^gap \.page>\.faq-wrap /,                 // FAQ rows spaced by margin, 10
+  /^button li>\.hub-sub /,                   // /services suburb links: name plus a second line, 57 tall
 ];
 (async () => {
   const xml = await (await fetch(BASE + '/sitemap.xml')).text();

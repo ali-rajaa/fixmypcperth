@@ -1592,7 +1592,9 @@ img { max-width: 100%; height: auto; }
   /* Cards and boxes inside cards */
   .first-month-banner, .res-card, .serve-card, .why-card { padding: var(--m-card-pad); border-radius: var(--m-card-radius); }
   .plan-card, .addons-table, .audit-card { border-radius: var(--m-card-radius); }
-  .plan-card { padding: calc(var(--m-card-pad) + 4px) var(--m-card-pad) var(--m-card-pad); }
+  .plan-card { padding: var(--m-card-pad); gap: var(--m-gap-cards); }
+  .plan-card > .plan-badge, .plan-card > .plan-head, .plan-card > .plan-price-block, .plan-card > .plan-cta, .plan-card > .plan-best { margin-top: 0; margin-bottom: 0; }
+  .plans-terms { font-size: var(--m-text); }
   .audit-card { padding: var(--m-card-pad); }
   .plan-price-block, .plan-best { padding: var(--m-panel-pad); border-radius: var(--m-panel-radius); }
   .addon-row { padding: var(--m-row-pad); }
@@ -1613,7 +1615,7 @@ img { max-width: 100%; height: auto; }
 
   /* Text */
   .hero-desc, .s-sub, .s-sub-light, .industries-sub, .cta-desc, .plans-help-text { font-size: var(--m-text); }
-  .hero-trust-item, .audit-strip-desc, .metric-lbl, .plan-period, .plan-note, .plan-best, .plan-feat-d, .plan-tagline, .plans-terms,
+  .hero-trust-item, .audit-strip-desc, .metric-lbl, .plan-period, .plan-note, .plan-best, .plan-feat-d, .plan-tagline,
   .scroll-hint-text, .scroll-hint-text-dark, .res-desc, .addon-desc, .addon-freq, .who-desc,
   .audit-label, .audit-note { font-size: var(--m-text-min); }
 
