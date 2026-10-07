@@ -843,6 +843,8 @@ body:has(.ind-hero) { overflow-x: clip; }
   .faq-item.open .faq-a p:where(:not([class])) { padding: 0 1.25rem 1rem; }
 }
 @media (prefers-reduced-motion: reduce) {
+  .ind-btn { transition: none; }
+  .ind-btn:active { transform: none; }
   html { scroll-behavior: auto; }
   .service-link-card, .callout, .summary-box, .stat-box, .inline-cta-btn, .inline-cta-btn-outline, .industry-pill, .post-footer-link {
     transition-duration: 0.15s;
