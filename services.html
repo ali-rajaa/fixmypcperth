@@ -462,7 +462,7 @@ faqs:
       </div>
       <ul class="hub-subs">
         {%- for _p in _subs %}
-        <li><a class="hub-sub" href="{{ '/suburbs/' | append: _p.slug | relative_url }}"><span class="hub-sub-name">{{ _p.suburb | escape }}<span class="hub-sub-sub">Computer and laptop repair</span></span>{{ _chev }}</a></li>
+        <li><a class="hub-sub" href="{{ '/suburbs/' | append: _p.slug | relative_url }}"><span class="hub-sub-name">{{ _p.suburb | escape }}</span>{{ _chev }}</a></li>
         {%- endfor %}
       </ul>
     </div>
