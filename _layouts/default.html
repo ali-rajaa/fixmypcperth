@@ -113,6 +113,10 @@
   <!-- A page can layer one more stylesheet on its cluster sheet (css_extra), e.g. /services uses service.css for the shared quote form and FAQ, plus hub.css for its own layout. -->
   <link rel="stylesheet" href="/assets/css/pages/{{ page.css_extra }}.css?v={{ site.time | date: "%s" }}">
   {%- endif %}
+  {%- if page.quote_form or page.form_css or page.layout == "service" or page.layout == "suburb" or page.layout == "tech-tip" %}
+  <!-- Every form on the site takes its fields from this one stylesheet: the shared quote form (_includes/quote-form.html) on the service, suburb and Tech Tips layouts, /services and /quote-request, and the forms on pages that set "form_css: true" (homepage card, Business IT, industry audits). -->
+  <link rel="stylesheet" href="/assets/css/form.css?v={{ site.time | date: "%s" }}">
+  {%- endif %}
   <link rel="stylesheet" href="/assets/css/shell.css?v={{ site.time | date: "%s" }}">
 
   <script>

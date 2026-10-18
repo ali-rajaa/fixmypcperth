@@ -2,7 +2,8 @@
 layout: default
 css: quote
 title: "Request a Free Quote | Computer Repair Perth | FixMyPC Perth"
-description: "Get a computer repair quote from FixMyPC Perth in Canning Vale. Tell us what your computer is doing and we send back a fixed price, usually within the hour."
+description: "Get a computer repair quote from FixMyPC Perth in Canning Vale. Two taps and your name, and we send back a fixed price before any work starts."
+quote_form: true
 ---
 {%- comment -%}
   The service options and device types come from _data/services.yml, so this
@@ -13,7 +14,7 @@ description: "Get a computer repair quote from FixMyPC Perth in Canning Vale. Te
 {%- assign D = site.data.services -%}
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"ContactPage","name":"Request a Free Quote","url":"{{ site.url }}/quote-request","description":"Get a computer and laptop repair quote from FixMyPC Perth in Canning Vale. Fixed prices, sent back usually within the hour.","isPartOf":{"@type":"WebSite","name":"FixMyPC Perth","url":"{{ site.url }}/"},"publisher":{"@type":"LocalBusiness","name":"FixMyPC Perth","@id":"{{ site.url }}/#business"}}
+{"@context":"https://schema.org","@type":"ContactPage","name":"Request a Free Quote","url":"{{ site.url }}/quote-request","description":"Get a computer and laptop repair quote from FixMyPC Perth in Canning Vale. Fixed prices, sent back usually {{ site.reply_time }}.","isPartOf":{"@type":"WebSite","name":"FixMyPC Perth","url":"{{ site.url }}/"},"publisher":{"@type":"LocalBusiness","name":"FixMyPC Perth","@id":"{{ site.url }}/#business"}}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"{{ site.url }}/"},{"@type":"ListItem","position":2,"name":"Request a Quote","item":"{{ site.url }}/quote-request"}]}
@@ -22,109 +23,14 @@ description: "Get a computer repair quote from FixMyPC Perth in Canning Vale. Te
 <section class="qr-hero">
   <div class="wrap qr-hero-inner">
     <h1>Get a Free Computer Repair Quote in Perth</h1>
-    <p class="qr-sub">Tell us what your computer is doing. We send back a fixed price, usually within the hour. We are open 24 hours, seven days a week.</p>
+    <p class="qr-sub">Tell us what your computer is doing. We send back a fixed price, usually {{ site.reply_time }}. Drop-off is open 24 hours, seven days a week.</p>
   </div>
 </section>
 
 <div class="wrap qr-layout">
   <div class="qr-main">
 
-    <form id="qrForm" class="qr-form" novalidate>
-      <input type="hidden" name="access_key" value="{{ D.form.access_key }}">
-      <input type="hidden" name="subject" value="{{ D.form.subject }}">
-      <input type="hidden" name="Services" id="qrServices">
-      <input type="checkbox" name="botcheck" class="qr-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-
-      <div class="qr-progress" aria-hidden="true">
-        <div class="qr-progress-bar"><div class="qr-progress-fill" id="qrFill"></div></div>
-        <span class="qr-progress-label" id="qrPct">0% complete</span>
-      </div>
-
-      <fieldset class="qr-block">
-        <legend><span class="qr-num">1</span>What do you need help with?</legend>
-        <div class="qr-opts" role="group" aria-describedby="errServices">
-          {%- for o in D.quote_options %}
-          <label class="qr-opt">
-            <input type="checkbox" class="qr-opt-input" value="{{ o.value | escape }}" data-key="{{ o.key }}">
-            <span class="qr-opt-face">
-              <span class="qr-opt-ico">{% include quote-icon.html id=o.key %}</span>
-              <span class="qr-opt-text">{{ o.label | escape }}</span>
-            </span>
-          </label>
-          {%- endfor %}
-        </div>
-        <p class="qr-err qr-err-group" id="errServices" role="alert">Please select at least one service.</p>
-      </fieldset>
-
-      <fieldset class="qr-block">
-        <legend><span class="qr-num">2</span>About your device</legend>
-        <label class="qr-field">
-          <span class="qr-label">Device type <span class="req">*</span></span>
-          <select name="Device Type" id="qrDevice" aria-describedby="errDevice">
-            <option value="">Select device type</option>
-            {%- for dt in D.device_types %}
-            <option value="{{ dt | escape }}">{{ dt | escape }}</option>
-            {%- endfor %}
-          </select>
-          <span class="qr-err" id="errDevice">Please select a device type.</span>
-        </label>
-        <label class="qr-field">
-          <span class="qr-label">What is it doing? <span class="req">*</span></span>
-          <textarea name="Description" id="qrDesc" rows="5" aria-describedby="errDesc" placeholder="Make and model if you know it, what goes wrong, and when it started."></textarea>
-          <span class="qr-err" id="errDesc">Tell us what it is doing.</span>
-        </label>
-      </fieldset>
-
-      <fieldset class="qr-block">
-        <legend><span class="qr-num">3</span>Your contact details</legend>
-        <div class="qr-row">
-          <label class="qr-field">
-            <span class="qr-label">Full name <span class="req">*</span></span>
-            <input type="text" name="Name" id="qrName" autocomplete="name" aria-describedby="errName">
-            <span class="qr-err" id="errName">Please enter your name.</span>
-          </label>
-          <label class="qr-field">
-            <span class="qr-label">Phone number <span class="req">*</span></span>
-            <input type="tel" name="Phone" id="qrPhone" autocomplete="tel" inputmode="tel" aria-describedby="errPhone" placeholder="04xx xxx xxx">
-            <span class="qr-err" id="errPhone">Please enter a valid Australian phone number.</span>
-          </label>
-        </div>
-        <label class="qr-field">
-          <span class="qr-label">Email address <span class="req">*</span></span>
-          <input type="email" name="Email" id="qrEmail" autocomplete="email" placeholder="you@example.com" aria-describedby="errEmail">
-          <span class="qr-err" id="errEmail">Please enter a valid email address.</span>
-        </label>
-
-        <fieldset class="qr-contact">
-          <legend class="qr-label">How should we reply?</legend>
-          <label class="qr-radio"><input type="radio" name="Preferred Contact" value="WhatsApp" checked><span>WhatsApp</span></label>
-          <label class="qr-radio"><input type="radio" name="Preferred Contact" value="Email"><span>Email</span></label>
-        </fieldset>
-      </fieldset>
-
-      <div class="qr-saved" id="qrSaved" hidden>
-        Your answers are saved on this device
-        <button type="button" id="qrClear">Clear</button>
-      </div>
-
-      <p class="qr-privacy">We use your details to answer this quote and nothing else. We never sell or share them. Read our <a href="/privacy">privacy policy</a>.</p>
-
-      <button type="submit" class="qr-submit" id="qrSubmit">Send quote request</button>
-      <p class="qr-note">Most quotes go out within the hour.</p>
-      <p class="qr-err qr-err-form" id="errForm" role="alert">That did not send. Message us on WhatsApp and we will pick it up straight away.</p>
-    </form>
-
-    <div class="qr-done" id="qrDone" hidden role="status" aria-live="polite">
-      <div class="qr-done-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-      </div>
-      <h2>Got it</h2>
-      <p>Your request is with us. We will send back a fixed price, usually within the hour. Need it sorted today? Message us on WhatsApp and we will get straight on it.</p>
-      <div class="qr-done-actions">
-        <a class="qr-btn qr-btn-wa" href="{% include wa-href.html text="Hi! I've just sent a quote request on your website." %}" target="_blank" rel="noopener noreferrer" onclick="trackWAClick()">Message us on WhatsApp</a>
-        <a class="qr-btn qr-btn-ghost" href="/pricing">See every fixed price</a>
-      </div>
-    </div>
+    {%- include quote-form.html desc="Two taps, your name and where to reply. You get a fixed price in writing before we start." %}
   </div>
 
   <aside class="qr-aside" aria-label="Why FixMyPC Perth">
@@ -149,156 +55,3 @@ description: "Get a computer repair quote from FixMyPC Perth in Canning Vale. Te
     </div>
   </aside>
 </div>
-
-<script>
-/* ============================================================
-   Quote request form.
-   Validation, progress, draft saving and submission. Draft is
-   kept in localStorage so a half-filled form survives a
-   refresh or an accidental back button, and is cleared the
-   moment the request sends.
-   ============================================================ */
-(function () {
-  var form = document.getElementById('qrForm');
-  if (!form) return;
-  var LS = 'fmp-quote-draft-v1';
-  var $  = function (id) { return document.getElementById(id); };
-  var opts   = [].slice.call(form.querySelectorAll('.qr-opt-input'));
-  var device = $('qrDevice'), desc = $('qrDesc'), name = $('qrName');
-  var phone  = $('qrPhone'), email = $('qrEmail');
-  var hidden = $('qrServices'), fill = $('qrFill'), pct = $('qrPct');
-  var saved  = $('qrSaved'), submit = $('qrSubmit');
-
-  var PHONE = /^(\+?61|0)[2-9]\d{8}$/;
-  var EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-  function chosen() { return opts.filter(function (o) { return o.checked; }).map(function (o) { return o.value; }); }
-  function err(id, on, field) {
-    var e = $(id); if (!e) return;
-    e.classList.toggle('show', !!on);
-    if (field) { field.classList.toggle('is-err', !!on); field.setAttribute('aria-invalid', on ? 'true' : 'false'); }
-  }
-
-  /* Four things gate the form, so each is worth a quarter. */
-  function progress() {
-    var done = 0;
-    if (chosen().length) done++;
-    if (device.value) done++;
-    if (desc.value.trim()) done++;
-    if (name.value.trim() && PHONE.test(phone.value.replace(/[\s\-()]/g, '')) && EMAIL.test(email.value.trim())) done++;
-    var p = Math.round(done / 4 * 100);
-    fill.style.width = p + '%';
-    pct.textContent = p + '% complete';
-  }
-
-  function save() {
-    try {
-      localStorage.setItem(LS, JSON.stringify({
-        s: chosen(), d: device.value, x: desc.value,
-        n: name.value, p: phone.value, e: email.value,
-        c: (form.querySelector('input[name="Preferred Contact"]:checked') || {}).value || ''
-      }));
-      saved.hidden = false;
-    } catch (e) { /* private browsing, nothing to do */ }
-  }
-
-  function restore() {
-    var raw;
-    try { raw = localStorage.getItem(LS); } catch (e) { return; }
-    if (!raw) return;
-    var v; try { v = JSON.parse(raw); } catch (e) { return; }
-    (v.s || []).forEach(function (val) {
-      opts.forEach(function (o) { if (o.value === val) { o.checked = true; } });
-    });
-    device.value = v.d || ''; desc.value = v.x || '';
-    name.value = v.n || ''; phone.value = v.p || ''; email.value = v.e || '';
-    if (v.c) {
-      var r = form.querySelector('input[name="Preferred Contact"][value="' + v.c + '"]');
-      if (r) r.checked = true;
-    }
-    saved.hidden = false;
-    progress();
-  }
-
-  /* Arriving from the homepage card with ?service=data preselects that option,
-     so nobody has to choose the same thing twice. */
-  function prefill() {
-    var key = new URLSearchParams(location.search).get('service');
-    if (!key) return;
-    var hit = opts.filter(function (o) { return o.getAttribute('data-key') === key; })[0];
-    if (hit) { hit.checked = true; progress(); }
-  }
-
-  /* Clear a field's error the moment it becomes valid, rather than making
-     someone submit again to find out they fixed it. */
-  function revalidate() {
-    if (chosen().length) err('errServices', false);
-    if (device.value) err('errDevice', false, device);
-    if (desc.value.trim()) err('errDesc', false, desc);
-    if (name.value.trim()) err('errName', false, name);
-    if (PHONE.test(phone.value.replace(/[\s\-()]/g, ''))) err('errPhone', false, phone);
-    if (EMAIL.test(email.value.trim())) err('errEmail', false, email);
-  }
-
-  form.addEventListener('input', function () { revalidate(); progress(); save(); });
-  form.addEventListener('change', function () { revalidate(); progress(); save(); });
-  opts.forEach(function (o) { o.addEventListener('change', function () { err('errServices', false); }); });
-
-  $('qrClear').addEventListener('click', function () {
-    try { localStorage.removeItem(LS); } catch (e) {}
-    form.reset(); saved.hidden = true; progress();
-  });
-
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    err('errForm', false);
-    var ok = true;
-    var services = chosen();
-    if (!services.length) { err('errServices', true); ok = false; }
-    if (!device.value)    { err('errDevice', true, device); ok = false; } else err('errDevice', false, device);
-    if (!desc.value.trim()) { err('errDesc', true, desc); ok = false; } else err('errDesc', false, desc);
-    if (!name.value.trim()) { err('errName', true, name); ok = false; } else err('errName', false, name);
-    if (!PHONE.test(phone.value.replace(/[\s\-()]/g, ''))) { err('errPhone', true, phone); ok = false; } else err('errPhone', false, phone);
-    if (!EMAIL.test(email.value.trim())) { err('errEmail', true, email); ok = false; } else err('errEmail', false, email);
-
-    if (!ok) {
-      /* Move focus to the first problem as well, so a keyboard or screen
-         reader user lands on it rather than back at the submit button. */
-      var first = form.querySelector('.qr-err.show');
-      var bad = first && first.id === 'errServices' ? opts[0] : form.querySelector('.is-err');
-      if (bad) bad.focus({ preventScroll: true });
-      if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      return;
-    }
-
-    hidden.value = services.join(', ');
-    formSending(submit);
-
-    var data = {};
-    new FormData(form).forEach(function (v, k) { data[k] = v; });
-
-    fetch('https://api.web3forms.com/submit', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-      body: JSON.stringify(data)
-    }).then(function (r) { return r.json(); }).then(function (res) {
-      if (!res.success) throw new Error(res.message || 'failed');
-      formSent(submit, function () {
-        try { localStorage.removeItem(LS); } catch (e) {}
-        if (typeof trackQuoteForm === 'function') trackQuoteForm();
-        form.hidden = true;
-        var done = document.getElementById('qrDone');
-        formShow(done);
-        done.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      });
-    }).catch(function () {
-      formReset(submit);
-      err('errForm', true);
-    });
-  });
-
-  restore();
-  prefill();
-  progress();
-})();
-</script>

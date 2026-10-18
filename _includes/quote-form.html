@@ -1,26 +1,63 @@
 {%- comment -%}
-  quote-form.html  the dark on-page quote form (#quote, #svQuote) and its
-  handler. Used by _layouts/service.html and /services, so the fields,
-  validation and Sending > Sent states are one copy. Reads page.heading,
-  page.topic, page.quote_service, page.default_device and page.slug.
-  Styles: .audit-block / .tq-* in service.css.
+  quote-form.html  the home-customer quote form (#quote, #svQuote) and its
+  handler. One copy for the service pages, /services, Tech Tips, suburb
+  pages and /quote-request, so every enquiry arrives in the same shape:
+  Services, Device Type, Description, Name, Phone or Email, Preferred
+  Contact, Suburb (suburb pages), from_page. Styles: assets/css/form.css.
+
+  Built from conversion research (see STATUS.md, Quote forms):
+  - taps first, typing last: what it is and what kind of computer are
+    buttons, never dropdowns
+  - one contact field: the reply choice decides whether we ask for a
+    mobile or an email, so nobody types both
+  - one optional field, marked Optional
+  - the button says what they get, in their words ("Get my fixed price")
+  - after a send, one tap carries on in WhatsApp, where a photo can go
+
+  Reads (all optional):
+    include.title        heading, else "Get a fixed <page.topic> price"
+    include.desc         line under the heading
+    page.quote_service   the service this page is about. When set, the
+                         "What do you need help with?" buttons are
+                         skipped and the value is sent hidden.
+    page.default_device  device button ticked on arrival
+    page.suburb          sent as "Suburb" on suburb pages
+  ?service=<key> in the URL (a quote_options key) ticks that service.
+
+  The reply time comes from _config.yml. WhatsApp or email replies only,
+  never a call.
 {%- endcomment -%}
 {%- assign _S = site.data.services -%}
-{%- comment -%} Quote form. Same panel and field names as the Tech Tips
-    form and /quote-request, so enquiries arrive in the same shape. Inputs
-    are 16px so iPhones do not zoom. WhatsApp or email replies only, never
-    a call: the site is WhatsApp-only. The reply time comes from
-    _config.yml, the rating from reviews.yml, and no review count is
-    shown anywhere. {%- endcomment %}
+{%- assign _svc = page.quote_service | strip -%}
+{%- assign _from = page.url | remove_first: "/" | remove: ".html" | default: "home" -%}
+{%- capture _title -%}{% if include.title %}{{ include.title }}{% elsif page.topic %}Get a fixed {{ page.topic }} price{% else %}Get a fixed repair price{% endif %}{%- endcapture -%}
+{%- capture _subject -%}Quote request: {{ page.heading | default: page.suburb | default: _title }}{%- endcapture -%}
     <section class="audit-block tq" id="quote" aria-labelledby="quote-h">
-      <h2 class="audit-block-title" id="quote-h">{% if page.topic %}Get a fixed {{ page.topic | escape }} price{% else %}Get a fixed price{% endif %}</h2>
-      <p class="audit-block-desc">Tell us what it is doing. We reply with a fixed price, usually {{ site.reply_time }}.</p>
+      <h2 class="audit-block-title" id="quote-h">{{ _title | escape }}</h2>
+      <p class="audit-block-desc">{{ include.desc | default: "Tap what fits and tell us where to reply. You get a fixed price before we start any work." }}</p>
       <form id="svQuote" class="tq-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
         <input type="hidden" name="access_key" value="{{ _S.form.access_key }}">
-        <input type="hidden" name="subject" value="Quote request: {{ page.heading | escape }}">
-        <input type="hidden" name="Services" value="{{ page.quote_service | default: 'Something Else' | escape }}">
-        <input type="hidden" name="from_page" value="{{ page.slug }}">
+        <input type="hidden" name="subject" value="{{ _subject | escape }}">
+        <input type="hidden" name="from_page" value="{{ _from }}">
+        {%- if _svc != "" %}
+        <input type="hidden" name="Services" value="{{ _svc | escape }}">
+        {%- endif %}
+        {%- if page.suburb %}
+        <input type="hidden" name="Suburb" value="{{ page.suburb | escape }}">
+        {%- endif %}
         <input type="checkbox" name="botcheck" class="tq-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        {%- if _svc == "" %}
+
+        <fieldset class="tq-group" id="tq-service" aria-describedby="tq-service-err">
+          <legend class="tq-label">What do you need help with?</legend>
+          <div class="tq-seg">
+            {%- for _o in _S.quote_options %}
+            <label class="tq-seg-opt"><input type="radio" name="Services" value="{{ _o.value | escape }}" data-key="{{ _o.key }}"><span>{{ _o.label | escape }}</span></label>
+            {%- endfor %}
+          </div>
+          <p class="tq-err" id="tq-service-err" hidden>Choose the closest one.</p>
+        </fieldset>
+        {%- endif %}
 
         <fieldset class="tq-group" id="tq-device" aria-describedby="tq-device-err">
           <legend class="tq-label">What kind of computer?</legend>
@@ -34,8 +71,16 @@
 
         <div class="tq-field">
           <label class="tq-label" for="tq-desc">What is it doing? <span class="tq-opt">Optional</span></label>
-          <textarea class="tq-input" id="tq-desc" name="Description" rows="3" placeholder="In your own words, and the make and model if you know it"></textarea>
+          <textarea class="tq-input" id="tq-desc" name="Description" rows="2" placeholder="In your own words, and the make and model if you know it"></textarea>
         </div>
+
+        <fieldset class="tq-group">
+          <legend class="tq-label">Where should we send your price?</legend>
+          <div class="tq-seg">
+            <label class="tq-seg-opt"><input type="radio" name="Preferred Contact" value="WhatsApp" checked><span>WhatsApp</span></label>
+            <label class="tq-seg-opt"><input type="radio" name="Preferred Contact" value="Email"><span>Email</span></label>
+          </div>
+        </fieldset>
 
         <div class="tq-row">
           <div class="tq-field">
@@ -43,72 +88,103 @@
             <input class="tq-input" id="tq-name" name="Name" type="text" autocomplete="name" required aria-describedby="tq-name-err">
             <p class="tq-err" id="tq-name-err" hidden>Please enter your name.</p>
           </div>
-          <div class="tq-field">
+          <div class="tq-field" id="tq-phone-f">
             <label class="tq-label" for="tq-phone">Mobile number</label>
             <input class="tq-input" id="tq-phone" name="Phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="04xx xxx xxx" required aria-describedby="tq-phone-err">
             <p class="tq-err" id="tq-phone-err" hidden>Please enter an Australian mobile number.</p>
           </div>
-        </div>
-
-        <div class="tq-field">
-          <label class="tq-label" for="tq-email">Email</label>
-          <input class="tq-input" id="tq-email" name="Email" type="email" autocomplete="email" placeholder="you@example.com" required aria-describedby="tq-email-err">
-          <p class="tq-err" id="tq-email-err" hidden>Please enter a valid email address.</p>
-        </div>
-
-        <fieldset class="tq-group">
-          <legend class="tq-label">How should we reply?</legend>
-          <div class="tq-seg">
-            <label class="tq-seg-opt"><input type="radio" name="Preferred Contact" value="WhatsApp" checked><span>WhatsApp</span></label>
-            <label class="tq-seg-opt"><input type="radio" name="Preferred Contact" value="Email"><span>Email</span></label>
+          <div class="tq-field" id="tq-email-f" hidden>
+            <label class="tq-label" for="tq-email">Email</label>
+            <input class="tq-input" id="tq-email" name="Email" type="email" autocomplete="email" placeholder="you@example.com" required disabled aria-describedby="tq-email-err">
+            <p class="tq-err" id="tq-email-err" hidden>Please enter a valid email address.</p>
           </div>
-        </fieldset>
+        </div>
 
-        <button class="tq-submit" type="submit">Send quote request</button>
+        <button class="tq-submit" type="submit">Get my fixed price</button>
         <p class="tq-err tq-err-form" id="tqErr" role="alert" hidden>That did not send. Please try again, or message us on WhatsApp on 0452 573 701.</p>
-        <p class="tq-trust">
-          Your details are only used to answer this quote.
-        </p>
+        <p class="tq-trust">We usually reply {{ site.reply_time }}. Your details are only used for this quote.</p>
       </form>
       <div class="audit-done" id="tqDone" role="status" aria-live="polite" hidden>
         <div class="audit-done-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
         <p class="audit-done-title">Quote request sent.</p>
-        <p class="audit-done-text">A member of our team will come back to you with a fixed price, usually {{ site.reply_time }}. If it is urgent, message us on WhatsApp on 0452 573 701.</p>
+        <p class="audit-done-text">We will <span id="tqDoneHow">WhatsApp</span> you a fixed price, usually {{ site.reply_time }}. Want it sooner? Send us a photo of the problem on WhatsApp.</p>
+        <a class="tq-done-wa" href="{% include wa-href.html text="Hi! I've just sent a quote request on your website. Here is a photo of the problem." %}" target="_blank" rel="noopener noreferrer" onclick="trackWAClick()"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>Send a photo on WhatsApp</a>
       </div>
     </section>
 
 <script>
-/* Quote form. Validates each field when the person leaves it, submits
-   over fetch so nobody lands on Web3Forms' own page, and swaps the form
-   for a confirmation on success. */
+/* Quote form. Checks each field when the person leaves it, swaps the
+   contact field to match the reply choice, submits over fetch so nobody
+   lands on Web3Forms' own page, and swaps the form for a confirmation
+   on success. */
 (function () {
   var form = document.getElementById('svQuote');
   if (!form) return;
   var btn = form.querySelector('.tq-submit');
   var done = document.getElementById('tqDone');
   var errEl = document.getElementById('tqErr');
+  var phone = document.getElementById('tq-phone');
+  var email = document.getElementById('tq-email');
   var phoneRe = /^(\+?61|0)[2-478]\d{8}$/;
+  var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  function byEmail() {
+    var c = form.querySelector('input[name="Preferred Contact"]:checked');
+    return !!c && c.value === 'Email';
+  }
   var checks = {
-    'tq-device': function () { return !!form.querySelector('input[name="Device Type"]:checked'); },
-    'tq-name':   function (v) { return v.trim().length > 0; },
-    'tq-phone':  function (v) { return phoneRe.test(v.replace(/[\s().-]/g, '')); },
-    'tq-email':  function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()); }
+    'tq-service': function () { return !!form.querySelector('input[name="Services"]:checked'); },
+    'tq-device':  function () { return !!form.querySelector('input[name="Device Type"]:checked'); },
+    'tq-name':    function (v) { return v.trim().length > 0; },
+    'tq-phone':   function (v) { return byEmail() || phoneRe.test(v.replace(/[\s().-]/g, '')); },
+    'tq-email':   function (v) { return !byEmail() || emailRe.test(v.trim()); }
   };
+  /* The service buttons only exist when the page is not about one
+     service already. */
+  if (!document.getElementById('tq-service')) delete checks['tq-service'];
+
   function check(id) {
     var el = document.getElementById(id);
-    var ok = checks[id](el.value);
+    var ok = checks[id](el.value || '');
     el.setAttribute('aria-invalid', ok ? 'false' : 'true');
     document.getElementById(id + '-err').hidden = ok;
     return ok;
   }
+
+  /* One contact field at a time. The other is disabled, so it is not
+     sent and not checked. */
+  function syncContact() {
+    var mail = byEmail();
+    document.getElementById('tq-phone-f').hidden = mail;
+    document.getElementById('tq-email-f').hidden = !mail;
+    phone.disabled = mail;
+    email.disabled = !mail;
+    var off = mail ? 'tq-phone' : 'tq-email';
+    document.getElementById(off).setAttribute('aria-invalid', 'false');
+    document.getElementById(off + '-err').hidden = true;
+  }
+  form.querySelectorAll('input[name="Preferred Contact"]').forEach(function (r) {
+    r.addEventListener('change', syncContact);
+  });
+
   ['tq-name', 'tq-phone', 'tq-email'].forEach(function (id) {
     var el = document.getElementById(id);
     el.addEventListener('blur', function () { if (el.value) check(id); });
     el.addEventListener('input', function () { if (el.getAttribute('aria-invalid') === 'true') check(id); });
   });
-  form.querySelectorAll('input[name="Device Type"]').forEach(function (r) {
-    r.addEventListener('change', function () { check('tq-device'); });
+  ['Services', 'Device Type'].forEach(function (n) {
+    form.querySelectorAll('input[name="' + n + '"]').forEach(function (r) {
+      r.addEventListener('change', function () { check(n === 'Services' ? 'tq-service' : 'tq-device'); });
+    });
   });
+
+  /* ?service=data arrives with that button already ticked. */
+  var key = new URLSearchParams(location.search).get('service');
+  if (key) {
+    var hit = form.querySelector('input[name="Services"][data-key="' + key.replace(/[^a-z]/g, '') + '"]');
+    if (hit) hit.checked = true;
+  }
+  syncContact();
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -132,10 +208,11 @@
         form.hidden = true;
         var desc = document.querySelector('#quote .audit-block-desc');
         if (desc) desc.hidden = true;
+        document.getElementById('tqDoneHow').textContent = byEmail() ? 'email' : 'WhatsApp';
         formShow(done);
         done.setAttribute('tabindex', '-1');
         done.focus();
-        if (typeof gtag === 'function') gtag('event', 'generate_lead', { form: 'service_quote', page: '{{ page.slug }}' });
+        trackLead('quote');
       });
     }).catch(function () {
       formReset(btn);
@@ -144,7 +221,7 @@
   });
 
   /* The site's sticky bottom bar steps aside while this form is on
-     screen. The bar is rendered after this article, so look it up once
+     screen. The bar is rendered after this form, so look it up once
      the document has finished parsing. */
   document.addEventListener('DOMContentLoaded', function () {
     var bar = document.getElementById('stickyCta');
@@ -158,7 +235,7 @@
   /* Which button brought them to the form or WhatsApp. */
   document.querySelectorAll('[data-track]').forEach(function (a) {
     a.addEventListener('click', function () {
-      if (typeof gtag === 'function') gtag('event', 'quote_form_click', { event_label: a.getAttribute('data-track'), page: '{{ page.slug }}' });
+      if (typeof gtag === 'function') gtag('event', 'quote_form_click', { event_label: a.getAttribute('data-track'), page_path: location.pathname });
     });
   });
 })();

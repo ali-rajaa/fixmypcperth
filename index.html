@@ -1,5 +1,6 @@
 ---
 layout: default
+form_css: true
 title: "Computer Repair Perth | Flat [[diagnostic-repair-all-in]] All-In | FixMyPC Perth"
 description: "Computer and laptop repair in Perth: a flat [[diagnostic-repair-all-in]] covers diagnosis and repair. Canning Vale workshop, most jobs same day. WhatsApp 0452 573 701."
 ---
@@ -349,7 +350,7 @@ description: "Computer and laptop repair in Perth: a flat [[diagnostic-repair-al
         </button>
       </div>
       <div class="hc-collapse">
-      <div class="hc-body" id="hcBody">
+      <div class="hc-body tq-light" id="hcBody">
 
         <a href="{{ site.data.reviews.meta.reviews_url }}" target="_blank" rel="noopener noreferrer" class="mq-rating">
           {% include stars.html value=site.data.reviews.meta.rating %}
@@ -360,21 +361,23 @@ description: "Computer and laptop repair in Perth: a flat [[diagnostic-repair-al
           <span id="mqCountdownText"></span>
         </p>
 
-        <form class="mq-form" id="miniQuoteForm" novalidate>
-          <input type="hidden" name="access_key" value="b00c2b06-22d4-4924-af92-5143e83ab186">
-          <input type="hidden" name="subject" value="New Instant Quote Request - FixMyPC Perth (Homepage)">
-          <input type="checkbox" name="botcheck" style="display:none">
+        <form class="mq-form tq-form" id="miniQuoteForm" novalidate>
+          <input type="hidden" name="access_key" value="{{ site.data.services.form.access_key }}">
+          <input type="hidden" name="subject" value="Quote request: homepage">
+          <input type="hidden" name="from_page" value="home">
+          <input type="checkbox" name="botcheck" class="tq-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
 
           <div class="mq-progress">
             <div class="mq-progress-bar"><div class="mq-progress-fill" id="mqProgressFill"></div></div>
             <span class="mq-progress-label" id="mqProgressLabel">Step 1 of 2</span>
           </div>
 
-          <!-- STEP 1, pick a service -->
+          <!-- STEP 1, pick a service. A tap moves on by itself; Continue is
+               there for keyboards and for anyone who wants to check first. -->
           <div class="mq-step active" id="mqStep1">
-            <div class="mq-field">
-              <label>What do you need help with? <span class="req">*</span></label>
-              <div class="mq-service-grid" role="radiogroup" aria-label="Select a service">
+            <fieldset class="tq-group" id="mq-service" aria-describedby="mq-service-err">
+              <legend class="tq-label">What do you need help with?</legend>
+              <div class="mq-service-grid">
 
                 <input type="radio" class="mq-service-radio" id="mqSvc1" name="Service" value="Virus and Malware Removal">
                 <label for="mqSvc1" class="mq-service-btn">
@@ -425,104 +428,79 @@ description: "Computer and laptop repair in Perth: a flat [[diagnostic-repair-al
                 </label>
 
               </div>
-              <div class="mq-err" id="mqServiceErr">Please choose what you need help with.</div>
-            </div>
+              <p class="tq-err" id="mq-service-err" hidden>Choose the closest one.</p>
+            </fieldset>
 
-            <button type="button" class="mq-submit" id="mqNextBtn">
-              Continue
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </button>
-            <p class="mq-note">Fixed price before we start &middot; Nothing added at collection</p>
+            <button type="button" class="tq-submit" id="mqNextBtn">Continue</button>
           </div>
 
-          <!-- STEP 2, details -->
+          <!-- STEP 2, the machine, then where to reply -->
           <div class="mq-step" id="mqStep2">
             <button type="button" class="mq-back" id="mqBackBtn">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
               Change service
             </button>
-            <div class="mq-selected-note">Booking: <strong id="mqSelectedName">,</strong></div>
+            <div class="mq-selected-note">Quote for: <strong id="mqSelectedName"></strong></div>
 
-            <div class="mq-row">
-              <div class="mq-field">
-                <label for="mqDevice">Device Type <span class="req">*</span></label>
-                <select id="mqDevice" name="Device Type" required>
-                  <option value="">Select type</option>
-                  <option>Desktop PC</option>
-                  <option>Laptop</option>
-                  <option>All in One</option>
-                  <option>Mac</option>
-                  <option>Other</option>
-                </select>
-                <div class="mq-err" id="mqDeviceErr">Please select a device type.</div>
+            <fieldset class="tq-group" id="mq-device" aria-describedby="mq-device-err">
+              <legend class="tq-label">What kind of computer?</legend>
+              <div class="tq-seg">
+                {%- for _d in site.data.services.device_types %}
+                <label class="tq-seg-opt"><input type="radio" name="Device Type" value="{{ _d | escape }}"><span>{{ _d | escape }}</span></label>
+                {%- endfor %}
               </div>
-              <div class="mq-field">
-                <label for="mqPhone">Phone <span class="req">*</span></label>
-                <input type="tel" id="mqPhone" name="Phone" placeholder="04XX XXX XXX" required>
-                <div class="mq-err" id="mqPhoneErr">Enter a valid AU number.</div>
-              </div>
+              <p class="tq-err" id="mq-device-err" hidden>Choose the closest one.</p>
+            </fieldset>
+
+            <div class="tq-field">
+              <label class="tq-label" for="mq-desc">What is it doing? <span class="tq-opt">Optional</span></label>
+              <textarea class="tq-input" id="mq-desc" name="Description" rows="2" placeholder="e.g. slow to start and keeps freezing"></textarea>
             </div>
 
-            <div class="mq-field">
-              <label for="mqDesc">What's happening with your device? <span class="req">*</span></label>
-              <textarea id="mqDesc" name="Description" placeholder="e.g. PC is slow and keeps freezing" required></textarea>
-              <div class="mq-err" id="mqDescErr">Please describe the issue.</div>
-            </div>
-
-            <hr class="mq-divider">
-            <div class="mq-group-label">Your contact details</div>
-
-            <div class="mq-row">
-              <div class="mq-field">
-                <label for="mqName">Full Name <span class="req">*</span></label>
-                <input type="text" id="mqName" name="Name" placeholder="John Smith" required>
-                <div class="mq-err" id="mqNameErr">Please enter your name.</div>
+            <fieldset class="tq-group">
+              <legend class="tq-label">Where should we send your price?</legend>
+              <div class="tq-seg">
+                <label class="tq-seg-opt"><input type="radio" name="Preferred Contact" value="WhatsApp" checked><span>WhatsApp</span></label>
+                <label class="tq-seg-opt"><input type="radio" name="Preferred Contact" value="Email"><span>Email</span></label>
               </div>
-              <div class="mq-field">
-                <label for="mqEmail">Email <span class="req">*</span></label>
-                <input type="email" id="mqEmail" name="Email" placeholder="you@email.com" required>
-                <div class="mq-err" id="mqEmailErr">Enter a valid email address.</div>
-              </div>
-            </div>
+            </fieldset>
 
-            <div class="mq-field">
-              <label>Preferred contact method</label>
-              <div class="mq-pref-group">
-                <input type="radio" class="mq-pref-radio" id="mqPrefWA" name="Preferred Contact" value="WhatsApp" checked>
-                <label for="mqPrefWA" class="mq-pref-btn">
-                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#i-wa"/></svg>
-                  WhatsApp
-                </label>
-                <input type="radio" class="mq-pref-radio" id="mqPrefEmail" name="Preferred Contact" value="Email">
-                <label for="mqPrefEmail" class="mq-pref-btn">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
-                  Email
-                </label>
+            <div class="tq-row">
+              <div class="tq-field">
+                <label class="tq-label" for="mq-name">Your name</label>
+                <input class="tq-input" id="mq-name" name="Name" type="text" autocomplete="name" required aria-describedby="mq-name-err">
+                <p class="tq-err" id="mq-name-err" hidden>Please enter your name.</p>
+              </div>
+              <div class="tq-field" id="mq-phone-f">
+                <label class="tq-label" for="mq-phone">Mobile number</label>
+                <input class="tq-input" id="mq-phone" name="Phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="04xx xxx xxx" required aria-describedby="mq-phone-err">
+                <p class="tq-err" id="mq-phone-err" hidden>Please enter an Australian mobile number.</p>
+              </div>
+              <div class="tq-field" id="mq-email-f" hidden>
+                <label class="tq-label" for="mq-email">Email</label>
+                <input class="tq-input" id="mq-email" name="Email" type="email" autocomplete="email" placeholder="you@example.com" required disabled aria-describedby="mq-email-err">
+                <p class="tq-err" id="mq-email-err" hidden>Please enter a valid email address.</p>
               </div>
             </div>
 
-            <button type="submit" class="mq-submit" id="mqSubmitBtn">
-              Get My Free Quote
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </button>
-            <div class="mq-response">
-              <span class="mq-response-dot" aria-hidden="true"></span>
-              We usually reply {{ site.reply_time }}
-            </div>
+            <button type="submit" class="tq-submit" id="mqSubmitBtn">Get my fixed price</button>
+            <p class="tq-err tq-err-form" id="mqErr" role="alert" hidden>That did not send. Please try again, or message us on WhatsApp on 0452 573 701.</p>
+            <p class="tq-trust">We usually reply {{ site.reply_time }}.</p>
           </div>
         </form>
 
         <div class="mq-trust">
-          <div class="mq-trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>30-day warranty</div>
+          <div class="mq-trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>{{ site.data.services.meta.warranty_days }}-day warranty</div>
           <div class="mq-trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Diagnosis before we start</div>
           <div class="mq-trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Local Perth business</div>
-          <div class="mq-trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Upfront fixed pricing</div>
+          <div class="mq-trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Fixed price, nothing added</div>
         </div>
 
-        <div class="mq-success" id="mqSuccess">
-          <div class="mq-success-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-          <div class="mq-success-title">Request received!</div>
-          <p class="mq-success-body">A member of our team will be in touch shortly, usually {{ site.reply_time }}.</p>
+        <div class="audit-done" id="mqSuccess" role="status" aria-live="polite" hidden>
+          <div class="audit-done-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <p class="audit-done-title">Quote request sent.</p>
+          <p class="audit-done-text">We will <span id="mqDoneHow">WhatsApp</span> you a fixed price, usually {{ site.reply_time }}. Want it sooner? Send us a photo of the problem on WhatsApp.</p>
+          <a class="tq-done-wa" href="{% include wa-href.html text="Hi! I've just sent a quote request on your website. Here is a photo of the problem." %}" target="_blank" rel="noopener noreferrer" onclick="trackWAClick()"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><use href="#i-wa"/></svg>Send a photo on WhatsApp</a>
         </div>
 
       </div>

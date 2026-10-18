@@ -8,7 +8,8 @@
    guides and the industry pages read as one site: the same
    740px centred column, the same type scale (H1 capped at
    2.7rem, 1.45rem H2s, 16px body at 1.85), the same contents
-   box, the same dark on-page quote form (.audit-block / .tq-*)
+   box, the same quote form (_includes/quote-form.html, styled in
+   assets/css/form.css)
    and the same FAQ. What is new here is only what a service
    page needs and a guide does not:
    - .sv-promise  the promise line under the header actions
@@ -229,51 +230,6 @@ body:has(.sv-page) { overflow-x: clip; }
 .sv-row-note { display: none; }
 .sv-table-note { margin: 0.9rem 0 0; font-size: 13px; line-height: 1.55; color: var(--muted); }
 
-/* ---------- quote form (same panel as the guides and industry pages) ---------- */
-.audit-block { background: var(--ink); border-radius: 16px; padding: 2rem; margin: 2.5rem 0; position: relative; overflow: hidden; scroll-margin-top: calc(var(--nav-h) + 1rem); }
-.audit-block::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--blue), var(--teal), var(--wa)); }
-.audit-block-title { font-family: var(--display); font-size: 1.3rem; font-weight: 800; letter-spacing: -0.014em; color: #fff; margin: 0 0 0.4rem; }
-.audit-block-desc { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.7; margin: 0 0 1.5rem; }
-
-.tq-form { display: flex; flex-direction: column; gap: 1.25rem; }
-.tq-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.tq-field { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
-.tq-group { border: 0; margin: 0; padding: 0; min-width: 0; }
-.tq-group > legend { padding: 0; margin: 0 0 0.55rem; }
-.tq-label { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.75); letter-spacing: 0.02em; }
-.tq-opt { font-weight: 400; color: rgba(255,255,255,0.62); margin-left: 0.25rem; }
-
-.tq-input { width: 100%; font-family: var(--body); font-size: 16px; line-height: 1.4; color: #fff; background: rgba(255,255,255,0.06); border: 1.5px solid rgba(255,255,255,0.16); border-radius: 10px; padding: 11px 14px; min-height: 48px; transition: border-color 0.18s var(--ease-settle), background 0.18s var(--ease-settle); }
-textarea.tq-input { resize: vertical; min-height: 88px; }
-.tq-input::placeholder { color: rgba(255,255,255,0.6); }
-.tq-input:focus { outline: none; border-color: var(--blue); background: rgba(255,255,255,0.1); }
-.tq-input[aria-invalid="true"] { border-color: #F87171; box-shadow: 0 0 0 4px rgba(248,113,113,0.18); }
-
-.tq-seg { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-.tq-seg-opt { position: relative; }
-.tq-seg-opt input { position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer; }
-.tq-seg-opt span:where(:not([class])) { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 1rem; border-radius: 10px; background: rgba(255,255,255,0.06); border: 1.5px solid rgba(255,255,255,0.16); font-size: 14.5px; font-weight: 500; color: rgba(255,255,255,0.82); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; transition: background-color 0.15s var(--ease-settle), border-color 0.15s var(--ease-settle), color 0.15s var(--ease-settle); }
-.tq-seg-opt input:checked + span { background: rgba(21,96,255,0.22); border-color: var(--blue); color: #fff; font-weight: 600; }
-.tq-seg-opt input:focus-visible + span { outline: 2px solid #fff; outline-offset: 2px; }
-.tq-seg-opt input:active + span { transform: scale(0.97); }
-.tq-group[aria-invalid="true"] .tq-seg-opt span:where(:not([class])) { border-color: rgba(248,113,113,0.6); }
-
-.tq-err { margin: 0.35rem 0 0; font-size: 13px; font-weight: 500; color: #FCA5A5; }
-.tq-err-form { margin: 0; padding: 10px 14px; border-radius: 12px; background: rgba(239,68,68,0.12); border: 1px solid rgba(239,68,68,0.35); font-weight: 600; }
-.tq-hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
-
-.tq-submit { width: 100%; min-height: 48px; margin-top: 4px; font-family: var(--body); font-size: 15px; font-weight: 700; color: #fff; background: var(--blue); border: 0; border-radius: 50px; padding: 14px 24px; cursor: pointer; -webkit-tap-highlight-color: transparent; transition: background 0.18s var(--ease-settle), transform 0.1s var(--ease-press); }
-.tq-submit:active { transform: scale(0.98); }
-.tq-submit:disabled { opacity: 0.6; cursor: default; }
-.tq-submit:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
-.tq-trust { margin: 2px 0 0; text-align: center; font-size: 12.5px; line-height: 1.55; color: rgba(255,255,255,0.62); }
-
-.audit-done { text-align: center; padding: 1.25rem 0 0.75rem; outline: none; }
-.audit-done-tick { width: 52px; height: 52px; margin: 0 auto 1rem; border-radius: 50%; background: rgba(34,197,94,0.15); border: 1.5px solid rgba(34,197,94,0.4); display: flex; align-items: center; justify-content: center; color: #4ADE80; }
-.audit-done-tick svg { width: 24px; height: 24px; }
-.audit-done-title { font-family: var(--display); font-size: 1.15rem; font-weight: 800; color: #fff; margin: 0 0 0.4rem; }
-.audit-done-text { font-size: 14.5px; color: rgba(255,255,255,0.72); line-height: 1.7; max-width: 46ch; margin: 0 auto; }
-
 /* ---------- FAQ (bordered cards, the same as the homepage FAQ) ---------- */
 .sv-faq { margin: 0 0 3rem; }
 .sv-faq .sv-h2 { margin-bottom: 1.25rem; }
@@ -326,7 +282,6 @@ textarea.tq-input { resize: vertical; min-height: 88px; }
    form is on screen, so two quote buttons never compete. Class is set by
    the layout script; !important because shell.css drives the bar's
    transform from its own scroll script. */
-.sticky-cta.sv-form-visible { transform: translateY(110%) !important; }
 
 /* ---------- hover, only where hover exists ---------- */
 @media (hover: hover) {
@@ -338,8 +293,6 @@ textarea.tq-input { resize: vertical; min-height: 88px; }
   .sv-table td a:where(:not([class])):hover { color: var(--blue); }
   .sv-cat-list a:where(:not([class])):hover { color: var(--blue); text-decoration-color: var(--blue); }
   .sv-cat-more a:where(:not([class])):hover { color: var(--blue-dk); text-decoration: underline; }
-  .tq-submit:hover { background: var(--blue-dk); }
-  .tq-seg-opt:hover span:where(:not([class])) { background: rgba(255,255,255,0.12); }
 
   .sv-links a:where(:not([class])):hover { color: var(--blue); }
   .sv-hub-link:hover { border-color: var(--blue); }
@@ -401,26 +354,18 @@ textarea.tq-input { resize: vertical; min-height: 88px; }
   .sv-row-note { display: block; margin-top: 0.2rem; font-size: 13px; font-weight: 400; line-height: 1.5; color: var(--muted); }
   .sv-links { grid-template-columns: minmax(0, 1fr); }
   .sv-hub { grid-template-columns: minmax(0, 1fr); }
-  .audit-block { padding: 1.5rem 1.25rem; border-radius: 16px; }
-  .tq-row { grid-template-columns: 1fr; }
-  .tq-seg-opt span:where(:not([class])) { padding: 0 0.85rem; }
 }
 
 /* ---------- user preferences ---------- */
 @media (prefers-contrast: more) {
   :root { --muted: #334155; --muted2: #475569; --ink3: #1E293B; --border: #94A3B8; --border2: #64748B; }
-  .tq-input, .tq-seg-opt span:where(:not([class])) { border-color: rgba(255,255,255,0.6); }
-  .tq-label, .audit-block-desc, .tq-trust, .audit-done-text { color: #fff; }
-}
-@media (prefers-reduced-transparency: reduce) {
-  .tq-input, .tq-seg-opt span:where(:not([class])) { background: #1E293B; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 
-  .sv-hub-link, .sv-btn, .tq-submit, .tq-input, .tq-seg-opt span:where(:not([class])), .sv-links svg, .sv-act-link > svg, .sv-index-list a:where(:not([class])) > svg { transition: none; }
+  .sv-hub-link, .sv-btn, .sv-links svg, .sv-act-link > svg, .sv-index-list a:where(:not([class])) > svg { transition: none; }
   .sv-act-link:hover > svg, .sv-index-list a:where(:not([class])):hover > svg { transform: none; }
-  .sv-hub-link:active, .sv-btn:active, .tq-submit:active, .tq-seg-opt input:active + span { transform: none; }
+  .sv-hub-link:active, .sv-btn:active { transform: none; }
 }
 
 /* ==========================================================
@@ -507,7 +452,7 @@ textarea.tq-input { resize: vertical; min-height: 88px; }
   .sv-group .sv-repair:last-child, .sv-body > :last-child { margin-bottom: 0; }
 
   /* Cards and the boxes inside them */
-  .sv-index, .sv-mid, .audit-block, .sv-hub-link, .sv-price, .sv-repair, .sv-costs, .sv-glance { padding: var(--m-card-pad); border-radius: var(--m-card-radius); }
+  .sv-index, .sv-mid, .sv-hub-link, .sv-price, .sv-repair, .sv-costs, .sv-glance { padding: var(--m-card-pad); border-radius: var(--m-card-radius); }
   .sv-hero { padding-bottom: var(--m-section); }
   .sv-hero::before { top: calc(-1 * (var(--mob-nav-h) + var(--m-hero-top))); }
   .sv-repair, .sv-group .sv-repair { margin-bottom: var(--m-gap-cards); }
@@ -525,15 +470,13 @@ textarea.tq-input { resize: vertical; min-height: 88px; }
   .sv-faq .sv-h2 { margin-bottom: var(--m-h2-space); }
   .sv-head .sv-act { margin-bottom: var(--m-block); }
   .sv-promise { padding-bottom: var(--m-block); margin-bottom: 0; }
-  .audit-block { margin-top: var(--m-section); margin-bottom: var(--m-section); }
-  .audit-block-title { font-size: var(--m-h2); margin-bottom: var(--m-h2-space); }
 
   /* Text */
   .sv-lede, .sv-prose > p, .sv-intro > p { font-size: var(--m-text); }
-  .tq-label, .tq-trust, .sv-links-sub { font-size: var(--m-text-min); }
+  .sv-links-sub { font-size: var(--m-text-min); }
 
   /* Buttons */
-  .sv-btn, .tq-submit { min-height: var(--m-btn); padding-top: 0; padding-bottom: 0; width: 100%; justify-content: center; }
+  .sv-btn { min-height: var(--m-btn); padding-top: 0; padding-bottom: 0; width: 100%; justify-content: center; }
 
   .sv-h2 + * { margin-top: 0; }
   .sv-table > thead > tr > th, .sv-table > thead > tr > .sv-num { font-size: var(--m-text-min); }

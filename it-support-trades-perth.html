@@ -4,7 +4,8 @@ css: industry
 contact: email
 contact_form: "#audit"
 title: "IT Support for Trades Businesses Perth | From [[business-it-essential]]/Month"
-description: "Managed IT support for Perth trades and construction. ServiceM8, simPRO and AroFlo, site photo backup and remote access from the job. From [[business-it-essential]] a month."
+description: "Managed IT support for Perth trades and construction. ServiceM8, simPRO and AroFlo, site photo backup and remote access from the job. From [[business-it-essential]] a month."
+form_css: true
 ---
 {%- comment -%}
   Industry page, built on the allied-health pattern.
@@ -347,59 +348,11 @@ description: "Managed IT support for Perth trades and construction. ServiceM8, s
       </div>
     </div>
 
-    <div class="audit-block" id="audit">
+    <section class="audit-block" id="audit" aria-label="Book an IT audit for your business">
   <p class="audit-block-title">Book an IT audit for your business</p>
   <p class="audit-block-desc">Tell us what your business runs on and we will go through your job management software, where your quotes and site photos actually live, and what a plan would cost.</p>
-  <form id="auditForm" action="https://api.web3forms.com/submit" method="POST" class="audit-grid">
-    <input type="hidden" name="access_key" value="b00c2b06-22d4-4924-af92-5143e83ab186">
-    <input type="hidden" name="subject" value="IT Audit Request, Trades. FixMyPC Perth">
-    <input type="hidden" name="from_page" value="it-support-trades-perth">
-    <input type="hidden" name="botcheck" value="">
-
-    <div class="audit-input-group">
-      <label class="audit-label" for="af-business">Business name</label>
-      <input class="audit-input" id="af-business" name="business_name" type="text" placeholder="e.g. Jandakot Electrical" autocomplete="organization" required>
-    </div>
-    <div class="audit-input-group">
-      <label class="audit-label" for="af-suburb">Your suburb</label>
-      <input class="audit-input" id="af-suburb" name="suburb" type="text" placeholder="e.g. Canning Vale, Willetton" autocomplete="address-level2" required>
-    </div>
-    <div class="audit-input-group">
-      <label class="audit-label" for="af-pcs">How many PCs?</label>
-      <select class="audit-select" id="af-pcs" name="pc_count">
-        <option value="1 to 5">1 to 5</option>
-        <option value="6 to 10">6 to 10</option>
-        <option value="11 to 20">11 to 20</option>
-        <option value="more than 20">More than 20</option>
-      </select>
-    </div>
-    <div class="audit-input-group">
-      <label class="audit-label" for="af-software">Job management software</label>
-      <input class="audit-input" id="af-software" name="software" type="text" placeholder="e.g. ServiceM8, simPRO, AroFlo, Tradify">
-    </div>
-    <div class="audit-input-group">
-      <label class="audit-label" for="af-email">Your email</label>
-      <input class="audit-input" id="af-email" name="email" type="email" placeholder="you@yourbusiness.com.au" autocomplete="email" required>
-    </div>
-    <div class="audit-input-group">
-      <label class="audit-label" for="af-phone">Your phone number</label>
-      <input class="audit-input" id="af-phone" name="phone" type="tel" placeholder="e.g. 0412 345 678" autocomplete="tel">
-    </div>
-    <div class="audit-input-group full">
-      <label class="audit-label" for="af-msg">What is giving you trouble? (optional)</label>
-      <input class="audit-input" id="af-msg" name="message" type="text" placeholder="e.g. site photos are only on the phones">
-    </div>
-
-    <button class="audit-submit" type="submit">Request the audit</button>
-    <p class="audit-err" id="auditErr" hidden>That did not send. Please try again, or email <a class="audit-mail" href="mailto:aly.imran.raja@gmail.com">aly.imran.raja@gmail.com</a>.</p>
-    <p class="audit-note">We will get back to you as fast as we can. Your details are used to answer your enquiry and nothing else.</p>
-  </form>
-  <div class="audit-done" id="auditDone" hidden>
-    <div class="audit-done-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="20 6 9 17 4 12"/></svg></div>
-    <p class="audit-done-title">Request received.</p>
-    <p class="audit-done-text">We will come back to you as fast as we can, usually the same day. If it is urgent, email <a class="audit-mail" href="mailto:aly.imran.raja@gmail.com">aly.imran.raja@gmail.com</a>.</p>
-  </div>
-</div>
+  {%- include audit-form.html subject="IT Audit Request, Trades. FixMyPC Perth" from="it-support-trades-perth" business_label="Business name" business_placeholder="e.g. Jandakot Electrical" notes_label="Your job management software, and what is giving you trouble" notes_placeholder="e.g. ServiceM8 and simPRO, and site photos are only on the phones" button="Book my IT audit" lead="audit_industry" %}
+</section>
 
 <!-- FAQ -->
     <div class="faq-section">
@@ -499,45 +452,3 @@ description: "Managed IT support for Perth trades and construction. ServiceM8, s
 </div>
 
 <!-- FOOTER -->
-
-<script>
-/* Web3Forms redirects to its own branded success page by default, which drops
-   the visitor off the site entirely. Submit over fetch instead and show the
-   panel above, the same pattern the homepage and quote-request form use. */
-(function () {
-  var form = document.getElementById('auditForm');
-  if (!form) return;
-  var btn  = form.querySelector('.audit-submit');
-  var done = document.getElementById('auditDone');
-  var errEl = document.getElementById('auditErr');
-
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    if (errEl) errEl.hidden = true;
-    formSending(btn);
-
-    var data = {};
-    new FormData(form).forEach(function (v, k) { data[k] = v; });
-
-    fetch('https://api.web3forms.com/submit', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-      body: JSON.stringify(data)
-    }).then(function (r) { return r.json(); }).then(function (res) {
-      if (!res.success) throw new Error(res.message || 'failed');
-      formSent(btn, function () {
-        form.hidden = true;
-        /* The intro copy is asking for details that have now been given, so it
-           goes too. The title stays as context for the confirmation. */
-        var desc = document.querySelector('.audit-block-desc');
-        if (desc) desc.hidden = true;
-        formShow(done);
-        done.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      });
-    }).catch(function () {
-      formReset(btn);
-      if (errEl) errEl.hidden = false;
-    });
-  });
-})();
-</script>

@@ -3,6 +3,7 @@ layout: default
 css: business-it
 # Email-only contact: the shared header, footer and phone bar drop WhatsApp.
 contact: email
+form_css: true
 title: "Managed IT Support Perth | From [[business-it-essential]]/Month | FixMyPC Perth"
 description: "Managed IT support for Perth small business from [[business-it-essential]] a month. Antivirus, cloud backup, monitoring and 4 hour on-site response. Monthly, no lock-in contract."
 image: /assets/og/business-it-support.png
@@ -742,44 +743,10 @@ image_alt: "FixMyPC Perth: managed business IT support for Perth small businesse
       </div>
     </div>
 
-    <div class="audit-card">
+    <div class="audit-card tq-light">
       <div class="audit-card-title">Book Your Free IT Call</div>
       <div class="audit-card-sub">A 30-minute online meeting. Let's get you on board.</div>
-      <form id="audit-form" action="https://api.web3forms.com/submit" method="POST">
-        <input type="hidden" name="access_key" value="b00c2b06-22d4-4924-af92-5143e83ab186">
-        <input type="hidden" name="subject" value="New Free IT Audit Request. FixMyPC Perth">
-        <input type="hidden" name="botcheck" value="">
-
-        <div class="audit-input-group">
-          <label class="audit-label" for="audit-business">Business name</label>
-          <input class="audit-input" id="audit-business" name="business_name" type="text" placeholder="The Corner Cafe" autocomplete="organization" required>
-        </div>
-        <div class="audit-input-group">
-          <label class="audit-label" for="audit-suburb">Your suburb</label>
-          <input class="audit-input" id="audit-suburb" name="suburb" type="text" placeholder="e.g. Fremantle, Midland, Subiaco" autocomplete="address-level2" required>
-        </div>
-        <div class="audit-input-group">
-          <label class="audit-label" for="audit-pcs">Approximately how many PCs?</label>
-          <input class="audit-input" id="audit-pcs" name="pc_count" type="text" placeholder="e.g. 3 to 5">
-        </div>
-        <div class="audit-input-group">
-          <label class="audit-label" for="audit-email">Your email</label>
-          <input class="audit-input" id="audit-email" name="email" type="email" placeholder="you@yourbusiness.com.au" autocomplete="email" required>
-        </div>
-        <div class="audit-input-group">
-          <label class="audit-label" for="audit-phone">Your phone number</label>
-          <input class="audit-input" id="audit-phone" name="phone" type="tel" placeholder="e.g. 0412 345 678" autocomplete="tel">
-        </div>
-
-        <button class="audit-submit" type="submit" id="audit-submit-btn">Submit</button>
-        <p class="audit-err" id="auditErr" role="alert" hidden>That did not send. Please try again, or email <a href="mailto:aly.imran.raja@gmail.com">aly.imran.raja@gmail.com</a>.</p>
-        <div class="audit-note" id="audit-note">Our team will respond as fast as possible.</div>
-      </form>
-      <div class="audit-done" id="auditDone" role="status" aria-live="polite" hidden>
-        <div class="audit-done-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="20 6 9 17 4 12"/></svg></div>
-        <p class="audit-done-title">Request received.</p>
-        <p class="audit-done-text">We will come back to you as fast as we can, usually the same day. If it is urgent, email <a href="mailto:aly.imran.raja@gmail.com">aly.imran.raja@gmail.com</a>.</p>
-      </div>
+      {%- include audit-form.html id="audit-form" subject="Free IT call request: Business IT" from="business-it-support" business_placeholder="e.g. The Corner Cafe" notes_placeholder="e.g. our backups have never been tested" button="Book my free IT call" lead="audit_business" %}
 
       <div class="audit-direct audit-direct-box">
         <div class="audit-direct-label">Prefer to reach us directly?</div>
@@ -1113,43 +1080,5 @@ image_alt: "FixMyPC Perth: managed business IT support for Perth small businesse
     grid.scrollLeft = pos(1); grid.style.scrollBehavior = g0;
   }
   paint();
-})();
-
-/* Free IT call form. Sends in the background and confirms on the page, the
-   same as the industry pages, instead of posting away to Web3Forms' own
-   confirmation page. The browser's own required-field checks run first:
-   the submit event only fires once they pass. */
-(function () {
-  var form = document.getElementById('audit-form');
-  if (!form) return;
-  var btn   = document.getElementById('audit-submit-btn');
-  var done  = document.getElementById('auditDone');
-  var errEl = document.getElementById('auditErr');
-
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    errEl.hidden = true;
-    formSending(btn);
-
-    var data = {};
-    new FormData(form).forEach(function (v, k) { data[k] = v; });
-
-    fetch('https://api.web3forms.com/submit', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-      body: JSON.stringify(data)
-    }).then(function (r) { return r.json(); }).then(function (res) {
-      if (!res.success) throw new Error(res.message || 'failed');
-      if (typeof trackQuoteForm === 'function') trackQuoteForm();
-      formSent(btn, function () {
-        form.hidden = true;
-        formShow(done);
-        done.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      });
-    }).catch(function () {
-      formReset(btn);
-      errEl.hidden = false;
-    });
-  });
 })();
 </script>

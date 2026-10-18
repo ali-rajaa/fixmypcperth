@@ -1,0 +1,142 @@
+{%- comment -%}
+  audit-form.html  the business audit form and its handler: the 9 industry
+  pages (#auditForm inside the dark .audit-block) and Business IT
+  (#audit-form inside the white .audit-card, which adds .tq-light). Email
+  only: these pages never offer WhatsApp. Fields come from
+  assets/css/form.css, the same stylesheet as every other form, so all
+  forms on the site look and behave alike.
+
+  Two things required, business name and email. Everything else is
+  optional and marked so. The PC count is one tap, not a menu. The
+  sector question ("which accounting software") lives in the label and
+  example of the one notes box rather than a field of its own.
+
+  Params:
+    id                    form id (default auditForm); links point at it
+    subject, from         Web3Forms subject and from_page
+    business_label        e.g. "Practice name" (default "Business name")
+    business_placeholder  e.g. "e.g. Southside Accounting"
+    notes_label           e.g. "Your accounting software, and what is giving you trouble"
+    notes_placeholder     sector example
+    button                default "Book my free IT audit"
+    lead                  name sent with the generate_lead event
+{%- endcomment -%}
+{%- assign _id = include.id | default: "auditForm" -%}
+{%- assign _mail = "aly.imran.raja@gmail.com" -%}
+<form id="{{ _id }}" class="tq-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+  <input type="hidden" name="access_key" value="{{ site.data.services.form.access_key }}">
+  <input type="hidden" name="subject" value="{{ include.subject | default: 'Free IT audit request' | escape }}">
+  <input type="hidden" name="from_page" value="{{ include.from | default: page.url | remove_first: '/' }}">
+  <input type="checkbox" name="botcheck" class="tq-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+  <div class="tq-row">
+    <div class="tq-field">
+      <label class="tq-label" for="{{ _id }}-business">{{ include.business_label | default: "Business name" }}</label>
+      <input class="tq-input" id="{{ _id }}-business" name="business_name" type="text" placeholder="{{ include.business_placeholder | default: 'e.g. Southside Accounting' | escape }}" autocomplete="organization" required aria-describedby="{{ _id }}-business-err">
+      <p class="tq-err" id="{{ _id }}-business-err" hidden>Please enter the business name.</p>
+    </div>
+    <div class="tq-field">
+      <label class="tq-label" for="{{ _id }}-suburb">Suburb <span class="tq-opt">Optional</span></label>
+      <input class="tq-input" id="{{ _id }}-suburb" name="suburb" type="text" placeholder="e.g. Canning Vale" autocomplete="address-level2">
+    </div>
+  </div>
+
+  <fieldset class="tq-group">
+    <legend class="tq-label">How many PCs? <span class="tq-opt">Optional</span></legend>
+    <div class="tq-seg">
+      <label class="tq-seg-opt"><input type="radio" name="pc_count" value="1 to 5"><span>1 to 5</span></label>
+      <label class="tq-seg-opt"><input type="radio" name="pc_count" value="6 to 10"><span>6 to 10</span></label>
+      <label class="tq-seg-opt"><input type="radio" name="pc_count" value="11 to 20"><span>11 to 20</span></label>
+      <label class="tq-seg-opt"><input type="radio" name="pc_count" value="More than 20"><span>More than 20</span></label>
+    </div>
+  </fieldset>
+
+  <div class="tq-row">
+    <div class="tq-field">
+      <label class="tq-label" for="{{ _id }}-email">Your email</label>
+      <input class="tq-input" id="{{ _id }}-email" name="email" type="email" placeholder="you@business.com.au" autocomplete="email" required aria-describedby="{{ _id }}-email-err">
+      <p class="tq-err" id="{{ _id }}-email-err" hidden>Please enter a valid email address.</p>
+    </div>
+    <div class="tq-field">
+      <label class="tq-label" for="{{ _id }}-phone">Phone <span class="tq-opt">Optional</span></label>
+      <input class="tq-input" id="{{ _id }}-phone" name="phone" type="tel" inputmode="tel" placeholder="e.g. 0412 345 678" autocomplete="tel" aria-describedby="{{ _id }}-phone-err">
+      <p class="tq-err" id="{{ _id }}-phone-err" hidden>Please check the number, or leave it blank.</p>
+    </div>
+  </div>
+
+  <div class="tq-field">
+    <label class="tq-label" for="{{ _id }}-msg">{{ include.notes_label | default: "What is giving you trouble?" }} <span class="tq-opt">Optional</span></label>
+    <textarea class="tq-input" id="{{ _id }}-msg" name="message" rows="2" placeholder="{{ include.notes_placeholder | default: 'e.g. our backups have never been tested' | escape }}"></textarea>
+  </div>
+
+  <button class="tq-submit" type="submit">{{ include.button | default: "Book my free IT audit" }}</button>
+  <p class="tq-err tq-err-form" id="{{ _id }}Err" role="alert" hidden>That did not send. Please try again, or email <a class="audit-mail" href="mailto:{{ _mail }}">{{ _mail }}</a>.</p>
+  <p class="tq-trust">We reply by email, usually the same day. We never sell your details.</p>
+</form>
+<div class="audit-done" id="{{ _id }}-done" role="status" aria-live="polite" hidden>
+  <div class="audit-done-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" focusable="false"><polyline points="20 6 9 17 4 12"/></svg></div>
+  <p class="audit-done-title">Request received.</p>
+  <p class="audit-done-text">We will email you to set a time, usually the same day. If it is urgent, email <a class="audit-mail" href="mailto:{{ _mail }}">{{ _mail }}</a>.</p>
+</div>
+<script>
+/* Business audit form. Checks the two required fields when the person
+   leaves them, submits over fetch so nobody lands on Web3Forms' own
+   page, and swaps the form for a confirmation on success. */
+(function () {
+  var form = document.getElementById('{{ _id }}');
+  if (!form) return;
+  var id = '{{ _id }}';
+  var btn = form.querySelector('.tq-submit');
+  var done = document.getElementById(id + '-done');
+  var fail = document.getElementById(id + "Err");
+  var phoneRe = /^(\+?61|0)[2-478]\d{8}$/;
+  var checks = {};
+  checks[id + '-business'] = function (v) { return v.trim().length > 0; };
+  checks[id + '-email'] = function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()); };
+  checks[id + '-phone'] = function (v) { return !v.trim() || phoneRe.test(v.replace(/[\s().-]/g, '')); };
+  function check(fid) {
+    var el = document.getElementById(fid);
+    var ok = checks[fid](el.value);
+    el.setAttribute('aria-invalid', ok ? 'false' : 'true');
+    document.getElementById(fid + '-err').hidden = ok;
+    return ok;
+  }
+  Object.keys(checks).forEach(function (fid) {
+    var el = document.getElementById(fid);
+    el.addEventListener('blur', function () { if (el.value) check(fid); });
+    el.addEventListener('input', function () { if (el.getAttribute('aria-invalid') === 'true') check(fid); });
+  });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    fail.hidden = true;
+    var bad = Object.keys(checks).filter(function (fid) { return !check(fid); });
+    if (bad.length) { document.getElementById(bad[0]).focus(); return; }
+    formSending(btn);
+    var data = {};
+    new FormData(form).forEach(function (v, k) { data[k] = v; });
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify(data)
+    }).then(function (r) { return r.json(); }).then(function (res) {
+      if (!res.success) throw new Error(res.message || 'failed');
+      formSent(btn, function () {
+        form.hidden = true;
+        /* The intro asked for details that have now been given, so it
+           goes too. The title stays as context for the confirmation. */
+        var box = form.parentElement;
+        var intro = box && box.querySelector('.audit-block-desc, .audit-card-sub');
+        if (intro) intro.hidden = true;
+        formShow(done);
+        done.setAttribute('tabindex', '-1');
+        done.focus();
+        trackLead('{{ include.lead | default: "audit" }}');
+      });
+    }).catch(function () {
+      formReset(btn);
+      fail.hidden = false;
+    });
+  });
+})();
+</script>

@@ -493,8 +493,9 @@ written standard every file copies, not a shared file.
   Coloured labels use the -700 shade (#15803D, #B45309, #0E7490).
   Decorative numbers that are not meant to be read carry aria-hidden.
 
-**Quote forms:** every quote form offers WhatsApp and Email as reply
-options. No phone call option, on any form.
+**Quote forms:** see "Quote forms (October 2026)" below. Home-customer
+forms reply by WhatsApp or email, business forms by email. No phone call
+option, on any form.
 
 **Writing style** (from the "signs of AI writing" pass, September 2026):
 section headings in sentence case (page titles, product names and
@@ -555,6 +556,63 @@ phone and email support. `contact_form` sets where the header button
 scrolls (#audit on the industry pages, #audit-section by default). Every
 other page keeps WhatsApp. It still uses
 the owner's Gmail until a business address exists.
+
+## Quote forms (October 2026)
+
+Every form on the site takes its fields from one stylesheet,
+`assets/css/form.css` (`.tq-*`). `_layouts/default.html` loads it for the
+service, suburb and tech-tip layouts, for pages with `quote_form: true`
+(/services, /quote-request) and for pages with `form_css: true` (homepage,
+Business IT, the nine industry pages). Dark panel by default; `.tq-light`
+on a white card (homepage quote card, Business IT card). Each page keeps
+its own heading and intro; only the styling and the fields are shared.
+Computed styles match across every page type (checked).
+
+- **Home customers:** `_includes/quote-form.html` (#quote, #svQuote) on the
+  9 service pages, /services, the 18 suburb pages, the 6 Tech Tips and
+  /quote-request. Order: what it is (buttons from `quote_options`, skipped
+  when the page sets `quote_service`), what kind of computer (buttons from
+  `device_types`), what it is doing (the one optional field), where to send
+  the price (WhatsApp or Email), name, then ONE contact field: mobile for
+  WhatsApp, email for Email. Button "Get my fixed price". After a send, a
+  "Send a photo on WhatsApp" button. Suburb pages send Suburb hidden.
+  `?service=<quote_options key>` ticks a service. Params: title, desc.
+- **Homepage card:** the same fields in two steps (service tiles, then the
+  rest). A tap on a tile moves on; arrow keys only change the choice and
+  Continue moves on, so keyboards are never thrown forward.
+- **Business:** `_includes/audit-form.html` on the 9 industry pages
+  (#auditForm) and Business IT (#audit-form). Required: business name and
+  email. Optional and marked: suburb, PC count (buttons), phone, notes.
+  The sector question ("Your accounting software, and what is giving you
+  trouble") is the notes label, not a field of its own. Email only.
+- **Inbox shape:** Services, Device Type, Description, Name, Phone or
+  Email, Preferred Contact, Suburb, from_page (home customers);
+  business_name, suburb, pc_count, email, phone, message, from_page
+  (business).
+- **Leads:** every send calls `trackLead(name)` (scripts.html), which fires
+  GA4 `generate_lead` with form_name quote, quote_home, audit_industry or
+  audit_business and the page path. Clicks stay `quote_form_click`. Owner:
+  mark `generate_lead` as a key event in GA4 to see sends per form.
+- **Phone "Get a quote" button:** the homepage card (#top-quote) on the
+  homepage, the page's own form (#quote) wherever the shared form is, and
+  /quote-request everywhere else. A script checks the target exists and
+  falls back to /quote-request.
+- **Why it is built this way** (conversion research, mostly single case
+  studies, so treat figures as direction, not promises): fewer fields
+  usually wins but cutting the wrong field can lose (Unbounce, CXL); phone
+  fields cost the most (Unbounce about 5% average, single tests 37-47%);
+  easy taps first, contact last (Venture Harbour multi-step); radio buttons
+  beat dropdowns (CXL/Speero, 2.5s faster); first-person button copy
+  ("my" beat "your" by 24-90%, Unbounce/ContentVerve); mark required and
+  optional (Baymard); replies inside an hour qualify about 7x more leads
+  (HBR 2011). At 4-5 jobs a week the site cannot A/B test to significance,
+  so compare generate_lead per form month on month.
+- **Rules:** never a second required contact field; buttons, not
+  dropdowns, for short lists; never "never share" (the privacy policy
+  shares with specialist repairers, so the line is "never sell"). The
+  form's own paragraphs use child or descendant selectors, so a page rule
+  such as `.sub-body p` cannot reach in; a page sheet must not style
+  elements inside a form.
 
 ---
 
@@ -680,7 +738,7 @@ minus the biz- ones. What each price covers stays on /pricing only, so the
 two pages do not duplicate. A row links to the service page that lists its
 key most (headline "from" price wins, option keys count, ties go to the
 page with fewer repairs); `page:` on a services.yml entry overrides it.
-The quote form is _includes/quote-form.html, shared with every service page.
+The quote form is the shared one (see Quote forms below).
 
 ## Business IT plans (October 2026)
 

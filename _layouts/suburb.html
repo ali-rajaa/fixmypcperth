@@ -341,80 +341,12 @@ layout: default
 
 
     {%- comment -%}
-      Instant quote form. Same component as the industry pages' audit
-      block, deliberately: a visitor moving between the two clusters
-      should meet the same thing. Placed straight after the price table,
-      which is the moment someone has just seen what things cost and is
-      most likely to ask about their own machine.
-
-      Submits over fetch rather than a normal POST, so a send does not
-      throw the visitor off the site onto the Web3Forms page.
+      Quote form: the shared one (_includes/quote-form.html, styled in
+      assets/css/form.css), straight after the price table, the moment
+      someone has just seen what things cost. It sends the suburb with
+      the request, so nobody types it.
     {%- endcomment -%}
-    <div class="quote-block" id="quote">
-      <p class="quote-block-title">Get a price for your machine</p>
-      <p class="quote-block-desc">Tell us what it is doing and we will come back with what is likely wrong, what it costs and how long it takes. No appointment needed either way.</p>
-
-      <form id="quoteForm" action="https://api.web3forms.com/submit" method="POST" class="quote-grid">
-        <input type="hidden" name="access_key" value="b00c2b06-22d4-4924-af92-5143e83ab186">
-        <input type="hidden" name="subject" value="Quote Request, {{ page.suburb }}. FixMyPC Perth">
-        <input type="hidden" name="from_page" value="suburbs/{{ page.slug }}">
-        <input type="hidden" name="botcheck" value="">
-
-        <div class="quote-input-group">
-          <label class="quote-label" for="qf-name">Your name</label>
-          <input class="quote-input" id="qf-name" name="name" type="text" placeholder="e.g. Sarah" autocomplete="name" required>
-        </div>
-        <div class="quote-input-group">
-          <label class="quote-label" for="qf-suburb">Your suburb</label>
-          <input class="quote-input" id="qf-suburb" name="suburb" type="text" value="{{ page.suburb }}" autocomplete="address-level2" required>
-        </div>
-        <div class="quote-input-group">
-          <label class="quote-label" for="qf-device">What is it?</label>
-          <select class="quote-select" id="qf-device" name="device">
-            <option value="Laptop">Laptop</option>
-            <option value="Desktop PC">Desktop PC</option>
-            <option value="All-in-one">All-in-one</option>
-            <option value="Not sure">Not sure</option>
-          </select>
-        </div>
-        <div class="quote-input-group">
-          <label class="quote-label" for="qf-issue">What is it doing?</label>
-          <select class="quote-select" id="qf-issue" name="issue">
-            <option value="Running slowly">Running slowly</option>
-            <option value="Will not turn on">Will not turn on</option>
-            <option value="Overheating or shutting down">Overheating or shutting down</option>
-            <option value="Pop-ups or virus">Pop-ups or virus</option>
-            <option value="Missing or unopenable files">Missing or unopenable files</option>
-            <option value="Cracked or faulty screen">Cracked or faulty screen</option>
-            <option value="Battery or charging">Battery or charging</option>
-            <option value="Locked out of Windows">Locked out of Windows</option>
-            <option value="Something else">Something else</option>
-          </select>
-        </div>
-        <div class="quote-input-group">
-          <label class="quote-label" for="qf-email">Your email</label>
-          <input class="quote-input" id="qf-email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required>
-        </div>
-        <div class="quote-input-group">
-          <label class="quote-label" for="qf-phone">Your phone number</label>
-          <input class="quote-input" id="qf-phone" name="phone" type="tel" placeholder="e.g. 0412 345 678" autocomplete="tel">
-        </div>
-        <div class="quote-input-group full">
-          <label class="quote-label" for="qf-msg">Anything else worth knowing? (optional)</label>
-          <input class="quote-input" id="qf-msg" name="message" type="text" placeholder="e.g. takes about 4 minutes to start up, fan is loud">
-        </div>
-
-        <button class="quote-submit" type="submit">Get my price</button>
-        <p class="quote-err" id="quoteErr" hidden>That did not send. Please try again, or call 0452 573 701.</p>
-        <p class="quote-note">A member of our team will contact you as soon as possible, usually the same day. Your details are used to answer your enquiry and nothing else.</p>
-      </form>
-
-      <div class="quote-done" id="quoteDone" role="status" aria-live="polite" hidden>
-        <div class="quote-done-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" width="26" height="26"><path d="M4 12.5l5.2 5.2L20 7" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <p class="quote-done-title">Request received.</p>
-        <p class="quote-done-text">A member of our team will contact you as soon as possible, usually the same day. If it is urgent, call 0452 573 701.</p>
-      </div>
-    </div>
+    {%- include quote-form.html %}
 
     <h2 id="how">How a repair works</h2>
 
@@ -555,49 +487,4 @@ layout: default
   </div>
 </div>
 
-<script>
-/* The FAQ uses the shared .faq-q handler in _includes/scripts.html. */
-
-/* Quote form.
-
-   Without this, the form does a normal POST and Web3Forms answers with
-   its own success page, which takes the visitor off the site onto a
-   stranger's branding. Submitting over fetch keeps them here and lets us
-   show our own confirmation. */
-(function () {
-  var form = document.getElementById('quoteForm');
-  if (!form) return;
-  var btn   = form.querySelector('.quote-submit');
-  var done  = document.getElementById('quoteDone');
-  var errEl = document.getElementById('quoteErr');
-
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    if (errEl) errEl.hidden = true;
-    formSending(btn);
-
-    var data = {};
-    new FormData(form).forEach(function (v, k) { data[k] = v; });
-
-    fetch('https://api.web3forms.com/submit', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-      body: JSON.stringify(data)
-    }).then(function (r) { return r.json(); }).then(function (res) {
-      if (!res.success) throw new Error(res.message || 'failed');
-      formSent(btn, function () {
-        form.hidden = true;
-        /* The intro asked for details that have now been given, so it goes
-           too. The title stays as context for the confirmation. */
-        var desc = document.querySelector('.quote-block-desc');
-        if (desc) desc.hidden = true;
-        done.hidden = false;
-        done.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      });
-    }).catch(function () {
-      formReset(btn);
-      if (errEl) errEl.hidden = false;
-    });
-  });
-})();
-</script>
+{%- comment -%} The FAQ uses the shared .faq-q handler in _includes/scripts.html. {%- endcomment -%}

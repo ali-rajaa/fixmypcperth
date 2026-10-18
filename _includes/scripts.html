@@ -24,6 +24,14 @@ function trackQuoteForm() {
     gtag('event', 'quote_form_click', { event_category: 'engagement', event_label: 'quote_form' });
   }
 }
+/* One lead event for every quote and audit form, named by form, so a
+   send is never counted as a button click. Mark generate_lead as a key
+   event in Google Analytics to see sends per form under conversions. */
+function trackLead(formName) {
+  if (typeof gtag === 'function') {
+    gtag('event', 'generate_lead', { form_name: formName, page_path: location.pathname });
+  }
+}
 
 /* ============================================================
    Submit button states, shared by every quote and audit form:
@@ -345,6 +353,12 @@ function formShow(el) {
   (function() {
     const bar = document.getElementById('stickyCta');
     if (!bar) return;
+    /* "Get a quote": this page's own form if it has one, else /quote-request. */
+    const quoteBtn = bar.querySelector('.sc-quote');
+    if (quoteBtn) {
+      const local = document.getElementById('top-quote') || document.getElementById('quote');
+      quoteBtn.setAttribute('href', local ? '#' + local.id : '/quote-request');
+    }
     const hero = document.querySelector('.hero, .quiz-hero');
     window.addEventListener('scroll', function() {
       const past = hero ? (window.scrollY > hero.offsetHeight * 0.85) : (window.scrollY > 600);
@@ -399,107 +413,126 @@ function formShow(el) {
     sync();
   })();
 
-  /* ---- Instant Quote Mini Form (Web3Forms, 2-step) ---- */
+  /* ---- Homepage quote card (Web3Forms, 2 steps) ----
+     Step 1 is the service. A tap on a service moves straight to step 2;
+     arrow keys only change the choice, and Continue moves on, so a
+     keyboard user is never thrown forward. Step 2 is the machine, then
+     where to reply: the reply choice shows only the mobile or the email
+     field. Same fields and messages as _includes/quote-form.html. */
   (function() {
     const form = document.getElementById('miniQuoteForm');
     if (!form) return;
 
-    const success   = document.getElementById('mqSuccess');
-    const submitBtn = document.getElementById('mqSubmitBtn');
-    const nextBtn   = document.getElementById('mqNextBtn');
-    const backBtn   = document.getElementById('mqBackBtn');
-    const step1     = document.getElementById('mqStep1');
-    const step2     = document.getElementById('mqStep2');
-    const fill      = document.getElementById('mqProgressFill');
-    const label     = document.getElementById('mqProgressLabel');
-    const selName   = document.getElementById('mqSelectedName');
-    const trust     = document.querySelector('.mq-trust');
+    const $ = function(id) { return document.getElementById(id); };
+    const success = $('mqSuccess'), submitBtn = $('mqSubmitBtn'), nextBtn = $('mqNextBtn');
+    const step1 = $('mqStep1'), step2 = $('mqStep2'), fill = $('mqProgressFill'), label = $('mqProgressLabel');
+    const trust = document.querySelector('.mq-trust');
+    const phone = $('mq-phone'), email = $('mq-email'), errEl = $('mqErr');
+    const phoneRe = /^(\+?61|0)[2-478]\d{8}$/;
+    const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    function selectedService() {
+    function selected() {
       const el = form.querySelector('input[name="Service"]:checked');
       return el ? el.value : '';
     }
-
-    function goStep(n) {
-      const toTwo = (n === 2);
-      step1.classList.toggle('active', !toTwo);
-      step2.classList.toggle('active', toTwo);
-      fill.style.width = toTwo ? '100%' : '50%';
-      label.textContent = 'Step ' + n + ' of 2';
-      if (toTwo) selName.textContent = selectedService();
+    function byEmail() {
+      const c = form.querySelector('input[name="Preferred Contact"]:checked');
+      return !!c && c.value === 'Email';
+    }
+    const checks = {
+      'mq-service': function() { return !!selected(); },
+      'mq-device':  function() { return !!form.querySelector('input[name="Device Type"]:checked'); },
+      'mq-name':    function(v) { return v.trim().length > 0; },
+      'mq-phone':   function(v) { return byEmail() || phoneRe.test(v.replace(/[\s().-]/g, '')); },
+      'mq-email':   function(v) { return !byEmail() || emailRe.test(v.trim()); }
+    };
+    function check(id) {
+      const el = $(id);
+      const ok = checks[id](el.value || '');
+      el.setAttribute('aria-invalid', ok ? 'false' : 'true');
+      $(id + '-err').hidden = ok;
+      return ok;
     }
 
-    /* Tapping a service card advances automatically */
-    form.querySelectorAll('.mq-service-radio').forEach(function(radio) {
-      radio.addEventListener('change', function() {
-        document.getElementById('mqServiceErr').classList.remove('show');
+    function goStep(n) {
+      const two = (n === 2);
+      step1.classList.toggle('active', !two);
+      step2.classList.toggle('active', two);
+      fill.style.width = two ? '100%' : '50%';
+      label.textContent = 'Step ' + n + ' of 2';
+      if (two) {
+        $('mqSelectedName').textContent = selected();
+        const first = form.querySelector('input[name="Device Type"]:checked') || form.querySelector('input[name="Device Type"]');
+        if (first) first.focus({ preventScroll: true });
+      } else {
+        const svc = form.querySelector('input[name="Service"]:checked') || form.querySelector('input[name="Service"]');
+        if (svc) svc.focus({ preventScroll: true });
+      }
+    }
+
+    /* A pointer tap on a service advances; a keyboard change does not. */
+    let tapped = 0;
+    $('mq-service').addEventListener('pointerdown', function() { tapped = Date.now(); });
+    form.querySelectorAll('input[name="Service"]').forEach(function(r) {
+      r.addEventListener('change', function() {
+        check('mq-service');
+        if (Date.now() - tapped < 1500) setTimeout(function() { goStep(2); }, 180);
       });
     });
+    nextBtn.addEventListener('click', function() { if (check('mq-service')) goStep(2); });
+    $('mqBackBtn').addEventListener('click', function() { goStep(1); });
 
-    nextBtn.addEventListener('click', function() {
-      if (!selectedService()) {
-        document.getElementById('mqServiceErr').classList.add('show');
-        return;
-      }
-      goStep(2);
+    function syncContact() {
+      const mail = byEmail();
+      $('mq-phone-f').hidden = mail;
+      $('mq-email-f').hidden = !mail;
+      phone.disabled = mail;
+      email.disabled = !mail;
+      const off = mail ? 'mq-phone' : 'mq-email';
+      $(off).setAttribute('aria-invalid', 'false');
+      $(off + '-err').hidden = true;
+    }
+    form.querySelectorAll('input[name="Preferred Contact"]').forEach(function(r) { r.addEventListener('change', syncContact); });
+    form.querySelectorAll('input[name="Device Type"]').forEach(function(r) { r.addEventListener('change', function() { check('mq-device'); }); });
+    ['mq-name', 'mq-phone', 'mq-email'].forEach(function(id) {
+      const el = $(id);
+      el.addEventListener('blur', function() { if (el.value) check(id); });
+      el.addEventListener('input', function() { if (el.getAttribute('aria-invalid') === 'true') check(id); });
     });
+    syncContact();
 
-    backBtn.addEventListener('click', function() { goStep(1); });
-
-    form.addEventListener('submit', async function(e) {
+    form.addEventListener('submit', function(e) {
       e.preventDefault();
-      let ok = true;
-
-      form.querySelectorAll('.mq-err').forEach(function(el) { el.classList.remove('show'); });
-      form.querySelectorAll('.err').forEach(function(el) { el.classList.remove('err'); });
-
-      const device = document.getElementById('mqDevice');
-      const desc   = document.getElementById('mqDesc');
-      const name   = document.getElementById('mqName');
-      const phone  = document.getElementById('mqPhone');
-      const email  = document.getElementById('mqEmail');
-
-      if (!selectedService()) { document.getElementById('mqServiceErr').classList.add('show'); goStep(1); return; }
-      if (!device.value)      { document.getElementById('mqDeviceErr').classList.add('show'); device.classList.add('err'); ok = false; }
-      if (!desc.value.trim()) { document.getElementById('mqDescErr').classList.add('show'); desc.classList.add('err'); ok = false; }
-      if (!name.value.trim()) { document.getElementById('mqNameErr').classList.add('show'); name.classList.add('err'); ok = false; }
-
-      const phoneVal = phone.value.replace(/[\s\-()]/g, '');
-      const phoneRe = /^(\+?61\s?|0)[2-9](\s?\d){8}$/;
-      if (!phoneRe.test(phoneVal)) { document.getElementById('mqPhoneErr').classList.add('show'); phone.classList.add('err'); ok = false; }
-
-      const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRe.test(email.value.trim())) { document.getElementById('mqEmailErr').classList.add('show'); email.classList.add('err'); ok = false; }
-
-      if (!ok) {
-        const firstErr = form.querySelector('.mq-err.show');
-        if (firstErr) firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      errEl.hidden = true;
+      if (!check('mq-service')) { goStep(1); return; }
+      const bad = ['mq-device', 'mq-name', 'mq-phone', 'mq-email'].filter(function(id) { return !check(id); });
+      if (bad.length) {
+        const first = $(bad[0]);
+        (first.tagName === 'FIELDSET' ? first.querySelector('input') : first).focus();
         return;
       }
-
       formSending(submitBtn);
-
-      try {
-        const response = await fetch('https://api.web3forms.com/submit', {
-          method: 'POST',
-          body: new FormData(form)
+      const data = {};
+      new FormData(form).forEach(function(v, k) { data[k] = v; });
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(data)
+      }).then(function(r) { return r.json(); }).then(function(res) {
+        if (!res.success) throw new Error(res.message || 'failed');
+        formSent(submitBtn, function() {
+          form.hidden = true;
+          if (trust) trust.hidden = true;
+          $('mqDoneHow').textContent = byEmail() ? 'email' : 'WhatsApp';
+          formShow(success);
+          success.setAttribute('tabindex', '-1');
+          success.focus();
+          trackLead('quote_home');
         });
-        const result = await response.json();
-        if (result.success) {
-          if (typeof trackQuoteForm === 'function') trackQuoteForm();
-          formSent(submitBtn, function() {
-            form.style.display = 'none';
-            if (trust) trust.style.display = 'none';
-            success.classList.add('show', 'rise-in');
-          });
-        } else {
-          formReset(submitBtn);
-          alert('Submission failed. Please try again or contact us on WhatsApp.');
-        }
-      } catch (err) {
+      }).catch(function() {
         formReset(submitBtn);
-        alert('An error occurred. Please try again.');
-      }
+        errEl.hidden = false;
+      });
     });
   })();
 

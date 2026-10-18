@@ -150,66 +150,8 @@ a    { color:inherit; }
 .hc-hint { display:none; white-space:nowrap; font-size:12px; font-weight:600; color:rgba(255,255,255,0.62); margin-left:auto; margin-right:26px; letter-spacing:0.01em; }
 .hc-toggle { display:none; }
 .hc-chevron { width:18px; height:18px; }
-.mq-form { display:flex; flex-direction:column; gap:11px; }
-.mq-field { display:flex; flex-direction:column; gap:5px; }
-.mq-row { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
-.mq-field label { font-size:12px; font-weight:600; color:var(--ink2); }
-.mq-field label .req { color:var(--red); margin-left:2px; }
-.mq-field input,
-.mq-field select,
-.mq-field textarea {
-  width:100%; padding:10px 12px; background:var(--bg2); border:1.5px solid var(--border);
-  border-radius:10px; font-family:var(--body); font-size:13px; color:var(--ink);
-  outline:none; transition:border-color 0.15s,box-shadow 0.15s,background 0.15s;
-  -webkit-appearance:none; appearance:none;
-}
-.mq-field select {
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2364748B' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E");
-  background-repeat:no-repeat; background-position:right 12px center; padding-right:32px; cursor:pointer;
-}
-.mq-field textarea { resize:vertical; min-height:64px; line-height:1.55; }
-.mq-field input:focus,
-.mq-field select:focus,
-.mq-field textarea:focus { border-color:var(--blue); box-shadow:0 0 0 3px rgba(21,96,255,0.1); background:var(--bg); }
-.mq-field input.err,
-.mq-field select.err,
-.mq-field textarea.err { border-color:var(--red); }
-.mq-err { font-size:13px; color:var(--red); display:none; }
-.mq-err.show { display:block; }
-.mq-group-label { font-size:10.5px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--muted); margin:2px 0 -2px; }
-.mq-divider { height:1px; background:var(--border); margin:2px 0; border:none; }
-.mq-pref-group { display:flex; gap:8px; }
-.mq-pref-radio { position:absolute; opacity:0; width:1px; height:1px; pointer-events:none; }
-.mq-pref-btn {
-  flex:1; min-width:0; display:flex; align-items:center; justify-content:center; gap:6px;
-  padding:10px 10px; border-radius:10px; border:1.5px solid var(--border); background:var(--bg2);
-  font-family:var(--body); font-size:12.5px; font-weight:700; color:var(--ink2);
-  cursor:pointer; transition:border-color 0.15s,background 0.15s,color 0.15s,box-shadow 0.15s,transform 0.1s var(--ease-press);
-  user-select:none;
-}
-.mq-pref-btn svg { width:15px; height:15px; flex-shrink:0; }
-.mq-pref-radio:active + .mq-pref-btn { transform:scale(0.96); }
-.mq-pref-radio:checked + .mq-pref-btn {
-  border-color:var(--blue); background:var(--blue-lt); color:var(--blue-dk);
-  box-shadow:0 0 0 3px rgba(21,96,255,0.08);
-}
-.mq-pref-radio:focus-visible + .mq-pref-btn { outline:2px solid var(--blue); outline-offset:1px; }
-.mq-submit {
-  margin-top:4px; width:100%; display:flex; align-items:center; justify-content:center; gap:8px;
-  background:var(--blue); color:#fff; font-family:var(--body); font-size:15px; font-weight:700;
-  padding:14px 20px; border-radius:50px; border:none; cursor:pointer;
-  box-shadow:0 4px 16px rgba(21,96,255,0.35); transition:transform 0.25s var(--ease-settle),box-shadow 0.25s var(--ease-settle),filter 0.2s;
-}
-@media (hover: hover) { .mq-submit:hover { transform:translateY(-3px); box-shadow:0 12px 32px rgba(21,96,255,0.5); filter:brightness(1.1); } }
-.mq-submit:active:not(:disabled) { transform:translateY(-1px) scale(0.97); box-shadow:0 4px 14px rgba(21,96,255,0.4); filter:brightness(1.05); transition:transform 0.1s var(--ease-press),box-shadow 0.1s var(--ease-press); }
-.mq-submit:disabled { opacity:0.7; cursor:not-allowed; transform:none; }
-.mq-note { font-size:12px; color:var(--muted); text-align:center; margin-top:2px; }
-.mq-success { display:none; text-align:center; padding:1rem 0.25rem; }
-.mq-success.show { display:block; }
-.mq-success-icon { width:46px; height:46px; border-radius:50%; background:linear-gradient(135deg,var(--blue) 0%,#00CFFF 100%); color:#fff; font-size:20px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0 auto 0.85rem; box-shadow:0 6px 20px rgba(21,96,255,0.3); }
-.mq-success-icon svg { width:22px; height:22px; }
-.mq-success-title { font-family:var(--display); font-size:17px; font-weight:800; color:var(--ink); margin-bottom:0.4rem; }
-.mq-success-body { font-size:13px; color:var(--muted); line-height:1.6; }
+/* Outranks the shared .tq-form gap: the card keeps its tighter rhythm. */
+.hc-body > .mq-form { display:flex; flex-direction:column; gap:11px; }
 /* Was an amber alert box with a pulsing dot and a live countdown. It is now
    a quiet informational line in the card's own palette. */
 .mq-notice {
@@ -232,8 +174,6 @@ a    { color:inherit; }
 .mq-rating:active { scale:0.985; background:var(--blue-lt); transition:scale 0.1s var(--ease-press),background 0.1s; }
 .mq-rating-text { font-size:12px; font-weight:600; color:var(--ink2); }
 .mq-rating-text span:where(:not([class])) { font-weight:500; color:var(--muted); }
-.mq-response { display:flex; align-items:center; justify-content:center; gap:6px; font-size:11px; font-weight:600; color:var(--wa-dk); margin-top:9px; }
-.mq-response-dot { width:6px; height:6px; border-radius:50%; background:var(--wa); animation:pulse 2s infinite; flex-shrink:0; }
 .mq-step { display:none; }
 .mq-step.active { display:flex; flex-direction:column; gap:13px; }
 .mq-progress { display:flex; align-items:center; gap:7px; margin-bottom:2px; }
@@ -243,11 +183,9 @@ a    { color:inherit; }
 .mq-progress-fill { height:100%; width:50%; background:var(--blue); border-radius:3px; transition:width 0.3s cubic-bezier(0.4,0,0.2,1); }
 .mq-progress-label { font-size:12px; font-weight:600; color:var(--muted); white-space:nowrap; letter-spacing:0.03em; }
 .mq-service-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:8px; }
-/* .mq-field input (below) sets width:100% and has higher specificity than a
-   bare class, so these radios were rendering at full viewport width and
-   absolutely positioned against the viewport. Matched on type as well so the
-   intended 1px wins. */
-.mq-field input.mq-service-radio,
+/* The service radios are hidden under their tiles; the tile (label) is the
+   tap target. Every other field in the card is styled by assets/css/form.css
+   (the .tq-light version). */
 .mq-service-radio { position:absolute; opacity:0; width:1px; height:1px; min-height:0; padding:0; margin:0; border:0; background:none; pointer-events:none; appearance:none; -webkit-appearance:none; }
 .mq-service-btn {
   display:flex; flex-direction:row; align-items:center; justify-content:flex-start; gap:8px; text-align:left;
@@ -875,17 +813,11 @@ body { padding-top:var(--mob-nav-h); }
    FAQ arrow drops its overshoot and rotates plainly. Hover lifts lose their
    translateY - the border/shadow/color change alone still signals "hovered". */
 @media (prefers-reduced-motion: reduce) {
-  .mq-response-dot, .trust-track, .pkg-swipe-hint svg { animation:none; }
+  .trust-track, .pkg-swipe-hint svg { animation:none; }
   .js .fade-up { transition:opacity 0.2s ease; transform:none; }
 
-  @media (hover: hover) { .btn-blue:hover, .btn-wa:hover, .mq-submit:hover,
-  .svc-card:hover, .how-card:hover, .its-card:hover, .why-card:hover,
-  .testi-card:hover, a.area-pill--link:hover,
- .mq-service-btn:hover, .vc-row:hover .vc-row-arrow, .hero-alt-link:hover svg, .map-chip:hover { transform:none; } }
-  .btn-blue, .btn-wa, .btn-outline, .mq-submit,
-  .svc-card, .how-card, .its-card, .why-card,
-  .testi-card, a.area-pill--link, .mq-service-btn,
-  .mq-pref-btn, .guide-tab, .svc-links-more, .svc-cta, .svc-link-pill {
+  @media (hover: hover) { .btn-blue:hover, .btn-wa:hover, .svc-card:hover, .how-card:hover, .its-card:hover, .why-card:hover, .testi-card:hover, a.area-pill--link:hover, .mq-service-btn:hover, .vc-row:hover .vc-row-arrow, .hero-alt-link:hover svg, .map-chip:hover { transform:none; } }
+  .btn-blue, .btn-wa, .btn-outline, .svc-card, .how-card, .its-card, .why-card, .testi-card, a.area-pill--link, .mq-service-btn, .guide-tab, .svc-links-more, .svc-cta, .svc-link-pill {
     transition-duration:0.15s;
   }
 }
@@ -910,9 +842,7 @@ body { padding-top:var(--mob-nav-h); }
 
 /* The grey iOS tap flash paints over the press-scale feedback above, so the
    two fight each other. The scale and colour change are the feedback now. */
-.btn-blue, .btn-wa, .btn-outline, .mq-submit, .mq-pref-btn,
-.mq-service-btn, .svc-cta, .svc-link-pill,
-.area-pill--link, .guide-tab, .svc-links-more, .pkg-dot {
+.btn-blue, .btn-wa, .btn-outline, .mq-service-btn, .svc-cta, .svc-link-pill, .area-pill--link, .guide-tab, .svc-links-more, .pkg-dot {
   -webkit-tap-highlight-color:transparent;
 }
 
@@ -1037,14 +967,11 @@ body { padding-top:var(--mob-nav-h); }
 
   /* Text */
   .s-sub, .hero-desc, .hero-more, .cta-desc, .guide-panel > p { font-size: var(--m-text); }
-  .hc-url, .mq-rating-text > span, .mq-notice > span, .mq-field > label, .mq-service-btn,
-  .mq-note, .mq-trust-item, .his-lbl, .his-checks > li, .brand-badge, .svc-link-pill,
-  .pkg-swipe-count, .pkg-was, .pkg-lbl, .pkg-item, .pkg-tagline, .vc-turnaround-note,
-  .svc-cta { font-size: var(--m-text-min); }
+  .hc-url, .mq-rating-text > span, .mq-notice > span, .mq-service-btn, .mq-trust-item, .his-lbl, .his-checks > li, .brand-badge, .svc-link-pill, .pkg-swipe-count, .pkg-was, .pkg-lbl, .pkg-item, .pkg-tagline, .vc-turnaround-note, .svc-cta { font-size: var(--m-text-min); }
   .mq-notice { padding: var(--m-row-pad); border-radius: var(--m-panel-radius); font-size: var(--m-text-min); }
 
   /* Buttons */
-  .btn-wa, .btn-outline, .mq-submit, .svc-cta, .svc-links-more { min-height: var(--m-btn); padding-top: 0; padding-bottom: 0; }
+  .btn-wa, .btn-outline, .svc-cta, .svc-links-more { min-height: var(--m-btn); padding-top: 0; padding-bottom: 0; }
   .hero-wa > .btn-wa, .svc-header-row > .btn-outline, .pkg-price-block > .btn-wa,
   .offer-btn > .btn-wa, .fade-up > .btn-outline, .vc-actions > .btn-wa,
   .cta-actions > .btn-wa, .cta-actions > .btn-outline { width: 100%; justify-content: center; }

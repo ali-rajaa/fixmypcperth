@@ -696,50 +696,10 @@ img { max-width: 100%; height: auto; }
 .audit-card { background: var(--bg); border-radius: 20px; padding: 2rem; box-shadow: 0 8px 40px rgba(0,0,0,0.28); }
 .audit-card-title { font-family: var(--display); font-size: 18px; font-weight: 800; color: var(--ink); margin-bottom: 0.4rem; }
 .audit-card-sub { font-size: 13px; color: var(--muted); margin-bottom: 1.4rem; }
-.audit-input-group { margin-bottom: 0.9rem; }
-.audit-label { font-size: 12px; font-weight: 600; color: var(--muted); display: block; margin-bottom: 5px; }
-.audit-input {
-  width: 100%;
-  padding: 11px 14px;
-  border: 1.5px solid var(--border);
-  border-radius: 10px;
-  font-family: var(--body);
-  font-size: 16px;
-  color: var(--ink);
-  background: var(--bg2);
-  transition: border-color 0.15s;
-  outline: none;
-}
-.audit-input:focus { border-color: var(--blue); background: #fff; }
-.audit-input::placeholder { color: var(--muted); }
-.audit-submit {
-  width: 100%;
-  padding: 14px;
-  background: var(--blue);
-  color: #fff;
-  border: none;
-  border-radius: 50px;
-  font-family: var(--body);
-  font-size: 15px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: transform 0.15s, box-shadow 0.15s;
-  box-shadow: 0 4px 16px rgba(21,96,255,0.35);
-}
-@media (hover: hover) {
-  .audit-submit:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(21,96,255,0.45); }
-}
-.audit-note { font-size: 12px; color: var(--muted); text-align: center; margin-top: 0.7rem; }
 /* Inline confirmation and error, so a sent form stays on this page instead
    of leaving for Web3Forms' own confirmation page. Light versions of the
    industry.css pair, since this form sits on a white card. */
-.audit-done { text-align: center; padding: 1.25rem 0 0.5rem; outline: none; }
-.audit-done-tick { width: 52px; height: 52px; margin: 0 auto 1rem; border-radius: 50%; background: rgba(34,197,94,0.12); border: 1.5px solid rgba(34,197,94,0.4); display: flex; align-items: center; justify-content: center; color: #15803D; }
-.audit-done-tick > svg { width: 26px; height: 26px; }
-.audit-done-title { font-family: var(--display); font-size: 1.15rem; font-weight: 800; color: var(--ink); margin: 0 0 0.4rem; }
-.audit-done-text { font-size: 14px; line-height: 1.7; color: var(--muted); max-width: 46ch; margin: 0 auto; }
-.audit-err > a, .audit-done-text > a { color: inherit; text-decoration: underline; text-underline-offset: 2px; overflow-wrap: anywhere; }
-.audit-err { font-size: 13px; font-weight: 600; color: #B91C1C; background: #FEF2F2; border: 1px solid #FECACA; border-radius: 10px; padding: 10px 14px; margin: 0.75rem 0 0; }
+
 /* ─── CTA FINAL ──────────────────────────────────────────────── */
 .cta-final { background: linear-gradient(135deg, var(--ink) 0%, var(--ink2) 100%); padding: 5.5rem 2rem; position: relative; overflow: hidden; }
 .cta-final::before {
@@ -940,13 +900,12 @@ img { max-width: 100%; height: auto; }
    ========================================================== */
 /* The grey iOS tap flash paints over the press feedback below, so the two
    fight each other. The scale and colour change are the feedback now. */
-.btn-primary, .btn-outline, .plan-cta, .plan-tab, .industry-card, .audit-submit, .cta-actions > a, .addon-row, .first-month-banner,
-.audit-strip-btn, .addon-toggle, .biz-link-chip, .biz-link-chip-all {
+.btn-primary, .btn-outline, .plan-cta, .plan-tab, .industry-card, .cta-actions > a, .addon-row, .first-month-banner, .audit-strip-btn, .addon-toggle, .biz-link-chip, .biz-link-chip-all {
   -webkit-tap-highlight-color: transparent;
 }
 /* Feedback on press, not release: the instant a finger or cursor is down the
    control visibly compresses, so a tap is never left unacknowledged. */
-.btn-primary:active, .audit-submit:active, .cta-actions > a:active, .btn-outline:active {
+.btn-primary:active, .cta-actions > a:active, .btn-outline:active {
   transform: scale(0.97);
   transition: transform 0.1s var(--ease-press);
 }
@@ -975,10 +934,10 @@ img { max-width: 100%; height: auto; }
   html { scroll-behavior: auto; }
   .trust-track, .hc-dot, .fade-up { animation: none !important; }
   .js .fade-up { opacity: 1 !important; transform: none !important; }
-  .plan-card, .industry-card, .addon-row, .hero-card, .metric-item, .btn-primary, .plan-cta, .audit-submit, .cta-actions > a, .btn-outline, .plan-tab {
+  .plan-card, .industry-card, .addon-row, .hero-card, .metric-item, .btn-primary, .plan-cta, .cta-actions > a, .btn-outline, .plan-tab {
     transition-duration: 0.15s;
   }
-  .plan-card:hover, .industry-card:hover, .addon-row:hover, .btn-primary:hover, .plan-cta:hover, .cta-actions > a:hover, .industry-card:active, .plan-tab:active, .btn-primary:active, .plan-cta:active, .audit-submit:active, .btn-outline:active {
+  .plan-card:hover, .industry-card:hover, .addon-row:hover, .btn-primary:hover, .plan-cta:hover, .cta-actions > a:hover, .industry-card:active, .plan-tab:active, .btn-primary:active, .plan-cta:active, .btn-outline:active {
     transform: none;
   }
   /* The plan buttons' lifts are set at higher specificity, so name them the same way. */
@@ -1615,15 +1574,11 @@ img { max-width: 100%; height: auto; }
 
   /* Text */
   .hero-desc, .s-sub, .s-sub-light, .industries-sub, .cta-desc, .plans-help-text { font-size: var(--m-text); }
-  .hero-trust-item, .audit-strip-desc, .metric-lbl, .plan-period, .plan-note, .plan-best, .plan-feat-d, .plan-tagline,
-  .scroll-hint-text, .scroll-hint-text-dark, .res-desc, .addon-desc, .addon-freq, .who-desc,
-  .audit-label, .audit-note { font-size: var(--m-text-min); }
+  .hero-trust-item, .audit-strip-desc, .metric-lbl, .plan-period, .plan-note, .plan-best, .plan-feat-d, .plan-tagline, .scroll-hint-text, .scroll-hint-text-dark, .res-desc, .addon-desc, .addon-freq, .who-desc { font-size: var(--m-text-min); }
 
   /* Buttons */
-  .btn-primary, .btn-outline, .audit-strip-btn, .plan-cta, .addon-toggle, .audit-submit,
-  .cta-btn-primary { min-height: var(--m-btn); padding-top: 0; padding-bottom: 0; }
-  .hero-actions > .btn-primary, .audit-strip-btn, .plans-help > .btn-outline, .who-more > .btn-primary,
-  .cta-actions > a, .audit-submit { width: 100%; justify-content: center; }
+  .btn-primary, .btn-outline, .audit-strip-btn, .plan-cta, .addon-toggle, .cta-btn-primary { min-height: var(--m-btn); padding-top: 0; padding-bottom: 0; }
+  .hero-actions > .btn-primary, .audit-strip-btn, .plans-help > .btn-outline, .who-more > .btn-primary, .cta-actions > a { width: 100%; justify-content: center; }
 
   .hero .hero-h1 { font-size: var(--m-h1); }
   .plans-grid { gap: var(--m-gap-cards); }

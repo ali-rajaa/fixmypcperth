@@ -105,7 +105,8 @@ body {
 }
 .post-meta-author { color: var(--ink); font-weight: 700; }
 .post-meta-sep { color: var(--muted2); }
-.post-body p { margin-bottom: 1.35rem; }
+/* Not inside the audit form panel: assets/css/form.css owns its spacing. */
+.post-body p:where(:not(.audit-block *)) { margin-bottom: 1.35rem; }
 .post-body h3:where(:not([class])) { font-family: var(--display); font-size: 1.05rem; font-weight: 700; color: var(--ink); margin: 1.75rem 0 0.5rem; }
 .post-body ul:where(:not([class])), .post-body ol:where(:not([class])) { padding-left: 1.5rem; margin-bottom: 1.25rem; }
 .post-body li { margin-bottom: 0.6rem; color: var(--ink2); }
@@ -113,10 +114,6 @@ body {
 .post-body a:not([class]) { color: var(--blue); font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--blue-mid); }
 /* Anything with a class is a button or card and must never be underlined. */
 .post-body a[class] { text-decoration: none; border-bottom: 0; }
-/* The email address in the audit form messages: same colour as the message,
-   underlined. a.audit-mail outranks .post-body a[class] above on purpose. */
-.audit-err > a.audit-mail, .audit-done-text > a.audit-mail { color: inherit; text-decoration: underline; text-underline-offset: 2px; overflow-wrap: anywhere; }
-.audit-mail:focus-visible { outline: 2px solid #fff; outline-offset: 2px; border-radius: 2px; }
 .callout strong:where(:not([class])) { color: var(--blue); }
 .callout-green strong:where(:not([class])) { color: var(--green); }
 .summary-box::before {
@@ -564,52 +561,13 @@ body:has(.ind-hero) { overflow-x: clip; }
    On-page audit form
    These pages previously sent every CTA off to the hub's form
    at /business-it-support#audit-section, which loses people on
-   the hop. The form lives here now. There is no WhatsApp route
-   on the industry pages: a practice manager researching
-   compliance at 9pm wants to leave details, not open a chat.
+   the hop. The form lives here now (_includes/audit-form.html),
+   styled once for every form on the site in assets/css/form.css.
+   There is no WhatsApp route on the industry pages: a practice
+   manager researching compliance at 9pm wants to leave details,
+   not open a chat.
    ========================================================== */
-.audit-block::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--blue), var(--teal), var(--wa));
-}
-.audit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.audit-input-group { display: flex; flex-direction: column; gap: 5px; }
-.audit-input-group.full { grid-column: 1 / -1; }
-.audit-input, .audit-select {
-  width: 100%;
-  font-family: var(--body);
-  font-size: 16px;
-  color: #fff;
-  background: rgba(255,255,255,0.06);
-  border: 1.5px solid rgba(255,255,255,0.16);
-  border-radius: 10px;
-  padding: 11px 14px;
-  transition: border-color 0.18s, background 0.18s;
-}
-.audit-input:focus, .audit-select:focus { outline: none; border-color: var(--blue); background: rgba(255,255,255,0.1); }
-.audit-select option { background: var(--ink); color: #fff; }
-.audit-submit {
-  grid-column: 1 / -1;
-  margin-top: 4px;
-  width: 100%;
-  font-family: var(--body);
-  font-size: 15px;
-  font-weight: 700;
-  color: #fff;
-  background: var(--blue);
-  border: 0;
-  border-radius: 50px;
-  padding: 14px 24px;
-  cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-  transition: background 0.18s, transform 0.25s var(--ease-settle);
-}
-.audit-submit:active { transform: scale(0.98); transition: transform 0.1s var(--ease-press); }
+
 /* ==========================================================
    Keyboard focus
    Nothing here had a focus indicator, so a keyboard user had
@@ -617,47 +575,18 @@ body:has(.ind-hero) { overflow-x: clip; }
    rather than focus, so a mouse click does not leave a ring
    behind but tabbing always shows one.
    ========================================================== */
-.inline-cta-btn:focus-visible, .inline-cta-btn-outline:focus-visible, .service-link-card:focus-visible, .industry-pill:focus-visible, .post-footer-link:focus-visible, .post-breadcrumb a:where(:not([class])):focus-visible, .post-body a:focus-visible, .audit-submit:focus-visible {
+.inline-cta-btn:focus-visible, .inline-cta-btn-outline:focus-visible, .service-link-card:focus-visible, .industry-pill:focus-visible, .post-footer-link:focus-visible, .post-breadcrumb a:where(:not([class])):focus-visible, .post-body a:focus-visible {
   outline: 2px solid var(--blue);
   outline-offset: 3px;
   border-radius: 6px;
 }
-/* On the dark CTA and audit panels the blue ring disappears into the
-   background, so those get a light one instead. */
-.inline-cta .inline-cta-btn:focus-visible, .inline-cta .inline-cta-btn-outline:focus-visible, .audit-block .audit-submit:focus-visible {
+/* On the dark CTA panel the blue ring disappears into the background,
+   so it gets a light one instead. */
+.inline-cta .inline-cta-btn:focus-visible, .inline-cta .inline-cta-btn-outline:focus-visible {
   outline-color: #fff;
 }
-.audit-input:focus-visible, .audit-select:focus-visible { outline: 2px solid var(--blue); outline-offset: 1px; }
 .check-list li strong:where(:not([class])) { color: var(--ink); font-weight: 700; }
-/* Inline success and error, so a submission never leaves the site for
-   Web3Forms' own branded confirmation page. */
-.audit-done-tick > svg { width: 26px; height: 26px; }
-.audit-done-tick {
-  width: 52px;
-  height: 52px;
-  margin: 0 auto 1rem;
-  border-radius: 50%;
-  background: rgba(34,197,94,0.15);
-  border: 1.5px solid rgba(34,197,94,0.4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  color: #4ADE80;
-}
-.audit-done-title { font-family: var(--display); font-size: 1.15rem; font-weight: 800; color: #fff; margin: 0 0 0.4rem; }
-.audit-err {
-  grid-column: 1 / -1;
-  font-size: 13px;
-  font-weight: 600;
-  color: #FCA5A5;
-  background: rgba(239,68,68,0.12);
-  border: 1px solid rgba(239,68,68,0.35);
-  border-radius: 10px;
-  padding: 10px 14px;
-  margin: 0;
-}
-.audit-submit:disabled { opacity: 0.6; cursor: default; }
+
 /* The hidden attribute is ignored on anything that sets its own display, so
    the form stayed visible after submitting. */
 [hidden] { display: none !important; }
@@ -719,37 +648,10 @@ body:has(.ind-hero) { overflow-x: clip; }
   background: rgba(255,255,255,0.04);
 }
 /* Audit panel: same treatment, plus room to breathe. */
-.audit-block { background: var(--ink); border-radius: 16px; margin: 2.5rem 0; position: relative; overflow: hidden; padding: 2.25rem 2.25rem 2rem; }
-.audit-block-title {
-  font-family: var(--display);
-  font-weight: 800;
-  color: #fff;
-  letter-spacing: -0.02em;
-  margin: 0 0 0.4rem;
-  font-size: 1.3rem;
-  line-height: 1.25;
-  margin-bottom: 0.5rem;
-}
-.audit-block-desc { font-size: 14px; line-height: 1.7; margin: 0 0 1.5rem; color: rgba(255,255,255,0.72); max-width: 62ch; margin-bottom: 1.75rem; }
-.audit-label { font-size: 12px; font-weight: 700; letter-spacing: 0.02em; color: rgba(255,255,255,0.85); }
-.audit-input::placeholder { color: rgba(255,255,255,0.6); }
-.audit-note {
-  grid-column: 1 / -1;
-  font-size: 12.5px;
-  text-align: center;
-  margin-top: 2px;
-  color: rgba(255,255,255,0.6);
-  line-height: 1.6;
-  max-width: 54ch;
-  margin: 0.5rem auto 0;
-}
-.audit-done { text-align: center; padding: 1.5rem 0 0.75rem; }
-.audit-done-text { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.72); max-width: 46ch; margin: 0 auto; }
+
 @media (max-width: 620px) {
-  .audit-grid { grid-template-columns: 1fr; }
   .inline-cta { padding: 1.5rem 1.35rem; }
   .inline-cta-btn, .inline-cta-btn-outline { width: 100%; justify-content: center; }
-  .audit-block { padding: 1.5rem 1.25rem; }
 }
 /* Links to the other industry pages, at the foot of each page. */
 .ind-more { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border); }
@@ -831,7 +733,6 @@ body:has(.ind-hero) { overflow-x: clip; }
     transform: translateY(-3px);
     box-shadow: 0 10px 28px rgba(15,23,42,0.08);
   }
-  .audit-submit:hover { background: var(--blue-dk); }
   .inline-cta-btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.1); color: #fff; }
   .faq-item:hover { border-color: var(--blue-mid); }
   .faq-q:hover { color: var(--blue); }
@@ -854,22 +755,15 @@ body:has(.ind-hero) { overflow-x: clip; }
   }
   .inline-cta-btn:hover { transform: none; }
   .service-link-card:active, .inline-cta-btn:active, .inline-cta-btn-outline:active { scale: none; }
-  .audit-submit:active { transform: none; }
-  .audit-input, .audit-select, .audit-submit { transition-duration: 0.15s; }
   .faq-item, .faq-q, .faq-q svg, .faq-a, .faq-a p:where(:not([class])) { transition: none; }
 }
 @media (prefers-contrast: more) {
-  .post-body p, .post-body li, .summary-box { color: #334155; }
+  .post-body p:where(:not(.audit-block *)), .post-body li:where(:not(.audit-block *)), .summary-box { color: #334155; }
   .callout, .summary-box, .stat-box, .service-link-card { border-color: #0F172A; }
   .inline-cta-btn-outline, .industry-pill { border-color: #0A3ACC; }
-  .audit-input, .audit-select { border-color: rgba(255,255,255,0.5); }
-  .audit-label { color: #fff; }
-  .audit-block-desc, .audit-note { color: rgba(255,255,255,0.8); }
-  .inline-cta-btn:focus-visible, .inline-cta-btn-outline:focus-visible, .service-link-card:focus-visible, .industry-pill:focus-visible, .post-footer-link:focus-visible, .post-breadcrumb a:where(:not([class])):focus-visible, .post-body a:focus-visible, .audit-submit:focus-visible, .audit-input:focus-visible, .audit-select:focus-visible {
+  .inline-cta-btn:focus-visible, .inline-cta-btn-outline:focus-visible, .service-link-card:focus-visible, .industry-pill:focus-visible, .post-footer-link:focus-visible, .post-breadcrumb a:where(:not([class])):focus-visible, .post-body a:focus-visible {
     outline-width: 3px;
   }
-  .audit-done-text { color: rgba(255,255,255,0.85); }
-  .audit-err { color: #FECACA; border-color: #EF4444; }
   .faq-a p:where(:not([class])) { color: #334155; }
   .faq-item { border-color: #0F172A; }
 }
@@ -924,30 +818,30 @@ body:has(.ind-hero) { overflow-x: clip; }
   .post-body h2:where(:not([class])) { margin-top: var(--m-section); margin-bottom: var(--m-h2-space); }
   .post-body > :first-child { margin-top: 0; }
   .stat-row, .callout, .service-links, .coverage-list, .problem-list { margin-top: var(--m-block); margin-bottom: var(--m-block); }
-  .inline-cta, .audit-block { margin-top: var(--m-section); margin-bottom: var(--m-section); }
+  .inline-cta { margin-top: var(--m-section); margin-bottom: var(--m-section); }
   .faq-section, .ind-more, .post-footer-nav { margin-top: var(--m-section); }
   .faq-section-title, .ind-more { padding-top: var(--m-block); }
   .post-footer-nav { padding-top: var(--m-block); }
 
   /* Cards, rows and the boxes inside them */
-  .summary-box, .stat-box, .callout, .service-link-card, .inline-cta, .audit-block { padding: var(--m-card-pad); border-radius: var(--m-card-radius); }
+  .summary-box, .stat-box, .callout, .service-link-card, .inline-cta { padding: var(--m-card-pad); border-radius: var(--m-card-radius); }
   .coverage-list, .problem-list { border-radius: var(--m-card-radius); }
 
   /* Gaps */
-  .stat-row, .service-links, .audit-grid { gap: var(--m-gap-cards); }
+  .stat-row, .service-links { gap: var(--m-gap-cards); }
   .ind-faq-list { gap: var(--m-gap-rows); }
 
   /* Headings */
   .post-body h2:where(:not([class])), .faq-section-title { font-size: var(--m-h2); }
   .faq-section-title { margin-bottom: var(--m-h2-space); }
-  .inline-cta-title, .audit-block-title { margin-bottom: var(--m-h2-space); }
+  .inline-cta-title { margin-bottom: var(--m-h2-space); }
 
   /* Text */
   .post-body, .post-body p:where(:not([class])), .check-list > li, .problem-item, .coverage-item { font-size: var(--m-text); }
-  .post-breadcrumb, .stat-lbl, .service-link-price, .audit-label, .audit-note { font-size: var(--m-text-min); }
+  .post-breadcrumb, .stat-lbl, .service-link-price { font-size: var(--m-text-min); }
 
   /* Buttons */
-  .inline-cta-btn, .inline-cta-btn-outline, .audit-submit { min-height: var(--m-btn); padding-top: 0; padding-bottom: 0; width: 100%; justify-content: center; }
+  .inline-cta-btn, .inline-cta-btn-outline { min-height: var(--m-btn); padding-top: 0; padding-bottom: 0; width: 100%; justify-content: center; }
 
   .post-body h2:where(:not([class])) + *, .faq-section-title + *, .ind-more-title + * { margin-top: 0; }
   .ind-more-sub { font-size: var(--m-text); }
