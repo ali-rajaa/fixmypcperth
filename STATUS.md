@@ -658,8 +658,9 @@ Applied October 2026. Motion here is feedback, not decoration.
 Condensed without dropping service or suburb links. Repairs keeps all its
 service pages, in two columns (`footer_label` in `_data/suburbs.yml` gives a
 shorter name for the footer only). Company is five links: All Services,
-Pricing, Business IT Support, Reviews & FAQ, Get a Quote. Terms and Privacy
-sit in the bottom bar; Health Check and Tech Tips are in the header. On
+Pricing, Business IT Support, Reviews & FAQ, Get a Quote. Terms, Privacy
+and Sitemap sit in the bottom bar, in that order (Sitemap added back by the
+owner, October 2026); Health Check and Tech Tips are in the header. On
 phones (760px and under) Repairs, Company and Suburbs collapse behind their
 headings (`.footer-sec`, toggled in scripts.html); contact stays open, and
 with no JavaScript every list shows. Heights: desktop 715 to 546px, tablet
