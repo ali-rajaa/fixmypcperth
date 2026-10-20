@@ -13,7 +13,7 @@ every push, and show the owner screenshots first for bigger changes.
 the `fixmypcperth-jekyll` skill, which loads on its own. Do not re-decide
 anything listed under "Locked decisions" there or here.
 
-Last updated: 4 October 2026.
+Last updated: 20 October 2026.
 
 ---
 
@@ -759,6 +759,18 @@ Essential Assembly since there is no Windows install. Shown on /pricing,
 /services, the gaming page (section, costs intro, FAQ) and the homepage
 gaming card; pricing search finds "case swap", "new case", "transfer".
 Terms section 6 covers a part that does not fit the new case.
+
+## Payment (owner decision, October 2026)
+
+Card, PayID, bank transfer and cash, all equal (no preferred method) and no
+surcharge on any of them. Cards: Visa, Mastercard and debit, tap or insert,
+including Apple Pay and Google Pay. Not accepted: American Express, PayPal,
+buy now pay later. Stated in: homepage payment strip and FAQ (visible and
+schema), `paymentAccepted` in every LocalBusiness schema (home, Business IT,
+trades, PC Health Check), the "How do I pay?" FAQ in `_data/reviews.yml`,
+the /pricing Payment rule, terms section 3 and privacy section 3 (plus the
+card payment provider under "Who we share it with"). Change all of them
+together.
 
 ## WhatsApp messages
 
