@@ -915,6 +915,10 @@ Pages source to GitHub Actions), checks including
 
 ## Traps that have actually bitten
 
+- The phone number (0470 308 676 since 20 Oct 2026) is also drawn into the
+  14 share images (`assets/og/*.png`, `og-suburbs.png`, `og-tech-tips.png`).
+  A number change means repainting them and bumping `?v=` on og:image and
+  twitter:image in `default.html`.
 - The repo is CRLF. An edit written with `\n` matches nothing and fails
   silently. Assert every replacement matched exactly once.
 - A layout with no front matter renders with no `<head>`, so no stylesheet
