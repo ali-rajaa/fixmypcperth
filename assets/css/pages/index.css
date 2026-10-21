@@ -360,104 +360,44 @@ a    { color:inherit; }
 /* grid-template-rows 0fr/1fr rather than a fixed max-height: the panel sizes
    itself to whatever the answer needs, so no answer can ever be clipped. */
 
-.area-pill,
-a.area-pill--link {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: var(--bg);
-  border: 1.5px solid var(--border);
-  border-radius: var(--radius);
-  padding: 1rem 1.25rem;
-  transition: border-color 0.2s, box-shadow 0.3s var(--ease-settle), transform 0.3s var(--ease-settle);
-}
-a.area-pill--link {
-  text-decoration: none;
-  color: inherit;
-  cursor: pointer;
-}
-@media (hover: hover) { a.area-pill--link:hover {
-  border-color: var(--blue);
-  box-shadow: 0 2px 12px rgba(21, 96, 255, 0.12);
-  transform: translateY(-2px);
-} }
-a.area-pill--link:active {
-  transform: scale(0.96);
-  transition: transform 0.1s var(--ease-press);
-}
-@media (hover: hover) { a.area-pill--link:hover .area-dot {
-  background: var(--blue);
-} }
-@media (hover: hover) { a.area-pill--link:hover .area-name {
-  color: var(--blue);
-} }
-a.area-pill--link.has-page .area-dot {
-  background: var(--blue);
-  box-shadow: 0 0 0 3px var(--blue-lt);
-}
-.area-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--blue-mid);
-  flex-shrink: 0;
-  transition: background 0.2s;
-}
-.area-name {
-  font-size: 13.5px;
-  font-weight: 600;
-  color: var(--ink);
-  transition: color 0.2s;
-}
-.areas-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: 10px;
-  margin-top: 2.5rem;
-}
-.visit-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:2.5rem; align-items:stretch; }
 /* Contact card. Three stacked zones: hours, same-day turnaround, contact
    rows. WhatsApp is the only messaging channel, so it gets the green icon
    and the one solid button. Labels are plain uppercase text, no pills. */
-.visit-card { background:var(--bg); border:1.5px solid var(--border); border-radius:var(--radius); padding:1.75rem; display:flex; flex-direction:column; gap:1.25rem; box-shadow:0 8px 24px rgba(15,23,42,0.06); }
-.vc-label { display:block; font-size:11px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); line-height:1.3; }
-.vc-label--open { color:var(--wa-dk); }
-.vc-hours { display:flex; align-items:flex-start; gap:14px; }
-.vc-hours-icon { width:48px; height:48px; border-radius:12px; background:var(--ink); color:#fff; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-.vc-hours-icon svg { width:22px; height:22px; }
-.vc-hours-text { min-width:0; }
-.vc-hours-title { font-family:var(--display); font-size:1.2rem; font-weight:600; letter-spacing:-0.02em; color:var(--ink); line-height:1.25; margin-top:4px; }
-.vc-hours-sub { font-size:0.875rem; color:var(--muted); margin-top:2px; }
-.vc-turnaround { display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:10px 12px; background:var(--bg2); border:1px solid var(--border); border-radius:12px; padding:1rem 1.1rem; }
-.vc-step { min-width:0; }
-.vc-step-time { display:block; font-family:var(--display); font-size:1.5rem; font-weight:600; letter-spacing:-0.03em; color:var(--ink); line-height:1.15; margin-top:3px; }
-.vc-step-time small:where(:not([class])) { display:block; margin-top:2px; font-family:var(--body); font-size:0.8rem; font-weight:600; letter-spacing:0; color:var(--muted); }
-.vc-step--done .vc-step-time { color:var(--blue); }
-.vc-step-arrow { width:20px; height:20px; color:var(--muted2); }
-.vc-turnaround-note { grid-column:1 / -1; font-size:0.8rem; color:var(--muted); line-height:1.55; border-top:1px solid var(--border); padding-top:0.7rem; }
-.vc-rows { list-style:none; display:flex; flex-direction:column; border-top:1px solid var(--border); }
-.vc-rows > li { border-bottom:1px solid var(--border); }
-.vc-row { display:flex; align-items:center; gap:14px; min-height:64px; padding:0.8rem 0.5rem; margin:0 -0.5rem; border-radius:10px; text-decoration:none; transition:background 0.15s; -webkit-tap-highlight-color:transparent; }
-@media (hover: hover) { .vc-row:hover { background:var(--bg2); } }
-.vc-row:active { background:var(--bg3); transition:background 0.1s; }
-.vc-row:focus-visible { outline:2px solid var(--blue); outline-offset:2px; }
-.vc-row-icon { width:40px; height:40px; border-radius:10px; background:var(--blue-lt); color:var(--blue); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-.vc-row-icon svg { width:18px; height:18px; }
-.vc-row--static { cursor:default; }
-@media (hover: hover) { .vc-row--static:hover { background:none; } }
-.vc-row--static:active { background:none; }
-.vc-row-icon--wa { background:rgba(34,197,94,0.12); color:var(--wa-dk); }
-.vc-row-text { display:flex; flex-direction:column; gap:2px; flex:1; min-width:0; }
-.vc-row-value { font-family:var(--display); font-size:0.95rem; font-weight:600; color:var(--ink); line-height:1.35; }
-.vc-row-value--wrap { overflow-wrap:break-word; }
-.vc-row-arrow { width:16px; height:16px; color:var(--muted2); flex-shrink:0; transition:transform 0.2s var(--ease-settle),color 0.15s; }
-@media (hover: hover) { .vc-row:hover .vc-row-arrow { color:var(--blue); } }
-.vc-actions { display:flex; flex-direction:column; align-items:stretch; gap:0.4rem; margin-top:auto; }
-.vc-actions .btn-wa { width:100%; min-height:52px; }
-.vc-quote-link { display:flex; align-items:center; justify-content:center; min-height:44px; font-size:0.875rem; font-weight:600; color:var(--muted); text-decoration:underline; text-decoration-color:var(--border2); text-underline-offset:3px; transition:color 0.15s,text-decoration-color 0.15s; }
-@media (hover: hover) { .vc-quote-link:hover { color:var(--blue); text-decoration-color:var(--blue); } }
-.map-embed { width:100%; height:100%; min-height:320px; border:0; border-radius:var(--radius); display:block; }
-.map-card { background:var(--bg); border:1.5px solid var(--border); border-radius:var(--radius); overflow:hidden; min-height:320px; position:relative; box-shadow:0 8px 24px rgba(15,23,42,0.06); }
+.map-embed { position:absolute; inset:0; width:100%; height:100%; border:0; display:block; }
+/* Contact: a 50/50 split. Details on the left (name, phone, email and
+   address exactly as on Google, then hours, actions and the suburbs we
+   cover); the map fills the right column, and stacks under the
+   text on phones at 400px tall. */
+.contact-split { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:3rem; align-items:stretch; }
+.contact-info .s-sub { margin-bottom:1.75rem; }
+.nap { font-style:normal; }
+.nap-name { font-family:var(--display); font-size:1.05rem; font-weight:800; letter-spacing:-0.01em; color:var(--ink); margin-bottom:0.6rem; }
+.nap-list { list-style:none; border-top:1px solid var(--border); }
+.nap-row { display:flex; align-items:center; gap:14px; padding:0.85rem 0; border-bottom:1px solid var(--border); }
+.nap-icon { flex:0 0 40px; width:40px; height:40px; border-radius:10px; background:var(--blue-lt); color:var(--blue); display:inline-flex; align-items:center; justify-content:center; }
+.nap-icon svg { width:18px; height:18px; }
+.nap-text { display:flex; flex-direction:column; gap:2px; min-width:0; }
+.nap-label { font-size:12px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--muted); }
+.nap-phone { font-family:var(--display); font-size:1.5rem; font-weight:800; letter-spacing:-0.02em; line-height:1.2; color:var(--ink); text-decoration:none; }
+.nap-value { font-family:var(--display); font-size:1rem; font-weight:600; line-height:1.4; color:var(--ink); text-decoration:none; overflow-wrap:anywhere; }
+@media (hover: hover) { .nap-phone:hover, a.nap-value:hover { color:var(--blue); } }
+.nap-phone:focus-visible, a.nap-value:focus-visible { outline:2px solid var(--blue); outline-offset:2px; border-radius:4px; }
+.contact-actions { display:flex; flex-wrap:wrap; gap:10px; margin-top:1.75rem; }
+.contact-actions .btn-outline svg { width:18px; height:18px; }
+.contact-quote-link { display:inline-flex; align-items:center; min-height:44px; margin-top:0.25rem; font-size:14px; font-weight:600; color:var(--ink2); text-decoration:underline; text-decoration-color:var(--border2); text-underline-offset:3px; }
+@media (hover: hover) { .contact-quote-link:hover { color:var(--blue); text-decoration-color:var(--blue); } }
+.contact-areas { margin-top:1.75rem; padding-top:1.5rem; border-top:1px solid var(--border); }
+.contact-areas-title { font-family:var(--display); font-size:1.05rem; font-weight:700; letter-spacing:-0.01em; line-height:1.3; color:var(--ink); margin-bottom:0.4rem; }
+.contact-areas p { font-size:14.5px; line-height:1.65; color:var(--muted); margin-bottom:0.9rem; }
+/* The dot sits before each name and the list is pulled 20px left and
+   clipped there, so the dot that would start each line is hidden and no
+   line ends on a stray dot. */
+.suburb-links { list-style:none; display:flex; flex-wrap:wrap; row-gap:6px; margin-left:-20px; clip-path:inset(-4px -4px -4px 20px); }
+.suburb-links li::before { content:'\00B7'; display:inline-block; width:20px; text-align:center; color:var(--border2); }
+.suburb-links a { font-size:14px; font-weight:600; color:var(--blue); text-decoration:none; }
+@media (hover: hover) { .suburb-links a:hover { text-decoration:underline; text-underline-offset:3px; } }
+.contact-map { position:relative; min-height:400px; border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; background:var(--bg2); }
+@media (max-width:900px) { .contact-split { grid-template-columns:minmax(0,1fr); gap:2rem; } }
 .map-chip { position:absolute; left:14px; bottom:14px; display:inline-flex; align-items:center; gap:8px; background:var(--bg); border:1.5px solid var(--border); border-radius:var(--radius-sm); padding:0.7rem 1rem; font-family:var(--display); font-size:13.5px; font-weight:700; color:var(--ink); text-decoration:none; box-shadow:0 4px 16px rgba(15,23,42,0.14); transition:border-color 0.15s,color 0.15s,transform 0.2s var(--ease-settle),scale 0.3s var(--ease-settle); -webkit-tap-highlight-color:transparent; }
 .map-chip svg { width:16px; height:16px; color:var(--blue); flex-shrink:0; }
 @media (hover: hover) { .map-chip:hover { border-color:var(--blue-mid); color:var(--blue); transform:translateY(-2px); } }
@@ -485,22 +425,11 @@ a.area-pill--link.has-page .area-dot {
 .guide-block { max-width:760px; margin-top:2.5rem; }
 /* Learn more: the guide in a reading panel, the suburbs beside it (sticky
    while the guide scrolls past), the FAQ full width below. */
-.learn-top { display:grid; grid-template-columns:minmax(0,1fr) 340px; gap:2rem; align-items:start; }
-.learn-guide, .learn-areas { background:var(--bg); border:1px solid var(--border); border-radius:var(--radius); }
+.learn-guide { background:var(--bg); border:1px solid var(--border); border-radius:var(--radius); }
 .learn-guide { padding:2.25rem 2.5rem; min-width:0; }
 .learn-guide .guide-block { max-width:none; margin-top:1.75rem; }
-.learn-areas { padding:1.75rem; position:sticky; top:96px; }
-.learn-areas .s-title { font-size:1.3rem; line-height:1.25; }
-.learn-areas .s-sub { font-size:14.5px; line-height:1.65; }
-.learn-areas .areas-grid { grid-template-columns:1fr 1fr; gap:6px; margin-top:1.25rem; }
-.learn-areas .area-pill { padding:0.55rem 0.7rem; border-width:1px; border-radius:10px; gap:8px; }
-.learn-areas .area-name { font-size:13px; }
 .learn-faq { margin-top:4rem; }
 .learn-faq .faq-list { max-width:none; }
-@media (max-width:1000px) {
-  .learn-top { grid-template-columns:minmax(0,1fr); }
-  .learn-areas { position:static; }
-}
 .guide-panel > h3 { font-family:var(--display); font-size:1.35rem; font-weight:800; letter-spacing:-0.023em; color:var(--ink); margin:2.5rem 0 0.85rem; }
 /* Every panel is now the top of its own view, so the first heading in any of
    them takes the reduced top margin. */
@@ -580,7 +509,6 @@ body { padding-top:var(--mob-nav-h); }
 .cta-inner  { grid-template-columns:1fr; gap:2rem; }
 .cta-actions { flex-direction:row; flex-wrap:wrap; min-width:unset; width:100%; }
 .cta-actions .btn-wa, .cta-actions .btn-outline { flex:1; min-width:180px; }
-.visit-grid { grid-template-columns:1fr; }
 .his-inner { padding:1.1rem 1.35rem; gap:1.25rem; }
 }
 @media (max-width:720px) {
@@ -622,16 +550,6 @@ body { padding-top:var(--mob-nav-h); }
 .svc-header-row .btn-outline { width:100%; justify-content:center; }
 .how-grid { grid-template-columns:1fr; gap:10px; }
 .how-card { padding:1.4rem 1.25rem; }
-.areas-grid { grid-template-columns:repeat(2,1fr); gap:8px; }
-.area-pill { padding:0.75rem 0.85rem; }
-.area-name { font-size:12.5px; }
-.visit-grid { grid-template-columns:1fr; gap:12px; }
-.visit-card { padding:1.4rem; gap:1.1rem; }
-.vc-hours-title { font-size:1.1rem; }
-.vc-step-time { font-size:1.3rem; }
-.vc-actions .btn-wa { padding:14px 18px; font-size:14.5px; }
-.map-card { min-height:260px; }
-.map-embed { min-height:260px; }
 .cta-inner  { grid-template-columns:1fr; }
 .cta-title  { font-size:1.3rem; }
 .cta-actions { flex-direction:column; align-items:stretch; width:100%; }
@@ -739,8 +657,8 @@ body { padding-top:var(--mob-nav-h); }
   .pkg-swipe-hint svg { animation:none; }
   .js .fade-up { transition:opacity 0.2s ease; transform:none; }
 
-  @media (hover: hover) { .btn-blue:hover, .btn-wa:hover, .svc-card:hover, .how-card:hover, a.area-pill--link:hover, .mq-service-btn:hover, .vc-row:hover .vc-row-arrow, .hero-alt-link:hover svg, .map-chip:hover { transform:none; } }
-  .btn-blue, .btn-wa, .btn-outline, .svc-card, .how-card, a.area-pill--link, .mq-service-btn, .guide-tab, .svc-cta, .svc-link-pill {
+  @media (hover: hover) { .btn-blue:hover, .btn-wa:hover, .svc-card:hover, .how-card:hover, .mq-service-btn:hover, .hero-alt-link:hover svg, .map-chip:hover { transform:none; } }
+  .btn-blue, .btn-wa, .btn-outline, .svc-card, .how-card, .mq-service-btn, .guide-tab, .svc-cta, .svc-link-pill {
     transition-duration:0.15s;
   }
 }
@@ -752,18 +670,16 @@ body { padding-top:var(--mob-nav-h); }
 /* High contrast. Muted greys darkened to carry real contrast, and the
    tinted panels given a defined border rather than relying on fill alone. */
 @media (prefers-contrast: more) {
-  .s-sub, .svc-desc, .how-desc, .its-desc, .area-count { color:#334155; }
-  .svc-card, .how-card, .area-pill { border-color:#0F172A; }
+  .s-sub, .svc-desc, .how-desc, .its-desc { color:#334155; }
+  .svc-card, .how-card { border-color:#0F172A; }
   .btn-outline { border-color:#0F172A; }
   .hero-alt-link, .hero-note { color:#0F172A; }
-  .visit-card, .vc-turnaround { border-color:#0F172A; }
-  .vc-label, .vc-hours-sub, .vc-turnaround-note, .vc-quote-link { color:#334155; }
   .svc-cta, .svc-link-pill { border-color:#0A3ACC; }
 }
 
 /* The grey iOS tap flash paints over the press-scale feedback above, so the
    two fight each other. The scale and colour change are the feedback now. */
-.btn-blue, .btn-wa, .btn-outline, .mq-service-btn, .svc-cta, .svc-link-pill, .area-pill--link, .guide-tab {
+.btn-blue, .btn-wa, .btn-outline, .mq-service-btn, .svc-cta, .svc-link-pill, .guide-tab {
   -webkit-tap-highlight-color:transparent;
 }
 
@@ -771,7 +687,6 @@ body { padding-top:var(--mob-nav-h); }
 .section, .section-alt, .cta-section{ padding:3rem 1.25rem; }
 .hero h1:where(:not([class])) { font-size:1.75rem; }
 .s-title  { font-size:1.3rem; }
-.areas-grid { grid-template-columns:repeat(2,1fr); }
 }
 @media (max-width:380px) {
 /* Too narrow for the title and the "Tap to close" hint on one line, so the
@@ -782,12 +697,9 @@ body { padding-top:var(--mob-nav-h); }
    the effective width drops below about 320px, which happens with large
    accessibility text or page zoom. */
 .his-checks, .cta-actions, .offer-text { min-width:0; }
-.his-checks li:where(:not([class])), .svc-badge, .area-name, .area-pill { white-space:normal; overflow-wrap:anywhere; }
-.areas-grid > *, .visit-grid > *, .svc-top > * { min-width:0; }
+.his-checks li:where(:not([class])), .svc-badge { white-space:normal; overflow-wrap:anywhere; }
+.svc-top > * { min-width:0; }
 .hero h1:where(:not([class])) { font-size:1.6rem; }
-.areas-grid { grid-template-columns:1fr 1fr; gap:6px; }
-.area-pill { padding:0.65rem 0.75rem; }
-.area-name { font-size:12px; }
 .his-stats { gap:0.5rem; }
 }
 
@@ -867,13 +779,12 @@ body { padding-top:var(--mob-nav-h); }
   .section, .cta-section { padding-top: var(--m-section); padding-bottom: var(--m-section); }
 
   /* Cards and the boxes inside them */
-  .hero-info-strip > .wrap, .svc-card, .how-card, .visit-card { padding: var(--m-card-pad); border-radius: var(--m-card-radius); }
+  .hero-info-strip > .wrap, .svc-card, .how-card { padding: var(--m-card-pad); border-radius: var(--m-card-radius); }
   .hero-card { border-radius: var(--m-card-radius); }
   .hc-body { padding: var(--m-card-pad); }
-  .vc-turnaround { padding: var(--m-panel-pad); border-radius: var(--m-panel-radius); }
 
   /* Gaps */
-  .services-grid, .how-grid, .visit-grid, .his-stats { gap: var(--m-gap-cards); }
+  .services-grid, .how-grid, .his-stats { gap: var(--m-gap-cards); }
   .faq-list, .faq-col { gap: var(--m-gap-rows); }
 
   /* Headings */
@@ -882,18 +793,21 @@ body { padding-top:var(--mob-nav-h); }
 
   /* Text */
   .s-sub, .hero-desc, .cta-desc, .guide-panel > p { font-size: var(--m-text); }
-  .hc-url, .mq-rating-text > span, .mq-notice > span, .mq-service-btn, .mq-trust-item, .his-lbl, .his-checks > li, .brand-badge, .svc-link-pill, .vc-turnaround-note, .svc-cta { font-size: var(--m-text-min); }
+  .hc-url, .mq-rating-text > span, .mq-notice > span, .mq-service-btn, .mq-trust-item, .his-lbl, .his-checks > li, .brand-badge, .svc-link-pill, .svc-cta { font-size: var(--m-text-min); }
   .mq-notice { padding: var(--m-row-pad); border-radius: var(--m-panel-radius); font-size: var(--m-text-min); }
 
   /* Buttons */
   .btn-wa, .btn-outline, .svc-cta { min-height: var(--m-btn); padding-top: 0; padding-bottom: 0; }
-  .hero-wa > .btn-wa, .svc-header-row > .btn-outline, .offer-btn > .btn-outline, .fade-up > .btn-outline, .vc-actions > .btn-wa, .cta-actions > .btn-wa, .cta-actions > .btn-outline { width: 100%; justify-content: center; }
+  .hero-wa > .btn-wa, .svc-header-row > .btn-outline, .offer-btn > .btn-outline, .fade-up > .btn-outline, .cta-actions > .btn-wa, .cta-actions > .btn-outline { width: 100%; justify-content: center; }
 
   /* Inner .wrap adds nothing on phones: the section is the 20px margin.
      (It added 32px, putting most text 52px from the edge.) */
   .section > .wrap { padding-left: 0; padding-right: 0; }
-  .learn-guide, .learn-areas { padding: var(--m-card-pad); border-radius: var(--m-card-radius); }
-  .learn-top { gap: var(--m-gap-cards); }
+  .learn-guide { padding: var(--m-card-pad); border-radius: var(--m-card-radius); }
+  .contact-split { gap: 24px; }
+  .contact-actions > .btn-wa, .contact-actions > .btn-outline { width: 100%; justify-content: center; }
+  .contact-areas p { font-size: var(--m-text); }
+  .contact-map { border-radius: var(--m-card-radius); }
   .offer-desc { font-size: var(--m-text); }
   .learn-faq { margin-top: var(--m-section); }
   .how-promises { padding: var(--m-card-pad); border-radius: var(--m-card-radius); margin-top: 24px; }
@@ -910,12 +824,11 @@ body { padding-top:var(--mob-nav-h); }
   .services-grid > * { scroll-snap-align: start; }
 
   /* More specific button rules from earlier in this file */
-  .hero-actions .btn-wa, .vc-actions .btn-wa { min-height: var(--m-btn); padding-top: 0; padding-bottom: 0; }
+  .hero-actions .btn-wa { min-height: var(--m-btn); padding-top: 0; padding-bottom: 0; }
 
   /* Chip rows bleed to the edge like the carousels; chips sit 8 apart */
   .guide-tabs { margin-left: calc(-1 * var(--m-gutter)); margin-right: calc(-1 * var(--m-gutter)); padding-left: var(--m-gutter); padding-right: var(--m-gutter); scroll-padding-inline: var(--m-gutter); }
-  .guide-tabs, .areas-grid, .svc-links-grid { gap: 8px; }
+  .guide-tabs, .svc-links-grid { gap: 8px; }
   .s-title + *, .cta-title + * { margin-top: 0; }
-  .hc-hint, .mq-rating-text, .mq-progress-label, .mq-service-grid .mq-service-btn, .pkg-swipe-hint,
-  .area-name, .vc-step-time > small { font-size: var(--m-text-min); }
+  .hc-hint, .mq-rating-text, .mq-progress-label, .mq-service-grid .mq-service-btn, .pkg-swipe-hint { font-size: var(--m-text-min); }
 }

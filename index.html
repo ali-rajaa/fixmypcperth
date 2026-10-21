@@ -845,131 +845,101 @@ description: "Computer and laptop repair in Perth: a flat [[diagnostic-repair-al
 </section>
 
 <!-- ============================================================
-     LEARN MORE - the local guide, service areas and the FAQ in one
-     zone instead of three bands. Desktop: the guide in a reading panel
-     with the suburbs beside it, the FAQ full width below. Phones: the
-     same, stacked. Every word, heading and link is as it was.
+     LEARN MORE - the local guide and the FAQ in one zone: the guide in
+     a reading panel, the FAQ below. (The service areas moved to the
+     contact section, beside the address.)
      ============================================================ -->
-<section class="section section-alt learn-zone" aria-label="Computer repairs Perth guide, service areas and FAQs">
+<section class="section section-alt learn-zone" aria-label="Computer repairs Perth guide and FAQs">
   <div class="wrap">
-    <div class="learn-top">
-      <div class="learn-guide">
-        <div class="fade-up">
-          <h2 class="s-title">Computer repair in Perth: <span class="accent">the local guide</span></h2>
-          <p class="s-sub">The questions people ask us most before booking a repair, written by the team that does the work in Canning Vale.</p>
-        </div>
-
-        <div class="guide-block fade-up">
-
-          <!-- Tabbed on every screen size: one panel shows at a time and the rest
-               stay in the DOM, so the full guide is still there for search. -->
-          <div class="guide-tabs" aria-label="Guide sections">
-            <button type="button" class="guide-tab is-active" data-guide-tab="0">What we fix</button>
-            <button type="button" class="guide-tab" data-guide-tab="1">Slow PCs</button>
-            <button type="button" class="guide-tab" data-guide-tab="2">Viruses</button>
-            <button type="button" class="guide-tab" data-guide-tab="3">Laptops & data</button>
-            <button type="button" class="guide-tab" data-guide-tab="4">Business IT</button>
-            <button type="button" class="guide-tab" data-guide-tab="5">Costs & areas</button>
-          </div>
-
-          <div class="guide-panel is-active" data-guide-panel="0">
-          <h3>Choosing a computer repair shop</h3>
-          <p>The first thing to ask any repair shop is whether it will tell you what is wrong, and what it will cost, before it starts. We do both. FixMyPC Perth is a computer and laptop repair workshop in Canning Vale, and most of our customers come from the southern suburbs: Cockburn, Willetton, Jandakot, Thornlie, Cannington, Harrisdale, Atwell, Gosnells, Armadale, Byford and the suburbs between.</p>
-          <p>This guide covers the questions we are asked most before a repair: slow computers, viruses, laptop screens and batteries, failing drives, business IT and what it all costs. Every repair carries a 30-day labour warranty.</p>
-
-          <h3>What a computer repair covers</h3>
-          <p>Most jobs are one of a handful of problems: a computer that will not turn on, one that has become very slow, blue screens or constant crashing, a virus, a cracked laptop screen, or a drive that has failed with files still on it. We see each of these every week in the Canning Vale workshop, and each one starts the same way, with a diagnostic before any work begins.</p>
-          <p>Replacing parts until something works is an expensive way to fix a computer. We find the fault first, give you a written report of what is wrong and a fixed price, and only then start the work.</p>
-          <p>Virus removal, SSD and RAM upgrades, software problems and Windows reinstalls are usually done the same day or the next. Data recovery and motherboard-level repairs can take one to three days, depending on the drive or the parts.</p>
-          </div>
-          <div class="guide-panel" data-guide-panel="1">
-          <h3>Why is my computer so slow? The warning signs</h3>
-          <p>A slow computer is often more than an annoyance. It can be the first sign of a part starting to fail. These are the signs we see most in the workshop, and what each one usually means:</p>
-          <ul>
-            <li><strong>Start-up taking a minute or more.</strong> Often an old mechanical hard drive near the end of its life. Drives usually slow down before they fail.</li>
-            <li><strong>Freezing, stuttering or "Not Responding" in normal use.</strong> Often memory or storage, and it tends to get worse once it starts.</li>
-            <li><strong>Fans loud all the time, or the case hot to touch.</strong> Dust stops the cooling working, so the processor slows itself down to stay safe. Running hot for long periods also shortens the life of the parts, and Perth summers make it worse.</li>
-            <li><strong>Browsing slow even with nothing else open.</strong> Can be malware or adware running in the background, which may also be collecting passwords and card details.</li>
-            <li><strong>Programs crashing or files that will not open.</strong> A later sign. Losing files is now a real risk, and recovery gets harder the longer the computer keeps running.</li>
-            <li><strong>Blue screens, random restarts or sudden shutdowns.</strong> Usually unstable hardware. Carrying on using it can turn a simple repair into a data recovery job.</li>
-            <li><strong>Windows updates taking longer, or failing.</strong> Usually corrupted system files. A computer that cannot update also misses its security fixes.</li>
-          </ul>
-          <p>Many people live with a slow computer for months and bring it in the week it stops, by which point a same-day repair has become a data recovery job.</p>
-          <p>If your computer shows any of these signs, the cheapest time to have it looked at is while it still turns on. The diagnostic tells you what is happening before you commit to anything, and most jobs booked before 2pm are ready the same day.</p>
-          </div>
-          <div class="guide-panel" data-guide-panel="2">
-          <h3>Signs your computer has a virus</h3>
-          <p>Modern malware is built to stay hidden, so the signs are often small: a browser homepage or search engine that changed on its own, toolbars or extensions you did not install, pop-ups when you are not browsing, programs opening or closing by themselves, antivirus switched off, or friends getting messages "from you" that you never sent.</p>
-          <p>An infection keeps working for as long as it stays on the computer. It can record what you type, collect saved passwords and card details, and spread to other devices on the same network, and some ransomware waits weeks before it locks your files. If you see any of these signs, have it looked at soon rather than later.</p>
-          <p>Virus and malware removal is <strong>{% include price.html key="virus-malware-removal" bare=true %}</strong>. It covers a full scan, removal of viruses, spyware, ransomware and browser hijackers, a browser clean-up and antivirus set up so it does not come straight back. Most infections are cleared the same day you drop the computer off.</p>
-          </div>
-          <div class="guide-panel" data-guide-panel="3">
-          <h3>Laptop repair: screens, batteries and hinges</h3>
-          <p>The laptop jobs we see most are cracked or dead screens, swollen or flat batteries, broken hinges and laptops that will not charge.</p>
-          <p>Screen replacement is {% include price.html key='laptop-screen-standard' bare=true raw=true %} for a standard panel, {% include price.html key='laptop-screen-touchscreen' bare=true raw=true %} for a touchscreen and {% include price.html key='laptop-screen-oled-premium' bare=true raw=true %} for OLED, with the panel and labour included. Screens differ between makers and even between versions of the same model, so we confirm the exact part before ordering. Once it is in stock, screen and battery replacements are usually same-day jobs.</p>
-
-          <h3>Data recovery: the warning signs</h3>
-          <p>If you think a drive is failing, treat it as urgent. A failing drive gets worse each time it starts, and the chance of getting files back drops with it. Signs to watch for: clicking, grinding or beeping, files that will not open or look corrupted, freezing while copying files, folders that look empty when they should not, and more frequent blue screens.</p>
-          <p><strong>If the drive is making a noise, turn the computer off and bring it in.</strong> A drive that is restarted again and again while it clicks can reach the point where nothing can be recovered. Caught early, recovery is usually straightforward.</p>
-          <p>Data recovery starts from {% include price.html key="data-recovery-failing-drive" bare=true %}, no fix, no fee: if we cannot get your photos, documents or files back, you do not pay for the attempt. The jobs we see most are family photos, small business accounts and study or work files that were never backed up. Bring the drive to the Canning Vale workshop as soon as you notice the signs above.</p>
-          </div>
-          <div class="guide-panel" data-guide-panel="4">
-          <h3>Business IT support: what small businesses need</h3>
-          <p>Business owners usually get in touch after something breaks at the worst time: a server down, a staff PC that will not start, or email that has stopped. For small businesses such as cafes, shops, medical and allied health practices, accountants and trades, the difference between IT support and repairs is prevention versus reaction.</p>
-          <p>Our managed IT plans start from {% include price.html key="business-it-essential" bare=true %}/month and cover proactive monitoring (so problems are caught before they cause downtime), remote support for day-to-day issues, onsite visits when something needs hands-on attention, managed antivirus on every business device, and automated cloud backups.</p>
-          <p>There is no lock-in contract: if a plan is not working for your business, you can cancel with 14 days notice. For businesses that need help now rather than an ongoing plan, on-demand remote and onsite support is available from {% include price.html key='biz-extra-onsite' bare=true raw=true %}, with same-day availability across southern Perth.</p>
-          </div>
-          <div class="guide-panel" data-guide-panel="5">
-          <h3>How much does computer and laptop repair cost in Perth?</h3>
-          <p>It depends on what is wrong, so here is what we charge for the jobs people ask about most:</p>
-          <ul>
-            <li><strong>PC diagnostic and repair:</strong> {% include price.html key="diagnostic-repair-all-in" bare=true %} all-in, with a written report before any work starts</li>
-            <li><strong>Virus and malware removal:</strong> {% include price.html key="virus-malware-removal" bare=true %}, most done same day</li>
-            <li><strong>SSD upgrade (labour):</strong> from {% include price.html key='ssd-upgrade-labour-only' bare=true raw=true %}, you can supply the SSD or we can source one</li>
-            <li><strong>Data recovery:</strong> from {% include price.html key="data-recovery-failing-drive" bare=true %}, no fix, no fee</li>
-            <li><strong>Laptop screen replacement:</strong> from {% include price.html key='laptop-screen-standard' bare=true raw=true %} standard, {% include price.html key='laptop-screen-touchscreen' bare=true raw=true %} touchscreen, {% include price.html key='laptop-screen-oled-premium' bare=true raw=true %} OLED, panel and labour included</li>
-            <li><strong>Windows reinstall with data backup:</strong> from {% include price.html key="windows-reinstall-data-backup" bare=true %}</li>
-            <li><strong>Gaming PC build/upgrade (labour):</strong> {% include price.html key="essential-assembly" bare=true %} Essential, {% include price.html key="performance-assembly" bare=true %} Performance, {% include price.html key="elite-assembly" bare=true %} Elite, all with a free Windows 11 key</li>
-            <li><strong>Complete PC Overhaul Package:</strong> {% include price.html key='complete-pc-overhaul' bare=true raw=true %}, combining virus removal, a Windows 11 reinstall, cable management, thermal paste, driver updates, performance tuning and a benchmark report</li>
-            <li><strong>Used Laptop Revival Package:</strong> {% include price.html key='used-laptop-revival' bare=true raw=true %}, a 15-point service for second-hand laptops: a full hardware health check, battery test, secure wipe of the previous owner's data, a clean Windows 11 reinstall and fresh thermal paste</li>
-          </ul>
-          <p>All prices include GST, and you get a fixed quote in writing before any work begins, so the price at collection is the one you agreed.</p>
-
-          <h3>Computer repair near Canning Vale</h3>
-          <p>The workshop is in Canning Vale (WA 6155), in the middle of the southern suburbs, so for most of the suburbs around it the trip is short. That includes <a href="{{ '/suburbs/cockburn' | relative_url }}">Cockburn</a>, <a href="{{ '/suburbs/willetton' | relative_url }}">Willetton</a>, <a href="{{ '/suburbs/huntingdale' | relative_url }}">Huntingdale</a>, <a href="{{ '/suburbs/jandakot' | relative_url }}">Jandakot</a>, <a href="{{ '/suburbs/thornlie' | relative_url }}">Thornlie</a>, <a href="{{ '/suburbs/cannington' | relative_url }}">Cannington</a>, <a href="{{ '/suburbs/harrisdale' | relative_url }}">Harrisdale</a>, Atwell, Piara Waters, Southern River, Riverton, Parkwood, Queens Park, Maddington, Leeming, Gosnells, Armadale and Byford.</p>
-          <p>No appointment is needed: drop off in <a href="{{ '/suburbs/canning-vale' | relative_url }}">Canning Vale</a> any time, and most repairs are ready the same day or the next. Software, virus and network problems that do not need the computer in front of us can be sorted by remote support, anywhere in Australia.</p>
-
-          <p>Whatever the computer is doing, message us on WhatsApp for a free quote. We will tell you what is likely wrong and what it costs before you commit to anything.</p>
-          </div>
-    </div>
+    <div class="learn-guide">
+      <div class="fade-up">
+        <h2 class="s-title">Computer repair in Perth: <span class="accent">the local guide</span></h2>
+        <p class="s-sub">The questions people ask us most before booking a repair, written by the team that does the work in Canning Vale.</p>
       </div>
-      <aside class="learn-areas" id="areas" aria-label="Computer repairs service areas across Perth">
-        <div class="fade-up">
-          <h2 class="s-title">Covering all of Perth's <span class="accent">southern suburbs</span></h2>
-          <p class="s-sub">The workshop is in Canning Vale, in the middle of the southern suburbs, so most of Perth's south is a short drive away. Drop off any time, and most repairs are back the same day. Software and virus problems can also be fixed by remote support, anywhere in Australia.</p>
+
+      <div class="guide-block fade-up">
+
+        <!-- Tabbed on every screen size: one panel shows at a time and the rest
+             stay in the DOM, so the full guide is still there for search. -->
+        <div class="guide-tabs" aria-label="Guide sections">
+          <button type="button" class="guide-tab is-active" data-guide-tab="0">What we fix</button>
+          <button type="button" class="guide-tab" data-guide-tab="1">Slow PCs</button>
+          <button type="button" class="guide-tab" data-guide-tab="2">Viruses</button>
+          <button type="button" class="guide-tab" data-guide-tab="3">Laptops & data</button>
+          <button type="button" class="guide-tab" data-guide-tab="4">Business IT</button>
+          <button type="button" class="guide-tab" data-guide-tab="5">Costs & areas</button>
         </div>
-        <div class="areas-grid fade-up">
-      
-          <a href="{{ '/suburbs/canning-vale' | relative_url }}"  class="area-pill area-pill--link has-page" aria-label="Computer repairs Canning Vale"><div class="area-dot"></div><span class="area-name">Canning Vale</span></a>
-          <a href="{{ '/suburbs/cockburn' | relative_url }}"      class="area-pill area-pill--link has-page" aria-label="Computer repairs Cockburn"><div class="area-dot"></div><span class="area-name">Cockburn</span></a>
-          <a href="{{ '/suburbs/willetton' | relative_url }}"     class="area-pill area-pill--link has-page" aria-label="Computer repairs Willetton"><div class="area-dot"></div><span class="area-name">Willetton</span></a>
-          <a href="{{ '/suburbs/jandakot' | relative_url }}"      class="area-pill area-pill--link has-page" aria-label="Computer repairs Jandakot"><div class="area-dot"></div><span class="area-name">Jandakot</span></a>
-          <a href="{{ '/suburbs/thornlie' | relative_url }}"      class="area-pill area-pill--link has-page" aria-label="Computer repairs Thornlie"><div class="area-dot"></div><span class="area-name">Thornlie</span></a>
-          <a href="{{ '/suburbs/cannington' | relative_url }}"    class="area-pill area-pill--link has-page" aria-label="Computer repairs Cannington"><div class="area-dot"></div><span class="area-name">Cannington</span></a>
-          <a href="{{ '/suburbs/harrisdale' | relative_url }}"    class="area-pill area-pill--link has-page" aria-label="Computer repairs Harrisdale"><div class="area-dot"></div><span class="area-name">Harrisdale</span></a>
-          <a href="{{ '/suburbs/huntingdale' | relative_url }}"    class="area-pill area-pill--link has-page" aria-label="Computer repairs Huntingdale"><div class="area-dot"></div><span class="area-name">Huntingdale</span></a>
-          <a href="{{ '/suburbs/gosnells' | relative_url }}" class="area-pill area-pill--link has-page" aria-label="Computer repairs Gosnells"><div class="area-dot"></div><span class="area-name">Gosnells</span></a>
-          <a href="{{ '/suburbs/armadale' | relative_url }}" class="area-pill area-pill--link has-page" aria-label="Computer repairs Armadale"><div class="area-dot"></div><span class="area-name">Armadale</span></a>
-          <a href="{{ '/suburbs/byford' | relative_url }}" class="area-pill area-pill--link has-page" aria-label="Computer repairs Byford"><div class="area-dot"></div><span class="area-name">Byford</span></a>
-          <a href="{{ '/suburbs/piara-waters' | relative_url }}" class="area-pill area-pill--link has-page" aria-label="Computer repairs Piara Waters"><div class="area-dot"></div><span class="area-name">Piara Waters</span></a>
-          <a href="{{ '/suburbs/southern-river' | relative_url }}" class="area-pill area-pill--link has-page" aria-label="Computer repairs Southern River"><div class="area-dot"></div><span class="area-name">Southern River</span></a>
-          <a href="{{ '/suburbs/riverton' | relative_url }}" class="area-pill area-pill--link has-page" aria-label="Computer repairs Riverton"><div class="area-dot"></div><span class="area-name">Riverton</span></a>
-          <a href="{{ '/suburbs/parkwood' | relative_url }}" class="area-pill area-pill--link has-page" aria-label="Computer repairs Parkwood"><div class="area-dot"></div><span class="area-name">Parkwood</span></a>
-          <a href="{{ '/suburbs/queens-park' | relative_url }}" class="area-pill area-pill--link has-page" aria-label="Computer repairs Queens Park"><div class="area-dot"></div><span class="area-name">Queens Park</span></a>
-          <a href="{{ '/suburbs/maddington' | relative_url }}" class="area-pill area-pill--link has-page" aria-label="Computer repairs Maddington"><div class="area-dot"></div><span class="area-name">Maddington</span></a>
-          <a href="{{ '/suburbs/leeming' | relative_url }}" class="area-pill area-pill--link has-page" aria-label="Computer repairs Leeming"><div class="area-dot"></div><span class="area-name">Leeming</span></a>
+
+        <div class="guide-panel is-active" data-guide-panel="0">
+        <h3>Choosing a computer repair shop</h3>
+        <p>The first thing to ask any repair shop is whether it will tell you what is wrong, and what it will cost, before it starts. We do both. FixMyPC Perth is a computer and laptop repair workshop in Canning Vale, and most of our customers come from the southern suburbs: Cockburn, Willetton, Jandakot, Thornlie, Cannington, Harrisdale, Atwell, Gosnells, Armadale, Byford and the suburbs between.</p>
+        <p>This guide covers the questions we are asked most before a repair: slow computers, viruses, laptop screens and batteries, failing drives, business IT and what it all costs. Every repair carries a 30-day labour warranty.</p>
+
+        <h3>What a computer repair covers</h3>
+        <p>Most jobs are one of a handful of problems: a computer that will not turn on, one that has become very slow, blue screens or constant crashing, a virus, a cracked laptop screen, or a drive that has failed with files still on it. We see each of these every week in the Canning Vale workshop, and each one starts the same way, with a diagnostic before any work begins.</p>
+        <p>Replacing parts until something works is an expensive way to fix a computer. We find the fault first, give you a written report of what is wrong and a fixed price, and only then start the work.</p>
+        <p>Virus removal, SSD and RAM upgrades, software problems and Windows reinstalls are usually done the same day or the next. Data recovery and motherboard-level repairs can take one to three days, depending on the drive or the parts.</p>
         </div>
-      </aside>
+        <div class="guide-panel" data-guide-panel="1">
+        <h3>Why is my computer so slow? The warning signs</h3>
+        <p>A slow computer is often more than an annoyance. It can be the first sign of a part starting to fail. These are the signs we see most in the workshop, and what each one usually means:</p>
+        <ul>
+          <li><strong>Start-up taking a minute or more.</strong> Often an old mechanical hard drive near the end of its life. Drives usually slow down before they fail.</li>
+          <li><strong>Freezing, stuttering or "Not Responding" in normal use.</strong> Often memory or storage, and it tends to get worse once it starts.</li>
+          <li><strong>Fans loud all the time, or the case hot to touch.</strong> Dust stops the cooling working, so the processor slows itself down to stay safe. Running hot for long periods also shortens the life of the parts, and Perth summers make it worse.</li>
+          <li><strong>Browsing slow even with nothing else open.</strong> Can be malware or adware running in the background, which may also be collecting passwords and card details.</li>
+          <li><strong>Programs crashing or files that will not open.</strong> A later sign. Losing files is now a real risk, and recovery gets harder the longer the computer keeps running.</li>
+          <li><strong>Blue screens, random restarts or sudden shutdowns.</strong> Usually unstable hardware. Carrying on using it can turn a simple repair into a data recovery job.</li>
+          <li><strong>Windows updates taking longer, or failing.</strong> Usually corrupted system files. A computer that cannot update also misses its security fixes.</li>
+        </ul>
+        <p>Many people live with a slow computer for months and bring it in the week it stops, by which point a same-day repair has become a data recovery job.</p>
+        <p>If your computer shows any of these signs, the cheapest time to have it looked at is while it still turns on. The diagnostic tells you what is happening before you commit to anything, and most jobs booked before 2pm are ready the same day.</p>
+        </div>
+        <div class="guide-panel" data-guide-panel="2">
+        <h3>Signs your computer has a virus</h3>
+        <p>Modern malware is built to stay hidden, so the signs are often small: a browser homepage or search engine that changed on its own, toolbars or extensions you did not install, pop-ups when you are not browsing, programs opening or closing by themselves, antivirus switched off, or friends getting messages "from you" that you never sent.</p>
+        <p>An infection keeps working for as long as it stays on the computer. It can record what you type, collect saved passwords and card details, and spread to other devices on the same network, and some ransomware waits weeks before it locks your files. If you see any of these signs, have it looked at soon rather than later.</p>
+        <p>Virus and malware removal is <strong>{% include price.html key="virus-malware-removal" bare=true %}</strong>. It covers a full scan, removal of viruses, spyware, ransomware and browser hijackers, a browser clean-up and antivirus set up so it does not come straight back. Most infections are cleared the same day you drop the computer off.</p>
+        </div>
+        <div class="guide-panel" data-guide-panel="3">
+        <h3>Laptop repair: screens, batteries and hinges</h3>
+        <p>The laptop jobs we see most are cracked or dead screens, swollen or flat batteries, broken hinges and laptops that will not charge.</p>
+        <p>Screen replacement is {% include price.html key='laptop-screen-standard' bare=true raw=true %} for a standard panel, {% include price.html key='laptop-screen-touchscreen' bare=true raw=true %} for a touchscreen and {% include price.html key='laptop-screen-oled-premium' bare=true raw=true %} for OLED, with the panel and labour included. Screens differ between makers and even between versions of the same model, so we confirm the exact part before ordering. Once it is in stock, screen and battery replacements are usually same-day jobs.</p>
+
+        <h3>Data recovery: the warning signs</h3>
+        <p>If you think a drive is failing, treat it as urgent. A failing drive gets worse each time it starts, and the chance of getting files back drops with it. Signs to watch for: clicking, grinding or beeping, files that will not open or look corrupted, freezing while copying files, folders that look empty when they should not, and more frequent blue screens.</p>
+        <p><strong>If the drive is making a noise, turn the computer off and bring it in.</strong> A drive that is restarted again and again while it clicks can reach the point where nothing can be recovered. Caught early, recovery is usually straightforward.</p>
+        <p>Data recovery starts from {% include price.html key="data-recovery-failing-drive" bare=true %}, no fix, no fee: if we cannot get your photos, documents or files back, you do not pay for the attempt. The jobs we see most are family photos, small business accounts and study or work files that were never backed up. Bring the drive to the Canning Vale workshop as soon as you notice the signs above.</p>
+        </div>
+        <div class="guide-panel" data-guide-panel="4">
+        <h3>Business IT support: what small businesses need</h3>
+        <p>Business owners usually get in touch after something breaks at the worst time: a server down, a staff PC that will not start, or email that has stopped. For small businesses such as cafes, shops, medical and allied health practices, accountants and trades, the difference between IT support and repairs is prevention versus reaction.</p>
+        <p>Our managed IT plans start from {% include price.html key="business-it-essential" bare=true %}/month and cover proactive monitoring (so problems are caught before they cause downtime), remote support for day-to-day issues, onsite visits when something needs hands-on attention, managed antivirus on every business device, and automated cloud backups.</p>
+        <p>There is no lock-in contract: if a plan is not working for your business, you can cancel with 14 days notice. For businesses that need help now rather than an ongoing plan, on-demand remote and onsite support is available from {% include price.html key='biz-extra-onsite' bare=true raw=true %}, with same-day availability across southern Perth.</p>
+        </div>
+        <div class="guide-panel" data-guide-panel="5">
+        <h3>How much does computer and laptop repair cost in Perth?</h3>
+        <p>It depends on what is wrong, so here is what we charge for the jobs people ask about most:</p>
+        <ul>
+          <li><strong>PC diagnostic and repair:</strong> {% include price.html key="diagnostic-repair-all-in" bare=true %} all-in, with a written report before any work starts</li>
+          <li><strong>Virus and malware removal:</strong> {% include price.html key="virus-malware-removal" bare=true %}, most done same day</li>
+          <li><strong>SSD upgrade (labour):</strong> from {% include price.html key='ssd-upgrade-labour-only' bare=true raw=true %}, you can supply the SSD or we can source one</li>
+          <li><strong>Data recovery:</strong> from {% include price.html key="data-recovery-failing-drive" bare=true %}, no fix, no fee</li>
+          <li><strong>Laptop screen replacement:</strong> from {% include price.html key='laptop-screen-standard' bare=true raw=true %} standard, {% include price.html key='laptop-screen-touchscreen' bare=true raw=true %} touchscreen, {% include price.html key='laptop-screen-oled-premium' bare=true raw=true %} OLED, panel and labour included</li>
+          <li><strong>Windows reinstall with data backup:</strong> from {% include price.html key="windows-reinstall-data-backup" bare=true %}</li>
+          <li><strong>Gaming PC build/upgrade (labour):</strong> {% include price.html key="essential-assembly" bare=true %} Essential, {% include price.html key="performance-assembly" bare=true %} Performance, {% include price.html key="elite-assembly" bare=true %} Elite, all with a free Windows 11 key</li>
+          <li><strong>Complete PC Overhaul Package:</strong> {% include price.html key='complete-pc-overhaul' bare=true raw=true %}, combining virus removal, a Windows 11 reinstall, cable management, thermal paste, driver updates, performance tuning and a benchmark report</li>
+          <li><strong>Used Laptop Revival Package:</strong> {% include price.html key='used-laptop-revival' bare=true raw=true %}, a 15-point service for second-hand laptops: a full hardware health check, battery test, secure wipe of the previous owner's data, a clean Windows 11 reinstall and fresh thermal paste</li>
+        </ul>
+        <p>All prices include GST, and you get a fixed quote in writing before any work begins, so the price at collection is the one you agreed.</p>
+
+        <h3>Computer repair near Canning Vale</h3>
+        <p>The workshop is in Canning Vale (WA 6155), in the middle of the southern suburbs, so for most of the suburbs around it the trip is short. That includes <a href="{{ '/suburbs/cockburn' | relative_url }}">Cockburn</a>, <a href="{{ '/suburbs/willetton' | relative_url }}">Willetton</a>, <a href="{{ '/suburbs/huntingdale' | relative_url }}">Huntingdale</a>, <a href="{{ '/suburbs/jandakot' | relative_url }}">Jandakot</a>, <a href="{{ '/suburbs/thornlie' | relative_url }}">Thornlie</a>, <a href="{{ '/suburbs/cannington' | relative_url }}">Cannington</a>, <a href="{{ '/suburbs/harrisdale' | relative_url }}">Harrisdale</a>, Atwell, Piara Waters, Southern River, Riverton, Parkwood, Queens Park, Maddington, Leeming, Gosnells, Armadale and Byford.</p>
+        <p>No appointment is needed: drop off in <a href="{{ '/suburbs/canning-vale' | relative_url }}">Canning Vale</a> any time, and most repairs are ready the same day or the next. Software, virus and network problems that do not need the computer in front of us can be sorted by remote support, anywhere in Australia.</p>
+
+        <p>Whatever the computer is doing, message us on WhatsApp for a free quote. We will tell you what is likely wrong and what it costs before you commit to anything.</p>
+        </div>
+  </div>
     </div>
     <div class="learn-faq" id="faq">
       <div class="fade-up">
@@ -1084,124 +1054,101 @@ description: "Computer and laptop repair in Perth: a flat [[diagnostic-repair-al
   </div>
 </section>
 <!-- ============================================================
-     VISIT / CONTACT / HOURS / MAP
+     CONTACT - a 50/50 split. Left: how to reach us, with the name,
+     phone, email and address exactly as on the Google Business Profile
+     (NAP), the hours and the suburbs we cover. Kept short on purpose
+     (owner): the 2pm/6pm times are in how it works, payment is in the FAQ. Right: the map,
+     filling the column on desktop and stacked under the text on phones.
+     Call and WhatsApp both work (owner decision, October 2026).
      ============================================================ -->
-<section class="section" aria-label="Contact FixMyPC Perth, hours and location">
-  <div class="wrap">
-    <div class="fade-up">
-      <h2 class="s-title">Hours, contact <span class="accent">&amp; location</span></h2>
+<section class="section" id="contact" aria-label="Contact FixMyPC Perth, hours and location">
+  <div class="wrap contact-split">
+    <div class="contact-info fade-up">
+      <h2 class="s-title">Call, WhatsApp or email our Canning Vale <span class="accent">computer repair workshop</span></h2>
       <p class="s-sub">Message us first on WhatsApp with the make, model and what it is doing, and we will have a price ready before you arrive.</p>
-    </div>
 
-    <div class="visit-grid fade-up">
-
-      <!-- Hours + Contact card. WhatsApp is the only live channel, so it
-           leads the contact list and the primary button. No phone line. -->
-      <div class="visit-card">
-
-        <div class="vc-hours">
-          <span class="vc-hours-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          </span>
-          <div class="vc-hours-text">
-            <span class="vc-label vc-label--open">Open now</span>
-            <p class="vc-hours-title">24 hours a day, 7 days a week</p>
-            <p class="vc-hours-sub">Drop off or pick up any time, day or night.</p>
-          </div>
-        </div>
-
-        <div class="vc-turnaround" role="group" aria-label="Same-day turnaround">
-          <div class="vc-step">
-            <span class="vc-label">Drop off before</span>
-            <span class="vc-step-time">2pm</span>
-          </div>
-          <svg class="vc-step-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          <div class="vc-step vc-step--done">
-            <span class="vc-label">Usually ready by</span>
-            <span class="vc-step-time">6pm <small>same day</small></span>
-          </div>
-          <p class="vc-turnaround-note">Later drop-offs are finished the next day unless a same-day fee is applied.</p>
-        </div>
-
-        <ul class="vc-rows">
-          <li>
-            <a href="https://wa.me/61470308676?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener noreferrer" class="vc-row" aria-label="Message FixMyPC Perth on WhatsApp, 0470 308 676" onclick="trackWAClick()">
-              <span class="vc-row-icon vc-row-icon--wa" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#i-wa"/></svg></span>
-              <span class="vc-row-text">
-                <span class="vc-label">WhatsApp</span>
-                <span class="vc-row-value">0470 308 676</span>
-              </span>
-              <svg class="vc-row-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
-            </a>
+      <address class="nap">
+        <p class="nap-name">FixMyPC Perth</p>
+        <ul class="nap-list">
+          <li class="nap-row">
+            <span class="nap-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span>
+            <span class="nap-text">
+              <span class="nap-label">Call or WhatsApp</span>
+              <a class="nap-phone" href="tel:+61470308676">0470 308 676</a>
+            </span>
           </li>
-          <li>
-            <a href="mailto:aly.imran.raja@gmail.com" class="vc-row">
-              <span class="vc-row-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22 6 12 13 2 6"/></svg>
-              </span>
-              <span class="vc-row-text">
-                <span class="vc-label">Email</span>
-                <span class="vc-row-value vc-row-value--wrap">aly.imran.raja<wbr>@gmail.com</span>
-              </span>
-              <svg class="vc-row-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
-            </a>
+          <li class="nap-row">
+            <span class="nap-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg></span>
+            <span class="nap-text">
+              <span class="nap-label">Email</span>
+              <a class="nap-value" href="mailto:aly.imran.raja@gmail.com">aly.imran.raja<wbr>@gmail.com</a>
+            </span>
           </li>
-          <li>
-            <a href="https://www.google.com/maps/search/?api=1&query=7+Barraberry+Retreat+Canning+Vale+WA+6155" target="_blank" rel="noopener noreferrer" class="vc-row">
-              <span class="vc-row-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              </span>
-              <span class="vc-row-text">
-                <span class="vc-label">Location</span>
-                <span class="vc-row-value">7 Barraberry Retreat, Canning Vale WA 6155</span>
-              </span>
-              <svg class="vc-row-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
-            </a>
-          </li>
-          <li>
-            <div class="vc-row vc-row--static">
-              <span class="vc-row-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
-              </span>
-              <span class="vc-row-text">
-                <span class="vc-label">Payment</span>
-                <span class="vc-row-value vc-row-value--wrap">Card (Visa, Mastercard, debit), PayID, bank transfer or cash</span>
-              </span>
-            </div>
+          <li class="nap-row">
+            <span class="nap-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <span class="nap-text">
+              <span class="nap-label">Address</span>
+              <span class="nap-value">7 Barraberry Retreat, Canning Vale WA 6155</span>
+            </span>
           </li>
         </ul>
-
-        <div class="vc-actions">
-          <a href="https://wa.me/61470308676?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener noreferrer" class="btn-wa" onclick="trackWAClick()">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="white" aria-hidden="true"><use href="#i-wa"/></svg>
-            Get a quote on WhatsApp
-          </a>
-          <a href="{{ '/quote-request' | relative_url }}" class="vc-quote-link" onclick="trackQuoteForm()">Or request a quote online</a>
-        </div>
+      </address>
+      <div class="nap-row">
+        <span class="nap-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+        <span class="nap-text">
+          <span class="nap-label">Hours</span>
+          <span class="nap-value">24 hours a day, 7 days a week</span>
+        </span>
       </div>
 
-      <!-- Map card. q= with coordinates rather than the address text: q=
-           always places a marker (unlike ll=, which is Google's "view" mode
-           and shows no pin at all), and a bare coordinate is far less likely
-           than a named address to resolve to the full business info card
-           Google draws for q=<address>, which just repeated the Contact Us
-           card next to it. The pin-map-link chip below is our own directions
-           action in the site's own style, not Google's. -->
-      <div class="map-card">
-        <iframe
-          class="map-embed"
-          src="https://maps.google.com/maps?q=-32.0697802,115.9245929&z=15&output=embed"
-          title="FixMyPC Perth computer & laptop repair workshop location map, Canning Vale, Perth WA"
-          loading="lazy"
-          width="600" height="450"
-          referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
-        <a class="map-chip" href="https://www.google.com/maps/search/?api=1&query=7+Barraberry+Retreat+Canning+Vale+WA+6155" target="_blank" rel="noopener noreferrer" aria-label="Get directions to FixMyPC Perth on Google Maps">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          Get directions
+      <div class="contact-actions">
+        <a href="https://wa.me/61470308676?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20PC%20repair." target="_blank" rel="noopener noreferrer" class="btn-wa" onclick="trackWAClick()">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="white" aria-hidden="true"><use href="#i-wa"/></svg>
+          Get a quote on WhatsApp
         </a>
+        <a href="tel:+61470308676" class="btn-outline"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>Call 0470 308 676</a>
       </div>
+      <a href="{{ '/quote-request' | relative_url }}" class="contact-quote-link" onclick="trackQuoteForm()">Or request a quote online</a>
 
+      <div class="contact-areas" id="areas">
+        <h3 class="contact-areas-title">Covering all of Perth's <span class="accent">southern suburbs</span></h3>
+        <p>The workshop is in Canning Vale, in the middle of the southern suburbs, so most of Perth's south is a short drive away. Drop off any time, and most repairs are back the same day. Software and virus problems can also be fixed by remote support, anywhere in Australia.</p>
+        <ul class="suburb-links" aria-label="Computer repairs by suburb">
+          <li><a href="{{ '/suburbs/canning-vale' | relative_url }}" aria-label="Computer repairs Canning Vale">Canning Vale</a></li>
+          <li><a href="{{ '/suburbs/cockburn' | relative_url }}" aria-label="Computer repairs Cockburn">Cockburn</a></li>
+          <li><a href="{{ '/suburbs/willetton' | relative_url }}" aria-label="Computer repairs Willetton">Willetton</a></li>
+          <li><a href="{{ '/suburbs/jandakot' | relative_url }}" aria-label="Computer repairs Jandakot">Jandakot</a></li>
+          <li><a href="{{ '/suburbs/thornlie' | relative_url }}" aria-label="Computer repairs Thornlie">Thornlie</a></li>
+          <li><a href="{{ '/suburbs/cannington' | relative_url }}" aria-label="Computer repairs Cannington">Cannington</a></li>
+          <li><a href="{{ '/suburbs/harrisdale' | relative_url }}" aria-label="Computer repairs Harrisdale">Harrisdale</a></li>
+          <li><a href="{{ '/suburbs/huntingdale' | relative_url }}" aria-label="Computer repairs Huntingdale">Huntingdale</a></li>
+          <li><a href="{{ '/suburbs/gosnells' | relative_url }}" aria-label="Computer repairs Gosnells">Gosnells</a></li>
+          <li><a href="{{ '/suburbs/armadale' | relative_url }}" aria-label="Computer repairs Armadale">Armadale</a></li>
+          <li><a href="{{ '/suburbs/byford' | relative_url }}" aria-label="Computer repairs Byford">Byford</a></li>
+          <li><a href="{{ '/suburbs/piara-waters' | relative_url }}" aria-label="Computer repairs Piara Waters">Piara Waters</a></li>
+          <li><a href="{{ '/suburbs/southern-river' | relative_url }}" aria-label="Computer repairs Southern River">Southern River</a></li>
+          <li><a href="{{ '/suburbs/riverton' | relative_url }}" aria-label="Computer repairs Riverton">Riverton</a></li>
+          <li><a href="{{ '/suburbs/parkwood' | relative_url }}" aria-label="Computer repairs Parkwood">Parkwood</a></li>
+          <li><a href="{{ '/suburbs/queens-park' | relative_url }}" aria-label="Computer repairs Queens Park">Queens Park</a></li>
+          <li><a href="{{ '/suburbs/maddington' | relative_url }}" aria-label="Computer repairs Maddington">Maddington</a></li>
+          <li><a href="{{ '/suburbs/leeming' | relative_url }}" aria-label="Computer repairs Leeming">Leeming</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="contact-map fade-up">
+      <iframe
+        class="map-embed"
+        src="https://maps.google.com/maps?q=FixMyPC+Perth,+7+Barraberry+Retreat,+Canning+Vale+WA+6155&amp;z=15&amp;output=embed"
+        title="FixMyPC Perth on Google Maps: 7 Barraberry Retreat, Canning Vale WA 6155"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen>
+      </iframe>
+      <a class="map-chip" href="https://www.google.com/maps/search/?api=1&query=7+Barraberry+Retreat+Canning+Vale+WA+6155" target="_blank" rel="noopener noreferrer" aria-label="Get directions to FixMyPC Perth on Google Maps">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Get directions
+      </a>
     </div>
   </div>
 </section>
