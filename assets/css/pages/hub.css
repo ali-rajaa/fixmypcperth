@@ -72,7 +72,6 @@
 .hub-h1 { font-size: clamp(2rem, 4.2vw, 3.05rem); max-width: 15ch; }
 .hub-promise { border-bottom: 0; padding-bottom: 0; margin-bottom: 0; }
 .hub-find { background: var(--bg); border: 1.5px solid var(--border); border-radius: 20px; padding: 1.5rem 1.5rem 1.25rem; box-shadow: 0 1px 2px rgba(15,23,42,0.04), 0 18px 48px rgba(15,23,42,0.08); }
-.hub-find-k { margin: 0 0 0.35rem; font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--blue); }
 .hub-find-h { margin: 0 0 0.85rem; font-family: var(--display); font-size: 1.2rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1.25; color: var(--ink); }
 .hub-find-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; column-gap: 1rem; }
 .hub-find-link { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; min-height: 44px; padding: 0.35rem 0; border-bottom: 1px solid var(--border); font-size: 14px; font-weight: 600; color: var(--ink2); text-decoration: none; -webkit-tap-highlight-color: transparent; transition: color 0.15s var(--ease-settle); }

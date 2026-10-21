@@ -94,15 +94,6 @@ body {
   text-decoration: none;
   font-weight: 600;
 }
-.post-cat {
-  display: inline-block;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--blue);
-  margin-bottom: 1rem;
-}
 .post-meta-author { color: var(--ink); font-weight: 700; }
 .post-meta-sep { color: var(--muted2); }
 /* Not inside the audit form panel: assets/css/form.css owns its spacing. */
@@ -804,7 +795,6 @@ body:has(.ind-hero) { overflow-x: clip; }
   /* Article head: 24 under the breadcrumb, 12 under the label, 16 under
      the headline, 24 under the byline; 48 to the next block */
   .post-breadcrumb { margin-bottom: 24px; }
-  .post-cat { display: block; margin-bottom: 12px; }
   .post-h1 { font-size: var(--m-h1); margin-top: 0; margin-bottom: 16px; }
   .post-meta { padding-bottom: 24px; margin-bottom: var(--m-section); }
   /* The dots would end a wrapped line on a phone; the items wrap with the

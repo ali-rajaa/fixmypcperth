@@ -129,7 +129,6 @@ img { max-width: 100%; height: auto; }
 }
 .tt-hero-copy { min-width: 0; }
 
-.s-eyebrow { display: block; font-size: 12px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.9rem; }
 
 .page-title {
   font-family: var(--display); font-size: clamp(2rem, 4.5vw, 3rem);
@@ -311,7 +310,6 @@ img { max-width: 100%; height: auto; }
 /* ---------- closing CTA bar ---------- */
 .cta-bar { background: var(--bg2); border-top: 1px solid var(--border); padding: 3.25rem 2rem; text-align: center; }
 .cta-bar-inner { max-width: 620px; margin: 0 auto; }
-.cta-kicker { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.75rem; }
 .cta-bar-inner p:where(:not([class])) { font-size: 15px; color: var(--muted); line-height: 1.75; margin: 0 0 1.75rem; }
 .cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
 .cta-wa { font-size: 14px; color: var(--muted); line-height: 1.6; margin: 1rem 0 0; }
