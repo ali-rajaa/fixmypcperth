@@ -22,6 +22,18 @@ nearby:
   - Kelmscott
   - Canning Vale
   - Beckenham
+# Entity data for the schema. lga is the local council (two where the
+# suburb is split). wikipedia follows the standard article naming but has
+# not been opened to confirm; wikidata is left empty until someone looks
+# the Q-number up. Neither is printed on the page.
+entity:
+  lga:
+    - City of Gosnells
+  wikipedia: https://en.wikipedia.org/wiki/Gosnells,_Western_Australia
+  wikidata: ""
+# true only once the drive time and distance in travel: have been checked
+# on Google Maps. Until then the page shows the travel note, not the figures.
+travel_checked: false
 
 # ---- Written for this suburb -----------------------------------------
 travel:
@@ -31,16 +43,16 @@ travel:
     lbl: "Via Ranford Road"
   - val: "None"
     lbl: "Appointment needed"
-travel_note: "Gosnells sits east of Canning Vale, past Huntingdale, and the drive stays on Ranford Road for almost the whole trip. It is the longest of the drives from the suburbs we cover, but it is still one road, no freeway, and dropping off on the way past the Gosnells Shopping Centre or the railway station is easy to fit around anything else you are doing that day."
-cta_title: "Bring it in from Gosnells"
-cta_desc: "Eleven minutes west along Ranford Road, walk-ins welcome, and a fixed price before anything is touched."
+travel_note: "Gosnells sits east of Canning Vale, past Huntingdale, and the drive stays on Ranford Road for almost the whole trip. It is one road with no freeway, and dropping off on the way past the Gosnells Shopping Centre or the railway station is easy to fit around anything else you are doing that day."
+cta_title: "Ranford Road, straight to us"
+cta_desc: "West along one road from Gosnells. Walk in when it suits you, and approve the price before we start."
 
-why_heading: "Why Gosnells machines fail the way they do"
+why_heading: "The old town centre of the south-east"
 
-standfirst: "Laptop and PC repair for Gosnells 6110, carried out in Canning Vale, about eleven minutes along Ranford Road. Walk in any time, one flat diagnostic fee, and nothing starts until the price is agreed."
+standfirst: "Laptop and PC repair for Gosnells 6110, from the streets around the railway station to the homes near Mary Carroll Park. Ranford Road brings you most of the way to us in Canning Vale, and a business machine that cannot wait goes to the front of the queue."
 
 quick_answer: |
-  <p><strong>Yes, we repair computers for Gosnells.</strong> We are based in Canning Vale, roughly eleven minutes west along Ranford Road. Drop-offs do not need an appointment.</p>
+  <p><strong>Yes, and Gosnells sends us as many shop and home office machines as family ones.</strong> It is a straightforward run west along Ranford Road, and a till or invoicing laptop that is costing you trade gets looked at first.</p>
 
 why_local: |
   <p>Gosnells is one of the oldest suburbs in Perth's south-east, established in 1890 and built out long before most of the suburbs around it. It is the actual town centre of the wider district: the Gosnells Railway Station, the Gosnells Railway Markets, two shopping centres and the City of Gosnells council offices and museum all sit within the suburb itself, alongside around 21,000 residents across roughly 15 square kilometres.</p>
@@ -66,7 +78,7 @@ problems:
     text: "A file that will not open, or has vanished outright. Power it off rather than trying again, since every retry risks writing over what could still be pulled back."
     price_key: data-recovery-failing-drive
   - title: "Locked out of Windows"
-    text: "Stuck on the sign-in screen, whether that is a forgotten local password or a Microsoft account demanding a code that never arrives. Almost always fixable without touching your files."
+    text: "Stuck on the sign-in screen, whether that is a forgotten local password or a Microsoft account demanding a code that never arrives. Your documents stay exactly where they are while we get you back in."
     price_key: password-reset-account-recovery
 
 laptops_intro: |
@@ -86,13 +98,11 @@ data_intro: |
 local_area: |
   <p>Gosnells is bounded by Thornlie to the north, Huntingdale to the west, Maddington to the east and Southern River to the south west, with the Canning River tracing its northern and eastern edge, roughly 20km south-east of the CBD.</p>
 
-  <p>The suburb's own town centre, around the Gosnells Railway Station, the Gosnells and Foothills shopping centres and the Gosnells Railway Markets, is well served, and families near Gosnells Primary School, Seaforth Primary School or Lumen Christi College are all within the same short trip along Ranford Road. Mary Carroll Park and the wetlands and reserves that run along the Canning River are close by for anyone weighing up drop-off against an on-site visit.</p>
-
-  <p>We cover the surrounding suburbs on the same terms, so if you are closer to one of these than to Gosnells itself the answer does not change:</p>
+  <p>The suburb's own town centre, around the Gosnells Railway Station, the Gosnells and Foothills shopping centres and the Gosnells Railway Markets, is well served, and families near Gosnells Primary School, Seaforth Primary School or Lumen Christi College reach us by the same run along Ranford Road. Mary Carroll Park and the wetlands along the Canning River sit in the same corner of the suburb.</p>
 
 faqs:
-  - q: "Do you repair computers in Gosnells?"
-    a: "Yes. We are based in Canning Vale, roughly an 11 minute drive west of Gosnells along Ranford Road. You do not need to book ahead to drop something off. Most jobs are done same day or the next, and we message you the moment we know what is wrong instead of leaving you to chase an update."
+  - q: "My old desktop takes ages to start. What is usually wrong?"
+    a: "In Gosnells' older homes it is most often the original mechanical hard drive. Swapping it for an SSD, with everything copied across, usually has the machine starting in seconds again. If something else is to blame, the diagnostic finds it, and you hear the price before any part is ordered."
   - q: "Do you come out to Gosnells, or do I drop the computer off?"
     a: "Both are available. Most Gosnells customers drop off, since a bench repair is quicker and cheaper once the trip is made anyway. On-site makes more sense for a business that cannot go without its till or main machine, or a network fault that is really about the setup rather than one computer. Anything that does not need hands physically on the machine can be handled remotely instead."
   - q: "I run a small business near Gosnells. Do you work on business machines?"

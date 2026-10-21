@@ -22,6 +22,18 @@ nearby:
   - Maddington
   - Harrisdale
   - Piara Waters
+# Entity data for the schema. lga is the local council (two where the
+# suburb is split). wikipedia follows the standard article naming but has
+# not been opened to confirm; wikidata is left empty until someone looks
+# the Q-number up. Neither is printed on the page.
+entity:
+  lga:
+    - City of Gosnells
+  wikipedia: https://en.wikipedia.org/wiki/Huntingdale,_Western_Australia
+  wikidata: ""
+# true only once the drive time and distance in travel: have been checked
+# on Google Maps. Until then the page shows the travel note, not the figures.
+travel_checked: false
 
 # ---- Written for this suburb -----------------------------------------
 # Everything below is required and must be written fresh for each
@@ -39,15 +51,15 @@ travel:
   - val: "None"
     lbl: "Appointment needed"
 travel_note: "Huntingdale sits directly east of Canning Vale, so the trip to us is a short run west. For most of the suburb there is no freeway involved at all, which is why dropping the machine off is almost always quicker than waiting on a technician to come to you."
-cta_title: "Bring it in from Huntingdale"
-cta_desc: "Six minutes west down Ranford Road, no appointment needed, and you know the price before any work starts."
+cta_title: "Next door, along Ranford Road"
+cta_desc: "A short run west from Huntingdale. Come in when it suits, and every price is agreed with you first."
 
-why_heading: "Why Huntingdale machines fail the way they do"
+why_heading: "Settled homes, ageing machines"
 
-standfirst: "Laptop and PC repair for Huntingdale 6110, carried out in Canning Vale, about six minutes up Ranford Road. No appointment, a flat-fee diagnosis, and the price agreed before any work starts."
+standfirst: "Laptop and PC repair for Huntingdale 6110, our nearest neighbour to the east. Head west along Ranford Road to us in Canning Vale, drop the machine off without booking, and hear the price before anything is changed."
 
 quick_answer: |
-  <p><strong>Yes, we repair computers for Huntingdale.</strong> We are based in Canning Vale, roughly six minutes west of Huntingdale along Ranford Road. Drop-offs do not need an appointment.</p>
+  <p><strong>Yes, and Huntingdale is one of the quickest trips we have.</strong> Most of the suburb is a short run west along Ranford Road, so dropping off usually beats waiting for a visit.</p>
 
 why_local: |
   <p>Huntingdale was built out during the housing boom of the 1970s and expanded again through the 1990s. It is a settled residential suburb in the City of Gosnells, around 9,000 people across roughly five square kilometres, and the overwhelming majority of households are families who own the place they live in.</p>
@@ -93,17 +105,15 @@ data_intro: |
   <p>There are two broad cases. A drive that still powers up but is failing has a good success rate, and the sooner it is imaged the better. A drive that has stopped spinning entirely is harder, and the odds drop. In both cases the single most important thing you can do is stop using the machine the moment you notice files are missing, because every minute it keeps running risks overwriting what is still there.</p>
 
 local_area: |
-  <p>Huntingdale is bounded by Thornlie to the north west, Kenwick to the north, Gosnells to the east and Southern River to the south, with Canning Vale directly west. It is about 20 kilometres from the Perth CBD.</p>
+  <p>Huntingdale is bounded by Thornlie to the north west, Kenwick to the north, Gosnells to the east and Southern River to the south, with Canning Vale directly west. The city is roughly 20 kilometres to the north-west.</p>
 
-  <p>If you are coming from the Warton Road, Balfour Street, Holmes Street or Southern River Road side of the suburb, the run west along Ranford Road is the straightforward way in. Families around Huntingdale Primary School, Southern River College and Yarralinka Primary School are all within the same short trip, and so is anyone near Sutherlands Park, Charles Hook Park or Armstrong Park.</p>
-
-  <p>We cover the surrounding suburbs on the same terms, so if you are closer to one of these than to Huntingdale itself the answer does not change:</p>
+  <p>If you are coming from the Warton Road, Balfour Street, Holmes Street or Southern River Road side of the suburb, the run west along Ranford Road is the straightforward way in. Families around Huntingdale Primary School, Southern River College and Yarralinka Primary School, and anyone near Sutherlands Park, Charles Hook Park or Armstrong Park, are only minutes away.</p>
 
 # Three FAQs specific to this suburb. They render first, ahead of the
 # five shared ones, and feed the FAQ schema from the same list.
 faqs:
-  - q: "Do you repair computers in Huntingdale?"
-    a: "Yes. We are based in Canning Vale, roughly a 6 minute drive west of Huntingdale along Ranford Road. Drop-offs do not need an appointment. Most repairs are ready the same day or the next day, and we call or message you the moment the machine is diagnosed rather than leaving you waiting."
+  - q: "The computer cut out on a hot day and now will not stay on. What happened?"
+    a: "Usually heat. After years in the same spot the heatsink fills with dust and the thermal paste dries out, so the machine shuts itself down to protect the processor. A deep clean and fresh paste fixes most of them, and we check the power supply while the case is open."
   - q: "Do you come out to Huntingdale, or do I drop the computer off?"
     a: "Both are available. Most Huntingdale customers drop off, because the drive is short and bench work is faster and cheaper than an on-site visit. On-site is worth it when the problem is the network, the printer or a desktop that is awkward to unplug and move. Remote support handles anything that does not need hands on the machine."
   - q: "Is it worth repairing an older computer, or should I replace it?"

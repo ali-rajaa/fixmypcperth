@@ -20,6 +20,18 @@ nearby:
   - Bentley
   - Beckenham
   - Kenwick
+# Entity data for the schema. lga is the local council (two where the
+# suburb is split). wikipedia follows the standard article naming but has
+# not been opened to confirm; wikidata is left empty until someone looks
+# the Q-number up. Neither is printed on the page.
+entity:
+  lga:
+    - City of Canning
+  wikipedia: https://en.wikipedia.org/wiki/Queens_Park,_Western_Australia
+  wikidata: ""
+# true only once the drive time and distance in travel: have been checked
+# on Google Maps. Until then the page shows the travel note, not the figures.
+travel_checked: false
 
 # ---- Written for this suburb -----------------------------------------
 travel:
@@ -30,15 +42,15 @@ travel:
   - val: "None"
     lbl: "Appointment needed"
 travel_note: "Welshpool Road runs along Queens Park's own border and carries most of the trip south into Canning Vale, so it is a fairly direct drive on suburban roads rather than a route through the city. Easy to time around dropping something at the industrial estate next door."
-cta_title: "Bring it in from Queens Park"
-cta_desc: "Thirteen minutes south along Welshpool Road, walk-ins welcome, and a fixed price before anything is touched."
+cta_title: "South on Welshpool Road"
+cta_desc: "From Queens Park or the Welshpool estate, drop it off when it suits, and agree the price first."
 
-why_heading: "Why Queens Park machines fail the way they do"
+why_heading: "Post-war homes beside an industrial estate"
 
-standfirst: "Laptop and PC repair for Queens Park 6107, carried out in Canning Vale, about thirteen minutes along Welshpool Road. No booking to drop in, one flat diagnostic fee for the whole job."
+standfirst: "Laptop and PC repair for Queens Park 6107, for family homes near Queens Park Primary School and businesses working out of Welshpool next door. Welshpool Road carries you south to us in Canning Vale, and one flat diagnostic fee covers the job."
 
 quick_answer: |
-  <p><strong>Yes, we repair computers for Queens Park.</strong> We are based in Canning Vale, roughly thirteen minutes south along Welshpool Road. Drop-offs do not need an appointment.</p>
+  <p><strong>Yes, Queens Park is one of the closest suburbs to the city that we cover.</strong> The run south along Welshpool Road is direct, and if you work in the Welshpool estate it is easy to drop a machine off on the way.</p>
 
 why_local: |
   <p>Queens Park has one of the more genuinely mixed populations of any suburb we cover. Its top ancestries include English, Chinese, Australian, Indian, Nepali and Filipino, a real reflection of decades of migration into this part of Perth, layered onto a suburb that only became fully residential in the post-war boom of the 1950s and 60s, after starting out as poultry farms, market gardens and orchards under a different name.</p>
@@ -64,7 +76,7 @@ problems:
     text: "A folder that used to open fine and now throws an error, or has vanished outright. Switch the machine off rather than trying repeatedly, since each attempt risks losing what is still there."
     price_key: data-recovery-failing-drive
   - title: "Locked out of Windows"
-    text: "A forgotten password or a Microsoft account demanding a code that never comes through. Usually recoverable without wiping anything."
+    text: "A shared family PC where nobody remembers which password is the current one. We reset it without wiping anyone's files."
     price_key: password-reset-account-recovery
 
 laptops_intro: |
@@ -86,11 +98,9 @@ local_area: |
 
   <p>The suburb's own shops cover everyday errands, with Westfield Carousel in nearby Cannington a short trip further for anything bigger, and Queens Park Primary School, which has served the area since 1906, still sits at the centre of the suburb's family life. Welshpool's industrial estate is close enough that dropping off on the way to or from work is straightforward for anyone based there.</p>
 
-  <p>We cover the surrounding suburbs on the same terms, so if you are closer to one of these than to Queens Park itself the answer does not change:</p>
-
 faqs:
-  - q: "Do you repair computers in Queens Park?"
-    a: "Yes. We are based in Canning Vale, about a 13 minute drive south along Welshpool Road. Just walk in, no booking required. Jobs are typically finished the same day or the next, and we let you know the moment we have an answer."
+  - q: "Can you set up Windows in another language for an older relative?"
+    a: "Yes. Windows can show its menus in Chinese, Hindi, Nepali, Filipino and many other languages, and we can add the matching keyboard. We can do it on one account and leave the others in English, so everyone in the house uses the computer the way they prefer."
   - q: "I run a small business out of Welshpool. Can you prioritise a repair?"
     a: "Yes. A working business cannot afford to have its computer or till sitting in a repair queue for a week, so machines from Welshpool and the surrounding area get moved ahead of routine jobs wherever we can."
   - q: "Several people in our house share the same computer. Does that make repairs more complicated?"

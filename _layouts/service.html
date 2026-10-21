@@ -424,7 +424,7 @@ schema catalogue. {%- endcomment -%}
 
     {%- capture _arrow %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>{% endcapture %}
 
-    {%- comment -%} Suburb pages near the workshop. Found from the pages
+    {%- comment -%} Suburb pages near us. Found from the pages
     themselves, so a suburb only links once its page exists. {%- endcomment -%}
     {%- assign _subs = site.pages | where: "layout", "suburb" -%}
     {%- capture _sub_items -%}

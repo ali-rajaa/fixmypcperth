@@ -9,8 +9,8 @@
 # hand when the next one lands. Flip the flag, every page
 # picks it up on the next build.
 #
-# drive_min and drive_km are the trip from the Canning Vale
-# workshop. Verify each against Google Maps before flipping
+# drive_min and drive_km are the trip from us in Canning
+# Vale. Verify each against Google Maps before flipping
 # built to true; these are checkable claims on the page.
 # ----------------------------------------------------------
 

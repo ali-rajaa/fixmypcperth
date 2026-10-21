@@ -21,6 +21,18 @@ nearby:
   - Bedfordale
   - Piara Waters
   - Southern River
+# Entity data for the schema. lga is the local council (two where the
+# suburb is split). wikipedia follows the standard article naming but has
+# not been opened to confirm; wikidata is left empty until someone looks
+# the Q-number up. Neither is printed on the page.
+entity:
+  lga:
+    - Shire of Serpentine-Jarrahdale
+  wikipedia: https://en.wikipedia.org/wiki/Byford,_Western_Australia
+  wikidata: ""
+# true only once the drive time and distance in travel: have been checked
+# on Google Maps. Until then the page shows the travel note, not the figures.
+travel_checked: false
 
 # ---- Written for this suburb -----------------------------------------
 travel:
@@ -31,15 +43,15 @@ travel:
   - val: "None"
     lbl: "Appointment needed"
 travel_note: "South Western Highway carries most of the trip between us and Byford, so despite being our furthest suburb it is a straightforward drive on one road rather than a maze of turns. Worth timing around whatever else brings you north that day, since it is not a quick round trip."
-cta_title: "Bring it in from Byford"
-cta_desc: "Twenty minutes north along South Western Highway, walk-ins welcome, and a fixed price before anything is touched."
+cta_title: "One highway from Byford"
+cta_desc: "Message us first. If the fix can be done remotely we will say so, and if it cannot, the price is agreed before you drive in."
 
-why_heading: "Why Byford machines fail the way they do"
+why_heading: "From country township to fast-growing estates"
 
-standfirst: "Laptop and PC repair for Byford 6122, carried out in Canning Vale, about twenty minutes along South Western Highway. Walk in any time, one flat diagnostic fee, and nothing starts until the price is agreed."
+standfirst: "Computer, laptop and home network help for Byford 6122, from The Glades to the streets around Lakeside Plaza. It is the furthest suburb we cover, so we sort out what we can remotely first, and South Western Highway takes care of the rest."
 
 quick_answer: |
-  <p><strong>Yes, we repair computers for Byford.</strong> We are based in Canning Vale, roughly twenty minutes north along South Western Highway. Drop-offs do not need an appointment.</p>
+  <p><strong>Yes, Byford is the far end of our map, and we still cover it.</strong> Plenty of Byford jobs can start with a remote session, and anything that needs hands on the hardware comes up South Western Highway to us in Canning Vale.</p>
 
 why_local: |
   <p>Byford is the furthest suburb we cover, and also one of the fastest-changing. It began as a rural township called Beenup in 1906, and for most of the last century stayed exactly that: farms, a flour mill, a handful of shops. In the last decade it has more than tripled in population, now well past 20,000 people, and it sits in the Shire of Serpentine-Jarrahdale rather than any of the city councils that cover the suburbs closer to us.</p>
@@ -65,7 +77,7 @@ problems:
     text: "A document or photo that throws an error the moment it opens. Power the machine off rather than retrying, since every attempt risks overwriting what could still be recovered."
     price_key: data-recovery-failing-drive
   - title: "Locked out of Windows"
-    text: "A forgotten password or a Microsoft account stuck demanding a code that never turns up. Almost always fixable without touching your files."
+    text: "A forgotten password or a Microsoft account stuck demanding a code that never turns up. Usually sorted in one sitting, with every file left where it was."
     price_key: password-reset-account-recovery
 
 laptops_intro: |
@@ -87,11 +99,9 @@ local_area: |
 
   <p>The Glades and Lakeside Plaza shopping precinct cover much of the suburb's everyday needs, and families on Byford's newer estates are within a short trip of several schools built alongside the housing itself. A planned Byford train station, part of the Tonkin Highway extension works, will eventually shorten the trip into the city considerably, though it is not yet open.</p>
 
-  <p>We cover the surrounding suburbs on the same terms, so if you are closer to one of these than to Byford itself the answer does not change:</p>
-
 faqs:
-  - q: "Do you repair computers in Byford?"
-    a: "Yes. We are based in Canning Vale, about a 20 minute drive north along South Western Highway, the furthest suburb on our list but still a single continuous road. No booking needed to drop something off. Jobs are typically finished the same day or the next, and we get in touch the moment we know what is actually wrong."
+  - q: "Can you set up the network in a new Byford home?"
+    a: "Yes. Homes on newer estates like The Glades are often too big for one router to reach every room. We can set up the NBN connection, plan mesh Wi-Fi and get every device connected on site, at the same price as the work itself plus the call-out fee."
   - q: "Byford is a long way from you. Is remote support a better option than dropping off?"
     a: "For software faults, slow performance or a setup issue, often yes, and we will tell you that honestly rather than have you make an unnecessary trip. For hardware problems, a cracked screen, a failing drive, physical damage, dropping off still makes the most sense even from Byford, since the fix itself needs hands on the machine either way."
   - q: "My laptop is only a year or two old. Why would it already be playing up?"

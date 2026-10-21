@@ -21,6 +21,18 @@ nearby:
   - Ferndale
   - Langford
   - Lynwood
+# Entity data for the schema. lga is the local council (two where the
+# suburb is split). wikipedia follows the standard article naming but has
+# not been opened to confirm; wikidata is left empty until someone looks
+# the Q-number up. Neither is printed on the page.
+entity:
+  lga:
+    - City of Canning
+  wikipedia: https://en.wikipedia.org/wiki/Parkwood,_Western_Australia
+  wikidata: ""
+# true only once the drive time and distance in travel: have been checked
+# on Google Maps. Until then the page shows the travel note, not the figures.
+travel_checked: false
 
 # ---- Written for this suburb -----------------------------------------
 travel:
@@ -31,15 +43,15 @@ travel:
   - val: "None"
     lbl: "Appointment needed"
 travel_note: "Parkwood sits right where Nicholson Road runs past on its way into Canning Vale, so the trip in is a short, direct run rather than a cross-suburb drive. No freeway involved, and it fits easily around a round at Whaleback Golf Course or an errand at Parkwood Village."
-cta_title: "Bring it in from Parkwood"
-cta_desc: "Eight minutes along Nicholson Road, walk-ins welcome, and the price is agreed before anything is touched."
+cta_title: "Around the corner on Nicholson Road"
+cta_desc: "Bring it in when it suits you, and we will explain the fix and the price in plain terms first."
 
-why_heading: "Why Parkwood machines fail the way they do"
+why_heading: "A small, quiet suburb that likes things to work"
 
-standfirst: "Laptop and PC repair for Parkwood 6147, carried out in Canning Vale, about eight minutes along Nicholson Road. Walk in any time, one flat diagnostic fee, and nothing starts until the price is agreed."
+standfirst: "Laptop and PC repair for Parkwood 6147, for the quiet streets around Whaleback Golf Course and Parkwood Village. Nicholson Road brings you to us in Canning Vale, and we explain what is wrong in plain terms before anything is fixed."
 
 quick_answer: |
-  <p><strong>Yes, we repair computers for Parkwood.</strong> We are based in Canning Vale, roughly eight minutes along Nicholson Road. Drop-offs do not need an appointment.</p>
+  <p><strong>Yes, Parkwood is right on our doorstep.</strong> Canning Vale wraps around its southern and western edges, and we are happy to talk a problem through before you decide to bring anything in.</p>
 
 why_local: |
   <p>Parkwood is small and settled. Established in 1965, it covers under four square kilometres and has stayed close to 6,000 residents for years rather than growing the way its larger neighbours have. The median age is 42, noticeably older than most of the suburbs we cover, and it has a reputation locally as a quiet, established place that a good number of retirees call home alongside longtime families, with Whaleback Golf Course a well-known part of that.</p>
@@ -56,7 +68,7 @@ problems:
     text: "A warning that will not go away, a call-this-number message, or an email asking for details it should not need. We check what, if anything, actually got onto the machine."
     price_key: virus-malware-removal
   - title: "Locked out after a forgotten password"
-    text: "A password that has not been needed in months, or a Microsoft account stuck asking for a code that never seems to arrive. Almost always fixable without touching your files."
+    text: "A password that has not been needed in months, or a Microsoft account stuck asking for a code that never seems to arrive. Getting back in rarely puts your photos or emails at risk."
     price_key: password-reset-account-recovery
   - title: "A desktop that has been the same one for years"
     text: "Taking several minutes to reach the desktop in a machine that has quietly aged in place. Usually the drive, not the computer, that needs replacing."
@@ -87,11 +99,9 @@ local_area: |
 
   <p>Whaleback Golf Course and Hossack Reserve cover much of the suburb's open space, and Parkwood Village Shopping Centre handles most everyday errands without needing to leave the area, with Carousel Shopping Centre a short drive further for anything bigger. Bus routes connect to the Thornlie train line for anyone heading into the city.</p>
 
-  <p>We cover the surrounding suburbs on the same terms, so if you are closer to one of these than to Parkwood itself the answer does not change:</p>
-
 faqs:
-  - q: "Do you repair computers in Parkwood?"
-    a: "Yes. We are based in Canning Vale, about an 8 minute drive along Nicholson Road. There is no need to book ahead to drop something off. Most jobs are finished the same day or the next, and you hear from us as soon as we know what is wrong."
+  - q: "Can you set it up so I can video call the family?"
+    a: "Yes. We can install the calling app the family uses, check the camera and microphone work, and leave simple notes on how to start a call. If it is easier, we can do it at your home so it is set up where you will actually use it."
   - q: "My computer is not badly broken, it is just gotten confusing and slow. Is that still worth bringing in?"
     a: "Yes, this is one of the most common reasons Parkwood customers come to see us. A machine that has slowly become cluttered and harder to find your way around is usually a straightforward tune-up rather than a serious fault, and it often makes more difference to daily life than a bigger, more expensive repair would."
   - q: "I think I have been targeted by a scam pop-up or phishing email. What should I do?"

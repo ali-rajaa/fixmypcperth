@@ -30,6 +30,21 @@ nearby:
   - South Lake
   - Yangebup
   - Beeliar
+# Entity data for the schema. lga is the local council (two where the
+# suburb is split). wikipedia follows the standard article naming but has
+# not been opened to confirm; wikidata is left empty until someone looks
+# the Q-number up. Neither is printed on the page.
+# This page serves the council area itself (area_served above), so the
+# schema marks it as an AdministrativeArea with no parent council and no
+# single postcode.
+entity:
+  type: AdministrativeArea
+  lga: []
+  wikipedia: https://en.wikipedia.org/wiki/City_of_Cockburn
+  wikidata: ""
+# true only once the drive time and distance in travel: have been checked
+# on Google Maps. Until then the page shows the travel note, not the figures.
+travel_checked: false
 
 # ---- Written for this area ------------------------------------------
 travel:

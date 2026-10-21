@@ -21,6 +21,18 @@ nearby:
   - Martin
   - Canning Vale
   - Southern River
+# Entity data for the schema. lga is the local council (two where the
+# suburb is split). wikipedia follows the standard article naming but has
+# not been opened to confirm; wikidata is left empty until someone looks
+# the Q-number up. Neither is printed on the page.
+entity:
+  lga:
+    - City of Gosnells
+  wikipedia: https://en.wikipedia.org/wiki/Maddington,_Western_Australia
+  wikidata: ""
+# true only once the drive time and distance in travel: have been checked
+# on Google Maps. Until then the page shows the travel note, not the figures.
+travel_checked: false
 
 # ---- Written for this suburb -----------------------------------------
 travel:
@@ -31,15 +43,15 @@ travel:
   - val: "None"
     lbl: "Appointment needed"
 travel_note: "Spencer Road runs straight through Thornlie and Huntingdale on its way to Maddington, so the drive in is one continuous road rather than a string of turns. No freeway involved, and it is easy to fit around dropping the kids at Yule Brook College or a run past Maddington Central."
-cta_title: "Bring it in from Maddington"
-cta_desc: "Ten minutes west along Spencer Road, walk-ins welcome, and a fixed price agreed before we start."
+cta_title: "Spencer Road, all the way"
+cta_desc: "From Maddington through Thornlie to Canning Vale. Walk in, and agree the price before we start."
 
-why_heading: "Why Maddington machines fail the way they do"
+why_heading: "Orchards, light industry and family homes"
 
-standfirst: "Laptop and PC repair for Maddington 6109, carried out in Canning Vale, about ten minutes along Spencer Road. Walk in any time, one flat diagnostic fee, and nothing starts until the price is agreed."
+standfirst: "Laptop and PC repair for Maddington 6109, from tradie laptops on the light industrial side to family desktops near Maddington Central. Spencer Road brings you through to us in Canning Vale, and a price is agreed before any work starts."
 
 quick_answer: |
-  <p><strong>Yes, we repair computers for Maddington.</strong> We are based in Canning Vale, roughly ten minutes west along Spencer Road. Drop-offs do not need an appointment.</p>
+  <p><strong>Yes, Maddington's trade and family machines both come to us.</strong> Spencer Road runs most of the way, and a laptop your business depends on can be moved ahead of routine jobs.</p>
 
 why_local: |
   <p>Maddington is unusual among the suburbs we cover in that it never fully stopped being what it was before Perth's south-east grew around it. Alongside the roughly 12,400 residents, the suburb still holds working orchards and vineyards left from its agricultural past, a stretch of light industrial land, and its own train station on the Armadale line. It is genuinely mixed-use in a way most purely residential suburbs are not.</p>
@@ -53,7 +65,7 @@ problems:
     text: "A tradie's laptop or tablet that has started freezing or refusing to open the invoicing software right when a job needs quoting. One flat fee covers finding the fault and fixing it."
     price_key: diagnostic-repair-all-in
   - title: "Slow desktops in long-settled homes"
-    text: "A machine that has been in the same house for years, now taking several minutes to reach the desktop. Almost always an ageing mechanical drive, not a computer at the end of its life."
+    text: "The computer that has handled the household paperwork since the kids were small, now so slow it is easier to use the phone. One worn part is usually to blame."
     price_key: hdd-to-ssd-full-migration
   - title: "Overheating towers"
     text: "Years of dust packed into the heatsink and thermal paste long past doing its job. The machine cuts out under load rather than warning you first."
@@ -69,29 +81,27 @@ problems:
     price_key: password-reset-account-recovery
 
 laptops_intro: |
-  <p>A larger share of Maddington's laptops are work tools than we see in a purely residential suburb, which changes what actually matters when one comes in. A tradie's laptop going down mid-week is not just an inconvenience, it stops jobs being quoted and invoices going out, so these get treated as priority jobs rather than queued behind whatever else is on the bench.</p>
-  <p>Outside of work machines, the usual wear-and-tear faults apply: batteries that no longer hold a charge, fans that have become loud enough to notice, and the occasional cracked screen from a laptop that travels between the house and a job site. Physical damage is priced on the part, so we confirm the exact component before ordering it.</p>
-  <p>If a laptop looks dead, bring the charger with it. A failed charger gets mistaken for a dead laptop often enough that having yours on the bench rules it out in minutes.</p>
+  <p>In Maddington the laptop is as likely to ride in a ute as sit on a kitchen bench. For a tradie or a small operator it is the quoting tool, the invoice book and the job list in one, so when it stops working the work stops with it. We treat those as priority jobs and tell you the turnaround before you leave it.</p>
+  <p>Machines that move between the house and a site pick up their own kind of damage: grit in the ports, a charging socket worn loose, a screen cracked by something heavy on the passenger seat. Each is a part-and-labour job, and we confirm the exact part for your model before ordering it.</p>
+  <p>If the laptop looks completely dead, bring the charger too. A failed charger is a common culprit, and having it on the bench rules it in or out in minutes.</p>
 
 desktops_intro: |
-  <p>Maddington's older housing means a genuine share of its desktops are ten years old or more, carrying a mechanical drive that has slowed the whole machine down without anyone quite noticing how much until it is replaced. Migrating to an SSD is usually the single biggest improvement available, and it costs a fraction of a new computer.</p>
-  <p>Heat is the other recurring fault, especially on towers that have sat under a desk collecting dust for years. Once the thermal paste dries out and the heatsink clogs, the machine starts shutting itself down under any real load. A clean and fresh paste generally sorts it out in an afternoon.</p>
-  <p>For a small business machine that genuinely cannot leave the premises, on-site visits are available across Maddington, and remote support covers anything that does not need hands physically on the machine.</p>
+  <p>Plenty of Maddington desktops do double duty: the family computer in the evening and the bookkeeping machine for a small business during the day. When one of those slows to a crawl, it is rarely worn out as a whole. More often one part has fallen behind, and fixing that part costs far less than replacing the tower.</p>
+  <p>Towers on the light industrial side of the suburb, or in a shed or back office, pull in more dust than a desk in a quiet house. We open the case, clear the fans and heatsink, refresh the thermal paste and check the power supply, which is where many sudden shutdowns start.</p>
+  <p>If the machine runs something the business cannot be without for a day, tell us when you message, and we will plan the repair so it is back when you need it.</p>
 
 data_intro: |
-  <p>Some of the hardest calls we take are from people who assumed their files were safe until a drive proved otherwise: family photos with no second copy, or the invoicing history for a small business that has been trading for years. What can be pulled back depends on the state the drive is in. One that still spins but is struggling gives good odds, particularly if it is imaged early. One that has stopped spinning entirely is a harder job, and the odds drop from there.</p>
-  <p>Whichever it turns out to be, switching the machine off the moment files start disappearing matters more than anything else you can do, since every extra minute it runs is a chance to overwrite what is still there.</p>
+  <p>For a lot of Maddington households and small businesses, one computer holds years of records nobody has copied anywhere else: invoices, quotes, tax paperwork, along with the family photos. Recovery is often possible when a drive starts failing, but how much comes back depends on how the drive is behaving when it reaches us.</p>
+  <p>Clicking, grinding or files that suddenly will not open are the signs to stop. Turn the machine off and leave it off, because running it longer gives the drive more chances to damage what is still readable.</p>
 
 local_area: |
   <p>Maddington is bordered by Thornlie to the west, Kenwick to the north, Gosnells to the south and a stretch of light industrial and semi-rural land to the east toward Martin. It sits around 20 kilometres south-east of the Perth CBD.</p>
 
-  <p>The suburb has its own train station on the Armadale line, along with the Maddington Central and Maddington Village shopping centres, and families near Maddington Primary School, East Maddington Primary School or Yule Brook College are all within the same short trip along Spencer Road. Peace Park, Penn Street Reserve and Maddington Oval cover most of the suburb's open space for anyone weighing up drop-off against an on-site visit.</p>
-
-  <p>We cover the surrounding suburbs on the same terms, so if you are closer to one of these than to Maddington itself the answer does not change:</p>
+  <p>The suburb has its own train station on the Armadale line, along with the Maddington Central and Maddington Village shopping centres, and families near Maddington Primary School, East Maddington Primary School or Yule Brook College all sit within easy reach of Spencer Road. Peace Park, Penn Street Reserve and Maddington Oval cover most of the suburb's open space.</p>
 
 faqs:
-  - q: "Do you repair computers in Maddington?"
-    a: "Yes. We are based in Canning Vale, roughly a 10 minute drive west of Maddington along Spencer Road. You do not need to book ahead to drop something off. Most jobs are done the same day or the next, and we message you as soon as we know what is wrong rather than leaving you to chase an update."
+  - q: "Is the train any use for getting a computer to you from Maddington?"
+    a: "Not really. Maddington station is on the Armadale line, which heads into the city rather than towards Canning Vale, so for a drop-off the car along Spencer Road is the straightforward way. For a software problem, a remote session can save the trip altogether."
   - q: "I run a trade business based in Maddington. Can you turn a laptop around quickly?"
     a: "Yes, and we understand why it matters. A laptop that runs your invoicing or quoting is not something that can sit in a queue for a week, so we prioritise getting business machines diagnosed and back to you fast. If it needs a part, we quote the timeline honestly rather than guessing."
   - q: "Is it worth repairing an older desktop rather than replacing it?"

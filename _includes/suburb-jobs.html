@@ -1,0 +1,42 @@
+{%- comment -%}
+  suburb-jobs.html   recent repairs for one suburb, on _layouts/suburb.html
+
+  Prints only when the page has a jobs list, and only real jobs belong in
+  it: a repair actually done for someone in that suburb. A made-up case
+  study is the one thing worse than none. Format, per job:
+
+    jobs:
+      - month: 2026-09-01          # shown as "September 2026"
+        area: "Forest Lakes"       # street or estate, never a house number
+        device: "HP Pavilion 15"
+        problem: "No power after a storm"
+        story: "What it was doing and what we found."
+        outcome: "What it cost and how long it took, in a sentence."
+        price_key: diagnostic-repair-all-in   # a key in _data/services.yml
+        photo: /assets/img/jobs/thornlie-hp.jpg   # optional, 640x480
+        alt: "The laptop open on the bench, battery removed"   # with photo
+
+  Photos load lazily with their size set, so the grid never shifts.
+{%- endcomment -%}
+{%- if page.jobs.size > 0 %}
+    <h2 id="jobs">Recent repairs in {{ page.suburb }}</h2>
+
+    <ul class="job-grid">
+      {%- for _j in page.jobs %}
+      <li class="job-card">
+        {%- if _j.photo %}
+        <img class="job-photo" src="{{ _j.photo }}" alt="{{ _j.alt | escape }}" width="640" height="480" loading="lazy" decoding="async">
+        {%- endif %}
+        <div class="job-body">
+          <p class="job-meta">{{ _j.month | date: "%B %Y" }}{% if _j.area %} &middot; {{ _j.area | escape }}{% endif %}</p>
+          <h3>{{ _j.device | escape }}: {{ _j.problem | escape }}</h3>
+          <p>{{ _j.story | escape }}</p>
+          <p class="job-outcome">{{ _j.outcome | escape }}</p>
+          {%- if _j.price_key %}
+          <span class="problem-price">From {% include price.html key=_j.price_key bare=true raw=true %}</span>
+          {%- endif %}
+        </div>
+      </li>
+      {%- endfor %}
+    </ul>
+{%- endif %}

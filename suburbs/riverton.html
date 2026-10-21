@@ -21,6 +21,18 @@ nearby:
   - Ferndale
   - Canning Vale
   - Bull Creek
+# Entity data for the schema. lga is the local council (two where the
+# suburb is split). wikipedia follows the standard article naming but has
+# not been opened to confirm; wikidata is left empty until someone looks
+# the Q-number up. Neither is printed on the page.
+entity:
+  lga:
+    - City of Canning
+  wikipedia: https://en.wikipedia.org/wiki/Riverton,_Western_Australia
+  wikidata: ""
+# true only once the drive time and distance in travel: have been checked
+# on Google Maps. Until then the page shows the travel note, not the figures.
+travel_checked: false
 
 # ---- Written for this suburb -----------------------------------------
 travel:
@@ -31,15 +43,15 @@ travel:
   - val: "None"
     lbl: "Appointment needed"
 travel_note: "High Road runs from Riverton straight through to Willetton and on toward Canning Vale, so the trip in is one continuous road with the Canning River as a landmark for most of it. No freeway needed, and it is an easy detour on the way to or from the Leisureplex."
-cta_title: "Bring it in from Riverton"
-cta_desc: "Nine minutes along High Road, walk-ins welcome, and a fixed price before anything is touched."
+cta_title: "High Road to Canning Vale"
+cta_desc: "Drop it off on the way past the Leisureplex, and hear the price before anything is changed."
 
-why_heading: "Why Riverton machines fail the way they do"
+why_heading: "School zones and family desks"
 
-standfirst: "Laptop and PC repair for Riverton 6148, carried out in Canning Vale, about nine minutes along High Road. Drop in any time, one flat diagnostic fee, and a price agreed before anything is touched."
+standfirst: "Laptop and PC repair for Riverton 6148, for the family homes between the Canning River and the Riverton Forum. High Road brings you most of the way to us in Canning Vale, and school laptops with a deadline are dealt with first."
 
 quick_answer: |
-  <p><strong>Yes, we repair computers for Riverton.</strong> We are based in Canning Vale, roughly nine minutes along High Road. Drop-offs do not need an appointment.</p>
+  <p><strong>Yes, Riverton families bring us a lot of school laptops.</strong> High Road gets you most of the way here, and if an assignment is due, tell us the date when you message.</p>
 
 why_local: |
   <p>Riverton is small, settled against the Canning River, and shaped by something a lot of families move there for deliberately: school zoning. The suburb has no secondary school of its own, and a good number of Riverton households bought specifically to land inside the Rossmoyne Senior High School catchment, one of the more sought-after public school zones in Perth's south. That gives the suburb a particular kind of stability, families who planned a move years ahead and then stayed.</p>
@@ -65,7 +77,7 @@ problems:
     text: "A document or assignment that throws an error the moment it opens. Power the machine off rather than trying again, since every attempt risks overwriting what could still be recovered."
     price_key: data-recovery-failing-drive
   - title: "Locked out of Windows"
-    text: "A forgotten password or a Microsoft account stuck asking for a code that never arrives. Almost always fixable without touching your files."
+    text: "A forgotten password or a Microsoft account stuck asking for a code that never arrives. Getting back in does not mean losing the schoolwork stored on it."
     price_key: password-reset-account-recovery
 
 laptops_intro: |
@@ -85,13 +97,11 @@ data_intro: |
 local_area: |
   <p>Riverton sits on the Canning River, bordered by Willetton and Shelley to the west, Wilson to the north, Ferndale to the east and Parkwood and Canning Vale to the south. It is about 14 kilometres south-east of the Perth CBD.</p>
 
-  <p>Riverton Forum, in adjoining Parkwood, and the Riverton Leisureplex cover most shopping and recreation needs, and families near Riverton Primary School or Queen of Apostles School are within the same short trip along High Road. The suburb feeds into both Rossmoyne Senior High School and Lynwood Senior High School for secondary, which is a large part of why families move here in the first place.</p>
-
-  <p>We cover the surrounding suburbs on the same terms, so if you are closer to one of these than to Riverton itself the answer does not change:</p>
+  <p>Riverton Forum, in adjoining Parkwood, and the Riverton Leisureplex cover most shopping and recreation needs, and Riverton Primary School and Queen of Apostles School are both close to High Road. The suburb feeds into both Rossmoyne Senior High School and Lynwood Senior High School for secondary, which is a large part of why families move here in the first place.</p>
 
 faqs:
-  - q: "Do you repair computers in Riverton?"
-    a: "Yes. We are based in Canning Vale, about a 9 minute drive along High Road. Drop-offs are walk-in, no booking needed. Most jobs are ready the same day or the next, and we get in touch the moment we know what is actually wrong."
+  - q: "Can you set up parental controls on a family laptop?"
+    a: "Yes. We can set up Microsoft Family Safety or the controls your router provides, with screen-time limits and content filters that suit each child's age, and show you how to adjust them later. It is often done in the same visit as a speed-up or a fresh install."
   - q: "My daughter's laptop is not broken, just really slow, and she needs it for assignments. Is that worth bringing in?"
     a: "Yes, and it is one of the more common reasons Riverton families come to see us given how many households here rely on a laptop for serious schoolwork. A slow but working machine is usually a straightforward tune-up, and it often matters more day to day than a completely dead one would for a household not depending on it for study."
   - q: "My computer lives in a garage or study near the river. Does that actually cause problems?"

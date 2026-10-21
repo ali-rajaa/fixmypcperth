@@ -24,6 +24,18 @@ nearby:
   - South Lake
   - Bibra Lake
   - Banjup
+# Entity data for the schema. lga is the local council (two where the
+# suburb is split). wikipedia follows the standard article naming but has
+# not been opened to confirm; wikidata is left empty until someone looks
+# the Q-number up. Neither is printed on the page.
+entity:
+  lga:
+    - City of Cockburn
+  wikipedia: https://en.wikipedia.org/wiki/Jandakot,_Western_Australia
+  wikidata: ""
+# true only once the drive time and distance in travel: have been checked
+# on Google Maps. Until then the page shows the travel note, not the figures.
+travel_checked: false
 
 # ---- Written for this suburb -----------------------------------------
 travel:
@@ -45,7 +57,7 @@ quick_answer: |
   <p><strong>Yes, we look after computers across Jandakot, both business and home.</strong> We are a short drive east in Canning Vale, and many business faults can be handled remotely the same day.</p>
 
 why_local: |
-  <p>Jandakot is not like the suburbs around it. Its 16 square kilometres hold only about 2,500 residents, because so much of the land is given over to other things. The largest is Jandakot Airport, the busiest general aviation airport in Australia and a base for pilot training and charter flights. Around it sit business parks and light industrial estates full of offices, <a href="/it-support-warehousing-logistics-perth">warehouses</a> and workshops.</p>
+  <p>Jandakot is not like the suburbs around it. Its 16 square kilometres hold only about 2,500 residents, because so much of the land is given over to other things. The largest is Jandakot Airport, the busiest general aviation airport in Australia and a base for pilot training and charter flights. Around it sit business parks and light industrial estates full of offices, <a href="/it-support-warehousing-logistics-perth">warehouses</a> and trade businesses.</p>
   <p>The homes that are here tend to sit on large blocks, many of them semi-rural, alongside the bushland of Jandakot Regional Park. The median age is about 45, older than the suburbs next door, and most people own the place they live in.</p>
   <p>That mix produces two quite different kinds of computer problem. For businesses, the issue is downtime: an office PC or a shared file that stops working costs money for every hour it stays down. For households on bigger blocks, it is distance. A router in the house does not reach the shed, the studio or the granny flat at the other end of the property.</p>
 
@@ -58,7 +70,7 @@ problems:
     text: "A software fault, a locked account or an update gone wrong. Many of these are fixed over remote support without anyone leaving the office."
     price_key: remote-support-session
   - title: "Wi-Fi that will not reach the shed"
-    text: "A big block, a workshop or granny flat at the far end, and no signal out there. Extra mesh points carry the network across the property."
+    text: "A big block, a shed or granny flat at the far end, and no signal out there. Extra mesh points carry the network across the property."
     price_key: mesh-wifi-setup-per-node
   - title: "Business software to install and set up"
     text: "Accounting packages, job management tools, industry software. Installed, configured and connected to the right accounts and printers."

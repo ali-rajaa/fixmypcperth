@@ -49,6 +49,33 @@ Each is a single file of front matter. The layout holds everything shared.
 Siblings and the footer list find suburb pages automatically, so **adding a
 suburb is one new file and nothing else**.
 
+Suburb page rules (October 2026, after a doorway-page review):
+- Written slots must stay under 10% 6-gram overlap with every other suburb
+  page (names swapped). Last measured: highest 8.3% (Gosnells and
+  Huntingdale), median 0.3%. The 11 pages that shared a formula were
+  rewritten; Thornlie has the newest copy.
+- `travel_checked: true` prints the drive time and distance cells. Only
+  Canning Vale has it. The other 17 show the travel note, "No appointment
+  needed" and a Google Maps link until someone checks the figures on Maps.
+- `entity:` (lga list, wikipedia, wikidata) feeds the Service schema: the
+  suburb is an areaServed Place with its own postcode, containedInPlace
+  its council(s), and sameAs its Wikipedia page. The business stays one
+  entity (`/#business`), never a second address. Cockburn is marked as an
+  AdministrativeArea (the City of Cockburn). The Wikipedia links follow
+  the standard article names but were not opened (no internet here), and
+  every `wikidata` is empty: fill in the Q-numbers when someone looks them
+  up.
+- Optional `jobs:` list (format at the top of `_includes/suburb-jobs.html`)
+  prints a "Recent repairs in <suburb>" grid. Real jobs only, never
+  invented. No page has any yet.
+- Laptops, desktops and data recovery are tabs (`[data-tabs]` handler in
+  `_includes/scripts.html`; hash links like `#data` open the right tab).
+  Four prices show and four sit in a details box; the five shared FAQs
+  sit in a details box under the suburb's own three. All of it is in the
+  HTML on load, and without JavaScript the tabs read as plain sections.
+- The nearby list links any nearby suburb that has its own page. The
+  "On this page" contents list was removed.
+
 **Industry pages** (9) at `/it-support-<industry>-perth`, sharing
 `assets/css/pages/industry.css`.
 
@@ -443,8 +470,9 @@ existed on the live site, so it needs no redirect.
 
 ## Deferred on purpose
 
-- **Drive times** on 7 suburb pages are estimates, not yet checked against
-  Google Maps. Each page carries a "Directions from ..." link.
+- **Drive times** on 17 suburb pages (all but Canning Vale) are estimates,
+  so they are hidden (`travel_checked: false`). Check each on Google Maps,
+  correct `travel:` if needed, then set `travel_checked: true`.
 - **Workshop photos**: suburb and guide pages have no real photographs.
   Needed from the owner.
 - **"No surprises"** is in the homepage description, the ticker and a few
@@ -707,7 +735,8 @@ drop-off), then .sv-layout: the contents as a sticky side column on desktop
 reading column; repairs as cards, steps as a timeline, prices in a panel.
 
 Suburb pages (_layouts/suburb.html): .sub-hero split hero, travel box as
-the side card; prices as tiles (2 columns), the process as a 2x2 grid; the
+the side card; prices as tiles (2 columns, four behind "Show 4 more
+prices"), laptop/desktop/data as tabs, the process as a four-step strip; the
 reading column stays 820px. Desktop top padding now clears the fixed header
 (it sat under it before).
 
@@ -999,8 +1028,9 @@ Pages source to GitHub Actions), checks including
 
 - Never call the business a "workshop" (owner, October 2026). Say "we are
   based in Canning Vale", "with us in Canning Vale", "drop-off" or "on the
-  bench" instead. "Workshop" is fine only for someone else's (a trades
-  customer's shed, the warehouses and workshops of Jandakot). The share
+  bench" instead. The word is gone from visible copy entirely, even for
+  someone else's building (Jandakot now says "trade businesses" and "a
+  shed"). Older notes in this file still use it; the site does not. The share
   images were repainted too (default, og-suburbs, og-tech-tips; og ?v=3).
 - The phone number (0470 308 676 since 20 Oct 2026) is also drawn into the
   14 share images (`assets/og/*.png`, `og-suburbs.png`, `og-tech-tips.png`).

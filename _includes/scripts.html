@@ -286,6 +286,44 @@ function formShow(el) {
     });
   });
 
+  /* ---- Tabs ----
+     Any [data-tabs] box with role="tab" buttons and role="tabpanel"
+     panels (the suburb pages' laptop, desktop and data tabs). The box only
+     gets tabs-ready once this runs, and the CSS hides panels only under
+     that class, so without JavaScript every panel shows. Arrow keys, Home
+     and End move between tabs; a link to a panel's id opens its tab. */
+  document.querySelectorAll('[data-tabs]').forEach(function (box) {
+    var tabs = [].slice.call(box.querySelectorAll('[role="tab"]'));
+    if (!tabs.length) return;
+    function panel(t) { return document.getElementById(t.getAttribute('aria-controls')); }
+    function select(t, focus) {
+      tabs.forEach(function (x) {
+        var on = x === t;
+        x.setAttribute('aria-selected', on ? 'true' : 'false');
+        x.tabIndex = on ? 0 : -1;
+        var p = panel(x);
+        if (p) p.classList.toggle('is-active', on);
+      });
+      if (focus) t.focus();
+    }
+    tabs.forEach(function (t, i) {
+      t.addEventListener('click', function () { select(t); });
+      t.addEventListener('keydown', function (e) {
+        var j = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: tabs.length - 1 }[e.key];
+        if (j === undefined) return;
+        e.preventDefault();
+        select(tabs[(j + tabs.length) % tabs.length], true);
+      });
+    });
+    function fromHash() {
+      var hit = tabs.filter(function (t) { return '#' + t.getAttribute('aria-controls') === location.hash; })[0];
+      if (hit) select(hit);
+    }
+    fromHash();
+    window.addEventListener('hashchange', fromHash);
+    box.classList.add('tabs-ready');
+  });
+
   /* ---- Footer sections (phones) ----
      On phones Repairs, Company and Suburbs collapse behind their headings
      (shell.css, max-width 760px). The class is only added here, so with no
