@@ -145,7 +145,7 @@ description: "What Perth customers say about our computer repairs, plus straight
             <div class="review-author">{{ featured.name | escape }}</div>
             <div class="review-suburb">{{ featured.service | escape }}</div>
           </div>
-          <span class="review-date">{{ featured.date | escape }}</span>
+          {% if featured.date %}<span class="review-date">{{ featured.date | escape }}</span>{% endif %}
         </figcaption>
       </figure>
 
@@ -178,7 +178,7 @@ description: "What Perth customers say about our computer repairs, plus straight
             <div>
               <div class="review-author">{{ r.name | escape }}</div>
             </div>
-            <span class="review-date">{{ r.date | escape }}</span>
+            {% if r.date %}<span class="review-date">{{ r.date | escape }}</span>{% endif %}
           </div>
         </article>
         {%- endfor %}

@@ -18,7 +18,7 @@
 
 meta:
   rating: 4.8
-  review_count: 37
+  review_count: 47
   source: Google Business Profile
   # Links to the Google Business Profile, all built on its Place ID, which
   # Google keeps stable. Copied Google Maps addresses (the long /maps/place/
@@ -38,104 +38,67 @@ meta:
   write_review_url: https://search.google.com/local/writereview?placeid=ChIJQxKYICCXMioRFw4BqZ15Mz0
   note: Rating and count are the live Google Business Profile figures. Update them here only; every page reads from
     this file.
+# Real Google reviews, copied word for word (owner supplied, October 2026).
+# First names only, per the privacy policy. No dates: Google's "3 months
+# ago" goes stale. The first one is the featured review on /reviews.
+# home: true puts a review on the homepage (keep it to six).
 reviews:
-- name: Sarah M.
-  suburb: Canning Vale
-  date: May 2025
-  service: SSD Upgrade
-  initials: SM
-  stars: 5
-  text: My laptop had been running like a snail for months. Dropped it off in the morning and had it back by afternoon
-    running faster than the day I bought it. Could not believe the difference.
-- name: Dave T.
-  suburb: Thornlie
-  date: Apr 2025
-  service: Virus Removal
-  initials: DT
-  stars: 5
-  text: Got hit with ransomware and thought I had lost everything. He recovered all my files and had Windows reinstalled
-    same day. Absolute legend, will recommend to everyone.
-- name: Priya K.
-  suburb: Willetton
-  date: Apr 2025
-  service: BSOD Fix
-  initials: PK
-  stars: 5
-  text: Called about a blue screen issue, got a quote within 20 minutes on WhatsApp and the repair was done next
-    morning. Pricing was exactly what was quoted. No surprises at all.
-- name: Jake R.
-  suburb: Armadale
-  date: Mar 2025
-  service: Gaming PC Build
-  initials: JR
-  stars: 5
-  text: Built my first gaming PC and completely botched the cable management. He tidied the whole thing up, reseated
-    my RAM properly, and it actually posts now. Great service.
-- name: Fiona and Mark L.
-  suburb: Rossmoyne
-  date: Mar 2025
-  service: Networking
-  initials: FL
-  stars: 5
-  text: Our home WiFi had dead spots all through the back of the house. He came out, repositioned the router and
-    added a mesh node. Now we have full signal everywhere. Worth every cent.
-- name: Chris B.
-  suburb: Gosnells
-  date: Feb 2025
-  service: PC Won't Boot
-  initials: CB
-  stars: 5
-  text: PC completely died on me the night before a huge work deadline. He answered on WhatsApp at 8pm, came first
-    thing next morning and had it running again by 10am. An absolute lifesaver.
-- name: Angela W.
-  suburb: Beckenham
-  date: Feb 2025
-  service: Virus Removal
-  initials: AW
-  stars: 5
-  text: Mum's computer was covered in viruses, browser hijacked, the lot. He cleaned everything, set up proper antivirus
-    and even showed her how to spot dodgy emails. Really patient and kind.
-- name: Tom S.
-  suburb: Cannington
-  date: Jan 2025
-  service: Windows Reinstall
-  initials: TS
-  stars: 5
-  text: Transparent, fast, and actually explains what he did. Did not feel like I was being upsold anything I did
-    not need. Already booked him again for a RAM upgrade.
-- name: Harrison
-  service: PC Repair
-  initials: H
-  stars: 5
-  text: "Can't thank Ali enough. My PC had a few problems but he sorted them all and kept me updated throughout the whole process through WhatsApp. Will be coming back in the future."
-- name: Karl-Kristjan
-  service: Laptop Repair
-  initials: KK
-  stars: 5
-  text: "Excellent service! They quickly found the problem with my laptop and fixed the loud fan noise that had been driving me crazy. The staff were friendly, professional, and explained everything clearly."
-# The six quotes shown on the homepage. Owner confirmed all six are
-# genuine Google reviews (Harrison and Karl-Kristjan are also in
-# `reviews:` above). No source, date or suburb is shown because none was
-# recorded for these.
-homepage:
-- name: "Sarah"
-  stars: 5
-  text: "Dropped my laptop off in the morning thinking it was dead for good, had it back the same afternoon running better than when I bought it. Genuinely didn't expect that turnaround."
-- name: "James"
-  stars: 5
-  text: "Told me exactly what was wrong before touching anything, no upsell, no confusing jargon. Price matched the quote to the dollar. Will be back for the next PC upgrade."
-- name: "Abdullah"
-  stars: 5
-  text: "Thought I'd lost every photo of my kids when the hard drive died. They recovered everything and didn't charge me a cent extra for the extra time it took. Can't thank them enough."
-- name: "Daniel"
-  stars: 5
-  text: "Had them build a gaming PC from scratch. Cable management alone was worth it, looks better than anything I could've done myself. Followed up on WhatsApp weeks later with a settings question and they answered straight away."
-- name: "Harrison"
-  stars: 5
-  text: "Can't thank Ali enough. My PC had a few problems but he sorted them all and kept me updated throughout the whole process through WhatsApp. Will be coming back in the future."
 - name: "Karl-Kristjan"
+  initials: KK
+  service: Laptop Repair
   stars: 5
-  text: "Excellent service! They quickly found the problem with my laptop and fixed the loud fan noise that had been driving me crazy. The staff were friendly, professional, and explained everything clearly."
+  home: true
+  text: "Excellent service! They quickly found the problem with my laptop and fixed the loud fan noise that had been driving me crazy. The staff were friendly, professional, and explained everything clearly. My laptop is now running much quieter and works perfectly again. The repair was completed faster than I expected, and the price was fair. I would definitely recommend them to anyone who needs computer repairs. Thank you!"
+- name: "Vertific Web Designs"
+  initials: V
+  service: Display Fix
+  stars: 5
+  home: true
+  text: "Great service, 10/10 highly recommend. I needed my display issue fixed on my PC. I had tried for many days but was not working. I came here and it was fixed the same day. They sent the quote within an hour and I dropped it the next day. Very professional communication and the price was much more affordable than other PC repairers in the area."
+- name: "Claire"
+  initials: C
+  service: PC Diagnostic
+  stars: 5
+  home: true
+  text: "Very quick turnaround (next day) to figure out what was wrong with my PC. Turns out it was a faulty RAM stick. Happy with the service"
+- name: "Dipen"
+  initials: D
+  service: Laptop Fan Clean
+  stars: 5
+  home: true
+  text: "A very smart technician is at work. He is honest and sincere. I am happy with the work he has done on my computer. I had my laptop fans cleaned and thermal paste applied. Stay rest assured any service you get from him will satisfy your wants."
+- name: "Harrison"
+  initials: H
+  service: PC Repair
+  stars: 5
+  home: true
+  text: "Can't thank Ali enough. My PC had a few problems but he sorted them all and kept me updated throughout the whole process through WhatsApp. Will be coming back in the future."
+- name: "Kevin"
+  initials: K
+  service: Laptop Repair
+  stars: 5
+  home: true
+  text: "Great bloke to deal with and sorted my laptop issue within the hour! A pleasure dealing with you!"
+- name: "Shanti"
+  initials: S
+  service: Computer Repair
+  stars: 5
+  text: "Excellent service. Very efficient & informative. Definitely a go to person to get your computer problem sorted. Very approachable & helpful. Thanks heaps for a job well done. Awesome."
+- name: "Shah"
+  initials: S
+  service: Laptop Repair
+  stars: 5
+  text: "I lost all hope for my fav laptop. Then i found him on Google search! Wow! He have done a pretty satisfying job with my laptop. Thank you brother."
+- name: "Rob"
+  initials: R
+  service: Cleaning
+  stars: 5
+  text: "Best price around!!! Flexible to your budget!!! And can perform both important cleaning tasks any user needs!!! I happily recommend this place to Everyone!!!"
+- name: "Craig"
+  initials: C
+  service: PC Upgrade
+  stars: 4
+  text: "Easy helpful process to upgrade my Dell desktop. Appreciate the recommendations for upgrade."
 
 faqs:
 - q: How much does a repair cost?

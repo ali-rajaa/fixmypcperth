@@ -725,10 +725,11 @@ description: "Computer and laptop repair in Perth: a flat [[diagnostic-repair-al
       <p class="s-sub">Real feedback from people who've dropped their PC or laptop off in Canning Vale.</p>
     </div>
     {%- comment -%}
-      Quotes live in _data/reviews.yml (homepage:), not in this file.
+      Quotes live in _data/reviews.yml (reviews: with home: true), not in this file.
     {%- endcomment %}
     <div class="testi-grid" tabindex="0" role="region" aria-label="Customer reviews">
-      {%- for r in site.data.reviews.homepage %}
+      {%- assign _home_reviews = site.data.reviews.reviews | where: "home", true -%}
+      {%- for r in _home_reviews %}
       <div class="testi-card fade-up">
         {% include stars.html value=r.stars %}
         <p class="testi-quote">"{{ r.text | escape }}"</p>
