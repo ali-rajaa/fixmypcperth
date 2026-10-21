@@ -450,8 +450,8 @@ existed on the live site, so it needs no redirect.
 - **"No surprises"** is in the homepage description, the ticker and a few
   section intros (the footer no longer uses it). It reads like the banned reassurance
   lines, but it is the brand line, so it stays until the owner decides.
-- **Contact email** on the homepage visit card carries the owner's name
-  (aly.imran.raja@gmail.com). Swap for a business address when there is one.
+- **Contact email** is the owner's Gmail (aly.imran.raja@gmail.com) on
+  purpose: there is no business address and none is planned.
 - **Low SEO items deliberately left alone**: shared FAQs repeated in schema
   across pages, plain suburb names as homepage link text, and suburbs
   sharing a postcode. Each was judged and rejected, not missed.
@@ -764,8 +764,8 @@ Terms section 6 covers a part that does not fit the new case.
 
 Working to a 10-block plan, one step per push, keeping every unique word,
 heading and internal link (only exact repeats may go). Order now: hero,
-trust bar, reviews, services, explore links, how it works, offer, why us,
-Business IT, guide, FAQ, areas, contact, closing CTA.
+trust bar, reviews, services (with the "More repairs" line), how it works,
+offer, why us, Business IT, guide, FAQ, areas, contact, closing CTA.
 
 - Step 1, done: the facts strip and the brand row are one trust bar
   (`.hero-info-strip` with `.his-brands`); the scrolling trust ticker is
@@ -776,11 +776,20 @@ Business IT, guide, FAQ, areas, contact, closing CTA.
   Backgrounds alternate: reviews grey, services and how-it-works white.
 - Was prices removed everywhere (owner decision): no `was:` in
   services.yml, no strike-through price on /pricing.
-- Still to do: 2 services cards link to their pages and a "More repairs"
-  line; 3 merge how it works with why us (sentence-case headings); 4 main
-  CTA box; 5 "Learn more" zone (guide, FAQ, areas); 6 Business IT band and
-  one merged contact and closing block. Waiting on the owner: rename "Not
-  Satisfied? No Worries" (implies a refund), and a business email.
+- Step 2, done: each service card is one link to its page (the title link
+  stretches over the card; "See details" is a decorative cue), replacing
+  six WhatsApp "Book now" buttons. PC Diagnostic links to /pricing. The
+  hero's long services-and-suburbs paragraph moved, word for word, into
+  the services intro (`.svc-intro-more`), so the hero is headline, price,
+  two sentences and one action. The separate "Explore our services" band
+  is now a "More repairs" line inside the services section, listing only
+  the built service pages the cards do not link to (from data).
+- Still to do: 3 merge how it works with why us (sentence-case headings);
+  4 main CTA box; 5 "Learn more" zone (guide, FAQ, areas); 6 Business IT
+  band and one merged contact and closing block. Waiting on the owner:
+  rename "Not Satisfied? No Worries" (implies a refund).
+- The contact email stays the owner's Gmail: there is no business email
+  and none is planned (owner, October 2026). Do not raise it again.
 
 ## Payment (owner decision, October 2026)
 

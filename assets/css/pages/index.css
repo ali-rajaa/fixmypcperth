@@ -115,9 +115,6 @@ a    { color:inherit; }
 .hero-desc { font-size:16px; color:var(--muted); line-height:1.7; margin-bottom:0.8rem; max-width:490px; }
 /* Supporting detail for search: the services and areas in plain prose.
    Same style as the lede above it, so the two read as one block of copy. */
-.hero-more { font-size:16px; color:var(--muted); line-height:1.7; margin-bottom:1.75rem; max-width:490px; }
-.hero-more a:not([class]) { color:var(--ink2); font-weight:500; text-decoration:underline; text-decoration-color:var(--border2); text-underline-offset:3px; transition:color 0.15s,text-decoration-color 0.15s; }
-@media (hover: hover) { .hero-more a:not([class]):hover { color:var(--blue); text-decoration-color:var(--blue); } }
 .hero-nobr { white-space:nowrap; }
 /* One solid button, one quiet text link. Two equal pills read as two
    primary actions, so neither one led. */
@@ -267,8 +264,13 @@ a    { color:inherit; }
    span with the last word so it never wraps onto a line of its own. */
 .svc-name-link { display:inline-block; padding:12px 0; margin:-12px 0; color:inherit; text-decoration:none; }
 .svc-name-end { white-space:nowrap; }
-.svc-name-end::after { content:''; display:inline-block; width:7px; height:7px; margin:0 0 2px 8px; border-right:2px solid var(--blue); border-top:2px solid var(--blue); transform:rotate(45deg); }
-.svc-name-link:focus-visible { outline:2px solid var(--blue); outline-offset:2px; border-radius:4px; }
+.svc-name-link::after { content:''; position:absolute; inset:0; z-index:1; border-radius:inherit; }
+.svc-name-link:focus-visible { outline:none; }
+.svc-card:has(.svc-name-link:focus-visible) { outline:2px solid var(--blue); outline-offset:2px; }
+/* The card is one link, so the cue is decoration, not a second button. */
+.svc-more { display:inline-flex; align-items:center; gap:6px; font-size:12.5px; font-weight:700; color:var(--blue); white-space:nowrap; }
+.svc-more::after { content:''; width:6px; height:6px; border-right:2px solid currentColor; border-top:2px solid currentColor; transform:rotate(45deg); }
+@media (hover: hover) { .svc-card:hover .svc-more { text-decoration:underline; text-underline-offset:3px; } }
 .svc-desc  { font-size:13px; font-weight:500; color:var(--muted); line-height:1.5; flex:1; margin-bottom:1.25rem; }
 .svc-price-row { display:flex; align-items:center; justify-content:space-between; padding-top:1rem; border-top:1px solid var(--border); gap:0.5rem; margin-top:auto; }
 .svc-card.popular .svc-price-row { border-top-color:var(--blue-mid); }
@@ -276,12 +278,14 @@ a    { color:inherit; }
 .svc-cta { font-size:12.5px; font-weight:700; color:var(--blue); display:inline-flex; align-items:center; gap:5px; text-decoration:none; background:var(--blue-lt); padding:6px 14px; border-radius:50px; border:1px solid var(--blue-mid); transition:background 0.15s,transform 0.1s var(--ease-press); white-space:nowrap; flex-shrink:0; }
 @media (hover: hover) { .svc-cta:hover { background:var(--blue-mid); } .svc-name-link:hover { color:var(--blue); } }
 .svc-cta:active { transform:scale(0.94); }
-.svc-links-section { background:var(--bg3); border-top:1px solid var(--border); padding:2rem; }
-.svc-links-inner { max-width:1100px; margin:0 auto; }
+.svc-intro-more { margin-top:0.9rem; }
+.svc-intro-more a:not([class]) { color:var(--ink2); font-weight:500; text-decoration:underline; text-decoration-color:var(--border2); text-underline-offset:3px; transition:color 0.15s,text-decoration-color 0.15s; }
+@media (hover: hover) { .svc-intro-more a:not([class]):hover { color:var(--blue); text-decoration-color:var(--blue); } }
+.svc-more-line { display:flex; align-items:center; gap:10px 14px; flex-wrap:wrap; margin-top:2rem; }
+.svc-more-line .svc-links-title { margin-bottom:0; }
 .svc-links-title { font-family:var(--display); font-size:14px; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:1rem; }
 .svc-links-grid { display:flex; flex-wrap:wrap; gap:8px; }
 /* Mobile only: see the 720px block. All 13 fit on one screen above that. */
-.svc-links-more { display:none; }
 .svc-link-pill { display:inline-flex; align-items:center; gap:6px; font-size:13px; font-weight:600; color:var(--blue); background:var(--bg); border:1.5px solid var(--blue-mid); padding:6px 14px; border-radius:50px; text-decoration:none; transition:background 0.15s,border-color 0.15s,transform 0.1s var(--ease-press); }
 @media (hover: hover) { .svc-link-pill:hover { background:var(--blue-lt); border-color:var(--blue); } }
 .svc-link-pill:active { transform:scale(0.94); }
@@ -562,7 +566,6 @@ body { padding-top:var(--mob-nav-h); }
 .hero-card { display:block; order:-1; max-width:none; margin-bottom:1.75rem; box-shadow:0 6px 28px rgba(15,23,42,0.12); }
 .hero h1:where(:not([class])) { font-size:clamp(1.9rem,8vw,2.8rem); letter-spacing:-0.040em; line-height:1.08; max-width:300px; }
 .hero-desc { font-size:1rem; line-height:1.7; }
-.hero-more { font-size:1rem; line-height:1.7; margin-bottom:1.5rem; }
 .hero-actions { flex-direction:column; align-items:stretch; gap:0.75rem; }
 .hero-wa { align-items:stretch; }
 .hero-actions .btn-wa { width:100%; }
@@ -615,30 +618,14 @@ body { padding-top:var(--mob-nav-h); }
 .cta-actions .btn-wa, .cta-actions .btn-outline { width:100%; min-width:0; }
 .faq-list { max-width:100%; grid-template-columns:1fr; gap:10px; }
 
-.svc-links-section { padding:1.5rem 1.25rem; }
 .svc-links-grid { gap:6px; }
-/* First eight pills only, which is about three rows, then a toggle. */
-.svc-links-grid > :nth-child(n+7) { display:none; }
-.svc-links-grid.is-expanded > :nth-child(n+7) { display:inline-flex; }
-.svc-links-more {
-    display:inline-flex; align-items:center; gap:6px; margin-top:1.1rem;
-    font-family:var(--body); font-size:13px; font-weight:600; color:var(--blue);
-    background:var(--bg); border:1.5px solid var(--border2); border-radius:50px;
-    padding:9px 16px; cursor:pointer; line-height:1;
-    transition:border-color 0.15s,color 0.15s,transform 0.1s var(--ease-press);
-  }
-@media (hover: hover) { .svc-links-more:hover { border-color:var(--blue); } }
-.svc-links-more:active { transform:scale(0.96); }
-.svc-links-more svg { width:14px; height:14px; transition:transform 0.22s cubic-bezier(0.4,0,0.2,1); }
-.svc-links-grid.is-expanded ~ .svc-links-more svg { transform:rotate(180deg); }
-.svc-links-more:focus-visible { outline:2px solid var(--blue); outline-offset:3px; }
 .svc-link-pill { font-size:12px; padding:5px 12px; }
 /* Cleared above the sticky call bar, which is fixed to the bottom and about
    70px tall. The two were overlapping. */
 /* .wa-bubble mobile sizing also moved to shell.css alongside the base rule. */
 /* Long button labels wrap instead of forcing the page wider than the screen. */
 .btn-blue, .btn-wa, .btn-outline { white-space:normal; text-align:center; }
-.svc-links-section .btn-outline, .section .btn-outline { width:100%; }
+.section .btn-outline { width:100%; }
 .hero-price { font-size:17px; }
 .hero-price > strong { font-size:21px; }
 /* No room to wrap on a phone, so the strip becomes one scrolling row that
@@ -735,7 +722,7 @@ body { padding-top:var(--mob-nav-h); }
   .js .fade-up { transition:opacity 0.2s ease; transform:none; }
 
   @media (hover: hover) { .btn-blue:hover, .btn-wa:hover, .svc-card:hover, .how-card:hover, .its-card:hover, .why-card:hover, a.area-pill--link:hover, .mq-service-btn:hover, .vc-row:hover .vc-row-arrow, .hero-alt-link:hover svg, .map-chip:hover { transform:none; } }
-  .btn-blue, .btn-wa, .btn-outline, .svc-card, .how-card, .its-card, .why-card, a.area-pill--link, .mq-service-btn, .guide-tab, .svc-links-more, .svc-cta, .svc-link-pill {
+  .btn-blue, .btn-wa, .btn-outline, .svc-card, .how-card, .its-card, .why-card, a.area-pill--link, .mq-service-btn, .guide-tab, .svc-cta, .svc-link-pill {
     transition-duration:0.15s;
   }
 }
@@ -752,7 +739,7 @@ body { padding-top:var(--mob-nav-h); }
   .svc-card, .how-card, .its-card, .why-card,
   .area-pill { border-color:#0F172A; }
   .btn-outline { border-color:#0F172A; }
-  .hero-alt-link, .hero-note, .hero-more { color:#0F172A; }
+  .hero-alt-link, .hero-note { color:#0F172A; }
   .visit-card, .vc-turnaround { border-color:#0F172A; }
   .vc-label, .vc-hours-sub, .vc-turnaround-note, .vc-quote-link { color:#334155; }
   .svc-cta, .svc-link-pill { border-color:#0A3ACC; }
@@ -760,7 +747,7 @@ body { padding-top:var(--mob-nav-h); }
 
 /* The grey iOS tap flash paints over the press-scale feedback above, so the
    two fight each other. The scale and colour change are the feedback now. */
-.btn-blue, .btn-wa, .btn-outline, .mq-service-btn, .svc-cta, .svc-link-pill, .area-pill--link, .guide-tab, .svc-links-more {
+.btn-blue, .btn-wa, .btn-outline, .mq-service-btn, .svc-cta, .svc-link-pill, .area-pill--link, .guide-tab {
   -webkit-tap-highlight-color:transparent;
 }
 
@@ -855,14 +842,13 @@ body { padding-top:var(--mob-nav-h); }
    ========================================================== */
 @media (max-width: 720px) {
   /* Side margin */
-  .hero, .hero-info-strip, .section, .svc-links-section, .offer-banner, .faq-section, .cta-section { padding-left: var(--m-gutter); padding-right: var(--m-gutter); }
+  .hero, .hero-info-strip, .section, .offer-banner, .faq-section, .cta-section { padding-left: var(--m-gutter); padding-right: var(--m-gutter); }
 
   /* Section rhythm: hero 24 under the header; the info card below it
      belongs to the hero, then 48 before the next section. */
   .hero { padding-top: var(--m-hero-top); padding-bottom: var(--m-hero-top); }
   .hero-info-strip { padding-top: 0; padding-bottom: var(--m-section); }
   .section, .faq-section, .cta-section { padding-top: var(--m-section); padding-bottom: var(--m-section); }
-  .svc-links-section { padding-top: var(--m-band); padding-bottom: var(--m-band); }
 
   /* Cards and the boxes inside them */
   .hero-info-strip > .wrap, .svc-card, .how-card, .why-card, .its-card, .visit-card { padding: var(--m-card-pad); border-radius: var(--m-card-radius); }
@@ -879,12 +865,12 @@ body { padding-top:var(--mob-nav-h); }
   .s-title, .cta-title { font-size: var(--m-h2); margin-bottom: var(--m-h2-space); }
 
   /* Text */
-  .s-sub, .hero-desc, .hero-more, .cta-desc, .guide-panel > p { font-size: var(--m-text); }
+  .s-sub, .hero-desc, .cta-desc, .guide-panel > p { font-size: var(--m-text); }
   .hc-url, .mq-rating-text > span, .mq-notice > span, .mq-service-btn, .mq-trust-item, .his-lbl, .his-checks > li, .brand-badge, .svc-link-pill, .vc-turnaround-note, .svc-cta { font-size: var(--m-text-min); }
   .mq-notice { padding: var(--m-row-pad); border-radius: var(--m-panel-radius); font-size: var(--m-text-min); }
 
   /* Buttons */
-  .btn-wa, .btn-outline, .svc-cta, .svc-links-more { min-height: var(--m-btn); padding-top: 0; padding-bottom: 0; }
+  .btn-wa, .btn-outline, .svc-cta { min-height: var(--m-btn); padding-top: 0; padding-bottom: 0; }
   .hero-wa > .btn-wa, .svc-header-row > .btn-outline, .offer-btn > .btn-wa, .fade-up > .btn-outline, .vc-actions > .btn-wa, .cta-actions > .btn-wa, .cta-actions > .btn-outline { width: 100%; justify-content: center; }
 
   /* Inner .wrap adds nothing on phones: the section is the 20px margin.
