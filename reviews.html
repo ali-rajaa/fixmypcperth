@@ -1,6 +1,7 @@
 ---
 layout: default
 css: reviews
+review_row: true
 title: "Computer Repair Reviews Perth | Reviews & FAQ | FixMyPC"
 description: "What Perth customers say about our computer repairs, plus straight answers on cost, turnaround, warranty and what happens to your data. Canning Vale workshop."
 ---
@@ -143,9 +144,10 @@ description: "What Perth customers say about our computer repairs, plus straight
           <div class="review-avatar" aria-hidden="true">{{ featured.initials | escape }}</div>
           <div>
             <div class="review-author">{{ featured.name | escape }}</div>
-            <div class="review-suburb">{{ featured.service | escape }}</div>
+            <div class="review-suburb">Google review</div>
           </div>
           {% if featured.date %}<span class="review-date">{{ featured.date | escape }}</span>{% endif %}
+          <svg class="rv-g" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path fill="#4285F4" d="M45.1 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h11.8c-.5 2.8-2.1 5.1-4.4 6.7v5.5h7.1c4.2-3.8 6.6-9.5 6.6-16.2z"/><path fill="#34A853" d="M24 46c5.9 0 10.9-2 14.5-5.3l-7.1-5.5c-2 1.3-4.5 2.1-7.4 2.1-5.7 0-10.5-3.8-12.2-9H4.5v5.7C8.1 41.1 15.5 46 24 46z"/><path fill="#FBBC05" d="M11.8 28.3c-.4-1.3-.7-2.8-.7-4.3s.3-3 .7-4.3V14H4.5C3 17 2.2 20.4 2.2 24s.8 7 2.3 10l7.3-5.7z"/><path fill="#EA4335" d="M24 10.7c3.2 0 6.1 1.1 8.4 3.3l6.3-6.3C34.9 4.1 29.9 2 24 2 15.5 2 8.1 6.9 4.5 14l7.3 5.7c1.7-5.2 6.5-9 12.2-9z"/></svg>
         </figcaption>
       </figure>
 
@@ -163,30 +165,7 @@ description: "What Perth customers say about our computer repairs, plus straight
       <a href="{{ rv.meta.write_review_url }}" target="_blank" rel="noopener noreferrer">leave one of your own</a>.
     </p>
 
-    <div class="carousel-wrap">
-      <div class="carousel-track" id="rvTrack" tabindex="0" role="group"
-           aria-label="Customer reviews. Scroll sideways for more.">
-        {%- for r in rv.reviews offset: 1 %}
-        <article class="review-card">
-          <div class="review-top">
-            {% include stars.html value=r.stars %}
-            <span class="review-service">{{ r.service | escape }}</span>
-          </div>
-          <p class="review-quote">{{ r.text | escape }}</p>
-          <div class="review-footer">
-            <div class="review-avatar" aria-hidden="true">{{ r.initials | escape }}</div>
-            <div>
-              <div class="review-author">{{ r.name | escape }}</div>
-            </div>
-            {% if r.date %}<span class="review-date">{{ r.date | escape }}</span>{% endif %}
-          </div>
-        </article>
-        {%- endfor %}
-      </div>
-      <div class="carousel-controls">
-        <div class="carousel-dots" id="rvDots"></div>
-      </div>
-    </div>
+    {% include review-row.html offset=1 %}
   </div>
 
   <!-- ══════════════ FAQ ══════════════ -->
@@ -228,82 +207,3 @@ description: "What Perth customers say about our computer repairs, plus straight
 
 </div>
 
-<script>
-/* Page indicator for the review rail.
-
-   The rail scrolls natively, so this script only reports where it is and
-   lets a dot jump to a page. It never drives the motion, which is why a
-   swipe can be interrupted, reversed or flicked without fighting it.
-
-   One dot per page, not one per card: at three cards across, seven cards
-   is three pages, and seven dots would contradict what the rail does. */
-(function () {
-  var track = document.getElementById('rvTrack');
-  var dots  = document.getElementById('rvDots');
-  if (!track || !dots) return;
-
-  var cards = track.querySelectorAll('.review-card');
-  if (cards.length < 2) return;
-
-  var built = 0;
-
-  function pageCount() {
-    if (!track.clientWidth) return 1;
-    return Math.max(1, Math.round(track.scrollWidth / track.clientWidth));
-  }
-
-  function build() {
-    var n = pageCount();
-    if (n === built) return;
-    built = n;
-    dots.textContent = '';
-    if (n < 2) return;
-    for (var i = 0; i < n; i++) {
-      (function (i) {
-        var b = document.createElement('button');
-        b.type = 'button';
-        b.className = 'carousel-dot';
-        b.setAttribute('aria-label', 'Reviews, page ' + (i + 1) + ' of ' + n);
-        b.addEventListener('click', function () {
-          track.scrollTo({
-            left: i * track.clientWidth,
-            behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
-          });
-        });
-        dots.appendChild(b);
-      })(i);
-    }
-    sync();
-  }
-
-  function sync() {
-    var all = dots.querySelectorAll('.carousel-dot');
-    if (!all.length) return;
-    var i = track.clientWidth ? Math.round(track.scrollLeft / track.clientWidth) : 0;
-    if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 2) i = all.length - 1;
-    if (i > all.length - 1) i = all.length - 1;
-    if (i < 0) i = 0;
-    for (var n = 0; n < all.length; n++) {
-      var on = n === i;
-      all[n].classList.toggle('active', on);
-      all[n].setAttribute('aria-current', on ? 'true' : 'false');
-    }
-  }
-
-  var ticking = false;
-  track.addEventListener('scroll', function () {
-    if (ticking) return;
-    ticking = true;
-    requestAnimationFrame(function () { sync(); ticking = false; });
-  }, { passive: true });
-
-  /* The page count changes with the breakpoint, so rebuild on resize. */
-  var rt;
-  addEventListener('resize', function () {
-    clearTimeout(rt);
-    rt = setTimeout(build, 150);
-  }, { passive: true });
-
-  build();
-})();
-</script>

@@ -1,6 +1,7 @@
 ---
 layout: default
 form_css: true
+review_row: true
 title: "Computer Repair Perth | Flat [[diagnostic-repair-all-in]] All-In | FixMyPC Perth"
 description: "Computer and laptop repair in Perth: a flat [[diagnostic-repair-all-in]] covers diagnosis and repair. Canning Vale workshop, most jobs same day. WhatsApp 0470 308 676."
 ---
@@ -724,43 +725,7 @@ description: "Computer and laptop repair in Perth: a flat [[diagnostic-repair-al
       <h2 class="s-title">What Perth customers <span class="accent">are saying</span></h2>
       <p class="s-sub">Real feedback from people who've dropped their PC or laptop off in Canning Vale.</p>
     </div>
-    {%- comment -%}
-      Reviews: every entry in _data/reviews.yml (reviews:), copied word for
-      word from Google. The row scrolls itself slowly (script at the foot of
-      this page): it stops while hovered, touched or focused, has a Pause
-      button (WCAG 2.2.2), and stays still under reduced motion. Without
-      JavaScript it is a plain swipeable row. The script adds a second,
-      hidden copy of the cards so the loop has no gap.
-    {%- endcomment %}
-    {%- assign _rv = site.data.reviews %}
-    <div class="rv-bar fade-up">
-      <a class="rv-badge" href="{{ _rv.meta.reviews_url }}" target="_blank" rel="noopener noreferrer">
-        <svg class="rv-g" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path fill="#4285F4" d="M45.1 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h11.8c-.5 2.8-2.1 5.1-4.4 6.7v5.5h7.1c4.2-3.8 6.6-9.5 6.6-16.2z"/><path fill="#34A853" d="M24 46c5.9 0 10.9-2 14.5-5.3l-7.1-5.5c-2 1.3-4.5 2.1-7.4 2.1-5.7 0-10.5-3.8-12.2-9H4.5v5.7C8.1 41.1 15.5 46 24 46z"/><path fill="#FBBC05" d="M11.8 28.3c-.4-1.3-.7-2.8-.7-4.3s.3-3 .7-4.3V14H4.5C3 17 2.2 20.4 2.2 24s.8 7 2.3 10l7.3-5.7z"/><path fill="#EA4335" d="M24 10.7c3.2 0 6.1 1.1 8.4 3.3l6.3-6.3C34.9 4.1 29.9 2 24 2 15.5 2 8.1 6.9 4.5 14l7.3 5.7c1.7-5.2 6.5-9 12.2-9z"/></svg>
-        <span class="rv-badge-score">{{ _rv.meta.rating }}</span>
-        {% include stars.html value=_rv.meta.rating %}
-        <span class="rv-badge-text"><span class="rv-badge-pre">Google rating<span aria-hidden="true"> &middot; </span></span><span class="rv-badge-link">see all reviews</span></span>
-      </a>
-      <button type="button" class="rv-toggle" id="rvToggle" aria-controls="rvRow" aria-pressed="false" hidden>
-        <svg class="rv-ico-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
-        <svg class="rv-ico-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg>
-        <span class="rv-toggle-label">Pause</span>
-      </button>
-    </div>
-    <div class="rv-row fade-up" id="rvRow" tabindex="0" role="region" aria-label="Customer reviews from Google">
-      <ul class="rv-track" role="list">
-        {%- for r in _rv.reviews %}
-        <li class="rv-card">
-          <div class="rv-head">
-            <span class="rv-avatar rv-c{{ forloop.index0 | modulo: 5 }}" aria-hidden="true">{{ r.name | slice: 0 }}</span>
-            <span class="rv-who"><span class="rv-name">{{ r.name | escape }}</span><span class="rv-src">Google review</span></span>
-            <svg class="rv-g" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path fill="#4285F4" d="M45.1 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h11.8c-.5 2.8-2.1 5.1-4.4 6.7v5.5h7.1c4.2-3.8 6.6-9.5 6.6-16.2z"/><path fill="#34A853" d="M24 46c5.9 0 10.9-2 14.5-5.3l-7.1-5.5c-2 1.3-4.5 2.1-7.4 2.1-5.7 0-10.5-3.8-12.2-9H4.5v5.7C8.1 41.1 15.5 46 24 46z"/><path fill="#FBBC05" d="M11.8 28.3c-.4-1.3-.7-2.8-.7-4.3s.3-3 .7-4.3V14H4.5C3 17 2.2 20.4 2.2 24s.8 7 2.3 10l7.3-5.7z"/><path fill="#EA4335" d="M24 10.7c3.2 0 6.1 1.1 8.4 3.3l6.3-6.3C34.9 4.1 29.9 2 24 2 15.5 2 8.1 6.9 4.5 14l7.3 5.7c1.7-5.2 6.5-9 12.2-9z"/></svg>
-          </div>
-          {% include stars.html value=r.stars %}
-          <p class="rv-text">{{ r.text | escape }}</p>
-        </li>
-        {%- endfor %}
-      </ul>
-    </div>
+    {% include review-row.html badge=true %}
     <p class="testi-more fade-up">Had a repair with us? <a href="{{ _rv.meta.write_review_url }}" target="_blank" rel="noopener noreferrer">Leave a Google review</a>.</p>
   </div>
 </section>
@@ -1541,97 +1506,5 @@ description: "Computer and laptop repair in Perth: a flat [[diagnostic-repair-al
     btn.setAttribute('aria-expanded', open ? 'true' : 'false');
     label.textContent = open ? 'Show less' : 'Show more';
   });
-})();
-/* ---- Reviews row: slow auto-scroll ----
-   Moves the row's own scroll position, so a swipe or trackpad scroll just
-   takes over and the loop carries on from wherever it is left. Stops while
-   hovered, touched or focused, when the Pause button is pressed, when the
-   row is off screen, and never runs under reduced motion. */
-(function () {
-  var row = document.getElementById('rvRow');
-  var btn = document.getElementById('rvToggle');
-  if (!row || !btn) return;
-  var track = row.querySelector('.rv-track');
-  var cards = [].slice.call(track.children);
-  var calm = window.matchMedia('(prefers-reduced-motion: reduce)');
-  var SPEED = 32;   /* px per second: readable while moving */
-  var RESUME = 2500; /* ms after a touch or swipe ends */
-  var pos = 0, last = 0, loopW = 0, raf = 0;
-  var hovered = false, focused = false, touching = false, userPaused = false, onScreen = false;
-  var resumeAt = 0, ours = 0;
-
-  cards.forEach(function (c) {
-    var copy = c.cloneNode(true);
-    copy.setAttribute('aria-hidden', 'true');
-    copy.inert = true;
-    track.appendChild(copy);
-  });
-  function measure() { loopW = track.children[cards.length].offsetLeft - track.children[0].offsetLeft; }
-
-  function running() {
-    return onScreen && !calm.matches && !userPaused && !hovered && !focused && !touching && performance.now() >= resumeAt;
-  }
-  function frame(t) {
-    var dt = last ? Math.min(t - last, 64) / 1000 : 0;
-    last = t;
-    if (running() && loopW) {
-      pos += SPEED * dt;
-      if (pos >= loopW) pos -= loopW;
-      ours = Math.round(pos);
-      row.scrollLeft = ours;
-    }
-    raf = requestAnimationFrame(frame);
-  }
-  function start() { if (!raf) { last = 0; raf = requestAnimationFrame(frame); } }
-  function stop() { cancelAnimationFrame(raf); raf = 0; }
-
-  /* A scroll right after a wheel, touch or key press is the visitor's:
-     follow it and keep the loop seamless. Any other scroll is our own. */
-  var input = -1e9;
-  function mark() { input = performance.now(); }
-  row.addEventListener('wheel', function (e) { if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) mark(); }, { passive: true });
-  row.addEventListener('touchstart', mark, { passive: true });
-  row.addEventListener('pointerdown', mark);
-  row.addEventListener('keydown', function (e) { if (/^(Arrow|Home|End|Page)/.test(e.key)) mark(); });
-  row.addEventListener('scroll', function () {
-    if (performance.now() - input > 1000) return;
-    pos = row.scrollLeft;
-    if (loopW && pos >= loopW) { pos -= loopW; ours = Math.round(pos); row.scrollLeft = ours; }
-    resumeAt = performance.now() + RESUME;
-  }, { passive: true });
-
-  row.addEventListener('pointerenter', function (e) { if (e.pointerType === 'mouse') hovered = true; });
-  row.addEventListener('pointerleave', function (e) { if (e.pointerType === 'mouse') hovered = false; });
-  row.addEventListener('pointerdown', function (e) { if (e.pointerType !== 'mouse') touching = true; });
-  ['pointerup', 'pointercancel'].forEach(function (ev) {
-    row.addEventListener(ev, function () { if (touching) { touching = false; resumeAt = performance.now() + RESUME; } });
-  });
-  row.addEventListener('focusin', function () { focused = true; });
-  row.addEventListener('focusout', function () { focused = false; });
-
-  function setPaused(p) {
-    userPaused = p;
-    btn.setAttribute('aria-pressed', p ? 'true' : 'false');
-    btn.classList.toggle('is-paused', p);
-    btn.querySelector('.rv-toggle-label').textContent = p ? 'Play' : 'Pause';
-  }
-  btn.addEventListener('click', function () { setPaused(!userPaused); });
-
-  function applyMotion() {
-    btn.hidden = calm.matches;
-    row.classList.toggle('is-auto', !calm.matches);
-    measure();
-  }
-  if (calm.addEventListener) calm.addEventListener('change', applyMotion);
-  applyMotion();
-  window.addEventListener('resize', measure);
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
-
-  if ('IntersectionObserver' in window) {
-    new IntersectionObserver(function (es) {
-      onScreen = es[0].isIntersecting;
-      if (onScreen) start(); else stop();
-    }).observe(row);
-  } else { onScreen = true; start(); }
 })();
 </script>

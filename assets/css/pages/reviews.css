@@ -109,7 +109,6 @@
   --radius:  14px;
   --nav-h:     64px;
   --mob-nav-h: 60px;
-  --rail-gap: 1.25rem;
   --ease-settle: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-press:  cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -283,81 +282,13 @@ a { color: inherit; }
 @media (hover: hover) { .s-sub a:where(:not([class])):hover { color: var(--blue-dk); border-bottom-color: var(--blue-dk); } }
 
 /* ==========================================================
-   REVIEW RAIL
-   A native scroll container, not a scripted transform. Native
-   scrolling already gives 1:1 tracking, momentum on release and
-   an interruptible flick that can be caught and reversed mid
-   motion. The dots read the rail; they do not drive it.
-   overscroll-behavior-x: contain stops a swipe at the end of the
-   rail triggering the browser's back gesture.
+   REVIEWS ROW
+   The scrolling Google reviews row is shared with the homepage
+   (_includes/review-row.html, assets/css/review-row.css). Only
+   its spacing on this page lives here. The featured review's
+   footer below still uses the .review-* classes.
    ========================================================== */
-.carousel-wrap { position: relative; margin-bottom: 3rem; }
-
-.carousel-track {
-  display: flex; gap: var(--rail-gap);
-  overflow-x: auto; overflow-y: hidden;
-  scroll-snap-type: x mandatory;
-  overscroll-behavior-x: contain;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  padding: 4px 4px 8px;
-}
-.carousel-track::-webkit-scrollbar { display: none; }
-
-/* Edge fades signal that the rail continues past the viewport. */
-.carousel-wrap::before,
-.carousel-wrap::after {
-  content: ''; position: absolute; top: 0; bottom: 0; width: 36px;
-  z-index: 2; pointer-events: none;
-}
-.carousel-wrap::before { left: 0; background: linear-gradient(to right, var(--bg), transparent); }
-.carousel-wrap::after { right: 0; background: linear-gradient(to left, var(--bg), transparent); }
-
-.review-card {
-  flex: 0 0 calc((100% - (var(--rail-gap) * 2)) / 3);
-  scroll-snap-align: start;
-  background: var(--bg2); border: 1.5px solid var(--border);
-  border-radius: 16px; padding: 1.6rem 1.5rem;
-  display: flex; flex-direction: column; gap: 1rem;
-  position: relative; overflow: hidden;
-  transition:
-    border-color 0.3s var(--ease-settle),
-    transform 0.3s var(--ease-settle),
-    box-shadow 0.3s var(--ease-settle);
-}
-.review-card::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-  background: linear-gradient(90deg, var(--blue), var(--teal));
-  opacity: 0; transition: opacity 0.2s var(--ease-settle);
-}
-@media (hover: hover) { .review-card:hover {
-  border-color: var(--blue-mid); transform: translateY(-3px);
-  box-shadow: 0 10px 28px rgba(15,23,42,0.08);
-} }
-@media (hover: hover) { .review-card:hover::before { opacity: 1; } }
-
-.review-top {
-  display: flex; align-items: center; justify-content: space-between;
-  gap: 0.75rem;
-}
-
-/* Plain uppercase. No capsule, no fill. */
-.review-service {
-  font-size: 10.5px; font-weight: 700; letter-spacing: 0.08em;
-  text-transform: uppercase; color: var(--muted2);
-  white-space: nowrap; text-align: right;
-}
-
-.review-quote {
-  flex: 1; margin: 0; font-size: 14.5px; color: var(--ink2);
-  line-height: 1.75; font-style: italic;
-  position: relative; padding-left: 18px;
-}
-.review-quote::before {
-  content: '\201C'; position: absolute; left: 0; top: -6px;
-  font-size: 2.2rem; color: var(--blue-mid); line-height: 1;
-  font-style: normal; font-family: var(--display);
-}
+#reviews .rv-row { margin-top: 1.75rem; margin-bottom: 3rem; }
 
 .review-footer {
   display: flex; align-items: center; gap: 12px;
@@ -370,13 +301,7 @@ a { color: inherit; }
   color: #fff; letter-spacing: 0.02em;
   background: linear-gradient(135deg, var(--blue), var(--blue-dk));
 }
-/* Version 1 set the text white and never set a fill, so the
-   initials were invisible. Cycled so adjacent cards differ. */
-.review-card:nth-child(5n+2) .review-avatar { background: linear-gradient(135deg, #0EA5E9, #0369A1); }
-.review-card:nth-child(5n+3) .review-avatar { background: linear-gradient(135deg, var(--wa), var(--wa-dk)); }
-.review-card:nth-child(5n+4) .review-avatar { background: linear-gradient(135deg, #8B5CF6, #6D28D9); }
-.review-card:nth-child(5n+5) .review-avatar { background: linear-gradient(135deg, #F97316, #C2410C); }
-
+.review-footer > .rv-g { width: 22px; height: 22px; margin-left: auto; flex-shrink: 0; }
 .review-author {
   font-family: var(--display); font-size: 13px; font-weight: 700;
   color: var(--ink); line-height: 1.3;
@@ -386,34 +311,6 @@ a { color: inherit; }
   font-size: 12px; color: var(--muted2); margin-left: auto;
   white-space: nowrap; font-variant-numeric: tabular-nums;
 }
-
-/* ==========================================================
-   RAIL DOTS
-   One per page of the rail, not one per card, so the count
-   follows the layout instead of contradicting it. The script
-   builds .carousel-dot; version 1 styled .c-dot.
-   ========================================================== */
-.carousel-controls {
-  display: flex; align-items: center; justify-content: center;
-  margin-top: 1.4rem;
-}
-/* Dots: the button is the tap target (44px tall, 24px wide, per Apple's
-   44pt minimum); the dot you see is drawn inside it by ::before. The
-   negative margins cancel the extra height so the dots sit where they did. */
-.carousel-dots { display: flex; gap: 0; align-items: center; margin: -18px 0; }
-.carousel-dot {
-  display: inline-flex; align-items: center; justify-content: center;
-  min-width: 24px; height: 44px; padding: 0 4px;
-  background: none; border: none; cursor: pointer;
-  flex-shrink: 0; -webkit-tap-highlight-color: transparent;
-}
-.carousel-dot::before {
-  content: ''; display: block; width: 8px; height: 8px; border-radius: 4px;
-  background: var(--border2);
-  transition: background 0.25s var(--ease-settle), width 0.3s var(--ease-settle);
-}
-@media (hover: hover) { .carousel-dot:hover::before { background: var(--muted2); } }
-.carousel-dot.active::before { background: var(--blue); width: 26px; }
 
 /* ==========================================================
    FAQ
@@ -483,7 +380,6 @@ a { color: inherit; }
   .hero-grid { grid-template-columns: 1fr; gap: 2rem; }
   .hero-review { max-width: 34rem; }
   .page-sub { max-width: 60ch; }
-  .review-card { flex-basis: calc((100% - var(--rail-gap)) / 2); }
 }
 
 @media (max-width: 900px) {
@@ -510,64 +406,46 @@ a { color: inherit; }
   .hero-review { padding: 1.5rem 1.35rem 1.35rem; border-radius: 16px; }
   .hero-quote { font-size: 1rem; padding-left: 22px; }
 
-  /* One card per swipe, with a sliver of the next one showing so
-     it is obvious the rail continues. */
-  .review-card { flex-basis: 86%; padding: 1.4rem 1.25rem; }
-  .carousel-wrap::before, .carousel-wrap::after { width: 20px; }
-  .carousel-controls { margin-top: 1.1rem; }
-
   .cta-bar { padding: 1.75rem 1.25rem; border-radius: 14px; margin-top: 1.5rem; }
   .cta-btns { flex-direction: column; }
 }
 
 @media (max-width: 440px) {
   .rating-score { font-size: 1.9rem; }
-  .review-card { flex-basis: 89%; }
 }
 
 /* ==========================================================
    PRESS FEEDBACK AND ACCESSIBILITY
    Feedback lands on the press, not on release.
    ========================================================== */
-.review-card, .btn-blue, .btn-outline, .carousel-dot {
+.btn-blue, .btn-outline {
   -webkit-tap-highlight-color: transparent;
-}
-.review-card:active {
-  transform: translateY(0) scale(0.99);
-  box-shadow: 0 2px 6px rgba(15,23,42,0.1);
-  transition: transform 0.1s var(--ease-press), box-shadow 0.1s var(--ease-press);
 }
 .btn-blue:active, .btn-outline:active {
   transform: scale(0.97);
   transition: transform 0.1s var(--ease-press);
 }
-.carousel-dot:active { transform: scale(0.8); transition: transform 0.1s var(--ease-press); }
 
 .btn-blue:focus-visible, .btn-outline:focus-visible,
-.carousel-dot:focus-visible, .carousel-track:focus-visible, .s-sub a:where(:not([class])):focus-visible {
+.s-sub a:where(:not([class])):focus-visible {
   outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 8px;
 }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .carousel-track { scroll-behavior: auto; }
-  .review-card, .btn-blue, .btn-outline, .carousel-dot { transition-duration: 0.15s; }
-  .review-card:hover, .review-card:active,
+  .btn-blue, .btn-outline { transition-duration: 0.15s; }
   .btn-blue:hover, .btn-blue:active,
-  .btn-outline:hover, .btn-outline:active,
-  .carousel-dot:active { transform: none; }
+  .btn-outline:hover, .btn-outline:active { transform: none; }
 
 }
 
 @media (prefers-contrast: more) {
-  .review-quote, .review-suburb, .review-date, .s-sub, .page-sub,
+  .review-suburb, .review-date, .s-sub, .page-sub,
   .rating-meta { color: #334155; }
-  .review-service { color: #475569; }
   .stars-bg .star { fill: #94A3B8; }
-  .review-card, .cta-bar,
+  .cta-bar,
   .rating-block, .hero-review { border-color: #0F172A; }
   .btn-outline { border-color: #0F172A; }
-  .carousel-wrap::before, .carousel-wrap::after { display: none; }
 }
 
 /* ==========================================================
@@ -643,23 +521,14 @@ a { color: inherit; }
 
   /* Section rhythm: 48 between sections */
   .page-hero { padding-top: 0; padding-bottom: var(--m-section); }
-  .carousel-wrap { margin-bottom: var(--m-section); }
+  #reviews .rv-row { margin-bottom: var(--m-section); }
   .faq-wrap { margin-bottom: var(--m-section); }
   .cta-bar { margin-top: 0; }
 
-  /* Carousel edge to edge, first card on the 20px line */
-  .carousel-track {
-    margin-left: calc(-1 * var(--m-gutter)); margin-right: calc(-1 * var(--m-gutter));
-    padding-left: var(--m-gutter); padding-right: var(--m-gutter);
-    scroll-padding-inline: var(--m-gutter);
-  }
-  .carousel-track > .review-card { scroll-snap-align: start; }
-
   /* Cards */
-  .rating-block, .hero-review, .review-card, .cta-bar { padding: var(--m-card-pad); border-radius: var(--m-card-radius); }
+  .rating-block, .hero-review, .cta-bar { padding: var(--m-card-pad); border-radius: var(--m-card-radius); }
 
   /* Gaps */
-  .carousel-track { gap: var(--m-gap-cards); }
   .faq-wrap { gap: var(--m-gap-rows); }
 
   /* Headings */
