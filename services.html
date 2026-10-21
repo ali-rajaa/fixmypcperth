@@ -18,7 +18,7 @@ faqs:
   - q: "Is there a warranty?"
     a: "Every repair carries a 30-day labour warranty. If the same fault comes back within 30 days, bring it in and we fix it again with no labour cost."
   - q: "Do I have to bring the computer to Canning Vale?"
-    a: "For most repairs, yes, because the work happens on the bench in our workshop. Network, wifi and printer jobs are done at your place for the same price plus a [[on-site-call-out]] call-out fee, and many software problems can be sorted over a remote session from [[remote-support-session]]."
+    a: "For most repairs, yes, because the work happens on our bench. Network, wifi and printer jobs are done at your place for the same price plus a [[on-site-call-out]] call-out fee, and many software problems can be sorted over a remote session from [[remote-support-session]]."
   - q: "Do you work on MacBooks?"
     a: "MacBook and Surface devices are welcome for diagnostics, virus removal, data recovery and software work. We do not replace screens or batteries on MacBook or Surface devices. Newer MacBooks keep their storage on the board and encrypted, so for data recovery we assess it first and tell you honestly what is possible before any charge."
   - q: "What happens if my data cannot be recovered?"
@@ -109,7 +109,7 @@ faqs:
           </ol>
         </nav>
         <h1 class="sv-h1 hub-h1">{{ page.heading | escape }}</h1>
-        <p class="sv-lede">Every computer and laptop repair we do, from our workshop in Canning Vale. Each one is a fixed price agreed before we start, most jobs are ready the same day, and every repair carries a 30-day warranty. Pick the one that sounds like yours, or tell us what the computer is doing and we will tell you.</p>
+        <p class="sv-lede">Every computer and laptop repair we do, based in Canning Vale. Each one is a fixed price agreed before we start, most jobs are ready the same day, and every repair carries a 30-day warranty. Pick the one that sounds like yours, or tell us what the computer is doing and we will tell you.</p>
         <div class="sv-act">
           <a href="{% include wa-href.html text="Hi! I'd like a quote for a computer repair." %}" target="_blank" rel="noopener noreferrer" class="sv-btn sv-btn-wa" onclick="trackWAClick()" data-track="hero_whatsapp">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>
@@ -297,8 +297,8 @@ faqs:
     {%- when "performance" %}{% assign _ch = "Speed-ups" %}{% capture _ci %}For a computer that works but crawls. Three levels of clean-up, depending on how far it has slowed and how long since anyone looked at it.{% endcapture %}
     {%- when "upgrades" %}{% assign _ch = "Upgrades" %}{% capture _ci %}Faster storage, more memory, a new graphics card or Windows 11. Labour is a fixed price, and you can supply the part or we can.{% endcapture %}
     {%- when "gaming" %}{% assign _ch = "Gaming PCs and consoles" %}{% capture _ci %}Building with your parts, the finishing work around a build (cooling, cables, lighting, tuning and testing) and PS5 and Xbox repairs.{% endcapture %}
-    {%- when "networking" %}{% assign _ch = "Networking and wifi" %}{% capture _ci %}Done at your home or office across the southern suburbs, at the same price as in the workshop plus the call-out fee.{% endcapture %}
-    {%- when "software" %}{% assign _ch = "Software and remote help" %}{% capture _ci %}Jobs that often do not need the computer in the workshop at all: setup, email, Office, backups and moving everything to a new PC.{% endcapture %}
+    {%- when "networking" %}{% assign _ch = "Networking and wifi" %}{% capture _ci %}Done at your home or office across the southern suburbs, at the same price as a drop-off, plus the call-out fee.{% endcapture %}
+    {%- when "software" %}{% assign _ch = "Software and remote help" %}{% capture _ci %}Jobs that often do not need the computer in front of us at all: setup, email, Office, backups and moving everything to a new PC.{% endcapture %}
     {%- else %}{% assign _ch = _cat.nav | default: _cat.label %}{% assign _ci = _cat.blurb %}
     {%- endcase %}
     <div class="sv-cat hub-cat" id="all-{{ _cat.id }}" data-cat="{{ _cat.id }}">
@@ -375,7 +375,7 @@ faqs:
       </div>
       <ol class="hub-steps">
         <li class="hub-step"><span class="hub-step-n" aria-hidden="true">1</span><h3 class="hub-step-t">Message us</h3><p class="hub-step-p">Message us on WhatsApp or use the form below. You get a fixed price before you bring it in.</p></li>
-        <li class="hub-step"><span class="hub-step-n" aria-hidden="true">2</span><h3 class="hub-step-t">Drop it off</h3><p class="hub-step-p">At our Canning Vale workshop, any time, day or night. Drop off before 2pm and most jobs are ready by 6pm the same day.</p></li>
+        <li class="hub-step"><span class="hub-step-n" aria-hidden="true">2</span><h3 class="hub-step-t">Drop it off</h3><p class="hub-step-p">In Canning Vale, any time, day or night. Drop off before 2pm and most jobs are ready by 6pm the same day.</p></li>
         <li class="hub-step"><span class="hub-step-n" aria-hidden="true">3</span><h3 class="hub-step-t">Collect it fixed</h3><p class="hub-step-p">Tested before you collect it, with a 30-day warranty on the work.</p></li>
       </ol>
       <div class="hub-two">
@@ -407,8 +407,8 @@ faqs:
         <h2 class="hub-h2" id="where-h">Drop-off, on-site and remote</h2>
       </div>
       <ul class="hub-where">
-        <li class="hub-where-card"><span class="hub-where-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10l9-6 9 6v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><path d="M9 21v-6h6v6"/></svg></span><h3 class="hub-where-t">Drop off in Canning Vale</h3><p>Repairs are done at our workshop at 7 Barraberry Retreat, Canning Vale WA 6155. You can drop off any time, day or night, which suits shift workers and anyone who would rather leave a laptop on the way to work. Most of our customers come from the suburbs around Canning Vale, such as Willetton, Riverton, Harrisdale, Piara Waters and Southern River, and people bring computers from right across Perth.</p></li>
-        <li class="hub-where-card"><span class="hub-where-ic">{% include svc-icon.html id="networking" %}</span><h3 class="hub-where-t">At your place</h3><p>Wifi, NBN routers, mesh networks, printers and smart TVs are set up where they live. The price is the same as in the workshop, plus a call-out fee of {% include price.html key="on-site-call-out" bare=true %} per visit across the southern suburbs.</p></li>
+        <li class="hub-where-card"><span class="hub-where-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10l9-6 9 6v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><path d="M9 21v-6h6v6"/></svg></span><h3 class="hub-where-t">Drop off in Canning Vale</h3><p>Repairs are done at 7 Barraberry Retreat, Canning Vale WA 6155. You can drop off any time, day or night, which suits shift workers and anyone who would rather leave a laptop on the way to work. Most of our customers come from the suburbs around Canning Vale, such as Willetton, Riverton, Harrisdale, Piara Waters and Southern River, and people bring computers from right across Perth.</p></li>
+        <li class="hub-where-card"><span class="hub-where-ic">{% include svc-icon.html id="networking" %}</span><h3 class="hub-where-t">At your place</h3><p>Wifi, NBN routers, mesh networks, printers and smart TVs are set up where they live. The price is the same as a drop-off, plus a call-out fee of {% include price.html key="on-site-call-out" bare=true %} per visit across the southern suburbs.</p></li>
         <li class="hub-where-card"><span class="hub-where-ic">{% include svc-icon.html id="software" %}</span><h3 class="hub-where-t">Remote</h3><p>Plenty of software jobs never need the computer to leave your desk: email that stopped syncing, a program that will not install, a printer driver, a quick clean-up. A remote session starts at {% include price.html key="remote-support-session" bare=true %} for the first half hour. If the problem turns out to be hardware, we tell you straight away so you can bring it in.</p></li>
       </ul>
     </div>
@@ -420,7 +420,7 @@ faqs:
         <h2 class="hub-h2" id="devices-h">Computers we work on</h2>
       </div>
       <div class="hub-devices">
-        <p>Windows laptops and desktops from every common brand, including HP, Dell, Lenovo, Asus, Acer, MSI, Samsung, Toshiba, Dynabook, Gigabyte and Razer, plus all-in-ones and custom-built PCs. Gaming PCs and gaming laptops are repasted, cooled, tuned and built here too, and PS5 and Xbox consoles are repaired in the same workshop.</p>
+        <p>Windows laptops and desktops from every common brand, including HP, Dell, Lenovo, Asus, Acer, MSI, Samsung, Toshiba, Dynabook, Gigabyte and Razer, plus all-in-ones and custom-built PCs. Gaming PCs and gaming laptops are repasted, cooled, tuned and built here too, and PS5 and Xbox consoles are repaired here as well.</p>
         <p>MacBooks and Surface devices come in for diagnostics, virus removal, data recovery and software jobs. We do not replace their screens or batteries, and we will tell you that before you make the trip.</p>
         <p>External hard drives, USB sticks and memory cards come in for data recovery, and old machines come in for a secure wipe before they are sold, donated or recycled.</p>
       </div>
@@ -457,7 +457,7 @@ faqs:
     <div class="hub-wrap">
       <div class="hub-sec-head">
         <h2 class="hub-h2" id="near-h">Computer repairs near you</h2>
-        <p class="hub-sec-p">Each suburb page has the trip to the workshop and the repairs people there bring us most.</p>
+        <p class="hub-sec-p">Each suburb page has the trip to us and the repairs people there bring us most.</p>
       </div>
       <ul class="hub-subs">
         {%- for _p in _subs %}

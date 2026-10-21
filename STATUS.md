@@ -997,6 +997,11 @@ Pages source to GitHub Actions), checks including
 
 ## Traps that have actually bitten
 
+- Never call the business a "workshop" (owner, October 2026). Say "we are
+  based in Canning Vale", "with us in Canning Vale", "drop-off" or "on the
+  bench" instead. "Workshop" is fine only for someone else's (a trades
+  customer's shed, the warehouses and workshops of Jandakot). The share
+  images were repainted too (default, og-suburbs, og-tech-tips; og ?v=3).
 - The phone number (0470 308 676 since 20 Oct 2026) is also drawn into the
   14 share images (`assets/og/*.png`, `og-suburbs.png`, `og-tech-tips.png`).
   A number change means repainting them and bumping `?v=` on og:image and
