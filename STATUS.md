@@ -806,7 +806,12 @@ offer), Business IT, learn more (guide, areas, FAQ), contact.
   schema identical to before; only the layout changed. The narrow-screen
   grid uses minmax(0,1fr): plain 1fr let the guide's tab row widen the
   page to 712px on a phone.
-- Still to do: 6 Business IT band and the contact block.
+- Step 6, done: Business IT is one two-column band (`.biz-split`): the
+  heading, intro and "Business IT plans and pricing" on the left, the three
+  offers as rows on the right (`.biz-list`), stacked on phones (no more
+  swipe carousel). Same words and links; titles in sentence case. The
+  contact block was checked and needed nothing: the map is lazy-loaded and
+  titled, and it carries the page's last WhatsApp and quote actions.
 - The footer brand line ("Flat pricing and 100% satisfaction.") stays as
   it is: owner decision, October 2026. Do not raise it again.
 - The contact email stays the owner's Gmail: there is no business email

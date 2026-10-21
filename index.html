@@ -794,48 +794,53 @@ description: "Computer and laptop repair in Perth: a flat [[diagnostic-repair-al
   </div>
 </section>
 
-<!-- BUSINESS IT SUPPORT -->
+<!-- BUSINESS IT SUPPORT - one band, two columns: the pitch and the plans
+     link on the left, the three ways we help businesses as rows on the
+     right (they were three cards, a swipe carousel on phones). -->
 <section class="section" aria-label="Business IT support and managed IT services Perth">
-  <div class="wrap">
-    <div class="fade-up">
+  <div class="wrap biz-split">
+    <div class="biz-intro fade-up">
       <h2 class="s-title">Business <span class="accent">IT support</span></h2>
       <p class="s-sub">
         Managed IT for cafes, shops, medical practices and law firms, so your team can get on with its work. No lock-in contracts. Fixed monthly plans from {% include price.html key="business-it-essential" bare=true %}/month.
       </p>
+      <a href="{{ '/business-it-support' | relative_url }}" class="btn-outline">Business IT plans and pricing</a>
     </div>
-    <div class="its-grid">
-      <div class="its-card fade-up">
-        <div class="its-tag">Managed IT</div>
-        <div class="its-title">Proactive Monitoring &amp; Support</div>
-        <div class="its-desc">Fixed monthly IT support for Perth businesses. Remote help, onsite visits, managed antivirus, updates, cloud backups and proactive monitoring, so problems are caught before they cause downtime.</div>
-        <div class="its-price-row">
+    <ul class="biz-list fade-up">
+      <li class="biz-item">
+        <div class="biz-text">
+          <span class="its-tag">Managed IT</span>
+          <div class="its-title">Proactive monitoring &amp; support</div>
+          <div class="its-desc">Fixed monthly IT support for Perth businesses. Remote help, onsite visits, managed antivirus, updates, cloud backups and proactive monitoring, so problems are caught before they cause downtime.</div>
+        </div>
+        <div class="biz-meta">
           <span class="its-price">From {% include price.html key='business-it-essential' bare=true raw=true %}/mo</span>
           <a href="{{ '/business-it-support' | relative_url }}" class="svc-cta" aria-label="See plans: managed IT for Perth businesses">See plans</a>
         </div>
-      </div>
-      <div class="its-card fade-up">
-        <div class="its-tag">On-Demand</div>
-        <div class="its-title">Same Day Remote &amp; Onsite Support</div>
-        <div class="its-desc">Something broke and the business needs it fixed now? We respond fast. Remote support available immediately, onsite visits across southern Perth with same-day availability.</div>
-        <div class="its-price-row">
+      </li>
+      <li class="biz-item">
+        <div class="biz-text">
+          <span class="its-tag">On-Demand</span>
+          <div class="its-title">Same day remote &amp; onsite support</div>
+          <div class="its-desc">Something broke and the business needs it fixed now? We respond fast. Remote support available immediately, onsite visits across southern Perth with same-day availability.</div>
+        </div>
+        <div class="biz-meta">
           <span class="its-price">From {% include price.html key='biz-extra-onsite' bare=true raw=true %}</span>
           <a href="{{ '/business-it-support' | relative_url }}" class="svc-cta">See on-demand IT support</a>
         </div>
-      </div>
-      <div class="its-card fade-up">
-        <div class="its-tag">Setup &amp; Migration</div>
-        <div class="its-title">New PC Setup, Data Transfer &amp; Network</div>
-        <div class="its-desc">New staff member or PC arriving? We configure everything, user accounts, software, email, printers, WiFi &amp; cloud backup. Fully set up and tested before handover.</div>
-        <div class="its-price-row">
+      </li>
+      <li class="biz-item">
+        <div class="biz-text">
+          <span class="its-tag">Setup &amp; Migration</span>
+          <div class="its-title">New PC setup, data transfer &amp; network</div>
+          <div class="its-desc">New staff member or PC arriving? We configure everything, user accounts, software, email, printers, WiFi &amp; cloud backup. Fully set up and tested before handover.</div>
+        </div>
+        <div class="biz-meta">
           <span class="its-price">From {% include price.html key='business-pc-setup-migration' bare=true raw=true %}</span>
           <a href="{{ '/business-it-support' | relative_url }}" class="svc-cta">See PC setup and migration</a>
         </div>
-      </div>
-    </div>
-      <div class="slide-hint" aria-hidden="true"><span class="pkg-swipe-hint">Swipe<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></div>
-    <div style="text-align:center;margin-top:2rem;" class="fade-up">
-      <a href="{{ '/business-it-support' | relative_url }}" class="btn-outline">Business IT plans and pricing</a>
-    </div>
+      </li>
+    </ul>
   </div>
 </section>
 

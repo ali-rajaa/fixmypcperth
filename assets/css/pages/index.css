@@ -312,21 +312,25 @@ a    { color:inherit; }
    page. Price and CTA now sit right under the tagline instead of at the
    bottom of a long checklist, and the checklist itself is split into two
    labelled groups instead of one flat stack. */
-.its-grid  { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:14px; margin-top:2.5rem; }
 /* Column layout with the description flexing, so the price and CTA sit on the
    same line in every card regardless of how long the copy is. .svc-card already
    did this; these did not, which is why the Business IT row looked ragged. */
-.its-card  { background:var(--bg); border:1.5px solid var(--border); border-radius:var(--radius); padding:1.75rem; transition:border-color 0.2s,transform 0.3s var(--ease-settle),box-shadow 0.3s var(--ease-settle); position:relative; overflow:hidden; display:flex; flex-direction:column; }
-.its-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; opacity:0; transition:opacity 0.2s; }
-.its-card:nth-child(1)::before { background:linear-gradient(90deg,var(--blue),#00CFFF); }
-.its-card:nth-child(2)::before { background:linear-gradient(90deg,var(--wa),#00CFFF); }
-.its-card:nth-child(3)::before { background:linear-gradient(90deg,#F59E0B,#FF6B6B); }
-@media (hover: hover) { .its-card:hover { border-color:var(--blue); transform:translateY(-3px); box-shadow:0 8px 24px rgba(21,96,255,0.08); } }
-@media (hover: hover) { .its-card:hover::before { opacity:1; } }
+/* Business IT: the pitch on the left, three rows on the right. */
+.biz-split { display:grid; grid-template-columns:minmax(0,0.85fr) minmax(0,1.4fr); gap:3.5rem; align-items:start; }
+.biz-intro .btn-outline { margin-top:1.5rem; }
+.biz-list { list-style:none; border-top:1px solid var(--border); }
+.biz-item { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:0.75rem 2.5rem; align-items:center; padding:1.5rem 0; border-bottom:1px solid var(--border); }
+.biz-item .its-tag { margin-bottom:0.35rem; }
+.biz-item .its-desc { margin-bottom:0; font-size:14px; line-height:1.6; }
+.biz-meta { display:flex; flex-direction:column; align-items:flex-end; gap:8px; text-align:right; white-space:nowrap; }
+@media (max-width:900px) { .biz-split { grid-template-columns:minmax(0,1fr); gap:1.5rem; } }
+@media (max-width:720px) {
+  .biz-item { grid-template-columns:minmax(0,1fr); padding:1.25rem 0; }
+  .biz-meta { flex-direction:row; justify-content:space-between; align-items:center; text-align:left; }
+}
 .its-tag   { display:block; font-size:10px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--blue); margin-bottom:0.9rem; }
 .its-title { font-family:var(--display); font-size:1.05rem; font-weight:700; line-height:1.3; letter-spacing:-0.01em; color:var(--ink); margin-bottom:0.5rem; }
 .its-desc  { font-size:13px; font-weight:500; color:var(--muted); line-height:1.5; margin-bottom:1.25rem; flex:1; }
-.its-price-row { display:flex; align-items:center; justify-content:space-between; padding-top:1rem; border-top:1px solid var(--border); gap:0.5rem; margin-top:auto; }
 .its-price { font-family:var(--display); font-size:1.25rem; font-weight:800; color:var(--blue); }
 .testi-more { text-align:center; margin-top:1.75rem; font-size:13px; color:var(--muted); }
 .testi-more a:not([class]) { color:var(--blue); font-weight:600; text-decoration:none; }
@@ -593,7 +597,7 @@ body { padding-top:var(--mob-nav-h); }
 .section, .section-alt, .cta-section{ padding:3.5rem 1.25rem; }
 /* The card grids become swipe carousels: 91% wide cards so the next one
    peeks in, snap points, and a full bleed to the screen edge. */
-.services-grid, .its-grid {
+.services-grid {
     display:flex; grid-template-columns:none; gap:12px;
     overflow-x:auto; scroll-snap-type:x mandatory;
     -webkit-overflow-scrolling:touch; scrollbar-width:none;
@@ -604,13 +608,12 @@ body { padding-top:var(--mob-nav-h); }
        and left the cards touching the section intro on phones. */
     margin-left:-2rem; margin-right:-2rem; padding:0 0.75rem 4px;
   }
-.services-grid::-webkit-scrollbar,
-.its-grid::-webkit-scrollbar { display:none; }
-.services-grid > *, .its-grid > * { flex:0 0 91%; scroll-snap-align:center; }
+.services-grid::-webkit-scrollbar { display:none; }
+.services-grid > * { flex:0 0 91%; scroll-snap-align:center; }
 /* One card width, one padding and one type scale across every carousel on the
    page, so a service card, a review and a package all read the same on a
    phone instead of each section having its own sizing. */
-.svc-card, .its-card, .how-card { padding:1.4rem 1.3rem; }
+.svc-card, .how-card { padding:1.4rem 1.3rem; }
 .svc-name, .its-title, .how-title { font-size:16px; line-height:1.35; }
 .svc-desc, .its-desc, .how-desc { font-size:14px; line-height:1.65; }
 .slide-hint { display:flex; justify-content:flex-end; margin-top:0.85rem; }
@@ -619,7 +622,6 @@ body { padding-top:var(--mob-nav-h); }
 .svc-header-row .btn-outline { width:100%; justify-content:center; }
 .how-grid { grid-template-columns:1fr; gap:10px; }
 .how-card { padding:1.4rem 1.25rem; }
-.its-card  { padding:1.4rem; }
 .areas-grid { grid-template-columns:repeat(2,1fr); gap:8px; }
 .area-pill { padding:0.75rem 0.85rem; }
 .area-name { font-size:12.5px; }
@@ -737,8 +739,8 @@ body { padding-top:var(--mob-nav-h); }
   .pkg-swipe-hint svg { animation:none; }
   .js .fade-up { transition:opacity 0.2s ease; transform:none; }
 
-  @media (hover: hover) { .btn-blue:hover, .btn-wa:hover, .svc-card:hover, .how-card:hover, .its-card:hover, a.area-pill--link:hover, .mq-service-btn:hover, .vc-row:hover .vc-row-arrow, .hero-alt-link:hover svg, .map-chip:hover { transform:none; } }
-  .btn-blue, .btn-wa, .btn-outline, .svc-card, .how-card, .its-card, a.area-pill--link, .mq-service-btn, .guide-tab, .svc-cta, .svc-link-pill {
+  @media (hover: hover) { .btn-blue:hover, .btn-wa:hover, .svc-card:hover, .how-card:hover, a.area-pill--link:hover, .mq-service-btn:hover, .vc-row:hover .vc-row-arrow, .hero-alt-link:hover svg, .map-chip:hover { transform:none; } }
+  .btn-blue, .btn-wa, .btn-outline, .svc-card, .how-card, a.area-pill--link, .mq-service-btn, .guide-tab, .svc-cta, .svc-link-pill {
     transition-duration:0.15s;
   }
 }
@@ -751,7 +753,7 @@ body { padding-top:var(--mob-nav-h); }
    tinted panels given a defined border rather than relying on fill alone. */
 @media (prefers-contrast: more) {
   .s-sub, .svc-desc, .how-desc, .its-desc, .area-count { color:#334155; }
-  .svc-card, .how-card, .its-card, .area-pill { border-color:#0F172A; }
+  .svc-card, .how-card, .area-pill { border-color:#0F172A; }
   .btn-outline { border-color:#0F172A; }
   .hero-alt-link, .hero-note { color:#0F172A; }
   .visit-card, .vc-turnaround { border-color:#0F172A; }
@@ -781,7 +783,7 @@ body { padding-top:var(--mob-nav-h); }
    accessibility text or page zoom. */
 .his-checks, .cta-actions, .offer-text { min-width:0; }
 .his-checks li:where(:not([class])), .svc-badge, .area-name, .area-pill { white-space:normal; overflow-wrap:anywhere; }
-.areas-grid > *, .visit-grid > *, .svc-top > *, .its-price-row > * { min-width:0; }
+.areas-grid > *, .visit-grid > *, .svc-top > * { min-width:0; }
 .hero h1:where(:not([class])) { font-size:1.6rem; }
 .areas-grid { grid-template-columns:1fr 1fr; gap:6px; }
 .area-pill { padding:0.65rem 0.75rem; }
@@ -865,13 +867,13 @@ body { padding-top:var(--mob-nav-h); }
   .section, .cta-section { padding-top: var(--m-section); padding-bottom: var(--m-section); }
 
   /* Cards and the boxes inside them */
-  .hero-info-strip > .wrap, .svc-card, .how-card, .its-card, .visit-card { padding: var(--m-card-pad); border-radius: var(--m-card-radius); }
+  .hero-info-strip > .wrap, .svc-card, .how-card, .visit-card { padding: var(--m-card-pad); border-radius: var(--m-card-radius); }
   .hero-card { border-radius: var(--m-card-radius); }
   .hc-body { padding: var(--m-card-pad); }
   .vc-turnaround { padding: var(--m-panel-pad); border-radius: var(--m-panel-radius); }
 
   /* Gaps */
-  .services-grid, .how-grid, .its-grid, .visit-grid, .his-stats { gap: var(--m-gap-cards); }
+  .services-grid, .how-grid, .visit-grid, .his-stats { gap: var(--m-gap-cards); }
   .faq-list, .faq-col { gap: var(--m-gap-rows); }
 
   /* Headings */
@@ -899,12 +901,12 @@ body { padding-top:var(--mob-nav-h); }
   .how-promises-title { font-size: var(--m-h2); }
 
   /* Carousels run edge to edge; the first card lines up with the text. */
-  .services-grid, .its-grid {
+  .services-grid {
     margin-left: calc(-1 * var(--m-gutter)); margin-right: calc(-1 * var(--m-gutter));
     padding-left: var(--m-gutter); padding-right: var(--m-gutter);
     scroll-padding-inline: var(--m-gutter);
   }
-  .services-grid > *, .its-grid > * { scroll-snap-align: start; }
+  .services-grid > * { scroll-snap-align: start; }
 
   /* More specific button rules from earlier in this file */
   .hero-actions .btn-wa, .vc-actions .btn-wa { min-height: var(--m-btn); padding-top: 0; padding-bottom: 0; }
