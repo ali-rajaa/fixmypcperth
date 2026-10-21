@@ -211,15 +211,6 @@ a    { color:inherit; }
 .promise-icon { flex:0 0 26px; width:26px; height:26px; margin-top:1px; border-radius:50%; background:rgba(34,197,94,0.12); border:1px solid rgba(34,197,94,0.3); color:var(--wa-dk); display:inline-flex; align-items:center; justify-content:center; }
 .promise-icon svg { width:13px; height:13px; }
 .promise-title { display:block; font-family:var(--display); font-size:1.05rem; font-weight:700; letter-spacing:-0.01em; color:var(--ink); margin-bottom:2px; }
-/* The first-repair offer closes the same section. */
-.how-promises + .offer-inner { margin-top:1.5rem; }
-.offer-inner {
-  max-width:1100px; margin:0 auto;
-  display:flex; align-items:center; gap:1.25rem; flex-wrap:wrap;
-  background:linear-gradient(135deg,var(--ink) 0%,#1B2A4A 100%);
-  border-radius:18px; padding:1.5rem 1.75rem; position:relative; overflow:hidden;
-}
-.offer-inner::after { content:''; position:absolute; top:-60px; right:-60px; width:220px; height:220px; background:radial-gradient(circle,rgba(21,96,255,0.22) 0%,transparent 70%); pointer-events:none; }
 .offer-tag { font-size:10px; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; color:#00CFFF; margin-bottom:0.4rem; }
 .offer-text { flex:1; min-width:230px; position:relative; z-index:1; }
 .offer-title { font-family:var(--display); font-size:1.15rem; font-weight:800; color:#fff; letter-spacing:-0.022em; margin-bottom:0.3rem; }
@@ -469,10 +460,19 @@ a.area-pill--link.has-page .area-dot {
 @media (hover: hover) { .map-chip:hover { border-color:var(--blue-mid); color:var(--blue); transform:translateY(-2px); } }
 /* scale, not transform, so the press composes with the hover lift above. */
 .map-chip:active { scale:0.97; transition:scale 0.1s var(--ease-press),transform 0.1s var(--ease-press); }
-.cta-section { background:var(--bg2); padding:6rem 2rem; border-top:1px solid var(--border); }
+.cta-section { background:linear-gradient(135deg,var(--ink) 0%,#1B2A4A 100%); padding:5rem 2rem; position:relative; overflow:hidden; }
+/* Main call to action: the one dark band on the page. */
+.cta-section::after { content:''; position:absolute; top:-120px; right:-80px; width:420px; height:420px; background:radial-gradient(circle,rgba(21,96,255,0.25) 0%,transparent 70%); pointer-events:none; }
+.cta-inner, .cta-offer { position:relative; z-index:1; }
 .cta-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr auto; gap:3rem; align-items:center; }
-.cta-title { font-family:var(--display); font-size:1.45rem; font-weight:800; color:var(--ink); letter-spacing:-0.02em; line-height:1.2; margin-bottom:0.6rem; }
-.cta-desc  { font-size:15px; color:var(--muted); }
+.cta-title { font-family:var(--display); font-size:1.45rem; font-weight:800; color:#fff; letter-spacing:-0.02em; line-height:1.2; margin-bottom:0.6rem; }
+.cta-desc  { font-size:15px; color:rgba(255,255,255,0.78); margin-bottom:1.25rem; max-width:56ch; }
+.cta-section .btn-outline { color:#fff; border-color:rgba(255,255,255,0.45); background:transparent; }
+@media (hover: hover) { .cta-section .btn-outline:hover { border-color:#fff; background:rgba(255,255,255,0.08); color:#fff; } }
+.cta-section .btn-outline:focus-visible { outline:2px solid #fff; outline-offset:3px; }
+/* The first-repair offer, as the band's bottom row. */
+.cta-offer { max-width:1100px; margin:2.5rem auto 0; padding-top:2rem; border-top:1px solid rgba(255,255,255,0.14); display:flex; align-items:center; gap:1.25rem 2rem; flex-wrap:wrap; }
+.cta-offer-btn svg { width:18px; height:18px; flex-shrink:0; }
 .cta-actions { display:flex; flex-direction:column; gap:10px; flex-shrink:0; min-width:220px; }
 .cta-actions .btn-wa, .cta-actions .btn-outline { width:100%; }
 /* .wa-bubble moved to shell.css - it ships in the shared sticky-cta.html
@@ -650,10 +650,9 @@ body { padding-top:var(--mob-nav-h); }
 .his-checks { grid-template-columns:1fr 1fr; gap:0.5rem 0.75rem; }
 .his-checks li:where(:not([class])) { font-size:12px; white-space:normal; line-height:1.35; }
 .brand-badge { font-size:12px; padding:7px 13px; }
-.offer-inner { padding:1.35rem 1.35rem; gap:1rem; }
 .offer-title { font-size:1.05rem; }
 .offer-btn { width:100%; }
-.offer-btn .btn-wa { width:100%; }
+.offer-btn .btn-outline { width:100%; }
 .mq-service-btn { flex-direction:column; justify-content:center; align-items:center; text-align:center; gap:5px; min-height:66px; padding:11px 7px; font-size:12px; }
 .mq-service-btn svg { width:19px; height:19px; }
 .hc-body { padding:1.35rem; padding:1.35rem; }
@@ -869,12 +868,11 @@ body { padding-top:var(--mob-nav-h); }
 
   /* Buttons */
   .btn-wa, .btn-outline, .svc-cta { min-height: var(--m-btn); padding-top: 0; padding-bottom: 0; }
-  .hero-wa > .btn-wa, .svc-header-row > .btn-outline, .offer-btn > .btn-wa, .fade-up > .btn-outline, .vc-actions > .btn-wa, .cta-actions > .btn-wa, .cta-actions > .btn-outline { width: 100%; justify-content: center; }
+  .hero-wa > .btn-wa, .svc-header-row > .btn-outline, .offer-btn > .btn-outline, .fade-up > .btn-outline, .vc-actions > .btn-wa, .cta-actions > .btn-wa, .cta-actions > .btn-outline { width: 100%; justify-content: center; }
 
   /* Inner .wrap adds nothing on phones: the section is the 20px margin.
      (It added 32px, putting most text 52px from the edge.) */
   .section > .wrap, .faq-section > .wrap { padding-left: 0; padding-right: 0; }
-  .offer-inner { padding: var(--m-card-pad); border-radius: var(--m-card-radius); }
   .how-promises { padding: var(--m-card-pad); border-radius: var(--m-card-radius); margin-top: 24px; }
   .promise-list { grid-template-columns: 1fr; gap: var(--m-gap-rows); }
   .promise, .how-promises-sub { font-size: var(--m-text); }

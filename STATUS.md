@@ -765,8 +765,8 @@ Terms section 6 covers a part that does not fit the new case.
 Working to a 10-block plan, one step per push, keeping every unique word,
 heading and internal link (only exact repeats may go). Order now: hero,
 trust bar, reviews, services (with the "More repairs" line), how it works
-(with the promises and the first-repair offer), Business IT, guide, FAQ,
-areas, contact, closing CTA.
+(with the promises), main call to action (dark band, with the first-repair
+offer), Business IT, guide, FAQ, areas, contact.
 
 - Step 1, done: the facts strip and the brand row are one trust bar
   (`.hero-info-strip` with `.his-brands`); the scrolling trust ticker is
@@ -792,8 +792,16 @@ areas, contact, closing CTA.
   "Fixed price, agreed first" (owner's choice; the old one implied a
   refund). The "Same Day Turnaround" card went: its one sentence is step
   03, word for word. Step titles are sentence case.
-- Still to do: 4 main CTA box; 5 "Learn more" zone (guide, FAQ, areas);
-  6 Business IT band and one merged contact and closing block.
+- Step 4, done: the closing call-to-action box moved up to straight after
+  how it works and became the page's one dark band (`.cta-section`), with
+  the Google rating badge (`_includes/rating-badge.html`, shared with the
+  reviews row) and the first-repair offer as its bottom row
+  (`.cta-offer`, outline button, so one green button in the band). The
+  foot of the page no longer repeats the contact block's two buttons.
+- Still to do: 5 "Learn more" zone (guide, FAQ, areas); 6 Business IT
+  band and the contact block. Open question for the owner: the footer
+  brand line says "100% satisfaction", which reads like a refund promise
+  the $120 policy does not give.
 - The contact email stays the owner's Gmail: there is no business email
   and none is planned (owner, October 2026). Do not raise it again.
 
