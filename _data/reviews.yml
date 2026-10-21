@@ -41,43 +41,37 @@ meta:
 # Real Google reviews, copied word for word (owner supplied, October 2026).
 # First names only, per the privacy policy. No dates: Google's "3 months
 # ago" goes stale. The first one is the featured review on /reviews.
-# home: true puts a review on the homepage (keep it to six).
+# The homepage row and /reviews both show every entry.
 reviews:
 - name: "Karl-Kristjan"
   initials: KK
   service: Laptop Repair
   stars: 5
-  home: true
   text: "Excellent service! They quickly found the problem with my laptop and fixed the loud fan noise that had been driving me crazy. The staff were friendly, professional, and explained everything clearly. My laptop is now running much quieter and works perfectly again. The repair was completed faster than I expected, and the price was fair. I would definitely recommend them to anyone who needs computer repairs. Thank you!"
 - name: "Vertific Web Designs"
   initials: V
   service: Display Fix
   stars: 5
-  home: true
   text: "Great service, 10/10 highly recommend. I needed my display issue fixed on my PC. I had tried for many days but was not working. I came here and it was fixed the same day. They sent the quote within an hour and I dropped it the next day. Very professional communication and the price was much more affordable than other PC repairers in the area."
 - name: "Claire"
   initials: C
   service: PC Diagnostic
   stars: 5
-  home: true
   text: "Very quick turnaround (next day) to figure out what was wrong with my PC. Turns out it was a faulty RAM stick. Happy with the service"
 - name: "Dipen"
   initials: D
   service: Laptop Fan Clean
   stars: 5
-  home: true
   text: "A very smart technician is at work. He is honest and sincere. I am happy with the work he has done on my computer. I had my laptop fans cleaned and thermal paste applied. Stay rest assured any service you get from him will satisfy your wants."
 - name: "Harrison"
   initials: H
   service: PC Repair
   stars: 5
-  home: true
   text: "Can't thank Ali enough. My PC had a few problems but he sorted them all and kept me updated throughout the whole process through WhatsApp. Will be coming back in the future."
 - name: "Kevin"
   initials: K
   service: Laptop Repair
   stars: 5
-  home: true
   text: "Great bloke to deal with and sorted my laptop issue within the hour! A pleasure dealing with you!"
 - name: "Shanti"
   initials: S
