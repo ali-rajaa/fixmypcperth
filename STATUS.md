@@ -821,22 +821,22 @@ offer), Business IT, learn more (guide, FAQ), contact (with the suburbs).
   and /reviews; fixed on the way: learn-more gap 12, offer text 16 on
   phones, "See details" and "Google review" 13px, rating badge 48px tall.
   No script errors and no sideways scroll on any page at 390px.
-- Contact rebuilt (owner request, October 2026) as a 50/50 split
-  (`.contact-split`, id="contact"). Left: an H2 that points to call,
-  WhatsApp or email; the name, phone, email and address in an `<address>`
-  block, exactly as on the Google Business Profile ("7 Barraberry Retreat,
-  Canning Vale WA 6155", owner confirmed); hours as one row; WhatsApp and
-  Call buttons and the quote link; then the 18 suburbs as an inline link
-  list under an H3 (moved here from beside the guide, so the page still
-  lists them once; id="areas"). Right: the map, filling the column on
-  desktop and 400px tall under the text on phones, lazy-loaded, pointed at
-  the business by name and address. Kept short on purpose (owner): no
-  2pm/6pm times (they are in how it works step 03) and no payment line
-  (the FAQ answers it). The "same-day fee" sentence went with the times.
+- Contact, minimal by the owner's choice (October 2026): a 50/50 split
+  (`.contact-split`, id="contact", stacks only on phones). Left: an H2 that
+  points to call, WhatsApp or email; the name, phone, email and address in
+  an `<address>` block, exactly as on the Google Business Profile ("7
+  Barraberry Retreat, Canning Vale WA 6155", owner confirmed); then the 18
+  suburbs as an inline link list under an H3 (moved here from beside the
+  guide, so the page lists them once; id="areas"). Right: a square map
+  (aspect-ratio 1/1), lazy-loaded, pointed at the business by name and
+  address. Deliberately not here: buttons, the quote link, hours, the
+  2pm/6pm times (how it works step 03 has them), payment (the FAQ answers
+  it), the intro line and the suburbs paragraph. The "same-day fee"
+  sentence is gone from the site.
 - Calls are back on the homepage contact block (owner decision, October
-  2026): a bold tap-to-call number and a Call button beside WhatsApp, both
-  `tel:+61470308676`, tracked by trackPhoneClick. The quote forms still
-  have no phone option. Elsewhere the site stays WhatsApp-first.
+  2026): the bold number is a tap-to-call link (`tel:+61470308676`,
+  tracked by trackPhoneClick). The quote forms still have no phone option.
+  Elsewhere the site stays WhatsApp-first.
 - The footer brand line ("Flat pricing and 100% satisfaction.") stays as
   it is: owner decision, October 2026. Do not raise it again.
 - The contact email stays the owner's Gmail: there is no business email
