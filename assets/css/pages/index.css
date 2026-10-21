@@ -270,7 +270,7 @@ a    { color:inherit; }
 .svc-name-link:focus-visible { outline:none; }
 .svc-card:has(.svc-name-link:focus-visible) { outline:2px solid var(--blue); outline-offset:2px; }
 /* The card is one link, so the cue is decoration, not a second button. */
-.svc-more { display:inline-flex; align-items:center; gap:6px; font-size:12.5px; font-weight:700; color:var(--blue); white-space:nowrap; }
+.svc-more { display:inline-flex; align-items:center; gap:6px; font-size:13px; font-weight:700; color:var(--blue); white-space:nowrap; }
 .svc-more::after { content:''; width:6px; height:6px; border-right:2px solid currentColor; border-top:2px solid currentColor; transform:rotate(45deg); }
 @media (hover: hover) { .svc-card:hover .svc-more { text-decoration:underline; text-underline-offset:3px; } }
 .svc-desc  { font-size:13px; font-weight:500; color:var(--muted); line-height:1.5; flex:1; margin-bottom:1.25rem; }
@@ -893,7 +893,8 @@ body { padding-top:var(--mob-nav-h); }
      (It added 32px, putting most text 52px from the edge.) */
   .section > .wrap { padding-left: 0; padding-right: 0; }
   .learn-guide, .learn-areas { padding: var(--m-card-pad); border-radius: var(--m-card-radius); }
-  .learn-top { gap: 24px; }
+  .learn-top { gap: var(--m-gap-cards); }
+  .offer-desc { font-size: var(--m-text); }
   .learn-faq { margin-top: var(--m-section); }
   .how-promises { padding: var(--m-card-pad); border-radius: var(--m-card-radius); margin-top: 24px; }
   .promise-list { grid-template-columns: 1fr; gap: var(--m-gap-rows); }
