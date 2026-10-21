@@ -191,7 +191,7 @@ image_alt: "FixMyPC Perth: fixed-price computer repairs in Perth, every price li
       <div class="pr-pack" data-name="{{ p.name | downcase | escape }}" data-key="{{ p.key }}">
         <h3 class="pr-pack-title">{{ p.name | escape }}</h3>
         <p class="pr-pack-desc">{{ p.desc | escape }}</p>
-        <p class="pr-pack-price">{% include price.html key=p.key %} <span class="pr-pack-was">{{ p.was | escape }}</span></p>
+        <p class="pr-pack-price">{% include price.html key=p.key %}</p>
         <a class="pr-book pr-book-wide" href="{% include wa-href.html text=_pt %}" target="_blank" rel="noopener noreferrer" onclick="trackWAClick()">Book this<span class="sr-only"> {{ p.name | escape }}</span></a>
       </div>
       {%- endfor %}

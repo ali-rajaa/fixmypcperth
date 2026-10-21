@@ -62,10 +62,6 @@ html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-fo
 0%,100%{opacity:1}
 50%{opacity:0.3}
 }
-@keyframes ticker  {
-from{transform:translateX(0)}
-to{transform:translateX(-50%)}
-}
 @keyframes fadeUp  {
 from{opacity:0;transform:translateY(20px)}
 to{opacity:1;transform:none}
@@ -204,8 +200,6 @@ a    { color:inherit; }
 .mq-back svg { width:13px; height:13px; }
 .mq-selected-note { font-size:11.5px; color:var(--muted); background:var(--bg2); border:1px solid var(--border); border-radius:var(--radius-sm); padding:7px 10px; }
 .mq-selected-note strong:where(:not([class])) { color:var(--blue-dk); }
-.brand-strip { padding:2.25rem 2rem; background:var(--bg); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
-.brand-inner { max-width:1100px; margin:0 auto; text-align:center; }
 .brand-label { font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:1.1rem; }
 .brand-row { display:flex; flex-wrap:wrap; justify-content:center; gap:9px; }
 .brand-badge { font-family:var(--display); font-size:13px; font-weight:700; color:var(--muted); border:1.5px solid var(--border); background:var(--bg2); border-radius:9px; padding:8px 16px; letter-spacing:-0.015em; transition:color 0.2s,border-color 0.2s; }
@@ -239,25 +233,13 @@ a    { color:inherit; }
 /* Ticks are SVG, not the text glyph: DM Sans has no U+2713, so the browser
    was borrowing one from a fallback system font. */
 .his-check-icon svg { width:9px; height:9px; }
-.trust-strip { background:var(--ink); padding:14px 0; overflow:hidden; position:relative; }
-.trust-track { display:flex; white-space:nowrap; animation:ticker 16s linear infinite; }
-@media (hover: hover) { .trust-track:hover { animation-play-state:paused; } }
-.trust-item { display:inline-flex; align-items:center; gap:8px; padding:0 2.5rem; font-size:13px; font-weight:600; color:rgba(255,255,255,0.85); white-space:nowrap; }
-.trust-dot { width:4px; height:4px; background:var(--blue); border-radius:50%; flex-shrink:0; }
+/* Trust bar, second row: the parts and brands we work with, as quiet grey
+   wordmarks under the facts (it used to be its own bordered band). */
+.his-brands { text-align:center; margin-top:1.25rem; }
+.his-brands .brand-label { margin-bottom:0.6rem; }
+.his-brands .brand-row { gap:2px 6px; }
+.his-brands .brand-badge { background:none; border-color:transparent; padding:4px 10px; font-size:13px; }
 
-/* Ticker with motion turned off (reduced motion): it cannot scroll, so
-   instead of a frozen strip cut off at the edge it shows the first four
-   promises, centred and evenly spaced, and a 2 x 2 grid on phones. */
-@media (prefers-reduced-motion: reduce) {
-  .trust-track { animation: none; flex-wrap: wrap; justify-content: center; gap: 8px 0; white-space: normal; transform: none; }
-  .trust-item:nth-child(n+5) { display: none; }
-  .trust-item { padding: 0 1.75rem; }
-}
-@media (prefers-reduced-motion: reduce) and (max-width: 720px) {
-  .trust-track { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 16px; padding: 0 20px; }
-  .trust-item { padding: 0; white-space: normal; align-items: flex-start; line-height: 1.4; }
-  .trust-dot { margin-top: 0.5em; flex-shrink: 0; }
-}
 .section { padding:6rem 2rem; }
 .section-alt { background:var(--bg2); }
 .svc-header, .sec-head-gap { margin-bottom:2.5rem; }
@@ -309,10 +291,6 @@ a    { color:inherit; }
 .how-num   { font-family:var(--display); font-size:3rem; font-weight:800; color:var(--blue-lt); letter-spacing:-0.042em; line-height:1; margin-bottom:0.75rem; border-bottom:2px solid var(--border); padding-bottom:0.75rem; }
 .how-title { font-family:var(--display); font-size:1.05rem; font-weight:700; line-height:1.3; letter-spacing:-0.01em; color:var(--ink); margin-bottom:0.4rem; margin-top:0.75rem; }
 .how-desc  { font-size:13px; font-weight:500; color:var(--muted); line-height:1.5; }
-.pkg-duo { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; align-items:stretch; }
-.pkg-swipe-bar { display:none; align-items:center; justify-content:space-between; gap:1rem; margin-bottom:0.85rem; }
-.pkg-swipe-count { display:inline-flex; align-items:center; gap:7px; font-size:12px; font-weight:700; color:var(--ink2); }
-.pkg-swipe-count .pkg-count-pill { font-size:11px; font-weight:800; letter-spacing:0.08em; text-transform:uppercase; color:var(--blue-dk); }
 .pkg-swipe-hint { display:inline-flex; align-items:center; gap:5px; font-size:12px; font-weight:600; color:var(--muted); }
 .pkg-swipe-hint svg { width:14px; height:14px; animation:swipeNudge 1.8s ease-in-out infinite; }
 @keyframes swipeNudge {
@@ -322,45 +300,12 @@ a    { color:inherit; }
 /* Dots: the button is the tap target (44px tall, 24px wide, per Apple's
    44pt minimum); the dot you see is drawn inside it by ::before. The
    negative margins cancel the extra height so the dots sit where they did. */
-.pkg-dots { display:none; justify-content:center; gap:0; margin:calc(1rem - 18.5px) 0 -18.5px; }
-.pkg-dot { display:inline-flex; align-items:center; justify-content:center; min-width:24px; height:44px; padding:0 4px; border:none; background:none; cursor:pointer; }
-.pkg-dot::before { content:''; display:block; width:7px; height:7px; border-radius:50px; background:var(--border2); transition:width 0.25s var(--ease-settle),background 0.25s var(--ease-settle); }
-.pkg-dot.active::before { width:22px; background:var(--blue); }
 /* Light card system, matching .svc-card: white background, thin border,
    gradient hairline on hover. Was a dark "pricing table" template with a
    diagonal ribbon and star-glyph eyebrows that matched nothing else on the
    page. Price and CTA now sit right under the tagline instead of at the
    bottom of a long checklist, and the checklist itself is split into two
    labelled groups instead of one flat stack. */
-.pkg-card {
-  background:var(--bg); border:1.5px solid var(--border); border-radius:var(--radius); padding:1.6rem 1.5rem;
-  display:flex; flex-direction:column; position:relative; overflow:hidden;
-  transition:border-color 0.2s,box-shadow 0.3s var(--ease-settle);
-}
-.pkg-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--blue),#00CFFF); opacity:0; transition:opacity 0.2s; }
-@media (hover: hover) { .pkg-card:hover { border-color:var(--blue); box-shadow:0 8px 24px rgba(21,96,255,0.08); } }
-@media (hover: hover) { .pkg-card:hover::before { opacity:1; } }
-.pkg-icon-wrap { width:40px; height:40px; border-radius:10px; background:var(--bg2); border:1.5px solid var(--border); display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-bottom:0.75rem; }
-.pkg-icon-wrap svg { width:19px; height:19px; }
-.pkg-head { position:relative; z-index:1; }
-.pkg-eyebrow { font-size:10.5px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--blue); margin-bottom:0.4rem; }
-.pkg-title { font-family:var(--display); font-size:clamp(1.25rem,2.2vw,1.55rem); font-weight:800; color:var(--ink); letter-spacing:-0.033em; margin-bottom:0.4rem; line-height:1.15; }
-.pkg-tagline { font-size:12.5px; color:var(--muted); line-height:1.55; }
-.pkg-price-block { border-top:1px solid var(--border); margin-top:1rem; padding-top:1rem; }
-.pkg-price-row { display:flex; align-items:baseline; gap:8px; flex-wrap:wrap; }
-.pkg-price { font-family:var(--display); font-size:2.25rem; font-weight:800; color:var(--ink); line-height:1; letter-spacing:-0.04em; }
-.pkg-was   { font-size:12px; color:var(--muted); text-decoration:line-through; }
-.pkg-save  { font-size:10.5px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; color:var(--blue); }
-.pkg-lbl   { font-size:12px; color:var(--muted); display:block; margin:5px 0 0.9rem; }
-.pkg-price-block .btn-wa { width:100%; padding:12px 22px; font-size:14px; }
-.pkg-groups { display:flex; flex-direction:column; gap:0.9rem; flex:1; margin-top:1.1rem; }
-.pkg-group-label { display:block; font-size:10.5px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); margin-bottom:0.45rem; }
-.pkg-list { display:flex; flex-direction:column; gap:0.4rem; }
-.pkg-item  { font-size:12.5px; color:var(--ink2); display:flex; align-items:flex-start; gap:7px; font-weight:500; line-height:1.45; }
-.pkg-item::before { content:''; width:12px; height:12px; margin-top:3px; background:var(--blue); -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center / contain no-repeat; mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center / contain no-repeat; flex-shrink:0; }
-.payment-strip { display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap; margin-top:1.5rem; font-size:13px; color:var(--muted); }
-.payment-strip strong:where(:not([class])) { color:var(--ink2); }
-.payment-pill { font-size:11px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; color:var(--ink2); }
 .its-grid  { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:14px; margin-top:2.5rem; }
 /* Column layout with the description flexing, so the price and CTA sit on the
    same line in every card regardless of how long the copy is. .svc-card already
@@ -498,6 +443,9 @@ a.area-pill--link.has-page .area-dot {
 .vc-row:focus-visible { outline:2px solid var(--blue); outline-offset:2px; }
 .vc-row-icon { width:40px; height:40px; border-radius:10px; background:var(--blue-lt); color:var(--blue); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
 .vc-row-icon svg { width:18px; height:18px; }
+.vc-row--static { cursor:default; }
+@media (hover: hover) { .vc-row--static:hover { background:none; } }
+.vc-row--static:active { background:none; }
 .vc-row-icon--wa { background:rgba(34,197,94,0.12); color:var(--wa-dk); }
 .vc-row-text { display:flex; flex-direction:column; gap:2px; flex:1; min-width:0; }
 .vc-row-value { font-family:var(--display); font-size:0.95rem; font-weight:600; color:var(--ink); line-height:1.35; }
@@ -602,8 +550,6 @@ body { padding-top:var(--mob-nav-h); }
 /* The quote card used to be display:none here, so tablets (721 to 900px,
    iPad portrait) had no quote form at all. It now sits under the copy. */
 .hero-card  { width:100%; max-width:560px; }
-.pkg-duo    { grid-template-columns:1fr; gap:14px; }
-.pkg-card   { padding:1.75rem 1.6rem; }
 .cta-inner  { grid-template-columns:1fr; gap:2rem; }
 .cta-actions { flex-direction:row; flex-wrap:wrap; min-width:unset; width:100%; }
 .cta-actions .btn-wa, .cta-actions .btn-outline { flex:1; min-width:180px; }
@@ -623,9 +569,8 @@ body { padding-top:var(--mob-nav-h); }
 .hero-alt-link { justify-content:center; margin-top:0; }
 .hero-note { text-align:center; }
 .section,.section-alt,.cta-section,.faq-section{ padding:3.5rem 1.25rem; }
-/* The three card grids become swipe carousels, reusing the .pkg-duo pattern
-   already on the page: 87% wide cards so the next one peeks in, snap points,
-   and a full bleed to the screen edge. */
+/* The card grids become swipe carousels: 91% wide cards so the next one
+   peeks in, snap points, and a full bleed to the screen edge. */
 .services-grid, .its-grid {
     display:flex; grid-template-columns:none; gap:12px;
     overflow-x:auto; scroll-snap-type:x mandatory;
@@ -643,28 +588,15 @@ body { padding-top:var(--mob-nav-h); }
 /* One card width, one padding and one type scale across every carousel on the
    page, so a service card, a review and a package all read the same on a
    phone instead of each section having its own sizing. */
-.svc-card, .its-card, .pkg-card, .how-card { padding:1.4rem 1.3rem; }
-.svc-name, .its-title, .pkg-title, .how-title { font-size:16px; line-height:1.35; }
-.svc-desc, .its-desc, .pkg-tagline, .pkg-item, .how-desc { font-size:14px; line-height:1.65; }
+.svc-card, .its-card, .how-card { padding:1.4rem 1.3rem; }
+.svc-name, .its-title, .how-title { font-size:16px; line-height:1.35; }
+.svc-desc, .its-desc, .how-desc { font-size:14px; line-height:1.65; }
 .slide-hint { display:flex; justify-content:flex-end; margin-top:0.85rem; }
 .svc-card { padding:1.4rem; }
 .svc-header-row { flex-direction:column; align-items:flex-start; }
 .svc-header-row .btn-outline { width:100%; justify-content:center; }
 .how-grid { grid-template-columns:1fr; gap:10px; }
 .how-card { padding:1.4rem 1.25rem; }
-.pkg-swipe-bar { display:flex; }
-.pkg-dots { display:flex; }
-.pkg-duo {
-    display:flex; grid-template-columns:none; gap:12px;
-    overflow-x:auto; scroll-snap-type:x mandatory;
-    -webkit-overflow-scrolling:touch; scrollbar-width:none;
-    margin:0 -2rem; padding:0 0.75rem 4px;
-  }
-.pkg-duo::-webkit-scrollbar { display:none; }
-.pkg-duo > .pkg-card { flex:0 0 91%; scroll-snap-align:center; }
-.pkg-tagline { font-size:12.5px; }
-.pkg-item  { font-size:12.5px; }
-.payment-strip { flex-direction:column; align-items:center; }
 .its-card  { padding:1.4rem; }
 .why-grid  { grid-template-columns:1fr; gap:10px; }
 .areas-grid { grid-template-columns:repeat(2,1fr); gap:8px; }
@@ -729,7 +661,6 @@ body { padding-top:var(--mob-nav-h); }
 .his-lbl { white-space:normal; line-height:1.3; }
 .his-checks { grid-template-columns:1fr 1fr; gap:0.5rem 0.75rem; }
 .his-checks li:where(:not([class])) { font-size:12px; white-space:normal; line-height:1.35; }
-.brand-strip { padding:1.75rem 1.25rem; }
 .brand-badge { font-size:12px; padding:7px 13px; }
 .offer-banner { padding:0 1.25rem; }
 .offer-inner { padding:1.35rem 1.35rem; gap:1rem; }
@@ -794,13 +725,13 @@ body { padding-top:var(--mob-nav-h); }
 }
 }
 /* Reduced motion: gentler equivalents, not silence. Ambient loops that never
-   stop (pulse, ticker, the swipe nudge) come off entirely since they carry no
+   stop (pulse, the swipe nudge) come off entirely since they carry no
    information. The scroll reveal keeps a quick opacity cross-fade instead of
    the slide-and-fade, so content still announces itself without motion. The
    FAQ arrow drops its overshoot and rotates plainly. Hover lifts lose their
    translateY - the border/shadow/color change alone still signals "hovered". */
 @media (prefers-reduced-motion: reduce) {
-  .trust-track, .pkg-swipe-hint svg { animation:none; }
+  .pkg-swipe-hint svg { animation:none; }
   .js .fade-up { transition:opacity 0.2s ease; transform:none; }
 
   @media (hover: hover) { .btn-blue:hover, .btn-wa:hover, .svc-card:hover, .how-card:hover, .its-card:hover, .why-card:hover, a.area-pill--link:hover, .mq-service-btn:hover, .vc-row:hover .vc-row-arrow, .hero-alt-link:hover svg, .map-chip:hover { transform:none; } }
@@ -829,7 +760,7 @@ body { padding-top:var(--mob-nav-h); }
 
 /* The grey iOS tap flash paints over the press-scale feedback above, so the
    two fight each other. The scale and colour change are the feedback now. */
-.btn-blue, .btn-wa, .btn-outline, .mq-service-btn, .svc-cta, .svc-link-pill, .area-pill--link, .guide-tab, .svc-links-more, .pkg-dot {
+.btn-blue, .btn-wa, .btn-outline, .mq-service-btn, .svc-cta, .svc-link-pill, .area-pill--link, .guide-tab, .svc-links-more {
   -webkit-tap-highlight-color:transparent;
 }
 
@@ -837,8 +768,6 @@ body { padding-top:var(--mob-nav-h); }
 .section,.section-alt,.cta-section,.faq-section{ padding:3rem 1.25rem; }
 .hero h1:where(:not([class])) { font-size:1.75rem; }
 .s-title  { font-size:1.3rem; }
-.pkg-card { padding:1.4rem 1.15rem; }
-.pkg-price { font-size:2.5rem; }
 .areas-grid { grid-template-columns:repeat(2,1fr); }
 }
 @media (max-width:380px) {
@@ -926,26 +855,23 @@ body { padding-top:var(--mob-nav-h); }
    ========================================================== */
 @media (max-width: 720px) {
   /* Side margin */
-  .hero, .hero-info-strip, .brand-strip, .section, .svc-links-section,
-  .offer-banner, .faq-section, .cta-section { padding-left: var(--m-gutter); padding-right: var(--m-gutter); }
+  .hero, .hero-info-strip, .section, .svc-links-section, .offer-banner, .faq-section, .cta-section { padding-left: var(--m-gutter); padding-right: var(--m-gutter); }
 
   /* Section rhythm: hero 24 under the header; the info card below it
      belongs to the hero, then 48 before the next section. */
   .hero { padding-top: var(--m-hero-top); padding-bottom: var(--m-hero-top); }
   .hero-info-strip { padding-top: 0; padding-bottom: var(--m-section); }
   .section, .faq-section, .cta-section { padding-top: var(--m-section); padding-bottom: var(--m-section); }
-  .brand-strip, .svc-links-section { padding-top: var(--m-band); padding-bottom: var(--m-band); }
+  .svc-links-section { padding-top: var(--m-band); padding-bottom: var(--m-band); }
 
   /* Cards and the boxes inside them */
-  .hero-info-strip > .wrap, .svc-card, .how-card,
-  .pkg-card, .why-card, .its-card, .visit-card { padding: var(--m-card-pad); border-radius: var(--m-card-radius); }
+  .hero-info-strip > .wrap, .svc-card, .how-card, .why-card, .its-card, .visit-card { padding: var(--m-card-pad); border-radius: var(--m-card-radius); }
   .hero-card { border-radius: var(--m-card-radius); }
   .hc-body { padding: var(--m-card-pad); }
   .vc-turnaround { padding: var(--m-panel-pad); border-radius: var(--m-panel-radius); }
 
   /* Gaps */
-  .services-grid, .how-grid, .pkg-duo, .why-grid, .its-grid,
-  .visit-grid, .his-stats { gap: var(--m-gap-cards); }
+  .services-grid, .how-grid, .why-grid, .its-grid, .visit-grid, .his-stats { gap: var(--m-gap-cards); }
   .faq-list, .faq-col { gap: var(--m-gap-rows); }
 
   /* Headings */
@@ -954,14 +880,12 @@ body { padding-top:var(--mob-nav-h); }
 
   /* Text */
   .s-sub, .hero-desc, .hero-more, .cta-desc, .guide-panel > p { font-size: var(--m-text); }
-  .hc-url, .mq-rating-text > span, .mq-notice > span, .mq-service-btn, .mq-trust-item, .his-lbl, .his-checks > li, .brand-badge, .svc-link-pill, .pkg-swipe-count, .pkg-was, .pkg-lbl, .pkg-item, .pkg-tagline, .vc-turnaround-note, .svc-cta { font-size: var(--m-text-min); }
+  .hc-url, .mq-rating-text > span, .mq-notice > span, .mq-service-btn, .mq-trust-item, .his-lbl, .his-checks > li, .brand-badge, .svc-link-pill, .vc-turnaround-note, .svc-cta { font-size: var(--m-text-min); }
   .mq-notice { padding: var(--m-row-pad); border-radius: var(--m-panel-radius); font-size: var(--m-text-min); }
 
   /* Buttons */
   .btn-wa, .btn-outline, .svc-cta, .svc-links-more { min-height: var(--m-btn); padding-top: 0; padding-bottom: 0; }
-  .hero-wa > .btn-wa, .svc-header-row > .btn-outline, .pkg-price-block > .btn-wa,
-  .offer-btn > .btn-wa, .fade-up > .btn-outline, .vc-actions > .btn-wa,
-  .cta-actions > .btn-wa, .cta-actions > .btn-outline { width: 100%; justify-content: center; }
+  .hero-wa > .btn-wa, .svc-header-row > .btn-outline, .offer-btn > .btn-wa, .fade-up > .btn-outline, .vc-actions > .btn-wa, .cta-actions > .btn-wa, .cta-actions > .btn-outline { width: 100%; justify-content: center; }
 
   /* Inner .wrap adds nothing on phones: the section is the 20px margin.
      (It added 32px, putting most text 52px from the edge.) */
@@ -969,15 +893,15 @@ body { padding-top:var(--mob-nav-h); }
   .offer-inner { padding: var(--m-card-pad); border-radius: var(--m-card-radius); }
 
   /* Carousels run edge to edge; the first card lines up with the text. */
-  .services-grid, .its-grid, .pkg-duo {
+  .services-grid, .its-grid {
     margin-left: calc(-1 * var(--m-gutter)); margin-right: calc(-1 * var(--m-gutter));
     padding-left: var(--m-gutter); padding-right: var(--m-gutter);
     scroll-padding-inline: var(--m-gutter);
   }
-  .services-grid > *, .its-grid > *, .pkg-duo > .pkg-card { scroll-snap-align: start; }
+  .services-grid > *, .its-grid > * { scroll-snap-align: start; }
 
   /* More specific button rules from earlier in this file */
-  .hero-actions .btn-wa, .pkg-price-block .btn-wa, .vc-actions .btn-wa { min-height: var(--m-btn); padding-top: 0; padding-bottom: 0; }
+  .hero-actions .btn-wa, .vc-actions .btn-wa { min-height: var(--m-btn); padding-top: 0; padding-bottom: 0; }
 
   /* Chip rows bleed to the edge like the carousels; chips sit 8 apart */
   .guide-tabs { margin-left: calc(-1 * var(--m-gutter)); margin-right: calc(-1 * var(--m-gutter)); padding-left: var(--m-gutter); padding-right: var(--m-gutter); scroll-padding-inline: var(--m-gutter); }

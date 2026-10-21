@@ -637,13 +637,10 @@ packages:
   - key: complete-pc-overhaul
     name: Complete PC Overhaul
     price: 180
-    was: Shop price $549+
     desc: For a desktop that has slowed down, overheats or has not been serviced in years. Labour only, parts supplied by you.
   - key: used-laptop-revival
     name: Used Laptop Revival
     price: 140
-    was: Was $340
-    was_price: 340
     desc: Just bought a second-hand laptop, or dusting off an old one? The full health check and clean slate it needs. 15 checks and services included.
 offers:
   # Offer figures and thresholds. Not services, but still the business's

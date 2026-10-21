@@ -21,8 +21,6 @@
 {%- if _s -%}
 {%- if include.numeric -%}
 {{ _s.price }}
-{%- elsif include.was -%}
-{{ _s.was | escape }}
 {%- else -%}
 {%- unless include.raw %}<span class="price" data-price="{{ include.key }}">{% endunless -%}
 {%- if include.extra -%}${{ _s.extra_price }}
@@ -50,9 +48,6 @@ ${{ _s.price }}
   valid, such as inside an SVG <text> element. numeric=true outputs the bare
   digits only, no $ and no span even without raw=true: for a schema.org
   "price" field, which must be a plain number, not a formatted string.
-  was=true outputs a package's own was: field verbatim (e.g. "Was $340" or
-  "Shop price $549+"), the same field pricing.html already reads as p.was
-  in its loop; use it outside a loop, on a single hand-written card.
   If a key does not exist the include renders nothing rather than
   a broken figure, so a typo is visible as a gap rather than a wrong price.
 {%- endcomment -%}

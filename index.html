@@ -512,8 +512,9 @@ description: "Computer and laptop repair in Perth: a flat [[diagnostic-repair-al
 </section>
 
 <!-- ============================================================
-     HERO INFO STRIP - stats, guarantees & rating (relocated from
-     the old hero card so they stay visible on every screen size)
+     TRUST BAR - the key facts and promises, with the parts and
+     brands we work with underneath. One band instead of three: the
+     scrolling ticker that repeated these facts is gone.
      ============================================================ -->
 <section class="hero-info-strip" aria-label="FixMyPC Perth quick stats">
   <div class="wrap his-inner">
@@ -530,13 +531,7 @@ description: "Computer and laptop repair in Perth: a flat [[diagnostic-repair-al
       <li><span class="his-check-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>No fix, no fee on data recovery</li>
     </ul>
   </div>
-</section>
-
-<!-- ============================================================
-     BRAND / PARTS WE WORK WITH
-     ============================================================ -->
-<section class="brand-strip" aria-label="Brands and components we work with">
-  <div class="brand-inner fade-up">
+  <div class="wrap his-brands">
     <div class="brand-label">Parts &amp; brands we service and install</div>
     <div class="brand-row">
       <span class="brand-badge">Samsung</span>
@@ -555,15 +550,23 @@ description: "Computer and laptop repair in Perth: a flat [[diagnostic-repair-al
   </div>
 </section>
 
-<!-- TRUST TICKER -->
-<div class="trust-strip" aria-hidden="true">
-  <div class="trust-track" id="trust-track"></div>
-</div>
+<!-- ============================================================
+     REVIEWS - straight after the hero: what we do, then proof
+     ============================================================ -->
+<section class="section section-alt" aria-label="Customer reviews for FixMyPC Perth">
+  <div class="wrap">
+    <div class="fade-up">
+      <h2 class="s-title">What our <span class="accent">customers say</span></h2>
+    </div>
+    {% include review-row.html badge=true %}
+    <p class="testi-more fade-up">Had a repair with us? <a href="{{ _rv.meta.write_review_url }}" target="_blank" rel="noopener noreferrer">Leave a Google review</a>.</p>
+  </div>
+</section>
 
 <!-- ============================================================
      SERVICES
      ============================================================ -->
-<section class="section section-alt" aria-label="Computer repairs services Perth">
+<section class="section" aria-label="Computer repairs services Perth">
   <div class="wrap">
     <div class="svc-header fade-up">
       <div class="svc-header-row">
@@ -714,21 +717,8 @@ description: "Computer and laptop repair in Perth: a flat [[diagnostic-repair-al
   </div>
 </div>
 
-<!-- ============================================================
-     TESTIMONIALS
-     ============================================================ -->
-<section class="section" aria-label="Customer reviews for FixMyPC Perth">
-  <div class="wrap">
-    <div class="fade-up">
-      <h2 class="s-title">What our <span class="accent">customers say</span></h2>
-    </div>
-    {% include review-row.html badge=true %}
-    <p class="testi-more fade-up">Had a repair with us? <a href="{{ _rv.meta.write_review_url }}" target="_blank" rel="noopener noreferrer">Leave a Google review</a>.</p>
-  </div>
-</section>
-
 <!-- HOW IT WORKS -->
-<section class="section section-alt" aria-label="How computer & laptop repair works at FixMyPC Perth">
+<section class="section" aria-label="How computer & laptop repair works at FixMyPC Perth">
   <div class="wrap">
     <div class="fade-up">
       <h2 class="s-title">How a repair <span class="accent">works</span></h2>
@@ -755,144 +745,6 @@ description: "Computer and laptop repair in Perth: a flat [[diagnostic-repair-al
         <div class="how-title">Collect, Good as New</div>
         <div class="how-desc">Pick up your device fully repaired, tested and benchmarked. Your 30-day labour warranty starts from collection, plus up to 30 days of free WhatsApp follow-up support for any questions or settings.</div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     REPAIR PACKAGES - desktop overhaul + used laptop revival
-     ============================================================ -->
-<section class="section" id="pkg-section" aria-label="Computer repairs packages Perth">
-  <div class="wrap">
-    <div class="fade-up sec-head-gap">
-      <h2 class="s-title">Fixed-price <span class="accent">repair packages</span></h2>
-      <p class="s-sub">Everything bundled into one flat price, with no hourly billing. Both packages are labour only, you keep your existing parts.</p>
-    </div>
-
-    <div class="pkg-swipe-bar fade-up">
-      <span class="pkg-swipe-count"><span class="pkg-count-pill">2 packages</span> Desktop &amp; Laptop</span>
-      <span class="pkg-swipe-hint">
-        Swipe
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-      </span>
-    </div>
-
-    <div class="pkg-duo" id="pkgDuo">
-
-      <!-- DESKTOP PACKAGE -->
-      <div class="pkg-card fade-up">
-        <div class="pkg-icon-wrap" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-        </div>
-        <div class="pkg-head">
-          <div class="pkg-eyebrow">Desktop &amp; Gaming PCs</div>
-          <h3 class="pkg-title">Complete PC Overhaul</h3>
-          <p class="pkg-tagline">Get it running like new: a full overhaul for a desktop that has slowed down, overheats or has not been serviced in years.</p>
-        </div>
-
-        <div class="pkg-price-block">
-          <div class="pkg-price-row">
-            <span class="pkg-price">{% include price.html key='complete-pc-overhaul' bare=true raw=true %}</span>
-            <span class="pkg-was">{% include price.html key='complete-pc-overhaul' was=true raw=true %}</span>
-          </div>
-          <span class="pkg-lbl">labour only &middot; parts supplied by you</span>
-          <a href="https://wa.me/61470308676?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20the%20Complete%20PC%20Overhaul%20Package." target="_blank" class="btn-wa" rel="noopener" aria-label="Book this now: Complete PC Overhaul Package" onclick="trackWAClick()">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#i-wa"/></svg>
-            Book this now
-          </a>
-        </div>
-
-        <div class="pkg-groups">
-          <div class="pkg-group">
-            <span class="pkg-group-label">The overhaul</span>
-            <div class="pkg-list">
-              <div class="pkg-item">Full malware &amp; virus removal</div>
-              <div class="pkg-item">Windows 11 reinstall with data backup</div>
-              <div class="pkg-item">Full cable management</div>
-              <div class="pkg-item">Thermal paste reapply on CPU</div>
-              <div class="pkg-item">All drivers updated (GPU, chipset, audio)</div>
-              <div class="pkg-item">PBO tuning, up to 15% more performance</div>
-              <div class="pkg-item">Before &amp; after benchmark report</div>
-            </div>
-          </div>
-          <div class="pkg-group">
-            <span class="pkg-group-label">What's included</span>
-            <div class="pkg-list">
-              <div class="pkg-item">3 month follow-up check included</div>
-              <div class="pkg-item">Antivirus installed &amp; configured</div>
-              <div class="pkg-item">30-day labour warranty on all work</div>
-              <div class="pkg-item">Up to 30 days free WhatsApp support</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- LAPTOP PACKAGE -->
-      <div class="pkg-card fade-up">
-        {%- assign _ulr = site.data.services.packages | where: "key", "used-laptop-revival" | first -%}
-        <div class="pkg-icon-wrap" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="12" rx="1.5"/><path d="M2 18h20l-2 3H4l-2-3z"/></svg>
-        </div>
-        <div class="pkg-head">
-          <div class="pkg-eyebrow">Used &amp; Second-Hand Laptops</div>
-          <h3 class="pkg-title">Used Laptop Revival</h3>
-          <p class="pkg-tagline">A full health check and clean slate before you trust a second-hand or old laptop with your files.</p>
-        </div>
-
-        <div class="pkg-price-block">
-          <div class="pkg-price-row">
-            <span class="pkg-price">{% include price.html key='used-laptop-revival' bare=true raw=true %}</span>
-            <span class="pkg-was">{% include price.html key='used-laptop-revival' was=true raw=true %}</span>
-            <span class="pkg-save">Save ${{ _ulr.was_price | minus: _ulr.price }}</span>
-          </div>
-          <span class="pkg-lbl">labour only &middot; 15 checks &amp; services included</span>
-          <a href="https://wa.me/61470308676?text=Hi%21%20I%27d%20like%20a%20free%20quote%20for%20the%20Used%20Laptop%20Revival%20Package." target="_blank" class="btn-wa" rel="noopener" aria-label="Book this now: Used Laptop Revival Package" onclick="trackWAClick()">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#i-wa"/></svg>
-            Book this now
-          </a>
-        </div>
-
-        <div class="pkg-groups">
-          <div class="pkg-group">
-            <span class="pkg-group-label">The revival</span>
-            <div class="pkg-list">
-              <div class="pkg-item">Full hardware health check &amp; report</div>
-              <div class="pkg-item">Battery health test &amp; recalibration</div>
-              <div class="pkg-item">Previous owner data securely wiped</div>
-              <div class="pkg-item">Windows 11 clean reinstall &amp; activation</div>
-              <div class="pkg-item">Full malware, spyware &amp; keylogger scan</div>
-              <div class="pkg-item">SSD/HDD health &amp; bad sector scan</div>
-              <div class="pkg-item">Thermal paste reapply on CPU</div>
-              <div class="pkg-item">All drivers updated (chipset, audio, WiFi)</div>
-              <div class="pkg-item">Keyboard, trackpad &amp; port function test</div>
-              <div class="pkg-item">Screen, hinge &amp; webcam inspection</div>
-              <div class="pkg-item">Bloatware removal &amp; startup optimisation</div>
-              <div class="pkg-item">WiFi &amp; Bluetooth connectivity tuning</div>
-            </div>
-          </div>
-          <div class="pkg-group">
-            <span class="pkg-group-label">What's included</span>
-            <div class="pkg-list">
-              <div class="pkg-item">Antivirus installed &amp; configured</div>
-              <div class="pkg-item">30-day labour warranty on all work</div>
-              <div class="pkg-item">Up to 30 days free WhatsApp support</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="pkg-dots" id="pkgDots" role="tablist" aria-label="Choose a package">
-      <button type="button" class="pkg-dot active" data-i="0" role="tab" aria-label="Show Complete PC Overhaul package"></button>
-      <button type="button" class="pkg-dot" data-i="1" role="tab" aria-label="Show Used Laptop Revival package"></button>
-    </div>
-
-    <div class="payment-strip fade-up">
-      <span><strong>Payment accepted:</strong></span>
-      <span class="payment-pill">Card (Visa, Mastercard, debit)</span>
-      <span class="payment-pill">PayID / Bank transfer</span>
-      <span class="payment-pill">Cash</span>
     </div>
   </div>
 </section>
@@ -1310,6 +1162,17 @@ description: "Computer and laptop repair in Perth: a flat [[diagnostic-repair-al
               </span>
               <svg class="vc-row-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
             </a>
+          </li>
+          <li>
+            <div class="vc-row vc-row--static">
+              <span class="vc-row-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+              </span>
+              <span class="vc-row-text">
+                <span class="vc-label">Payment</span>
+                <span class="vc-row-value vc-row-value--wrap">Card (Visa, Mastercard, debit), PayID, bank transfer or cash</span>
+              </span>
+            </div>
           </li>
         </ul>
 

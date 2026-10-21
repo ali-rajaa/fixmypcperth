@@ -760,6 +760,28 @@ Essential Assembly since there is no Windows install. Shown on /pricing,
 gaming card; pricing search finds "case swap", "new case", "transfer".
 Terms section 6 covers a part that does not fit the new case.
 
+## Homepage restructure (owner approved, October 2026)
+
+Working to a 10-block plan, one step per push, keeping every unique word,
+heading and internal link (only exact repeats may go). Order now: hero,
+trust bar, reviews, services, explore links, how it works, offer, why us,
+Business IT, guide, FAQ, areas, contact, closing CTA.
+
+- Step 1, done: the facts strip and the brand row are one trust bar
+  (`.hero-info-strip` with `.his-brands`); the scrolling trust ticker is
+  gone from the homepage (Business IT still has one); reviews moved up to
+  straight after the hero; the whole "Fixed-price repair packages"
+  section was removed by the owner (the packages are still on /pricing and
+  in the guide); payment methods moved into the contact block as a row.
+  Backgrounds alternate: reviews grey, services and how-it-works white.
+- Was prices removed everywhere (owner decision): no `was:` in
+  services.yml, no strike-through price on /pricing.
+- Still to do: 2 services cards link to their pages and a "More repairs"
+  line; 3 merge how it works with why us (sentence-case headings); 4 main
+  CTA box; 5 "Learn more" zone (guide, FAQ, areas); 6 Business IT band and
+  one merged contact and closing block. Waiting on the owner: rename "Not
+  Satisfied? No Worries" (implies a refund), and a business email.
+
 ## Payment (owner decision, October 2026)
 
 Card, PayID, bank transfer and cash, all equal (no preferred method) and no
@@ -930,7 +952,8 @@ Pages source to GitHub Actions), checks including
   renders as literal text.
 - Prices are never typed. They come from `_data/services.yml` through
   `price.html`. Problem cards must use a service with a real number, and
-  never an add-on (`plus: true`). `price.html` has 4 modes beyond the
+  never an add-on (`plus: true`). `price.html` has 3 modes beyond the
   default: `bare=true` (no prefix/suffix), `raw=true` (no wrapping span,
   for inside JSON or an SVG), `numeric=true` (bare digits, no `$`, for a
-  schema.org `"price"` field), `was=true` (a package's `was:` text).
+  schema.org `"price"` field). There are no "was" prices any more (owner
+  decision, October 2026): never add a was, RRP or "shop price" figure.
