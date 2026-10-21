@@ -766,7 +766,7 @@ Working to a 10-block plan, one step per push, keeping every unique word,
 heading and internal link (only exact repeats may go). Order now: hero,
 trust bar, reviews, services (with the "More repairs" line), how it works
 (with the promises), main call to action (dark band, with the first-repair
-offer), Business IT, guide, FAQ, areas, contact.
+offer), Business IT, learn more (guide, areas, FAQ), contact.
 
 - Step 1, done: the facts strip and the brand row are one trust bar
   (`.hero-info-strip` with `.his-brands`); the scrolling trust ticker is
@@ -798,10 +798,17 @@ offer), Business IT, guide, FAQ, areas, contact.
   reviews row) and the first-repair offer as its bottom row
   (`.cta-offer`, outline button, so one green button in the band). The
   foot of the page no longer repeats the contact block's two buttons.
-- Still to do: 5 "Learn more" zone (guide, FAQ, areas); 6 Business IT
-  band and the contact block. Open question for the owner: the footer
-  brand line says "100% satisfaction", which reads like a refund promise
-  the $120 policy does not give.
+- Step 5, done: the guide, the service areas and the FAQ are one grey
+  section (`.learn-zone`). Desktop: the guide in a white reading panel
+  (`.learn-guide`) with the suburbs in a sticky side panel beside it
+  (`.learn-areas`, id="areas"), the FAQ full width below (`.learn-faq`,
+  id="faq"). Phones: stacked in that order. Words, headings, links and
+  schema identical to before; only the layout changed. The narrow-screen
+  grid uses minmax(0,1fr): plain 1fr let the guide's tab row widen the
+  page to 712px on a phone.
+- Still to do: 6 Business IT band and the contact block.
+- The footer brand line ("Flat pricing and 100% satisfaction.") stays as
+  it is: owner decision, October 2026. Do not raise it again.
 - The contact email stays the owner's Gmail: there is no business email
   and none is planned (owner, October 2026). Do not raise it again.
 

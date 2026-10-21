@@ -347,7 +347,6 @@ a    { color:inherit; }
 .star { width:13px; height:13px; flex:0 0 auto; display:block; }
 .stars-bg .star { fill:var(--border2); }
 .stars-fg .star { fill:var(--gold); }
-.faq-section { background:var(--bg); padding:6rem 2rem; }
 .faq-list { margin-top:2.5rem; display:grid; grid-template-columns:1fr 1fr; gap:0 20px; max-width:1000px; align-items:start; }
 .faq-col { display:flex; flex-direction:column; gap:10px; }
 
@@ -480,6 +479,24 @@ a.area-pill--link.has-page .area-dot {
    not a single page's stylesheet. Was duplicated here before; removing the
    duplicate avoids the two copies drifting apart. */
 .guide-block { max-width:760px; margin-top:2.5rem; }
+/* Learn more: the guide in a reading panel, the suburbs beside it (sticky
+   while the guide scrolls past), the FAQ full width below. */
+.learn-top { display:grid; grid-template-columns:minmax(0,1fr) 340px; gap:2rem; align-items:start; }
+.learn-guide, .learn-areas { background:var(--bg); border:1px solid var(--border); border-radius:var(--radius); }
+.learn-guide { padding:2.25rem 2.5rem; min-width:0; }
+.learn-guide .guide-block { max-width:none; margin-top:1.75rem; }
+.learn-areas { padding:1.75rem; position:sticky; top:96px; }
+.learn-areas .s-title { font-size:1.3rem; line-height:1.25; }
+.learn-areas .s-sub { font-size:14.5px; line-height:1.65; }
+.learn-areas .areas-grid { grid-template-columns:1fr 1fr; gap:6px; margin-top:1.25rem; }
+.learn-areas .area-pill { padding:0.55rem 0.7rem; border-width:1px; border-radius:10px; gap:8px; }
+.learn-areas .area-name { font-size:13px; }
+.learn-faq { margin-top:4rem; }
+.learn-faq .faq-list { max-width:none; }
+@media (max-width:1000px) {
+  .learn-top { grid-template-columns:minmax(0,1fr); }
+  .learn-areas { position:static; }
+}
 .guide-panel > h3 { font-family:var(--display); font-size:1.35rem; font-weight:800; letter-spacing:-0.023em; color:var(--ink); margin:2.5rem 0 0.85rem; }
 /* Every panel is now the top of its own view, so the first heading in any of
    them takes the reduced top margin. */
@@ -573,7 +590,7 @@ body { padding-top:var(--mob-nav-h); }
 .hero-actions .btn-wa { width:100%; }
 .hero-alt-link { justify-content:center; margin-top:0; }
 .hero-note { text-align:center; }
-.section,.section-alt,.cta-section,.faq-section{ padding:3.5rem 1.25rem; }
+.section, .section-alt, .cta-section{ padding:3.5rem 1.25rem; }
 /* The card grids become swipe carousels: 91% wide cards so the next one
    peeks in, snap points, and a full bleed to the screen edge. */
 .services-grid, .its-grid {
@@ -749,7 +766,7 @@ body { padding-top:var(--mob-nav-h); }
 }
 
 @media (max-width:540px) {
-.section,.section-alt,.cta-section,.faq-section{ padding:3rem 1.25rem; }
+.section, .section-alt, .cta-section{ padding:3rem 1.25rem; }
 .hero h1:where(:not([class])) { font-size:1.75rem; }
 .s-title  { font-size:1.3rem; }
 .areas-grid { grid-template-columns:repeat(2,1fr); }
@@ -839,13 +856,13 @@ body { padding-top:var(--mob-nav-h); }
    ========================================================== */
 @media (max-width: 720px) {
   /* Side margin */
-  .hero, .hero-info-strip, .section, .faq-section, .cta-section { padding-left: var(--m-gutter); padding-right: var(--m-gutter); }
+  .hero, .hero-info-strip, .section, .cta-section { padding-left: var(--m-gutter); padding-right: var(--m-gutter); }
 
   /* Section rhythm: hero 24 under the header; the info card below it
      belongs to the hero, then 48 before the next section. */
   .hero { padding-top: var(--m-hero-top); padding-bottom: var(--m-hero-top); }
   .hero-info-strip { padding-top: 0; padding-bottom: var(--m-section); }
-  .section, .faq-section, .cta-section { padding-top: var(--m-section); padding-bottom: var(--m-section); }
+  .section, .cta-section { padding-top: var(--m-section); padding-bottom: var(--m-section); }
 
   /* Cards and the boxes inside them */
   .hero-info-strip > .wrap, .svc-card, .how-card, .its-card, .visit-card { padding: var(--m-card-pad); border-radius: var(--m-card-radius); }
@@ -872,7 +889,10 @@ body { padding-top:var(--mob-nav-h); }
 
   /* Inner .wrap adds nothing on phones: the section is the 20px margin.
      (It added 32px, putting most text 52px from the edge.) */
-  .section > .wrap, .faq-section > .wrap { padding-left: 0; padding-right: 0; }
+  .section > .wrap { padding-left: 0; padding-right: 0; }
+  .learn-guide, .learn-areas { padding: var(--m-card-pad); border-radius: var(--m-card-radius); }
+  .learn-top { gap: 24px; }
+  .learn-faq { margin-top: var(--m-section); }
   .how-promises { padding: var(--m-card-pad); border-radius: var(--m-card-radius); margin-top: 24px; }
   .promise-list { grid-template-columns: 1fr; gap: var(--m-gap-rows); }
   .promise, .how-promises-sub { font-size: var(--m-text); }
