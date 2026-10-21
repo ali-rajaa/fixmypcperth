@@ -708,7 +708,7 @@ description: "Computer and laptop repair in Perth: a flat [[diagnostic-repair-al
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
+<!-- HOW IT WORKS, WHY US AND THE FIRST-REPAIR OFFER -->
 <section class="section section-alt" aria-label="How computer & laptop repair works at FixMyPC Perth">
   <div class="wrap">
     <div class="fade-up">
@@ -718,77 +718,51 @@ description: "Computer and laptop repair in Perth: a flat [[diagnostic-repair-al
     <div class="how-grid">
       <div class="how-card fade-up">
         <div class="how-num" aria-hidden="true">01</div>
-        <div class="how-title">Get a Free Quote</div>
+        <div class="how-title">Get a free quote</div>
         <div class="how-desc">Send a message on WhatsApp or fill out our quote form. Tell us what the PC is doing and we'll give you the exact cost before you bring it in.</div>
       </div>
       <div class="how-card fade-up">
         <div class="how-num" aria-hidden="true">02</div>
-        <div class="how-title">Drop Off in Canning Vale</div>
+        <div class="how-title">Drop off in Canning Vale</div>
         <div class="how-desc">Bring your PC, laptop or components to us in Canning Vale, easy to reach from Cockburn, Willetton, Jandakot, Thornlie, Cannington and surrounding suburbs.</div>
       </div>
       <div class="how-card fade-up">
         <div class="how-num" aria-hidden="true">03</div>
-        <div class="how-title">We Diagnose and Fix</div>
+        <div class="how-title">We diagnose and fix</div>
         <div class="how-desc">We run a full diagnostic, identify the root cause and send you a clear written report before touching anything. Drop off before 2pm and most jobs are ready by 6pm the same day. After 2pm, it's usually ready the next day.</div>
       </div>
       <div class="how-card fade-up">
         <div class="how-num" aria-hidden="true">04</div>
-        <div class="how-title">Collect, Good as New</div>
+        <div class="how-title">Collect, good as new</div>
         <div class="how-desc">Pick up your device fully repaired, tested and benchmarked. Your 30-day labour warranty starts from collection, plus up to 30 days of free WhatsApp follow-up support for any questions or settings.</div>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     FIRST-TIME CUSTOMER OFFER - inline, reveals on scroll
-     (deliberately NOT a modal: avoids Google's intrusive
-     interstitial penalty on mobile)
-     ============================================================ -->
-<section class="offer-banner" aria-label="First time customer offer">
-  <div class="offer-inner fade-up">
-    <div class="offer-text">
-      <div class="offer-tag">First-time customers</div>
-      <div class="offer-title">{% include price.html key="first-time-discount" bare=true %} off your first repair</div>
-      <p class="offer-desc">Applies to any repair over {% include price.html key="first-time-min-spend" bare=true %}. The button notes the discount in your WhatsApp message, so there is nothing to remember at drop-off.</p>
+    {%- comment -%}
+      Why us, folded into how it works (it used to be its own section with
+      three cards). The same-day card went: its one sentence is already
+      step 03 above, word for word, and the trust bar says it too.
+    {%- endcomment %}
+    <div class="how-promises fade-up">
+      <h3 class="how-promises-title">Local, quick and <span class="accent">upfront on price</span></h3>
+      <p class="how-promises-sub">Perth has no shortage of computer &amp; laptop repair options. Here is why residents and businesses across Canning Vale, Cockburn and Cannington keep coming back.</p>
+      <ul class="promise-list">
+        <li class="promise"><span class="promise-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><strong class="promise-title">Fixed price, agreed first</strong> We tell you the exact price before any repair work starts. The price you are quoted is the price you pay, and on data recovery jobs you only pay if we get your files back.</span></li>
+        <li class="promise"><span class="promise-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span><strong class="promise-title">30-day labour warranty</strong> All work guaranteed for 30 days after completion. If the same issue returns within 30 days, we fix it again and you do not pay twice.</span></li>
+      </ul>
     </div>
-    <div class="offer-btn">
-      <a href="https://wa.me/61470308676?text=Hi%21%20I%27d%20like%20to%20claim%20the%20first-time%20customer%20discount." target="_blank" rel="noopener noreferrer" class="btn-wa" aria-label="Claim my discount on WhatsApp" onclick="trackWAClick()">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#i-wa"/></svg>
-        Claim my discount
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- WHY CHOOSE US -->
-<section class="section section-alt" aria-label="Why choose FixMyPC Perth for computer & laptop repair">
-  <div class="wrap">
-    <div class="fade-up">
-      <h2 class="s-title">Local, quick and <span class="accent">upfront on price</span></h2>
-      <p class="s-sub">Perth has no shortage of computer & laptop repair options. Here is why residents and businesses across Canning Vale, Cockburn and Cannington keep coming back.</p>
-    </div>
-    <div class="why-grid">
-      <div class="why-card fade-up">
-        <div class="why-icon-wrap" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-        <div class="why-title">Not Satisfied? No Worries</div>
-        <div class="why-desc">We tell you the exact price before any repair work starts. The price you are quoted is the price you pay, and on data recovery jobs you only pay if we get your files back.</div>
+    <!-- First-time customer offer: inline, not a modal (a pop-up would
+         risk Google's intrusive interstitial penalty on mobile). -->
+    <div class="offer-inner fade-up">
+      <div class="offer-text">
+        <div class="offer-tag">First-time customers</div>
+        <div class="offer-title">{% include price.html key="first-time-discount" bare=true %} off your first repair</div>
+        <p class="offer-desc">Applies to any repair over {% include price.html key="first-time-min-spend" bare=true %}. The button notes the discount in your WhatsApp message, so there is nothing to remember at drop-off.</p>
       </div>
-      <div class="why-card fade-up">
-        <div class="why-icon-wrap" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        </div>
-        <div class="why-title">Same Day Turnaround</div>
-        <div class="why-desc">Drop off before 2pm and most jobs are ready by 6pm the same day.</div>
-      </div>
-      <div class="why-card fade-up">
-        <div class="why-icon-wrap" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
-        <div class="why-title">30-Day Labour Warranty</div>
-        <div class="why-desc">All work guaranteed for 30 days after completion. If the same issue returns within 30 days, we fix it again and you do not pay twice.</div>
+      <div class="offer-btn">
+        <a href="https://wa.me/61470308676?text=Hi%21%20I%27d%20like%20to%20claim%20the%20first-time%20customer%20discount." target="_blank" rel="noopener noreferrer" class="btn-wa" aria-label="Claim my discount on WhatsApp" onclick="trackWAClick()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#i-wa"/></svg>
+          Claim my discount
+        </a>
       </div>
     </div>
   </div>

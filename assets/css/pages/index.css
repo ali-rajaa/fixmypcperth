@@ -201,7 +201,18 @@ a    { color:inherit; }
 .brand-row { display:flex; flex-wrap:wrap; justify-content:center; gap:9px; }
 .brand-badge { font-family:var(--display); font-size:13px; font-weight:700; color:var(--muted); border:1.5px solid var(--border); background:var(--bg2); border-radius:9px; padding:8px 16px; letter-spacing:-0.015em; transition:color 0.2s,border-color 0.2s; }
 @media (hover: hover) { .brand-badge:hover { color:var(--ink2); border-color:var(--border2); } }
-.offer-banner { padding:0 2rem; background:var(--bg); }
+/* Why us, folded into how it works: a white panel of promises under the
+   steps, each a green tick and a bold run-in title. */
+.how-promises { margin-top:2.5rem; background:var(--bg); border:1px solid var(--border); border-radius:var(--radius); padding:1.75rem 2rem; }
+.how-promises-title { font-family:var(--display); font-size:1.3rem; font-weight:800; line-height:1.25; letter-spacing:-0.02em; color:var(--ink); margin-bottom:0.5rem; }
+.how-promises-sub { font-size:15px; color:var(--muted); line-height:1.7; max-width:62ch; margin-bottom:1.25rem; }
+.promise-list { list-style:none; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem 2.5rem; }
+.promise { display:flex; gap:12px; align-items:flex-start; font-size:15px; color:var(--ink2); line-height:1.65; }
+.promise-icon { flex:0 0 26px; width:26px; height:26px; margin-top:1px; border-radius:50%; background:rgba(34,197,94,0.12); border:1px solid rgba(34,197,94,0.3); color:var(--wa-dk); display:inline-flex; align-items:center; justify-content:center; }
+.promise-icon svg { width:13px; height:13px; }
+.promise-title { display:block; font-family:var(--display); font-size:1.05rem; font-weight:700; letter-spacing:-0.01em; color:var(--ink); margin-bottom:2px; }
+/* The first-repair offer closes the same section. */
+.how-promises + .offer-inner { margin-top:1.5rem; }
 .offer-inner {
   max-width:1100px; margin:0 auto;
   display:flex; align-items:center; gap:1.25rem; flex-wrap:wrap;
@@ -326,15 +337,6 @@ a    { color:inherit; }
 .its-desc  { font-size:13px; font-weight:500; color:var(--muted); line-height:1.5; margin-bottom:1.25rem; flex:1; }
 .its-price-row { display:flex; align-items:center; justify-content:space-between; padding-top:1rem; border-top:1px solid var(--border); gap:0.5rem; margin-top:auto; }
 .its-price { font-family:var(--display); font-size:1.25rem; font-weight:800; color:var(--blue); }
-.why-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(290px,1fr)); gap:14px; margin-top:2.5rem; }
-.why-card { background:var(--bg); border:1.5px solid var(--border); border-radius:var(--radius); padding:1.75rem 1.5rem; transition:border-color 0.2s,transform 0.3s var(--ease-settle),box-shadow 0.3s var(--ease-settle); position:relative; overflow:hidden; }
-.why-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--blue),#00CFFF); opacity:0; transition:opacity 0.2s; }
-@media (hover: hover) { .why-card:hover { border-color:var(--blue); transform:translateY(-3px); box-shadow:0 8px 24px rgba(21,96,255,0.08); } }
-@media (hover: hover) { .why-card:hover::before { opacity:1; } }
-.why-icon-wrap { width:44px; height:44px; border-radius:12px; background:var(--blue-lt); border:1.5px solid var(--blue-mid); display:flex; align-items:center; justify-content:center; margin-bottom:1rem; }
-.why-icon-wrap svg { width:20px; height:20px; color:var(--blue); }
-.why-title { font-family:var(--display); font-size:1.05rem; font-weight:700; line-height:1.3; letter-spacing:-0.01em; color:var(--ink); margin-bottom:0.4rem; }
-.why-desc  { font-size:13px; font-weight:500; color:var(--muted); line-height:1.5; }
 .testi-more { text-align:center; margin-top:1.75rem; font-size:13px; color:var(--muted); }
 .testi-more a:not([class]) { color:var(--blue); font-weight:600; text-decoration:none; }
 @media (hover: hover) { .testi-more a:not([class]):hover { text-decoration:underline; text-underline-offset:3px; } }
@@ -601,7 +603,6 @@ body { padding-top:var(--mob-nav-h); }
 .how-grid { grid-template-columns:1fr; gap:10px; }
 .how-card { padding:1.4rem 1.25rem; }
 .its-card  { padding:1.4rem; }
-.why-grid  { grid-template-columns:1fr; gap:10px; }
 .areas-grid { grid-template-columns:repeat(2,1fr); gap:8px; }
 .area-pill { padding:0.75rem 0.85rem; }
 .area-name { font-size:12.5px; }
@@ -649,7 +650,6 @@ body { padding-top:var(--mob-nav-h); }
 .his-checks { grid-template-columns:1fr 1fr; gap:0.5rem 0.75rem; }
 .his-checks li:where(:not([class])) { font-size:12px; white-space:normal; line-height:1.35; }
 .brand-badge { font-size:12px; padding:7px 13px; }
-.offer-banner { padding:0 1.25rem; }
 .offer-inner { padding:1.35rem 1.35rem; gap:1rem; }
 .offer-title { font-size:1.05rem; }
 .offer-btn { width:100%; }
@@ -721,8 +721,8 @@ body { padding-top:var(--mob-nav-h); }
   .pkg-swipe-hint svg { animation:none; }
   .js .fade-up { transition:opacity 0.2s ease; transform:none; }
 
-  @media (hover: hover) { .btn-blue:hover, .btn-wa:hover, .svc-card:hover, .how-card:hover, .its-card:hover, .why-card:hover, a.area-pill--link:hover, .mq-service-btn:hover, .vc-row:hover .vc-row-arrow, .hero-alt-link:hover svg, .map-chip:hover { transform:none; } }
-  .btn-blue, .btn-wa, .btn-outline, .svc-card, .how-card, .its-card, .why-card, a.area-pill--link, .mq-service-btn, .guide-tab, .svc-cta, .svc-link-pill {
+  @media (hover: hover) { .btn-blue:hover, .btn-wa:hover, .svc-card:hover, .how-card:hover, .its-card:hover, a.area-pill--link:hover, .mq-service-btn:hover, .vc-row:hover .vc-row-arrow, .hero-alt-link:hover svg, .map-chip:hover { transform:none; } }
+  .btn-blue, .btn-wa, .btn-outline, .svc-card, .how-card, .its-card, a.area-pill--link, .mq-service-btn, .guide-tab, .svc-cta, .svc-link-pill {
     transition-duration:0.15s;
   }
 }
@@ -734,10 +734,8 @@ body { padding-top:var(--mob-nav-h); }
 /* High contrast. Muted greys darkened to carry real contrast, and the
    tinted panels given a defined border rather than relying on fill alone. */
 @media (prefers-contrast: more) {
-  .s-sub, .svc-desc, .how-desc, .why-desc, .its-desc,
- .area-count { color:#334155; }
-  .svc-card, .how-card, .its-card, .why-card,
-  .area-pill { border-color:#0F172A; }
+  .s-sub, .svc-desc, .how-desc, .its-desc, .area-count { color:#334155; }
+  .svc-card, .how-card, .its-card, .area-pill { border-color:#0F172A; }
   .btn-outline { border-color:#0F172A; }
   .hero-alt-link, .hero-note { color:#0F172A; }
   .visit-card, .vc-turnaround { border-color:#0F172A; }
@@ -842,7 +840,7 @@ body { padding-top:var(--mob-nav-h); }
    ========================================================== */
 @media (max-width: 720px) {
   /* Side margin */
-  .hero, .hero-info-strip, .section, .offer-banner, .faq-section, .cta-section { padding-left: var(--m-gutter); padding-right: var(--m-gutter); }
+  .hero, .hero-info-strip, .section, .faq-section, .cta-section { padding-left: var(--m-gutter); padding-right: var(--m-gutter); }
 
   /* Section rhythm: hero 24 under the header; the info card below it
      belongs to the hero, then 48 before the next section. */
@@ -851,13 +849,13 @@ body { padding-top:var(--mob-nav-h); }
   .section, .faq-section, .cta-section { padding-top: var(--m-section); padding-bottom: var(--m-section); }
 
   /* Cards and the boxes inside them */
-  .hero-info-strip > .wrap, .svc-card, .how-card, .why-card, .its-card, .visit-card { padding: var(--m-card-pad); border-radius: var(--m-card-radius); }
+  .hero-info-strip > .wrap, .svc-card, .how-card, .its-card, .visit-card { padding: var(--m-card-pad); border-radius: var(--m-card-radius); }
   .hero-card { border-radius: var(--m-card-radius); }
   .hc-body { padding: var(--m-card-pad); }
   .vc-turnaround { padding: var(--m-panel-pad); border-radius: var(--m-panel-radius); }
 
   /* Gaps */
-  .services-grid, .how-grid, .why-grid, .its-grid, .visit-grid, .his-stats { gap: var(--m-gap-cards); }
+  .services-grid, .how-grid, .its-grid, .visit-grid, .his-stats { gap: var(--m-gap-cards); }
   .faq-list, .faq-col { gap: var(--m-gap-rows); }
 
   /* Headings */
@@ -877,6 +875,10 @@ body { padding-top:var(--mob-nav-h); }
      (It added 32px, putting most text 52px from the edge.) */
   .section > .wrap, .faq-section > .wrap { padding-left: 0; padding-right: 0; }
   .offer-inner { padding: var(--m-card-pad); border-radius: var(--m-card-radius); }
+  .how-promises { padding: var(--m-card-pad); border-radius: var(--m-card-radius); margin-top: 24px; }
+  .promise-list { grid-template-columns: 1fr; gap: var(--m-gap-rows); }
+  .promise, .how-promises-sub { font-size: var(--m-text); }
+  .how-promises-title { font-size: var(--m-h2); }
 
   /* Carousels run edge to edge; the first card lines up with the text. */
   .services-grid, .its-grid {

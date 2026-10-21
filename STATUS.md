@@ -764,8 +764,9 @@ Terms section 6 covers a part that does not fit the new case.
 
 Working to a 10-block plan, one step per push, keeping every unique word,
 heading and internal link (only exact repeats may go). Order now: hero,
-trust bar, reviews, services (with the "More repairs" line), how it works,
-offer, why us, Business IT, guide, FAQ, areas, contact, closing CTA.
+trust bar, reviews, services (with the "More repairs" line), how it works
+(with the promises and the first-repair offer), Business IT, guide, FAQ,
+areas, contact, closing CTA.
 
 - Step 1, done: the facts strip and the brand row are one trust bar
   (`.hero-info-strip` with `.his-brands`); the scrolling trust ticker is
@@ -784,10 +785,15 @@ offer, why us, Business IT, guide, FAQ, areas, contact, closing CTA.
   two sentences and one action. The separate "Explore our services" band
   is now a "More repairs" line inside the services section, listing only
   the built service pages the cards do not link to (from data).
-- Still to do: 3 merge how it works with why us (sentence-case headings);
-  4 main CTA box; 5 "Learn more" zone (guide, FAQ, areas); 6 Business IT
-  band and one merged contact and closing block. Waiting on the owner:
-  rename "Not Satisfied? No Worries" (implies a refund).
+- Step 3, done: "Local, quick and upfront on price" is now an H3 panel of
+  promises (`.how-promises`, green ticks, bold run-in titles) inside the
+  how-it-works section, and the first-repair offer card closes that same
+  section (no separate offer band). "Not Satisfied? No Worries" is now
+  "Fixed price, agreed first" (owner's choice; the old one implied a
+  refund). The "Same Day Turnaround" card went: its one sentence is step
+  03, word for word. Step titles are sentence case.
+- Still to do: 4 main CTA box; 5 "Learn more" zone (guide, FAQ, areas);
+  6 Business IT band and one merged contact and closing block.
 - The contact email stays the owner's Gmail: there is no business email
   and none is planned (owner, October 2026). Do not raise it again.
 
