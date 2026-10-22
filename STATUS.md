@@ -13,16 +13,16 @@ every push, and show the owner screenshots first for bigger changes.
 the `fixmypcperth-jekyll` skill, which loads on its own. Do not re-decide
 anything listed under "Locked decisions" there or here.
 
-Last updated: 20 October 2026.
+Last updated: 22 October 2026.
 
 ---
 
 ## How to start a new chat
 
-Say this:
+Say this (NEW-CHAT.md in the repo root has the full message to paste):
 
-> Working on fixmypcperth (live only). Read STATUS.md, then continue
-> with <the task>.
+> Working on fixmypcperth (live only). Read STATUS.md, starting with
+> "Latest session (20 to 22 October 2026)", then continue with <the task>.
 
 Pull files raw, with a cache-buster, not the codeload tarball: the tarball
 serves a cached archive and has reported a finished push as missing.
@@ -32,6 +32,123 @@ serves a cached archive and has reported a finished push as missing.
 Run `scripts/verify_page.py` from the skill on every page touched, before
 delivering anything. There is no staging preview any more, so that script
 and a local build are the only safety net.
+
+---
+
+## Latest session (20 to 22 October 2026)
+
+All of this is live on `main`. The owner made these decisions in this
+session: treat them as locked and do not raise them again. Detail lives in
+the sections named in brackets.
+
+**Owner decisions (locked)**
+- Phone 0470 308 676 everywhere: `tel:+61470308676`, `wa.me/61470308676`,
+  schema `+61470308676`, and the 14 share images. Same number on the
+  Google Business Profile, including WhatsApp.
+- Payment: card (Visa, Mastercard, debit), PayID or bank transfer, and
+  cash, with no surcharge. [Payment]
+- Email stays the Gmail, aly.imran.raja@gmail.com. No business email.
+- Never call the business a "workshop". [Traps]
+- No "was" prices anywhere, and the two-packages section is gone.
+- Reviews are word for word, never edited. The reviews row always
+  scrolls. It has no pause button and moves under reduced motion too. It
+  stops while hovered, touched or keyboard-focused. The section heading is
+  "What Our Customers Say".
+- The small uppercase "eyebrow" pill labels are removed sitewide unless
+  one is genuinely needed.
+- Footer stays as it is, including the "100% satisfaction" line. The one
+  change since: its contact column reads "Visit, Call or Message", with
+  Call, then WhatsApp.
+- Homepage contact block is minimal. It has no buttons, hours, payment or
+  2pm/6pm line, plus a square map. Address 7 Barraberry Retreat, Canning
+  Vale WA 6155, exactly as on the Google profile.
+- Contact order everywhere is Call, then WhatsApp, then Email. Keep Call
+  and WhatsApp together in the navigation. The desktop header has the
+  number and a WhatsApp button. The phone menu has Call | WhatsApp | Get a
+  quote. [Contact order]
+- Phone menu trimmed to Repairs, Pricing, Free PC Health Check and
+  Business IT, plus those three buttons. Reviews and Tech Tips are in the
+  footer on phones; the desktop header is unchanged.
+- Business IT, the nine industry pages, privacy and terms stay email
+  only. [Business IT and industry pages: email only]
+
+**What changed, in order**
+1. New phone number sitewide, including WhatsApp links and share images.
+2. Payment methods sitewide.
+3. Reviews:
+   - Ten new Google reviews in `_data/reviews.yml`, with rating 4.8 from
+     47 reviews in `meta`.
+   - The scrolling review row (`_includes/review-row.html`,
+     `assets/css/review-row.css`) on the homepage and /reviews.
+   - A shared rating badge (`_includes/rating-badge.html`).
+4. Homepage restructure, steps 1 to 7. [Homepage restructure]
+5. Contact section made minimal, with a square map.
+6. "Workshop" removed from all visible copy.
+7. Suburb pages rebuilt. [Suburb page rules, under "Built and live"]
+   - Unique copy.
+   - Laptop/desktop/data tabs, a short price list, grouped FAQs and a
+     step strip.
+   - Entity schema.
+   - Drive times hidden until checked.
+8. Call, WhatsApp and Email offered sitewide, including the quote-form
+   reply choice. [Contact order]
+9. Audit fixes:
+   - Tracking: the `data-track` clicks are one delegated listener, and
+     Call taps no longer also count as `quote_form_click`.
+   - Suburb tabs fit at 320px.
+   - One `<main>` on /services, and the quote cards are `role="region"`.
+   - Footer link names match their visible text.
+   - The quote form's Call link has its own class (`.tq-call`).
+10. Phone menu trimmed (above).
+11. "Verify live site" checker hardened. Both failures on 22 October were
+    the host answering one request with an error page or a 503.
+    - `_launch/mobile-check.js` fetches a page up to three times, then
+      reports one `LOAD FAILED` line.
+    - `_launch/check-live.sh` asks a non-200 page twice more, 3 seconds
+      apart.
+
+**How it was tested.** Repeat this before any big push:
+- A local `jekyll build`.
+- Static checks on every page: JSON-LD parses, internal links resolve,
+  tel/wa/mailto use the right number and address, no duplicate ids, one
+  `<main>`, and no "workshop".
+- Playwright:
+  - `_launch/mobile-check.js` against the local build, with
+    `SITE=http://localhost:PORT SUFFIX=.html` and the root mapped to
+    `/index.html`.
+  - Sideways scroll at 320 to 1440px.
+  - axe-core, WCAG 2.2 AA plus best practice.
+  - Every quote form with Call, WhatsApp and Email, with web3forms mocked.
+  - Tabs, arrow keys, `#hash` links and no-JS on all 18 suburb pages.
+  - The phone menu at 320, 360 and 390px.
+
+Last result: all clean, except two known, harmless items:
+- The faint 01/02/03 watermark numbers fail contrast. This is accepted:
+  they are aria-hidden decoration.
+- The homepage reports a scroll width of 338 at 320px but cannot actually
+  scroll sideways. This predates this session.
+
+**Still open, needs the owner**
+- Check the 17 suburb drive times on Google Maps. Correct `travel:` where
+  needed, then set `travel_checked: true` on that page.
+- Look up the Wikidata Q-number for each suburb and fill `entity.wikidata`.
+  The Wikipedia links follow standard naming but were not opened.
+- Supply real repair jobs for the suburb "Recent repairs" grid. The format
+  is at the top of `_includes/suburb-jobs.html`, and no job is ever
+  invented.
+- Add the `GOOGLE_PLACES_API_KEY` repo secret. After that, build the daily
+  workflow that updates `meta.rating` and `meta.review_count` in
+  `_data/reviews.yml`. It is not built yet.
+- Check the homepage map shows the business listing.
+
+Found, not fixed:
+- `pc-health-check-perth.html` defines its own `trackPhoneClick`,
+  `trackWAClick` and `trackQuoteForm` ('conversion' events). The ones in
+  `scripts.html` load later and replace them, so those 'conversion' events
+  never fire; the sitewide events fire instead.
+- `.footer-col a` outranks `.footer-phone`, so the footer number shows
+  grey at 14.5px instead of dark and bold. The footer was left as is on
+  the owner's word.
 
 ---
 
@@ -904,7 +1021,13 @@ WhatsApp stays green. Every tel link fires `phone_call_click` in GA4
 Where it is:
 - Quote forms (shared and homepage card): the reply choice.
 - Header: the number with a phone icon before the WhatsApp button (icon
-  only from 901 to 1120px); the phone menu has "Call 0470 308 676".
+  only from 901 to 1120px). Kept on purpose: the number is a quiet link
+  and a trust signal, WhatsApp the one button, so they do not compete.
+- Phone menu (trimmed, owner, October 2026): Repairs, Pricing, Free PC
+  Health Check, Business IT, then one row of three buttons, the same as
+  the bottom bar: Call, WhatsApp, Get a quote (the page's own form when it
+  has one). Owner: keep Call and WhatsApp together. Reviews and Tech Tips
+  are in the footer. Email-only pages end with their own action instead.
 - Phone bottom bar: Call, WhatsApp, Get a quote (fits at 320px).
 - Footer contact column ("Visit, Call or Message"): Call, then WhatsApp.
 - Heroes and closing boxes: homepage, service pages, /services, suburb

@@ -155,7 +155,7 @@ function formShow(el) {
     setMenu(!mobMenu.classList.contains('open'));
   });
 
-  mobMenu.querySelectorAll('a.mob-link').forEach(function(link) {
+  mobMenu.querySelectorAll('a').forEach(function(link) {
     link.addEventListener('click', function() { setMenu(false); });
   });
 
@@ -394,12 +394,12 @@ function formShow(el) {
   (function() {
     const bar = document.getElementById('stickyCta');
     if (!bar) return;
-    /* "Get a quote": this page's own form if it has one, else /quote-request. */
-    const quoteBtn = bar.querySelector('.sc-quote');
-    if (quoteBtn) {
-      const local = document.getElementById('top-quote') || document.getElementById('quote');
-      quoteBtn.setAttribute('href', local ? '#' + local.id : '/quote-request');
-    }
+    /* "Get a quote" (the bar's and the phone menu's): this page's own form
+       if it has one, else /quote-request. */
+    const local = document.getElementById('top-quote') || document.getElementById('quote');
+    document.querySelectorAll('#stickyCta .sc-quote, #mob-menu [data-quote-link]').forEach(function(q) {
+      q.setAttribute('href', local ? '#' + local.id : '/quote-request');
+    });
     const hero = document.querySelector('.hero, .quiz-hero');
     window.addEventListener('scroll', function() {
       const past = hero ? (window.scrollY > hero.offsetHeight * 0.85) : (window.scrollY > 600);

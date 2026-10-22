@@ -32,4 +32,5 @@ exclude:
   - CHECKLIST.md
   - STATUS.md
   - LAUNCH.md
+  - NEW-CHAT.md
   - .github

@@ -11,8 +11,8 @@ robots=$(curl -s --max-time 20 "$BASE/robots.txt")
 grep -q "^Allow: /" <<<"$robots" && grep -q "Sitemap: $BASE/sitemap.xml" <<<"$robots" && ok "robots.txt allows crawling and names the sitemap" || bad "robots.txt: $robots"
 
 home=$(curl -s --max-time 20 "$BASE/")
-echo "$home" | grep -q '<meta name="robots" content="index, follow' && ok "home page is indexable" || bad "home page robots meta is not index,follow"
-echo "$home" | grep -q 'href="/services"' && ok "home page is the new site (links /services)" || bad "home page does not look like the new site"
+grep -q '<meta name="robots" content="index, follow' <<<"$home" && ok "home page is indexable" || bad "home page robots meta is not index,follow"
+grep -q 'href="/services"' <<<"$home" && ok "home page is the new site (links /services)" || bad "home page does not look like the new site"
 
 sm=$(curl -s --max-time 20 "$BASE/sitemap.xml")
 urls=$(echo "$sm" | grep -o '<loc>[^<]*' | sed 's/<loc>//')
@@ -22,10 +22,17 @@ echo "$urls" | grep -q '\.html' && bad "sitemap contains .html addresses" || ok 
 nlm=$(grep -c "<lastmod>" <<<"$sm"); [ "$nlm" -eq "$count" ] && ok "every sitemap page has a real lastmod date" || bad "only $nlm of $count sitemap pages have a lastmod"
 grep -q "<!-- Repair services" <<<"$sm" && ok "sitemap is grouped by category" || bad "sitemap is not grouped"
 sp=$(curl -s -o /dev/null -w "%{http_code}" --max-time 20 "$BASE/sitemap"); [ "$sp" = "200" ] && ok "/sitemap page loads" || bad "/sitemap returned $sp"
+# A page that does not return 200 is asked again twice, 3 seconds apart,
+# before it counts: the host now and then answers one request with a 503
+# and the next with the page.
 nf=0
 for u in $urls; do
-  c=$(curl -s -o /dev/null -w "%{http_code}" --max-time 20 "$u")
-  if [ "$c" != "200" ]; then echo "  sitemap page $u returned $c"; nf=$((nf+1)); fi
+  for try in 1 2 3; do
+    c=$(curl -s -o /dev/null -w "%{http_code}" --max-time 20 "$u")
+    [ "$c" = "200" ] && break
+    [ "$try" -lt 3 ] && { echo "  note: $u returned $c, trying again"; sleep 3; }
+  done
+  if [ "$c" != "200" ]; then echo "  sitemap page $u returned $c three times"; nf=$((nf+1)); fi
 done
 [ "$nf" -eq 0 ] && ok "every sitemap page returns 200" || bad "$nf sitemap pages did not return 200"
 
