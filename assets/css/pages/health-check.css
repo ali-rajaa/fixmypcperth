@@ -377,6 +377,8 @@ a { color: inherit; }
   -webkit-tap-highlight-color: transparent;
   transition: transform 0.15s var(--ease-settle), box-shadow 0.15s var(--ease-settle);
 }
+/* Call, before the WhatsApp button (owner, October 2026): the same button in blue. */
+.btn-wa-result.btn-call-result { background: var(--blue); box-shadow: 0 4px 20px rgba(21,96,255,0.4); }
 .btn-quote-result {
   display: flex; align-items: center; justify-content: center; gap: 9px;
   background: rgba(255,255,255,0.1); color: #fff; text-decoration: none;
@@ -597,6 +599,7 @@ a { color: inherit; }
 .cta-icon-row { display: flex; gap: 8px; }
 .cta-icon-btn { flex: 1; height: 50px; border-radius: 50px; display: flex; align-items: center; justify-content: center; text-decoration: none; -webkit-tap-highlight-color: transparent; transition: transform 0.15s var(--ease-settle); }
 .cta-icon-btn.wa { background: var(--wa); box-shadow: 0 4px 16px rgba(34,197,94,0.35); }
+.cta-icon-btn.call { background: var(--blue); box-shadow: 0 4px 16px rgba(21,96,255,0.35); }
 
 /* ==========================================================
    Hover: only where there is a real pointer, so a tap on a
@@ -612,6 +615,7 @@ a { color: inherit; }
   .option-btn:not(:disabled):hover .opt-icon { background: rgba(21,96,255,0.08); border-color: var(--blue-mid); }
   .btn-next:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(21,96,255,0.45); }
   .btn-wa-result:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(34,197,94,0.5); }
+  .btn-wa-result.btn-call-result:hover { box-shadow: 0 6px 28px rgba(21,96,255,0.5); }
   .btn-quote-result:hover { background: rgba(255,255,255,0.16); }
   .btn-retake:hover { color: rgba(255,255,255,0.85); }
   .process-step:hover { border-color: var(--blue); transform: translateY(-2px); }

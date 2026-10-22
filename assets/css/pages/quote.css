@@ -121,6 +121,12 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body)
 .qr-btn-wide { width:100%; }
 .qr-btn-wa { background:var(--wa-dk); color:#fff; border:1.5px solid var(--wa-dk); }
 @media (hover: hover) { .qr-btn-wa:hover { background:var(--wa-deep); border-color:var(--wa-deep); } }
+/* Call, WhatsApp, Email: the order every contact row on the site uses. */
+.qr-reach { display:flex; flex-direction:column; gap:8px; }
+.qr-btn-call { background:var(--blue); color:#fff; border:1.5px solid var(--blue); }
+@media (hover: hover) { .qr-btn-call:hover { background:var(--blue-dk); border-color:var(--blue-dk); } }
+.qr-btn-mail { background:var(--bg); color:var(--ink); border:1.5px solid var(--border2); }
+@media (hover: hover) { .qr-btn-mail:hover { border-color:var(--blue); color:var(--blue); } }
 
 /* ==========================================================
    The nav switches to the hamburger at 900px, so the body

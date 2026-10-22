@@ -346,8 +346,11 @@ function formShow(el) {
   })();
 
   /* ---- Phone click tracking ---- */
-  document.querySelectorAll('a[href^="tel:"]').forEach(function(el) {
-    el.addEventListener('click', function() { if(typeof trackPhoneClick==='function') trackPhoneClick(); });
+  /* Every Call link, including ones drawn after load (the health check
+     result), counts as a phone_call_click. */
+  document.addEventListener('click', function(e) {
+    var a = e.target.closest ? e.target.closest('a[href^="tel:"]') : null;
+    if (a && typeof trackPhoneClick === 'function') trackPhoneClick();
   });
 
   /* ---- Same-day cutoff countdown (2pm Perth time) ---- */
@@ -561,7 +564,8 @@ function formShow(el) {
         formSent(submitBtn, function() {
           form.hidden = true;
           if (trust) trust.hidden = true;
-          $('mqDoneHow').textContent = byEmail() ? 'email' : 'WhatsApp';
+          const how = form.querySelector('input[name="Preferred Contact"]:checked');
+          $('mqDoneHow').textContent = { Call: 'call you with', WhatsApp: 'WhatsApp you', Email: 'email you' }[how ? how.value : 'Call'];
           formShow(success);
           success.setAttribute('tabindex', '-1');
           success.focus();

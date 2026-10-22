@@ -61,14 +61,17 @@
     </div>
 
     <div class="footer-col footer-contact">
-      <h2 class="footer-head">Visit or {% if page.contact == "email" %}Email{% else %}Message{% endif %}</h2>
+      <h2 class="footer-head">{% if page.contact == "email" %}Visit or Email{% else %}Visit, Call or Message{% endif %}</h2>
       <address>
         <a class="footer-map" href="https://www.google.com/maps/search/?api=1&amp;query=7+Barraberry+Retreat+Canning+Vale+WA+6155" target="_blank" rel="noopener noreferrer" aria-label="7 Barraberry Retreat, Canning Vale WA 6155, opens in Google Maps">7 Barraberry Retreat<br>Canning Vale WA 6155</a>
       </address>
       {%- if page.contact == "email" %}
       <a href="mailto:aly.imran.raja@gmail.com" class="footer-phone footer-email">aly.imran.raja@gmail.com</a>
       {%- else %}
-      <a href="{% include wa-href.html %}" target="_blank" rel="noopener noreferrer" class="footer-phone" aria-label="Message FixMyPC Perth on WhatsApp, 0470 308 676" onclick="trackWAClick()">WhatsApp 0470 308 676</a>
+      <div class="footer-reach">
+        <a href="tel:+61470308676" class="footer-phone" aria-label="Call FixMyPC Perth on 0470 308 676">Call 0470 308 676</a>
+        <a href="{% include wa-href.html %}" target="_blank" rel="noopener noreferrer" class="footer-phone" aria-label="Message FixMyPC Perth on WhatsApp, 0470 308 676" onclick="trackWAClick()">WhatsApp 0470 308 676</a>
+      </div>
       {%- endif %}
       <p class="footer-hours">
         Open 24 hours<br>

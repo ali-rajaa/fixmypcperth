@@ -331,6 +331,9 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body)
 .pr-wa-btn svg { width:18px; height:18px; flex-shrink:0; }
 @media (hover: hover) { .pr-wa-btn:hover { background:var(--wa-deep); color:#fff; } }
 .pr-wa-btn:active { transform:scale(0.97); }
+/* Call, before WhatsApp: the same button in the brand blue. */
+.pr-wa-btn.pr-call-btn { background:var(--blue); box-shadow:0 4px 14px rgba(21,96,255,0.28); }
+@media (hover: hover) { .pr-wa-btn.pr-call-btn:hover { background:var(--blue-dk); } }
 
 /* ---------- faq ---------- */
 .pr-faq-sec { padding:3.75rem 0 4rem; }
@@ -354,6 +357,7 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body)
   .pr-book, .pr-link-pill { border-color:#0A3ACC; }
   .btn-outline, .pr-side-cta, .pr-close-box { border-color:#0F172A; }
   .pr-wa-btn { background:#14532D; box-shadow:none; }
+  .pr-wa-btn.pr-call-btn { background:#0A3ACC; }
   .pr-tools { border-bottom-color:#0F172A; }
 }
 

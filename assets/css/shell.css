@@ -150,10 +150,22 @@
 .nav-cta--form { background:#1560FF; box-shadow:0 3px 12px rgba(21,96,255,0.28); }
 @media (hover: hover) { .nav-cta--form:hover { background:#0A3ACC; } }
 .nav-cta:active { transform:scale(0.96); transition:transform 0.1s cubic-bezier(0.4,0,0.2,1); }
+/* Header phone link, just before the WhatsApp button: the number with a
+   phone icon, folding to the icon alone below 1121px so the row still fits
+   at 901px. 44px tall either way. */
+.nav-call { display:none; align-items:center; justify-content:center; gap:6px; min-width:44px; min-height:44px; padding:0 8px; margin-left:4px; font-family:'DM Sans', 'DM Sans Fallback', sans-serif; font-size:13.5px; font-weight:700; color:#0F172A; text-decoration:none; white-space:nowrap; border-radius:50px; -webkit-tap-highlight-color:transparent; transition:color .15s, background-color .15s; }
+.nav-call svg { width:16px; height:16px; flex-shrink:0; color:#1560FF; }
+@media (hover: hover) { .nav-call:hover { color:#1560FF; background:#EEF3FF; } }
+.nav-call:active { transform:scale(0.96); transition:transform 0.1s cubic-bezier(0.4,0,0.2,1); }
+.nav-call:focus-visible { outline: 2px solid #1560FF; outline-offset: 3px; }
 /* Plain links leave room for the button at every desktop width now, so it
    shows from 901px, where the desktop header starts. */
 @media (min-width:901px) {
   .nav-cta { display:inline-flex; }
+  .nav-call { display:inline-flex; }
+}
+@media (max-width:1120px) {
+  .nav-call-num { display:none; }
 }
 .mob-link:focus-visible,
 .mob-hamburger:focus-visible { outline: 2px solid #1560FF; outline-offset: 2px; }
@@ -229,16 +241,18 @@
    taking keyboard focus. */
 .sticky-cta.show.at-footer, .sticky-cta.at-footer { transform:translateY(110%); box-shadow:none; }
 .sticky-cta a {
-  flex:1; display:flex; align-items:center; justify-content:center; gap:7px;
-  font-family:'DM Sans', 'DM Sans Fallback', sans-serif; font-size:14px; font-weight:700; padding:13px 10px;
+  flex:1; display:flex; align-items:center; justify-content:center; gap:6px; min-width:0;
+  font-family:'DM Sans', 'DM Sans Fallback', sans-serif; font-size:14px; font-weight:700; padding:13px 8px;
   border-radius:50px; text-decoration:none; white-space:nowrap;
   transition:transform 0.1s cubic-bezier(0.4,0,0.2,1), filter 0.15s;
 }
 .sticky-cta a:active { transform:scale(0.96); filter:brightness(0.95); }
 .sticky-cta svg { width:17px; height:17px; flex-shrink:0; }
-/* WhatsApp first (solid, the wider of the two), quote form second (outline).
-   #15803D keeps white text at 5:1; the old #22C55E fill was 2.3:1. */
-.sticky-cta .sc-wa { flex:1.35; background:#15803D; color:#fff; box-shadow:0 4px 14px rgba(21,128,61,0.3); }
+/* Call (blue), WhatsApp (green, the widest label), then the quote form
+   (outline). #15803D keeps white text at 5:1; the old #22C55E fill was
+   2.3:1. Side padding is tight so all three fit a 360px phone. */
+.sticky-cta .sc-call { flex:0.85; background:#1560FF; color:#fff; box-shadow:0 4px 14px rgba(21,96,255,0.28); }
+.sticky-cta .sc-wa { flex:1.2; background:#15803D; color:#fff; box-shadow:0 4px 14px rgba(21,128,61,0.3); }
 .sticky-cta .sc-quote { background:#fff; color:#0F172A; border:1.5px solid #CBD5E1; }
 /* One line above the buttons: the reason to come in, at a glance. */
 .sticky-cta .sc-note { flex-basis:100%; margin:0; font-family:'DM Sans', 'DM Sans Fallback', sans-serif; font-size:13px; font-weight:600; line-height:1.3; color:#475569; text-align:center; letter-spacing:0.01em; }
@@ -433,6 +447,9 @@ footer {
   transition: color .15s;
 }
 @media (hover: hover) { .footer-phone:hover { color: #1560FF; } }
+/* Call and WhatsApp, one above the other, as one block in the column. */
+.footer-reach { margin: 0 0 1rem; }
+.footer-reach > .footer-phone { margin: 0 0 .35rem; }
 .footer-hours { font-size: 14px; color: #64748B; line-height: 1.75; }
 .footer-map { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; transition: color .15s; }
 @media (hover: hover) { .footer-map:hover { color: #1560FF; } }
@@ -512,6 +529,8 @@ footer {
   .footer-legal a { display: inline-flex; align-items: center; min-height: 44px; }
   /* 44px tap box around ~22px of text: the negative margins keep the gaps even. */
   .footer-phone { min-height: 44px; margin: -11px 0 calc(1rem - 11px); }
+  .footer-reach { margin: -11px 0 calc(1rem - 11px); }
+  .footer-reach > .footer-phone { margin: 0; }
   .footer-map { display: inline-flex; min-height: 44px; }
 }
 @media (max-width: 1000px) {
@@ -576,6 +595,7 @@ footer {
   .footer-contact address { grid-column: 1; grid-row: 2; margin: 0; }
   .footer-hours { grid-column: 2; grid-row: 2; margin: 0; }
   .footer-phone { grid-column: 1 / -1; grid-row: 3; margin: 0; }
+  .footer-reach { grid-column: 1 / -1; grid-row: 3; margin: 0; }
 
   .footer-areas { margin-top: 0; padding-top: 0; }
   .footer-areas .footer-head { margin-bottom: .35rem; }
@@ -613,7 +633,7 @@ footer {
   .mob-hamburger:active,
   .mob-link:hover, .mob-link:active,
   .sticky-cta a:active,
-  .wa-bubble:hover, .wa-bubble:active, .nav-cta:hover, .nav-cta:active,
+  .wa-bubble:hover, .wa-bubble:active, .nav-cta:hover, .nav-cta:active, .nav-call:active,
   .footer-social a:where(:not([class])):hover, .footer-social a:where(:not([class])):active {
     transform:none;
   }

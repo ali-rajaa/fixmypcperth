@@ -600,10 +600,11 @@ Computed styles match across every page type (checked).
   9 service pages, /services, the 18 suburb pages, the 6 Tech Tips and
   /quote-request. Order: what it is (buttons from `quote_options`, skipped
   when the page sets `quote_service`), what kind of computer (buttons from
-  `device_types`), what it is doing (the one optional field), where to send
-  the price (WhatsApp or Email), name, then ONE contact field: mobile for
-  WhatsApp, email for Email. Button "Get my fixed price". After a send, a
-  "Send a photo on WhatsApp" button. Suburb pages send Suburb hidden.
+  `device_types`), what it is doing (the one optional field), how to get
+  back to them (Call, WhatsApp or Email, in that order, Call ticked), name,
+  then ONE contact field: mobile for Call or WhatsApp, email for Email.
+  Button "Get my fixed price". The line under it offers "In a hurry? Call
+  0470 308 676". After a send, a "Send a photo on WhatsApp" button. Suburb pages send Suburb hidden.
   `?service=<quote_options key>` ticks a service. Params: title, desc.
 - **Homepage card:** the same fields in two steps (service tiles, then the
   rest). A tap on a tile moves on; arrow keys only change the choice and
@@ -894,18 +895,36 @@ the footer number, quote-request ("I've just sent a quote request" on the
 confirmation), privacy and terms have their own, and the /pricing package
 buttons go through wa-href too. A bare wa.me link with no ?text= is a bug.
 
+## Contact order: Call, WhatsApp, Email (owner, October 2026)
+
+Wherever the site offers more than one way to get in touch, Call comes
+first, then WhatsApp, then Email. Call is a `tel:+61470308676` link (blue);
+WhatsApp stays green. Every tel link fires `phone_call_click` in GA4
+(one delegated handler in scripts.html, so links drawn later count too).
+Where it is:
+- Quote forms (shared and homepage card): the reply choice.
+- Header: the number with a phone icon before the WhatsApp button (icon
+  only from 901 to 1120px); the phone menu has "Call 0470 308 676".
+- Phone bottom bar: Call, WhatsApp, Get a quote (fits at 320px).
+- Footer contact column ("Visit, Call or Message"): Call, then WhatsApp.
+- Heroes and closing boxes: homepage, service pages, /services, suburb
+  pages, /pricing, the health check (and its result screen), 404, Tech Tips hub.
+- /quote-request side card: Call us, WhatsApp us, Email us.
+Email-only pages (`contact: email`: Business IT, the nine industry pages,
+privacy, terms) are unchanged: no phone link, no WhatsApp.
+
 ## Where the first call to action sits (October 2026)
 
 Every page gets a way to act on its first screen or close to it:
-- Service pages and /services: WhatsApp button + "Or get a fixed price
-  online" under the intro (.sv-act).
-- Suburb pages: the same pair under the standfirst (.sub-act in
+- Service pages and /services: Call and WhatsApp buttons + "Or get a fixed
+  price online" under the intro (.sv-act).
+- Suburb pages: the same row under the standfirst (.sub-act in
   _layouts/suburb.html), WhatsApp message names the suburb.
 - Industry pages: an .inline-cta straight after the .stat-row ("Book a free
   IT audit" to #audit, plans link). Trades says "an IT audit", no "free",
   matching the rest of that page.
 - /pricing: the Book buttons on every row, plus a closing box after the FAQ.
-- Tech Tips hub: health check first, then a WhatsApp link under the buttons.
+- Tech Tips hub: health check first, then a Call link and a WhatsApp link under the buttons.
 The sticky bar covers phones everywhere else. Audit copy never says "at no
 cost" or "most <industry> owners find": "free" already says the first,
 and the second implies clients we do not have.

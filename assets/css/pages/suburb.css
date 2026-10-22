@@ -107,6 +107,7 @@ a { color: inherit; }
 .sub-body > h3 { max-width: 68ch; }
 .sub-cta-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: var(--blue); color: #fff; font-size: 0.9375rem; font-weight: 700; padding: 0 26px; border-radius: 50px; text-decoration: none; border: none; cursor: pointer; box-shadow: 0 4px 16px rgba(21,96,255,0.35); transition: transform 0.15s var(--ease-settle), box-shadow 0.15s var(--ease-settle); -webkit-tap-highlight-color: transparent; min-height: 48px; letter-spacing: -0.005em; }
 .sub-cta-btn svg { flex-shrink: 0; transition: transform 0.25s var(--ease-settle); }
+.sub-cta-btn[href^="tel:"] svg { width: 17px; height: 17px; }
 .sub-cta-btn-outline svg { flex-shrink: 0; transition: transform 0.25s var(--ease-settle); }
 .quick-answer p:where(:not([class])) { margin: 0; font-size: 0.9375rem; line-height: 1.75; color: var(--ink2); }
 .quick-answer p + p { margin-top: 0.7rem; }
@@ -127,6 +128,13 @@ a { color: inherit; }
 .sub-btn-wa svg { width: 18px; height: 18px; flex-shrink: 0; }
 .sub-btn-wa:active { transform: scale(0.97); }
 @media (hover: hover) { .sub-btn-wa:hover { background: var(--wa-deep); color: #fff; } }
+/* Call, before WhatsApp in the hero and the closing box (owner, October 2026). */
+.sub-btn-call { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 1.5rem; border-radius: 50px; background: var(--blue); color: #fff; font-size: 0.9375rem; font-weight: 700; letter-spacing: -0.005em; text-decoration: none; box-shadow: 0 4px 14px rgba(21,96,255,0.28); -webkit-tap-highlight-color: transparent; transition: background-color 0.15s var(--ease-settle), transform 0.1s var(--ease-press); }
+.sub-btn-call svg { width: 17px; height: 17px; flex-shrink: 0; }
+.sub-btn-call:active { transform: scale(0.97); }
+@media (hover: hover) { .sub-btn-call:hover { background: var(--blue-dk); color: #fff; } }
+.sub-cta .sub-cta-btn-wa { background: var(--wa-dk); box-shadow: 0 4px 16px rgba(21,128,61,0.35); }
+@media (hover: hover) { .sub-cta .sub-cta-btn-wa:hover { background: var(--wa-deep); box-shadow: 0 8px 26px rgba(21,128,61,0.45); } }
 .sub-act-link { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; font-size: 0.9375rem; font-weight: 600; color: var(--ink2); text-decoration: underline; text-decoration-color: var(--border2); text-underline-offset: 4px; -webkit-tap-highlight-color: transparent; transition: color 0.15s var(--ease-settle), text-decoration-color 0.15s var(--ease-settle); }
 .sub-act-link svg { width: 15px; height: 15px; flex-shrink: 0; }
 .sub-act-link:active { opacity: 0.7; }
@@ -319,6 +327,7 @@ body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--b
   *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
   .sub-cta-btn:active { transform: none; }
   .sub-btn-wa:active { transform: none; }
+  .sub-btn-call:active { transform: none; }
   .sub-act-link:active { opacity: 1; }
   .sub-cta-btn-outline:active { transform: none; }
   .link-chip:active { transform: none; }
@@ -354,6 +363,7 @@ body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--b
   .travel-box { border-color: #0F172A; }
   .link-chip { border-color: #0A3ACC; }
   .sub-btn-wa { background: #14532D; box-shadow: none; outline: 2px solid #0F172A; outline-offset: 1px; }
+  .sub-btn-call { background: #0A3ACC; box-shadow: none; outline: 2px solid #0F172A; outline-offset: 1px; }
   .sub-act-link { color: #0F172A; text-decoration-color: #0F172A; }
   .sub-cta-desc { color: rgba(255,255,255,0.85); }
   .sub-tab { color: #334155; }
@@ -480,7 +490,7 @@ body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--b
   .link-chip, .job-card .job-meta, .step p:where(:not([class])) { font-size: var(--m-text-min); }
 
   /* Buttons */
-  .sub-cta-btn, .sub-cta-btn-outline, .sub-btn-wa { min-height: var(--m-btn); padding-top: 0; padding-bottom: 0; width: 100%; justify-content: center; }
+  .sub-cta-btn, .sub-cta-btn-outline, .sub-btn-wa, .sub-btn-call { min-height: var(--m-btn); padding-top: 0; padding-bottom: 0; width: 100%; justify-content: center; }
   .sub-act { margin-bottom: 24px; gap: 4px; }
   .sub-act-link { width: 100%; justify-content: center; }
 

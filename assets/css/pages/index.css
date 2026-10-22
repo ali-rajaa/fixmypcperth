@@ -119,13 +119,12 @@ a    { color:inherit; }
 /* One solid button, one quiet text link. Two equal pills read as two
    primary actions, so neither one led. */
 .hero-actions { display:flex; align-items:flex-start; gap:10px 22px; flex-wrap:wrap; }
-.hero-wa { display:flex; flex-direction:column; align-items:center; gap:7px; }
-.hero-actions .btn-wa { padding:15px 28px; }
+.hero-btns { display:flex; flex-wrap:wrap; gap:10px; }
+.hero-actions .btn-wa, .hero-actions .btn-blue { padding:15px 28px; }
 .hero-alt-link { margin-top:5px; display:inline-flex; align-items:center; gap:6px; min-height:44px; font-size:15px; font-weight:600; color:var(--ink2); text-decoration:underline; text-decoration-color:var(--border2); text-underline-offset:4px; transition:color 0.15s,text-decoration-color 0.15s; -webkit-tap-highlight-color:transparent; }
 .hero-alt-link svg { width:15px; height:15px; flex-shrink:0; transition:transform 0.25s var(--ease-settle); }
 @media (hover: hover) { .hero-alt-link:hover { color:var(--blue); text-decoration-color:var(--blue); } }
 .hero-alt-link:focus-visible { outline:2px solid var(--blue); outline-offset:3px; border-radius:4px; }
-.hero-note { font-size:13px; line-height:1.4; color:var(--muted); }
 .hero-card { align-self:start; background:var(--bg); border:1px solid var(--border); border-radius:var(--radius); box-shadow:0 8px 40px rgba(15,23,42,0.1); overflow:hidden; }
 .hc-dot { width:10px; height:10px; border-radius:50%; }
 .hc-url { font-size:12px; font-weight:600; color:rgba(255,255,255,0.6); margin-left:6px; white-space:nowrap; }
@@ -412,7 +411,7 @@ a    { color:inherit; }
 .cta-offer { max-width:1100px; margin:2.5rem auto 0; padding-top:2rem; border-top:1px solid rgba(255,255,255,0.14); display:flex; align-items:center; gap:1.25rem 2rem; flex-wrap:wrap; }
 .cta-offer-btn svg { width:18px; height:18px; flex-shrink:0; }
 .cta-actions { display:flex; flex-direction:column; gap:10px; flex-shrink:0; min-width:220px; }
-.cta-actions .btn-wa, .cta-actions .btn-outline { width:100%; }
+.cta-actions .btn-blue, .cta-actions .btn-wa, .cta-actions .btn-outline { width:100%; }
 /* .wa-bubble moved to shell.css - it ships in the shared sticky-cta.html
    include and renders on every page, so it belongs with the shared chrome,
    not a single page's stylesheet. Was duplicated here before; removing the
@@ -503,7 +502,7 @@ body { padding-top:var(--mob-nav-h); }
 .hero-card  { width:100%; max-width:560px; }
 .cta-inner  { grid-template-columns:1fr; gap:2rem; }
 .cta-actions { flex-direction:row; flex-wrap:wrap; min-width:unset; width:100%; }
-.cta-actions .btn-wa, .cta-actions .btn-outline { flex:1; min-width:180px; }
+.cta-actions .btn-blue, .cta-actions .btn-wa, .cta-actions .btn-outline { flex:1; min-width:180px; }
 .his-inner { padding:1.1rem 1.35rem; gap:1.25rem; }
 }
 @media (max-width:720px) {
@@ -513,10 +512,9 @@ body { padding-top:var(--mob-nav-h); }
 .hero h1:where(:not([class])) { font-size:clamp(1.9rem,8vw,2.8rem); letter-spacing:-0.040em; line-height:1.08; max-width:300px; }
 .hero-desc { font-size:1rem; line-height:1.7; }
 .hero-actions { flex-direction:column; align-items:stretch; gap:0.75rem; }
-.hero-wa { align-items:stretch; }
-.hero-actions .btn-wa { width:100%; }
+.hero-btns { flex-direction:column; align-items:stretch; }
+.hero-actions .btn-wa, .hero-actions .btn-blue { width:100%; }
 .hero-alt-link { justify-content:center; margin-top:0; }
-.hero-note { text-align:center; }
 .section, .section-alt, .cta-section{ padding:3.5rem 1.25rem; }
 /* The card grids become swipe carousels: 91% wide cards so the next one
    peeks in, snap points, and a full bleed to the screen edge. */
@@ -548,7 +546,7 @@ body { padding-top:var(--mob-nav-h); }
 .cta-inner  { grid-template-columns:1fr; }
 .cta-title  { font-size:1.3rem; }
 .cta-actions { flex-direction:column; align-items:stretch; width:100%; }
-.cta-actions .btn-wa, .cta-actions .btn-outline { width:100%; min-width:0; }
+.cta-actions .btn-blue, .cta-actions .btn-wa, .cta-actions .btn-outline { width:100%; min-width:0; }
 .faq-list { max-width:100%; grid-template-columns:1fr; gap:10px; }
 
 .svc-links-grid { gap:6px; }
@@ -668,7 +666,7 @@ body { padding-top:var(--mob-nav-h); }
   .s-sub, .svc-desc, .how-desc, .its-desc { color:#334155; }
   .svc-card, .how-card { border-color:#0F172A; }
   .btn-outline { border-color:#0F172A; }
-  .hero-alt-link, .hero-note { color:#0F172A; }
+  .hero-alt-link { color:#0F172A; }
   .svc-cta, .svc-link-pill { border-color:#0A3ACC; }
 }
 
@@ -792,8 +790,8 @@ body { padding-top:var(--mob-nav-h); }
   .mq-notice { padding: var(--m-row-pad); border-radius: var(--m-panel-radius); font-size: var(--m-text-min); }
 
   /* Buttons */
-  .btn-wa, .btn-outline, .svc-cta { min-height: var(--m-btn); padding-top: 0; padding-bottom: 0; }
-  .hero-wa > .btn-wa, .svc-header-row > .btn-outline, .offer-btn > .btn-outline, .fade-up > .btn-outline, .cta-actions > .btn-wa, .cta-actions > .btn-outline { width: 100%; justify-content: center; }
+  .btn-blue, .btn-wa, .btn-outline, .svc-cta { min-height: var(--m-btn); padding-top: 0; padding-bottom: 0; }
+  .hero-btns > .btn-blue, .hero-btns > .btn-wa, .cta-actions > .btn-blue, .svc-header-row > .btn-outline, .offer-btn > .btn-outline, .fade-up > .btn-outline, .cta-actions > .btn-wa, .cta-actions > .btn-outline { width: 100%; justify-content: center; }
 
   /* Inner .wrap adds nothing on phones: the section is the 20px margin.
      (It added 32px, putting most text 52px from the edge.) */
@@ -818,7 +816,7 @@ body { padding-top:var(--mob-nav-h); }
   .services-grid > * { scroll-snap-align: start; }
 
   /* More specific button rules from earlier in this file */
-  .hero-actions .btn-wa { min-height: var(--m-btn); padding-top: 0; padding-bottom: 0; }
+  .hero-actions .btn-wa, .hero-actions .btn-blue { min-height: var(--m-btn); padding-top: 0; padding-bottom: 0; }
 
   /* Chip rows bleed to the edge like the carousels; chips sit 8 apart */
   .guide-tabs { margin-left: calc(-1 * var(--m-gutter)); margin-right: calc(-1 * var(--m-gutter)); padding-left: var(--m-gutter); padding-right: var(--m-gutter); scroll-padding-inline: var(--m-gutter); }
