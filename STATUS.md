@@ -213,7 +213,7 @@ time, url and section IDs unchanged throughout.
   - Shared chrome: desktop header has a solid WhatsApp button at 1121px
     and up (measured to fit with real fonts). Kept after review: never in
     the mobile header. Phones: the sticky bar is
-    WhatsApp first, quote second. The floating bubble only shows where
+    Call, WhatsApp, then the quote (October 2026; see Contact order). The floating bubble only shows where
     neither of those is on screen (721 to 1120px).
   - Phone sticky bar slides away while the footer is on screen (class
     `at-footer`, set by an IntersectionObserver in scripts.html) and

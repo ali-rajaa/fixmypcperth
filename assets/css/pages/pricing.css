@@ -357,7 +357,7 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body)
   .pr-book, .pr-link-pill { border-color:#0A3ACC; }
   .btn-outline, .pr-side-cta, .pr-close-box { border-color:#0F172A; }
   .pr-wa-btn { background:#14532D; box-shadow:none; }
-  .pr-wa-btn.pr-call-btn { background:#0A3ACC; }
+  .pr-wa-btn.pr-call-btn { background:#0A3ACC; box-shadow:none; }
   .pr-tools { border-bottom-color:#0F172A; }
 }
 

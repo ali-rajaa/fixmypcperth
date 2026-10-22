@@ -116,8 +116,8 @@ a    { color:inherit; }
 /* Supporting detail for search: the services and areas in plain prose.
    Same style as the lede above it, so the two read as one block of copy. */
 .hero-nobr { white-space:nowrap; }
-/* One solid button, one quiet text link. Two equal pills read as two
-   primary actions, so neither one led. */
+/* Call and WhatsApp as two solid buttons (Call first, owner, October
+   2026), then a quiet text link to the quote form. */
 .hero-actions { display:flex; align-items:flex-start; gap:10px 22px; flex-wrap:wrap; }
 .hero-btns { display:flex; flex-wrap:wrap; gap:10px; }
 .hero-actions .btn-wa, .hero-actions .btn-blue { padding:15px 28px; }

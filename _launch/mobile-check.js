@@ -23,7 +23,18 @@ const EXEMPT = [
     const p = await b.newPage({ viewport: { width: W, height: 844 }, isMobile: true, hasTouch: true });
     await p.route(/google-analytics|googletagmanager|doubleclick/, r => r.abort());
     for (const u of urls) {
-      await p.goto(u, { waitUntil: 'load' });
+      // A page that does not come back as one of ours (an error status, or
+      // the host's own error page, which has no <main id="main-content">) is
+      // fetched up to twice more, then counts as one load failure instead
+      // of a list of layout problems measured on someone else's page.
+      let loaded = false, status = 0;
+      for (let t = 0; t < 3 && !loaded; t++) {
+        if (t) await p.waitForTimeout(3000);
+        const res = await p.goto(u, { waitUntil: 'load' }).catch(() => null);
+        status = res ? res.status() : 0;
+        loaded = !!res && res.ok() && (await p.$('#main-content')) !== null;
+      }
+      if (!loaded) { bad++; console.log(`${W}px ${u.replace(BASE, '') || '/'}  LOAD FAILED (status ${status}) after 3 tries`); continue; }
       const V = await p.evaluate((W)=>{
   const V=[]; const vis=e=>{const c=getComputedStyle(e);if(c.display==='none'||c.visibility==='hidden'||parseFloat(c.opacity)===0&&!e.classList.contains('fade-up'))return false;const r=e.getBoundingClientRect();return r.height>0&&r.width>0};
   const cls=e=>{const c=typeof e.className==='string'?e.className.trim().split(/\s+/)[0]:''; return c?'.'+c:e.tagName.toLowerCase()};

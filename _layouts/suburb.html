@@ -310,8 +310,8 @@ layout: default
       Laptops, desktops and data recovery as tabs. Each panel keeps its own
       h2 and id, so the old #laptops, #desktops and #data links still land,
       and the script opens the matching tab. The tab row and the hiding are
-      only switched on when JavaScript runs (the html.js class); without it
-      the three read as ordinary sections, one after another.
+      only switched on once the script adds tabs-ready to the box; without
+      JavaScript the three read as ordinary sections, one after another.
     {%- endcomment %}
     <div class="sub-tabs" data-tabs>
       <div class="sub-tablist" role="tablist" aria-label="Repairs for {{ page.suburb }}">

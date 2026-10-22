@@ -470,7 +470,7 @@ body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--b
   .job-body { padding: var(--m-card-pad); }
   .step { display: grid; grid-template-columns: 30px minmax(0, 1fr); column-gap: 12px; font-size: var(--m-text); }
   .step-num { grid-row: 1 / span 2; margin-bottom: 0; }
-  .sub-tab { padding: 0 10px; }
+  .sub-tab { padding: 0 10px; white-space: normal; overflow-wrap: normal; word-break: normal; line-height: 1.2; text-align: center; }
   .faq-group > summary { font-size: 14px; padding: var(--m-card-pad); border-radius: var(--m-card-radius); }
   .price-row, .price-foot { padding: var(--m-card-pad); border-radius: var(--m-card-radius); }
   .sub-hero .travel-box { border-radius: var(--m-card-radius); }
@@ -491,7 +491,7 @@ body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--b
 
   /* Buttons */
   .sub-cta-btn, .sub-cta-btn-outline, .sub-btn-wa, .sub-btn-call { min-height: var(--m-btn); padding-top: 0; padding-bottom: 0; width: 100%; justify-content: center; }
-  .sub-act { margin-bottom: 24px; gap: 4px; }
+  .sub-act { margin-bottom: 24px; gap: var(--m-gap-rows); }
   .sub-act-link { width: 100%; justify-content: center; }
 
   .sub-body h2:where(:not([class])) + * { margin-top: 0; }

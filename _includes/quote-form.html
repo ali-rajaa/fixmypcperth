@@ -104,7 +104,7 @@
 
         <button class="tq-submit" type="submit">Get my fixed price</button>
         <p class="tq-err tq-err-form" id="tqErr" role="alert" hidden>That did not send. Please try again, or call or WhatsApp us on 0470 308 676.</p>
-        <p class="tq-trust">We usually reply {{ site.reply_time }}. In a hurry? Call <a href="tel:+61470308676">0470&nbsp;308&nbsp;676</a>. Your details are only used for this quote.</p>
+        <p class="tq-trust">We usually reply {{ site.reply_time }}. In a hurry? Call <a class="tq-call" href="tel:+61470308676">0470&nbsp;308&nbsp;676</a>. Your details are only used for this quote.</p>
       </form>
       <div class="audit-done" id="tqDone" role="status" aria-live="polite" hidden>
         <div class="audit-done-tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
@@ -239,11 +239,13 @@
     }).observe(block);
   });
 
-  /* Which button brought them to the form or WhatsApp. */
-  document.querySelectorAll('[data-track]').forEach(function (a) {
-    a.addEventListener('click', function () {
-      if (typeof gtag === 'function') gtag('event', 'quote_form_click', { event_label: a.getAttribute('data-track'), page_path: location.pathname });
-    });
+  /* Which button brought them to the form or WhatsApp. Delegated, so
+     buttons further down the page than this script count too. Call links
+     are left out: they fire phone_call_click (scripts.html) instead. */
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest ? e.target.closest('[data-track]') : null;
+    if (!a || /^tel:/.test(a.getAttribute('href') || '')) return;
+    if (typeof gtag === 'function') gtag('event', 'quote_form_click', { event_label: a.getAttribute('data-track'), page_path: location.pathname });
   });
 })();
 </script>
