@@ -10,6 +10,24 @@ Paste this into the new chat:
 > latest commits on `main` so you know the current state. Do not re-decide
 > anything marked locked. Then continue with: <your task>.
 
+## First thing to check
+
+At hand-off on 22 October, two GitHub Actions runs were still queued on
+GitHub's side and had not started:
+
+- **Build and deploy run 94**, commit `7d009b9` (the phone menu trim and
+  these notes).
+- **Verify live site run 48**.
+
+Open the repo's Actions tab and confirm both succeeded. If Verify live
+site fails, read its log before changing anything.
+
+- **Earlier failures:** both earlier failures on 22 October were the web
+  host answering one request with an error page or a 503. The checkers now
+  retry a page before counting it.
+- **Already passed live:** the phone layout check (0 problems on 53 pages)
+  and all 73 redirects, on the earlier version.
+
 ## Headline updates, 20 to 22 October 2026
 
 - **Phone number:** 0470 308 676 everywhere, WhatsApp included.

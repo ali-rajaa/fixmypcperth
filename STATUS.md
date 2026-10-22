@@ -128,6 +128,17 @@ Last result: all clean, except two known, harmless items:
 - The homepage reports a scroll width of 338 at 320px but cannot actually
   scroll sideways. This predates this session.
 
+**At hand-off (22 October).** Two GitHub Actions runs were still queued on
+GitHub's side and had not started:
+- Build and deploy run 94, for commit `7d009b9` (the phone menu trim and
+  these notes).
+- Verify live site run 48.
+
+Check both in the Actions tab first. On the earlier version, the live run
+passed the mobile standard (0 problems, 53 pages x 2 widths) and all 73
+redirects. Its only failure was one page answering a single 503, which
+`check-live.sh` now retries. Every local check passed on `7d009b9`.
+
 **Still open, needs the owner**
 - Check the 17 suburb drive times on Google Maps. Correct `travel:` where
   needed, then set `travel_checked: true` on that page.
