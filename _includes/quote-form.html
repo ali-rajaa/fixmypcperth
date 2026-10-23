@@ -239,13 +239,7 @@
     }).observe(block);
   });
 
-  /* Which button brought them to the form or WhatsApp. Delegated, so
-     buttons further down the page than this script count too. Call links
-     are left out: they fire phone_call_click (scripts.html) instead. */
-  document.addEventListener('click', function (e) {
-    var a = e.target.closest ? e.target.closest('[data-track]') : null;
-    if (!a || /^tel:/.test(a.getAttribute('href') || '')) return;
-    if (typeof gtag === 'function') gtag('event', 'quote_form_click', { event_label: a.getAttribute('data-track'), page_path: location.pathname });
-  });
+  /* Clicks on the buttons that lead here are counted sitewide, in
+     _includes/scripts.html (quote_form_click, labelled by data-track). */
 })();
 </script>

@@ -9,19 +9,28 @@
    they exist before the first click can happen. Guarded on gtag
    so they stay harmless if the tag is blocked.
    ============================================================ */
+/* The label for a click event: the nearest data-track value, which says
+   which button on the page it was (hero_call, close_whatsapp...), else
+   the fallback. window.event is the click being handled when these run
+   from an onclick or a click listener. */
+function clickLabel(fallback) {
+  var t = window.event && window.event.target;
+  var a = t && t.closest ? t.closest('[data-track]') : null;
+  return a ? a.getAttribute('data-track') : fallback;
+}
 function trackPhoneClick() {
   if (typeof gtag === 'function') {
-    gtag('event', 'phone_call_click', { event_category: 'engagement', event_label: 'phone' });
+    gtag('event', 'phone_call_click', { event_category: 'engagement', event_label: clickLabel('phone') });
   }
 }
 function trackWAClick() {
   if (typeof gtag === 'function') {
-    gtag('event', 'whatsapp_click', { event_category: 'engagement', event_label: 'whatsapp' });
+    gtag('event', 'whatsapp_click', { event_category: 'engagement', event_label: clickLabel('whatsapp') });
   }
 }
-function trackQuoteForm() {
+function trackQuoteForm(label) {
   if (typeof gtag === 'function') {
-    gtag('event', 'quote_form_click', { event_category: 'engagement', event_label: 'quote_form' });
+    gtag('event', 'quote_form_click', { event_category: 'engagement', event_label: label || clickLabel('quote_form') });
   }
 }
 /* One lead event for every quote and audit form, named by form, so a
@@ -344,6 +353,19 @@ function formShow(el) {
       });
     });
   })();
+
+  /* ---- Quote click tracking ----
+     Every link to a quote form (/quote-request, #quote, #top-quote) counts
+     once as a quote_form_click, labelled by its data-track value or its
+     class, wherever it sits (header, phone bar, page buttons, pricing).
+     WhatsApp and Call links are never counted here: they have their own
+     whatsapp_click and phone_call_click. */
+  document.addEventListener('click', function(e) {
+    var a = e.target.closest ? e.target.closest('a[href]') : null;
+    if (!a) return;
+    if (!/^(?:\/quote-request|#quote|#top-quote)(?:[?#]|$)/.test(a.getAttribute('href'))) return;
+    trackQuoteForm(a.getAttribute('data-track') || String(a.className || 'link').split(' ')[0]);
+  });
 
   /* ---- Phone click tracking ---- */
   /* Every Call link, including ones drawn after load (the health check

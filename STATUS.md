@@ -146,11 +146,33 @@ Last result: all clean, except two known, harmless items:
   `_data/reviews.yml`. It is not built yet.
 - Check the homepage map shows the business listing.
 
+**Audit fixes, 23 October 2026** (owner: "make it free IT audit
+everywhere")
+- Free IT audit is the one business offer, everywhere: the header button
+  on Business IT and the nine industry pages reads "Book a free IT audit"
+  (default `contact_label` in header.html), the Business IT strip, card,
+  closing button and form say audit, not "meeting" or "call", and the
+  trades page now offers a free audit like the other eight.
+- Trades: removed "Most trades business owners find the audit useful",
+  the banned "most <industry> owners find" pattern.
+- Warehousing FAQ: the emergency line now matches the plans, "On the
+  Premium plan, emergency on-site attendance is guaranteed within 4 hours
+  across southern Perth" (it said 4 hours on weekdays and 3 on weekends).
+- Health check: it started analytics a second time (two page views per
+  visit) and defined its own copies of the three click trackers. Both
+  removed; only its quiz_complete event is its own.
+- Click tracking is one sitewide listener in scripts.html. Every link to
+  a quote form (/quote-request, #quote, #top-quote) counts once as
+  `quote_form_click`, labelled by `data-track` or its class. WhatsApp and
+  Call taps count only as `whatsapp_click` and `phone_call_click` (some
+  WhatsApp buttons used to count as a quote click too), now labelled by
+  `data-track` (hero_call, close_whatsapp...) where the button has one.
+- Gaming PC meta description shortened to 153 characters.
+- Not changed, on purpose: the header logo file is 114px for a 38px slot.
+  That is the right size for 3x phone screens; smaller looks soft on an
+  iPhone, and lossless compression saves nothing.
+
 Found, not fixed:
-- `pc-health-check-perth.html` defines its own `trackPhoneClick`,
-  `trackWAClick` and `trackQuoteForm` ('conversion' events). The ones in
-  `scripts.html` load later and replace them, so those 'conversion' events
-  never fire; the sitewide events fire instead.
 - `.footer-col a` outranks `.footer-phone`, so the footer number shows
   grey at 14.5px instead of dark and bold. The footer was left as is on
   the owner's word.
@@ -699,7 +721,7 @@ it-support-*-perth industry pages are professional and email only. No
 WhatsApp anywhere on them. Privacy and terms are email only too, with an
 "Email us" header button (contact_href and contact_label in front matter). `contact: email` in its front
 matter switches the shared chrome: the header button becomes "Book a free
-IT call" (blue, scrolls to the form), the footer shows the email instead
+IT audit" (blue, scrolls to the form), the footer shows the email instead
 of WhatsApp, and the phone bar and floating bubble are not rendered. The
 form messages point to the email, not the phone. The plan features say
 phone and email support. `contact_form` sets where the header button
@@ -742,7 +764,8 @@ Computed styles match across every page type (checked).
   (business).
 - **Leads:** every send calls `trackLead(name)` (scripts.html), which fires
   GA4 `generate_lead` with form_name quote, quote_home, audit_industry or
-  audit_business and the page path. Clicks stay `quote_form_click`. Owner:
+  audit_business and the page path. Clicks on any link to a quote form are
+  `quote_form_click` (one sitewide listener in scripts.html). Owner:
   mark `generate_lead` as a key event in GA4 to see sends per form.
 - **Phone "Get a quote" button:** the homepage card (#top-quote) on the
   homepage, the page's own form (#quote) wherever the shared form is, and
@@ -844,7 +867,7 @@ reshuffle without a reason.
   then Pricing, Reviews, Free PC Health Check, Tech Tips, Business IT, Get a
   quote. Closing the menu folds Repairs again. WhatsApp stays on the sticky bar,
   which carries the line "24/7 drop-off, Canning Vale".
-- Business IT (contact: email) keeps "Book a free IT call" and no WhatsApp.
+- Business IT (contact: email) keeps "Book a free IT audit" and no WhatsApp.
 - The current page's link gets aria-current="page" (scripts.html).
 - Tech Tips is in the Repairs menu (desktop), top level on phones, and in the
   footer Company list.
@@ -864,7 +887,7 @@ reading column stays 820px. Desktop top padding now clears the fixed header
 (it sat under it before).
 
 Industry pages (9 files): .ind-hero split hero with a "Book a free IT
-audit" button (trades: "Book an IT audit") and the page summary as the side
+audit" button (trades too, since 23 October) and the page summary as the side
 card; stats as a dark band; warning lists as a 2-column card grid.
 
 Tech Tips guides (_layouts/tech-tip.html): hero band, .tip-layout with the
@@ -1049,8 +1072,8 @@ Every page gets a way to act on its first screen or close to it:
 - Suburb pages: the same row under the standfirst (.sub-act in
   _layouts/suburb.html), WhatsApp message names the suburb.
 - Industry pages: an .inline-cta straight after the .stat-row ("Book a free
-  IT audit" to #audit, plans link). Trades says "an IT audit", no "free",
-  matching the rest of that page.
+  IT audit" to #audit, plans link). Trades included: the audit is free on
+  every industry page (owner, 23 October 2026).
 - /pricing: the Book buttons on every row, plus a closing box after the FAQ.
 - Tech Tips hub: health check first, then a Call link and a WhatsApp link under the buttons.
 The sticky bar covers phones everywhere else. Audit copy never says "at no
