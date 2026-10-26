@@ -278,7 +278,7 @@ function formShow(el) {
 
   /* ---- FAQ Accordion ---- */
   /* Every FAQ on the site is the same .faq-item / .faq-q / .faq-a markup
-     (see the FAQ block in any page stylesheet), so this one handler runs
+     (styled once, in assets/css/faq.css), so this one handler runs
      them all. One answer open at a time. */
   document.querySelectorAll('.faq-q').forEach(function(btn) {
     btn.addEventListener('click', function() {

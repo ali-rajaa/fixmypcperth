@@ -17,6 +17,7 @@ image_alt: "FixMyPC Perth: fixed-price computer repairs in Perth, every price li
 {%- assign extras_n = D.addons.size | plus: D.packages.size -%}
 {%- assign all_n = D.services.size | plus: extras_n -%}
 
+{% include business-schema.html %}
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"OfferCatalog","name":"Computer Repair Prices Perth",
 "url":"{{ site.url }}/pricing",

@@ -1,0 +1,44 @@
+{%- comment -%}
+  The business itself, for pages that do not carry the full block from
+  index.html. Same @id, so search engines see one business. Keep the
+  name, address, phone and hours identical to index.html.
+{%- endcomment -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "{{ site.url }}/#business",
+  "name": "FixMyPC Perth",
+  "url": "{{ site.url }}/",
+  "image": "{{ site.url }}/og-suburbs.png",
+  "logo": "{{ site.url }}/logo.png",
+  "telephone": "+61470308676",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "7 Barraberry Retreat",
+    "addressLocality": "Canning Vale",
+    "addressRegion": "WA",
+    "postalCode": "6155",
+    "addressCountry": "AU"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": -32.0697802,
+    "longitude": 115.9245929
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "00:00",
+      "closes": "23:59"
+    }
+  ],
+  "hasMap": "{{ site.data.reviews.meta.profile_url }}",
+  "sameAs": [
+    "https://www.facebook.com/profile.php?id=61588810785733",
+    "{{ site.data.reviews.meta.profile_url }}"
+  ]
+}
+</script>

@@ -13,6 +13,7 @@ quote_form: true
 {%- endcomment -%}
 {%- assign D = site.data.services -%}
 
+{% include business-schema.html %}
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"ContactPage","name":"Request a Free Quote","url":"{{ site.url }}/quote-request","description":"Get a computer and laptop repair quote from FixMyPC Perth in Canning Vale. Fixed prices, sent back usually {{ site.reply_time }}.","isPartOf":{"@type":"WebSite","name":"FixMyPC Perth","url":"{{ site.url }}/"},"publisher":{"@type":"LocalBusiness","name":"FixMyPC Perth","@id":"{{ site.url }}/#business"}}
 </script>

@@ -307,7 +307,7 @@
 @media (max-width: 900px), (pointer: coarse) {
   .industry-pill, .pr-book, .lg-toc a:where(:not([class])), .post-footer-link,
   .footer-logo, .industry-card, .svc-cta, .svc-link-pill, .pr-chip, .guide-tab,
-  .plan-tab, .btn-blue, .btn-ghost, .mq-rating, .svc-links-more, .tt-show-btn,
+  .plan-tab, .btn-blue, .btn-ghost, .mq-rating, .tt-show-btn,
   .audit-inner > a, .biz-svc-links > a, .audit-direct > a, #addon-toggle { min-height: 44px; }
   .industry-pill { min-width: 44px; justify-content: center; }
   .qr-phone { display: flex; align-items: center; min-height: 44px; }
@@ -317,15 +317,15 @@
     display: inline-block; padding: 13px 6px; margin: -13px -6px;
   }
   .tt-copy-toggle { display: inline-block; padding: 14px 6px; margin: -14px -6px; }
-  .scroll-dot, .carousel-dot, .pkg-dot { position: relative; }
-  .scroll-dot::after, .carousel-dot::after, .pkg-dot::after {
+  .scroll-dot, .pkg-dot { position: relative; }
+  .scroll-dot::after, .pkg-dot::after {
     content: ''; position: absolute; inset: -19px -8px;
   }
 }
 /* Mobile standard: buttons are 48px tall on phones (chips, tabs and
    links keep the 44px minimum above). No var() here, by shell rule. */
 @media (max-width: 720px) {
-  .btn-blue, .btn-ghost, .svc-cta, .svc-links-more, .tt-show-btn,
+  .btn-blue, .btn-ghost, .svc-cta, .tt-show-btn,
   .audit-inner > a, #addon-toggle, .pr-book { min-height: 48px; }
 }
 

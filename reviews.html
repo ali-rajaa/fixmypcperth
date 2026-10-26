@@ -78,6 +78,7 @@ description: "What Perth customers say about our computer repairs, plus straight
 {%- assign rv = site.data.reviews -%}
 {%- assign featured = rv.reviews | first -%}
 
+{% include business-schema.html %}
 <script type="application/ld+json">{% include faq-schema.html %}</script>
 
 <script type="application/ld+json">
@@ -145,7 +146,6 @@ description: "What Perth customers say about our computer repairs, plus straight
             <div class="review-author">{{ featured.name | escape }}</div>
             <div class="review-suburb">Google review</div>
           </div>
-          {% if featured.date %}<span class="review-date">{{ featured.date | escape }}</span>{% endif %}
           <svg class="rv-g" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path fill="#4285F4" d="M45.1 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h11.8c-.5 2.8-2.1 5.1-4.4 6.7v5.5h7.1c4.2-3.8 6.6-9.5 6.6-16.2z"/><path fill="#34A853" d="M24 46c5.9 0 10.9-2 14.5-5.3l-7.1-5.5c-2 1.3-4.5 2.1-7.4 2.1-5.7 0-10.5-3.8-12.2-9H4.5v5.7C8.1 41.1 15.5 46 24 46z"/><path fill="#FBBC05" d="M11.8 28.3c-.4-1.3-.7-2.8-.7-4.3s.3-3 .7-4.3V14H4.5C3 17 2.2 20.4 2.2 24s.8 7 2.3 10l7.3-5.7z"/><path fill="#EA4335" d="M24 10.7c3.2 0 6.1 1.1 8.4 3.3l6.3-6.3C34.9 4.1 29.9 2 24 2 15.5 2 8.1 6.9 4.5 14l7.3 5.7c1.7-5.2 6.5-9 12.2-9z"/></svg>
         </figcaption>
       </figure>

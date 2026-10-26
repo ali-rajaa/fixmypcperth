@@ -121,6 +121,12 @@
   <!-- Every form on the site takes its fields from this one stylesheet: the shared quote form (_includes/quote-form.html) on the service, suburb and Tech Tips layouts, /services and /quote-request, and the forms on pages that set "form_css: true" (homepage card, Business IT, industry audits). -->
   <link rel="stylesheet" href="/assets/css/form.css?v={{ site.time | date: "%s" }}">
   {%- endif %}
+  {%- assign _faq_sheets = "index,business-it,health-check,industry,pricing,reviews,service,suburb,tech-tip" | split: "," %}
+  {%- assign _sheet = page.css | default: "index" %}
+  {%- if _faq_sheets contains _sheet %}
+  <!-- The FAQ item, one copy for every page stylesheet that shows an FAQ (assets/css/faq.css). It loads after the page stylesheet, where the FAQ rules used to sit, so their margin:0 still beats a page's own paragraph margins. -->
+  <link rel="stylesheet" href="/assets/css/faq.css?v={{ site.time | date: "%s" }}">
+  {%- endif %}
   <link rel="stylesheet" href="/assets/css/shell.css?v={{ site.time | date: "%s" }}">
 
   <script>

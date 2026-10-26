@@ -34,24 +34,13 @@ description: "Computer and laptop repair in Perth: a flat [[diagnostic-repair-al
     "longitude": 115.9245929
   },
   "areaServed": [
-    {"@type":"City","name":"Perth"},
-    {"@type":"AdministrativeArea","name":"Canning Vale"},
-    {"@type":"AdministrativeArea","name":"Cockburn Central"},
-    {"@type":"AdministrativeArea","name":"Willetton"},
-    {"@type":"AdministrativeArea","name":"Cannington"},
-    {"@type":"AdministrativeArea","name":"Thornlie"},
-    {"@type":"AdministrativeArea","name":"Jandakot"},
-    {"@type":"AdministrativeArea","name":"Harrisdale"},
-    {"@type":"AdministrativeArea","name":"Armadale"},
-    {"@type":"AdministrativeArea","name":"Gosnells"},
-    {"@type":"AdministrativeArea","name":"Atwell"},
-    {"@type":"AdministrativeArea","name":"Piara Waters"},
-    {"@type":"AdministrativeArea","name":"Fremantle"},
-    {"@type":"AdministrativeArea","name":"Subiaco"},
-    {"@type":"AdministrativeArea","name":"Osborne Park"},
-    {"@type":"AdministrativeArea","name":"Belmont"},
-    {"@type":"AdministrativeArea","name":"Midland"},
-    {"@type":"AdministrativeArea","name":"Scarborough"}
+    {"@type": "City", "name": "Perth"}
+    {%- comment -%} One entry per suburb page, so a new suburb page joins this list by itself. {%- endcomment -%}
+    {%- assign _areas = site.pages | where: "layout", "suburb" | sort: "suburb" -%}
+    {%- for _a in _areas %},
+    {"@type": "Place", "name": "{{ _a.suburb }} WA {{ _a.postcode }}", "url": "{{ site.url }}/suburbs/{{ _a.slug }}",
+     "address": {"@type": "PostalAddress", "addressLocality": "{{ _a.suburb }}", "postalCode": "{{ _a.postcode }}", "addressRegion": "WA", "addressCountry": "AU"}}
+    {%- endfor %}
   ],
   "openingHoursSpecification": [
     {

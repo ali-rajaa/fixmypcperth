@@ -229,29 +229,12 @@ body:has(.sv-page) { overflow-x: clip; }
 .sv-table thead .sv-num { font-family: var(--body); font-weight: 600; color: var(--muted); }
 .sv-row-lead th:where(:not([class])), .sv-row-lead .sv-num { color: var(--blue-dk); }
 .sv-row-note { display: none; }
-.sv-table-note { margin: 0.9rem 0 0; font-size: 13px; line-height: 1.55; color: var(--muted); }
 
 /* ---------- FAQ (bordered cards, the same as the homepage FAQ) ---------- */
 .sv-faq { margin: 0 0 3rem; }
 .sv-faq .sv-h2 { margin-bottom: 1.25rem; }
 .sv-faq-list { display: flex; flex-direction: column; gap: 10px; }
 
-/* ---------- /services hub: one card per service page ---------- */
-.sv-hub { list-style: none; margin: 0 0 3rem; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-.sv-hub-item { min-width: 0; }
-/* An odd last card spans both columns rather than sitting alone. */
-.sv-hub-item:last-child:nth-child(odd) { grid-column: 1 / -1; }
-.sv-hub-link { display: flex; flex-direction: column; gap: 0.35rem; height: 100%; padding: 1.15rem 1.25rem 1.2rem; background: var(--bg); border: 1.5px solid var(--border); border-radius: var(--radius); text-decoration: none; transition: border-color 0.15s var(--ease-settle), transform 0.1s var(--ease-press); }
-.sv-hub-link:active { transform: scale(0.99); }
-.sv-hub-name { font-family: var(--display); font-size: 1.1rem; font-weight: 700; line-height: 1.3; letter-spacing: -0.015em; color: var(--ink); }
-.sv-hub-sum { margin-bottom: 0.4rem; font-size: 14.5px; line-height: 1.6; color: var(--ink3); }
-/* Price and "Details" share a row pinned to the bottom of the card, over a
-   hairline, so cards of different lengths still line up and each one reads
-   as a link. */
-.sv-hub-foot { margin-top: auto; padding-top: 0.75rem; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; }
-.sv-hub-price { font-family: var(--display); font-size: 0.95rem; font-weight: 700; color: var(--blue); }
-.sv-hub-go { display: inline-flex; align-items: center; gap: 4px; font-size: 13px; font-weight: 700; color: var(--ink3); }
-.sv-hub-go svg { width: 14px; height: 14px; flex-shrink: 0; transition: transform 0.2s var(--ease-settle); }
 /* Every service and price: one block per category, a heading, a line of
    intro and a name / price list. Names with their own page are links. What
    each price covers lives on /pricing, so the two pages do not repeat. */
@@ -265,10 +248,6 @@ body:has(.sv-page) { overflow-x: clip; }
 .sv-cat-list > li > :first-child { flex: 1; min-width: 0; display: flex; align-items: center; min-height: 44px; padding: 0.35rem 0; }
 .sv-cat-list a:where(:not([class])) { color: var(--ink); font-weight: 600; text-decoration: underline; text-decoration-color: var(--border2); text-underline-offset: 3px; }
 .sv-cat-list .sv-num { flex-shrink: 0; font-family: var(--display); font-weight: 700; color: var(--ink); white-space: nowrap; }
-/* "Not sure" block: room between the text and the buttons, and no extra
-   space below it before the footer. */
-.sv-hub-help { margin-bottom: 0; }
-.sv-hub-help .sv-act { margin: 1.5rem 0 0; }
 
 /* ---------- link lists: suburbs, guides, other services ---------- */
 .sv-more { margin: 0 0 2.5rem; }
@@ -297,8 +276,6 @@ body:has(.sv-page) { overflow-x: clip; }
   .sv-cat-more a:where(:not([class])):hover { color: var(--blue-dk); text-decoration: underline; }
 
   .sv-links a:where(:not([class])):hover { color: var(--blue); }
-  .sv-hub-link:hover { border-color: var(--blue); }
-  .sv-hub-link:hover .sv-hub-name, .sv-hub-link:hover .sv-hub-go { color: var(--blue); }
   .sv-links a:where(:not([class])):hover svg { color: var(--blue); }
 }
 
@@ -355,7 +332,6 @@ body:has(.sv-page) { overflow-x: clip; }
   .sv-table thead th:nth-child(2), .sv-table td:nth-child(2) { display: none; }
   .sv-row-note { display: block; margin-top: 0.2rem; font-size: 13px; font-weight: 400; line-height: 1.5; color: var(--muted); }
   .sv-links { grid-template-columns: minmax(0, 1fr); }
-  .sv-hub { grid-template-columns: minmax(0, 1fr); }
 }
 
 /* ---------- user preferences ---------- */
@@ -365,61 +341,9 @@ body:has(.sv-page) { overflow-x: clip; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 
-  .sv-hub-link, .sv-btn, .sv-links svg, .sv-act-link > svg, .sv-index-list a:where(:not([class])) > svg { transition: none; }
+  .sv-btn, .sv-links svg, .sv-act-link > svg, .sv-index-list a:where(:not([class])) > svg { transition: none; }
   .sv-act-link:hover > svg, .sv-index-list a:where(:not([class])):hover > svg { transform: none; }
-  .sv-hub-link:active, .sv-btn:active { transform: none; }
-}
-
-/* ==========================================================
-   FAQ: one component, the same on every page. The homepage design,
-   copied into each page stylesheet that has an FAQ (index, pricing,
-   reviews, health-check, service, tech-tip, suburb, industry,
-   business-it). Keep every copy identical: change one, change all.
-
-   Markup:
-     <div class="faq-item">
-       <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-a-1">
-         Question
-         <svg viewBox="0 0 24 24" ...><polyline points="6 9 12 15 18 9"/></svg>
-       </button>
-       <div class="faq-a" id="faq-a-1"><p>Answer</p></div>
-     </div>
-   The shared handler in _includes/scripts.html opens one at a time.
-   The answer opens with grid-template-rows 0fr to 1fr rather than a
-   max-height, so it sizes itself to the text and can never be clipped.
-   The page lays the items out (list, gap, columns); this block only
-   styles an item.
-   ========================================================== */
-.faq-item { background:var(--bg); border:1.5px solid var(--border); border-radius:var(--radius); overflow:hidden; transition:border-color 0.2s; }
-.faq-item.open { border-color:var(--blue-mid); }
-.faq-q { width:100%; background:none; border:none; text-align:left; cursor:pointer; font-family:var(--display); font-size:15px; font-weight:700; line-height:1.4; color:var(--ink); padding:1.25rem 1.5rem; display:flex; justify-content:space-between; align-items:center; gap:1rem; transition:color 0.15s,background 0.15s; -webkit-tap-highlight-color:transparent; }
-.faq-q:active { background:var(--bg2); }
-.faq-q:focus-visible { outline:2px solid var(--blue); outline-offset:-2px; }
-/* Rotation gets a touch of overshoot so the tap feels answered. */
-.faq-q svg { width:18px; height:18px; flex-shrink:0; color:var(--blue); transition:transform 0.35s var(--ease-settle); }
-.faq-item.open .faq-q svg { transform:rotate(180deg); }
-.faq-a { display:grid; grid-template-rows:0fr; overflow:hidden; visibility:hidden; transition:grid-template-rows 0.4s var(--ease-settle), visibility 0s linear 0.4s; }
-.faq-item.open .faq-a { grid-template-rows:1fr; visibility:visible; transition:grid-template-rows 0.4s var(--ease-settle), visibility 0s; }
-.faq-a p:where(:not([class])) { min-height:0; font-size:14px; color:var(--muted); line-height:1.75; margin:0; padding:0 1.5rem; transition:padding 0.4s var(--ease-settle); }
-.faq-item.open .faq-a p:where(:not([class])) { padding:0 1.5rem 1.25rem; }
-.faq-a a:where(:not([class])) { color:var(--blue); font-weight:600; text-decoration:none; border-bottom:1px solid var(--blue-mid); }
-.faq-a strong:where(:not([class])) { color:var(--ink); font-weight:600; }
-@media (hover: hover) {
-  .faq-item:hover { border-color:var(--blue-mid); }
-  .faq-q:hover { color:var(--blue); }
-  .faq-a a:where(:not([class])):hover { color:var(--blue-dk); border-bottom-color:var(--blue-dk); }
-}
-@media (max-width:720px) {
-  .faq-q { font-size:14px; padding:1rem 1.25rem; }
-  .faq-a p:where(:not([class])) { font-size:13.5px; padding:0 1.25rem; }
-  .faq-item.open .faq-a p:where(:not([class])) { padding:0 1.25rem 1rem; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .faq-item, .faq-q, .faq-q svg, .faq-a, .faq-a p:where(:not([class])) { transition:none; }
-}
-@media (prefers-contrast: more) {
-  .faq-a p:where(:not([class])) { color:#334155; }
-  .faq-item { border-color:#0F172A; }
+  .sv-btn:active { transform: none; }
 }
 
 /* ==========================================================
@@ -449,11 +373,11 @@ body:has(.sv-page) { overflow-x: clip; }
 
   /* Every block and every section ends 48 above the next */
   .sv-index, .sv-intro, .sv-group, .sv-extra, .sv-steps-wrap, .sv-costs, .sv-faq,
-  .sv-more, .sv-hub, .sv-mid { margin-bottom: var(--m-section); }
+  .sv-more, .sv-mid { margin-bottom: var(--m-section); }
   .sv-group .sv-repair:last-child, .sv-body > :last-child { margin-bottom: 0; }
 
   /* Cards and the boxes inside them */
-  .sv-index, .sv-mid, .sv-hub-link, .sv-price, .sv-repair, .sv-costs, .sv-glance { padding: var(--m-card-pad); border-radius: var(--m-card-radius); }
+  .sv-index, .sv-mid, .sv-price, .sv-repair, .sv-costs, .sv-glance { padding: var(--m-card-pad); border-radius: var(--m-card-radius); }
   .sv-hero { padding-bottom: var(--m-section); }
   .sv-hero::before { top: calc(-1 * (var(--mob-nav-h) + var(--m-hero-top))); }
   .sv-repair, .sv-group .sv-repair { margin-bottom: var(--m-gap-cards); }
@@ -463,7 +387,7 @@ body:has(.sv-page) { overflow-x: clip; }
   .sv-price-compact .sv-price-more { grid-column: 2; justify-self: start; margin-left: 0; min-height: 44px; }
 
   /* Gaps */
-  .sv-steps, .sv-hub { gap: var(--m-gap-cards); }
+  .sv-steps { gap: var(--m-gap-cards); }
   .sv-faq-list { gap: var(--m-gap-rows); }
 
   /* Headings */

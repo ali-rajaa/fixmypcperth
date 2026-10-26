@@ -86,7 +86,6 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body)
 
 /* ---------- fields ---------- */
 
-.req { color:var(--red); }
 /* Each message sits directly under its own field. */
 
 /* ---------- contact preference ---------- */

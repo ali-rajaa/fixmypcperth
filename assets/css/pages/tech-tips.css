@@ -404,7 +404,7 @@ img { max-width: 100%; height: auto; }
 
   /* Headings */
   .page-title { font-size: var(--m-h1); }
-  .cta-bar h2:where(:not([class])), .blog-section-title { font-size: var(--m-h2); margin-bottom: var(--m-h2-space); }
+  .cta-bar h2:where(:not([class])) { font-size: var(--m-h2); margin-bottom: var(--m-h2-space); }
 
   /* Text */
   .page-sub, .cta-bar-inner > p { font-size: var(--m-text); }
