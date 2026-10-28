@@ -240,7 +240,7 @@ img { max-width: 100%; height: auto; }
 .post-featured:active { transform: translateY(0) scale(0.985); box-shadow: 0 2px 6px rgba(15,23,42,0.1); transition: transform 0.1s var(--ease-press), box-shadow 0.1s var(--ease-press); }
 .post-featured:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 8px; }
 
-.feat-eyebrow { font-size: 0.625rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #7FA9FF; display: flex; align-items: center; gap: 6px; margin-bottom: 0.75rem; }
+.feat-eyebrow { font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #7FA9FF; display: flex; align-items: center; gap: 6px; margin-bottom: 0.75rem; }
 .feat-title { font-family: var(--display); font-size: clamp(1.3rem, 2.5vw, 1.9rem); font-weight: 800; color: #fff; letter-spacing: -0.03em; line-height: 1.25; margin-bottom: 0.65rem; }
 .feat-excerpt {
   font-size: 0.875rem; color: rgba(255,255,255,0.5); line-height: 1.7; max-width: 62ch;

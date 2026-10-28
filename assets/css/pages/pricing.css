@@ -173,7 +173,7 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body)
 .pr-side-card { background:var(--bg); border:1.5px solid var(--border); border-radius:18px; overflow:hidden; }
 .pr-side-head { background:var(--ink); padding:1.15rem 1.35rem; position:relative; }
 .pr-side-head::after { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--blue),#00CFFF); }
-.pr-side-eyebrow { display:block; font-size:0.625rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.7); margin-bottom:3px; }
+.pr-side-eyebrow { display:block; font-size:0.6875rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.7); margin-bottom:3px; }
 .pr-side-title { display:block; font-family:var(--display); font-size:1rem; font-weight:800; color:#fff; letter-spacing: -0.019em; }
 .pr-side-nav { padding:0.6rem; }
 .pr-side-item {
@@ -248,7 +248,7 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body)
    pushes the row wider than its container instead of wrapping inside it. */
 .pr-row-main { min-width:0; }
 .pr-name { font-family:var(--display); font-size:0.9375rem; font-weight:700; color:var(--ink); margin:0 0 0.2rem; line-height:1.35; }
-.pr-badge { display:inline-block; font-family:var(--body); font-size:0.625rem; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; color:var(--green); margin-left:6px; vertical-align:middle; }
+.pr-badge { display:inline-block; font-family:var(--body); font-size:0.6875rem; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; color:var(--green); margin-left:6px; vertical-align:middle; }
 .pr-desc { font-size:0.84375rem; color:var(--muted); line-height:1.6; margin:0; max-width:62ch; }
 
 /* Symptom chips under the diagnostic row. They are the words people actually

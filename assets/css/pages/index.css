@@ -211,7 +211,7 @@ a    { color:inherit; }
 .promise-icon { flex:0 0 26px; width:26px; height:26px; margin-top:1px; border-radius:50%; background:rgba(34,197,94,0.12); border:1px solid rgba(34,197,94,0.3); color:var(--wa-dk); display:inline-flex; align-items:center; justify-content:center; }
 .promise-icon svg { width:13px; height:13px; }
 .promise-title { display:block; font-family:var(--display); font-size:1.05rem; font-weight:700; letter-spacing:-0.01em; color:var(--ink); margin-bottom:2px; }
-.offer-tag { font-size:0.625rem; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; color:#00CFFF; margin-bottom:0.4rem; }
+.offer-tag { font-size:0.6875rem; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; color:#00CFFF; margin-bottom:0.4rem; }
 .offer-text { flex:1; min-width:230px; position:relative; z-index:1; }
 .offer-title { font-family:var(--display); font-size:1.15rem; font-weight:800; color:#fff; letter-spacing:-0.022em; margin-bottom:0.3rem; }
 .offer-desc { font-size:0.8125rem; color:rgba(255,255,255,0.7); line-height:1.6; }
@@ -256,7 +256,7 @@ a    { color:inherit; }
 .svc-icon-wrap svg { width:24px; height:24px; }
 .svc-badge-col { display:flex; flex-direction:column; align-items:flex-end; gap:6px; }
 /* Plain uppercase text. No capsule. */
-.svc-badge { font-size:0.625rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--blue); white-space:nowrap; align-self:flex-start; }
+.svc-badge { font-size:0.6875rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--blue); white-space:nowrap; align-self:flex-start; }
 .svc-badge.nofee { color:var(--wa-dk); }
 .svc-badge.spec  { color:var(--ink2); }
 .svc-name  { font-family:var(--display); font-size:1.05rem; font-weight:700; line-height:1.3; letter-spacing:-0.01em; color:var(--ink); margin-bottom:0.5rem; }
@@ -328,7 +328,7 @@ a    { color:inherit; }
   .biz-item { grid-template-columns:minmax(0,1fr); padding:1.25rem 0; }
   .biz-meta { flex-direction:row; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:8px 12px; text-align:left; white-space:normal; }
 }
-.its-tag   { display:block; font-size:0.625rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--blue); margin-bottom:0.9rem; }
+.its-tag   { display:block; font-size:0.6875rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--blue); margin-bottom:0.9rem; }
 .its-title { font-family:var(--display); font-size:1.05rem; font-weight:700; line-height:1.3; letter-spacing:-0.01em; color:var(--ink); margin-bottom:0.5rem; }
 .its-desc  { font-size:0.8125rem; font-weight:500; color:var(--muted); line-height:1.5; margin-bottom:1.25rem; flex:1; }
 .its-price { font-family:var(--display); font-size:1.25rem; font-weight:800; color:var(--blue); }

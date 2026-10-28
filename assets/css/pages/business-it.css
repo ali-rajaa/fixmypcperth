@@ -452,7 +452,7 @@ img { max-width: 100%; height: auto; }
 /* Row 5: features. Takes the spare height so the last row sits on the base. */
 .plan-body { flex: 1 1 auto; border-top: 1px solid var(--border); padding-top: 1.25rem; }
 .plan-card.premium-tier .plan-body { border-top-color: rgba(255,255,255,0.08); }
-.plan-feat-label { font-size: 0.65625rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin: 0 0 0.9rem; color: var(--muted); }
+.plan-feat-label { font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin: 0 0 0.9rem; color: var(--muted); }
 .plan-card.premium-tier .plan-feat-label { color: rgba(255,255,255,0.7); }
 .plan-features { display: flex; flex-direction: column; gap: 0.8rem; list-style: none; margin: 0; padding: 0; }
 .plan-feat { display: flex; align-items: flex-start; gap: 10px; font-size: 0.84375rem; line-height: 1.4; color: var(--ink2); }
@@ -482,7 +482,7 @@ img { max-width: 100%; height: auto; }
 .plan-best { margin: 1.25rem 0 0; padding: 0.8rem 1rem; border-radius: 11px; font-size: 0.78125rem; font-weight: 500; line-height: 1.5; background: var(--bg2); border: 1px solid var(--border); color: var(--muted); }
 .plan-card.featured .plan-best { background: var(--blue-lt); border-color: var(--blue-mid); }
 .plan-card.premium-tier .plan-best { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.07); color: rgba(255,255,255,0.7); }
-.plan-best-label { display: block; font-size: 0.625rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 3px; color: var(--muted); }
+.plan-best-label { display: block; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 3px; color: var(--muted); }
 .plan-card.featured .plan-best-label { color: var(--blue); }
 .plan-card.premium-tier .plan-best-label { color: rgba(245,158,11,0.85); }
 /* One line under all three cards for what every plan shares */
@@ -1183,8 +1183,8 @@ img { max-width: 100%; height: auto; }
   text-align: center;
 }
 .cs-stat-val { font-family: var(--display); font-size: 1.65rem; font-weight: 800; color: #fff; letter-spacing: -0.04em; line-height: 1; }
-.cs-stat-lbl { font-size: 0.59375rem; color: rgba(255,255,255,0.7); font-weight: 600; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.05em; }
-.cs-h { font-size: 0.625rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #60A5FA; margin-bottom: 0.6rem; }
+.cs-stat-lbl { font-size: 0.6875rem; color: rgba(255,255,255,0.7); font-weight: 600; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.05em; }
+.cs-h { font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #60A5FA; margin-bottom: 0.6rem; }
 .cs-story { font-size: 0.8125rem; color: rgba(255,255,255,0.55); line-height: 1.75; }
 .cs-right { padding: 2.25rem 2.5rem; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; }
 .cs-glow {
