@@ -12,6 +12,9 @@
 .rv-row { overflow-x:auto; scrollbar-width:none; scroll-snap-type:x proximity; scroll-behavior:auto; padding:4px 2px 8px; -webkit-mask-image:linear-gradient(90deg,transparent,#000 40px,#000 calc(100% - 40px),transparent); mask-image:linear-gradient(90deg,transparent,#000 40px,#000 calc(100% - 40px),transparent); }
 .rv-row::-webkit-scrollbar { display:none; }
 .rv-row.is-auto { scroll-snap-type:none; }
+/* A mouse can grab and throw the row (_includes/review-row.html). */
+@media (hover: hover) and (pointer: fine) { .rv-row.is-auto { cursor:grab; } .rv-row.is-auto.is-dragging { cursor:grabbing; } }
+.rv-row.is-dragging { -webkit-user-select:none; user-select:none; }
 .rv-row:focus-visible { outline:2px solid var(--blue); outline-offset:4px; border-radius:12px; }
 .rv-track { display:flex; gap:14px; list-style:none; margin:0; padding:0; width:max-content; }
 .rv-card { flex:0 0 300px; display:flex; flex-direction:column; gap:10px; padding:1.25rem 1.3rem; background:var(--bg); border:1px solid var(--border); border-radius:var(--radius); box-shadow:0 1px 3px rgba(15,23,42,0.05); scroll-snap-align:start; }
