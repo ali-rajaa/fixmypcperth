@@ -484,9 +484,7 @@ body:has(.ind-hero) { overflow-x: clip; }
 .inline-cta-btn, .inline-cta-btn-outline, .service-link-card, .industry-pill, .post-footer-link { -webkit-tap-highlight-color: transparent; }
 /* Feedback on press, not release: the control compresses the instant a finger
    or cursor is down, so a tap is never left unacknowledged. */
-/* The two below use the scale property, not transform: their hover lift is a
-   transform in the (hover: hover) block further down, which won while the
-   mouse was held, so a desktop click showed no press. scale composes with it. */
+/* The two below press with the scale property rather than transform. */
 .inline-cta-btn:active, .inline-cta-btn-outline:active { scale: 0.97; transition: scale 0.1s var(--ease-press), transform 0.1s var(--ease-press); }
 .service-link-card:active { scale: 0.985; transition: scale 0.1s var(--ease-press), transform 0.1s var(--ease-press); }
 .industry-pill:active, .post-footer-link:active { transform: scale(0.95); transition: transform 0.1s var(--ease-press); }
@@ -624,10 +622,9 @@ body:has(.ind-hero) { overflow-x: clip; }
   .service-link-card, .callout, .summary-box, .stat-box, .inline-cta-btn, .inline-cta-btn-outline, .industry-pill, .post-footer-link {
     transition-duration: 0.15s;
   }
-  .service-link-card:hover, .service-link-card:active, .inline-cta-btn:active, .inline-cta-btn-outline:active, .industry-pill:active, .post-footer-link:active {
+  .service-link-card:active, .inline-cta-btn:active, .inline-cta-btn-outline:active, .industry-pill:active, .post-footer-link:active {
     transform: none;
   }
-  .inline-cta-btn:hover { transform: none; }
   .service-link-card:active, .inline-cta-btn:active, .inline-cta-btn-outline:active { scale: none; }
 }
 @media (prefers-contrast: more) {

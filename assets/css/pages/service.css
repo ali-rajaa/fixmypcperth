@@ -344,7 +344,6 @@ body:has(.sv-page) { overflow-x: clip; }
   html { scroll-behavior: auto; }
 
   .sv-btn, .sv-links svg, .sv-act-link > svg, .sv-index-list a:where(:not([class])) > svg { transition: none; }
-  .sv-act-link:hover > svg, .sv-index-list a:where(:not([class])):hover > svg { transform: none; }
   .sv-btn:active { transform: none; }
 }
 

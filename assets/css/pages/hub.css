@@ -226,7 +226,6 @@
   html { scroll-behavior: auto; }
   .hub-card, .hub-tab, .hub-sub, .hub-find-link, .hub-bar-list > li > a, .hub-search { transition: none; }
   .hub-card:active, .hub-tab:active, .hub-sub:active { transform: none; }
-  @media (hover: hover) { .hub-card:hover { transform: none; } }
 }
 @media (prefers-reduced-transparency: reduce) {
   .hub-bar { background: var(--bg); -webkit-backdrop-filter: none; backdrop-filter: none; }

@@ -244,7 +244,7 @@ body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--b
 
 /* ---------- @media (hover: none) ---------- */
 @media (hover: none) {
-  .problem-card:hover { transform: none; border-color: var(--border); }
+  .problem-card:hover { border-color: var(--border); }
   .price-row:hover { background: var(--bg); }
 }
 
@@ -317,7 +317,7 @@ body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--b
 
 /* ---------- @media (prefers-reduced-motion: reduce) ---------- */
 @media (prefers-reduced-motion: reduce) {
-  .travel-directions svg, .travel-directions:hover svg { transition: none; transform: none; }
+  .travel-directions svg { transition: none; }
   html { scroll-behavior: auto; }
   * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
   *::before { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
@@ -330,13 +330,8 @@ body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--b
   .link-chip:active { transform: none; }
   .sub-tab:active { transform: none; }
   .price-more > summary svg, .faq-group > summary svg { transition: none; }
-  @media (hover: hover) { .problem-card:hover { transform: none; } }
-  @media (hover: hover) { .sub-cta-btn:hover { transform: none; } }
-  @media (hover: hover) { .sub-cta-btn-outline:hover { transform: none; } }
 
-  .sub-cta-btn svg { transition: none; transform: none; }
-  .sub-cta-btn-outline svg { transition: none; transform: none; }
-  @media (hover: hover) { .sub-cta-btn:hover svg { transition: none; transform: none; } }
+  .sub-cta-btn svg, .sub-cta-btn-outline svg { transition: none; }
 }
 
 /* ---------- @media (prefers-reduced-transparency: reduce) ---------- */

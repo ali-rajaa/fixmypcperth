@@ -792,11 +792,8 @@ img { max-width: 100%; height: auto; }
   transform: scale(0.97);
   transition: transform 0.1s var(--ease-press);
 }
-/* These use the scale property rather than transform. The plan buttons'
-   hover lift is a transform in a more specific rule further up, and it
-   silently won while the mouse was held down, so a desktop click got no
-   press at all. scale composes with the lift instead of competing with it.
-   The strip button, add-on toggle and link chips had no press or hover. */
+/* These press with the scale property rather than transform. The strip
+   button, add-on toggle and link chips had no press or hover. */
 .plan-cta:active, .audit-strip-btn:active, .addon-toggle:active, .biz-link-chip:active, .biz-link-chip-all:active {
   scale: 0.97;
   transition: scale 0.1s var(--ease-press), transform 0.1s var(--ease-press);
@@ -807,7 +804,7 @@ img { max-width: 100%; height: auto; }
   .biz-link-chip-all:hover { border-color: var(--blue); }
 }
 .plan-tab:active, .industry-card:active { transform: scale(0.98); transition: transform 0.1s var(--ease-press); }
-/* The original used a mix of ad hoc curves and linear easing on hover lifts.
+/* The original used a mix of ad hoc curves and linear easing on hover.
    Overshoot belongs to momentum-driven gestures, not a static hover, so these
    settle into place instead of bouncing past it. */
 .plan-card, .industry-card, .addon-row, .hero-card, .metric-item {
@@ -820,11 +817,9 @@ img { max-width: 100%; height: auto; }
   .plan-card, .industry-card, .addon-row, .hero-card, .metric-item, .btn-primary, .plan-cta, .cta-actions > a, .btn-outline, .plan-tab {
     transition-duration: 0.15s;
   }
-  .plan-card:hover, .industry-card:hover, .addon-row:hover, .btn-primary:hover, .plan-cta:hover, .cta-actions > a:hover, .industry-card:active, .plan-tab:active, .btn-primary:active, .plan-cta:active, .btn-outline:active, .cta-actions > a:active {
+  .industry-card:active, .plan-tab:active, .btn-primary:active, .plan-cta:active, .btn-outline:active, .cta-actions > a:active {
     transform: none;
   }
-  /* The plan buttons' lifts are set at higher specificity, so name them the same way. */
-  .audit-strip-btn:hover, .plan-card:not(.featured):not(.premium-tier) .plan-cta:hover, .plan-card.featured .plan-cta:hover, .plan-card.premium-tier .plan-cta:hover { transform: none; }
   .plan-cta:active, .audit-strip-btn:active, .addon-toggle:active, .biz-link-chip:active, .biz-link-chip-all:active { scale: none; }
 }
 /* Muted greys darkened to carry real contrast, panels given a defined border
@@ -852,7 +847,7 @@ img { max-width: 100%; height: auto; }
 }
 @media (prefers-reduced-motion: reduce) {
   .hov-lift { transition-duration: 0.15s; }
-  .hov-lift:hover, .hov-lift:active { transform: none; }
+  .hov-lift:active { transform: none; }
 }
 @media (prefers-contrast: more) {
   .hov-lift { border-color: #0F172A; }

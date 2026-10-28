@@ -604,7 +604,7 @@ a { color: inherit; }
 
 /* ==========================================================
    Hover: only where there is a real pointer, so a tap on a
-   phone never leaves a card stuck in its lifted state.
+   phone never leaves a card stuck in its hover state.
    ========================================================== */
 @media (hover: hover) {
   .btn-blue:hover { background: var(--blue-dk); box-shadow: 0 10px 28px rgba(21,96,255,0.45); }
@@ -632,8 +632,8 @@ a { color: inherit; }
 
 /* ==========================================================
    Press feedback: on pointer-down, not release, so a tap is
-   acknowledged immediately. The lift collapses and the shadow
-   pulls in, so a press reads as pushed rather than resized.
+   acknowledged immediately. The control scales down and the
+   shadow pulls in, so a press reads as pushed rather than resized.
    ========================================================== */
 .btn-blue:active, .btn-start-quiz:active, .btn-next:active:not(:disabled),
 .btn-wa-result:active, .btn-quote-result:active {
@@ -774,10 +774,7 @@ a { color: inherit; }
   .q-enter, .q-exit { animation: none; }
   .btn-blue:active, .btn-ghost:active, .btn-start-quiz:active, .btn-next:active,
   .option-btn:active, .btn-back-q:active, .btn-retake:active,
-  .btn-wa-result:active, .btn-quote-result:active, .scroll-dot:active, .cta-icon-btn:active,
-  .btn-blue:hover, .btn-start-quiz:hover, .btn-next:hover, .option-btn:hover,
-  .btn-wa-result:hover, .info-card:hover, .process-step:hover, .cta-icon-btn:hover { transform: none; }
-  .btn-start-quiz:hover svg, .btn-start-quiz:active svg { transform: none; }
+  .btn-wa-result:active, .btn-quote-result:active, .scroll-dot:active, .cta-icon-btn:active { transform: none; }
 }
 
 @media (prefers-contrast: more) {

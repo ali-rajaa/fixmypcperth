@@ -51,7 +51,7 @@
   --nav-h:     64px;
   --mob-nav-h: 60px;
   /* Critically damped (no overshoot) - the default for anything that isn't
-     carrying momentum from a drag or flick. Used on hover lifts and reveals. */
+     carrying momentum from a drag or flick. Used on reveals. */
   --ease-settle: cubic-bezier(0.16, 1, 0.3, 1);
   /* Fast and linear-ish, for the instant press feedback itself. */
   --ease-press:  cubic-bezier(0.4, 0, 0.2, 1);
@@ -402,7 +402,7 @@ a.nap-value { padding:11px 0; margin:-11px 0; }
 .map-chip { position:absolute; left:14px; bottom:14px; display:inline-flex; align-items:center; gap:8px; background:var(--bg); border:1.5px solid var(--border); border-radius:var(--radius-sm); padding:0.7rem 1rem; font-family:var(--display); font-size:0.84375rem; font-weight:700; color:var(--ink); text-decoration:none; box-shadow:0 4px 16px rgba(15,23,42,0.14); transition:border-color 0.15s,color 0.15s,transform 0.2s var(--ease-settle),scale 0.3s var(--ease-settle); -webkit-tap-highlight-color:transparent; }
 .map-chip svg { width:16px; height:16px; color:var(--blue); flex-shrink:0; }
 @media (hover: hover) { .map-chip:hover { border-color:var(--blue-mid); color:var(--blue); } }
-/* scale, not transform, so the press composes with the hover lift above. */
+/* Press feedback on pointer-down, with the scale property. */
 .map-chip:active { scale:0.97; transition:scale 0.1s var(--ease-press),transform 0.1s var(--ease-press); }
 .cta-section { background:linear-gradient(135deg,var(--ink) 0%,#1B2A4A 100%); padding:5rem 2rem; position:relative; overflow:hidden; }
 /* Main call to action: the one dark band on the page. */
@@ -474,9 +474,9 @@ a.nap-value { padding:11px 0; margin:-11px 0; }
    somewhere else. */
 
 /* Same shell as .svc-card: 18px radius, 1.5px border, gradient hairline on
-   the featured one, lift on hover. Previously this block had its own radius,
-   its own shadow and a dimmed losing card, none of which appear anywhere
-   else on the site. */
+   the featured one, border and shadow on hover. Previously this block had
+   its own radius, its own shadow and a dimmed losing card, none of which
+   appear anywhere else on the site. */
 
 /* No rules between rows. Nothing else on the site uses a divider list, and
    they were what made this read as a stock pricing table. */
@@ -660,13 +660,11 @@ body { padding-top:var(--mob-nav-h); }
    stop (pulse, the swipe nudge) come off entirely since they carry no
    information. The scroll reveal keeps a quick opacity cross-fade instead of
    the slide-and-fade, so content still announces itself without motion. The
-   FAQ arrow drops its overshoot and rotates plainly. Hover lifts lose their
-   translateY - the border/shadow/color change alone still signals "hovered". */
+   FAQ arrow drops its overshoot and rotates plainly. */
 @media (prefers-reduced-motion: reduce) {
   .pkg-swipe-hint svg { animation:none; }
   .js .fade-up { transition:opacity 0.2s ease; transform:none; }
 
-  @media (hover: hover) { .btn-blue:hover, .btn-wa:hover, .svc-card:hover, .how-card:hover, .mq-service-btn:hover, .hero-alt-link:hover svg, .map-chip:hover { transform:none; } }
   .btn-blue, .btn-wa, .btn-outline, .svc-card, .how-card, .mq-service-btn, .guide-tab, .svc-cta, .svc-link-pill {
     transition-duration:0.15s;
   }

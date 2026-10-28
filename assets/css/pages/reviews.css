@@ -421,8 +421,7 @@ a { color: inherit; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .btn-blue, .btn-outline { transition-duration: 0.15s; }
-  .btn-blue:hover, .btn-blue:active,
-  .btn-outline:hover, .btn-outline:active { transform: none; }
+  .btn-blue:active, .btn-outline:active { transform: none; }
 
 }
 
