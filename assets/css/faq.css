@@ -26,7 +26,7 @@
    ============================================================ */
 .faq-item { background:var(--bg); border:1.5px solid var(--border); border-radius:var(--radius); overflow:hidden; transition:border-color 0.2s; }
 .faq-item.open { border-color:var(--blue-mid); }
-.faq-q { width:100%; background:none; border:none; text-align:left; cursor:pointer; font-family:var(--display); font-size:15px; font-weight:700; line-height:1.4; color:var(--ink); padding:1.25rem 1.5rem; display:flex; justify-content:space-between; align-items:center; gap:1rem; transition:color 0.15s,background 0.15s; -webkit-tap-highlight-color:transparent; }
+.faq-q { width:100%; background:none; border:none; text-align:left; cursor:pointer; font-family:var(--display); font-size:0.9375rem; font-weight:700; line-height:1.4; color:var(--ink); padding:1.25rem 1.5rem; display:flex; justify-content:space-between; align-items:center; gap:1rem; transition:color 0.15s,background 0.15s; -webkit-tap-highlight-color:transparent; }
 .faq-q:active { background:var(--bg2); }
 .faq-q:focus-visible { outline:2px solid var(--blue); outline-offset:-2px; }
 /* Rotation gets a touch of overshoot so the tap feels answered. */
@@ -34,7 +34,7 @@
 .faq-item.open .faq-q svg { transform:rotate(180deg); }
 .faq-a { display:grid; grid-template-rows:0fr; overflow:hidden; visibility:hidden; transition:grid-template-rows 0.4s var(--ease-settle), visibility 0s linear 0.4s; }
 .faq-item.open .faq-a { grid-template-rows:1fr; visibility:visible; transition:grid-template-rows 0.4s var(--ease-settle), visibility 0s; }
-.faq-a p:where(:not([class])) { min-height:0; font-size:14px; color:var(--muted); line-height:1.75; margin:0; padding:0 1.5rem; transition:padding 0.4s var(--ease-settle); }
+.faq-a p:where(:not([class])) { min-height:0; font-size:0.875rem; color:var(--muted); line-height:1.75; margin:0; padding:0 1.5rem; transition:padding 0.4s var(--ease-settle); }
 .faq-item.open .faq-a p:where(:not([class])) { padding:0 1.5rem 1.25rem; }
 .faq-a a:where(:not([class])) { color:var(--blue); font-weight:600; text-decoration:none; border-bottom:1px solid var(--blue-mid); }
 .faq-a strong:where(:not([class])) { color:var(--ink); font-weight:600; }
@@ -44,8 +44,8 @@
   .faq-a a:where(:not([class])):hover { color:var(--blue-dk); border-bottom-color:var(--blue-dk); }
 }
 @media (max-width:720px) {
-  .faq-q { font-size:14px; padding:1rem 1.25rem; }
-  .faq-a p:where(:not([class])) { font-size:13.5px; padding:0 1.25rem; }
+  .faq-q { font-size:0.875rem; padding:1rem 1.25rem; }
+  .faq-a p:where(:not([class])) { font-size:0.84375rem; padding:0 1.25rem; }
   .faq-item.open .faq-a p:where(:not([class])) { padding:0 1.25rem 1rem; }
 }
 @media (prefers-reduced-motion: reduce) {

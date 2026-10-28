@@ -82,8 +82,8 @@
   --m-h1: 1.7rem;
   --m-h2: 1.3rem;
   --m-h2-space: 12px;
-  --m-text: 16px;
-  --m-text-min: 13px;
+  --m-text: 1rem;
+  --m-text-min: 0.8125rem;
   --m-btn: 48px;
 
   --blue:    #1560FF;
@@ -117,7 +117,7 @@
 html { scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-h) + 16px); }
 body {
   margin: 0; background: var(--bg); color: var(--ink);
-  font-family: var(--body); font-size: 16px; line-height: 1.6;
+  font-family: var(--body); font-size: 1rem; line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
 img { max-width: 100%; height: auto; }
@@ -201,7 +201,7 @@ a { color: inherit; }
 }
 .page-title em:where(:not([class])) { color: var(--blue); font-style: normal; }
 .page-sub {
-  font-size: 16.5px; color: var(--muted); max-width: 46ch;
+  font-size: 1.03125rem; color: var(--muted); max-width: 46ch;
   margin: 0 0 1.6rem; line-height: 1.75; letter-spacing: 0;
 }
 
@@ -219,7 +219,7 @@ a { color: inherit; }
 }
 .rating-detail { min-width: 0; }
 .rating-meta {
-  margin: 0.5rem 0 0; font-size: 13px; color: var(--muted);
+  margin: 0.5rem 0 0; font-size: 0.8125rem; color: var(--muted);
   line-height: 1.55;
 }
 .rating-meta strong:where(:not([class])) { color: var(--ink2); font-weight: 700; }
@@ -266,7 +266,7 @@ a { color: inherit; }
 }
 .accent { color: var(--blue); }
 .s-sub {
-  font-size: 15.5px; color: var(--muted); max-width: 62ch;
+  font-size: 0.96875rem; color: var(--muted); max-width: 62ch;
   line-height: 1.75; margin: 0 0 1.75rem;
 }
 .s-sub a:where(:not([class])) {
@@ -292,16 +292,16 @@ a { color: inherit; }
 .review-avatar {
   width: 42px; height: 42px; border-radius: 50%; flex-shrink: 0;
   display: flex; align-items: center; justify-content: center;
-  font-family: var(--display); font-size: 13px; font-weight: 800;
+  font-family: var(--display); font-size: 0.8125rem; font-weight: 800;
   color: #fff; letter-spacing: 0.02em;
   background: linear-gradient(135deg, var(--blue), var(--blue-dk));
 }
 .review-footer > .rv-g { width: 22px; height: 22px; margin-left: auto; flex-shrink: 0; }
 .review-author {
-  font-family: var(--display); font-size: 13px; font-weight: 700;
+  font-family: var(--display); font-size: 0.8125rem; font-weight: 700;
   color: var(--ink); line-height: 1.3;
 }
-.review-suburb { font-size: 12px; color: var(--muted2); font-weight: 500; margin-top: 1px; }
+.review-suburb { font-size: 0.75rem; color: var(--muted2); font-weight: 500; margin-top: 1px; }
 
 /* ==========================================================
    FAQ
@@ -325,7 +325,7 @@ a { color: inherit; }
   line-height: 1.12; margin: 0 0 0.6rem;
 }
 .cta-bar p:where(:not([class])) {
-  font-size: 15px; color: var(--muted); line-height: 1.75;
+  font-size: 0.9375rem; color: var(--muted); line-height: 1.75;
   max-width: 52ch; margin: 0 auto 1.75rem;
 }
 .cta-btns { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
@@ -333,7 +333,7 @@ a { color: inherit; }
 .btn-blue {
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
   background: var(--blue); color: #fff; text-decoration: none;
-  font-family: var(--body); font-size: 15px; font-weight: 700;
+  font-family: var(--body); font-size: 0.9375rem; font-weight: 700;
   padding: 14px 26px; border-radius: 50px; border: none; cursor: pointer;
   box-shadow: 0 4px 16px rgba(21,96,255,0.35); white-space: nowrap;
   transition:
@@ -348,7 +348,7 @@ a { color: inherit; }
 .btn-outline {
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
   background: transparent; color: var(--ink); text-decoration: none;
-  font-family: var(--body); font-size: 15px; font-weight: 600;
+  font-family: var(--body); font-size: 0.9375rem; font-weight: 600;
   padding: 13px 25px; border-radius: 50px; cursor: pointer;
   border: 1.5px solid var(--border2); white-space: nowrap;
   transition:
@@ -380,12 +380,12 @@ a { color: inherit; }
 
   .page-hero { padding: 1.25rem 1rem 2.25rem; }
   .page-title { font-size: clamp(1.8rem, 7.5vw, 2.4rem); letter-spacing: -0.028em; }
-  .page-sub { font-size: 15.5px; margin-bottom: 1.35rem; }
+  .page-sub { font-size: 0.96875rem; margin-bottom: 1.35rem; }
 
   .rating-block { gap: 0.9rem; padding: 1rem 1.1rem; border-radius: 14px; }
   .rating-score { font-size: 2.15rem; }
   .stars-lg .star { width: 19px; height: 19px; }
-  .rating-meta { font-size: 12.5px; }
+  .rating-meta { font-size: 0.78125rem; }
 
   .hero-btns { gap: 0.6rem; }
   .btn-blue, .btn-outline { flex: 1 1 100%; }

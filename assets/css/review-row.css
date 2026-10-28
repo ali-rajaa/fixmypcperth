@@ -7,7 +7,7 @@
 @media (hover: hover) { .rv-badge:hover { border-color:var(--border2); } .rv-badge:hover .rv-badge-link { text-decoration:underline; text-underline-offset:3px; } }
 .rv-badge .rv-g { width:22px; height:22px; }
 .rv-badge-score { font-family:var(--display); font-size:1.3rem; font-weight:800; letter-spacing:-0.02em; line-height:1; }
-.rv-badge-text { font-size:13px; font-weight:500; color:var(--muted); }
+.rv-badge-text { font-size:0.8125rem; font-weight:500; color:var(--muted); }
 .rv-badge-link { color:var(--blue); font-weight:600; }
 .rv-row { overflow-x:auto; scrollbar-width:none; scroll-snap-type:x proximity; scroll-behavior:auto; padding:4px 2px 8px; -webkit-mask-image:linear-gradient(90deg,transparent,#000 40px,#000 calc(100% - 40px),transparent); mask-image:linear-gradient(90deg,transparent,#000 40px,#000 calc(100% - 40px),transparent); }
 .rv-row::-webkit-scrollbar { display:none; }
@@ -19,10 +19,10 @@
 .rv-avatar { flex:0 0 40px; width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-family:var(--display); font-size:1.05rem; font-weight:700; text-transform:uppercase; }
 .rv-c0 { background:#6D28D9; } .rv-c1 { background:#1D4ED8; } .rv-c2 { background:#BE185D; } .rv-c3 { background:#15803D; } .rv-c4 { background:#B45309; }
 .rv-who { display:flex; flex-direction:column; min-width:0; flex:1; }
-.rv-name { font-family:var(--display); font-size:15px; font-weight:700; color:var(--ink); line-height:1.3; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-.rv-src { font-size:13px; color:var(--muted); line-height:1.4; }
+.rv-name { font-family:var(--display); font-size:0.9375rem; font-weight:700; color:var(--ink); line-height:1.3; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.rv-src { font-size:0.8125rem; color:var(--muted); line-height:1.4; }
 .rv-head .rv-g { flex:0 0 20px; width:20px; height:20px; }
-.rv-text { font-size:14px; line-height:1.65; color:var(--ink2); display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:7; line-clamp:7; overflow:hidden; }
+.rv-text { font-size:0.875rem; line-height:1.65; color:var(--ink2); display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:7; line-clamp:7; overflow:hidden; }
 @media (max-width: 720px) {
   .rv-bar { flex-wrap:nowrap; margin-top:1.5rem; }
   .rv-badge { padding:8px 14px; gap:8px; min-width:0; min-height:48px; }
@@ -39,6 +39,7 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .rv-badge { transition-duration: 0.15s; }
+  .rv-badge:active { transform: none; }
 }
 @media (prefers-contrast: more) {
   .rv-src, .rv-badge-text { color: #334155; }

@@ -36,8 +36,8 @@
   --m-h1: 1.7rem;
   --m-h2: 1.3rem;
   --m-h2-space: 12px;
-  --m-text: 16px;
-  --m-text-min: 13px;
+  --m-text: 1rem;
+  --m-text-min: 0.8125rem;
   --m-btn: 48px;
 
   --blue:      #1560FF;
@@ -70,14 +70,14 @@
 }
 
 * { box-sizing: border-box; }
-body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body); font-size:16px; line-height:1.6; overflow-x:hidden; }
+body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body); font-size:1rem; line-height:1.6; overflow-x:hidden; }
 .wrap { max-width:1100px; margin:0 auto; padding:0 2rem; }
 
 /* shared bits that match the homepage exactly */
 .accent { color:var(--blue); }
 .btn-outline {
   display:inline-flex; align-items:center; justify-content:center; gap:8px;
-  font-family:var(--body); font-size:15px; font-weight:700; text-decoration:none;
+  font-family:var(--body); font-size:0.9375rem; font-weight:700; text-decoration:none;
   color:var(--ink); background:var(--bg); border:1.5px solid var(--border2);
   padding:13px 26px; border-radius:50px; max-width:100%;
   transition:border-color 0.2s,color 0.2s,transform 0.1s var(--ease-press);
@@ -113,15 +113,15 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body)
 .pr-quick { display:flex; flex-wrap:wrap; gap:10px; margin:0 0 1.6rem; }
 .pr-quick-item { background:var(--bg); border:1.5px solid var(--border); border-radius:12px; padding:0.6rem 0.95rem; }
 .pr-quick-price { display:block; font-family:var(--display); font-size:1.25rem; font-weight:800; letter-spacing: -0.03em; color:var(--blue); line-height:1.1; }
-.pr-quick-lbl { display:block; font-family:var(--body); font-size:12px; font-weight:600; color:var(--muted); margin-top:2px; }
+.pr-quick-lbl { display:block; font-family:var(--body); font-size:0.75rem; font-weight:600; color:var(--muted); margin-top:2px; }
 .pr-hero h1:where(:not([class])) {
   font-family:var(--display); font-size:clamp(1.9rem,3.6vw,2.85rem); font-weight:800;
   line-height:1.1; letter-spacing: -0.03em; color:var(--ink); margin:0 0 1.1rem;
 }
-.pr-anchor { font-family:var(--body); font-size:19px; color:var(--ink2); margin:0 0 0.4rem; }
-.pr-anchor strong:where(:not([class])) { font-family:var(--display); font-size:24px; font-weight:800; color:var(--blue); }
-.pr-sub { font-size:15px; font-weight:700; color:var(--blue); margin:0 0 1.4rem; }
-.pr-intro { font-size:15px; color:var(--muted); line-height:1.72; margin:0 0 0.8rem; }
+.pr-anchor { font-family:var(--body); font-size:1.1875rem; color:var(--ink2); margin:0 0 0.4rem; }
+.pr-anchor strong:where(:not([class])) { font-family:var(--display); font-size:1.5rem; font-weight:800; color:var(--blue); }
+.pr-sub { font-size:0.9375rem; font-weight:700; color:var(--blue); margin:0 0 1.4rem; }
+.pr-intro { font-size:0.9375rem; color:var(--muted); line-height:1.72; margin:0 0 0.8rem; }
 .pr-intro strong:where(:not([class])) { color:var(--ink2); font-weight:700; }
 
 /* ---------- search and category bar ---------- */
@@ -140,7 +140,7 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body)
 .pr-search:focus-within { border-color:var(--blue); background:var(--bg); box-shadow:0 0 0 3px rgba(21,96,255,0.13); }
 .pr-search:focus-within svg { color:var(--blue); }
 .pr-search svg { width:17px; height:17px; color:var(--muted2); flex-shrink:0; transition:color 0.2s; }
-.pr-search input { flex:1; align-self:stretch; min-width:0; border:0; background:none; outline:none; font-family:var(--body); font-size:16px; color:var(--ink); }
+.pr-search input { flex:1; align-self:stretch; min-width:0; border:0; background:none; outline:none; font-family:var(--body); font-size:1rem; color:var(--ink); }
 .pr-search input::-webkit-search-cancel-button { display:none; }
 .pr-search input::placeholder { color:var(--muted); }
 .pr-search-clear { display:flex; align-items:center; justify-content:center; width:28px; height:28px; border:0; background:none; padding:0; cursor:pointer; color:var(--muted); border-radius:50%; transition:background 0.15s,color 0.15s,transform 0.1s var(--ease-press); }
@@ -151,7 +151,7 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body)
 .pr-chips { display:none; gap:8px; margin-top:0.8rem; overflow-x:auto; scrollbar-width:none; scroll-behavior:smooth; }
 .pr-chips::-webkit-scrollbar { display:none; }
 .pr-chip {
-  flex:0 0 auto; font-family:var(--body); font-size:13px; font-weight:600; white-space:nowrap;
+  flex:0 0 auto; font-family:var(--body); font-size:0.8125rem; font-weight:600; white-space:nowrap;
   color:var(--ink2); background:var(--bg); border:1px solid var(--border);
   border-radius:10px; padding:9px 15px; cursor:pointer;
   transition:background 0.18s,border-color 0.18s,color 0.18s,transform 0.1s var(--ease-press);
@@ -162,7 +162,7 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body)
 .pr-chip:focus-visible { outline:2px solid var(--blue); outline-offset:2px; }
 .pr-search input:focus, .pr-search input:focus-visible { outline:none; }
 
-.pr-count { font-size:13.5px; font-weight:600; color:var(--muted); margin:0 0 1.25rem; }
+.pr-count { font-size:0.84375rem; font-weight:600; color:var(--muted); margin:0 0 1.25rem; }
 .pr-count[hidden] { display:none; }
 
 /* ==========================================================
@@ -173,8 +173,8 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body)
 .pr-side-card { background:var(--bg); border:1.5px solid var(--border); border-radius:18px; overflow:hidden; }
 .pr-side-head { background:var(--ink); padding:1.15rem 1.35rem; position:relative; }
 .pr-side-head::after { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--blue),#00CFFF); }
-.pr-side-eyebrow { display:block; font-size:10px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.7); margin-bottom:3px; }
-.pr-side-title { display:block; font-family:var(--display); font-size:16px; font-weight:800; color:#fff; letter-spacing: -0.019em; }
+.pr-side-eyebrow { display:block; font-size:0.625rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.7); margin-bottom:3px; }
+.pr-side-title { display:block; font-family:var(--display); font-size:1rem; font-weight:800; color:#fff; letter-spacing: -0.019em; }
 .pr-side-nav { padding:0.6rem; }
 .pr-side-item {
   display:flex; align-items:center; gap:0; width:100%; background:none; border:0;
@@ -192,13 +192,13 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body)
 .pr-side-ico svg { width:18px; height:18px; }
 @media (hover: hover) { .pr-side-item:hover .pr-side-ico { color:var(--ink2); } }
 .pr-side-item.is-active .pr-side-ico { background:var(--blue); color:#fff; }
-.pr-side-label { flex:1; min-width:0; font-family:var(--body); font-size:14.5px; font-weight:600; color:var(--ink2); padding:0.72rem 0; }
+.pr-side-label { flex:1; min-width:0; font-family:var(--body); font-size:0.90625rem; font-weight:600; color:var(--ink2); padding:0.72rem 0; }
 .pr-side-item.is-active .pr-side-label { color:var(--blue-dk); font-weight:700; }
-.pr-side-n { font-family:var(--body); font-size:12px; font-weight:700; color:var(--muted); background:var(--bg3); border-radius:20px; padding:3px 9px; margin-right:0.8rem; }
+.pr-side-n { font-family:var(--body); font-size:0.75rem; font-weight:700; color:var(--muted); background:var(--bg3); border-radius:20px; padding:3px 9px; margin-right:0.8rem; }
 .pr-side-item.is-active .pr-side-n { background:var(--blue); color:#fff; }
 .pr-side-cta {
   display:block; text-align:center; margin-top:0.85rem; text-decoration:none;
-  font-family:var(--body); font-size:13px; font-weight:700; color:var(--muted);
+  font-family:var(--body); font-size:0.8125rem; font-weight:700; color:var(--muted);
   border:1.5px dashed var(--border2); border-radius:12px; padding:0.8rem;
   transition:border-color 0.18s,color 0.18s,transform 0.1s var(--ease-press);
 }
@@ -214,21 +214,21 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body)
    shorthand and :first-of-type, which had reset this to zero and left
    each heading pressed against the section above. */
 .pr-sec.pr-wide { padding-top:3.25rem; }
-.pr-sec-title { font-family:var(--display); font-size:clamp(1.25rem,2.4vw,1.6rem); font-weight:800; letter-spacing:-0.027em; color:var(--ink); margin:0 0 0.4rem; display:flex; align-items:center; gap:10px; }
-.pr-sec-count { font-family:var(--body); font-size:13px; font-weight:600; color:var(--muted); font-variant-numeric:tabular-nums; }
-.pr-sec-blurb { font-size:14.5px; color:var(--muted); line-height:1.65; max-width:64ch; margin:0 0 1.2rem; }
+.pr-sec-title { font-family:var(--display); font-size:clamp(1.25rem,2.4vw,1.6rem); font-weight:800; line-height:1.2; letter-spacing:-0.027em; color:var(--ink); margin:0 0 0.4rem; display:flex; align-items:center; gap:10px; }
+.pr-sec-count { font-family:var(--body); font-size:0.8125rem; font-weight:600; color:var(--muted); font-variant-numeric:tabular-nums; }
+.pr-sec-blurb { font-size:0.90625rem; color:var(--muted); line-height:1.65; max-width:64ch; margin:0 0 1.2rem; }
 .pr-sec-blurb a:where(:not([class])) { color:var(--blue); font-weight:600; text-decoration:none; border-bottom:1px solid var(--blue-mid); }
 @media (hover: hover) { .pr-sec-blurb a:where(:not([class])):hover { color:var(--blue-dk); border-bottom-color:var(--blue-dk); } }
 
 /* Sub-headings inside a section. 18 repairs in one run reads as a dump; four
    named groups of four or five reads as a list you can scan. */
-.pr-group { display:flex; align-items:center; gap:9px; font-family:var(--body); font-size:11.5px; font-weight:700;
+.pr-group { display:flex; align-items:center; gap:9px; font-family:var(--body); font-size:0.71875rem; font-weight:700;
   letter-spacing:0.09em; text-transform:uppercase; color:var(--muted); margin:1.6rem 0 0.7rem; }
 .pr-group:first-of-type { margin-top:0; }
 .pr-group[hidden], .pr-rows[hidden] { display:none; }
 .pr-group::after { content:''; flex:1; height:1px; background:var(--border); }
 /* Counts are plain text beside the heading, never a pill or boxed badge. */
-.pr-group-n { font-size:13px; font-weight:600; color:var(--muted); letter-spacing:0; text-transform:none; font-variant-numeric:tabular-nums; }
+.pr-group-n { font-size:0.8125rem; font-weight:600; color:var(--muted); letter-spacing:0; text-transform:none; font-variant-numeric:tabular-nums; }
 
 /* Hidden text for screen readers: each Book link says which service. */
 .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0; }
@@ -247,58 +247,60 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body)
    below its content's natural width, so a long service name or description
    pushes the row wider than its container instead of wrapping inside it. */
 .pr-row-main { min-width:0; }
-.pr-name { font-family:var(--display); font-size:15px; font-weight:700; color:var(--ink); margin:0 0 0.2rem; line-height:1.35; }
-.pr-badge { display:inline-block; font-family:var(--body); font-size:10px; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; color:var(--green); margin-left:6px; vertical-align:middle; }
-.pr-desc { font-size:13.5px; color:var(--muted); line-height:1.6; margin:0; max-width:62ch; }
+.pr-name { font-family:var(--display); font-size:0.9375rem; font-weight:700; color:var(--ink); margin:0 0 0.2rem; line-height:1.35; }
+.pr-badge { display:inline-block; font-family:var(--body); font-size:0.625rem; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; color:var(--green); margin-left:6px; vertical-align:middle; }
+.pr-desc { font-size:0.84375rem; color:var(--muted); line-height:1.6; margin:0; max-width:62ch; }
 
 /* Symptom chips under the diagnostic row. They are the words people actually
    search: blue screen, boot loop, won't turn on. Carried over from the live
    page, where they were the only place those phrases appeared. */
 .pr-symptoms { display:flex; flex-wrap:wrap; gap:6px; margin-top:0.75rem; }
-.pr-symptom { font-family:var(--body); font-size:12px; font-weight:600; color:var(--ink2); background:var(--bg3); border-radius:6px; padding:4px 9px; white-space:nowrap; }
+.pr-symptom { font-family:var(--body); font-size:0.75rem; font-weight:600; color:var(--ink2); background:var(--bg3); border-radius:6px; padding:4px 9px; white-space:nowrap; }
 
 /* Price and Book sit on one line rather than stacked. Stacking put a small
    outlined button directly under a large number, which read as two separate
    things rather than one price with an action beside it. */
 .pr-row-price { display:flex; flex-direction:row; align-items:center; justify-content:flex-end; gap:14px; }
 .pr-price-wrap { display:flex; flex-direction:column; align-items:flex-end; gap:2px; }
-.pr-price { font-family:var(--display); font-size:1.25rem; font-weight:800; letter-spacing: -0.03em; color:var(--ink); white-space:nowrap; line-height:1; }
-.pr-price-alt { font-family:var(--body); font-size:12px; font-weight:600; color:var(--muted); white-space:nowrap; line-height:1.3; }
+/* The figure wraps under its suffix ("one-off per device") only when the
+   row cannot hold both, as on a narrow phone with large text. */
+.pr-price { font-family:var(--display); font-size:1.25rem; font-weight:800; letter-spacing: -0.03em; color:var(--ink); line-height:1; text-align:right; }
+.pr-price-alt { font-family:var(--body); font-size:0.75rem; font-weight:600; color:var(--muted); white-space:nowrap; line-height:1.3; }
 .pr-book {
   display:inline-flex; align-items:center; justify-content:center;
-  font-family:var(--body); font-size:13px; font-weight:700; text-decoration:none;
+  font-family:var(--body); font-size:0.8125rem; font-weight:700; text-decoration:none;
   color:var(--blue); background:var(--bg); border:1px solid var(--blue-mid);
   padding:7px 16px; border-radius:50px; white-space:nowrap;
   transition:background 0.18s,border-color 0.18s,transform 0.1s var(--ease-press);
 }
 @media (hover: hover) { .pr-book:hover { background:var(--blue-lt); border-color:var(--blue); } }
 .pr-book:active { transform:scale(0.94); }
-.pr-book-wide { width:100%; padding:12px 18px; font-size:14px; }
+.pr-book-wide { width:100%; padding:12px 18px; font-size:0.875rem; }
 
 /* tiered options inside a row */
 .pr-opts { grid-column:1 / -1; display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:8px; margin-top:0.9rem; padding-top:0.9rem; border-top:1px solid var(--border); }
 .pr-opt { background:var(--bg2); border:1px solid var(--border); border-radius:11px; padding:0.75rem 0.85rem; }
-.pr-opt-name { display:block; font-family:var(--body); font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--muted); }
+.pr-opt-name { display:block; font-family:var(--body); font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--muted); }
 .pr-opt-price { display:block; font-family:var(--display); font-size:1.15rem; font-weight:800; color:var(--ink); letter-spacing: -0.03em; margin:2px 0 3px; }
-.pr-opt-desc { display:block; font-size:12.5px; color:var(--muted); line-height:1.5; }
+.pr-opt-desc { display:block; font-size:0.78125rem; color:var(--muted); line-height:1.5; }
 
 /* ---------- packages ---------- */
 .pr-packs { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
 .pr-pack { background:var(--blue-lt); border:1.5px solid var(--blue-mid); border-radius:18px; padding:1.5rem 1.4rem; display:flex; flex-direction:column; }
 .pr-pack[hidden] { display:none; }
 .pr-pack-title { font-family:var(--display); font-size:1.2rem; font-weight:800; color:var(--ink); margin:0 0 0.5rem; }
-.pr-pack-desc { font-size:14px; color:var(--ink2); line-height:1.7; margin:0 0 1.1rem; flex:1; }
-.pr-pack-price { font-family:var(--display); font-size:2rem; font-weight:800; letter-spacing: -0.03em; color:var(--blue-dk); margin:0 0 1rem; }
+.pr-pack-desc { font-size:0.875rem; color:var(--ink2); line-height:1.7; margin:0 0 1.1rem; flex:1; }
+.pr-pack-price { font-family:var(--display); font-size:2rem; font-weight:800; line-height:1.1; letter-spacing: -0.03em; color:var(--blue-dk); margin:0 0 1rem; }
 
 /* ---------- business IT ---------- */
 .pr-plans { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:1.5rem; }
 .pr-plan { background:var(--bg); border:1.5px solid var(--border); border-radius:16px; padding:1.35rem; }
 .pr-plan[hidden] { display:none; }
-.pr-plan-name { display:block; font-size:11px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--blue); margin-bottom:0.5rem; }
-.pr-plan-price { font-family:var(--display); font-size:1.85rem; font-weight:800; letter-spacing: -0.03em; color:var(--ink); margin:0 0 0.5rem; }
-.pr-plan-per { font-family:var(--body); font-size:13px; font-weight:600; color:var(--muted); letter-spacing:0; }
-.pr-plan-cov { font-size:13.5px; font-weight:600; color:var(--ink2); margin:0 0 0.35rem; }
-.pr-plan-who { font-size:13px; color:var(--muted); line-height:1.6; margin:0; }
+.pr-plan-name { display:block; font-size:0.6875rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--blue); margin-bottom:0.5rem; }
+.pr-plan-price { font-family:var(--display); font-size:1.85rem; font-weight:800; line-height:1.1; letter-spacing: -0.03em; color:var(--ink); margin:0 0 0.5rem; }
+.pr-plan-per { font-family:var(--body); font-size:0.8125rem; font-weight:600; color:var(--muted); letter-spacing:0; }
+.pr-plan-cov { font-size:0.84375rem; font-weight:600; color:var(--ink2); margin:0 0 0.35rem; }
+.pr-plan-who { font-size:0.8125rem; color:var(--muted); line-height:1.6; margin:0; }
 
 /* ---------- rules ---------- */
 .pr-rules-sec { background:var(--bg2); padding:3.75rem 0; margin-top:3.5rem; }
@@ -310,7 +312,7 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body)
 /* ---------- links out to the service detail pages ---------- */
 .pr-links { display:flex; flex-wrap:wrap; gap:8px; }
 .pr-link-pill {
-  display:inline-flex; align-items:center; font-family:var(--body); font-size:13.5px;
+  display:inline-flex; align-items:center; font-family:var(--body); font-size:0.84375rem;
   font-weight:600; color:var(--blue); text-decoration:none;
   background:var(--bg); border:1.5px solid var(--blue-mid);
   padding:8px 16px; border-radius:50px; min-height:44px;
@@ -325,7 +327,7 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body)
 .pr-close-box { background:var(--bg2); border:1.5px solid var(--border); border-radius:16px; padding:2rem 2.25rem; }
 .pr-close-box .pr-sec-blurb { margin-bottom:1.5rem; }
 .pr-close-act { display:flex; flex-wrap:wrap; align-items:center; gap:12px; }
-.pr-wa-btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; min-height:52px; padding:0 26px; border-radius:50px; background:var(--wa-dk); color:#fff; font-family:var(--body); font-size:15px; font-weight:700; text-decoration:none; box-shadow:0 4px 14px rgba(21,128,61,0.28); -webkit-tap-highlight-color:transparent; transition:background-color 0.15s var(--ease-settle), transform 0.1s var(--ease-press); }
+.pr-wa-btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; min-height:52px; padding:0 26px; border-radius:50px; background:var(--wa-dk); color:#fff; font-family:var(--body); font-size:0.9375rem; font-weight:700; text-decoration:none; box-shadow:0 4px 14px rgba(21,128,61,0.28); -webkit-tap-highlight-color:transparent; transition:background-color 0.15s var(--ease-settle), transform 0.1s var(--ease-press); }
 .pr-wa-btn svg { width:18px; height:18px; flex-shrink:0; }
 @media (hover: hover) { .pr-wa-btn:hover { background:var(--wa-deep); color:#fff; } }
 .pr-wa-btn:active { transform:scale(0.97); }
@@ -401,11 +403,11 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body)
   .pr-quick { gap:8px; margin-bottom:1.35rem; }
   .pr-quick-item { flex:1; min-width:0; }
   .pr-quick-price { font-size:1.1rem; }
-  .pr-quick-lbl { font-size:12px; }
+  .pr-quick-lbl { font-size:0.75rem; }
   .pr-hero h1:where(:not([class])) { font-size:1.85rem; }
-  .pr-anchor { font-size:17px; }
-  .pr-anchor strong:where(:not([class])) { font-size:21px; }
-  .pr-intro { font-size:15px; line-height:1.75; }
+  .pr-anchor { font-size:1.0625rem; }
+  .pr-anchor strong:where(:not([class])) { font-size:1.3125rem; }
+  .pr-intro { font-size:0.9375rem; line-height:1.75; }
   .pr-sec { padding-bottom:2rem; }
   .pr-tools-inner { padding-top:0.75rem; padding-bottom:0.75rem; }
   .pr-chips { margin:0.7rem -1.25rem 0; padding:0 1.25rem; }
@@ -417,8 +419,8 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body)
   .pr-row { grid-template-columns:minmax(0,1fr) auto; gap:0.6rem 0.9rem; align-items:start; padding:0.9rem 1rem; }
   .pr-row-price { flex-direction:column; align-items:flex-end; justify-content:flex-start; gap:8px; }
   .pr-price { font-size:1.15rem; }
-  .pr-name { font-size:15.5px; }
-  .pr-desc { font-size:13.5px; }
+  .pr-name { font-size:0.96875rem; }
+  .pr-desc { font-size:0.84375rem; }
   /* Screen panel tiers: one line each (name, price) with the note under
      it, rather than three tall boxes. */
   .pr-opts { grid-template-columns:1fr; gap:6px; margin-top:0.25rem; padding-top:0.75rem; }
@@ -436,7 +438,7 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body)
 @media (max-width:380px) {
   .pr-hero h1:where(:not([class])) { font-size:1.6rem; }
   .pr-price { font-size:1.2rem; }
-  .pr-book { font-size:12.5px; }
+  .pr-book { font-size:0.78125rem; }
   .pr-sec-title { font-size:1.25rem; }
 }
 

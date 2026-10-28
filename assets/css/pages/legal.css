@@ -37,8 +37,8 @@
   --m-h1: 1.7rem;
   --m-h2: 1.3rem;
   --m-h2-space: 12px;
-  --m-text: 16px;
-  --m-text-min: 13px;
+  --m-text: 1rem;
+  --m-text-min: 0.8125rem;
   --m-btn: 48px;
 
   --blue:      #1560FF;
@@ -70,7 +70,7 @@
 }
 
 * { box-sizing: border-box; }
-body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body); font-size:16px; line-height:1.6; overflow-x:hidden; }
+body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body); font-size:1rem; line-height:1.6; overflow-x:hidden; }
 .wrap { max-width:1100px; margin:0 auto; padding:0 2rem; }
 
 /* ---------- hero ---------- */
@@ -81,27 +81,27 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body)
 .lg-hero { background:var(--bg2); padding:96px 0 2.75rem; border-bottom:1px solid var(--border); }
 .lg-hero-inner { max-width:1100px; margin:0 auto; padding:0 2rem; }
 /* Plain text, not a capsule. Same rule as every other label on the site. */
-.lg-updated { display:block; font-size:11.5px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); margin-bottom:0.9rem; }
+.lg-updated { display:block; font-size:0.71875rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); margin-bottom:0.9rem; }
 .lg-hero h1:where(:not([class])) { max-width:20ch; font-family:var(--display); font-size:clamp(1.9rem,3.4vw,2.6rem); font-weight:800; letter-spacing:-0.034em; line-height:1.12; color:var(--ink); margin:0 0 0.6rem; }
 .lg-sub { max-width:46ch; font-family:var(--display); font-size:clamp(1rem,1.8vw,1.25rem); font-weight:600; color:var(--blue); margin:0 0 1.25rem; }
-.lg-intro { font-size:15.5px; color:var(--muted); line-height:1.8; margin:0; max-width:68ch; }
+.lg-intro { font-size:0.96875rem; color:var(--muted); line-height:1.8; margin:0; max-width:68ch; }
 
 /* ---------- layout ---------- */
 .lg-layout { display:grid; grid-template-columns:280px 1fr; gap:3rem; align-items:start; padding-top:3rem; padding-bottom:4rem; }
 .lg-side { position:sticky; top:calc(var(--nav-h) + 24px); }
 .lg-side-card { background:var(--bg); border:1px solid var(--border); border-radius:16px; padding:1.1rem; max-height:calc(100vh - var(--nav-h) - 64px); overflow-y:auto; scrollbar-width:thin; }
-.lg-side-head { display:block; font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); padding:0 0.6rem 0.75rem; }
+.lg-side-head { display:block; font-size:0.6875rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); padding:0 0.6rem 0.75rem; }
 .lg-toc { display:flex; flex-direction:column; gap:1px; }
 .lg-toc a:where(:not([class])) {
   display:flex; align-items:flex-start; gap:10px; text-decoration:none;
-  font-family:var(--body); font-size:13.5px; font-weight:600; color:var(--ink2);
+  font-family:var(--body); font-size:0.84375rem; font-weight:600; color:var(--ink2);
   line-height:1.45; padding:0.55rem 0.6rem; border-radius:9px;
   transition:background 0.16s,color 0.16s;
 }
 @media (hover: hover) { .lg-toc a:where(:not([class])):hover { background:var(--blue-lt); color:var(--blue-dk); } }
 .lg-toc a:where(:not([class])):active { background:var(--blue-mid); transition:background 0.1s var(--ease-press); }
 .lg-toc a:where(:not([class])):focus-visible { outline:2px solid var(--blue); outline-offset:-2px; }
-.lg-toc-n { flex:0 0 auto; font-size:13px; font-weight:600; color:var(--muted); min-width:16px; font-variant-numeric:tabular-nums; }
+.lg-toc-n { flex:0 0 auto; font-size:0.8125rem; font-weight:600; color:var(--muted); min-width:16px; font-variant-numeric:tabular-nums; }
 @media (hover: hover) { .lg-toc a:hover .lg-toc-n { color:var(--blue); } }
 
 .lg-main { min-width:0; }
@@ -116,24 +116,24 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body)
 /* Set in the heading's own type rather than a coloured badge. A numbered
    clause should read as part of the heading, not as a tag beside it. */
 .lg-num { flex:0 0 auto; font-variant-numeric:tabular-nums; color:var(--blue); }
-.lg-sec p:where(:not([class])) { font-size:15px; color:var(--muted); line-height:1.85; margin:0 0 0.95rem; max-width:72ch; }
+.lg-sec p:where(:not([class])) { font-size:0.9375rem; color:var(--muted); line-height:1.85; margin:0 0 0.95rem; max-width:72ch; }
 .lg-sec p:where(:not([class])):last-child { margin-bottom:0; }
 .lg-sec strong:where(:not([class])) { color:var(--ink2); font-weight:700; }
 .lg-sec a:where(:not([class])) { color:var(--blue); text-decoration:none; border-bottom:1px solid var(--blue-mid); transition:border-color 0.15s; }
 @media (hover: hover) { .lg-sec a:where(:not([class])):hover { border-color:var(--blue); } }
 .lg-sec ul:where(:not([class])) { margin:0 0 0.95rem; padding:0; list-style:none; max-width:72ch; }
-.lg-sec li:where(:not([class])) { position:relative; font-size:15px; color:var(--muted); line-height:1.75; padding:0 0 0.55rem 1.4rem; }
+.lg-sec li:where(:not([class])) { position:relative; font-size:0.9375rem; color:var(--muted); line-height:1.75; padding:0 0 0.55rem 1.4rem; }
 .lg-sec li:where(:not([class]))::before { content:''; position:absolute; left:2px; top:11px; width:6px; height:6px; border-radius:50%; background:var(--blue-mid); }
 .lg-sec li:where(:not([class])):last-child { padding-bottom:0; }
 
 /* ---------- closing card ---------- */
 .lg-help { background:var(--bg2); border:1px solid var(--border); border-radius:18px; padding:2rem; margin-top:1rem; }
 .lg-help h2:where(:not([class])) { font-family:var(--display); font-size:1.3rem; font-weight:800; letter-spacing: -0.02em; color:var(--ink); margin:0 0 0.5rem; }
-.lg-help p { font-size:15px; color:var(--muted); line-height:1.75; margin:0 0 1.35rem; max-width:60ch; }
+.lg-help p { font-size:0.9375rem; color:var(--muted); line-height:1.75; margin:0 0 1.35rem; max-width:60ch; }
 .lg-help-actions { display:flex; flex-wrap:wrap; gap:10px; }
 .lg-btn {
   display:inline-flex; align-items:center; justify-content:center;
-  font-family:var(--body); font-size:15px; font-weight:700; text-decoration:none;
+  font-family:var(--body); font-size:0.9375rem; font-weight:700; text-decoration:none;
   padding:13px 26px; border-radius:50px; max-width:100%; white-space:nowrap;
   transition:background 0.18s,border-color 0.18s,color 0.18s,transform 0.1s var(--ease-press);
 }
@@ -168,16 +168,16 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body)
   .lg-hero-inner { padding:0 1.25rem; }
   .lg-hero h1:where(:not([class])), .lg-sub { max-width:none; }
   .lg-hero h1:where(:not([class])) { font-size:1.85rem; }
-  .lg-intro { font-size:15px; }
+  .lg-intro { font-size:0.9375rem; }
   .lg-toc { grid-template-columns:1fr; }
   .lg-layout { padding-bottom:2.5rem; }
   .lg-sec { padding-bottom:2rem; }
-  .lg-sec p:where(:not([class])), .lg-sec li:where(:not([class])) { font-size:14.5px; }
+  .lg-sec p:where(:not([class])), .lg-sec li:where(:not([class])) { font-size:0.90625rem; }
   .lg-help { padding:1.5rem 1.25rem; }
   .lg-btn { width:100%; }
 }
 
-.lg-help-links { font-size:13.5px; color:var(--muted); line-height:1.7; margin:1.1rem 0 0; }
+.lg-help-links { font-size:0.84375rem; color:var(--muted); line-height:1.7; margin:1.1rem 0 0; }
 .lg-help-links a:where(:not([class])) { color: var(--blue); font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--blue-mid); }
 @media (hover: hover) { .lg-help-links a:where(:not([class])):hover { color: var(--blue-dk); border-bottom-color: var(--blue-dk); } }
 
