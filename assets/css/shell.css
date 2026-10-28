@@ -76,13 +76,14 @@
   border-bottom: 1px solid rgba(226,232,240,0.5);
   border-top: 1px solid rgba(255,255,255,0.8);
   box-shadow: 0 8px 32px rgba(0,0,0,0.05);
-  transition: height 0.25s cubic-bezier(0.4,0,0.2,1), background 0.25s ease, box-shadow 0.25s ease;
+  transition: background 0.25s ease, box-shadow 0.25s ease;
 }
 .desk-nav-inner { display:flex; align-items:center; justify-content:space-between; width:100%; max-width:1100px; margin:0 auto; }
-/* The logo is one control, so it presses as one: the mark and the name
-   scale together from the pointer-down, with no part moving on its own. */
-.nav-logo { display: flex; align-items: center; gap: 10px; min-height: 44px; text-decoration: none; flex-shrink: 0; border-radius: 12px; transform-origin: left center; transition: transform 0.25s cubic-bezier(0.16,1,0.3,1); }
-.nav-logo:active, .footer-logo:active { transform: scale(0.97); transition: transform 0.1s cubic-bezier(0.4,0,0.2,1); }
+/* The header logo is a plain link home (owner decision): it does not
+   move, resize or animate when pressed or when the page scrolls. The footer
+   logo keeps its press, as the footer stays as it is. */
+.nav-logo { display: flex; align-items: center; gap: 10px; min-height: 44px; text-decoration: none; flex-shrink: 0; border-radius: 12px; }
+.footer-logo:active { transform: scale(0.97); transition: transform 0.1s cubic-bezier(0.4,0,0.2,1); }
 .logo-mark { width: 38px; height: 38px; border-radius: 9px; overflow: hidden; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .logo-mark img:where(:not([class])) { width: 100%; height: 100%; object-fit: cover; display: block; }
 .logo-name { font-family: 'Sora', 'Sora Fallback', sans-serif; font-size: 1rem; font-weight: 700; color: #0F172A; letter-spacing: -0.019em; white-space: nowrap; }
@@ -331,10 +332,11 @@
   .audit-inner > a, #addon-toggle, .pr-book { min-height: 48px; }
 }
 
-/* Scroll-reactive header. Progressive enhancement: the whole block is
-   ignored by browsers that do not support scroll-driven animations, and
-   is skipped for anyone who has asked for reduced motion. Nothing here
-   affects layout, because .desk-nav is fixed. */
+/* Scroll-reactive header: the glass turns a little more solid and the
+   shadow deepens as the page scrolls. The bar keeps its height, so the
+   logo never moves or resizes (owner decision). Progressive enhancement:
+   ignored by browsers without scroll-driven animations and skipped for
+   anyone who has asked for reduced motion. */
 @supports (animation-timeline: scroll()) {
   @media (prefers-reduced-motion: no-preference) and (min-width: 721px) {
     .desk-nav {
@@ -343,8 +345,8 @@
       animation-range: 0 160px;
     }
     @keyframes nav-condense {
-      from { height:64px; background:rgba(255,255,255,0.88); box-shadow:0 8px 32px rgba(0,0,0,0.05); }
-      to   { height:56px; background:rgba(255,255,255,0.97); box-shadow:0 10px 28px rgba(15,23,42,0.13); }
+      from { background:rgba(255,255,255,0.88); box-shadow:0 8px 32px rgba(0,0,0,0.05); }
+      to   { background:rgba(255,255,255,0.97); box-shadow:0 10px 28px rgba(15,23,42,0.13); }
     }
   }
 }
@@ -643,7 +645,7 @@ footer {
   .nav-dd-btn svg, .mob-head svg { transition:none; }
   .nav-dd-panel, .nav-dd-panel.open { transform:none; }
   .mob-sub-wrap { transition:none; }
-  .nav-logo:active, .footer-logo:active,
+  .footer-logo:active,
   .nav-link:active, .nav-dd-list a:active,
   .mob-hamburger:active,
   .mob-link:hover, .mob-link:active,
@@ -656,8 +658,8 @@ footer {
   /* Press feedback without the motion. The press scales are switched off
      in every page sheet, so links, buttons, toggles and options dim while
      held instead: a tap is still answered the moment it lands. The footer
-     is left exactly as it is. */
-  :is(a[href], button, summary, [role="tab"], label:has(input)):not(footer *):active { opacity:0.7; }
+     and the header logo (a plain link home) are left as they are. */
+  :is(a[href], button, summary, [role="tab"], label:has(input)):not(footer *):not(.nav-logo):active { opacity:0.7; }
   .mob-menu {
     transform:none;
     backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
@@ -708,7 +710,7 @@ footer {
 /* The grey iOS tap flash paints over the press-scale feedback defined above,
    so the two fight each other. Suppressed on the chrome's tappable elements;
    the scale and colour change are the feedback now. */
-.nav-link, .nav-dd-list a, .nav-logo, .mob-link, .mob-hamburger,
+.nav-link, .nav-dd-list a, .mob-link, .mob-hamburger,
 .sticky-cta a, .wa-bubble, .nav-cta, .footer-social a:where(:not([class])), .footer-phone, .footer-col a, .footer-area-link {
   -webkit-tap-highlight-color:transparent;
 }
