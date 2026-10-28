@@ -521,7 +521,7 @@ function formShow(el) {
       const two = (n === 2);
       step1.classList.toggle('active', !two);
       step2.classList.toggle('active', two);
-      fill.style.width = two ? '100%' : '50%';
+      fill.style.transform = two ? 'scaleX(1)' : 'scaleX(0.5)';
       label.textContent = 'Step ' + n + ' of 2';
       if (two) {
         $('mqSelectedName').textContent = selected();

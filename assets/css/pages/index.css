@@ -83,13 +83,13 @@ a    { color:inherit; }
 .s-title { font-family:var(--display); font-size:1.45rem; font-weight:800; letter-spacing:-0.02em; line-height:1.2; color:var(--ink); margin-bottom:0.75rem; }
 .s-sub { font-size:1.0625rem; color:var(--muted); max-width:60ch; line-height:1.75; }
 .btn-blue { display:inline-flex; align-items:center; justify-content:center; gap:8px; background:var(--blue); color:#fff; font-family:var(--body); font-size:0.9375rem; font-weight:700; padding:14px 26px; border-radius:50px; text-decoration:none; box-shadow:0 4px 16px rgba(21,96,255,0.35); transition:transform 0.25s var(--ease-settle),box-shadow 0.25s var(--ease-settle),filter 0.2s; white-space:nowrap; }
-@media (hover: hover) { .btn-blue:hover { transform:translateY(-3px); box-shadow:0 12px 32px rgba(21,96,255,0.5); filter:brightness(1.1); } }
+@media (hover: hover) { .btn-blue:hover { box-shadow:0 12px 32px rgba(21,96,255,0.5); filter:brightness(1.1); } }
 /* Feedback on press, not release - the instant a finger or cursor is down,
    the button visibly compresses, so the tap never feels unacknowledged. */
-.btn-blue:active { transform:translateY(-1px) scale(0.97); box-shadow:0 4px 14px rgba(21,96,255,0.4); filter:brightness(1.05); transition:transform 0.1s var(--ease-press),box-shadow 0.1s var(--ease-press); }
+.btn-blue:active { transform: scale(0.97); box-shadow:0 4px 14px rgba(21,96,255,0.4); filter:brightness(1.05); transition:transform 0.1s var(--ease-press),box-shadow 0.1s var(--ease-press); }
 .btn-wa { display:inline-flex; align-items:center; justify-content:center; gap:8px; background:var(--wa-dk); color:#fff; font-family:var(--body); font-size:0.9375rem; font-weight:700; padding:14px 26px; border-radius:50px; text-decoration:none; box-shadow:0 4px 16px rgba(34,197,94,0.35); transition:transform 0.25s var(--ease-settle),box-shadow 0.25s var(--ease-settle); white-space:nowrap; }
-@media (hover: hover) { .btn-wa:hover { transform:translateY(-3px); background:var(--wa-deep); box-shadow:0 12px 32px rgba(21,128,61,0.4); } }
-.btn-wa:active { transform:translateY(-1px) scale(0.97); box-shadow:0 4px 14px rgba(21,128,61,0.35); transition:transform 0.1s var(--ease-press),box-shadow 0.1s var(--ease-press); }
+@media (hover: hover) { .btn-wa:hover { background:var(--wa-deep); box-shadow:0 12px 32px rgba(21,128,61,0.4); } }
+.btn-wa:active { transform: scale(0.97); box-shadow:0 4px 14px rgba(21,128,61,0.35); transition:transform 0.1s var(--ease-press),box-shadow 0.1s var(--ease-press); }
 .btn-outline { display:inline-flex; align-items:center; justify-content:center; gap:8px; background:transparent; color:var(--ink); font-family:var(--body); font-size:0.9375rem; font-weight:600; padding:13px 24px; border-radius:50px; text-decoration:none; border:1.5px solid var(--border2); transition:border-color 0.15s,color 0.15s,transform 0.1s var(--ease-press); white-space:nowrap; }
 @media (hover: hover) { .btn-outline:hover { border-color:var(--blue); color:var(--blue); } }
 .btn-outline:active { transform:scale(0.97); border-color:var(--blue); color:var(--blue); }
@@ -170,7 +170,9 @@ a    { color:inherit; }
 .mq-progress-bar { flex:1; height:3px; border-radius:3px; background:var(--border); overflow:hidden; }
 /* Solid brand blue. The blue to cyan gradient was doing a lot of work for a
    3px bar and it is the kind of detail that reads as decoration. */
-.mq-progress-fill { height:100%; width:50%; background:var(--blue); border-radius:3px; transition:width 0.3s cubic-bezier(0.4,0,0.2,1); }
+/* Grows by scaling from the left (the script sets scaleX), not by width, so
+   it moves on the compositor. The bar's rounded track clips the ends. */
+.mq-progress-fill { height:100%; width:100%; background:var(--blue); transform:scaleX(0.5); transform-origin:left center; transition:transform 0.3s cubic-bezier(0.4,0,0.2,1); }
 .mq-progress-label { font-size:0.75rem; font-weight:600; color:var(--muted); white-space:nowrap; letter-spacing:0.03em; }
 .mq-service-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:8px; }
 /* The service radios are hidden under their tiles; the tile (label) is the
@@ -184,7 +186,7 @@ a    { color:inherit; }
   cursor:pointer; transition:border-color 0.15s,background 0.15s,color 0.15s,transform 0.15s,box-shadow 0.15s;
 }
 .mq-service-btn svg { width:17px; height:17px; color:var(--blue); flex-shrink:0; }
-@media (hover: hover) { .mq-service-btn:hover { border-color:var(--blue-mid); transform:translateY(-1px); } }
+@media (hover: hover) { .mq-service-btn:hover { border-color:var(--blue-mid); } }
 .mq-service-radio:active + .mq-service-btn { transform:scale(0.96); transition:transform 0.1s var(--ease-press); }
 .mq-service-radio:checked + .mq-service-btn { border-color:var(--blue); background:var(--blue-lt); color:var(--blue-dk); box-shadow:0 0 0 3px rgba(21,96,255,0.08); }
 .mq-service-radio:focus-visible + .mq-service-btn { outline:2px solid var(--blue); outline-offset:1px; }
@@ -246,7 +248,7 @@ a    { color:inherit; }
 .services-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:16px; }
 .svc-card { background:var(--bg); border:1.5px solid var(--border); border-radius:var(--radius); padding:1.75rem; position:relative; display:flex; flex-direction:column; transition:border-color 0.2s,box-shadow 0.3s var(--ease-settle),transform 0.3s var(--ease-settle); overflow:hidden; }
 .svc-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--blue),#00CFFF); opacity:0; transition:opacity 0.2s; }
-@media (hover: hover) { .svc-card:hover { border-color:var(--blue); box-shadow:0 8px 24px rgba(21,96,255,0.08); transform:translateY(-3px); } }
+@media (hover: hover) { .svc-card:hover { border-color:var(--blue); box-shadow:0 8px 24px rgba(21,96,255,0.08); } }
 @media (hover: hover) { .svc-card:hover::before { opacity:1; } }
 .svc-card.popular { border-color:var(--blue); background:var(--blue-lt); }
 .svc-card.popular::before { opacity:1; }
@@ -293,7 +295,7 @@ a    { color:inherit; }
 .svc-link-pill:active { transform:scale(0.94); }
 .how-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:14px; margin-top:2.5rem; }
 .how-card { background:var(--bg); border:1.5px solid var(--border); border-radius:var(--radius); padding:1.75rem 1.5rem; transition:border-color 0.2s,transform 0.3s var(--ease-settle),box-shadow 0.3s var(--ease-settle); }
-@media (hover: hover) { .how-card:hover { border-color:var(--blue); transform:translateY(-3px); box-shadow:0 8px 24px rgba(21,96,255,0.08); } }
+@media (hover: hover) { .how-card:hover { border-color:var(--blue); box-shadow:0 8px 24px rgba(21,96,255,0.08); } }
 .how-num   { font-family:var(--display); font-size:3rem; font-weight:800; color:var(--blue-lt); letter-spacing:-0.042em; line-height:1; margin-bottom:0.75rem; border-bottom:2px solid var(--border); padding-bottom:0.75rem; }
 .how-title { font-family:var(--display); font-size:1.05rem; font-weight:700; line-height:1.3; letter-spacing:-0.01em; color:var(--ink); margin-bottom:0.4rem; margin-top:0.75rem; }
 .how-desc  { font-size:0.8125rem; font-weight:500; color:var(--muted); line-height:1.5; }
@@ -390,15 +392,16 @@ a.nap-value { padding:11px 0; margin:-11px 0; }
 /* The dot sits before each name and the list is pulled 20px left and
    clipped there, so the dot that would start each line is hidden and no
    line ends on a stray dot. */
-.suburb-links { list-style:none; display:flex; flex-wrap:wrap; row-gap:6px; margin-left:-20px; clip-path:inset(-4px -4px -4px 20px); }
+.suburb-links { list-style:none; display:flex; flex-wrap:wrap; align-items:center; margin-left:-20px; clip-path:inset(-4px -4px -4px 20px); }
 .suburb-links li::before { content:'\00B7'; display:inline-block; width:20px; text-align:center; color:var(--border2); }
-.suburb-links a { font-size:0.875rem; font-weight:600; color:var(--blue); text-decoration:none; }
+/* Each suburb is a 44px-tall tap row (Apple's 44pt minimum). */
+.suburb-links a { display:inline-flex; align-items:center; min-height:44px; font-size:0.875rem; font-weight:600; color:var(--blue); text-decoration:none; }
 @media (hover: hover) { .suburb-links a:hover { text-decoration:underline; text-underline-offset:3px; } }
 .contact-map { position:relative; aspect-ratio:1 / 1; border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; background:var(--bg2); }
 @media (max-width:720px) { .contact-split { grid-template-columns:minmax(0,1fr); } }
 .map-chip { position:absolute; left:14px; bottom:14px; display:inline-flex; align-items:center; gap:8px; background:var(--bg); border:1.5px solid var(--border); border-radius:var(--radius-sm); padding:0.7rem 1rem; font-family:var(--display); font-size:0.84375rem; font-weight:700; color:var(--ink); text-decoration:none; box-shadow:0 4px 16px rgba(15,23,42,0.14); transition:border-color 0.15s,color 0.15s,transform 0.2s var(--ease-settle),scale 0.3s var(--ease-settle); -webkit-tap-highlight-color:transparent; }
 .map-chip svg { width:16px; height:16px; color:var(--blue); flex-shrink:0; }
-@media (hover: hover) { .map-chip:hover { border-color:var(--blue-mid); color:var(--blue); transform:translateY(-2px); } }
+@media (hover: hover) { .map-chip:hover { border-color:var(--blue-mid); color:var(--blue); } }
 /* scale, not transform, so the press composes with the hover lift above. */
 .map-chip:active { scale:0.97; transition:scale 0.1s var(--ease-press),transform 0.1s var(--ease-press); }
 .cta-section { background:linear-gradient(135deg,var(--ink) 0%,#1B2A4A 100%); padding:5rem 2rem; position:relative; overflow:hidden; }

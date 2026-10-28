@@ -73,7 +73,6 @@
   background: rgba(255,255,255,0.88);
   backdrop-filter: blur(30px) saturate(200%);
   -webkit-backdrop-filter: blur(30px) saturate(200%);
-  border-bottom: 1px solid rgba(226,232,240,0.5);
   border-top: 1px solid rgba(255,255,255,0.8);
   box-shadow: 0 8px 32px rgba(0,0,0,0.05);
   transition: background 0.25s ease, box-shadow 0.25s ease;
@@ -145,7 +144,7 @@
    reads as the one action in a row of plain navigation links. */
 .nav-cta { display:none; align-items:center; gap:7px; margin-left:6px; font-family:'DM Sans', 'DM Sans Fallback', sans-serif; font-size:0.8125rem; font-weight:700; color:#fff; background:#15803D; padding:10px 17px; border-radius:50px; text-decoration:none; white-space:nowrap; box-shadow:0 3px 12px rgba(21,128,61,0.28); transition:transform 0.25s cubic-bezier(0.16,1,0.3,1), background 0.15s; }
 .nav-cta svg { width:15px; height:15px; flex-shrink:0; }
-@media (hover: hover) { .nav-cta:hover { background:#166534; transform:translateY(-1px); } }
+@media (hover: hover) { .nav-cta:hover { background:#166534; } }
 /* Email-only pages (Business IT): the header button goes to the page's own
    enquiry form, so it takes the brand blue instead of WhatsApp green. */
 .nav-cta--form { background:#1560FF; box-shadow:0 3px 12px rgba(21,96,255,0.28); }
@@ -170,7 +169,7 @@
 }
 .mob-link:focus-visible,
 .mob-hamburger:focus-visible { outline: 2px solid #1560FF; outline-offset: 2px; }
-.mob-nav { display:none; position:fixed; top:0; left:0; right:0; z-index:300; height:60px; background:rgba(255,255,255,0.97); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border-bottom:1.5px solid #E2E8F0; padding:0 1.25rem; align-items:center; justify-content:space-between; box-shadow:0 4px 20px rgba(0,0,0,0.07); }
+.mob-nav { display:none; position:fixed; top:0; left:0; right:0; z-index:300; height:60px; background:rgba(255,255,255,0.97); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); padding:0 1.25rem; align-items:center; justify-content:space-between; box-shadow:0 4px 20px rgba(0,0,0,0.07); }
 .mob-hamburger { display:flex; flex-direction:column; justify-content:center; align-items:center; gap:5px; width:44px; height:44px; background:#F1F5F9; border:1.5px solid #CBD5E1; border-radius:10px; cursor:pointer; flex-shrink:0; transition:background 0.15s,border-color 0.15s,transform 0.2s cubic-bezier(0.16,1,0.3,1); }
 .mob-hamburger:active { transform:scale(0.9); transition:transform 0.1s cubic-bezier(0.4,0,0.2,1); }
 @media (hover: hover) { .mob-hamburger:hover { background:#EEF3FF; border-color:#C7D8FF; } }
@@ -243,7 +242,7 @@
 .sticky-cta {
   display:none; position:fixed; bottom:0; left:0; right:0; z-index:400;
   background:rgba(255,255,255,0.97); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
-  border-top:1.5px solid #E2E8F0; box-shadow:0 -4px 24px rgba(15,23,42,0.1);
+  box-shadow:0 -4px 24px rgba(15,23,42,0.1);
   padding:7px 12px calc(10px + env(safe-area-inset-bottom)); gap:6px 8px; flex-wrap:wrap;
   transform:translateY(110%); transition:transform 0.3s cubic-bezier(0.16,1,0.3,1);
 }
@@ -282,7 +281,7 @@
   box-shadow:0 4px 20px rgba(34,197,94,0.45); text-decoration:none;
   transition:transform 0.25s cubic-bezier(0.16,1,0.3,1), box-shadow 0.25s cubic-bezier(0.16,1,0.3,1);
 }
-@media (hover: hover) { .wa-bubble:hover { transform:scale(1.1); box-shadow:0 6px 28px rgba(34,197,94,0.55); } }
+@media (hover: hover) { .wa-bubble:hover { box-shadow:0 6px 28px rgba(34,197,94,0.55); } }
 .wa-bubble:active { transform:scale(0.95); transition:transform 0.1s cubic-bezier(0.4,0,0.2,1); }
 /* The bubble only shows where nothing else on screen offers WhatsApp:
    phones get it in the sticky bar, desktops (901px up) in the header
@@ -332,8 +331,9 @@
   .audit-inner > a, #addon-toggle, .pr-book { min-height: 48px; }
 }
 
-/* Scroll-reactive header: the glass turns a little more solid and the
-   shadow deepens as the page scrolls. The bar keeps its height, so the
+/* Scroll-reactive header: no edge at all at the top of the page, then the
+   glass turns a little more solid and a soft shadow fades in as content
+   scrolls under it (a scroll edge, not a hard line). The bar keeps its height, so the
    logo never moves or resizes (owner decision). Progressive enhancement:
    ignored by browsers without scroll-driven animations and skipped for
    anyone who has asked for reduced motion. */
@@ -345,7 +345,7 @@
       animation-range: 0 160px;
     }
     @keyframes nav-condense {
-      from { background:rgba(255,255,255,0.88); box-shadow:0 8px 32px rgba(0,0,0,0.05); }
+      from { background:rgba(255,255,255,0.88); box-shadow:0 8px 32px rgba(0,0,0,0); }
       to   { background:rgba(255,255,255,0.97); box-shadow:0 10px 28px rgba(15,23,42,0.13); }
     }
   }

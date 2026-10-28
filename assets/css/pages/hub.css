@@ -117,7 +117,7 @@
 .hub-card-go { display: inline-flex; align-items: center; gap: 4px; font-size: 0.84375rem; font-weight: 700; color: var(--blue); }
 .hub-card-go > svg { width: 14px; height: 14px; }
 .hub-card:active { transform: scale(0.98); transition: transform 0.1s var(--ease-press); }
-@media (hover: hover) { .hub-card:hover { border-color: var(--blue-mid); box-shadow: 0 14px 34px rgba(15,23,42,0.08); transform: translateY(-3px); } }
+@media (hover: hover) { .hub-card:hover { border-color: var(--blue-mid); box-shadow: 0 14px 34px rgba(15,23,42,0.08); } }
 
 /* ---------- split sections: sticky side, content right ---------- */
 .hub-split { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: 3.5rem; align-items: start; }

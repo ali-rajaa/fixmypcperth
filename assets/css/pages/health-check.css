@@ -253,8 +253,8 @@ a { color: inherit; }
 .step-label.active { color: var(--blue); }
 .step-label.done { color: var(--ink2); }
 .step-connector { width: 44px; height: 2px; margin: 0 4px 22px; border-radius: 2px; background: var(--border); overflow: hidden; flex-shrink: 0; }
-.step-connector .conn-fill { height: 100%; width: 0%; background: var(--ink2); transition: width 0.5s var(--ease-settle); }
-.step-connector.done .conn-fill { width: 100%; }
+.step-connector .conn-fill { height: 100%; width: 100%; background: var(--ink2); transform: scaleX(0); transform-origin: left center; transition: transform 0.5s var(--ease-settle); }
+.step-connector.done .conn-fill { transform: scaleX(1); }
 
 /* Question card. overflow: clip rather than hidden: hidden creates a scroll
    container, which silently disabled the sticky Next button inside it. */
@@ -466,21 +466,22 @@ a { color: inherit; }
 .info-card p a:where(:not([class])) { color: var(--blue); font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--blue-mid); }
 @media (hover: hover) { .info-card p a:where(:not([class])):hover { color: var(--blue-dk); border-bottom-color: var(--blue-dk); } }
 .scroll-dots { display: flex; justify-content: center; gap: 0; padding-top: 0.5rem; margin: -19px 0; }
-/* Dots: the button is the tap target (44px tall, 24px wide, per Apple's
-   44pt minimum); the dot you see is drawn inside it by ::before. The
-   negative margins cancel the extra height so the dots sit where they did. */
+/* Dots: the button is the tap target, 44px each way (Apple's 44pt
+   minimum); the dot you see is drawn inside it by ::before. The negative
+   margins cancel the extra height so the dots sit where they did. Like
+   Apple's page dots, the current one changes colour, not size. */
 .scroll-dot {
   display: inline-flex; align-items: center; justify-content: center;
-  min-width: 24px; height: 44px; padding: 0 4px; border: none; background: none; cursor: pointer;
+  width: 44px; height: 44px; padding: 0; border: none; background: none; cursor: pointer;
   -webkit-tap-highlight-color: transparent;
   transition: transform 0.1s var(--ease-press);
 }
 .scroll-dot::before {
-  content: ''; display: block; width: 6px; height: 6px; border-radius: 3px;
+  content: ''; display: block; width: 8px; height: 8px; border-radius: 4px;
   background: var(--border2);
-  transition: background 0.2s var(--ease-settle), width 0.2s var(--ease-settle);
+  transition: background 0.2s var(--ease-settle);
 }
-.scroll-dot.active::before { background: var(--blue); width: 18px; }
+.scroll-dot.active::before { background: var(--blue); }
 
 /* Desktop: the six cards sit in a 3 x 2 grid inside the same 1100px column
    as the heading, so there is equal space on both sides. As a carousel they
@@ -597,7 +598,7 @@ a { color: inherit; }
 .cta-desc { font-size: 1.0625rem; line-height: 1.75; color: var(--muted); max-width: 60ch; }
 .cta-actions { display: flex; flex-direction: column; gap: 10px; min-width: 220px; }
 .cta-icon-row { display: flex; gap: 8px; }
-.cta-icon-btn { flex: 1; height: 50px; border-radius: 50px; display: flex; align-items: center; justify-content: center; text-decoration: none; -webkit-tap-highlight-color: transparent; transition: transform 0.15s var(--ease-settle); }
+.cta-icon-btn { flex: 1; height: 50px; border-radius: 50px; display: flex; align-items: center; justify-content: center; text-decoration: none; -webkit-tap-highlight-color: transparent; transition: background 0.15s var(--ease-settle), transform 0.15s var(--ease-settle); }
 .cta-icon-btn.wa { background: var(--wa); box-shadow: 0 4px 16px rgba(34,197,94,0.35); }
 .cta-icon-btn.call { background: var(--blue); box-shadow: 0 4px 16px rgba(21,96,255,0.35); }
 
@@ -606,26 +607,27 @@ a { color: inherit; }
    phone never leaves a card stuck in its lifted state.
    ========================================================== */
 @media (hover: hover) {
-  .btn-blue:hover { background: var(--blue-dk); transform: translateY(-2px); box-shadow: 0 10px 28px rgba(21,96,255,0.45); }
+  .btn-blue:hover { background: var(--blue-dk); box-shadow: 0 10px 28px rgba(21,96,255,0.45); }
   .btn-ghost:hover { border-color: var(--blue); color: var(--blue); }
-  .btn-start-quiz:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(21,96,255,0.5); }
+  .btn-start-quiz:hover { box-shadow: 0 8px 32px rgba(21,96,255,0.5); }
   .btn-back-q:hover { color: var(--blue); }
-  .option-btn:not(:disabled):hover { border-color: var(--blue); background: var(--blue-lt); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(21,96,255,0.1); }
+  .option-btn:not(:disabled):hover { border-color: var(--blue); background: var(--blue-lt); box-shadow: 0 4px 16px rgba(21,96,255,0.1); }
   .option-btn:not(:disabled):hover::before { transform: scaleY(1); }
   .option-btn:not(:disabled):hover .opt-icon { background: rgba(21,96,255,0.08); border-color: var(--blue-mid); }
-  .btn-next:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(21,96,255,0.45); }
-  .btn-wa-result:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(34,197,94,0.5); }
+  .btn-next:hover:not(:disabled) { box-shadow: 0 6px 28px rgba(21,96,255,0.45); }
+  .btn-wa-result:hover { box-shadow: 0 6px 28px rgba(34,197,94,0.5); }
   .btn-wa-result.btn-call-result:hover { box-shadow: 0 6px 28px rgba(21,96,255,0.5); }
   .btn-quote-result:hover { background: rgba(255,255,255,0.16); }
   .btn-retake:hover { color: rgba(255,255,255,0.85); }
-  .process-step:hover { border-color: var(--blue); transform: translateY(-2px); }
-  .info-card:hover { border-color: var(--blue); transform: translateY(-3px); box-shadow: 0 8px 28px rgba(21,96,255,0.1); }
+  .process-step:hover { border-color: var(--blue); }
+  .info-card:hover { border-color: var(--blue); box-shadow: 0 8px 28px rgba(21,96,255,0.1); }
   .info-card:hover::before { opacity: 1; }
   .scroll-dot:hover::before { background: var(--blue-mid); }
   .area-link:hover { background: var(--blue-lt); color: var(--blue); }
+  .cta-icon-btn.wa:hover { background: var(--wa-dk); }
+  .cta-icon-btn.call:hover { background: var(--blue-dk); }
 
   .intro-prose a:not([class]):hover { border-bottom-color: var(--blue); }
-  .cta-icon-btn:hover { transform: translateY(-2px); }
 }
 
 /* ==========================================================
@@ -635,7 +637,7 @@ a { color: inherit; }
    ========================================================== */
 .btn-blue:active, .btn-start-quiz:active, .btn-next:active:not(:disabled),
 .btn-wa-result:active, .btn-quote-result:active {
-  transform: translateY(0) scale(0.97);
+  transform: scale(0.97);
   transition: transform 0.1s var(--ease-press), box-shadow 0.1s var(--ease-press);
 }
 .btn-start-quiz:active, .btn-next:active:not(:disabled) { box-shadow: 0 2px 8px rgba(21,96,255,0.4); }
@@ -652,7 +654,7 @@ a { color: inherit; }
 
 .scroll-dot:active { transform: scale(0.8); }
 .area-link:active { background: var(--blue-mid); transition: background 0.1s var(--ease-press); }
-.cta-icon-btn:active { transform: translateY(0) scale(0.94); transition: transform 0.1s var(--ease-press); }
+.cta-icon-btn:active { transform: scale(0.94); transition: transform 0.1s var(--ease-press); }
 
 /* ==========================================================
    Responsive

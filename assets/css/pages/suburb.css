@@ -63,7 +63,7 @@ a { color: inherit; }
 .sub-body a:not([class]) { color: var(--blue); font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--blue-mid); }
 @media (hover: hover) { .sub-body a:not([class]):hover { color: var(--blue-dk); border-bottom-color: var(--blue-dk); } }
 .sub-body ul { margin: 0 0 1.15rem; padding-left: 1.15rem; }
-@media (hover: hover) { .problem-card:hover { border-color: var(--blue); transform: translateY(-2px); } }
+@media (hover: hover) { .problem-card:hover { border-color: var(--blue); } }
 .problem-price { display: block; margin-top: 0.7rem; font-family: var(--display); font-size: 0.875rem; font-weight: 800; color: var(--blue); }
 .price-table-head { grid-column: 1 / -1; border-radius: 12px; background: var(--ink2); padding: 0.85rem 1.35rem; display: grid; grid-template-columns: 1fr 110px; align-items: center; gap: 1rem; }
 .price-table-head strong:where(:not([class])) { font-family: var(--display); font-size: 0.84375rem; font-weight: 700; color: #fff; }
@@ -73,7 +73,7 @@ a { color: inherit; }
 .price-row-val { font-family: var(--display); font-size: 0.90625rem; font-weight: 800; color: var(--blue); white-space: nowrap; text-align: right; font-variant-numeric: tabular-nums; }
 .sub-cta::after { content: ''; position: absolute; top: -70px; right: -70px; width: 240px; height: 240px; background: radial-gradient(circle, rgba(21,96,255,0.22) 0%, transparent 70%); pointer-events: none; }
 .sub-cta-btns { display: flex; gap: 10px; flex-wrap: wrap; position: relative; z-index: 1; }
-@media (hover: hover) { .sub-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 26px rgba(21,96,255,0.45); } }
+@media (hover: hover) { .sub-cta-btn:hover { box-shadow: 0 8px 26px rgba(21,96,255,0.45); } }
 
 .sub-cta-btn:active { transform: scale(0.97); transition: transform 0.1s var(--ease-press); }
 .sub-cta-btn-outline:active { transform: scale(0.97); transition: transform 0.1s var(--ease-press); }

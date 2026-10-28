@@ -569,7 +569,7 @@ body:has(.ind-hero) { overflow-x: clip; }
   border-radius: 50px;
   text-decoration: none;
   box-shadow: 0 4px 14px rgba(21,96,255,0.35);
-  transition: transform 0.25s var(--ease-settle), scale 0.3s var(--ease-settle);
+  transition: background 0.15s var(--ease-settle), transform 0.25s var(--ease-settle), scale 0.3s var(--ease-settle);
   white-space: nowrap;
   font-size: 0.90625rem;
   padding: 13px 26px;
@@ -606,14 +606,13 @@ body:has(.ind-hero) { overflow-x: clip; }
 @media (hover: hover) {
   .post-breadcrumb a:where(:not([class])):hover { color: var(--blue-dk); }
   .post-body a:not([class]):hover { color: var(--blue-dk); border-bottom-color: var(--blue-dk); }
-  .inline-cta-btn:hover { transform: translateY(-2px); }
   .industry-pill:hover { color: var(--blue-dk); }
   .industry-pill:hover svg { color: var(--blue-dk); }
   .post-footer-link:hover { color: var(--blue-dk); }
+  .inline-cta-btn:hover { background: var(--blue-dk); }
   .service-link-card:hover {
     border-color: var(--blue);
     background: var(--blue-lt);
-    transform: translateY(-3px);
     box-shadow: 0 10px 28px rgba(15,23,42,0.08);
   }
   .inline-cta-btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.1); color: #fff; }

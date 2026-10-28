@@ -123,7 +123,7 @@ img { max-width: 100%; height: auto; }
   transition: transform 0.15s, box-shadow 0.15s;
 }
 @media (hover: hover) {
-  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(21,96,255,0.45); }
+  .btn-primary:hover { box-shadow: 0 6px 24px rgba(21,96,255,0.45); }
 }
 .btn-wa {
   display: inline-flex;
@@ -141,7 +141,7 @@ img { max-width: 100%; height: auto; }
   transition: transform 0.15s, box-shadow 0.15s;
 }
 @media (hover: hover) {
-  .btn-wa:hover { transform: translateY(-2px); background: var(--wa-deep); box-shadow: 0 6px 20px rgba(21,128,61,0.35); }
+  .btn-wa:hover { background: var(--wa-deep); box-shadow: 0 6px 20px rgba(21,128,61,0.35); }
 }
 .btn-outline {
   display: inline-flex;
@@ -385,7 +385,7 @@ img { max-width: 100%; height: auto; }
 .plan-card.featured::before { background: linear-gradient(90deg, var(--blue), #00CFFF); }
 .plan-card.premium-tier::before { background: linear-gradient(90deg, #F59E0B, #FF6B6B, #A855F7); }
 @media (hover: hover) {
-  .plan-card:hover { transform: translateY(-5px); box-shadow: 0 18px 50px rgba(15,23,42,0.11); }
+  .plan-card:hover { box-shadow: 0 18px 50px rgba(15,23,42,0.11); }
 }
 .plan-card.featured { border-color: var(--blue); box-shadow: 0 8px 40px rgba(21,96,255,0.14); }
 @media (hover: hover) {
@@ -439,7 +439,7 @@ img { max-width: 100%; height: auto; }
   background: var(--ink); color: #fff; box-shadow: 0 4px 14px rgba(15,23,42,0.2);
 }
 @media (hover: hover) {
-  .plan-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(15,23,42,0.28); }
+  .plan-cta:hover { box-shadow: 0 6px 20px rgba(15,23,42,0.28); }
 }
 .plan-card.featured .plan-cta { background: var(--blue); color: #fff; box-shadow: 0 4px 20px rgba(21,96,255,0.38); }
 @media (hover: hover) {
@@ -675,7 +675,6 @@ img { max-width: 100%; height: auto; }
   .plans-grid .plan-card { flex: 0 0 85vw; max-width: 360px; scroll-snap-align: center; }
   .plan-card.featured { transform: none; }
   @media (hover: hover) {
-    .plan-card.featured:hover { transform: translateY(-5px); }
   }
 }
 @media (max-width: 900px) {
@@ -803,7 +802,7 @@ img { max-width: 100%; height: auto; }
   transition: scale 0.1s var(--ease-press), transform 0.1s var(--ease-press);
 }
 @media (hover: hover) {
-  .audit-strip-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 22px rgba(0,0,0,0.2); }
+  .audit-strip-btn:hover { box-shadow: 0 6px 22px rgba(0,0,0,0.2); }
   .addon-toggle:hover, .biz-link-chip:hover { border-color: var(--blue); color: var(--blue); }
   .biz-link-chip-all:hover { border-color: var(--blue); }
 }
@@ -844,9 +843,9 @@ img { max-width: 100%; height: auto; }
    colour as --hov-accent and CSS does the rest.
    ---------------------------------------------------------- */
 @media (hover: hover) {
-  .hov-lift:hover { border-color: var(--hov-accent, var(--blue)); transform: translateY(-4px); box-shadow: 0 12px 32px rgba(15,23,42,0.10); }
+  .hov-lift:hover { border-color: var(--hov-accent, var(--blue)); box-shadow: 0 12px 32px rgba(15,23,42,0.10); }
 }
-.hov-lift:active { transform: translateY(-1px) scale(0.985); transition: transform 0.1s var(--ease-press); }
+.hov-lift:active { transform: scale(0.985); transition: transform 0.1s var(--ease-press); }
 .hov-lift {
   transition: border-color 0.2s, transform 0.3s var(--ease-settle), box-shadow 0.3s var(--ease-settle);
   -webkit-tap-highlight-color: transparent;

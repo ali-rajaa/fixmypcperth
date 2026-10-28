@@ -188,8 +188,8 @@ img { max-width: 100%; height: auto; }
               transform 0.25s var(--ease-settle), box-shadow 0.25s var(--ease-settle);
 }
 .btn-blue:visited { color: #fff; }
-@media (hover: hover) { .btn-blue:hover { background: var(--blue-dk); border-color: var(--blue-dk); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(21,96,255,0.4); } }
-.btn-blue:active { transform: translateY(0) scale(0.97); box-shadow: 0 2px 8px rgba(21,96,255,0.35); transition: transform 0.1s var(--ease-press), box-shadow 0.1s var(--ease-press); }
+@media (hover: hover) { .btn-blue:hover { background: var(--blue-dk); border-color: var(--blue-dk); box-shadow: 0 8px 24px rgba(21,96,255,0.4); } }
+.btn-blue:active { transform: scale(0.97); box-shadow: 0 2px 8px rgba(21,96,255,0.35); transition: transform 0.1s var(--ease-press), box-shadow 0.1s var(--ease-press); }
 
 .btn-outline {
   display: inline-flex; align-items: center; gap: 8px;
@@ -202,7 +202,7 @@ img { max-width: 100%; height: auto; }
 }
 .btn-outline:visited { color: var(--ink); }
 @media (hover: hover) { .btn-outline:hover { border-color: var(--blue); color: var(--blue); } }
-.btn-outline:active { transform: translateY(0) scale(0.97); box-shadow: 0 2px 8px rgba(21,96,255,0.35); transition: transform 0.1s var(--ease-press), box-shadow 0.1s var(--ease-press); }
+.btn-outline:active { transform: scale(0.97); box-shadow: 0 2px 8px rgba(21,96,255,0.35); transition: transform 0.1s var(--ease-press), box-shadow 0.1s var(--ease-press); }
 
 .btn-blue:focus-visible, .btn-outline:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
 
@@ -236,8 +236,8 @@ img { max-width: 100%; height: auto; }
   background: radial-gradient(circle, rgba(21,96,255,0.15) 0%, transparent 70%);
   pointer-events: none;
 }
-@media (hover: hover) { .post-featured:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(15,23,42,0.09); } }
-.post-featured:active { transform: translateY(0) scale(0.985); box-shadow: 0 2px 6px rgba(15,23,42,0.1); transition: transform 0.1s var(--ease-press), box-shadow 0.1s var(--ease-press); }
+@media (hover: hover) { .post-featured:hover { box-shadow: 0 10px 28px rgba(15,23,42,0.09); } }
+.post-featured:active { transform: scale(0.985); box-shadow: 0 2px 6px rgba(15,23,42,0.1); transition: transform 0.1s var(--ease-press), box-shadow 0.1s var(--ease-press); }
 .post-featured:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 8px; }
 
 .feat-eyebrow { font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #7FA9FF; display: flex; align-items: center; gap: 6px; margin-bottom: 0.75rem; }
@@ -266,10 +266,10 @@ img { max-width: 100%; height: auto; }
   transition: border-color 0.2s var(--ease-settle), transform 0.3s var(--ease-settle), box-shadow 0.3s var(--ease-settle);
 }
 .post-card-accent { position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--cat-c, var(--blue)); opacity: 0; transition: opacity 0.2s var(--ease-settle); }
-@media (hover: hover) { .post-card:hover { border-color: var(--cat-c, var(--blue)); transform: translateY(-3px); box-shadow: 0 10px 28px rgba(15,23,42,0.09); } }
+@media (hover: hover) { .post-card:hover { border-color: var(--cat-c, var(--blue)); box-shadow: 0 10px 28px rgba(15,23,42,0.09); } }
 .post-card:focus-visible .post-card-accent { opacity: 1; }
 @media (hover: hover) { .post-card:hover .post-card-accent { opacity: 1; } }
-.post-card:active { transform: translateY(0) scale(0.985); box-shadow: 0 2px 6px rgba(15,23,42,0.1); transition: transform 0.1s var(--ease-press), box-shadow 0.1s var(--ease-press); }
+.post-card:active { transform: scale(0.985); box-shadow: 0 2px 6px rgba(15,23,42,0.1); transition: transform 0.1s var(--ease-press), box-shadow 0.1s var(--ease-press); }
 .post-card:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 8px; }
 
 .post-cat { display: inline-block; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--cat-c, var(--blue)); margin-bottom: 0.5rem; }

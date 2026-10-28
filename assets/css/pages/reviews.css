@@ -342,7 +342,7 @@ a { color: inherit; }
     background 0.2s var(--ease-settle);
 }
 @media (hover: hover) { .btn-blue:hover {
-  background: var(--blue-dk); transform: translateY(-2px);
+  background: var(--blue-dk);
   box-shadow: 0 8px 24px rgba(21,96,255,0.45);
 } }
 .btn-outline {
@@ -356,7 +356,7 @@ a { color: inherit; }
     color 0.18s var(--ease-settle),
     transform 0.2s var(--ease-settle);
 }
-@media (hover: hover) { .btn-outline:hover { border-color: var(--blue); color: var(--blue); transform: translateY(-1px); } }
+@media (hover: hover) { .btn-outline:hover { border-color: var(--blue); color: var(--blue); } }
 
 /* ==========================================================
    RESPONSIVE
