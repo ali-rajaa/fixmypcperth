@@ -8,18 +8,22 @@ set -u
 BASE="${BASE:-https://www.fixmypcperth.com}"   # override to test elsewhere
 fail=0; n=0
 # One request, answer left in $fetched. No response at all (000: the host
-# did not answer) is asked twice more, 5s then 10s apart, so a short host
-# blip is not reported as a broken redirect. Any real answer (a wrong
-# redirect, a 404) is final. A host that is really down is caught below:
-# three addresses in a row with no answer stops the run.
+# did not answer) or a server error (5xx: the host now and then answers one
+# request with a 503, as check-live.sh notes) is asked twice more, 5s then
+# 10s apart, so a short host blip is not reported as a broken redirect. Any
+# other answer (a wrong redirect, a 404) is final. A host that is really
+# down is caught below: three addresses in a row with no answer stops the run.
 fetched=""; down=0
 fetch() {
-  local try
+  local try c
   for try in 1 2 3; do
     fetched=$(curl -s -o /dev/null -w "%{http_code} %{redirect_url}" --max-time 20 "$1")
-    [ "${fetched%% *}" != "000" ] && return
+    c=${fetched%% *}
+    [ "$c" != "000" ] && [ "${c#5}" = "$c" ] && return
     [ "$try" -lt 3 ] || return
-    echo "  note: $1 gave no response, trying again"; sleep $((try*5))
+    if [ "$c" = "000" ]; then echo "  note: $1 gave no response, trying again"
+    else echo "  note: $1 returned $c, trying again"; fi
+    sleep $((try*5))
   done
 }
 check() {
@@ -50,6 +54,7 @@ check() {
     echo "FAIL $src -> first response $first, not a permanent redirect"; fail=$((fail+1)); return; fi
   if [ "$url" != "$BASE${want%%#*}" ] || [ "$code" != "200" ]; then
     local note=""; [ "$code" = "000" ] && note=", the host did not respond"
+    [ "${code#5}" != "$code" ] && note=", a server error 3 times"
     echo "FAIL $src -> ended at $url ($code$note), want $BASE$want"; fail=$((fail+1)); return; fi
   if [ "$frag_ok" -ne 1 ]; then echo "FAIL $src -> lost the #${want#*#} on the way"; fail=$((fail+1)); return; fi
   [ "$hops" -gt 1 ] && echo "note $src -> $want in $hops hops"
