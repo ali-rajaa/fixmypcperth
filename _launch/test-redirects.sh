@@ -7,6 +7,21 @@
 set -u
 BASE="${BASE:-https://www.fixmypcperth.com}"   # override to test elsewhere
 fail=0; n=0
+# One request, answer left in $fetched. No response at all (000: the host
+# did not answer) is asked twice more, 5s then 10s apart, so a short host
+# blip is not reported as a broken redirect. Any real answer (a wrong
+# redirect, a 404) is final. A host that is really down is caught below:
+# three addresses in a row with no answer stops the run.
+fetched=""; down=0
+fetch() {
+  local try
+  for try in 1 2 3; do
+    fetched=$(curl -s -o /dev/null -w "%{http_code} %{redirect_url}" --max-time 20 "$1")
+    [ "${fetched%% *}" != "000" ] && return
+    [ "$try" -lt 3 ] || return
+    echo "  note: $1 gave no response, trying again"; sleep $((try*5))
+  done
+}
 check() {
   # Follows the whole chain (up to 4 hops). Passes when the first response
   # is a permanent redirect (301/308), the chain ends on the expected page
@@ -17,17 +32,25 @@ check() {
   local url="$BASE$src" code loc hops=0 first="" frag_ok=1
   [ "${want#*#}" != "$want" ] && frag_ok=0
   while :; do
-    local out; out=$(curl -s -o /dev/null -w "%{http_code} %{redirect_url}" --max-time 20 "$url")
+    local out; fetch "$url"; out=$fetched
     code=${out%% *}; loc=${out#* }
     [ -z "$first" ] && first=$code
     case "$code" in 301|302|307|308) ;; *) break;; esac
     hops=$((hops+1)); [ "$frag_ok" -eq 0 ] && [ "$loc" = "$BASE$want" ] && frag_ok=1
     url=${loc%%#*}; [ "$hops" -ge 4 ] && break
   done
+  if [ "$first" = "000" ]; then
+    echo "FAIL $src -> the host did not respond"; fail=$((fail+1)); down=$((down+1))
+    # Three addresses in a row with no answer: the host is down, not a
+    # redirect. Stop rather than wait out every address.
+    if [ "$down" -ge 3 ]; then echo "The host stopped responding (3 addresses in a row). Stopped early: re-run once it is back."; exit 1; fi
+    return; fi
+  down=0
   if [ "$first" != "301" ] && [ "$first" != "308" ]; then
     echo "FAIL $src -> first response $first, not a permanent redirect"; fail=$((fail+1)); return; fi
   if [ "$url" != "$BASE${want%%#*}" ] || [ "$code" != "200" ]; then
-    echo "FAIL $src -> ended at $url ($code), want $BASE$want"; fail=$((fail+1)); return; fi
+    local note=""; [ "$code" = "000" ] && note=", the host did not respond"
+    echo "FAIL $src -> ended at $url ($code$note), want $BASE$want"; fail=$((fail+1)); return; fi
   if [ "$frag_ok" -ne 1 ]; then echo "FAIL $src -> lost the #${want#*#} on the way"; fail=$((fail+1)); return; fi
   [ "$hops" -gt 1 ] && echo "note $src -> $want in $hops hops"
   return 0

@@ -18,7 +18,7 @@ const EXEMPT = [
   const urls = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1].replace('https://www.fixmypcperth.com', BASE) + (process.env.SUFFIX || ''));
   if (!urls.length) { console.log('No pages in the sitemap'); process.exit(1); }
   const b = await chromium.launch(process.env.CHROMIUM ? { executablePath: process.env.CHROMIUM } : {});
-  let bad = 0, exempt = 0;
+  let bad = 0, exempt = 0, down = 0; /* down: pages in a row the host did not answer */
   for (const W of [390, 360]) {
     const p = await b.newPage({ viewport: { width: W, height: 844 }, isMobile: true, hasTouch: true });
     await p.route(/google-analytics|googletagmanager|doubleclick/, r => r.abort());
@@ -26,15 +26,24 @@ const EXEMPT = [
       // A page that does not come back as one of ours (an error status, or
       // the host's own error page, which has no <main id="main-content">) is
       // fetched up to twice more, then counts as one load failure instead
-      // of a list of layout problems measured on someone else's page.
-      let loaded = false, status = 0;
+      // of a list of layout problems measured on someone else's page. The
+      // retries wait 5s then 20s, so a short host blip is ridden out, and a
+      // page that hangs is given up on after 20s rather than 30s.
+      let loaded = false, status = 0, tries = 0;
       for (let t = 0; t < 3 && !loaded; t++) {
-        if (t) await p.waitForTimeout(3000);
-        const res = await p.goto(u, { waitUntil: 'load' }).catch(() => null);
+        tries++;
+        if (t) await p.waitForTimeout(t === 1 ? 5000 : 20000);
+        const res = await p.goto(u, { waitUntil: 'load', timeout: 20000 }).catch(() => null);
         status = res ? res.status() : 0;
         loaded = !!res && res.ok() && (await p.$('#main-content')) !== null;
+        if (status >= 400 && status < 500) break; /* a 404 is an answer: no retry */
       }
-      if (!loaded) { bad++; console.log(`${W}px ${u.replace(BASE, '') || '/'}  LOAD FAILED (status ${status}) after 3 tries`); continue; }
+      if (!loaded) { bad++; console.log(`${W}px ${u.replace(BASE, '') || '/'}  LOAD FAILED (status ${status}${status ? '' : ', the host did not respond'}) after ${tries} ${tries === 1 ? 'try' : 'tries'}`);
+        /* Three pages in a row with no answer: the host is down, not the
+           site. Stop here rather than wait out every page. */
+        if (!status && ++down >= 3) { console.log('The host stopped responding (3 pages in a row). Stopped early: re-run once it is back.'); await b.close(); process.exit(1); }
+        continue; }
+      down = 0;
       const V = await p.evaluate((W)=>{
   const V=[]; const vis=e=>{const c=getComputedStyle(e);if(c.display==='none'||c.visibility==='hidden'||parseFloat(c.opacity)===0&&!e.classList.contains('fade-up'))return false;const r=e.getBoundingClientRect();return r.height>0&&r.width>0};
   const cls=e=>{const c=typeof e.className==='string'?e.className.trim().split(/\s+/)[0]:''; return c?'.'+c:e.tagName.toLowerCase()};
