@@ -35,28 +35,33 @@
     Terms, Privacy and Sitemap sit in the bottom bar, and Health Check and Tech Tips
     are in the header on every page.
     On phones each section collapses behind its heading (scripts.html adds
-    .footer-js and wires the buttons). Without JavaScript every list shows. {%- endcomment %}
+    .footer-js and wires the buttons) and slides open from it: .footer-panel
+    is the part that grows (shell.css). Without JavaScript every list shows. {%- endcomment %}
     <div class="footer-col footer-sec">
       <h2 class="footer-head">Repairs</h2>
       <h2 class="footer-sec-h"><button type="button" class="footer-sec-btn" aria-expanded="false" aria-controls="ft-repairs">Repairs <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button></h2>
-      <div class="footer-links footer-links--2col" id="ft-repairs">
-      {%- assign _ft_svcs = site.data.suburbs.service_links | where: "built", true | where: "kind", "service" -%}
-      {%- for _v in _ft_svcs %}
-      <a href="{{ '/' | append: _v.slug | relative_url }}">{{ _v.footer_label | default: _v.label | escape }}</a>
-      {%- endfor %}
+      <div class="footer-panel">
+        <div class="footer-links footer-links--2col" id="ft-repairs">
+        {%- assign _ft_svcs = site.data.suburbs.service_links | where: "built", true | where: "kind", "service" -%}
+        {%- for _v in _ft_svcs %}
+        <a href="{{ '/' | append: _v.slug | relative_url }}">{{ _v.footer_label | default: _v.label | escape }}</a>
+        {%- endfor %}
+        </div>
       </div>
     </div>
 
     <div class="footer-col footer-sec">
       <h2 class="footer-head">Company</h2>
       <h2 class="footer-sec-h"><button type="button" class="footer-sec-btn" aria-expanded="false" aria-controls="ft-company">Company <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button></h2>
-      <div class="footer-links" id="ft-company">
-      <a href="{{ '/services' | relative_url }}">All Services</a>
-      <a href="{{ '/pricing' | relative_url }}">Pricing</a>
-      <a href="{{ '/business-it-support' | relative_url }}">Business IT Support</a>
-      <a href="{{ '/reviews' | relative_url }}">Reviews &amp; FAQ</a>
-      <a href="{{ '/tech-tips' | relative_url }}">Tech Tips</a>
-      <a href="{{ '/quote-request' | relative_url }}">Get a Quote</a>
+      <div class="footer-panel">
+        <div class="footer-links" id="ft-company">
+        <a href="{{ '/services' | relative_url }}">All Services</a>
+        <a href="{{ '/pricing' | relative_url }}">Pricing</a>
+        <a href="{{ '/business-it-support' | relative_url }}">Business IT Support</a>
+        <a href="{{ '/reviews' | relative_url }}">Reviews &amp; FAQ</a>
+        <a href="{{ '/tech-tips' | relative_url }}">Tech Tips</a>
+        <a href="{{ '/quote-request' | relative_url }}">Get a Quote</a>
+        </div>
       </div>
     </div>
 
@@ -100,10 +105,12 @@
   <nav class="footer-areas footer-sec" aria-label="Computer repairs by suburb">
     <h2 class="footer-head">Computer Repairs by Suburb</h2>
     <h2 class="footer-sec-h"><button type="button" class="footer-sec-btn" aria-expanded="false" aria-controls="ft-areas">Computer Repairs by Suburb <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button></h2>
-    <div class="footer-areas-list" id="ft-areas">
-      {%- for _a in _areas %}
-      <a class="footer-area-link" href="{{ '/suburbs/' | append: _a.slug | relative_url }}"{% if _a.slug == page.slug %} aria-current="page"{% endif %}>{{ _a.suburb | escape }}</a>
-      {%- endfor %}
+    <div class="footer-panel">
+      <div class="footer-areas-list" id="ft-areas">
+        {%- for _a in _areas %}
+        <a class="footer-area-link" href="{{ '/suburbs/' | append: _a.slug | relative_url }}"{% if _a.slug == page.slug %} aria-current="page"{% endif %}>{{ _a.suburb | escape }}</a>
+        {%- endfor %}
+      </div>
     </div>
   </nav>
   {%- endif %}

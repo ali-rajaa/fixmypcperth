@@ -582,13 +582,24 @@ footer {
     font-family: 'Sora', 'Sora Fallback', sans-serif; font-size: 0.75rem; font-weight: 700;
     letter-spacing: .09em; text-transform: uppercase; color: #0F172A;
   }
-  .footer-sec-btn svg { width: 18px; height: 18px; color: #64748B; transition: transform .25s cubic-bezier(0.16,1,0.3,1); }
+  .footer-sec-btn svg { width: 18px; height: 18px; color: #64748B; transition: transform .4s cubic-bezier(0.16,1,0.3,1); }
   .footer-sec.open .footer-sec-btn svg { transform: rotate(180deg); }
   .footer-sec-btn:active { color: #1560FF; }
   .footer-sec-btn:focus-visible { outline: 2px solid #1560FF; outline-offset: 2px; border-radius: 4px; }
-  .footer-js .footer-sec:not(.open) > .footer-links,
-  .footer-js .footer-sec:not(.open) > .footer-areas-list { display: none; }
-  .footer-sec.open > .footer-links, .footer-sec.open > .footer-areas-list { padding-bottom: .75rem; }
+  /* Each section slides open from its heading, like the FAQ answers: the
+     panel's one row grows from 0fr to 1fr in step with the arrow, and a
+     second tap mid-way turns it round from where it is. visibility keeps
+     a closed list's links out of the tab order, switching only once the
+     close has finished. The 6px/8px padding, taken back by the margin,
+     leaves room for focus rings inside the clipped panel. */
+  .footer-js .footer-panel {
+    display: grid; grid-template-rows: 0fr; overflow: hidden; visibility: hidden;
+    margin: -6px -8px 0; padding: 6px 8px 0;
+    transition: grid-template-rows .4s cubic-bezier(0.16,1,0.3,1), visibility 0s linear .4s;
+  }
+  .footer-js .footer-sec.open > .footer-panel { grid-template-rows: 1fr; visibility: visible; transition: grid-template-rows .4s cubic-bezier(0.16,1,0.3,1), visibility 0s; }
+  .footer-js .footer-panel > .footer-links, .footer-js .footer-panel > .footer-areas-list { min-height: 0; transition: padding-bottom .4s cubic-bezier(0.16,1,0.3,1); }
+  .footer-js .footer-sec.open > .footer-panel > .footer-links, .footer-js .footer-sec.open > .footer-panel > .footer-areas-list { padding-bottom: .75rem; }
   .footer-blurb { display: none; }
 
   /* Logo and the social button share one row instead of stacking, which is
@@ -652,7 +663,10 @@ footer {
   .footer-social a:where(:not([class])):active {
     transform:none;
   }
-  .footer-sec-btn svg { transition:none; }
+  /* Same selectors as the footer slide rules (shell.css, 760px), so these
+     win by coming later: the sections open and close at once. */
+  .footer-sec-btn svg, .footer-js .footer-panel, .footer-js .footer-sec.open > .footer-panel,
+  .footer-js .footer-panel > .footer-links, .footer-js .footer-panel > .footer-areas-list { transition:none; }
   /* Press feedback without the motion. The press scales are switched off
      in every page sheet, so links, buttons, toggles and options dim while
      held instead: a tap is still answered the moment it lands. The two
