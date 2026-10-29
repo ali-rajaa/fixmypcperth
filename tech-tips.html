@@ -27,6 +27,13 @@ description: "Straight answers on slow computers, viruses, failing drives and wh
 {%- assign posts = site.data.techtips.posts | sort: "date" | reverse -%}
 {%- assign featured = posts | where: "featured", true | first -%}
 {%- unless featured %}{% assign featured = posts | first %}{% endunless -%}
+{%- comment -%} "Updated" is the newest update across the guides, read from
+  each guide's own front matter (updated, else date), so it moves when a
+  guide is revised, not only when a new one is published. {%- endcomment -%}
+{%- assign _ups = "" | split: "" -%}
+{%- assign _guides = site.pages | where: "layout", "tech-tip" -%}
+{%- for _g in _guides %}{% assign _d = _g.updated | default: _g.date %}{% assign _ups = _ups | push: _d %}{% endfor -%}
+{%- assign _latest = _ups | sort | last | default: posts.first.date -%}
 
 <script type="application/ld+json">
 {
@@ -107,7 +114,7 @@ description: "Straight answers on slow computers, viruses, failing drives and wh
         <div class="hero-stats">
           <span class="hero-stat"><strong>{{ posts | size }}</strong> free guide{% if posts.size != 1 %}s{% endif %}</span>
           <span class="dot" aria-hidden="true"></span>
-          <span class="hero-stat">Updated {{ posts.first.date | date: "%B %Y" }}</span>
+          <span class="hero-stat">Updated <time datetime="{{ _latest }}">{{ _latest | date: "%B %Y" }}</time></span>
           <span class="dot" aria-hidden="true"></span>
           <span class="hero-stat">Canning Vale, Perth WA</span>
         </div>

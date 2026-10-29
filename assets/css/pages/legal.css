@@ -96,6 +96,7 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body)
   display:flex; align-items:flex-start; gap:10px; text-decoration:none;
   font-family:var(--body); font-size:0.84375rem; font-weight:600; color:var(--ink2);
   line-height:1.45; padding:0.55rem 0.6rem; border-radius:9px;
+  -webkit-tap-highlight-color:transparent;
   transition:background 0.16s,color 0.16s;
 }
 @media (hover: hover) { .lg-toc a:where(:not([class])):hover { background:var(--blue-lt); color:var(--blue-dk); } }
@@ -119,7 +120,7 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body)
 .lg-sec p:where(:not([class])) { font-size:0.9375rem; color:var(--muted); line-height:1.85; margin:0 0 0.95rem; max-width:72ch; }
 .lg-sec p:where(:not([class])):last-child { margin-bottom:0; }
 .lg-sec strong:where(:not([class])) { color:var(--ink2); font-weight:700; }
-.lg-sec a:where(:not([class])) { color:var(--blue); text-decoration:none; border-bottom:1px solid var(--blue-mid); transition:border-color 0.15s; }
+.lg-sec a:where(:not([class])) { color:var(--blue); text-decoration:none; border-bottom:1px solid var(--blue-mid); -webkit-tap-highlight-color:transparent; transition:border-color 0.15s; }
 @media (hover: hover) { .lg-sec a:where(:not([class])):hover { border-color:var(--blue); } }
 .lg-sec ul:where(:not([class])) { margin:0 0 0.95rem; padding:0; list-style:none; max-width:72ch; }
 .lg-sec li:where(:not([class])) { position:relative; font-size:0.9375rem; color:var(--muted); line-height:1.75; padding:0 0 0.55rem 1.4rem; }
@@ -129,12 +130,16 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body)
 /* ---------- closing card ---------- */
 .lg-help { background:var(--bg2); border:1px solid var(--border); border-radius:18px; padding:2rem; margin-top:1rem; }
 .lg-help h2:where(:not([class])) { font-family:var(--display); font-size:1.3rem; font-weight:800; letter-spacing: -0.02em; color:var(--ink); margin:0 0 0.5rem; }
-.lg-help p { font-size:0.9375rem; color:var(--muted); line-height:1.75; margin:0 0 1.35rem; max-width:60ch; }
+/* Only the box's plain paragraph. A bare ".lg-help p" also caught the
+   "See also" line and beat its own class, so it lost its top margin and
+   sat on the button, with an extra 22px under it at the bottom. */
+.lg-help > p:where(:not([class])) { font-size:0.9375rem; color:var(--muted); line-height:1.75; margin:0 0 1.35rem; max-width:60ch; }
 .lg-help-actions { display:flex; flex-wrap:wrap; gap:10px; }
 .lg-btn {
   display:inline-flex; align-items:center; justify-content:center;
   font-family:var(--body); font-size:0.9375rem; font-weight:700; text-decoration:none;
   padding:13px 26px; border-radius:50px; max-width:100%; white-space:nowrap;
+  -webkit-tap-highlight-color:transparent;
   transition:background 0.18s,border-color 0.18s,color 0.18s,transform 0.1s var(--ease-press);
 }
 .lg-btn:active { transform:scale(0.96); }
@@ -162,21 +167,6 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body)
   .lg-sec { scroll-margin-top:calc(var(--mob-nav-h) + 16px); }
 }
 
-@media (max-width:720px) {
-  .wrap { padding:0 1.25rem; }
-  .lg-hero { padding:2rem 0 2.25rem; }
-  .lg-hero-inner { padding:0 1.25rem; }
-  .lg-hero h1:where(:not([class])), .lg-sub { max-width:none; }
-  .lg-hero h1:where(:not([class])) { font-size:1.85rem; }
-  .lg-intro { font-size:0.9375rem; }
-  .lg-toc { grid-template-columns:1fr; }
-  .lg-layout { padding-bottom:2.5rem; }
-  .lg-sec { padding-bottom:2rem; }
-  .lg-sec p:where(:not([class])), .lg-sec li:where(:not([class])) { font-size:0.90625rem; }
-  .lg-help { padding:1.5rem 1.25rem; }
-  .lg-btn { width:100%; }
-}
-
 .lg-help-links { font-size:0.84375rem; color:var(--muted); line-height:1.7; margin:1.1rem 0 0; }
 .lg-help-links a:where(:not([class])) { color: var(--blue); font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--blue-mid); }
 @media (hover: hover) { .lg-help-links a:where(:not([class])):hover { color: var(--blue-dk); border-bottom-color: var(--blue-dk); } }
@@ -190,15 +180,13 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body)
 /* High contrast. Body copy on these pages is long-form legal text, so the
    muted grey is darkened and the link underline strengthened. */
 @media (prefers-contrast: more) {
-  .lg-intro, .lg-sec p:where(:not([class])), .lg-sec li:where(:not([class])), .lg-help p { color:#334155; }
+  .lg-intro, .lg-sec p:where(:not([class])), .lg-sec li:where(:not([class])), .lg-help > p:where(:not([class])), .lg-help-links { color:#334155; }
   .lg-sec a:where(:not([class])) { border-bottom-color:#0A3ACC; }
   .lg-side-card, .lg-help { border-color:#0F172A; }
   .lg-btn-mail { background:#0A3ACC; border-color:#0F172A; }
   .lg-sec li:where(:not([class]))::before { background:#0A3ACC; }
 }
 
-/* The grey iOS tap flash paints over the press-scale feedback above. */
-.lg-toc a:where(:not([class])), .lg-btn, .lg-sec a:where(:not([class])) { -webkit-tap-highlight-color:transparent; }
 
 /* ==========================================================
    MOBILE STANDARD, phones (max-width: 720px)
@@ -210,24 +198,29 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body)
      gaps: 12 between cards, 10 between stacked rows |
      H1 1.7rem | H2 1.3rem with 12 below | reading text 16px |
      no sentence under 13px | buttons 48px tall, full width.
-   It sits last in the file on purpose, so it wins over the older
-   per-breakpoint values above it. Desktop is untouched.
+   The only phone block in the file, and the last thing in it.
    ========================================================== */
 @media (max-width: 720px) {
+  /* Side margin */
+  .wrap, .lg-hero-inner { padding: 0 var(--m-gutter); }
+
   /* Section rhythm */
-  .lg-hero { padding-top: var(--m-hero-top); padding-bottom: var(--m-section); }
+  .lg-hero { padding: var(--m-hero-top) 0 var(--m-section); }
   main > .wrap { padding-bottom: var(--m-section); }
-  .lg-layout { padding-top: var(--m-block); }
+  .lg-layout { padding-top: var(--m-block); padding-bottom: 2.5rem; }
+  .lg-sec { padding-bottom: 2rem; }
+  .lg-toc { grid-template-columns: 1fr; }
 
   /* Cards */
   .lg-side-card, .lg-help { padding: var(--m-card-pad); border-radius: var(--m-card-radius); }
 
   /* Headings */
-  .lg-hero h1:where(:not([class])) { font-size: var(--m-h1); }
+  .lg-hero h1:where(:not([class])) { max-width: none; font-size: var(--m-h1); }
+  .lg-sub { max-width: none; }
   .lg-sec h2:where(:not([class])), .lg-help h2:where(:not([class])) { font-size: var(--m-h2); margin-bottom: var(--m-h2-space); }
 
   /* Text */
-  .lg-intro, .lg-sec p:where(:not([class])), .lg-sec li:where(:not([class])), .lg-help-links { font-size: var(--m-text); }
+  .lg-intro, .lg-sec p:where(:not([class])), .lg-sec li:where(:not([class])), .lg-help > p:where(:not([class])), .lg-help-links { font-size: var(--m-text); }
   .lg-updated { font-size: var(--m-text-min); }
 
   /* Buttons */
