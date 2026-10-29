@@ -1,7 +1,12 @@
 /* ==========================================================
-   tech-tip.css   VERSION 5
+   tech-tip.css   VERSION 6
    Page stylesheet for the /tech-tips/<slug> cluster
    (_layouts/tech-tip.html).
+
+   v6: the contents column and the reading column now fill the same
+   1200px frame as the hero, so their edges line up with the hero,
+   the breadcrumb and the Tech Tips index. They were capped at 760px
+   and centred, which left them 26px inside the hero's edges.
 
    v4: brought into line with industry.css so the guides and the
    industry pages read as one site.
@@ -93,7 +98,7 @@ body:has(.tip-page) { overflow-x: clip; }
 .tip-hero > * { max-width: 820px; }
 .tip-hero .tip-h1 { font-size: clamp(2rem, 4vw, 3rem); }
 .tip-hero .tip-byline { margin-bottom: 0; padding-bottom: 0; border-bottom: 0; }
-.tip-layout { display: grid; grid-template-columns: 260px minmax(0, 760px); gap: 4rem; justify-content: center; align-items: start; }
+.tip-layout { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 4rem; align-items: start; }
 .tip-body { min-width: 0; }
 
 /* ---------- head ---------- */

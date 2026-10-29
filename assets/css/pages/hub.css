@@ -1,5 +1,5 @@
 /* ==========================================================
-   hub.css   /services and /tech-tips, layered on service.css (css_extra)
+   hub.css   /services only, layered on service.css (css_extra)
    service.css brings the shared parts: header type, buttons, the
    quote form and the FAQ. This sheet is the hub's own layout, so
    the page reads as a directory rather than another service page:
@@ -101,8 +101,8 @@
 .hub-sec-head > :only-child { grid-column: 1 / -1; }
 .hub-h2 { margin: 0; font-family: var(--display); font-size: clamp(1.45rem, 2.6vw, 2rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.03em; color: var(--ink); text-wrap: balance; }
 .hub-sec-p { margin: 0; font-size: 0.96875rem; line-height: 1.7; color: var(--ink2); text-wrap: pretty; }
-.hub-sec-p a:where(:not([class])), .hub-tile a:where(:not([class])), .hub-note a:where(:not([class])), .hub-sym-p a:where(:not([class])), .hub-empty a:where(:not([class])), .hub-two a:where(:not([class])) { color: var(--blue); font-weight: 600; text-decoration: underline; text-decoration-color: var(--blue-mid); text-underline-offset: 3px; }
-@media (hover: hover) { .hub-sec-p a:where(:not([class])):hover, .hub-tile a:where(:not([class])):hover, .hub-note a:where(:not([class])):hover, .hub-sym-p a:where(:not([class])):hover, .hub-empty a:where(:not([class])):hover, .hub-two a:where(:not([class])):hover { color: var(--blue-dk); text-decoration-color: currentColor; } }
+.hub-sec-p a:where(:not([class])), .hub-tile a:where(:not([class])), .hub-note a:where(:not([class])), .hub-sym-p a:where(:not([class])), .hub-empty a:where(:not([class])) { color: var(--blue); font-weight: 600; text-decoration: underline; text-decoration-color: var(--blue-mid); text-underline-offset: 3px; }
+@media (hover: hover) { .hub-sec-p a:where(:not([class])):hover, .hub-tile a:where(:not([class])):hover, .hub-note a:where(:not([class])):hover, .hub-sym-p a:where(:not([class])):hover, .hub-empty a:where(:not([class])):hover { color: var(--blue-dk); text-decoration-color: currentColor; } }
 
 /* ---------- repair cards ---------- */
 .hub-cards { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
@@ -114,7 +114,6 @@
 .hub-card-sum { flex: 1; font-size: 0.875rem; line-height: 1.6; color: var(--muted); }
 .hub-card-foot { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; margin-top: 0.6rem; padding-top: 0.85rem; border-top: 1px solid var(--border); }
 .hub-card-price { font-family: var(--display); font-size: 0.90625rem; font-weight: 700; color: var(--ink); }
-.hub-card-meta { font-size: 0.8125rem; font-weight: 600; color: var(--muted); font-variant-numeric: tabular-nums; }
 .hub-card-go { display: inline-flex; align-items: center; gap: 4px; font-size: 0.84375rem; font-weight: 700; color: var(--blue); }
 .hub-card-go > svg { width: 14px; height: 14px; }
 .hub-card:active { transform: scale(0.98); transition: transform 0.1s var(--ease-press); }
@@ -203,7 +202,7 @@
 .hub-close-act { display: flex; flex-direction: column; align-items: stretch; gap: 0.5rem; }
 .hub-close-link { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; font-size: 0.90625rem; font-weight: 600; color: #fff; text-decoration: underline; text-decoration-color: rgba(255,255,255,0.4); text-underline-offset: 4px; }
 @media (hover: hover) { .hub-close-link:hover { text-decoration-color: #fff; } }
-.hub-close .sv-btn-wa:focus-visible, .hub-close .sv-btn-call:focus-visible, .hub-close .sv-btn-blue:focus-visible, .hub-close-link:focus-visible { outline-color: #fff; }
+.hub-close .sv-btn-wa:focus-visible, .hub-close .sv-btn-call:focus-visible, .hub-close-link:focus-visible { outline-color: #fff; }
 
 /* ---------- tablet ---------- */
 @media (max-width: 960px) {
