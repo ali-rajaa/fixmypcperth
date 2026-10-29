@@ -105,11 +105,11 @@ description: "Straight answers on slow computers, viruses, failing drives and wh
         </div>
 
         <div class="hero-stats">
-          <span><strong>{{ posts | size }}</strong> free guide{% if posts.size != 1 %}s{% endif %}</span>
+          <span class="hero-stat"><strong>{{ posts | size }}</strong> free guide{% if posts.size != 1 %}s{% endif %}</span>
           <span class="dot" aria-hidden="true"></span>
-          <span>Updated {{ posts.first.date | date: "%B %Y" }}</span>
+          <span class="hero-stat">Updated {{ posts.first.date | date: "%B %Y" }}</span>
           <span class="dot" aria-hidden="true"></span>
-          <span>Canning Vale, Perth WA</span>
+          <span class="hero-stat">Canning Vale, Perth WA</span>
         </div>
 
         <p class="tt-more-copy" id="ttMoreCopy" hidden>
@@ -234,7 +234,7 @@ description: "Straight answers on slow computers, viruses, failing drives and wh
   <!-- ══════════════ WHERE TO NEXT ══════════════ -->
   <div class="cta-bar">
     <div class="cta-bar-inner">
-      <p>
+      <p class="cta-bar-text">
         Reading about a fault is useful right up until it is not. If your machine
         is doing something on this list, the health check takes two minutes and
         tells you how urgent it is.

@@ -104,8 +104,9 @@ body:has(.tip-page) { overflow-x: clip; }
 /* ---------- head ---------- */
 .tip-crumbs ol:where(:not([class])) { list-style: none; margin: 0 0 1.5rem; padding: 0; display: flex; flex-wrap: wrap; font-size: 0.8125rem; color: var(--muted2); }
 .tip-crumbs li:where(:not([class])) { display: flex; align-items: center; }
-.tip-crumbs li + li::before { content: '/'; margin: 0 0.55rem; color: var(--border2); }
+.tip-crumbs li:where(:not([class])) + li:where(:not([class]))::before { content: '/'; margin: 0 0.55rem; color: var(--border2); }
 .tip-crumbs a:where(:not([class])) { color: var(--blue); text-decoration: none; font-weight: 600; }
+.tip-crumbs a:where(:not([class])):active { opacity: 0.6; transition: opacity 0.1s var(--ease-press); }
 
 .tip-h1 { font-family: var(--display); font-size: clamp(1.8rem, 4vw, 2.7rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.035em; color: var(--ink); margin: 0 0 1rem; text-wrap: balance; }
 .tip-lede { font-size: 1.0625rem; line-height: 1.75; color: var(--ink2); margin: 0 0 1.5rem; text-wrap: pretty; }
@@ -134,11 +135,11 @@ body:has(.tip-page) { overflow-x: clip; }
 .tip-index-list a:where(:not([class])) { display: flex; align-items: center; gap: 0.65rem; padding: 0.4rem 0; font-size: 0.9375rem; line-height: 1.4; color: var(--ink3); text-decoration: none; }
 .tip-key { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem 1.25rem; margin: 1rem 0 0; padding-top: 1rem; border-top: 1px solid var(--border); }
 .tip-key > div { display: flex; flex-direction: column; gap: 0.2rem; }
-.tip-key dt { display: inline-flex; align-items: center; gap: 0.45rem; font-size: 0.8125rem; font-weight: 700; }
-.tip-key dt.tip-lvl-1 { color: var(--lvl-1); }
-.tip-key dt.tip-lvl-2 { color: var(--lvl-2); }
-.tip-key dt.tip-lvl-3 { color: var(--lvl-3); }
-.tip-key dd { margin: 0; padding-left: calc(7px + 0.45rem); font-size: 0.8125rem; line-height: 1.45; color: var(--muted); }
+.tip-key > div > dt { display: inline-flex; align-items: center; gap: 0.45rem; font-size: 0.8125rem; font-weight: 700; }
+.tip-key > div > .tip-lvl-1 { color: var(--lvl-1); }
+.tip-key > div > .tip-lvl-2 { color: var(--lvl-2); }
+.tip-key > div > .tip-lvl-3 { color: var(--lvl-3); }
+.tip-key > div > dd { margin: 0; padding-left: calc(7px + 0.45rem); font-size: 0.8125rem; line-height: 1.45; color: var(--muted); }
 
 /* ---------- body ---------- */
 .tip-cause { margin: 0 0 1.25rem; padding: 1.5rem 1.6rem 1.4rem; background: var(--bg); border: 1.5px solid var(--border); border-left: 4px solid var(--lvl-1); border-radius: 18px; scroll-margin-top: calc(var(--nav-h) + 1.25rem); }
@@ -165,14 +166,13 @@ body:has(.tip-page) { overflow-x: clip; }
 .tip-costs { margin: 0 0 1rem; padding: 1.75rem 1.75rem 1.5rem; background: var(--bg2); border: 1px solid var(--border); border-radius: 20px; scroll-margin-top: calc(var(--nav-h) + 1.25rem); }
 .tip-costs > .tip-h2 { border-top: 0; padding-top: 0; }
 .tip-table { width: 100%; border-collapse: collapse; margin: 1.25rem 0 0; font-size: 0.9375rem; }
-.tip-table thead th { text-align: left; font-size: 0.78125rem; font-weight: 600; color: var(--muted); padding: 0 0.75rem 0.5rem 0; border-bottom: 1.5px solid var(--border2); }
-.tip-table tbody th:where(:not([class])), .tip-table td { text-align: left; vertical-align: top; padding: 0.8rem 0.75rem 0.8rem 0; border-bottom: 1px solid var(--border); line-height: 1.45; }
-.tip-table tbody th:where(:not([class])) { font-weight: 600; color: var(--ink); }
-.tip-table td { color: var(--muted); }
-.tip-table td a:where(:not([class])) { color: var(--ink3); text-decoration: underline; text-decoration-color: var(--border2); text-underline-offset: 0.18em; }
+.tip-table > thead > tr > th { text-align: left; font-size: 0.78125rem; font-weight: 600; color: var(--muted); padding: 0 0.75rem 0.5rem 0; border-bottom: 1.5px solid var(--border2); }
+.tip-table > tbody > tr > th { text-align: left; vertical-align: top; padding: 0.8rem 0.75rem 0.8rem 0; border-bottom: 1px solid var(--border); line-height: 1.45; font-weight: 600; color: var(--ink); }
+.tip-table > tbody > tr > td { text-align: left; vertical-align: top; padding: 0.8rem 0.75rem 0.8rem 0; border-bottom: 1px solid var(--border); line-height: 1.45; color: var(--muted); }
+.tip-table > tbody > tr > td > a:where(:not([class])) { color: var(--ink3); text-decoration: underline; text-decoration-color: var(--border2); text-underline-offset: 0.18em; }
 .tip-table .tip-num { text-align: right; padding-right: 0; white-space: nowrap; font-family: var(--display); font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; }
 .tip-table thead .tip-num { font-family: var(--body); font-weight: 600; color: var(--muted); }
-.tip-row-lead th:where(:not([class])), .tip-row-lead .tip-num { color: var(--blue-dk); }
+.tip-row-lead > th, .tip-row-lead > .tip-num { color: var(--blue-dk); }
 
 /* The quote form (_includes/quote-form.html) is styled once, in
    assets/css/form.css, for every page that shows it. */
@@ -227,7 +227,7 @@ body:has(.tip-page) { overflow-x: clip; }
   .tip-index-list a:where(:not([class])) { min-height: 44px; padding: 0.3rem 0; }
   .tip-key { grid-template-columns: 1fr; gap: 0.6rem; }
   .tip-h2 { font-size: 1.3rem; }
-  .tip-table thead th:nth-child(2), .tip-table td:nth-child(2) { display: none; }
+  .tip-table > thead > tr > th:nth-child(2), .tip-table > tbody > tr > td:nth-child(2) { display: none; }
 }
 
 /* ---------- user preferences ---------- */
@@ -262,19 +262,17 @@ body:has(.tip-page) { overflow-x: clip; }
      under the intro; then 48 to the next block */
   .tip-crumbs { margin-bottom: 24px; }
   .tip-h1, .tip-hero .tip-h1 { font-size: var(--m-h1); margin-bottom: 16px; }
-  .tip-lede { margin-bottom: 24px; }
+  .tip-lede { margin-bottom: 24px; font-size: var(--m-text); }
   .tip-head { margin-bottom: var(--m-section); }
   .tip-head > :last-child { margin-bottom: 0; }
 
   /* Every block and every section ends 48 above the next */
-  .tip-index, .tip-costs, .tip-faq, .tip-more { margin-bottom: var(--m-section); }
-  .tip-cause { margin-bottom: var(--m-gap-cards); }
+  .tip-index, .tip-costs { margin-bottom: var(--m-section); padding: var(--m-card-pad); border-radius: var(--m-card-radius); }
+  .tip-faq, .tip-more { margin-bottom: var(--m-section); }
+  .tip-cause { margin-bottom: var(--m-gap-cards); padding: var(--m-card-pad); border-radius: var(--m-card-radius); }
   .tip-hero { padding-bottom: var(--m-section); margin-bottom: var(--m-section); }
   .tip-hero::before { top: calc(-1 * (var(--mob-nav-h) + var(--m-hero-top))); }
   .tip-body > :last-child { margin-bottom: 0; }
-
-  /* Cards */
-  .tip-index, .tip-cause, .tip-costs { padding: var(--m-card-pad); border-radius: var(--m-card-radius); }
 
   /* Gaps */
   .tip-faq-list { gap: var(--m-gap-rows); }
@@ -285,7 +283,7 @@ body:has(.tip-page) { overflow-x: clip; }
   .tip-byline { padding-bottom: var(--m-block); margin-bottom: 0; }
 
   /* Text */
-  .tip-lede, .tip-prose > p { font-size: var(--m-text); }
+  .tip-prose > p { font-size: var(--m-text); }
   .tip-more-cat { font-size: var(--m-text-min); }
 
   /* Buttons */
