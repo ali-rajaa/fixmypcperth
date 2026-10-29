@@ -1,4 +1,4 @@
-{%- comment -%} Icon for a service page, by slug. Used by the /services hub cards. {%- endcomment -%}
+{%- comment -%} Icon for a service page, by slug. Used by the /services hub cards and the /tech-tips guide cards ("pricing" is the one guide without a service page). {%- endcomment -%}
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
 {%- case include.slug -%}
 {%- when "laptop-repair-perth" -%}<rect x="4" y="4" width="16" height="11" rx="1.5"/><path d="M2 19h20"/><path d="M9 19l.6-2h4.8l.6 2"/>
@@ -9,6 +9,7 @@
 {%- when "windows-reinstall-perth" -%}<rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/>
 {%- when "gaming-pc-build-perth" -%}<path d="M6 9h12a4 4 0 0 1 3.9 4.9l-.6 2.5A2.5 2.5 0 0 1 17 17.5l-2-2.5H9l-2 2.5a2.5 2.5 0 0 1-4.3-1.1l-.6-2.5A4 4 0 0 1 6 9z"/><path d="M8 11.5v3M6.5 13h3"/><circle cx="16" cy="12.5" r=".6"/><circle cx="17.5" cy="14" r=".6"/>
 {%- when "computer-upgrades-perth" -%}<rect x="5" y="5" width="14" height="14" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/>
+{%- when "pricing" -%}<path d="M20.6 13.4l-7.2 7.2a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><circle cx="7.5" cy="7.5" r="1.5"/>
 {%- when "computer-wont-turn-on-perth" -%}<path d="M18.4 6.6a9 9 0 1 1-12.8 0"/><path d="M12 2v10"/>
 {%- else -%}<circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/>
 {%- endcase -%}

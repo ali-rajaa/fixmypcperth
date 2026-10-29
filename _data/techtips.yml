@@ -25,6 +25,17 @@
 
 meta:
   base: /tech-tips
+# finder: the "Where do you want to start?" rows at the top of /tech-tips,
+# in this order. Each row is the guide's "ask", so it reads as what the
+# visitor is seeing or wondering, not the guide's title. icon is the
+# hub-icon.html icon on the guide's card.
+  finder:
+    - why-is-my-pc-so-slow
+    - how-to-tell-if-pc-has-virus
+    - signs-hard-drive-failing
+    - laptop-screen-replacement-physical-repairs
+    - how-much-does-pc-repair-cost-perth
+    - ssd-upgrade-perth-guide
 # built: true means the page exists at /tech-tips/<slug>. The hub lists
 # every post here whether or not it is built.
 #
@@ -38,6 +49,8 @@ posts:
   excerpt: The seven real reasons a PC slows down, how urgent each one is, and what each costs to fix
     in Perth. Most are cheaper than a new computer.
   category: Speed & Performance
+  ask: Painfully slow
+  icon: slow-computer-repair-perth
   date: '2026-05-21'
   read_min: 7
   featured: true
@@ -51,6 +64,8 @@ posts:
   excerpt: The nine warning signs of an infection, what each one means about how deep it has gone, and
     what removal costs in Perth.
   category: Virus & Security
+  ask: Pop-ups or a virus
+  icon: virus-removal-perth
   date: '2026-05-10'
   read_min: 8
   featured: false
@@ -64,6 +79,8 @@ posts:
   excerpt: Drives rarely fail without warning. These are the five signs that come first, why each one
     matters, and why waiting turns a repair into a recovery job.
   category: Data Recovery
+  ask: Clicking or freezing
+  icon: data-recovery-perth
   date: '2026-04-12'
   read_min: 6
   featured: false
@@ -77,6 +94,8 @@ posts:
   excerpt: Real Perth prices for the repairs people actually need, why hourly billing costs more than
     it looks, and what our flat all-in fee covers.
   category: Pricing & Advice
+  ask: "What will it cost?"
+  icon: pricing
   date: '2026-04-20'
   read_min: 7
   featured: false
@@ -90,6 +109,8 @@ posts:
   excerpt: Real before and after numbers on boot times and app loading, which machines are worth upgrading,
     and what it costs fitted in Perth.
   category: Upgrades
+  ask: "Is an upgrade worth it?"
+  icon: computer-upgrades-perth
   date: '2026-05-05'
   read_min: 6
   featured: false
@@ -103,6 +124,8 @@ posts:
   excerpt: What a cracked screen actually costs to replace, how panel type changes the price, and when
     a damaged laptop is worth repairing rather than replacing.
   category: Repairs
+  ask: Cracked laptop screen
+  icon: laptop-screen-repair-perth
   date: '2026-03-16'
   read_min: 6
   featured: false

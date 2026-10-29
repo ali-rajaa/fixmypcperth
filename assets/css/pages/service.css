@@ -139,7 +139,7 @@ body:has(.sv-page) { overflow-x: clip; }
 /* #15803D keeps white text at 5:1; the brand #22C55E is 2.3:1. */
 .sv-btn-wa { background: var(--wa-dk); color: #fff; box-shadow: 0 4px 14px rgba(21,128,61,0.28); }
 /* Call sits before WhatsApp everywhere (owner, October 2026). */
-.sv-btn-call { background: var(--blue); color: #fff; box-shadow: 0 4px 14px rgba(21,96,255,0.28); }
+.sv-btn-call, .sv-btn-blue { background: var(--blue); color: #fff; box-shadow: 0 4px 14px rgba(21,96,255,0.28); }
 .sv-btn-sm { min-height: 44px; padding: 0 1.2rem; font-size: 0.875rem; }
 
 /* ---------- mid-page call to action ---------- */
@@ -271,7 +271,7 @@ body:has(.sv-page) { overflow-x: clip; }
   .sv-act-link:hover { color: var(--blue); text-decoration-color: var(--blue); }
   .sv-price-more:hover { color: var(--blue-dk); }
   .sv-btn-wa:hover { background: var(--wa-deep); }
-  .sv-btn-call:hover { background: var(--blue-dk); color: #fff; }
+  .sv-btn-call:hover, .sv-btn-blue:hover { background: var(--blue-dk); color: #fff; }
   .sv-index-list a:where(:not([class])):hover { color: var(--blue); }
   .sv-table td a:where(:not([class])):hover { color: var(--blue); }
   .sv-cat-list a:where(:not([class])):hover { color: var(--blue); text-decoration-color: var(--blue); }

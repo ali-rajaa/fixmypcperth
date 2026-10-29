@@ -1,32 +1,43 @@
 ---
 layout: default
-css: tech-tips
+css: service
+css_extra: hub
 title: "PC Repair Tips and Guides Perth | FixMyPC Tech Tips"
 description: "Straight answers on slow computers, viruses, failing drives and what repairs cost in Perth. Written by the people who do the repairs, in Canning Vale."
+heading: "PC Repair Tips & Guides"
+image: /og-tech-tips.png
+image_alt: "FixMyPC Perth Tech Tips: computer and laptop repair guides, based in Canning Vale"
 ---
 {%- comment -%}
-  Was /blog. Now /tech-tips, which is what the nav has said all along: the
-  nav link pointed at /tech-tips while production served /blog, so it 404d.
+  /tech-tips, the guide hub. Was /blog.
 
-  The old index built its post list from a JavaScript array at runtime, so
-  there were zero crawlable anchors to any of the eight posts. Google can run
-  JavaScript but it is slower and less reliable, and an index page whose only
-  job is linking to posts should not depend on it. Posts now come from
-  _data/techtips.yml and Jekyll renders real links at build time. Adding a
-  post is one entry in that file.
+  Built from the /services hub parts (service.css for the header type and
+  buttons, hub.css for the layout), so the two hubs read as one design:
+  a split hero with a quick finder, a card grid, an explainer band and the
+  dark closing band.
 
-  Sorted newest first from the data, so the order cannot drift from the dates
-  shown on the cards.
+  Everything comes from data. The card list is _data/techtips.yml, featured
+  guide first, then newest first. Each card reads its read time and updated
+  date from the guide's own front matter where the page exists, so the hub
+  cannot drift from the guide. The finder rows are meta.finder in the same
+  file, in that order, each labelled with the guide's "ask". Adding a guide
+  is one entry in techtips.yml.
+
+  Every link is a real anchor rendered at build time; nothing on this page
+  needs JavaScript.
 {%- endcomment -%}
-
-{%- comment -%}
-  Every guide in techtips.yml is listed and linked, whether its page is
-  built yet or not: on staging a guide that is not written yet 404s until
-  it is, which is expected while the cluster is being built out.
-{%- endcomment -%}
-{%- assign posts = site.data.techtips.posts | sort: "date" | reverse -%}
-{%- assign featured = posts | where: "featured", true | first -%}
-{%- unless featured %}{% assign featured = posts | first %}{% endunless -%}
+{%- assign _R = site.data.reviews.meta -%}
+{%- assign _T = site.data.techtips -%}
+{%- assign _bydate = _T.posts | sort: "date" | reverse -%}
+{%- assign _feat = _bydate | where: "featured", true -%}
+{%- assign _rest = _bydate | where_exp: "p", "p.featured != true" -%}
+{%- assign posts = _feat | concat: _rest -%}
+{%- assign _tips = site.pages | where: "layout", "tech-tip" -%}
+{%- assign _ups = "" | split: "" -%}
+{%- for _t in _tips %}{% assign _d = _t.updated | default: _t.date %}{% assign _ups = _ups | push: _d %}{% endfor -%}
+{%- assign _latest = _ups | sort | last | default: _bydate.first.date -%}
+{%- capture _chev %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>{% endcapture -%}
+{%- capture _arrow %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>{% endcapture -%}
 
 <script type="application/ld+json">
 {
@@ -53,12 +64,17 @@ description: "Straight answers on slow computers, viruses, failing drives and wh
   },
   "blogPost": [
     {%- for p in posts -%}{%- unless forloop.first %},{% endunless %}
+    {%- assign _u = "/tech-tips/" | append: p.slug | append: ".html" -%}
+    {%- assign _pg = _tips | where: "url", _u | first %}
     {
       "@type": "BlogPosting",
       "headline": {{ p.title | jsonify }},
       "description": {{ p.excerpt | jsonify }},
       "url": "{{ site.url }}/tech-tips/{{ p.slug }}",
       "datePublished": "{{ p.date }}",
+      {%- if _pg.updated %}
+      "dateModified": "{{ _pg.updated }}",
+      {%- endif %}
       "articleSection": {{ p.category | jsonify }},
       "author": { "@type": "Organization", "name": "FixMyPC Perth" },
       "publisher": { "@id": "{{ site.url }}/#business" }
@@ -79,198 +95,106 @@ description: "Straight answers on slow computers, viruses, failing drives and wh
 }
 </script>
 
-<div class="page-body">
+<div class="hub">
 
-  <!-- ══════════════ HERO ══════════════ -->
-  <div class="page-hero">
-    <div class="tt-hero-grid">
-
-      <div class="tt-hero-copy">
-        <h1 class="page-title">PC Repair Tips &amp; Guides</h1>
-        <p class="page-sub">
-          Written by the technician who works on these machines every day, not
-          by a content agency. Each guide explains what a symptom actually
-          means, how urgent it is, and what the repair costs in Perth.
-        </p>
-
-        <div class="tt-hero-cta">
-          <a class="btn-blue" href="/pc-health-check-perth">Run the Free PC Health Check</a>
-          <a class="btn-outline" href="/pricing">See repair prices</a>
+  <header class="hub-hero">
+    <div class="hub-wrap hub-hero-grid">
+      <div class="hub-hero-copy">
+        <nav class="sv-crumbs" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="{{ '/' | relative_url }}">Home</a></li>
+            <li><span aria-current="page">Tech Tips</span></li>
+          </ol>
+        </nav>
+        <h1 class="sv-h1 hub-h1">{{ page.heading | escape }}</h1>
+        <p class="sv-lede">Written by the people who fix these computers every day in Canning Vale. Each guide explains what a problem usually means, how urgent it is and what it costs to fix in Perth, so you can decide what to do next.</p>
+        <div class="sv-act">
+          <a href="{{ '/pc-health-check-perth' | relative_url }}" class="sv-btn sv-btn-blue" data-track="hero_health_check">Run the Free PC Health Check</a>
+          <a href="{{ '/pricing' | relative_url }}" class="sv-act-link" data-track="hero_pricing">
+            Or see every repair price
+            {{ _arrow }}
+          </a>
         </div>
-
-        <div class="hero-stats">
-          <span><strong>{{ posts | size }}</strong> free guide{% if posts.size != 1 %}s{% endif %}</span>
-          <span class="dot" aria-hidden="true"></span>
-          <span>Updated {{ posts.first.date | date: "%B %Y" }}</span>
-          <span class="dot" aria-hidden="true"></span>
-          <span>Canning Vale, Perth WA</span>
-        </div>
-
-        <p class="tt-more-copy" id="ttMoreCopy" hidden>
-          The guides cover computer and laptop repair, data recovery, virus
-          removal, SSD upgrades and screen replacement. Slow computers that
-          software cleaners never fix. Hard drives showing early failure signs
-          most people miss until it is too late. Infections running quietly for
-          months. Screens that cost less to repair than people expect.
-          <strong>These are not step-by-step repair guides.</strong> They explain
-          what is wrong and what it costs, so you can decide what to do next,
-          because a half-finished DIY repair on a failing drive usually destroys
-          data that was still recoverable. If you already know what you need,
-          <a href="/pricing">view our flat-rate pricing</a> or
-          <a href="/quote-request">get a fixed quote</a>.
-        </p>
-        <button type="button" class="tt-copy-toggle" id="ttCopyToggle" aria-expanded="false" aria-controls="ttMoreCopy">
-          More about these guides
-        </button>
+        {%- capture _tick %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>{% endcapture %}
+        <ul class="sv-promise hub-promise" aria-label="About these guides">
+          <li>{{ _tick }}{{ posts | size }} free guides</li>
+          <li>{{ _tick }}<span>Updated <time datetime="{{ _latest }}">{{ _latest | date: "%B %Y" }}</time></span></li>
+          {%- if _R.rating %}<li>{{ _tick }}Rated {{ _R.rating }} on Google</li>{% endif %}
+        </ul>
       </div>
+      <aside class="hub-find" aria-labelledby="hub-find-h">
+        <h2 class="hub-find-h" id="hub-find-h">Where do you want to start?</h2>
+        <ul class="hub-find-list">
+          {%- for _s in _T.meta.finder %}
+          {%- assign _p = _T.posts | where: "slug", _s | first -%}
+          {%- if _p %}
+          <li><a class="hub-find-link" href="{{ '/tech-tips/' | append: _p.slug | relative_url }}">{{ _p.ask | escape }}{{ _chev }}</a></li>
+          {%- endif %}
+          {%- endfor %}
+        </ul>
+        <a class="hub-find-all" href="#guides">Or browse all {{ posts | size }} guides{{ _arrow }}</a>
+      </aside>
+    </div>
+  </header>
 
-      <div class="tt-hero-art" aria-hidden="true">
-        <svg viewBox="0 0 320 280" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-          <!-- Two guides stacked behind, so the front one reads as one of several.
-               Deeper tint than before: at 220px the old fill was invisible. -->
-          <rect x="52" y="24" width="196" height="128" rx="12" fill="#DCE7FF" stroke="#B9CEFF" stroke-width="2"/>
-          <rect x="64" y="40" width="196" height="128" rx="12" fill="#EEF3FF" stroke="#C7D8FF" stroke-width="2"/>
-
-          <!-- Front guide: a monitor rather than a blank card, so the subject is
-               obvious without a caption. -->
-          <rect x="76" y="56" width="196" height="132" rx="12" fill="#FFFFFF" stroke="#1560FF" stroke-width="2.5"/>
-          <!-- screen bezel line -->
-          <path d="M76 78h196" stroke="#C7D8FF" stroke-width="2"/>
-          <!-- window dots -->
-          <circle cx="92" cy="67" r="3.5" fill="#CBD5E1"/>
-          <circle cx="104" cy="67" r="3.5" fill="#CBD5E1"/>
-          <circle cx="116" cy="67" r="3.5" fill="#CBD5E1"/>
-
-          <!-- guide content -->
-          <rect x="94" y="96" width="76" height="9" rx="4.5" fill="#1560FF"/>
-          <rect x="94" y="118" width="158" height="7" rx="3.5" fill="#E2E8F0"/>
-          <rect x="94" y="134" width="132" height="7" rx="3.5" fill="#E2E8F0"/>
-          <rect x="94" y="150" width="104" height="7" rx="3.5" fill="#E2E8F0"/>
-
-          <!-- monitor stand, so it reads as a machine not a sheet of paper -->
-          <path d="M150 188v14h44v-14" stroke="#1560FF" stroke-width="2.5" stroke-linejoin="round"/>
-          <path d="M132 204h80" stroke="#1560FF" stroke-width="3" stroke-linecap="round"/>
-
-          <!-- The fault being found. An amber warning, not a green tick: these
-               guides are about diagnosing what is wrong, and a tick told the
-               opposite story. Positioned clear of the card edge so the lens
-               reads as sitting above the screen rather than clipping it. -->
-          <circle cx="228" cy="196" r="40" fill="#FFFFFF"/>
-          <circle cx="228" cy="196" r="40" fill="#F59E0B" opacity="0.07"/>
-          <circle cx="228" cy="196" r="40" stroke="#1560FF" stroke-width="3"/>
-          <path d="M228 180v18" stroke="#B45309" stroke-width="4.5" stroke-linecap="round"/>
-          <circle cx="228" cy="211" r="2.8" fill="#B45309"/>
-          <path d="M257 225l20 20" stroke="#1560FF" stroke-width="7" stroke-linecap="round"/>
-        </svg>
+  <section class="hub-sec" id="guides" aria-labelledby="guides-h">
+    <div class="hub-wrap">
+      <div class="hub-sec-head">
+        <h2 class="hub-h2" id="guides-h">Every guide</h2>
+        <p class="hub-sec-p">One problem per guide. Start with the one that sounds most like your computer. Every price in them comes straight from our own price list.</p>
       </div>
-
+      <ul class="hub-cards" aria-label="Every guide">
+        {%- for p in posts %}
+        {%- assign _u = "/tech-tips/" | append: p.slug | append: ".html" -%}
+        {%- assign _pg = _tips | where: "url", _u | first -%}
+        {%- assign _min = _pg.read_min | default: p.read_min %}
+        <li>
+          <a class="hub-card" href="{{ '/tech-tips/' | append: p.slug | relative_url }}">
+            <span class="hub-card-ic">{% include hub-icon.html slug=p.icon %}</span>
+            <span class="hub-card-name">{{ p.title | escape }}</span>
+            <span class="hub-card-sum">{{ p.excerpt | escape }}</span>
+            <span class="hub-card-foot">
+              <span class="hub-card-meta">{{ _min }} min read</span>
+              <span class="hub-card-go">Read the guide{{ _chev }}</span>
+            </span>
+          </a>
+        </li>
+        {%- endfor %}
+      </ul>
     </div>
-  </div>
+  </section>
 
-  <!-- ══════════════ ARTICLES ══════════════ -->
-  <div class="blog-section">
-    <div class="blog-grid" id="blog-grid">
-
-      <a href="/tech-tips/{{ featured.slug }}" class="post-featured">
-        <div>
-          <div class="feat-eyebrow">Featured guide</div>
-          <div class="feat-title">{{ featured.title | escape }}</div>
-          <div class="feat-excerpt">{{ featured.excerpt | escape }}</div>
-          <div class="feat-meta">
-            <span class="feat-cat">{{ featured.category | escape }}</span>
-            <time datetime="{{ featured.date }}">{{ featured.date | date: "%-d %b %Y" }}</time>
-            <span aria-hidden="true">&middot;</span>
-            <span>{{ featured.read_min }} min read</span>
-          </div>
-        </div>
-        <div class="feat-read-btn">Read the guide</div>
-      </a>
-
-      {%- assign shown = 0 -%}
-      {%- for p in posts %}
-      {%- unless p.slug == featured.slug %}
-      {%- assign shown = shown | plus: 1 -%}
-      {%- assign cc = "cat-default" -%}
-      {%- if p.category contains "Speed" %}{% assign cc = "cat-speed" %}{% endif -%}
-      {%- if p.category contains "Virus" %}{% assign cc = "cat-virus" %}{% endif -%}
-      {%- if p.category contains "Data" %}{% assign cc = "cat-data" %}{% endif -%}
-      {%- if p.category contains "Upgrade" %}{% assign cc = "cat-upgrades" %}{% endif -%}
-      {%- if p.category contains "Pricing" %}{% assign cc = "cat-pricing" %}{% endif -%}
-      <a href="/tech-tips/{{ p.slug }}" class="post-card {{ cc }}{% if shown > 3 %} tt-extra{% endif %}"{% if shown > 3 %} hidden{% endif %}>
-        <div class="post-card-accent" aria-hidden="true"></div>
-        <span class="post-cat">{{ p.category | escape }}</span>
-        <div class="post-title">{{ p.title | escape }}</div>
-        <div class="post-excerpt">{{ p.excerpt | escape }}</div>
-        <div class="post-footer">
-          <span class="read-time-badge">
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            <time datetime="{{ p.date }}">{{ p.date | date: "%-d %b %Y" }}</time> &middot; {{ p.read_min }} min read
-          </span>
-          <span class="post-read-more">Read the guide</span>
-        </div>
-      </a>
-      {%- endunless %}
-      {%- endfor %}
-
-    </div>
-
-    {%- assign extra = posts | size | minus: 4 -%}
-    {%- if extra > 0 %}
-    <div class="tt-show-wrap">
-      <button type="button" class="tt-show-btn" id="ttShowMore" aria-expanded="false" aria-controls="blog-grid">
-        <span id="ttShowLabel">Show {{ extra }} more guide{% if extra > 1 %}s{% endif %}</span>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="6 9 12 15 18 9"/></svg>
-      </button>
-    </div>
-    {%- endif %}
-  </div>
-
-  <!-- ══════════════ WHERE TO NEXT ══════════════ -->
-  <div class="cta-bar">
-    <div class="cta-bar-inner">
-      <p>
-        Reading about a fault is useful right up until it is not. If your machine
-        is doing something on this list, the health check takes two minutes and
-        tells you how urgent it is.
-      </p>
-      <div class="cta-btns">
-        <a class="btn-blue" href="/pc-health-check-perth">Run the Free PC Health Check</a>
-        <a class="btn-outline" href="/pricing">All repair prices</a>
+  <section class="hub-sec hub-sec-tint" id="about" aria-labelledby="about-h">
+    <div class="hub-wrap">
+      <div class="hub-sec-head">
+        <h2 class="hub-h2" id="about-h">What these guides are for</h2>
+        <p class="hub-sec-p">Enough to decide what to do next, and no more.</p>
       </div>
-      <p class="cta-wa">Already know it needs fixing? <a class="cta-call-link" href="tel:+61470308676" data-track="hub_call">Call 0470 308 676</a> or <a class="cta-wa-link" href="{% include wa-href.html text="Hi! I'd like a quote for a computer repair." %}" target="_blank" rel="noopener noreferrer" onclick="trackWAClick()" data-track="hub_whatsapp">get a quote on WhatsApp</a>.</p>
+      <div class="hub-two">
+        <p>The guides cover the problems we see most: slow computers that cleaning tools never fix, hard drives showing early signs of failure, infections that run quietly for months, and cracked screens that cost less to fix than people expect. Each one explains what is usually behind the problem, how urgent it is and what the fix costs.</p>
+        <p>They are not step-by-step repair instructions, on purpose. A half-finished DIY repair on a failing drive usually destroys files that could still have been saved. If you already know what you need, see <a href="{{ '/services' | relative_url }}">every repair we do</a>, check <a href="{{ '/pricing' | relative_url }}">our flat-rate pricing</a> or <a href="{{ '/quote-request' | relative_url }}">get a fixed quote</a>.</p>
+      </div>
     </div>
-  </div>
+  </section>
+
+  <section class="hub-close" aria-labelledby="next-h">
+    <div class="hub-wrap hub-close-inner">
+      <div>
+        <h2 class="hub-close-h" id="next-h">Reading about a fault is useful right up until it is not.</h2>
+        <p class="hub-close-p">If your computer is doing something from these guides, call or message us with what you are seeing. We will tell you what it is likely to be and what it costs. If it needs a look on the bench first, the all-in diagnostic is a flat {% include price.html key="diagnostic-repair-all-in" bare=true %} that finds the fault and covers the repair labour.</p>
+      </div>
+      <div class="hub-close-act">
+        <a href="tel:+61470308676" class="sv-btn sv-btn-call" data-track="hub_call">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call 0470 308 676
+        </a>
+        <a href="{% include wa-href.html text="Hi! I'd like a quote for a computer repair." %}" target="_blank" rel="noopener noreferrer" class="sv-btn sv-btn-wa" onclick="trackWAClick()" data-track="hub_whatsapp">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.553 4.103 1.523 5.824L0 24l6.341-1.496A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.213-3.732.881.916-3.618-.235-.372A9.818 9.818 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>
+          Get a quote on WhatsApp
+        </a>
+        <a href="{{ '/pc-health-check-perth' | relative_url }}" class="hub-close-link" data-track="hub_health_check">Or run the Free PC Health Check</a>
+      </div>
+    </div>
+  </section>
 
 </div>
-
-<script>
-/* Show more / show less on the article grid, and the collapsible hero copy.
-   Both are progressive: without JavaScript the extra cards stay hidden but
-   every one is still a real link in the HTML, so crawlers see all eight. */
-(function () {
-  var btn = document.getElementById('ttShowMore');
-  if (btn) {
-    var label = document.getElementById('ttShowLabel');
-    var extras = document.querySelectorAll('.post-card.tt-extra');
-    var more = label ? label.textContent : 'Show more';
-    btn.addEventListener('click', function () {
-      var open = btn.getAttribute('aria-expanded') === 'true';
-      extras.forEach(function (el) { el.hidden = open; });
-      btn.setAttribute('aria-expanded', String(!open));
-      if (label) label.textContent = open ? more : 'Show fewer guides';
-      if (open) document.getElementById('blog-grid').scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
-  }
-
-  var t = document.getElementById('ttCopyToggle');
-  var copy = document.getElementById('ttMoreCopy');
-  if (t && copy) {
-    t.addEventListener('click', function () {
-      var open = t.getAttribute('aria-expanded') === 'true';
-      copy.hidden = open;
-      t.setAttribute('aria-expanded', String(!open));
-      t.textContent = open ? 'More about these guides' : 'Less';
-    });
-  }
-})();
-</script>

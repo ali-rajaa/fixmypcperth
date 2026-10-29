@@ -78,11 +78,10 @@
   transition: background 0.25s ease, box-shadow 0.25s ease;
 }
 .desk-nav-inner { display:flex; align-items:center; justify-content:space-between; width:100%; max-width:1100px; margin:0 auto; }
-/* The header logo is a plain link home (owner decision): it does not
-   move, resize or animate when pressed or when the page scrolls. The footer
-   logo keeps its press, as the footer stays as it is. */
+/* The header logo is a plain link home (owner decision) and the footer logo
+   matches it: neither moves, resizes or animates when pressed or when the
+   page scrolls. */
 .nav-logo { display: flex; align-items: center; gap: 10px; min-height: 44px; text-decoration: none; flex-shrink: 0; border-radius: 12px; }
-.footer-logo:active { transform: scale(0.97); transition: transform 0.1s cubic-bezier(0.4,0,0.2,1); }
 .logo-mark { width: 38px; height: 38px; border-radius: 9px; overflow: hidden; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .logo-mark img:where(:not([class])) { width: 100%; height: 100%; object-fit: cover; display: block; }
 .logo-name { font-family: 'Sora', 'Sora Fallback', sans-serif; font-size: 1rem; font-weight: 700; color: #0F172A; letter-spacing: -0.019em; white-space: nowrap; }
@@ -307,7 +306,7 @@
 @media (max-width: 900px), (pointer: coarse) {
   .industry-pill, .pr-book, .lg-toc a:where(:not([class])), .post-footer-link,
   .footer-logo, .industry-card, .svc-cta, .svc-link-pill, .pr-chip, .guide-tab,
-  .plan-tab, .btn-blue, .btn-ghost, .mq-rating, .tt-show-btn,
+  .plan-tab, .btn-blue, .btn-ghost, .mq-rating,
   .audit-inner > a, .biz-svc-links > a, .audit-direct > a, #addon-toggle { min-height: 44px; }
   .industry-pill { min-width: 44px; justify-content: center; }
   .qr-phone { display: flex; align-items: center; min-height: 44px; }
@@ -318,7 +317,6 @@
        otherwise take taps on the link's last few pixels */
     position: relative; display: inline-block; padding: 13px 6px; margin: -13px -6px;
   }
-  .tt-copy-toggle { display: inline-block; padding: 14px 6px; margin: -14px -6px; }
   .scroll-dot, .pkg-dot { position: relative; }
   .scroll-dot::after, .pkg-dot::after {
     content: ''; position: absolute; inset: -19px -8px;
@@ -327,7 +325,7 @@
 /* Mobile standard: buttons are 48px tall on phones (chips, tabs and
    links keep the 44px minimum above). No var() here, by shell rule. */
 @media (max-width: 720px) {
-  .btn-blue, .btn-ghost, .svc-cta, .tt-show-btn,
+  .btn-blue, .btn-ghost, .svc-cta,
   .audit-inner > a, #addon-toggle, .pr-book { min-height: 48px; }
 }
 
@@ -419,7 +417,7 @@ footer {
 :where(.footer-brand) > :where(.footer-social) { grid-column:2; grid-row:1; }
 :where(.footer-brand) > :where(.footer-tag, .footer-blurb) { grid-column:1 / -1; }
 
-.footer-logo { display:flex; align-items:center; gap:10px; text-decoration:none; margin-bottom:1.1rem; transform-origin:left center; transition:transform 0.25s cubic-bezier(0.16,1,0.3,1); }
+.footer-logo { display:flex; align-items:center; gap:10px; text-decoration:none; margin-bottom:1.1rem; }
 .footer-logo .logo-mark { width:38px; height:38px; border-radius:9px; overflow:hidden; flex-shrink:0; }
 .footer-logo .logo-mark img:where(:not([class])) { width:100%; height:100%; object-fit:cover; display:block; }
 .footer-logo .logo-name { font-family:'Sora', 'Sora Fallback', sans-serif; font-size:1.0625rem; font-weight:800; color:#0F172A; letter-spacing: -0.02em; }
@@ -434,8 +432,8 @@ footer {
   border:1px solid #E2E8F0; background:#FFFFFF; color:#1E293B;
   transition:border-color .18s, color .18s, transform .25s cubic-bezier(0.16,1,0.3,1);
 }
-@media (hover: hover) { .footer-social a:where(:not([class])):hover { border-color:#1877F2; color:#1877F2; transform:translateY(-2px); } }
-.footer-social a:where(:not([class])):active { transform:translateY(0) scale(0.92); transition:transform 0.1s cubic-bezier(0.4,0,0.2,1); }
+@media (hover: hover) { .footer-social a:where(:not([class])):hover { border-color:#1877F2; color:#1877F2; } }
+.footer-social a:where(:not([class])):active { transform:scale(0.92); transition:transform 0.1s cubic-bezier(0.4,0,0.2,1); }
 
 .footer-head {
   font-family:'Sora', 'Sora Fallback', sans-serif; font-size:0.75rem; font-weight:700;
@@ -645,21 +643,20 @@ footer {
   .nav-dd-btn svg, .mob-head svg { transition:none; }
   .nav-dd-panel, .nav-dd-panel.open { transform:none; }
   .mob-sub-wrap { transition:none; }
-  .footer-logo:active,
   .nav-link:active, .nav-dd-list a:active,
   .mob-hamburger:active,
   .mob-link:active,
   .sticky-cta a:active, .mob-btn:active,
   .wa-bubble:active, .nav-cta:active, .nav-call:active,
-  .footer-social a:where(:not([class])):hover, .footer-social a:where(:not([class])):active {
+  .footer-social a:where(:not([class])):active {
     transform:none;
   }
   .footer-sec-btn svg { transition:none; }
   /* Press feedback without the motion. The press scales are switched off
      in every page sheet, so links, buttons, toggles and options dim while
-     held instead: a tap is still answered the moment it lands. The footer
-     and the header logo (a plain link home) are left as they are. */
-  :is(a[href], button, summary, [role="tab"], label:has(input)):not(footer *):not(.nav-logo):active { opacity:0.7; }
+     held instead: a tap is still answered the moment it lands. The two
+     logos (plain links home) are left as they are. */
+  :is(a[href], button, summary, [role="tab"], label:has(input)):not(.nav-logo):not(.footer-logo):active { opacity:0.7; }
   .mob-menu {
     transform:none;
     backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
