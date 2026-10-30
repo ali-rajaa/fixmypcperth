@@ -242,7 +242,7 @@
   display:none; position:fixed; bottom:0; left:0; right:0; z-index:400;
   background:rgba(255,255,255,0.97); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
   box-shadow:0 -4px 24px rgba(15,23,42,0.1);
-  padding:7px 12px calc(10px + env(safe-area-inset-bottom)); gap:6px 8px; flex-wrap:wrap;
+  padding:10px 12px calc(10px + env(safe-area-inset-bottom)); gap:8px;
   transform:translateY(110%); transition:transform 0.3s cubic-bezier(0.16,1,0.3,1);
 }
 .sticky-cta.show { transform:translateY(0); }
@@ -266,8 +266,9 @@
 .sticky-cta .sc-call { flex:0.85; background:#1560FF; color:#fff; box-shadow:0 4px 14px rgba(21,96,255,0.28); }
 .sticky-cta .sc-wa { flex:1.2; background:#15803D; color:#fff; box-shadow:0 4px 14px rgba(21,128,61,0.3); }
 .sticky-cta .sc-quote { background:#fff; color:#0F172A; border:1.5px solid #CBD5E1; }
-/* One line above the buttons: the reason to come in, at a glance. */
-.sticky-cta .sc-note { flex-basis:100%; margin:0; font-family:'DM Sans', 'DM Sans Fallback', sans-serif; font-size:0.8125rem; font-weight:600; line-height:1.3; color:#475569; text-align:center; letter-spacing:0.01em; }
+/* Buttons only (owner, October 2026). The "24/7 drop-off, Canning Vale"
+   line that sat above them read as stray text over the page, as the bar
+   has no top edge; the homepage hero, FAQ and footer already say it. */
 
 /* WhatsApp floating bubble. Ships in the shared sticky-cta.html include, so
    it renders on every page - it belongs here, not in a page stylesheet.
