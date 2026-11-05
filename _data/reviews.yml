@@ -18,7 +18,7 @@
 
 meta:
   rating: 4.8
-  review_count: 47
+  review_count: 49
   source: Google Business Profile
   # Links to the Google Business Profile, all built on its Place ID, which
   # Google keeps stable. Copied Google Maps addresses (the long /maps/place/
