@@ -335,15 +335,13 @@ a { color: inherit; }
   background: var(--blue); color: #fff; text-decoration: none;
   font-family: var(--body); font-size: 0.9375rem; font-weight: 700;
   padding: 14px 26px; border-radius: 50px; border: none; cursor: pointer;
-  box-shadow: 0 4px 16px rgba(21,96,255,0.35); white-space: nowrap;
+  white-space: nowrap;
   transition:
     transform 0.2s var(--ease-settle),
-    box-shadow 0.2s var(--ease-settle),
     background 0.2s var(--ease-settle);
 }
 @media (hover: hover) { .btn-blue:hover {
   background: var(--blue-dk);
-  box-shadow: 0 8px 24px rgba(21,96,255,0.45);
 } }
 .btn-outline {
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;

@@ -137,9 +137,9 @@ body:has(.sv-page) { overflow-x: clip; }
 .sv-btn svg { width: 18px; height: 18px; flex-shrink: 0; }
 .sv-btn:active { transform: scale(0.97); }
 /* #15803D keeps white text at 5:1; the brand #22C55E is 2.3:1. */
-.sv-btn-wa { background: var(--wa-dk); color: #fff; box-shadow: 0 4px 14px rgba(21,128,61,0.28); }
+.sv-btn-wa { background: var(--wa-dk); color: #fff; }
 /* Call sits before WhatsApp everywhere (owner, October 2026). */
-.sv-btn-call { background: var(--blue); color: #fff; box-shadow: 0 4px 14px rgba(21,96,255,0.28); }
+.sv-btn-call { background: var(--blue); color: #fff; }
 .sv-btn-sm { min-height: 44px; padding: 0 1.2rem; font-size: 0.875rem; }
 
 /* ---------- mid-page call to action ---------- */

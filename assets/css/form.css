@@ -27,7 +27,7 @@
 textarea.tq-input { resize: vertical; min-height: 76px; }
 .tq-input::placeholder { color: rgba(255,255,255,0.6); }
 .tq-input:focus { outline: none; border-color: var(--blue); background: rgba(255,255,255,0.1); }
-.tq-input[aria-invalid="true"] { border-color: #F87171; box-shadow: 0 0 0 4px rgba(248,113,113,0.18); }
+.tq-input[aria-invalid="true"] { border-color: #F87171; }
 
 /* Tap buttons: a radio under each label, so the choice is one tap and
    arrow keys still move through the group. The radio sits over the face
@@ -79,8 +79,8 @@ textarea.tq-input { resize: vertical; min-height: 76px; }
 .tq-light .tq-opt { color: var(--muted); }
 .tq-light .tq-input { color: var(--ink); background: var(--bg2); border-color: #CBD5E1; }
 .tq-light .tq-input::placeholder { color: #64748B; }
-.tq-light .tq-input:focus { border-color: var(--blue); background: #fff; box-shadow: 0 0 0 3px rgba(21,96,255,0.12); }
-.tq-light .tq-input[aria-invalid="true"] { border-color: #DC2626; box-shadow: 0 0 0 3px rgba(220,38,38,0.12); }
+.tq-light .tq-input:focus { border-color: var(--blue); background: #fff; }
+.tq-light .tq-input[aria-invalid="true"] { border-color: #DC2626; }
 .tq-light .tq-seg-opt span:where(:not([class])) { background: #fff; border-color: #CBD5E1; color: var(--ink2); }
 .tq-light .tq-seg-opt input:checked + span { background: var(--blue-lt); border-color: var(--blue); color: var(--blue-dk); }
 .tq-light .tq-seg-opt input:focus-visible + span { outline-color: var(--blue); }

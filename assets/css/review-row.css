@@ -2,7 +2,7 @@
    and /reviews. Loaded by default.html when a page sets review_row: true.
    Uses the page stylesheet's own tokens (--bg, --border, --ink, --m-*). */
 .rv-bar { display:flex; align-items:center; justify-content:flex-start; gap:12px; flex-wrap:wrap; margin-top:2.5rem; margin-bottom:1.25rem; }
-.rv-badge { display:inline-flex; align-items:center; gap:10px; padding:10px 16px; min-height:44px; background:var(--bg); border:1px solid var(--border); border-radius:50px; color:var(--ink); text-decoration:none; box-shadow:0 1px 3px rgba(15,23,42,0.06); transition:border-color 0.15s,transform 0.1s var(--ease-press); }
+.rv-badge { display:inline-flex; align-items:center; gap:10px; padding:10px 16px; min-height:44px; background:var(--bg); border:1px solid var(--border); border-radius:50px; color:var(--ink); text-decoration:none; transition:border-color 0.15s,transform 0.1s var(--ease-press); }
 .rv-badge:active { transform:scale(0.98); }
 @media (hover: hover) { .rv-badge:hover { border-color:var(--border2); } .rv-badge:hover .rv-badge-link { text-decoration:underline; text-underline-offset:3px; } }
 .rv-badge .rv-g { width:22px; height:22px; }

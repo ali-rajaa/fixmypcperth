@@ -137,7 +137,7 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body)
    the wrapper shows a single soft halo instead. */
 .pr-search { display:flex; align-items:center; gap:10px; background:var(--bg2); border:1px solid var(--border); border-radius:12px; padding:0 14px; height:46px; transition:border-color 0.2s,background 0.2s,box-shadow 0.2s; }
 @media (hover: hover) { .pr-search:hover { border-color:var(--border2); } }
-.pr-search:focus-within { border-color:var(--blue); background:var(--bg); box-shadow:0 0 0 3px rgba(21,96,255,0.13); }
+.pr-search:focus-within { border-color:var(--blue); background:var(--bg); }
 .pr-search:focus-within svg { color:var(--blue); }
 .pr-search svg { width:17px; height:17px; color:var(--muted2); flex-shrink:0; transition:color 0.2s; }
 .pr-search input { flex:1; align-self:stretch; min-width:0; border:0; background:none; outline:none; font-family:var(--body); font-size:1rem; color:var(--ink); }
@@ -241,7 +241,7 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body)
   background:var(--bg); border:1px solid var(--border); border-radius:13px;
   padding:0.9rem 1.1rem; transition:border-color 0.18s,box-shadow 0.3s var(--ease-settle);
 }
-@media (hover: hover) { .pr-row:hover { border-color:var(--blue-mid); box-shadow:0 6px 22px rgba(15,23,42,0.05); } }
+@media (hover: hover) { .pr-row:hover { border-color:var(--blue-mid); } }
 .pr-row[hidden] { display:none; }
 /* Had no rule at all. In a 1fr grid column that means this can't shrink
    below its content's natural width, so a long service name or description
@@ -327,12 +327,12 @@ body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--body)
 .pr-close-box { background:var(--bg2); border:1.5px solid var(--border); border-radius:16px; padding:2rem 2.25rem; }
 .pr-close-box .pr-sec-blurb { margin-bottom:1.5rem; }
 .pr-close-act { display:flex; flex-wrap:wrap; align-items:center; gap:12px; }
-.pr-wa-btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; min-height:52px; padding:0 26px; border-radius:50px; background:var(--wa-dk); color:#fff; font-family:var(--body); font-size:0.9375rem; font-weight:700; text-decoration:none; box-shadow:0 4px 14px rgba(21,128,61,0.28); -webkit-tap-highlight-color:transparent; transition:background-color 0.15s var(--ease-settle), transform 0.1s var(--ease-press); }
+.pr-wa-btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; min-height:52px; padding:0 26px; border-radius:50px; background:var(--wa-dk); color:#fff; font-family:var(--body); font-size:0.9375rem; font-weight:700; text-decoration:none; -webkit-tap-highlight-color:transparent; transition:background-color 0.15s var(--ease-settle), transform 0.1s var(--ease-press); }
 .pr-wa-btn svg { width:18px; height:18px; flex-shrink:0; }
 @media (hover: hover) { .pr-wa-btn:hover { background:var(--wa-deep); color:#fff; } }
 .pr-wa-btn:active { transform:scale(0.97); }
 /* Call, before WhatsApp: the same button in the brand blue. */
-.pr-wa-btn.pr-call-btn { background:var(--blue); box-shadow:0 4px 14px rgba(21,96,255,0.28); }
+.pr-wa-btn.pr-call-btn { background:var(--blue); }
 @media (hover: hover) { .pr-wa-btn.pr-call-btn:hover { background:var(--blue-dk); } }
 
 /* ---------- faq ---------- */

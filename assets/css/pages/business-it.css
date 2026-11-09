@@ -132,7 +132,7 @@ img { max-width: 100%; height: auto; }
 .hero-proof { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1.25rem; margin-top: 1.75rem; }
 /* The Google rating, the same badge as the homepage quote card: the G, the
    score and gold stars. It opens the Google reviews. */
-.hero-rating { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px 0 12px; background: var(--bg); border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 1px 3px rgba(15,23,42,0.06); text-decoration: none; color: var(--ink); transition: border-color 0.15s, box-shadow 0.15s, scale 0.3s var(--ease-settle); -webkit-tap-highlight-color: transparent; }
+.hero-rating { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px 0 12px; background: var(--bg); border: 1px solid var(--border); border-radius: 12px; text-decoration: none; color: var(--ink); transition: border-color 0.15s, scale 0.3s var(--ease-settle); -webkit-tap-highlight-color: transparent; }
 .hero-rating:active { scale: 0.98; transition: scale 0.1s var(--ease-press); }
 .hero-rating:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
 .hero-rating-g { width: 20px; height: 20px; flex-shrink: 0; }
@@ -201,7 +201,7 @@ img { max-width: 100%; height: auto; }
 .plan-tab.active { color: var(--ink); }
 .plan-tab:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
 .plan-tab:active { transform: scale(0.98); transition: transform 0.1s var(--ease-press); }
-.plan-tabs-thumb { position: absolute; top: 3px; bottom: 3px; left: 3px; width: calc((100% - 6px) / 3); background: var(--bg); border-radius: 9px; box-shadow: 0 1px 2px rgba(15,23,42,0.12), 0 3px 8px rgba(15,23,42,0.08); will-change: transform; pointer-events: none; }
+.plan-tabs-thumb { position: absolute; top: 3px; bottom: 3px; left: 3px; width: calc((100% - 6px) / 3); background: var(--bg); border-radius: 9px; box-shadow: 0 0 0 1px var(--border); will-change: transform; pointer-events: none; }
 /* Plan cards. Every card has the same six rows in the same order: label,
    name and who it is for, price, button, features, best for. On desktop the
    cards are subgrids of one grid, so each row lines up across all three and
@@ -459,7 +459,7 @@ img { max-width: 100%; height: auto; }
   .btn-primary:hover { background: var(--blue-dk); }
   .first-month-cta:hover { background: var(--blue-lt); }
   .btn-outline:hover { border-color: var(--blue); color: var(--blue); }
-  .hero-rating:hover { border-color: var(--blue-mid); box-shadow: 0 4px 14px rgba(15,23,42,0.08); }
+  .hero-rating:hover { border-color: var(--blue-mid); }
   .hc-link:hover { background: var(--blue-lt); }
   .plan-card:hover { border-color: var(--border2); }
   .plan-card.featured:hover { border-color: var(--blue-dk); }
@@ -470,9 +470,9 @@ img { max-width: 100%; height: auto; }
   .addon-row:hover { background: var(--bg2); }
   .addon-toggle:hover, .biz-link-chip:hover { border-color: var(--blue); color: var(--blue); }
   .biz-link-chip-all:hover { border-color: var(--blue); }
-  .hov-lift:hover { border-color: var(--hov-accent, var(--blue)); box-shadow: 0 12px 32px rgba(15,23,42,0.10); }
+  .hov-lift:hover { border-color: var(--hov-accent, var(--blue)); }
   .cs-link:hover { color: #fff; text-decoration: underline; }
-  .industry-card:hover { border-color: var(--blue-mid); box-shadow: 0 6px 18px rgba(15,23,42,0.06); }
+  .industry-card:hover { border-color: var(--blue-mid); }
   .industry-card:hover .industry-arrow { color: var(--blue); }
   .audit-direct-link:hover { color: var(--blue-dk); text-decoration: underline; }
 }

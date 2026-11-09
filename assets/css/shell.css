@@ -141,7 +141,7 @@
 .nav-cta:focus-visible { outline: 2px solid #1560FF; outline-offset: 3px; }
 /* Header WhatsApp button. Solid and rounded like every other button, so it
    reads as the one action in a row of plain navigation links. */
-.nav-cta { display:none; align-items:center; gap:7px; margin-left:6px; font-family:'DM Sans', 'DM Sans Fallback', sans-serif; font-size:0.8125rem; font-weight:700; color:#fff; background:#15803D; padding:10px 17px; border-radius:50px; text-decoration:none; white-space:nowrap; box-shadow:0 3px 12px rgba(21,128,61,0.28); transition:transform 0.25s cubic-bezier(0.16,1,0.3,1), background 0.15s; }
+.nav-cta { display:none; align-items:center; gap:7px; margin-left:6px; font-family:'DM Sans', 'DM Sans Fallback', sans-serif; font-size:0.8125rem; font-weight:700; color:#fff; background:#15803D; padding:10px 17px; border-radius:50px; text-decoration:none; white-space:nowrap; transition:transform 0.25s cubic-bezier(0.16,1,0.3,1), background 0.15s; }
 .nav-cta svg { width:15px; height:15px; flex-shrink:0; }
 @media (hover: hover) { .nav-cta:hover { background:#166534; } }
 /* Email-only pages (Business IT): the header button goes to the page's own
@@ -216,8 +216,8 @@
 .mob-btn svg { width:17px; height:17px; flex-shrink:0; }
 .mob-btn:active { transform:scale(0.97); filter:brightness(0.95); }
 .mob-btn:focus-visible { outline:2px solid #1560FF; outline-offset:2px; }
-.mob-btn-solid { background:#1560FF; color:#fff; box-shadow:0 4px 14px rgba(21,96,255,0.25); }
-.mob-btn-wa { background:#15803D; color:#fff; box-shadow:0 4px 14px rgba(21,128,61,0.25); }
+.mob-btn-solid { background:#1560FF; color:#fff; }
+.mob-btn-wa { background:#15803D; color:#fff; }
 .mob-btn-line { background:#fff; color:#0F172A; border:1.5px solid #CBD5E1; }
 .mob-cta .mob-btn-call { flex:0.85; }
 .mob-cta .mob-btn-wa { flex:1.2; }
@@ -241,7 +241,7 @@
 .sticky-cta {
   display:none; position:fixed; bottom:0; left:0; right:0; z-index:400;
   background:rgba(255,255,255,0.97); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
-  box-shadow:0 -4px 24px rgba(15,23,42,0.1);
+  border-top:1px solid #E2E8F0;
   padding:10px 12px calc(10px + env(safe-area-inset-bottom)); gap:8px;
   transform:translateY(110%); transition:transform 0.3s cubic-bezier(0.16,1,0.3,1);
 }
@@ -263,8 +263,8 @@
 /* Call (blue), WhatsApp (green, the widest label), then the quote form
    (outline). #15803D keeps white text at 5:1; the old #22C55E fill was
    2.3:1. Side padding is tight so all three fit a 360px phone. */
-.sticky-cta .sc-call { flex:0.85; background:#1560FF; color:#fff; box-shadow:0 4px 14px rgba(21,96,255,0.28); }
-.sticky-cta .sc-wa { flex:1.2; background:#15803D; color:#fff; box-shadow:0 4px 14px rgba(21,128,61,0.3); }
+.sticky-cta .sc-call { flex:0.85; background:#1560FF; color:#fff; }
+.sticky-cta .sc-wa { flex:1.2; background:#15803D; color:#fff; }
 .sticky-cta .sc-quote { background:#fff; color:#0F172A; border:1.5px solid #CBD5E1; }
 /* Buttons only (owner, October 2026). The "24/7 drop-off, Canning Vale"
    line that sat above them read as stray text over the page, as the bar
@@ -278,10 +278,10 @@
 .wa-bubble {
   position:fixed; bottom:24px; right:24px; z-index:9999; width:58px; height:58px;
   background:#22C55E; border-radius:50%; display:flex; align-items:center; justify-content:center;
-  box-shadow:0 4px 20px rgba(34,197,94,0.45); text-decoration:none;
-  transition:transform 0.25s cubic-bezier(0.16,1,0.3,1), box-shadow 0.25s cubic-bezier(0.16,1,0.3,1);
+  text-decoration:none;
+  transition:transform 0.25s cubic-bezier(0.16,1,0.3,1), background-color 0.15s;
 }
-@media (hover: hover) { .wa-bubble:hover { box-shadow:0 6px 28px rgba(34,197,94,0.55); } }
+@media (hover: hover) { .wa-bubble:hover { background:#16A34A; } }
 .wa-bubble:active { transform:scale(0.95); transition:transform 0.1s cubic-bezier(0.4,0,0.2,1); }
 /* The bubble only shows where nothing else on screen offers WhatsApp:
    phones get it in the sticky bar, desktops (901px up) in the header
@@ -358,7 +358,7 @@
    the sending button stays full colour instead of the faded disabled look,
    and the sent button turns green whatever its resting colour was. */
 button.is-sending, button.is-sending:disabled { opacity:1; cursor:progress; transform:none; }
-button.is-sent, button.is-sent:disabled { opacity:1; cursor:default; transform:none; color:#FFFFFF; background:#15803D; border-color:#15803D; box-shadow:0 4px 14px rgba(21,128,61,0.28); filter:none; }
+button.is-sent, button.is-sent:disabled { opacity:1; cursor:default; transform:none; color:#FFFFFF; background:#15803D; border-color:#15803D; box-shadow:none; filter:none; }
 .btn-state { display:inline-flex; align-items:center; justify-content:center; gap:0.55em; }
 .btn-spin { flex-shrink:0; width:1em; height:1em; border-radius:50%; border:2px solid currentColor; border-right-color:transparent; animation:btn-spin 0.7s linear infinite; }
 .btn-tick { flex-shrink:0; width:1.15em; height:1.15em; stroke-dasharray:24; stroke-dashoffset:24; animation:btn-tick 0.35s cubic-bezier(0.16,1,0.3,1) forwards; }

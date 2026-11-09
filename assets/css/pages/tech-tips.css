@@ -158,7 +158,6 @@ img { max-width: 100%; height: auto; }
   min-height: 48px; padding: 0 26px; border-radius: 50px;
   font-family: var(--body); font-size: 0.9375rem; font-weight: 700; line-height: 1;
   background: var(--blue); color: #fff; border: 1.5px solid var(--blue);
-  box-shadow: 0 4px 16px rgba(21,96,255,0.28);
   text-decoration: none; -webkit-tap-highlight-color: transparent;
   transition: background-color 0.18s var(--ease-settle), border-color 0.18s var(--ease-settle), transform 0.25s var(--ease-settle), box-shadow 0.25s var(--ease-settle);
 }
@@ -172,7 +171,7 @@ img { max-width: 100%; height: auto; }
 }
 .btn-blue:visited { color: #fff; }
 .btn-outline:visited { color: var(--ink); }
-.btn-blue:active { transform: scale(0.97); box-shadow: 0 2px 8px rgba(21,96,255,0.35); transition: transform 0.1s var(--ease-press), box-shadow 0.1s var(--ease-press); }
+.btn-blue:active { transform: scale(0.97); transition: transform 0.1s var(--ease-press); }
 .btn-outline:active { transform: scale(0.97); transition: transform 0.1s var(--ease-press); }
 
 /* ---------- article grid ---------- */
@@ -187,11 +186,11 @@ img { max-width: 100%; height: auto; }
   display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2rem; align-items: center;
   padding: 2.25rem 2.5rem; background: var(--ink); border-radius: 20px;
   text-decoration: none; -webkit-tap-highlight-color: transparent;
-  transition: transform 0.3s var(--ease-settle), box-shadow 0.3s var(--ease-settle);
+  transition: transform 0.3s var(--ease-settle), background-color 0.2s var(--ease-settle);
 }
 .post-featured::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--blue), var(--teal), var(--wa)); }
 .post-featured::after { content: ''; position: absolute; bottom: -60px; right: -60px; width: 220px; height: 220px; background: radial-gradient(circle, rgba(21,96,255,0.15) 0%, transparent 70%); pointer-events: none; }
-.post-featured:active { transform: scale(0.985); box-shadow: 0 2px 6px rgba(15,23,42,0.1); transition: transform 0.1s var(--ease-press), box-shadow 0.1s var(--ease-press); }
+.post-featured:active { transform: scale(0.985); transition: transform 0.1s var(--ease-press); }
 
 .feat-eyebrow { display: flex; align-items: center; gap: 6px; margin-bottom: 0.75rem; font-size: 0.6875rem; font-weight: 700; line-height: 1.4; letter-spacing: 0.09em; text-transform: uppercase; color: #7FA9FF; }
 .feat-title { margin-bottom: 0.65rem; font-family: var(--display); font-size: 1.45rem; font-weight: 800; line-height: 1.2; letter-spacing: -0.02em; color: #fff; }
@@ -204,7 +203,7 @@ img { max-width: 100%; height: auto; }
 .feat-read-btn {
   position: relative; z-index: 1; flex-shrink: 0;
   display: inline-flex; align-items: center; min-height: 48px; padding: 0 22px; border-radius: 50px;
-  background: var(--blue); color: #fff; box-shadow: 0 4px 16px rgba(21,96,255,0.4);
+  background: var(--blue); color: #fff;
   font-family: var(--body); font-size: 0.9375rem; font-weight: 700; line-height: 1; white-space: nowrap;
 }
 
@@ -218,7 +217,7 @@ img { max-width: 100%; height: auto; }
 }
 .post-card-accent { position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--cat-c, var(--blue)); opacity: 0; transition: opacity 0.2s var(--ease-settle); }
 .post-card:focus-visible .post-card-accent { opacity: 1; }
-.post-card:active { transform: scale(0.985); box-shadow: 0 2px 6px rgba(15,23,42,0.1); transition: transform 0.1s var(--ease-press), box-shadow 0.1s var(--ease-press); }
+.post-card:active { transform: scale(0.985); transition: transform 0.1s var(--ease-press); }
 
 .post-cat { display: inline-block; margin-bottom: 0.5rem; font-size: 0.6875rem; font-weight: 700; line-height: 1.4; letter-spacing: 0.09em; text-transform: uppercase; color: var(--cat-c, var(--blue)); }
 .post-title { font-family: var(--display); font-size: 1.05rem; font-weight: 700; line-height: 1.3; letter-spacing: -0.01em; color: var(--ink); }
@@ -267,10 +266,10 @@ img { max-width: 100%; height: auto; }
 @media (hover: hover) {
   .tip-crumbs a:where(:not([class])):hover { color: var(--blue-dk); text-decoration: underline; }
   .tt-copy-toggle:hover { color: var(--blue-dk); }
-  .btn-blue:hover { background: var(--blue-dk); border-color: var(--blue-dk); box-shadow: 0 8px 24px rgba(21,96,255,0.4); }
+  .btn-blue:hover { background: var(--blue-dk); border-color: var(--blue-dk); }
   .btn-outline:hover { border-color: var(--blue); color: var(--blue); }
-  .post-featured:hover { box-shadow: 0 10px 28px rgba(15,23,42,0.09); }
-  .post-card:hover { border-color: var(--cat-c, var(--blue)); box-shadow: 0 10px 28px rgba(15,23,42,0.09); }
+  .post-featured:hover { background: var(--ink2); }
+  .post-card:hover { border-color: var(--cat-c, var(--blue)); }
   .post-card:hover .post-card-accent { opacity: 1; }
   .tt-show-btn:hover { background: var(--bg2); border-color: var(--blue); color: var(--blue); }
   .cta-wa-link:hover { color: var(--wa-deep); text-decoration-color: currentColor; }

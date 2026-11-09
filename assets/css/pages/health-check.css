@@ -161,9 +161,8 @@ a { color: inherit; }
   font-family: var(--body); font-size: 0.9375rem; font-weight: 700; line-height: 1;
   padding: 14px 24px; border-radius: 50px; border: none; cursor: pointer;
   text-decoration: none; white-space: nowrap;
-  box-shadow: 0 4px 16px rgba(21,96,255,0.35);
   -webkit-tap-highlight-color: transparent;
-  transition: transform 0.2s var(--ease-settle), box-shadow 0.2s var(--ease-settle), background 0.2s var(--ease-settle);
+  transition: transform 0.2s var(--ease-settle), background 0.2s var(--ease-settle);
 }
 .btn-ghost {
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
@@ -209,9 +208,8 @@ a { color: inherit; }
   background: var(--blue); color: #fff;
   font-family: var(--body); font-size: 0.9375rem; font-weight: 700; line-height: 1;
   padding: 18px 36px; border-radius: 50px; border: none; cursor: pointer;
-  box-shadow: 0 4px 24px rgba(21,96,255,0.4);
   -webkit-tap-highlight-color: transparent;
-  transition: transform 0.2s var(--ease-settle), box-shadow 0.2s var(--ease-settle);
+  transition: transform 0.2s var(--ease-settle), background 0.2s var(--ease-settle);
 }
 .btn-start-quiz svg { transition: transform 0.2s var(--ease-settle); }
 
@@ -245,7 +243,7 @@ a { color: inherit; }
   transition: background 0.35s var(--ease-settle), border-color 0.35s var(--ease-settle),
               color 0.35s var(--ease-settle), box-shadow 0.35s var(--ease-settle), transform 0.35s var(--ease-settle);
 }
-.step-circle.active { background: var(--blue); border-color: var(--blue); color: #fff; box-shadow: 0 0 0 5px rgba(21,96,255,0.15); transform: scale(1.1); }
+.step-circle.active { background: var(--blue); border-color: var(--blue); color: #fff; transform: scale(1.1); }
 .step-circle.done { background: var(--ink2); border-color: var(--ink2); color: #fff; }
 .step-circle.done .step-num { display: none; }
 .step-circle.done::after { content: '\2713'; position: absolute; font-size: 0.8125rem; font-weight: 800; }
@@ -298,7 +296,7 @@ a { color: inherit; }
   background: var(--blue); border-radius: 0 2px 2px 0;
   transform: scaleY(0); transition: transform 0.2s var(--ease-settle);
 }
-.option-btn[aria-checked="true"] { border-color: var(--blue); background: var(--blue-lt); box-shadow: 0 0 0 3px rgba(21,96,255,0.12); }
+.option-btn[aria-checked="true"] { border-color: var(--blue); background: var(--blue-lt); }
 .option-btn[aria-checked="true"]::before { transform: scaleY(1); }
 /* A chosen option is locked while the card animates out, so a double tap
    cannot land on the next question. */
@@ -335,9 +333,8 @@ a { color: inherit; }
   background: var(--blue); color: #fff;
   font-family: var(--body); font-size: 0.9375rem; font-weight: 700; line-height: 1;
   padding: 16px 28px; border-radius: 50px; border: none; cursor: pointer;
-  box-shadow: 0 4px 20px rgba(21,96,255,0.35);
   -webkit-tap-highlight-color: transparent;
-  transition: transform 0.15s var(--ease-settle), box-shadow 0.15s var(--ease-settle), opacity 0.15s var(--ease-settle);
+  transition: transform 0.15s var(--ease-settle), background 0.15s var(--ease-settle), opacity 0.15s var(--ease-settle);
 }
 .btn-next:disabled { opacity: 0.35; cursor: not-allowed; }
 
@@ -373,12 +370,11 @@ a { color: inherit; }
   background: var(--wa-dk); color: #fff; text-decoration: none;
   font-family: var(--body); font-size: 0.9375rem; font-weight: 700; line-height: 1;
   padding: 17px 28px; border-radius: 50px;
-  box-shadow: 0 4px 20px rgba(34,197,94,0.4);
   -webkit-tap-highlight-color: transparent;
-  transition: transform 0.15s var(--ease-settle), box-shadow 0.15s var(--ease-settle);
+  transition: transform 0.15s var(--ease-settle), background 0.15s var(--ease-settle);
 }
 /* Call, before the WhatsApp button (owner, October 2026): the same button in blue. */
-.btn-wa-result.btn-call-result { background: var(--blue); box-shadow: 0 4px 20px rgba(21,96,255,0.4); }
+.btn-wa-result.btn-call-result { background: var(--blue); }
 .btn-quote-result {
   display: flex; align-items: center; justify-content: center; gap: 9px;
   background: rgba(255,255,255,0.1); color: #fff; text-decoration: none;
@@ -599,28 +595,28 @@ a { color: inherit; }
 .cta-actions { display: flex; flex-direction: column; gap: 10px; min-width: 220px; }
 .cta-icon-row { display: flex; gap: 8px; }
 .cta-icon-btn { flex: 1; height: 50px; border-radius: 50px; display: flex; align-items: center; justify-content: center; text-decoration: none; -webkit-tap-highlight-color: transparent; transition: background 0.15s var(--ease-settle), transform 0.15s var(--ease-settle); }
-.cta-icon-btn.wa { background: var(--wa); box-shadow: 0 4px 16px rgba(34,197,94,0.35); }
-.cta-icon-btn.call { background: var(--blue); box-shadow: 0 4px 16px rgba(21,96,255,0.35); }
+.cta-icon-btn.wa { background: var(--wa); }
+.cta-icon-btn.call { background: var(--blue); }
 
 /* ==========================================================
    Hover: only where there is a real pointer, so a tap on a
    phone never leaves a card stuck in its hover state.
    ========================================================== */
 @media (hover: hover) {
-  .btn-blue:hover { background: var(--blue-dk); box-shadow: 0 10px 28px rgba(21,96,255,0.45); }
+  .btn-blue:hover { background: var(--blue-dk); }
   .btn-ghost:hover { border-color: var(--blue); color: var(--blue); }
-  .btn-start-quiz:hover { box-shadow: 0 8px 32px rgba(21,96,255,0.5); }
+  .btn-start-quiz:hover { background: var(--blue-dk); }
   .btn-back-q:hover { color: var(--blue); }
-  .option-btn:not(:disabled):hover { border-color: var(--blue); background: var(--blue-lt); box-shadow: 0 4px 16px rgba(21,96,255,0.1); }
+  .option-btn:not(:disabled):hover { border-color: var(--blue); background: var(--blue-lt); }
   .option-btn:not(:disabled):hover::before { transform: scaleY(1); }
   .option-btn:not(:disabled):hover .opt-icon { background: rgba(21,96,255,0.08); border-color: var(--blue-mid); }
-  .btn-next:hover:not(:disabled) { box-shadow: 0 6px 28px rgba(21,96,255,0.45); }
-  .btn-wa-result:hover { box-shadow: 0 6px 28px rgba(34,197,94,0.5); }
-  .btn-wa-result.btn-call-result:hover { box-shadow: 0 6px 28px rgba(21,96,255,0.5); }
+  .btn-next:hover:not(:disabled) { background: var(--blue-dk); }
+  .btn-wa-result:hover { background: var(--wa-deep); }
+  .btn-wa-result.btn-call-result:hover { background: var(--blue-dk); }
   .btn-quote-result:hover { background: rgba(255,255,255,0.16); }
   .btn-retake:hover { color: rgba(255,255,255,0.85); }
   .process-step:hover { border-color: var(--blue); }
-  .info-card:hover { border-color: var(--blue); box-shadow: 0 8px 28px rgba(21,96,255,0.1); }
+  .info-card:hover { border-color: var(--blue); }
   .info-card:hover::before { opacity: 1; }
   .scroll-dot:hover::before { background: var(--blue-mid); }
   .area-link:hover { background: var(--blue-lt); color: var(--blue); }
@@ -638,15 +634,13 @@ a { color: inherit; }
 .btn-blue:active, .btn-start-quiz:active, .btn-next:active:not(:disabled),
 .btn-wa-result:active, .btn-quote-result:active {
   transform: scale(0.97);
-  transition: transform 0.1s var(--ease-press), box-shadow 0.1s var(--ease-press);
+  transition: transform 0.1s var(--ease-press);
 }
-.btn-start-quiz:active, .btn-next:active:not(:disabled) { box-shadow: 0 2px 8px rgba(21,96,255,0.4); }
 .btn-ghost:active { transform: scale(0.97); transition: transform 0.1s var(--ease-press); }
 .option-btn:not(:disabled):active {
   transform: scale(0.97);
   background: var(--blue-mid); border-color: var(--blue);
-  box-shadow: inset 0 1px 3px rgba(15,23,42,0.12);
-  transition: transform 0.1s var(--ease-press), background 0.1s var(--ease-press), box-shadow 0.1s var(--ease-press);
+  transition: transform 0.1s var(--ease-press), background 0.1s var(--ease-press);
 }
 .option-btn:not(:disabled):active::before { transform: scaleY(1); }
 .btn-back-q:active { color: var(--ink2); transform: scale(0.96); transition: transform 0.1s var(--ease-press); }
@@ -696,7 +690,7 @@ a { color: inherit; }
   .step-bar { margin-bottom: 1.15rem; max-width: 100%; }
   /* 7 circles + 6 connectors = 292px, inside a 335px phone. */
   .step-circle { width: 28px; height: 28px; font-size: 0.6875rem; }
-  .step-circle.active { box-shadow: 0 0 0 3px rgba(21,96,255,0.15); transform: scale(1.06); }
+  .step-circle.active { transform: scale(1.06); }
   .step-circle.done::after { font-size: 0.6875rem; }
   .step-connector { width: 12px; margin: 0 2px; }
   .step-label { display: none; }
