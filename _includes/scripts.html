@@ -115,31 +115,6 @@ function formShow(el) {
     }, { passive: true });
   }
 
-  /* ---- Trust Ticker ---- */
-  const items = [
-    'Same or next day turnaround',
-    'Local drop off in Canning Vale',
-    '30-day warranty on all work',
-    'Upfront pricing, agreed before we start',
-    'No fix, no fee on data recovery',
-    'Rated {{ site.data.reviews.meta.rating }} on Google',
-    'Free quote in minutes',
-    'Open 24 hours, 7 days',
-    'Gaming PC builds &amp; upgrades',
-    'Virus &amp; malware removal {% include price.html key="virus-malware-removal" bare=true raw=true %}',
-    'Laptop screen replacement Perth',
-    'SSD upgrades from {% include price.html key="ssd-upgrade-labour-only" bare=true raw=true %}',
-    'Business IT support from {% include price.html key="business-it-essential" bare=true raw=true %}/mo',
-  ];
-  const track = document.getElementById('trust-track');
-  if (track) {
-    const doubled = [...items, ...items];
-    track.innerHTML = doubled.map(function(t) {
-      return '<div class="trust-item"><div class="trust-dot" aria-hidden="true"></div>' + t + '</div>';
-    }).join('');
-  }
-
-
   /* ---- Mobile Hamburger ---- */
   const hamburger = document.getElementById('mob-hamburger');
   const mobMenu   = document.getElementById('mob-menu');

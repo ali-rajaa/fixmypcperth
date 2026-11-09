@@ -30,6 +30,14 @@ image_alt: "FixMyPC Perth: managed business IT support for Perth small businesse
   7. One card said remote support was around the clock; it is 7am to 11pm.
   8. Headings: H1 jumped to H3 and H2 to H4, and seven headings ran their two
      halves together in the text content because of a br with no space.
+  9. Restructured (November 2026). Top: hero, a key-facts band, then the plans.
+     The ticker (home repair promises), the audit strip and the stats row that
+     repeated the hero card are gone. Order after the plans: extras, value,
+     why us, case study, industries (one section, was two), FAQ, and the audit
+     form last. Claims that did not match the plans were corrected: backup and
+     monitoring are Business and Premium only, remote issues are resolved the
+     same day (not "within the hour"), support is 7am to 11pm (not 24/7), and
+     the case study says around 8 hours a month, as everywhere else.
 
   Plan prices come from _data/services.yml via the price include. Never type a
   figure here.
@@ -157,7 +165,7 @@ image_alt: "FixMyPC Perth: managed business IT support for Perth small businesse
       "name": "How fast is emergency IT support response for Perth businesses?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Premium plan clients get a guaranteed same day onsite response within 4 hours. Business and Essential plan clients receive priority remote support with most issues resolved within the hour. Support is available 7am to 11pm, 7 days a week on all plans."
+        "text": "Premium plan clients get a guaranteed same day onsite response within 4 hours. On every plan, remote support resolves issues the same day, and Business plan clients are answered ahead of Essential. Support is available 7am to 11pm, 7 days a week on all plans."
       }
     },
     {
@@ -172,90 +180,63 @@ image_alt: "FixMyPC Perth: managed business IT support for Perth small businesse
 }
 </script>
 
-<section class="hero" aria-label="Business IT Support Perth Managed IT Services">
+<!-- The star used by stars.html, defined once on this page. -->
+<svg class="svg-sprite" aria-hidden="true" focusable="false"><symbol id="ico-star" viewBox="0 0 24 24"><path d="M12 2.2l2.95 5.98 6.6.96-4.78 4.66 1.13 6.58L12 17.27l-5.9 3.1 1.13-6.58L2.45 9.14l6.6-.96L12 2.2z"/></symbol></svg>
+
+<!-- HERO -->
+<section class="hero" aria-labelledby="biz-hero-h">
   <div class="hero-inner">
-    <div>
-      <h1 class="hero-h1">
-            <span class="hero-seo-h1">Managed IT Support Perth</span>
-            We Manage Your <span class="accent">Business Tech</span>
-          </h1>
-      <p class="hero-sub">Your Full-Scale IT Department, Without the In-House Costs.</p>
-      <p class="hero-desc">Your dedicated Managed Service Provider (MSP) in Perth. We provide proactive IT support, remote helpdesk available 7am to 11pm daily, and scheduled onsite visits to keep your business running smoothly. Covering the Perth Metro Region, we protect your data and manage your infrastructure.</p>
+    <div class="hero-copy">
+      <h1 class="hero-h1" id="biz-hero-h">
+        <span class="hero-eyebrow">Managed IT Support Perth</span>
+        Your business IT, <span class="accent">handled.</span>
+      </h1>
+      <p class="hero-desc">We look after the computers, security and updates for Perth businesses with 2 to 20 PCs. Remote help every day, planned onsite visits and one monthly fee, with no lock-in contract.</p>
       <div class="hero-actions">
-        <a href="#plans" class="btn-primary">View Plans and Pricing</a>
+        <a href="#audit-section" class="btn-primary">Book a free IT audit</a>
+        <a href="#plans" class="btn-outline">See plans and pricing</a>
       </div>
-      <div class="hero-trust">
-        <div class="hero-trust-item"><div aria-hidden="true" class="hero-trust-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="20 6 9 17 4 12"/></svg></div>No lock-in contracts</div>
-        <div class="hero-trust-item"><div aria-hidden="true" class="hero-trust-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="20 6 9 17 4 12"/></svg></div>7am–11pm remote support</div>
-        <div class="hero-trust-item"><div aria-hidden="true" class="hero-trust-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="20 6 9 17 4 12"/></svg></div>Rated {{ site.data.reviews.meta.rating }} on Google</div>
-        <div class="hero-trust-item"><div aria-hidden="true" class="hero-trust-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="20 6 9 17 4 12"/></svg></div>Same day remote support</div>
+      <div class="hero-proof">
+        <a class="hero-rating" href="{{ site.data.reviews.meta.reviews_url }}" target="_blank" rel="noopener noreferrer">
+          <svg class="hero-rating-g" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path fill="#4285F4" d="M45.1 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h11.8c-.5 2.8-2.1 5.1-4.4 6.7v5.5h7.1c4.2-3.8 6.6-9.5 6.6-16.2z"/><path fill="#34A853" d="M24 46c5.9 0 10.9-2 14.5-5.3l-7.1-5.5c-2 1.3-4.5 2.1-7.4 2.1-5.7 0-10.5-3.8-12.2-9H4.5v5.7C8.1 41.1 15.5 46 24 46z"/><path fill="#FBBC05" d="M11.8 28.3c-.4-1.3-.7-2.8-.7-4.3s.3-3 .7-4.3V14H4.5C3 17 2.2 20.4 2.2 24s.8 7 2.3 10l7.3-5.7z"/><path fill="#EA4335" d="M24 10.7c3.2 0 6.1 1.1 8.4 3.3l6.3-6.3C34.9 4.1 29.9 2 24 2 15.5 2 8.1 6.9 4.5 14l7.3 5.7c1.7-5.2 6.5-9 12.2-9z"/></svg>
+          <span class="hero-rating-score">{{ site.data.reviews.meta.rating }}</span>
+          {% include stars.html value=site.data.reviews.meta.rating %}
+          <span class="hero-rating-text">on Google<span class="sr-only"> (opens in a new tab)</span></span>
+        </a>
+        <p class="hero-local"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Based in Canning Vale, onsite across southern Perth</p>
       </div>
     </div>
 
-    <div class="hero-card" role="region" aria-label="FixMyPC Perth business IT plan summary">
-      <div class="hc-header">
-        <div class="hc-dot hc-dot-red"></div>
-        <div class="hc-dot hc-dot-amber"></div>
-        <div class="hc-dot hc-dot-green"></div>
-        <span class="hc-title">Business IT Support Overview</span>
+    <aside class="hero-card" aria-labelledby="hc-h">
+      <div class="hc-top">
+        <p class="hc-eyebrow" id="hc-h">Managed IT plans</p>
+        <p class="hc-price"><span class="hc-from">From</span><span class="hc-num">{% include price.html key="business-it-essential" bare=true %}</span><span class="hc-per">/month</span></p>
+        <p class="hc-note">Base fee plus {% include price.html key="business-it-essential" extra=true %} per device, billed monthly. Prices include GST.</p>
       </div>
       <div class="hc-body">
-        <div class="hc-stat-row">
-          <div class="hc-stat"><span class="hc-stat-val">7am–11pm</span><span class="hc-stat-lbl">Remote Support</span></div>
-          <div class="hc-stat"><span class="hc-stat-val">{% include price.html key="business-it-essential" bare=true %}</span><span class="hc-stat-lbl">Starting from per month</span></div>
-          <div class="hc-stat"><span class="hc-stat-val">4hr</span><span class="hc-stat-lbl">Emergency Response</span></div>
-          <div class="hc-stat"><span class="hc-stat-val">{{ site.data.reviews.meta.rating }}</span><span class="hc-stat-lbl">Google Rating</span></div>
-        </div>
-        <div class="hc-divider"></div>
-        <div class="hc-list">
-          <div class="hc-list-item"><div aria-hidden="true" class="hc-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="20 6 9 17 4 12"/></svg></div>Managed antivirus on every PC</div>
-          <div class="hc-list-item"><div aria-hidden="true" class="hc-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="20 6 9 17 4 12"/></svg></div>Proactive monitoring and alerts</div>
-          <div class="hc-list-item"><div aria-hidden="true" class="hc-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="20 6 9 17 4 12"/></svg></div>Scheduled onsite visits included</div>
-          <div class="hc-list-item"><div aria-hidden="true" class="hc-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="20 6 9 17 4 12"/></svg></div>Cloud backup management</div>
-          <div class="hc-list-item"><div aria-hidden="true" class="hc-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="20 6 9 17 4 12"/></svg></div>No lock-in monthly billing</div>
-        </div>
+        <p class="hc-label">Every plan includes</p>
+        <ul class="hc-list">
+          <li class="hc-item"><span class="hc-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" focusable="false"><polyline points="20 6 9 17 4 12"/></svg></span>Unlimited remote support, 7 days</li>
+          <li class="hc-item"><span class="hc-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" focusable="false"><polyline points="20 6 9 17 4 12"/></svg></span>Onsite visits every month</li>
+          <li class="hc-item"><span class="hc-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" focusable="false"><polyline points="20 6 9 17 4 12"/></svg></span>Managed antivirus on every PC</li>
+          <li class="hc-item"><span class="hc-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" focusable="false"><polyline points="20 6 9 17 4 12"/></svg></span>Windows updates managed</li>
+          <li class="hc-item"><span class="hc-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" focusable="false"><polyline points="20 6 9 17 4 12"/></svg></span>A monthly health report</li>
+          <li class="hc-item"><span class="hc-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" focusable="false"><polyline points="20 6 9 17 4 12"/></svg></span>No lock-in, 14 days notice</li>
+        </ul>
       </div>
-      <div class="hc-footer">
-        <div class="hc-rating"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-        <span class="hc-rating-text">{{ site.data.reviews.meta.rating }} on Google · Canning Vale, Perth WA</span>
-      </div>
-    </div>
+      <a class="hc-link" href="#plans">Compare the three plans<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="9 18 15 12 9 6"/></svg></a>
+    </aside>
   </div>
 </section>
 
-<!-- TRUST TICKER -->
-<div class="trust-strip" aria-hidden="true">
-  <div class="trust-track" id="trust-track"></div>
-</div>
-
-<!-- FREE AUDIT BANNER -->
-<div class="audit-strip" aria-label="Free IT audit for Perth businesses">
-  <div class="audit-inner audit-strip-row">
-    <div class="audit-strip-lead">
-      <div class="audit-badge-icon no-shrink">
-        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      </div>
-      <div class="min-w0">
-        <div class="hc-cta-title audit-strip-title">Book a free 30-minute IT audit.</div>
-        <p class="audit-strip-desc">We check every critical area, document where your business stands, and show you how we can help.</p>
-      </div>
-    </div>
-    <a class="audit-strip-btn" href="#audit-section"
-       onclick="event.preventDefault();document.querySelector('.audit-section').scrollIntoView({behavior:'smooth',block:'start'})"
-      >
-      Book a free IT audit
-    </a>
-  </div>
-</div>
-
-<!-- METRICS -->
-<div class="metrics-strip" aria-label="FixMyPC Perth business IT performance metrics">
-  <div class="metrics-inner">
-    <div class="metric-item fade-up"><span class="metric-val">7am-11pm</span><span class="metric-lbl">Remote Support Coverage</span></div>
-    <div class="metric-item fade-up"><span class="metric-val">4hr</span><span class="metric-lbl">Maximum Emergency Response</span></div>
-    <div class="metric-item fade-up"><span class="metric-val">{% include price.html key="business-it-first-month" bare=true %}</span><span class="metric-lbl">First Month Offer. Any Plan.</span></div>
-    <div class="metric-item fade-up"><span class="metric-val">0</span><span class="metric-lbl">Lock-In Contracts. Cancel Anytime.</span></div>
-  </div>
+<!-- KEY FACTS -->
+<div class="facts">
+  <ul class="facts-list" aria-label="Business IT support at a glance">
+    <li class="fact"><span class="fact-val">7am-11pm</span><span class="fact-lbl">Remote support, every day</span></li>
+    <li class="fact"><span class="fact-val">4 hours</span><span class="fact-lbl">Emergency onsite on Premium</span></li>
+    <li class="fact"><span class="fact-val">{% include price.html key="business-it-first-month" bare=true %}</span><span class="fact-lbl">Your first month, any plan</span></li>
+    <li class="fact"><span class="fact-val">14 days</span><span class="fact-lbl">Notice to cancel, <span class="nowrap">no lock-in</span></span></li>
+  </ul>
 </div>
 
 <!-- PLANS -->
@@ -265,13 +246,11 @@ image_alt: "FixMyPC Perth: managed business IT support for Perth small businesse
     <p class="s-sub plans-sub">Managed IT support plans for Perth small businesses. Every plan covers unlimited remote support, managed antivirus and scheduled onsite visits. No lock-in, cancel any time with 14 days notice.</p>
   </div>
 
- 
-  
   <div class="first-month-banner fade-up">
     <div class="first-month-badge">{% include price.html key="business-it-first-month" bare=true %}</div>
     <div class="first-month-text grow">
-      <p class="first-month-h">Get Your First Month on Any Plan for Just {% include price.html key="business-it-first-month" bare=true %}</p>
-      <p>Available for new clients. Your whole team gets managed IT support and security for {% include price.html key="business-it-first-month" bare=true %} in the first month. There is no lock-in contract: if it is not the right fit, cancel with 14 days notice.</p>
+      <p class="first-month-h">Your first month on any plan is {% include price.html key="business-it-first-month" bare=true %}</p>
+      <p class="first-month-desc">Available for new clients. Your whole team gets managed IT support and security for {% include price.html key="business-it-first-month" bare=true %} in the first month. There is no lock-in contract: if it is not the right fit, cancel with 14 days notice.</p>
     </div>
   </div>
 
@@ -305,7 +284,7 @@ image_alt: "FixMyPC Perth: managed business IT support for Perth small businesse
           <p class="plan-note">+ {{ _per }} per device / month</p>
           <p class="plan-coverage">{{ pl.covers | escape }} covered</p>
         </div>
-        <a href="#audit-section" class="plan-cta" data-plan="{{ pl.name | escape }}">Get Started Today<span class="sr-only"> with the {{ pl.name | escape }} plan</span></a>
+        <a href="#audit-section" class="plan-cta" data-plan="{{ pl.name | escape }}">Get started<span class="sr-only"> with the {{ pl.name | escape }} plan</span></a>
         <div class="plan-body">
           <p class="plan-feat-label">{{ pl.includes | escape }}</p>
           <ul class="plan-features">
@@ -322,92 +301,8 @@ image_alt: "FixMyPC Perth: managed business IT support for Perth small businesse
 
   <p class="plans-terms fade-up">Every plan: billed monthly <span aria-hidden="true">&middot;</span> no lock-in, 14 days notice to cancel <span aria-hidden="true">&middot;</span> prices include GST</p>
   <div class="fade-up plans-help">
-    <p class="plans-help-text">Not sure which plan fits? Let us know and we will tell you exactly which plan makes sense for you.</p>
-    <a href="#audit-form" onclick="event.preventDefault();document.querySelector('.audit-section').scrollIntoView({behavior:'smooth',block:'start'});" class="btn-outline">Book a free IT audit</a>
-  </div>
-</section>
-
-
-<!-- RESULTS -->
-<section class="results-section results-band" aria-label="What FixMyPC Perth delivers for business clients">
-  <div class="results-glow-a"></div>
-  <div class="results-glow-b"></div>
-  <div class="wrap">
-    <div class="fade-up">
-      <h2 class="s-title-light">A full IT team. <br><span class="accent-light">A fraction of the cost.</span></h2>
-      <p class="s-sub-light">An IT support officer in Perth averages around $82,500 a year before superannuation. Our plans give you dedicated IT expertise, proactive monitoring and guaranteed response times for a fixed monthly fee.</p>
-    </div>
-
-    <div class="scroll-hint">
-      <span class="scroll-hint-text-dark">Scroll to see more</span>
-      <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
-    </div>
-
-    <div class="h-scroll-dark" tabindex="0" role="region" aria-label="A full IT team, a fraction of the cost">
-      <div class="res-row">
-
-        <div class="fade-up hov-lift res-card tone-blue">
-          <div class="res-bar tone-blue end-cyan"></div>
-          <div class="res-icon tone-blue">
-            <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          </div>
-          <div class="res-val">8+ hrs</div>
-          <div class="res-label tone-blue">Saved monthly</div>
-          <div class="res-desc">We resolve issues remotely before staff are impacted. One client, Hyperlink Solutions, reported recovering around 8 hours a month over twelve months.</div>
-        </div>
-
-        <div class="fade-up hov-lift res-card tone-green">
-          <div class="res-bar tone-green end-cyan"></div>
-          <div class="res-icon tone-green">
-            <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4ADE80" stroke-width="2" stroke-linecap="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 100 7h5a3.5 3.5 0 110 7H6"/></svg>
-          </div>
-          <div class="res-val">Zero</div>
-          <div class="res-label tone-green">Unexpected costs</div>
-          <div class="res-desc">One monthly fee, with callouts and emergency repairs included, so the cost is the same every month.</div>
-        </div>
-
-        <div class="fade-up hov-lift res-card tone-purple">
-          <div class="res-bar tone-purple end-blue"></div>
-          <div class="res-icon tone-purple">
-            <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C084FC" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          </div>
-          <div class="res-val">100%</div>
-          <div class="res-label tone-purple">Data protected</div>
-          <div class="res-desc">Cloud backup configured and verified monthly. If a drive fails or ransomware hits, your data is recoverable the same day.</div>
-        </div>
-
-        <div class="fade-up hov-lift res-card tone-amber">
-          <div class="res-bar tone-amber end-coral"></div>
-          <div class="res-icon tone-amber">
-            <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FCD34D" stroke-width="2" stroke-linecap="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-          </div>
-          <div class="res-val">4hr</div>
-          <div class="res-label tone-amber">Emergency response</div>
-          <div class="res-desc">Premium clients get guaranteed onsite within 4 hours. Remote issues resolved within the hour on all plans.</div>
-        </div>
-
-        <div class="fade-up hov-lift res-card tone-blue">
-          <div class="res-bar tone-blue end-purple"></div>
-          <div class="res-icon tone-blue">
-            <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-          </div>
-          <div class="res-val">$82.5k</div>
-          <div class="res-label tone-blue">Perth IT salary, avg</div>
-          <div class="res-desc">A managed plan costs a few thousand a year rather than a salary. It is not a replacement for a full-time employee, and we will say so if that is what you need.</div>
-        </div>
-
-        <div class="fade-up hov-lift res-card tone-cyan">
-          <div class="res-bar tone-cyan end-green"></div>
-          <div class="res-icon tone-cyan">
-            <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22D3EE" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
-          </div>
-          <div class="res-val">7am-11pm</div>
-          <div class="res-label tone-cyan">7am–11pm coverage</div>
-          <div class="res-desc">Business does not stop at 5pm. Our remote support team is available 7am to 11pm daily on all plans, with emergency response for Premium clients.</div>
-        </div>
-
-      </div>
-    </div>
+    <p class="plans-help-text">Not sure which plan fits? Book the free audit and we will tell you which plan makes sense for your business.</p>
+    <a href="#audit-section" class="btn-outline">Book a free IT audit</a>
   </div>
 </section>
 
@@ -415,8 +310,8 @@ image_alt: "FixMyPC Perth: managed business IT support for Perth small businesse
 <section class="addons-section" aria-label="Business IT support optional add-ons Perth">
   <div class="wrap">
     <div class="fade-up split-head">
-      <h2 class="s-title">Bolt-on extras for <br><span class="accent">any plan.</span></h2>
-      <p class="s-sub">Available on any tier. Add only what your business needs. Remove what it does not. No bundled services you did not request.</p>
+      <h2 class="s-title">Extras for <br><span class="accent">any plan.</span></h2>
+      <p class="s-sub">Add only what your business needs, on any plan. Each extra is priced up front, so nothing is bundled in that you did not ask for.</p>
     </div>
     <div class="addons-table fade-up">
 
@@ -510,245 +405,73 @@ image_alt: "FixMyPC Perth: managed business IT support for Perth small businesse
 
     <div class="addon-more">
       <button type="button" id="addon-toggle" class="addon-toggle" aria-expanded="false" aria-controls="addon-extra"
-        onclick="var x=document.getElementById('addon-extra'),o=x.hidden;x.hidden=!o;this.setAttribute('aria-expanded',o?'true':'false');this.querySelector('.addon-toggle-text').textContent=o?'Show Less':'Show All Add-Ons';">
+        onclick="var x=document.getElementById('addon-extra'),o=x.hidden;x.hidden=!o;this.setAttribute('aria-expanded',o?'true':'false');this.querySelector('.addon-toggle-text').textContent=o?'Show fewer add-ons':'Show all add-ons';">
         <span class="addon-toggle-icon" aria-hidden="true"><svg aria-hidden="true" width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></span>
-        <span class="addon-toggle-text">Show All Add-Ons</span>
+        <span class="addon-toggle-text">Show all add-ons</span>
       </button>
     </div>
 
   </div>
 </section>
 
-
-<!-- WHO WE SERVE -->
-<section class="why-section" aria-label="Which Perth businesses we support">
+<!-- RESULTS -->
+<section class="results-band" aria-labelledby="biz-res-h">
+  <div class="results-glow-a"></div>
+  <div class="results-glow-b"></div>
   <div class="wrap">
     <div class="fade-up split-head">
-      <h2 class="s-title">Built for businesses that <br><span class="accent">focus on growth</span></h2>
-      <p class="s-sub">Managed IT for cafes, real estate offices, dental clinics and retail stores across Canning Vale, Fremantle, Cockburn and Cannington. If your business relies on computers, the plans are built for you.</p>
+      <h2 class="s-title-light" id="biz-res-h">A full IT team. <br><span class="accent-light">A fraction of the cost.</span></h2>
+      <p class="s-sub-light">A managed plan gives your business people who know your setup, for a fixed monthly fee instead of a salary.</p>
     </div>
 
     <div class="scroll-hint">
-      <span class="scroll-hint-text">Scroll to see more</span>
-      <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+      <span class="scroll-hint-text-dark">Swipe to see more</span>
+      <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
     </div>
 
-    <div class="h-scroll" tabindex="0" role="region" aria-label="Built for businesses that focus on growth">
-      <div id="who-grid" class="who-grid">
+    <div class="h-scroll-dark" tabindex="0" role="region" aria-label="A full IT team, a fraction of the cost">
+      <div class="res-row">
 
-        <!-- Card 1 -->
-        <div class="hov-lift serve-card tone-blue">
-          <div class="card-bar tone-blue end-cyan"></div>
-          <div class="serve-icon tone-blue" aria-hidden="true"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M10 2v2"/><path d="M14 2v2"/><path d="M6 2v2"/><path d="M16 8a1 1 0 0 1 1 1v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1h14a4 4 0 1 1 0 8h-1"/></svg></div>
-          <div class="who-title">Cafes and Restaurants</div>
-          <div class="who-desc">POS, EFTPOS and wifi kept running during service</div>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="hov-lift serve-card tone-purple">
-          <div class="card-bar tone-purple end-pink"></div>
-          <div class="serve-icon tone-purple" aria-hidden="true"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><circle cx="6" cy="6" r="3"/><path d="M8.12 8.12 12 12"/><path d="M20 4 8.12 15.88"/><circle cx="6" cy="18" r="3"/><path d="M14.8 14.8 20 20"/></svg></div>
-          <div class="who-title">Hair and Beauty Salons</div>
-          <div class="who-desc">Booking software and payment terminals, always online</div>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="hov-lift serve-card tone-amber">
-          <div class="card-bar tone-amber end-coral"></div>
-          <div class="serve-icon tone-amber" aria-hidden="true"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-          <div class="who-title">Real Estate Offices</div>
-          <div class="who-desc">Document management, printing and email support</div>
-        </div>
-
-        <!-- Card 4 -->
-        <div class="hov-lift serve-card tone-green">
-          <div class="card-bar tone-green end-cyan"></div>
-          <div class="serve-icon tone-green" aria-hidden="true"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M12 5.5c-1.5-1.5-4-2-5.5-1S4 8 5 11c.6 1.8 1 3.5 1.2 5.5.2 2.3 1 4.5 2.3 4.5 1.2 0 1.5-2 1.9-4 .3-1.3.8-2 1.6-2s1.3.7 1.6 2c.4 2 .7 4 1.9 4 1.3 0 2.1-2.2 2.3-4.5.2-2 .6-3.7 1.2-5.5 1-3-.5-5.5-1.5-6.5s-4-.5-5.5 1z"/></svg></div>
-          <div class="who-title">Dental Clinics</div>
-          <div class="who-desc">Patient records, imaging software and practice management</div>
-        </div>
-
-        <!-- Card 5 -->
-        <div class="hov-lift serve-card tone-red">
-          <div class="card-bar tone-red end-amber"></div>
-          <div class="serve-icon tone-red" aria-hidden="true"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M11 2v2"/><path d="M5 2v2"/><path d="M5 3H4a2 2 0 0 0-2 2v4a6 6 0 0 0 12 0V5a2 2 0 0 0-2-2h-1"/><path d="M8 15a6 6 0 0 0 12 0v-3"/><circle cx="20" cy="10" r="2"/></svg></div>
-          <div class="who-title">Medical Practices</div>
-          <div class="who-desc">Clinical software, secure data and compliance support</div>
-        </div>
-
-        <!-- Card 6 -->
-        <div class="hov-lift serve-card tone-cyan">
-          <div class="card-bar tone-cyan end-purple"></div>
-          <div class="serve-icon tone-cyan" aria-hidden="true"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg></div>
-          <div class="who-title">Retail Shops</div>
-          <div class="who-desc">Inventory systems, EFTPOS and multi-PC environments</div>
-        </div>
-
-        <!-- Card 7 -->
-        <div class="hov-lift serve-card tone-amber">
-          <div class="card-bar tone-amber end-green"></div>
-          <div class="serve-icon tone-amber" aria-hidden="true"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M10 10V5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5"/><path d="M14 6a6 6 0 0 1 6 6v3"/><path d="M4 15v-3a6 6 0 0 1 6-6"/><rect x="2" y="15" width="20" height="4" rx="1"/></svg></div>
-          <div class="who-title">Tradies and Contractors</div>
-          <div class="who-desc">Quoting software, job management and cloud access</div>
-        </div>
-
-        <!-- Card 8 -->
-        <div class="hov-lift serve-card tone-purple">
-          <div class="card-bar tone-purple end-blue"></div>
-          <div class="serve-icon tone-purple" aria-hidden="true"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg></div>
-          <div class="who-title">Law and Accounting Firms</div>
-          <div class="who-desc">Document security, compliance and reliable infrastructure</div>
-        </div>
-
-        <!-- Card 9 -->
-        <div class="hov-lift serve-card tone-green">
-          <div class="card-bar tone-green end-cyan"></div>
-          <div class="serve-icon tone-green" aria-hidden="true"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M14.4 14.4 9.6 9.6"/><path d="M18.657 21.485a2 2 0 1 1-2.829-2.828l-1.767 1.768a2 2 0 1 1-2.829-2.829l6.364-6.364a2 2 0 1 1 2.829 2.829l-1.768 1.767a2 2 0 1 1 2.828 2.829z"/><path d="m21.5 21.5-1.4-1.4"/><path d="M3.9 3.9 2.5 2.5"/><path d="M6.404 12.768a2 2 0 1 1-2.829-2.829l1.768-1.767a2 2 0 1 1-2.828-2.829l2.828-2.828a2 2 0 1 1 2.829 2.828l1.767-1.768a2 2 0 1 1 2.829 2.829z"/></svg></div>
-          <div class="who-title">Gyms and Studios</div>
-          <div class="who-desc">Membership software, access control and kiosk systems</div>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="fade-up who-more">
-      <a href="#audit-form"
-         onclick="event.preventDefault();document.querySelector('.audit-section').scrollIntoView({behavior:'smooth',block:'start'});"
-         class="btn-primary inline-flex"
-        >
-        Talk to us about your business
-      </a>
-    </div>
-
-  </div>
-</section>
-
-<!-- INDUSTRIES SECTION -->
-<section class="industries-section">
-  <div class="industries-inner">
-    <h2 class="industries-heading">Perth businesses we <span class="accent">specialise in</span></h2>
-    <p class="industries-sub">Every industry has different IT headaches. Click your sector to see exactly how we help.</p>
-    <div class="industries-grid">
-
-    <a href="/it-support-trades-perth" class="industry-card">
-      <span class="industry-icon">
-        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-      </span>
-      <span class="industry-name">Trades &amp; Construction</span>
-      <span class="industry-arrow">→</span>
-    </a>
-      <a href="/it-support-warehousing-logistics-perth" class="industry-card">
-      <span class="industry-icon">
-        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-6 9 6v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
-      </span>
-      <span class="industry-name">Warehousing &amp; Logistics</span>
-      <span class="industry-arrow">→</span>
-    </a>
-
-    <a href="/it-support-real-estate-perth" class="industry-card">
-      <span class="industry-icon">
-        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-      </span>
-      <span class="industry-name">Real Estate Agencies</span>
-      <span class="industry-arrow">→</span>
-    </a>
-
-    <a href="/it-support-accountants-perth" class="industry-card">
-      <span class="industry-icon">
-        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-      </span>
-      <span class="industry-name">Accountants &amp; Bookkeepers</span>
-      <span class="industry-arrow">→</span>
-    </a>
-
-    <a href="/it-support-allied-health-perth" class="industry-card">
-      <span class="industry-icon">
-        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-      </span>
-      <span class="industry-name">Allied Health &amp; Medical</span>
-      <span class="industry-arrow">→</span>
-    </a>
-
-    <a href="/it-support-legal-perth" class="industry-card">
-      <span class="industry-icon">
-        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-      </span>
-      <span class="industry-name">Legal &amp; Conveyancing</span>
-      <span class="industry-arrow">→</span>
-    </a>
-
-    <a href="/it-support-retail-perth" class="industry-card">
-      <span class="industry-icon">
-        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-      </span>
-      <span class="industry-name">Retail Businesses</span>
-      <span class="industry-arrow">→</span>
-    </a>
-
-    <a href="/it-support-childcare-perth" class="industry-card">
-      <span class="industry-icon">
-        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-      </span>
-      <span class="industry-name">Childcare Centres</span>
-      <span class="industry-arrow">→</span>
-    </a>
-
-    <a href="/it-support-hospitality-perth" class="industry-card">
-      <span class="industry-icon">
-        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
-      </span>
-      <span class="industry-name">Cafes &amp; Restaurants</span>
-      <span class="industry-arrow">→</span>
-    </a>
-
-  </div>
-  </div>
-</section>
-<!-- FREE AUDIT DARK -->
-<section class="audit-section" id="audit-section" aria-label="Free business IT audit Perth">
-  <div class="audit-content">
-    <div>
-      <h2 class="s-title-light">Book a free 30-minute <br><span class="accent-light">IT audit.</span></h2>
-      <p class="s-sub-light audit-sub">Our team checks every critical area during the free audit. We document a picture of where your business stands, and how we can help you save time and resources.</p>
-      <div class="audit-checklist">
-        <div class="audit-check-item">
-          <div class="audit-icon-box warn">
-            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2.5" stroke-linecap="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <div class="fade-up hov-lift res-card tone-blue">
+          <div class="res-bar tone-blue end-cyan"></div>
+          <div class="res-icon tone-blue">
+            <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           </div>
-          <span class="audit-check-text">Is antivirus installed, up to date and actively running on every PC?</span>
+          <div class="res-val">8 hrs</div>
+          <div class="res-label tone-blue">Saved a month</div>
+          <div class="res-desc">We fix problems remotely before they slow your team down. One client, Hyperlink Solutions, reported getting back around 8 hours a month over twelve months.</div>
         </div>
-        <div class="audit-check-item">
-          <div class="audit-icon-box warn">
-            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2.5" stroke-linecap="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-          </div>
-          <span class="audit-check-text">Are Windows and business software updates current and applied?</span>
-        </div>
-        <div class="audit-check-item">
-          <div class="audit-icon-box warn">
-            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2.5" stroke-linecap="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-          </div>
-          <span class="audit-check-text">Does your business have a verified, tested backup of critical data?</span>
-        </div>
-        <div class="audit-check-item">
-          <div class="audit-icon-box good">
-            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-          </div>
-          <span class="audit-check-text">We document every finding and provide a clear, written report.</span>
-        </div>
-      </div>
-    </div>
 
-    <div class="audit-card tq-light">
-      <div class="audit-card-title">Book a free IT audit</div>
-      <div class="audit-card-sub">A 30-minute online audit of your setup, with a written report.</div>
-      {%- include audit-form.html id="audit-form" subject="Free IT audit request: Business IT" from="business-it-support" business_placeholder="e.g. The Corner Cafe" notes_placeholder="e.g. our backups have never been tested" lead="audit_business" %}
+        <div class="fade-up hov-lift res-card tone-purple">
+          <div class="res-bar tone-purple end-blue"></div>
+          <div class="res-icon tone-purple">
+            <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C084FC" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div class="res-val">Daily</div>
+          <div class="res-label tone-purple">Cloud backup</div>
+          <div class="res-desc">On the Business and Premium plans, key files back up every day to OneDrive or Google Drive, and we manage the backup for you.</div>
+        </div>
 
-      <div class="audit-direct audit-direct-box">
-        <div class="audit-direct-label">Prefer to reach us directly?</div>
-        <a class="audit-direct-link" href="mailto:aly.imran.raja@gmail.com">
-          <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          aly.imran.raja@gmail.com
-        </a>
+        <div class="fade-up hov-lift res-card tone-amber">
+          <div class="res-bar tone-amber end-coral"></div>
+          <div class="res-icon tone-amber">
+            <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FCD34D" stroke-width="2" stroke-linecap="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <div class="res-val">4 hrs</div>
+          <div class="res-label tone-amber">Emergency onsite</div>
+          <div class="res-desc">Premium clients get guaranteed onsite attendance within 4 hours in southern Perth. Remote issues on every plan are resolved the same day.</div>
+        </div>
+
+        <div class="fade-up hov-lift res-card tone-cyan">
+          <div class="res-bar tone-cyan end-green"></div>
+          <div class="res-icon tone-cyan">
+            <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22D3EE" stroke-width="2" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <div class="res-val">$82.5k</div>
+          <div class="res-label tone-cyan">Perth IT salary, avg</div>
+          <div class="res-desc">What an IT support officer in Perth earns on average, before super. A managed plan costs a few thousand a year. It is not a full-time employee, and we will say so if that is what you need.</div>
+        </div>
+
       </div>
     </div>
   </div>
@@ -759,11 +482,11 @@ image_alt: "FixMyPC Perth: managed business IT support for Perth small businesse
   <div class="wrap">
     <div class="fade-up split-head">
       <h2 class="s-title">IT support that actually <br><span class="accent">works for your business.</span></h2>
-      <p class="s-sub">Here is what sets us apart as a managed service provider when your business operations depend on technology working reliably every single day.</p>
+      <p class="s-sub">What you can expect from us when your business depends on its computers working every day.</p>
     </div>
 
     <div class="scroll-hint">
-      <span class="scroll-hint-text">Scroll to see more</span>
+      <span class="scroll-hint-text">Swipe to see more</span>
       <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
     </div>
 
@@ -776,8 +499,8 @@ image_alt: "FixMyPC Perth: managed business IT support for Perth small businesse
             <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
           </div>
           <div class="why-tag tone-blue">Monitoring</div>
-          <div class="why-title">Proactive, Not Reactive</div>
-          <div class="why-desc">Our monitoring tools identify problems before they become outages. We resolve issues in the background before your team is ever aware of them.</div>
+          <div class="why-title">Proactive, not reactive</div>
+          <div class="why-desc">On the Business and Premium plans, monitoring flags problems before they become outages, so we can deal with them before your team is affected.</div>
         </div>
 
         <div class="fade-up hov-lift why-card">
@@ -786,8 +509,8 @@ image_alt: "FixMyPC Perth: managed business IT support for Perth small businesse
             <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
           </div>
           <div class="why-tag tone-green">Coverage</div>
-          <div class="why-title">All Perth Suburbs Covered</div>
-          <div class="why-desc">Based in Canning Vale, we cover all southern Perth suburbs for onsite visits including Cockburn, Cannington, Willetton, Jandakot, Harrisdale and Thornlie.</div>
+          <div class="why-title">Onsite across southern Perth</div>
+          <div class="why-desc">Based in Canning Vale, we visit businesses across southern Perth, including Cockburn, Cannington, Willetton, Jandakot, Harrisdale and Thornlie.</div>
         </div>
 
         <div class="fade-up hov-lift why-card">
@@ -796,7 +519,7 @@ image_alt: "FixMyPC Perth: managed business IT support for Perth small businesse
             <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
           </div>
           <div class="why-tag tone-amber">Contracts</div>
-          <div class="why-title">No Lock-In. Cancel Anytime.</div>
+          <div class="why-title">No lock-in contract</div>
           <div class="why-desc">Every plan is month-to-month. We earn your business through results, not contracts. Cancel or adjust your plan at any time with 14 days notice.</div>
         </div>
 
@@ -806,8 +529,8 @@ image_alt: "FixMyPC Perth: managed business IT support for Perth small businesse
             <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9333EA" stroke-width="2" stroke-linecap="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 100 7h5a3.5 3.5 0 110 7H6"/></svg>
           </div>
           <div class="why-tag tone-purple">Pricing</div>
-          <div class="why-title">One Fixed Monthly Fee</div>
-          <div class="why-desc">No surprise invoices. No callout fees on covered plans. One predictable cost that makes IT a known business expense rather than an unexpected liability.</div>
+          <div class="why-title">One fixed monthly fee</div>
+          <div class="why-desc">No surprise invoices. Anything outside your plan, like an after-hours callout, is priced before we start, so IT is a known cost every month.</div>
         </div>
 
         <div class="fade-up hov-lift why-card">
@@ -816,8 +539,8 @@ image_alt: "FixMyPC Perth: managed business IT support for Perth small businesse
             <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0891B2" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           </div>
           <div class="why-tag tone-cyan">Availability</div>
-          <div class="why-title">24/7 Support Team</div>
-          <div class="why-desc">Business operations do not stop at 5pm. Our remote support team is available 7am to 11pm, seven days a week, on all plans.</div>
+          <div class="why-title">Support 7am to 11pm</div>
+          <div class="why-desc">Business does not stop at 5pm. Remote support runs 7am to 11pm, seven days a week, on every plan.</div>
         </div>
 
         <div class="fade-up hov-lift why-card">
@@ -825,9 +548,9 @@ image_alt: "FixMyPC Perth: managed business IT support for Perth small businesse
           <div class="why-icon tone-amber">
             <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
           </div>
-          <div class="why-tag tone-amber">Track Record</div>
-          <div class="why-title">Premium Service</div>
-          <div class="why-desc">We take quality of service seriously and prioritise communication, speed and clear explanations over technical jargon.</div>
+          <div class="why-tag tone-amber">Communication</div>
+          <div class="why-title">Plain English</div>
+          <div class="why-desc">A member of our team tells you what went wrong, what we did and what it cost, in plain English rather than jargon.</div>
         </div>
 
       </div>
@@ -836,11 +559,11 @@ image_alt: "FixMyPC Perth: managed business IT support for Perth small businesse
 </section>
 
 <!-- CASE STUDY -->
-<section class="case-study-section results-section" aria-label="Client case study Hyperlink Solutions Perth">
+<section class="case-study-section" aria-label="Client case study Hyperlink Solutions Perth">
   <div class="wrap">
     <div class="fade-up split-head">
       <h2 class="s-title">Real results. Real business impact.</h2>
-      <p class="s-sub">Here is what happened when Hyperlink Solutions, a Perth IT outsourcing and development firm, switched to our Business plan.</p>
+      <p class="s-sub">What changed when Hyperlink Solutions, a Perth IT outsourcing and development firm, moved to our Business plan.</p>
     </div>
 
     <div class="fade-up cs-card">
@@ -851,7 +574,7 @@ image_alt: "FixMyPC Perth: managed business IT support for Perth small businesse
         <div class="cs-left">
 
           <div>
-            <div class="cs-kicker">Business Plan Client · Canning Vale, Perth</div>
+            <div class="cs-kicker">Business plan client · Perth</div>
             <div class="cs-name">Hyperlink Solutions</div>
             <div class="cs-meta">IT Outsourcing and Custom Development · Perth WA</div>
             <a class="cs-link" href="https://hyperlinksolutions.com.au" target="_blank" rel="noopener">
@@ -862,22 +585,22 @@ image_alt: "FixMyPC Perth: managed business IT support for Perth small businesse
 
           <div class="cs-stats">
             <div class="cs-stat">
-              <div class="cs-stat-val">8+</div>
-              <div class="cs-stat-lbl">Hours saved monthly</div>
+              <div class="cs-stat-val">8 hrs</div>
+              <div class="cs-stat-lbl">Saved a month</div>
             </div>
             <div class="cs-stat">
               <div class="cs-stat-val">Zero</div>
               <div class="cs-stat-lbl">Unexpected costs</div>
             </div>
             <div class="cs-stat">
-              <div class="cs-stat-val">{% include price.html key="business-it-essential" bare=true %}</div>
-              <div class="cs-stat-lbl">Plans start from, per month</div>
+              <div class="cs-stat-val">2</div>
+              <div class="cs-stat-lbl">Failing drives caught</div>
             </div>
           </div>
 
           <div>
-            <div class="cs-h">What Happened</div>
-            <div class="cs-story">Hyperlink Solutions had unmanaged workstations, no antivirus, no backup and zero visibility into their IT. Avoidable issues were quietly burning billable developer hours every week. We moved them onto the Business plan. Within the first week, managed antivirus was live, cloud backup was protecting all client project files and a full network audit was complete. Two failing drives were caught before data loss. The result was 30+ staff hours recovered per month and that time was spent into actual productivity.</div>
+            <div class="cs-h">What happened</div>
+            <div class="cs-story">Hyperlink Solutions had unmanaged workstations, no antivirus, no backup and zero visibility into their IT. Avoidable issues were quietly burning billable developer hours every week. We moved them onto the Business plan. Within the first week, managed antivirus was live, cloud backup was protecting all client project files and a full network audit was complete. Two failing drives were caught before data loss. The result was around 8 staff hours a month back, time that now goes into client work.</div>
           </div>
 
         </div>
@@ -910,7 +633,7 @@ image_alt: "FixMyPC Perth: managed business IT support for Perth small businesse
 
           <div class="cs-plan">
             <div class="cs-plan-label">Currently on</div>
-            <div class="cs-plan-name">Business Plan</div>
+            <div class="cs-plan-name">Business plan</div>
           </div>
 
         </div>
@@ -919,21 +642,24 @@ image_alt: "FixMyPC Perth: managed business IT support for Perth small businesse
   </div>
 </section>
 
-<!-- FINAL CTA -->
-<section class="cta-final" aria-label="Get business IT support Perth contact">
-  <div class="cta-final-inner">
-    <div class="fade-up">
-      <h2 class="cta-title">Stop letting IT problems <br>cost your business.</h2>
-      <p class="cta-desc">We check every critical area during the free IT audit. We document a picture of where your business stands, and how we can help you save time and resources.</p>
+<!-- INDUSTRIES -->
+<section class="industries-section" aria-labelledby="biz-ind-h">
+  <div class="wrap">
+    <div class="fade-up split-head">
+      <h2 class="s-title" id="biz-ind-h">Built for Perth <br><span class="accent">small businesses.</span></h2>
+      <p class="s-sub">Cafes, salons, clinics, offices, trades and retail across southern Perth. Choose your industry to see the software and problems we look after for businesses like yours.</p>
     </div>
-    <div class="cta-actions fade-up">
-
-      <a class="cta-btn-primary" href="#audit-form"
-         onclick="event.preventDefault();document.querySelector('.audit-section').scrollIntoView({behavior:'smooth',block:'start'});"
-        >
-        Book a free IT audit
-      </a>
-    </div>
+    <ul class="industries-grid">
+      <li class="industry-item"><a href="/it-support-trades-perth" class="industry-card"><span class="industry-icon" aria-hidden="true"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span><span class="industry-name">Trades &amp; Construction</span><svg class="industry-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="9 18 15 12 9 6"/></svg></a></li>
+      <li class="industry-item"><a href="/it-support-warehousing-logistics-perth" class="industry-card"><span class="industry-icon" aria-hidden="true"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-6 9 6v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></span><span class="industry-name">Warehousing &amp; Logistics</span><svg class="industry-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="9 18 15 12 9 6"/></svg></a></li>
+      <li class="industry-item"><a href="/it-support-real-estate-perth" class="industry-card"><span class="industry-icon" aria-hidden="true"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span><span class="industry-name">Real Estate Agencies</span><svg class="industry-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="9 18 15 12 9 6"/></svg></a></li>
+      <li class="industry-item"><a href="/it-support-accountants-perth" class="industry-card"><span class="industry-icon" aria-hidden="true"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span><span class="industry-name">Accountants &amp; Bookkeepers</span><svg class="industry-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="9 18 15 12 9 6"/></svg></a></li>
+      <li class="industry-item"><a href="/it-support-allied-health-perth" class="industry-card"><span class="industry-icon" aria-hidden="true"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span><span class="industry-name">Allied Health &amp; Medical</span><svg class="industry-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="9 18 15 12 9 6"/></svg></a></li>
+      <li class="industry-item"><a href="/it-support-legal-perth" class="industry-card"><span class="industry-icon" aria-hidden="true"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span><span class="industry-name">Legal &amp; Conveyancing</span><svg class="industry-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="9 18 15 12 9 6"/></svg></a></li>
+      <li class="industry-item"><a href="/it-support-retail-perth" class="industry-card"><span class="industry-icon" aria-hidden="true"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span><span class="industry-name">Retail Businesses</span><svg class="industry-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="9 18 15 12 9 6"/></svg></a></li>
+      <li class="industry-item"><a href="/it-support-childcare-perth" class="industry-card"><span class="industry-icon" aria-hidden="true"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><span class="industry-name">Childcare Centres</span><svg class="industry-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="9 18 15 12 9 6"/></svg></a></li>
+      <li class="industry-item"><a href="/it-support-hospitality-perth" class="industry-card"><span class="industry-icon" aria-hidden="true"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></span><span class="industry-name">Cafes &amp; Restaurants</span><svg class="industry-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="9 18 15 12 9 6"/></svg></a></li>
+    </ul>
   </div>
 </section>
 
@@ -983,7 +709,7 @@ image_alt: "FixMyPC Perth: managed business IT support for Perth small businesse
           How fast is emergency IT support response for Perth businesses?
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
-        <div class="faq-a" id="faq-a-5"><p>Premium plan clients get a guaranteed same day onsite response within 4 hours. Business and Essential plan clients receive priority remote support with most issues resolved within the hour. Support is available 7am to 11pm, 7 days a week on all plans.</p></div>
+        <div class="faq-a" id="faq-a-5"><p>Premium plan clients get a guaranteed same day onsite response within 4 hours. On every plan, remote support resolves issues the same day, and Business plan clients are answered ahead of Essential. Support is available 7am to 11pm, 7 days a week on all plans.</p></div>
       </div>
 
       <div class="faq-item">
@@ -998,16 +724,66 @@ image_alt: "FixMyPC Perth: managed business IT support for Perth small businesse
   </div>
 </section>
 
+<!-- FREE AUDIT DARK -->
+<section class="audit-section" id="audit-section" aria-label="Free business IT audit Perth">
+  <div class="audit-content">
+    <div>
+      <h2 class="s-title-light">Book a free 30-minute <br><span class="accent-light">IT audit.</span></h2>
+      <p class="s-sub-light audit-sub">A member of our team checks your security, updates and backups, then sends you a written report on where your business stands and what to fix first.</p>
+      <div class="audit-checklist">
+        <div class="audit-check-item">
+          <div class="audit-icon-box warn">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2.5" stroke-linecap="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <span class="audit-check-text">Is antivirus installed, up to date and actively running on every PC?</span>
+        </div>
+        <div class="audit-check-item">
+          <div class="audit-icon-box warn">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2.5" stroke-linecap="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <span class="audit-check-text">Are Windows and business software updates current and applied?</span>
+        </div>
+        <div class="audit-check-item">
+          <div class="audit-icon-box warn">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2.5" stroke-linecap="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <span class="audit-check-text">Does your business have a verified, tested backup of critical data?</span>
+        </div>
+        <div class="audit-check-item">
+          <div class="audit-icon-box good">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <span class="audit-check-text">We document every finding and provide a clear, written report.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="audit-card tq-light">
+      <div class="audit-card-title">Book a free IT audit</div>
+      <div class="audit-card-sub">A 30-minute online audit of your setup, with a written report.</div>
+      {%- include audit-form.html id="audit-form" subject="Free IT audit request: Business IT" from="business-it-support" business_placeholder="e.g. The Corner Cafe" notes_placeholder="e.g. our backups have never been tested" lead="audit_business" %}
+
+      <div class="audit-direct audit-direct-box">
+        <div class="audit-direct-label">Prefer to reach us directly?</div>
+        <a class="audit-direct-link" href="mailto:aly.imran.raja@gmail.com">
+          <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          aly.imran.raja@gmail.com
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- INTERNAL LINKS TO SERVICE PAGES -->
 <section class="biz-links-sec" aria-label="FixMyPC Perth services">
   <div class="sec-inner">
-    <div class="biz-links-title">Also need PC repair? We cover everything.</div>
+    <p class="biz-links-title">Also need a computer repaired?</p>
     <div class="biz-svc-links biz-links-flex">
       {%- assign _svcs = site.data.suburbs.service_links | where: "kind", "service" | where: "built", true %}
       {%- for _v in _svcs %}
       <a class="biz-link-chip" href="/{{ _v.slug }}">{{ _v.label | escape }}</a>
       {%- endfor %}
-      <a class="biz-link-chip-all" href="/pricing">View All Pricing →</a>
+      <a class="biz-link-chip-all" href="/pricing">All repair prices<span aria-hidden="true"> →</span></a>
     </div>
   </div>
 </section>
