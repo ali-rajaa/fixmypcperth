@@ -146,7 +146,7 @@
 @media (hover: hover) { .nav-cta:hover { background:#166534; } }
 /* Email-only pages (Business IT): the header button goes to the page's own
    enquiry form, so it takes the brand blue instead of WhatsApp green. */
-.nav-cta--form { background:#1560FF; box-shadow:0 3px 12px rgba(21,96,255,0.28); }
+.nav-cta--form { background:#1560FF; box-shadow:none; }
 @media (hover: hover) { .nav-cta--form:hover { background:#0A3ACC; } }
 .nav-cta:active { transform:scale(0.96); transition:transform 0.1s cubic-bezier(0.4,0,0.2,1); }
 /* Header phone link, just before the WhatsApp button: the number with a
