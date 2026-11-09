@@ -8,6 +8,11 @@
 # Update meta.rating and meta.review_count here when the profile changes.
 # No page should ever contain a hardcoded rating or review count.
 #
+# review_count is the exact number. From 50 up, the quote card shows it
+# rounded down to the ten with a plus (50 to 59 reads "50+", 60 reads
+# "60+"), so it is never more than the real count and does not need
+# changing after every review. Below 50 it shows the exact number.
+#
 # Prices in the FAQ are written as [[service-key]] tokens, never as figures.
 # The page resolves them through _includes/resolve-prices.html, so every
 # number comes from _data/services.yml and cannot go stale in the copy.
@@ -18,7 +23,7 @@
 
 meta:
   rating: 4.8
-  review_count: 49
+  review_count: 50
   source: Google Business Profile
   # Links to the Google Business Profile, all built on its Place ID, which
   # Google keeps stable. Copied Google Maps addresses (the long /maps/place/
