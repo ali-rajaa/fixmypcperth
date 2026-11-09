@@ -173,26 +173,11 @@ services:
     category: repairs
     group: Laptop hardware
     name: Laptop Screen Replacement
-    desc: Panel and labour included. Your quote lists the panel and the labour separately once we confirm your exact model.
+    # Labour only (owner, November 2026). The site shows labour prices only;
+    # the panel is quoted for the exact model and type, never listed.
+    desc: Labour to fit a new screen, tested for brightness, colour and dead pixels. The panel is quoted for your exact model and type before we order it.
     price: 145
     prefix: from
-    options:
-      # Each option carries its own key so the price include can resolve a
-      # single tier inside a sentence, e.g. the laptop screen FAQ on /pricing.
-      # Without these keys those three figures rendered blank on the page and
-      # in its FAQ schema.
-      - key: laptop-screen-standard
-        name: Standard
-        price: 145
-        note: Non-touch, the most common panel type. Panel and labour included.
-      - key: laptop-screen-touchscreen
-        name: Touchscreen
-        price: 170
-        note: Touchscreen or gaming high-refresh panels. Panel and labour included.
-      - key: laptop-screen-oled-premium
-        name: OLED / Premium
-        price: 190
-        note: OLED or premium 2-in-1 displays. Panel and labour included.
   - key: laptop-battery-replacement
     category: repairs
     group: Laptop hardware
@@ -294,45 +279,19 @@ services:
     category: upgrades
     group: Storage and memory
     name: SSD Upgrade, Labour Only
-    desc: We fit the SSD and transfer all your data across. We supply every type, SATA and NVMe, specced to what you actually need, or we fit one you have already bought.
+    # Labour only (owner, November 2026): the site shows no part prices. The
+    # "HDD to SSD Full Migration, drive supplied" item is gone; this is the
+    # same job without the drive's price in it.
+    desc: We fit the SSD and carry Windows, your programs and your files across. Bring your own drive, or we supply the right SATA or NVMe SSD and quote it before we order.
     price: 65
-  - key: hdd-to-ssd-full-migration
-    category: upgrades
-    group: Storage and memory
-    name: HDD to SSD Full Migration
-    desc: Drive supplied, your entire system cloned across so nothing is lost. Ideal for older machines.
-    price: 175
-    prefix: from
   - key: ram-upgrade-labour-only
     category: upgrades
     group: Storage and memory
     name: RAM Upgrade, Labour Only
-    desc: You supply the RAM, DDR4 or DDR5. We install it and configure XMP or EXPO in BIOS for full rated speed.
+    # Labour only (owner, November 2026): the "RAM Upgrade, Supplied" item and
+    # its 8GB to 64GB prices are gone; the RAM is quoted, never listed.
+    desc: We fit the RAM, DDR4 or DDR5, and set XMP or EXPO in BIOS for full rated speed. Bring your own, or we source the right RAM and quote it before we order.
     price: 55
-  - key: ram-upgrade-supplied
-    category: upgrades
-    group: Storage and memory
-    name: RAM Upgrade, Supplied
-    desc: Sourced, installed and fully configured with XMP or EXPO enabled. DDR4 sits at the lower end of each range, DDR5 at the higher end.
-    price: 130
-    prefix: from
-    options:
-      - name: 8GB
-        price: 130
-        prefix: from
-        note: Light browsing and basic tasks
-      - name: 16GB
-        price: 160
-        prefix: from
-        note: Best all-rounder for most PCs
-      - name: 32GB
-        price: 230
-        prefix: from
-        note: Gaming, streaming and multitasking
-      - name: 64GB
-        price: 340
-        prefix: from
-        note: Video editing and heavy workloads
   - key: gpu-install-driver-setup
     category: upgrades
     group: Components and cooling

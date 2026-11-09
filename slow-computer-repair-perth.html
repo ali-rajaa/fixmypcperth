@@ -15,7 +15,7 @@ faq_heading: "Slow computer questions"
 near_heading: "Slow computer repair near you"
 near_text: "We are based in Canning Vale and open around the clock for drop-offs. Most of our customers come from the suburbs around it."
 topic: "slow computer repair"
-costs_intro: "Tune ups start from [[basic-tune-up]], and hardware fixes such as an SSD or more memory are priced by the part. If you do not know the cause, start with the diagnostic."
+costs_intro: "Tune ups start from [[basic-tune-up]]. Hardware fixes such as an SSD or more memory are a fixed labour price, with the part quoted separately. If you do not know the cause, start with the diagnostic."
 
 # ---- Keyword targeting (see the service page SEO plan in STATUS.md) -----
 # GSC, 16 months. Old /slow-computer-repair-perth: 143 impressions at pos 28.
@@ -84,9 +84,7 @@ repairs:
   - id: ssd
     group: "Hardware that slows it down"
     title: "Old hard drive: SSD upgrade"
-    price_key: hdd-to-ssd-full-migration
-    also_keys:
-      - ssd-upgrade-labour-only
+    price_key: ssd-upgrade-labour-only
     signs:
       - "Several minutes to start up"
       - "Drive light on constantly"
@@ -94,14 +92,12 @@ repairs:
       - "Clicking or whirring from inside"
     text: |
       <p>Plenty of computers sold only a few years ago still came with a mechanical hard drive. It is the single most common reason a computer feels slow at everything, because every task waits on the drive first. Swapping it for an SSD is the biggest speed difference you can make to an older computer.</p>
-      <p>We supply the SSD and clone your whole system across, so it starts up just as before with all your files and programs, only much faster. If you already have the drive, the labour-only price is in the table below. Every upgrade we fit, including SSDs, memory and graphics cards, is on the <a href="/computer-upgrades-perth">computer upgrades</a> page. Our <a href="/tech-tips/ssd-upgrade-perth-guide">SSD upgrade guide</a> covers how much faster the same computer gets.</p>
+      <p>We fit the SSD and clone your whole system across, so it starts up just as before with all your files and programs, only much faster. Bring a drive you already have, or we supply one and quote it separately; the labour is in the table below. Every upgrade we fit, including SSDs, memory and graphics cards, is on the <a href="/computer-upgrades-perth">computer upgrades</a> page. Our <a href="/tech-tips/ssd-upgrade-perth-guide">SSD upgrade guide</a> covers how much faster the same computer gets.</p>
 
   - id: ram
     group: "Hardware that slows it down"
     title: "Not enough memory: RAM upgrade"
-    price_key: ram-upgrade-supplied
-    also_keys:
-      - ram-upgrade-labour-only
+    price_key: ram-upgrade-labour-only
     signs:
       - "Slows right down with a few tabs open"
       - "Freezes when switching between programs"
@@ -109,7 +105,7 @@ repairs:
       - "Struggles with video calls"
     text: |
       <p>Browsers, video calls and modern programs use far more memory than they did a few years ago. When there is not enough, the computer falls back on the drive, and everything slows down.</p>
-      <p>We check how much memory the computer has, how much it is using, and what it can take, then source and fit the right RAM. Some thin laptops have memory soldered to the board, and we say so rather than sell an upgrade that cannot be fitted.</p>
+      <p>We check how much memory the computer has, how much it is using, and what it can take, then fit the right RAM, yours or ours, with ours quoted before we order. Some thin laptops have memory soldered to the board, and we say so rather than sell an upgrade that cannot be fitted.</p>
 
   - id: overheating
     group: "Hardware that slows it down"
@@ -198,7 +194,7 @@ sections:
 
 faqs:
   - q: "How much does it cost to fix a slow computer in Perth?"
-    a: "It depends on the cause. A basic tune up is [[basic-tune-up]], an SSD upgrade with the drive supplied is from [[hdd-to-ssd-full-migration]], and a deep clean for overheating is [[overheating-fix-deep-clean]]. If you do not know the cause, the all-in diagnostic is [[diagnostic-repair-all-in]] and covers finding it and the repair labour."
+    a: "It depends on the cause. A basic tune up is [[basic-tune-up]], fitting an SSD is [[ssd-upgrade-labour-only]] labour plus the drive, and a deep clean for overheating is [[overheating-fix-deep-clean]]. If you do not know the cause, the all-in diagnostic is [[diagnostic-repair-all-in]] and covers finding it and the repair labour."
   - q: "How long does it take?"
     a: "Most jobs are done the same day. Drop it off before 2pm and it is usually ready by 6pm. Upgrades that need a part ordered take longer, and we tell you how long when we quote."
   - q: "Will a tune up make my computer faster?"

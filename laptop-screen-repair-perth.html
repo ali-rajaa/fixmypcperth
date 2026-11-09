@@ -16,7 +16,7 @@ faq_heading: "Laptop screen repair questions"
 near_heading: "Laptop screen repair near you"
 near_text: "We are based in Canning Vale and open around the clock for drop-offs. Most of our laptop screen customers come from the suburbs around it."
 topic: "laptop screen repair"
-costs_intro: "Screen replacement is priced by panel type, from [[laptop-screen-standard]], and every price includes the panel and the labour. Cable and hinge faults cost less than a new screen."
+costs_intro: "Screen replacement labour is from [[laptop-screen-replacement]], and the panel is quoted for your exact model and type before we order it. Cable and hinge faults cost less than a new screen."
 
 # ---- Keyword targeting (see the service page SEO plan in STATUS.md) -----
 # GSC, 16 months. New page (replaces the planned Wi-Fi page).
@@ -34,10 +34,10 @@ costs_intro: "Screen replacement is priced by panel type, from [[laptop-screen-s
 #             links to it. MacBook and Surface screens are NOT offered (terms
 #             and /pricing), so "macbook screen repair" is answered honestly
 #             in the FAQ, not targeted. Desktop monitors are not claimed.
-# Prices:     the three panel tiers are options of laptop-screen-replacement
-#             in services.yml, written as [[laptop-screen-standard]] etc.
-#             Panel and labour are both included (owner confirmed); the
-#             quote itemises the panel and the labour.
+# Prices:     labour only (owner, November 2026). laptop-screen-replacement
+#             is the labour, from its price in services.yml; the panel is
+#             quoted for the model and type and never listed. The old
+#             standard / touchscreen / OLED price tiers are gone.
 #
 # No prices typed anywhere on this page. Every figure comes from
 # services.yml through the layout; written copy uses [[key]] tokens.
@@ -47,7 +47,7 @@ short_answer: "Laptop screen repair and replacement in Perth, based in Canning V
 intro: |
   <p>A broken laptop screen is one of the most common repairs we do, and one of the most worthwhile. The rest of the laptop is usually fine, and a new screen costs far less than a new laptop. Your files, programs and settings stay exactly where they are.</p>
   <p>Not every screen fault needs a new screen, though. A display that flickers, shows lines or cuts out when you move the lid is often the cable that runs through the hinge, not the panel itself, and that is a smaller, cheaper repair. So we test before we quote. You get told what has actually failed and what it costs to fix, then you decide.</p>
-  <p>Screen replacement starts from [[laptop-screen-standard]] for a standard panel, [[laptop-screen-touchscreen]] for a touchscreen or high-refresh gaming panel, and [[laptop-screen-oled-premium]] for OLED and premium 2-in-1 displays. Every price includes the panel and the labour, and your quote lists the two separately, so you can see exactly what you are paying for. We confirm the exact panel your laptop takes and the final price before any work starts.</p>
+  <p>Screen replacement labour is from [[laptop-screen-replacement]]. The panel is quoted on top for your exact model and type, whether standard, touchscreen, high-refresh or OLED, so you see the labour and the part separately before anything is ordered. We confirm the exact panel your laptop takes and the final price before any work starts.</p>
 
 group_intros:
   "Screen damage": "<p>Physical damage to the panel itself, usually from a drop, a knock or pressure on the lid. The panel needs replacing, and the type of damage tells you how soon.</p>"
@@ -58,10 +58,7 @@ repairs:
   - id: cracked
     group: "Screen damage"
     title: "Cracked laptop screen replacement"
-    price_key: laptop-screen-standard
-    also_keys:
-      - laptop-screen-touchscreen
-      - laptop-screen-oled-premium
+    price_key: laptop-screen-replacement
     signs:
       - "Cracked glass with the image still showing"
       - "A crack that has grown since it happened"
@@ -75,7 +72,7 @@ repairs:
   - id: black-screen
     group: "Screen damage"
     title: "Black or dead laptop screen"
-    price_key: laptop-screen-standard
+    price_key: laptop-screen-replacement
     signs:
       - "Screen black but the laptop is running"
       - "Keyboard lights and fans on, no picture"
@@ -88,7 +85,7 @@ repairs:
   - id: lines-colour
     group: "Screen damage"
     title: "Lines, black patches and colour bleeding"
-    price_key: laptop-screen-standard
+    price_key: laptop-screen-replacement
     signs:
       - "Vertical or horizontal lines across the image"
       - "Black patches or ink-blot marks"
@@ -101,22 +98,22 @@ repairs:
   - id: touchscreen
     group: "Screen damage"
     title: "Touchscreen laptop repair"
-    price_key: laptop-screen-touchscreen
+    price_key: laptop-screen-replacement
     signs:
       - "Touch stopped working, display still fine"
       - "Phantom touches or the pointer jumping"
       - "Only part of the screen responds"
       - "Cracked touchscreen on a 2-in-1"
     text: |
-      <p>On most touchscreen laptops and 2-in-1s, the touch layer is bonded to the display, so a cracked or failed touchscreen means replacing the whole screen assembly. That is the touchscreen tier, from [[laptop-screen-touchscreen]].</p>
+      <p>On most touchscreen laptops and 2-in-1s, the touch layer is bonded to the display, so a cracked or failed touchscreen means replacing the whole screen assembly. The labour is the same screen replacement, from [[laptop-screen-replacement]], and the touchscreen panel is quoted for your model.</p>
       <p>Touch that has stopped working without any damage is sometimes a driver or setting rather than hardware, and we check that first. Phantom touches, where the laptop reacts to touches you did not make, usually mean the touch layer has failed.</p>
 
   - id: gaming-screen
     group: "Screen damage"
     title: "Gaming laptop and high-refresh screens"
-    price_key: laptop-screen-touchscreen
+    price_key: laptop-screen-replacement
     text: |
-      <p>Gaming laptops often use high-refresh panels, 120Hz, 144Hz or faster, and fitting a standard panel instead would lose that. We match the refresh rate, resolution and connector to the original, so the laptop performs the way it did when it was new. High-refresh panels are the touchscreen and gaming tier, from [[laptop-screen-touchscreen]].</p>
+      <p>Gaming laptops often use high-refresh panels, 120Hz, 144Hz or faster, and fitting a standard panel instead would lose that. We match the refresh rate, resolution and connector to the original, so the laptop performs the way it did when it was new. The labour is the same screen replacement, from [[laptop-screen-replacement]], and the high-refresh panel is quoted for your model.</p>
 
   # ---- Screen faults that are not the panel ------------------------------
   - id: flicker
@@ -159,15 +156,15 @@ repairs:
 
 sections:
   - id: screen-types
-    title: "Screen types and what they cost"
+    title: "Screen types and how they are priced"
     html: |
       <p>Laptop screens are not one universal part. The size, resolution, refresh rate, connector, touch layer and even the mounting brackets vary between models, and sometimes between two versions of the same model. That is why we confirm the exact panel first.</p>
       <ul>
-        <li><strong>Standard panel</strong>, from [[laptop-screen-standard]]. Non-touch, the most common type, fitted to most everyday laptops.</li>
-        <li><strong>Touchscreen or high-refresh panel</strong>, from [[laptop-screen-touchscreen]]. Touchscreen laptops, 2-in-1s, and gaming laptops with 120Hz and faster screens.</li>
-        <li><strong>OLED or premium panel</strong>, from [[laptop-screen-oled-premium]]. OLED displays and premium 2-in-1 screens.</li>
+        <li><strong>Standard panel.</strong> Non-touch, the most common type, fitted to most everyday laptops.</li>
+        <li><strong>Touchscreen or high-refresh panel.</strong> Touchscreen laptops, 2-in-1s, and gaming laptops with 120Hz and faster screens.</li>
+        <li><strong>OLED or premium panel.</strong> OLED displays and premium 2-in-1 screens.</li>
       </ul>
-      <p>Send us the make and model, or a photo of the sticker underneath the laptop, and we confirm which one yours takes and the final price before you bring it in.</p>
+      <p>The labour to fit any of them is from [[laptop-screen-replacement]]. The panel itself is quoted for your exact model, since its price depends on the type and the model. Send us the make and model, or a photo of the sticker underneath the laptop, and we confirm which one yours takes and the final price before you bring it in.</p>
 
   - id: how-it-works-screen
     title: "How a laptop screen replacement works"
@@ -199,7 +196,7 @@ sections:
 
 faqs:
   - q: "How much does laptop screen replacement cost in Perth?"
-    a: "It depends on the panel. Screen replacement starts from [[laptop-screen-standard]] for a standard panel, [[laptop-screen-touchscreen]] for a touchscreen or high-refresh gaming panel, and [[laptop-screen-oled-premium]] for OLED and premium 2-in-1 displays. The price includes the panel and the labour, and the quote lists both separately. We confirm the exact panel and the final price before starting."
+    a: "The labour to replace a laptop screen is from [[laptop-screen-replacement]]. The panel is quoted on top for your exact model and type, whether standard, touchscreen, high-refresh or OLED, and the quote lists the labour and the panel separately. We confirm the exact panel and the final price before starting."
   - q: "How long does a laptop screen repair take?"
     a: "If the panel for your model is on hand, often the same day. If it has to be ordered in, we tell you how long when we quote. A flicker or cable repair is often a same-day job."
   - q: "Is it worth replacing a laptop screen?"
@@ -209,9 +206,9 @@ faqs:
   - q: "Can I keep using a laptop with a cracked screen?"
     a: "If the image is clear and the crack is stable, careful use is usually fine for a while. If the crack is spreading, the glass is lifting or the image is being affected, get it booked in, since it tends to get worse."
   - q: "Do you replace touchscreen laptop screens?"
-    a: "Yes. On most touchscreen laptops and 2-in-1s the touch layer is bonded to the display, so the whole screen is replaced. That is the touchscreen tier, from [[laptop-screen-touchscreen]]."
+    a: "Yes. On most touchscreen laptops and 2-in-1s the touch layer is bonded to the display, so the whole screen is replaced. The labour is from [[laptop-screen-replacement]], and the touchscreen panel is quoted for your model."
   - q: "Do you replace gaming laptop screens?"
-    a: "Yes, and we match the refresh rate, resolution and connector to the original, so a 144Hz screen stays a 144Hz screen. High-refresh panels are from [[laptop-screen-touchscreen]]."
+    a: "Yes, and we match the refresh rate, resolution and connector to the original, so a 144Hz screen stays a 144Hz screen. The labour is from [[laptop-screen-replacement]], and the high-refresh panel is quoted for your model."
   - q: "Do you replace MacBook or Surface screens?"
     a: "No. We do not replace screens on MacBook or Surface devices. We can still diagnose them, recover your files and do software work on them."
   - q: "My laptop screen is black but the laptop is on. Is it the screen?"

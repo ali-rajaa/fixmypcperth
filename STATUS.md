@@ -71,6 +71,13 @@ the sections named in brackets.
   footer on phones; the desktop header is unchanged.
 - Business IT, the nine industry pages, privacy and terms stay email
   only. [Business IT and industry pages: email only]
+- Labour prices only (November 2026). No part prices on the site: the
+  "RAM Upgrade, Supplied" (8GB to 64GB) and "HDD to SSD Full Migration,
+  drive supplied" items are gone, and laptop screen replacement is labour
+  from its services.yml price with the panel quoted for the model (the
+  standard / touchscreen / OLED tiers are gone). Parts are always "quoted
+  separately before we order". The Windows key, USB recovery drive and
+  antivirus add-ons stay as they are. [Labour prices only]
 
 **What changed, in order**
 1. New phone number sitewide, including WhatsApp links and share images.

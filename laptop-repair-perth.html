@@ -16,7 +16,7 @@ faq_heading: "Laptop repair questions"
 near_heading: "Laptop repair near you"
 near_text: "We are based in Canning Vale and open around the clock for drop-offs. Most of our customers come from the suburbs around it."
 topic: "laptop repair"
-costs_intro: "Most laptop repairs are a fixed labour price, and a screen price includes the panel. Batteries are quoted as a part on top of the labour once we confirm your model."
+costs_intro: "Laptop repairs are a fixed labour price. Parts such as a screen panel, a battery or a drive are quoted on top once we confirm your model."
 
 # ---- Keyword targeting (see the service page SEO plan in STATUS.md) -----
 # Primary:    laptop repair perth
@@ -38,7 +38,7 @@ short_answer: "Laptop repair in Perth, based in Canning Vale, for every common W
 intro: |
   <p>Most laptop faults are one worn or broken part, not a dead machine. A battery that no longer holds a charge, an SSD that has started to fail or a hinge that has cracked can each be replaced, and the laptop goes back to how it was. It is almost always cheaper than buying new, and your files, programs and settings stay where they are.</p>
   <p>Below is every laptop problem we see on the bench, grouped by what is going wrong, with what causes it, how urgent it is and the fixed price. Not sure which one yours is? That is normal, and it is what the all-in diagnostic is for: one flat [[diagnostic-repair-all-in]] fee finds the fault and covers the repair labour, never an hourly rate.</p>
-  <p>Where a part has to be ordered for your exact model, we tell you the full price before any work starts. A battery is quoted as a part on top of the labour. A screen price already includes the panel, and the quote shows the panel and the labour separately. The price you agree to is the price you pay.</p>
+  <p>Where a part has to be ordered for your exact model, we tell you the full price before any work starts. A battery or a screen panel is quoted as a part on top of the labour, and the quote shows the part and the labour separately. The price you agree to is the price you pay.</p>
 
 group_intros:
   "Power, battery and charging": "<p>A laptop that will not power on, will not charge, or dies an hour after unplugging. These are the most common laptop repairs we do, and most are same-day jobs once the part is in.</p>"
@@ -102,7 +102,7 @@ repairs:
       - "Touch has stopped working on a touchscreen"
     text: |
       <p>A drop, a knock or something left on the keyboard when the lid was closed can crack the panel. A crack with a clear image behind it can wait a little. Black patches, colour bleeding across the image or a screen that has gone dark mean the panel itself is damaged, and that tends to spread.</p>
-      <p>Laptop panels are not one universal part. Size, resolution, refresh rate, touch and the connector all vary, sometimes between two versions of the same model. We confirm the exact panel your laptop takes and give you the full price, panel and labour included, before we start. Then we fit it and test it before you collect.</p>
+      <p>Laptop panels are not one universal part. Size, resolution, refresh rate, touch and the connector all vary, sometimes between two versions of the same model. We confirm the exact panel your laptop takes and give you the full price, the labour and the panel, before we start. Then we fit it and test it before you collect.</p>
       <p>Our <a href="/tech-tips/laptop-screen-replacement-physical-repairs">cracked screen guide</a> explains each kind of damage and how urgent it is, and the <a href="/laptop-screen-repair-perth">laptop screen repair</a> page has every screen type and price.</p>
 
   - id: flicker
@@ -183,9 +183,7 @@ repairs:
   - id: ssd
     group: "SSD, storage and speed"
     title: "Failing SSD or hard drive"
-    price_key: hdd-to-ssd-full-migration
-    also_keys:
-      - ssd-upgrade-labour-only
+    price_key: ssd-upgrade-labour-only
     signs:
       - "Freezes for seconds at a time"
       - "Files or folders that will not open"
@@ -194,7 +192,7 @@ repairs:
     text: |
       <p>SSDs are fast and have no moving parts, but they still wear out and fail, and when they go they can go quickly. Older laptops with a mechanical hard drive give more warning: freezing, clicking and files that take forever to open.</p>
       <p>If your laptop is showing any of these, back up anything important now or bring it in before it gets worse. A drive that still reads is far easier to save than one that has stopped. Our guide to the <a href="/tech-tips/signs-hard-drive-failing">signs a drive is failing</a> explains how urgent each one is.</p>
-      <p>We fit a new SSD, SATA or NVMe to suit your laptop, and clone your whole system across so it starts up exactly as before, only faster. If you already have the drive, the labour-only price is in the table below. Every upgrade we fit is on the <a href="/computer-upgrades-perth">computer upgrades</a> page.</p>
+      <p>We fit a new SSD, SATA or NVMe to suit your laptop, and clone your whole system across so it starts up exactly as before, only faster. Bring a drive you already have, or we supply one and quote it separately; the labour is in the table below. Every upgrade we fit is on the <a href="/computer-upgrades-perth">computer upgrades</a> page.</p>
 
   - id: data-recovery
     group: "SSD, storage and speed"
@@ -211,7 +209,7 @@ repairs:
     title: "Slow laptop, SSD and RAM upgrades"
     price_key: ssd-upgrade-labour-only
     also_keys:
-      - ram-upgrade-supplied
+      - ram-upgrade-labour-only
     signs:
       - "Minutes to start up"
       - "Programs take ages to open"
@@ -310,7 +308,7 @@ sections:
 
 faqs:
   - q: "How much does laptop repair cost in Perth?"
-    a: "It depends on the repair. Most laptop repairs are a fixed labour price, starting from [[laptop-keyboard-replacement]]. A screen replacement includes the panel, from [[laptop-screen-standard]]. A battery replacement is the labour plus the battery, which we quote for your exact model before we start. If you do not know what is wrong, the all-in diagnostic is [[diagnostic-repair-all-in]] and covers finding the fault and the repair labour."
+    a: "It depends on the repair. Most laptop repairs are a fixed labour price, starting from [[laptop-keyboard-replacement]]. A screen replacement is from [[laptop-screen-replacement]] labour, with the panel quoted for your model. A battery replacement is the labour plus the battery, which we quote for your exact model before we start. If you do not know what is wrong, the all-in diagnostic is [[diagnostic-repair-all-in]] and covers finding the fault and the repair labour."
   - q: "How long does a laptop repair take?"
     a: "Most are same-day laptop repairs. Drop it off before 2pm and it is usually ready by 6pm. Repairs that need a part ordered for your model take longer, and we tell you how long when we quote."
   - q: "Do you replace laptop batteries?"
@@ -318,7 +316,7 @@ faqs:
   - q: "Can you fix a laptop that keeps getting blue screens?"
     a: "Yes. Repeated blue screens are usually a failing SSD, faulty memory, a driver clash or overheating. We test the hardware first so you only pay for the fix that is actually needed. The all-in diagnostic is [[diagnostic-repair-all-in]] and covers finding the cause and the repair labour."
   - q: "Can you replace or upgrade the SSD in my laptop?"
-    a: "Yes, on most laptops. We fit a new SATA or NVMe SSD and clone your whole system across, so it starts up just as before with all your files and programs. Supplying the drive and cloning is from [[hdd-to-ssd-full-migration]], or [[ssd-upgrade-labour-only]] labour only if you already have the drive."
+    a: "Yes, on most laptops. We fit a new SATA or NVMe SSD and clone your whole system across, so it starts up just as before with all your files and programs. The labour is [[ssd-upgrade-labour-only]]. Bring a drive you already have, or we supply one and quote it separately."
   - q: "Will I lose my files?"
     a: "Most repairs never touch your files. Where Windows has to be reinstalled, the price includes backing up your files first and putting them back after. If the drive itself has failed, we recover what we can before anything else."
   - q: "Is it worth repairing an old laptop?"

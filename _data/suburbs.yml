@@ -57,7 +57,7 @@ service_links:
     nav_order: 3
     from_key: screen-flicker-or-line-repair
     label: "Laptop screen repair"
-    summary: "Cracked, black, flickering and touchscreen laptop screens, panel and labour included."
+    summary: "Cracked, black, flickering and touchscreen laptop screens. Fixed labour, panel quoted for your model."
     built: true
   - slug: slow-computer-repair-perth
     kind: service

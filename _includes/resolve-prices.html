@@ -37,7 +37,7 @@
       {%- assign _t = _t | replace: _tok, _v -%}
     {%- endif -%}
     {%- comment -%} Single tiers inside a service's options list, such as
-    laptop-screen-standard, resolve the same way price.html resolves them. {%- endcomment -%}
+    case-swap-air, resolve the same way price.html resolves them. {%- endcomment -%}
     {%- if _s.options and _t contains '[[' -%}
       {%- for _o in _s.options -%}
         {%- assign _tok = '[[' | append: _o.key | append: ']]' -%}
