@@ -82,14 +82,14 @@ a    { color:inherit; }
 .svg-sprite { position:absolute; width:0; height:0; overflow:hidden; }
 .s-title { font-family:var(--display); font-size:1.45rem; font-weight:800; letter-spacing:-0.02em; line-height:1.2; color:var(--ink); margin-bottom:0.75rem; }
 .s-sub { font-size:1.0625rem; color:var(--muted); max-width:60ch; line-height:1.75; }
-.btn-blue { display:inline-flex; align-items:center; justify-content:center; gap:8px; background:var(--blue); color:#fff; font-family:var(--body); font-size:0.9375rem; font-weight:700; padding:14px 26px; border-radius:50px; text-decoration:none; box-shadow:0 4px 16px rgba(21,96,255,0.35); transition:transform 0.25s var(--ease-settle),box-shadow 0.25s var(--ease-settle),filter 0.2s; white-space:nowrap; }
-@media (hover: hover) { .btn-blue:hover { box-shadow:0 12px 32px rgba(21,96,255,0.5); filter:brightness(1.1); } }
+.btn-blue { display:inline-flex; align-items:center; justify-content:center; gap:8px; background:var(--blue); color:#fff; font-family:var(--body); font-size:0.9375rem; font-weight:700; padding:14px 26px; border-radius:50px; text-decoration:none; transition:transform 0.25s var(--ease-settle),filter 0.2s; white-space:nowrap; }
+@media (hover: hover) { .btn-blue:hover { filter:brightness(1.1); } }
 /* Feedback on press, not release - the instant a finger or cursor is down,
    the button visibly compresses, so the tap never feels unacknowledged. */
-.btn-blue:active { transform: scale(0.97); box-shadow:0 4px 14px rgba(21,96,255,0.4); filter:brightness(1.05); transition:transform 0.1s var(--ease-press),box-shadow 0.1s var(--ease-press); }
-.btn-wa { display:inline-flex; align-items:center; justify-content:center; gap:8px; background:var(--wa-dk); color:#fff; font-family:var(--body); font-size:0.9375rem; font-weight:700; padding:14px 26px; border-radius:50px; text-decoration:none; box-shadow:0 4px 16px rgba(34,197,94,0.35); transition:transform 0.25s var(--ease-settle),box-shadow 0.25s var(--ease-settle); white-space:nowrap; }
-@media (hover: hover) { .btn-wa:hover { background:var(--wa-deep); box-shadow:0 12px 32px rgba(21,128,61,0.4); } }
-.btn-wa:active { transform: scale(0.97); box-shadow:0 4px 14px rgba(21,128,61,0.35); transition:transform 0.1s var(--ease-press),box-shadow 0.1s var(--ease-press); }
+.btn-blue:active { transform: scale(0.97); filter:brightness(1.05); transition:transform 0.1s var(--ease-press); }
+.btn-wa { display:inline-flex; align-items:center; justify-content:center; gap:8px; background:var(--wa-dk); color:#fff; font-family:var(--body); font-size:0.9375rem; font-weight:700; padding:14px 26px; border-radius:50px; text-decoration:none; transition:transform 0.25s var(--ease-settle),background-color 0.15s; white-space:nowrap; }
+@media (hover: hover) { .btn-wa:hover { background:var(--wa-deep); } }
+.btn-wa:active { transform: scale(0.97); transition:transform 0.1s var(--ease-press); }
 .btn-outline { display:inline-flex; align-items:center; justify-content:center; gap:8px; background:transparent; color:var(--ink); font-family:var(--body); font-size:0.9375rem; font-weight:600; padding:13px 24px; border-radius:50px; text-decoration:none; border:1.5px solid var(--border2); transition:border-color 0.15s,color 0.15s,transform 0.1s var(--ease-press); white-space:nowrap; }
 @media (hover: hover) { .btn-outline:hover { border-color:var(--blue); color:var(--blue); } }
 .btn-outline:active { transform:scale(0.97); border-color:var(--blue); color:var(--blue); }
@@ -103,14 +103,20 @@ a    { color:inherit; }
 /* The copy column is centred against the quote card so the two read as one
    band of equal height, instead of the copy stopping well short of the card. */
 .hero-copy { display:flex; flex-direction:column; justify-content:center; min-width:0; }
-/* A row of computer drawings above the H1, edge to edge across the text
-   column. The row is one drawing tall and wraps: as many as fit sit on the
-   first line, spread from edge to edge, and the rest wrap out of sight.
-   One colour, line drawings, static. It ends where the headline's widest
-   line ends: the row carries the H1's font size and is 10.38em wide, the
-   width of "Fixed Price, Same Day" in Sora 800. */
-.hero-devices { display:flex; flex-wrap:wrap; justify-content:space-between; column-gap:20px; row-gap:24px; height:40px; overflow:hidden; margin:0 0 1.5rem; font-size:clamp(2.2rem,4.2vw,3.4rem); width:10.38em; max-width:100%; }
-.hero-device { width:48px; height:40px; flex-shrink:0; color:var(--muted2); fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+/* The devices we repair: six outline icons above the H1, spread evenly
+   across the width of the headline. The row carries the H1's font size and
+   is 10.38em wide, the measured width of "Fixed Price, Same Day", so it ends
+   where the headline ends. Grey at rest, brand blue on hover, and a gentle
+   staggered fade-in on load (none with reduced motion). */
+.hero-devices { display:flex; align-items:center; justify-content:space-between; margin:0 0 1.5rem; font-size:clamp(2.2rem,4.2vw,3.4rem); width:10.38em; max-width:100%; }
+.hero-device { display:block; width:40px; height:40px; flex-shrink:0; color:var(--muted2); fill:none; stroke:currentColor; stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round; transition:color 0.2s var(--ease-settle); animation:heroDeviceIn 0.5s var(--ease-settle) both; }
+.hero-device:nth-child(2) { animation-delay:0.05s; }
+.hero-device:nth-child(3) { animation-delay:0.1s; }
+.hero-device:nth-child(4) { animation-delay:0.15s; }
+.hero-device:nth-child(5) { animation-delay:0.2s; }
+.hero-device:nth-child(6) { animation-delay:0.25s; }
+@keyframes heroDeviceIn { from { opacity:0; transform:translateY(4px); } to { opacity:1; transform:none; } }
+@media (hover: hover) { .hero-device:hover { color:var(--blue); } }
 .hero-lead { display:none; }
 /* Phone-only title for the quote card: centred over the card it introduces,
    balanced so neither line is left with a stray word. */
@@ -171,8 +177,8 @@ a    { color:inherit; }
    score, gold stars in Google's star yellow and the review count, with a
    link to read them. White on the card's tinted panel so it is the first
    thing the eye finds. Rating, count and link all come from reviews.yml. */
-.mq-rating { display:flex; align-items:center; gap:12px; margin-bottom:12px; padding:10px 14px; background:var(--bg); border:1px solid var(--border); border-radius:12px; box-shadow:0 1px 3px rgba(15,23,42,0.06); text-decoration:none; transition:border-color 0.15s,box-shadow 0.15s,scale 0.3s var(--ease-settle); -webkit-tap-highlight-color:transparent; }
-@media (hover: hover) { .mq-rating:hover { border-color:var(--blue-mid); box-shadow:0 4px 14px rgba(15,23,42,0.08); } }
+.mq-rating { display:flex; align-items:center; gap:12px; margin-bottom:12px; padding:10px 14px; background:var(--bg); border:1px solid var(--border); border-radius:12px; text-decoration:none; transition:border-color 0.15s,scale 0.3s var(--ease-settle); -webkit-tap-highlight-color:transparent; }
+@media (hover: hover) { .mq-rating:hover { border-color:var(--blue-mid); } }
 .mq-rating:active { scale:0.985; transition:scale 0.1s var(--ease-press); }
 .mq-rating-g { width:28px; height:28px; flex-shrink:0; }
 .mq-rating-body { display:flex; flex-direction:column; gap:3px; min-width:0; }
@@ -207,7 +213,7 @@ a    { color:inherit; }
 .mq-service-btn svg { width:17px; height:17px; color:var(--blue); flex-shrink:0; }
 @media (hover: hover) { .mq-service-btn:hover { border-color:var(--blue-mid); } }
 .mq-service-radio:active + .mq-service-btn { transform:scale(0.96); transition:transform 0.1s var(--ease-press); }
-.mq-service-radio:checked + .mq-service-btn { border-color:var(--blue); background:var(--blue-lt); color:var(--blue-dk); box-shadow:0 0 0 3px rgba(21,96,255,0.08); }
+.mq-service-radio:checked + .mq-service-btn { border-color:var(--blue); background:var(--blue-lt); color:var(--blue-dk); }
 .mq-service-radio:focus-visible + .mq-service-btn { outline:2px solid var(--blue); outline-offset:1px; }
 .mq-back {
   background:none; border:none; cursor:pointer; font-family:var(--body); font-size:0.75rem; font-weight:600;
@@ -267,7 +273,7 @@ a    { color:inherit; }
 .services-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:16px; }
 .svc-card { background:var(--bg); border:1.5px solid var(--border); border-radius:var(--radius); padding:1.75rem; position:relative; display:flex; flex-direction:column; transition:border-color 0.2s,box-shadow 0.3s var(--ease-settle),transform 0.3s var(--ease-settle); overflow:hidden; }
 .svc-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--blue),#00CFFF); opacity:0; transition:opacity 0.2s; }
-@media (hover: hover) { .svc-card:hover { border-color:var(--blue); box-shadow:0 8px 24px rgba(21,96,255,0.08); } }
+@media (hover: hover) { .svc-card:hover { border-color:var(--blue); } }
 @media (hover: hover) { .svc-card:hover::before { opacity:1; } }
 .svc-card.popular { border-color:var(--blue); background:var(--blue-lt); }
 .svc-card.popular::before { opacity:1; }
@@ -314,7 +320,7 @@ a    { color:inherit; }
 .svc-link-pill:active { transform:scale(0.94); }
 .how-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:14px; margin-top:2.5rem; }
 .how-card { background:var(--bg); border:1.5px solid var(--border); border-radius:var(--radius); padding:1.75rem 1.5rem; transition:border-color 0.2s,transform 0.3s var(--ease-settle),box-shadow 0.3s var(--ease-settle); }
-@media (hover: hover) { .how-card:hover { border-color:var(--blue); box-shadow:0 8px 24px rgba(21,96,255,0.08); } }
+@media (hover: hover) { .how-card:hover { border-color:var(--blue); } }
 .how-num   { font-family:var(--display); font-size:3rem; font-weight:800; color:var(--blue-lt); letter-spacing:-0.042em; line-height:1; margin-bottom:0.75rem; border-bottom:2px solid var(--border); padding-bottom:0.75rem; }
 .how-title { font-family:var(--display); font-size:1.05rem; font-weight:700; line-height:1.3; letter-spacing:-0.01em; color:var(--ink); margin-bottom:0.4rem; margin-top:0.75rem; }
 .how-desc  { font-size:0.8125rem; font-weight:500; color:var(--muted); line-height:1.5; }
@@ -418,7 +424,7 @@ a.nap-value { padding:11px 0; margin:-11px 0; }
 @media (hover: hover) { .suburb-links a:hover { text-decoration:underline; text-underline-offset:3px; } }
 .contact-map { position:relative; aspect-ratio:1 / 1; border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; background:var(--bg2); }
 @media (max-width:720px) { .contact-split { grid-template-columns:minmax(0,1fr); } }
-.map-chip { position:absolute; left:14px; bottom:14px; display:inline-flex; align-items:center; gap:8px; background:var(--bg); border:1.5px solid var(--border); border-radius:var(--radius-sm); padding:0.7rem 1rem; font-family:var(--display); font-size:0.84375rem; font-weight:700; color:var(--ink); text-decoration:none; box-shadow:0 4px 16px rgba(15,23,42,0.14); transition:border-color 0.15s,color 0.15s,transform 0.2s var(--ease-settle),scale 0.3s var(--ease-settle); -webkit-tap-highlight-color:transparent; }
+.map-chip { position:absolute; left:14px; bottom:14px; display:inline-flex; align-items:center; gap:8px; background:var(--bg); border:1.5px solid var(--border); border-radius:var(--radius-sm); padding:0.7rem 1rem; font-family:var(--display); font-size:0.84375rem; font-weight:700; color:var(--ink); text-decoration:none; transition:border-color 0.15s,color 0.15s,transform 0.2s var(--ease-settle),scale 0.3s var(--ease-settle); -webkit-tap-highlight-color:transparent; }
 .map-chip svg { width:16px; height:16px; color:var(--blue); flex-shrink:0; }
 @media (hover: hover) { .map-chip:hover { border-color:var(--blue-mid); color:var(--blue); } }
 /* Press feedback on pointer-down, with the scale property. */
@@ -544,8 +550,8 @@ body { padding-top:var(--mob-nav-h); }
 .hero-rating-link { font-size:0.8125rem; font-weight:600; color:var(--blue); text-decoration:underline; text-decoration-color:var(--blue-mid); text-underline-offset:3px; }
 .mq-rating { display:none; }
 .hero-card { display:block; order:-1; max-width:none; margin-bottom:1.75rem; box-shadow:0 6px 28px rgba(15,23,42,0.12); }
-.hero-devices { height:32px; column-gap:14px; margin-bottom:1.1rem; font-size:var(--m-h1); }
-.hero-device { width:38px; height:32px; }
+.hero-devices { margin-bottom:1.1rem; font-size:var(--m-h1); }
+.hero-device { width:38px; height:38px; }
 .hero h1:where(:not([class])) { font-size:clamp(1.9rem,8vw,2.8rem); letter-spacing:-0.040em; line-height:1.08; max-width:300px; }
 .hero-desc { font-size:1rem; line-height:1.7; }
 .hero-actions { flex-direction:column; align-items:stretch; gap:0.75rem; }
@@ -686,6 +692,7 @@ body { padding-top:var(--mob-nav-h); }
    FAQ arrow drops its overshoot and rotates plainly. */
 @media (prefers-reduced-motion: reduce) {
   .pkg-swipe-hint svg { animation:none; }
+  .hero-device { animation:none; transition:none; }
   .js .fade-up { transition:opacity 0.2s ease; transform:none; }
 
   .btn-blue, .btn-wa, .btn-outline, .svc-card, .how-card, .mq-service-btn, .guide-tab, .svc-cta, .svc-link-pill {
