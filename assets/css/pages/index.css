@@ -97,12 +97,20 @@ a    { color:inherit; }
    label could grow wider than its column and push the whole page sideways.
    This caps them without changing anything on desktop. */
 .btn-blue, .btn-wa, .btn-outline { max-width:100%; }
-.hero { padding:132px 2rem 64px; background:var(--bg); position:relative; overflow:hidden; }
+.hero { padding:112px 2rem 64px; background:var(--bg); position:relative; overflow:hidden; }
 .hero::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 800px 500px at 70% 40%,rgba(21,96,255,0.06) 0%,transparent 70%),radial-gradient(ellipse 400px 300px at 10% 80%,rgba(34,197,94,0.05) 0%,transparent 60%); pointer-events:none; }
 .hero-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 420px; gap:3.5rem; align-items:stretch; }
 /* The copy column is centred against the quote card so the two read as one
    band of equal height, instead of the copy stopping well short of the card. */
 .hero-copy { display:flex; flex-direction:column; justify-content:center; min-width:0; }
+/* A row of computer drawings above the H1, edge to edge across the text
+   column. The row is one drawing tall and wraps: as many as fit sit on the
+   first line, spread from edge to edge, and the rest wrap out of sight.
+   One colour, line drawings, static. It ends where the headline's widest
+   line ends: the row carries the H1's font size and is 10.38em wide, the
+   width of "Fixed Price, Same Day" in Sora 800. */
+.hero-devices { display:flex; flex-wrap:wrap; justify-content:space-between; column-gap:20px; row-gap:24px; height:40px; overflow:hidden; margin:0 0 1.5rem; font-size:clamp(2.2rem,4.2vw,3.4rem); width:10.38em; max-width:100%; }
+.hero-device { width:48px; height:40px; flex-shrink:0; color:var(--muted2); fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
 .hero-lead { display:none; }
 /* Phone-only title for the quote card: centred over the card it introduces,
    balanced so neither line is left with a stray word. */
@@ -536,6 +544,8 @@ body { padding-top:var(--mob-nav-h); }
 .hero-rating-link { font-size:0.8125rem; font-weight:600; color:var(--blue); text-decoration:underline; text-decoration-color:var(--blue-mid); text-underline-offset:3px; }
 .mq-rating { display:none; }
 .hero-card { display:block; order:-1; max-width:none; margin-bottom:1.75rem; box-shadow:0 6px 28px rgba(15,23,42,0.12); }
+.hero-devices { height:32px; column-gap:14px; margin-bottom:1.1rem; font-size:var(--m-h1); }
+.hero-device { width:38px; height:32px; }
 .hero h1:where(:not([class])) { font-size:clamp(1.9rem,8vw,2.8rem); letter-spacing:-0.040em; line-height:1.08; max-width:300px; }
 .hero-desc { font-size:1rem; line-height:1.7; }
 .hero-actions { flex-direction:column; align-items:stretch; gap:0.75rem; }
