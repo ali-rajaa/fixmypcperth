@@ -598,11 +598,13 @@ body { padding-top:var(--mob-nav-h); }
 .guide-panel > p, .guide-panel > ul > li { font-size:0.90625rem; }
 .hero-info-strip { padding:0 1.25rem 2.5rem; }
 .his-inner { flex-direction:column; align-items:stretch; gap:0.9rem; padding:1.1rem 1.15rem; }
-/* Three equal columns so "Same day" never pushes into its neighbours; the
-   figure scales with the screen instead of wrapping. */
-.his-stats { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:0.75rem; width:100%; }
-.his-stat { min-width:0; }
-.his-val { font-size:clamp(1rem,5vw,1.25rem); }
+/* The three stats share the row equally, but none gets narrower than its
+   own figure, so "Same day" never runs into its neighbour. The figure is in
+   rem so it grows with the reader's text size; when the three no longer fit
+   (large text on a narrow phone) the last one moves to a second row. */
+.his-stats { gap:0.75rem; width:100%; }
+.his-stat { flex:1 1 0; min-width:min-content; }
+.his-val { font-size:1.25rem; }
 .his-lbl { white-space:normal; line-height:1.3; }
 .his-checks { grid-template-columns:1fr 1fr; gap:0.5rem 0.75rem; }
 .his-checks li:where(:not([class])) { font-size:0.75rem; white-space:normal; line-height:1.35; }

@@ -99,7 +99,8 @@ textarea.tq-input { resize: vertical; min-height: 76px; }
   .tq-light .tq-seg-opt:hover span:where(:not([class])) { background: var(--blue-lt); border-color: var(--blue-mid); }
   .tq-seg-opt:hover span:where(:not([class])) { background: rgba(255,255,255,0.12); }
   .tq-done-wa:hover { background: #166534; }
-  .tq-form .tq-trust > .tq-call:hover { text-decoration-thickness: 2px; }
+  .tq-form .tq-trust > .tq-call:hover { color: #93B4FF; text-decoration-thickness: 2px; }
+  .tq-light .tq-form .tq-trust > .tq-call:hover { color: var(--blue); }
 }
 
 @media (max-width: 640px) {

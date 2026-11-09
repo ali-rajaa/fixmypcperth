@@ -199,7 +199,7 @@ body:has(.tip-page) { overflow-x: clip; }
   .tip-crumbs a:where(:not([class])):hover, .tip-act-link:hover { color: var(--blue-dk); text-decoration: underline; }
   .tip-btn-primary:hover { background: var(--blue-dk); }
   .tip-index-list a:where(:not([class])):hover { color: var(--blue); }
-  .tip-nudge a:where(:not([class])):hover { text-decoration-thickness: 2px; }
+  .tip-nudge a:where(:not([class])):hover { color: var(--lvl-3); text-decoration-thickness: 2px; }
   .tip-table td a:where(:not([class])):hover { color: var(--blue); }
 
   .tip-more a:hover .tip-more-title { color: var(--blue); }
