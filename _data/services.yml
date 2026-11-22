@@ -562,7 +562,7 @@ addons:
   - key: after-hours
     name: After-hours fee
     desc: If you want us to work on your device between 8pm and 7am rather than first thing next morning. You get the fix, or the cause and the part it needs, that night. Dropping off and collecting are free at any hour, with no weekend surcharge.
-    price: 15
+    price: 49
     plus: true
   - key: on-site-call-out
     name: On-site call-out fee
@@ -592,7 +592,7 @@ addons:
     suffix: per visit
   - key: biz-afterhours-callout
     name: After-hours emergency call-out
-    price: 79
+    price: 99
     suffix: flat
   - key: biz-cyber-training
     name: Staff cyber security training
