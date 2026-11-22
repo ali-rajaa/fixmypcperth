@@ -352,7 +352,10 @@ function formShow(el) {
 
   /* ---- Quote card notice (Perth time) ----
      7am to 2pm: countdown to the 2pm same-day cutoff. 2pm to 8pm: drop off
-     tonight. 8pm to 7am: open now, come now (owner, November 2026). */
+     now for a fix today. 8pm to midnight: drop off now for a fix tonight.
+     Midnight to 7am: open now, first on the bench this morning. Most jobs
+     are fixed the same day or night, so no "tomorrow" before midnight
+     (owner, November 2026). */
   (function() {
     const box  = document.getElementById('mqCountdown');
     const text = document.getElementById('mqCountdownText');
@@ -370,12 +373,17 @@ function formShow(el) {
       const diff = cutoff.getTime() - perth.getTime();
 
       const hour = perth.getHours();
-      if (hour >= 20 || hour < 7) {
-        // Night: the drop-off is open, so say so. After midnight the bench
-        // is "this morning", before it "tomorrow".
+      if (hour < 7) {
+        // Small hours: the drop-off is open; the bench starts in the morning.
         box.classList.add('closed');
-        text.innerHTML = '<span class="mq-notice-time">Open now.</span> Drop it off, first on the bench ' + (hour < 7 ? 'this morning.' : 'tomorrow.');
-      } else if (diff > 0) {
+        text.innerHTML = '<span class="mq-notice-time">Open now.</span> Drop it off, first on the bench this morning.';
+      } else if (hour >= 14) {
+        // Afternoon and evening: most jobs are still fixed the same day or
+        // night, so invite the drop-off now.
+        box.classList.add('closed');
+        text.innerHTML = '<span class="mq-notice-time">Drop off now</span> for a fix ' + (hour >= 20 ? 'tonight.' : 'today.');
+      } else {
+        // 7am to 2pm: the countdown to the same-day cutoff.
         const h = Math.floor(diff / 3600000);
         const m = Math.floor((diff % 3600000) / 60000);
         const s = Math.floor((diff % 60000) / 1000);
@@ -385,9 +393,6 @@ function formShow(el) {
         const left = h > 0 ? (h + 'h ' + m + 'm') : (m + 'm ' + s + 's');
         box.classList.remove('closed');
         text.innerHTML = 'Drop off within <span class="mq-notice-time">' + left + '</span> for same day pickup.';
-      } else {
-        box.classList.add('closed');
-        text.textContent = 'Drop off tonight, first on the bench tomorrow.';
       }
     }
     tick();
