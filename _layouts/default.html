@@ -153,6 +153,9 @@
 <body>
 
 {% include header.html %}
+{%- unless page.contact == "email" %}
+{% include open-now.html %}
+{%- endunless %}
 
 <main id="main-content">
 {{ content }}

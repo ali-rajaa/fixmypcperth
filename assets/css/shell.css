@@ -353,6 +353,34 @@
 
 #scroll-bar { position:fixed; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,#1560FF,#00CFFF,#22C55E); transform:scaleX(0); transform-origin:left; z-index:9999; }
 
+/* ==========================================================
+   OPEN NOW BANNER
+   8pm to midnight, Perth time: a full-width bar under the
+   header saying the shop is open and taking drop-offs. Added,
+   placed under the header (top) and removed at midnight by
+   _includes/open-now.html. It scrolls away with the page and
+   sits under the header and the phone menu. No shadow, no
+   motion. White on #1560FF is 5:1.
+   ========================================================== */
+.oc-banner { position:relative; z-index:150; background:#1560FF; }
+.oc-link {
+  display:block; min-height:44px; padding:0.75rem 1.25rem;
+  color:#FFFFFF; text-decoration:none; text-align:center;
+  font-size:0.875rem; font-weight:500; line-height:1.4;
+}
+.oc-icon { display:inline-block; width:1.15em; height:1.15em; margin-right:0.4em; vertical-align:-0.22em; }
+.oc-strong { font-weight:700; }
+.oc-cta { margin-left:0.3em; font-weight:700; white-space:nowrap; text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:0.2em; }
+.oc-sr { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; }
+@media (hover: hover) { .oc-link:hover { background:#0A3ACC; } }
+.oc-link:focus-visible { outline:2px solid #FFFFFF; outline-offset:-4px; }
+@media print { .oc-banner { display:none; } }
+/* Phones: two lines at most, down to 320px, without the clock. */
+@media (max-width:720px) {
+  .oc-link { padding:0.625rem 1rem; font-size:0.8125rem; }
+  .oc-icon { display:none; }
+}
+
 /* Submit button states, shared by every form (see formSending in
    scripts.html). button.is-* outranks each page's own .x:disabled rule, so
    the sending button stays full colour instead of the faded disabled look,

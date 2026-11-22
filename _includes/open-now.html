@@ -1,0 +1,58 @@
+{%- comment -%}
+  OPEN NOW BANNER - 8pm to midnight, Perth time.
+  A full-width bar under the header: the shop is open and taking drop-offs
+  right now, which is when most customers come (owner). The whole bar is a
+  link to directions.
+
+  The script runs straight after the header, before the page content is
+  parsed, so the content is laid out below the bar from the start and
+  nothing moves when it appears. It places the bar just under whichever
+  header is showing and re-places it on resize, because some pages pad the
+  body for the phone header, some pad their hero instead, and one pads the
+  body 4px more than the header is tall. It scrolls
+  away with the page. A minute check adds it at 8pm and takes it away at
+  midnight for anyone with a page left open. No JavaScript, no bar.
+  Not on pages set to email contact (Business IT, industry and legal pages;
+  see default.html). Styles: shell.css.
+{%- endcomment -%}
+<template id="oc-tpl"><aside class="oc-banner" id="oc-banner" aria-label="Open now"><a class="oc-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=7+Barraberry+Retreat+Canning+Vale+WA+6155" target="_blank" rel="noopener noreferrer"><svg class="oc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span class="oc-text"><span class="oc-strong">Open now.</span> Drop off now for a fix tonight.</span> <span class="oc-cta">Get directions<span class="oc-sr">, opens in Google Maps</span></span></a></aside></template>
+<script>
+(function () {
+  var tpl = document.getElementById('oc-tpl');
+  if (!tpl || !tpl.content) return;
+  // Perth is UTC+8 all year (no daylight saving), whatever the visitor's clock.
+  function isOpenHour() { return (new Date().getUTCHours() + 8) % 24 >= 20; }
+  function headerBottom() {
+    var b = 0;
+    document.querySelectorAll('.desk-nav, .mob-nav').forEach(function (n) {
+      var r = n.getBoundingClientRect();
+      if (r.height) b = Math.max(b, r.bottom);
+    });
+    return b;
+  }
+  function place() {
+    var bar = document.getElementById('oc-banner');
+    if (!bar) return;
+    bar.style.top = '0px';
+    var natural = bar.getBoundingClientRect().top + window.scrollY;
+    bar.style.top = (headerBottom() - natural) + 'px';
+  }
+  function update() {
+    var bar = document.getElementById('oc-banner');
+    if (isOpenHour() && !bar) {
+      bar = tpl.content.firstElementChild.cloneNode(true);
+      bar.addEventListener('click', function () {
+        if (typeof gtag === 'function') gtag('event', 'open_now_directions');
+      });
+      tpl.parentNode.insertBefore(bar, tpl);
+      place();
+    } else if (!isOpenHour() && bar) {
+      bar.remove();
+    }
+  }
+  update();
+  window.addEventListener('resize', place);
+  window.addEventListener('pageshow', update);
+  setInterval(update, 60000);
+})();
+</script>

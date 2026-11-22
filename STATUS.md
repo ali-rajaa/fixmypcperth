@@ -89,6 +89,13 @@ the sections named in brackets.
   surcharge), not undercut: "competitive" means in line with the market,
   not cheaper. The business after-hours emergency call-out stays $99.
   [After-hours fee]
+- Open now banner (November 2026). From 8pm to midnight Perth time a blue
+  bar under the header says "Open now. Drop off now for a fix tonight."
+  and links to directions, because most customers come in that window
+  (owner). On every page except those set to email contact (Business IT,
+  industry and legal pages). It scrolls away with the page. Clicks are
+  sent to Google Analytics as open_now_directions.
+  `_includes/open-now.html`, styles in shell.css. [Open now banner]
 
 **What changed, in order**
 1. New phone number sitewide, including WhatsApp links and share images.
