@@ -79,9 +79,12 @@ the sections named in brackets.
   separately before we order". The Windows key, USB recovery drive and
   antivirus add-ons stay as they are. [Labour prices only]
 - After-hours fee (November 2026). The priority same-day booking fee is
-  gone. One after-hours fee (key after-hours, +$25 in services.yml) applies
-  to work, collection or an on-site visit booked for between 7pm and 7am.
-  Dropping off is free at any hour and there is no weekend surcharge.
+  gone. One after-hours fee (key after-hours, +$15 in services.yml) applies
+  only when the customer asks for their device to be worked on between
+  8pm and 7am rather than next morning (a fix, or the cause and the part
+  it needs, that night, whatever time they collect), agreed first. Also
+  on on-site visits in that window. Dropping off and collecting are free
+  at any hour and there is no weekend surcharge.
   The business after-hours emergency call-out dropped from $99 to $79.
   [After-hours fee]
 

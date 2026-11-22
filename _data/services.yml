@@ -555,12 +555,14 @@ addons:
     price: 25
     plus: true
   # The priority same-day booking fee is gone (owner, November 2026). In its
-  # place one after-hours fee, for work, collection or a visit booked for
-  # between 7pm and 7am. Dropping off is free at any hour; no weekend surcharge.
+  # place one after-hours fee: charged only when the customer asks for their
+  # device to be worked on between 8pm and 7am rather than next morning, and
+  # agreed first. Dropping off and collecting are free at any hour; no
+  # weekend surcharge.
   - key: after-hours
     name: After-hours fee
-    desc: For work, collection or an on-site visit booked for between 7pm and 7am. Dropping off is free at any hour, and there is no weekend surcharge.
-    price: 25
+    desc: If you want us to work on your device between 8pm and 7am rather than first thing next morning. You get the fix, or the cause and the part it needs, that night. Dropping off and collecting are free at any hour, with no weekend surcharge.
+    price: 15
     plus: true
   - key: on-site-call-out
     name: On-site call-out fee
