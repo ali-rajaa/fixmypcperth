@@ -244,7 +244,7 @@ a    { color:inherit; }
 .offer-title { font-family:var(--display); font-size:1.15rem; font-weight:800; color:#fff; letter-spacing:-0.022em; margin-bottom:0.3rem; }
 .offer-desc { font-size:0.8125rem; color:rgba(255,255,255,0.7); line-height:1.6; }
 .offer-btn { position:relative; z-index:1; flex-shrink:0; }
-.hero-info-strip { padding:0 2rem 2.25rem; background:var(--bg); position:relative; }
+.hero-info-strip { padding:0 2rem 3rem; background:var(--bg); position:relative; }
 .his-inner {
   background:var(--bg2); border:1.5px solid var(--border); border-radius:16px;
   padding:1.1rem 1.5rem; display:flex; align-items:center; gap:1.5rem; flex-wrap:wrap;
@@ -262,7 +262,7 @@ a    { color:inherit; }
 .his-check-icon svg { width:9px; height:9px; }
 /* Trust bar, second row: the parts and brands we work with, as quiet grey
    wordmarks under the facts (it used to be its own bordered band). */
-.his-brands { text-align:center; margin-top:1.25rem; }
+.his-brands { text-align:center; margin-top:2.5rem; }
 .his-brands .brand-label { margin-bottom:0.6rem; }
 .his-brands .brand-row { gap:2px 6px; }
 .his-brands .brand-badge { background:none; border-color:transparent; padding:4px 10px; font-size:0.8125rem; }
@@ -615,6 +615,7 @@ body { padding-top:var(--mob-nav-h); }
 .guide-panel > h3 { font-size:1.2rem; }
 .guide-panel > p, .guide-panel > ul > li { font-size:0.90625rem; }
 .hero-info-strip { padding:0 1.25rem 2.5rem; }
+.his-brands { margin-top:1.25rem; }
 .his-inner { flex-direction:column; align-items:stretch; gap:0.9rem; padding:1.1rem 1.15rem; }
 /* The three stats share the row equally, but none gets narrower than its
    own figure, so "Same day" never runs into its neighbour. The figure is in
