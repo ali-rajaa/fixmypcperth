@@ -554,9 +554,13 @@ addons:
     name: 3 month follow-up check
     price: 25
     plus: true
-  - key: priority-same-day-booking
-    name: Priority same-day booking
-    price: 20
+  # The priority same-day booking fee is gone (owner, November 2026). In its
+  # place one after-hours fee, for work, collection or a visit booked for
+  # between 7pm and 7am. Dropping off is free at any hour; no weekend surcharge.
+  - key: after-hours
+    name: After-hours fee
+    desc: For work, collection or an on-site visit booked for between 7pm and 7am. Dropping off is free at any hour, and there is no weekend surcharge.
+    price: 25
     plus: true
   - key: on-site-call-out
     name: On-site call-out fee
@@ -586,7 +590,7 @@ addons:
     suffix: per visit
   - key: biz-afterhours-callout
     name: After-hours emergency call-out
-    price: 99
+    price: 79
     suffix: flat
   - key: biz-cyber-training
     name: Staff cyber security training

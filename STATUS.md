@@ -78,6 +78,12 @@ the sections named in brackets.
   standard / touchscreen / OLED tiers are gone). Parts are always "quoted
   separately before we order". The Windows key, USB recovery drive and
   antivirus add-ons stay as they are. [Labour prices only]
+- After-hours fee (November 2026). The priority same-day booking fee is
+  gone. One after-hours fee (key after-hours, +$25 in services.yml) applies
+  to work, collection or an on-site visit booked for between 7pm and 7am.
+  Dropping off is free at any hour and there is no weekend surcharge.
+  The business after-hours emergency call-out dropped from $99 to $79.
+  [After-hours fee]
 
 **What changed, in order**
 1. New phone number sitewide, including WhatsApp links and share images.
